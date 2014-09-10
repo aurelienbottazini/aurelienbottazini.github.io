@@ -1,0 +1,302 @@
+@import "responsive";
+
+@font-face {
+    font-family:'Alegreya';
+    font-style:normal;
+    font-weight:400;
+    src:local('Alegreya'),url("../fonts/alegreya/400.woff") format('woff')}
+
+@font-face {
+    font-family:'Alegreya';
+    font-style:normal;
+    font-weight:700;
+    src:local('Alegreya Bold'),url("../fonts/alegreya/700.woff") format('woff')}
+@font-face {
+    font-family:'Alegreya';
+    font-style:italic;
+    font-weight:400;
+    src:local('Alegreya Italic'),url("../fonts/alegreya/400i.woff") format('woff')}
+@font-face {
+    font-family:'Alegreya';
+    font-style:italic;
+    font-weight:700;
+    src:local('Alegreya Bold Italic'),url("../fonts/alegreya/700i.woff") format('woff')}
+@font-face {
+    font-family:'Alegreya Sans';
+    font-style:normal;
+    font-weight:400;
+    src:local('Alegreya Sans Regular'),url("../fonts/alegreyasans/400.woff") format('woff')}
+@font-face {
+    font-family:'Alegreya Sans';
+    font-style:normal;
+    font-weight:500;
+    src:local('Alegreya Sans Medium'),url("../fonts/alegreyasans/500.woff") format('woff')}
+@font-face {
+    font-family:'Alegreya Sans';
+    font-style:normal;
+    font-weight:700;
+    src:local('Alegreya Sans Bold'),url("../fonts/alegreyasans/700.woff") format('woff')}
+@font-face {
+    font-family:'Alegreya Sans';
+    font-style:normal;
+    font-weight:800;
+    src:local('Alegreya Sans ExtraBold'),url("../fonts/alegreyasans/800.woff") format('woff')}
+@font-face {
+    font-family:'Alegreya Sans';
+    font-style:normal;
+    font-weight:900;
+    src:local('Alegreya Sans Black'),url("../fonts/alegreyasans/900.woff") format('woff')}
+@font-face {
+    font-family:'Alegreya Sans';
+    font-style:italic;
+    font-weight:300;
+    src:local('Alegreya Sans Light Italic'),url("../fonts/alegreyasans/300i.woff") format('woff')}
+@font-face {
+    font-family:'Alegreya Sans';
+    font-style:italic;
+    font-weight:400;
+    src:local('Alegreya Sans Italic'),url("../fonts/alegreyasans/400i.woff") format('woff')}
+
+
+html, body {
+    width: 100%;
+    font-family: "Alegreya";
+    font-weight: 400;
+    line-height: 1.382em;
+}
+
+strong {
+    font-family: "Alegreya";
+    font-weight: 700;
+}
+
+em {
+    font-family: "Alegreya";
+    font-weight: 400;
+    font-style: italic;
+}
+
+h1 {
+    font-family: "Alegreya Sans";
+    font-weight: 700;
+}
+
+/* landing section */
+#landing {
+    background: url('../img/stars.png') repeat, url('../img/bleu-marine-texture.jpg') repeat;
+    background-size: 588px 594px, 1200px 631px;
+}
+
+@media (min--moz-device-pixel-ratio: 1.5),
+(-o-min-device-pixel-ratio: 3/2),
+(-webkit-min-device-pixel-ratio: 1.5),
+(min-resolution: 1.5dppx) {
+    #landing {
+        background-size: (588px/2) (594px/2), (1200px/2) (631px/2);
+    }
+}
+#landing {
+    margin: 0 auto;
+    display: block;
+    position: relative;
+}
+#scene {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    @include responsive(portrait-phone) {
+        width: $width-portrait-phone;
+        height: $width-portrait-phone * 1.382;
+    };
+    @include responsive(landscape-phone) {
+        width: $width-landscape-phone;
+        height: $width-landscape-phone * 1.382;
+    };
+    @include responsive(kindle-nook-portrait) {
+        width: $width-kindle-nook-portrait;
+        height: $width-kindle-nook-portrait * 1.382 ;
+    };
+    @include responsive(ipad-portrait) {
+        width: $width-ipad-portrait;
+        height: $width-ipad-portrait * 1.382;
+    };
+    @include responsive(ipad-landscape) {
+        width: $width-ipad-landscape;
+        height: $width-ipad-landscape * 1.382;
+    };
+    @include responsive(widescreen) {
+        width: $width-widescreen;
+        height: $width-widescreen * 1.382;
+    };
+
+}
+
+@mixin hello($width) {
+    @media only screen and (min-width: $width) {
+        /* 2775 1087 */
+        background-size: ($width * 0.618) (1087*($width * 0.618)/2775);
+        width: $width * 0.618;
+        height: (1087*($width * 0.618)/2775);
+        left: ($width * 0.382 * 0.618);
+        top: ($width * 0.382 * 0.382 * 0.382 * 0.382);
+    }
+}
+#hello {
+    position: absolute;
+    background: url('../img/hello-i-am-aurelien.svg') no-repeat;
+    z-index: 1;
+
+    @include hello($width-portrait-phone);
+    @include hello($width-landscape-phone);
+    @include hello($width-kindle-nook-portrait);
+    @include hello($width-ipad-portrait);
+    @include hello($width-ipad-landscape);
+    @include hello($width-widescreen);
+}
+
+@mixin planete-anneaux($width) {
+    @media only screen and (min-width: $width) {
+        width: $width * 0.382 * 0.382 * 0.382;
+        height: $width * 0.382 * 0.382 * 0.382;
+        left: $width * 0.382;
+        top: ($width * 0.382 * 0.382 * 0.382);
+    }
+}
+#planete-anneaux {
+    position: absolute;
+    @include planete-anneaux($width-portrait-phone);
+    @include planete-anneaux($width-landscape-phone);
+    @include planete-anneaux($width-kindle-nook-portrait);
+    @include planete-anneaux($width-ipad-portrait);
+    @include planete-anneaux($width-ipad-landscape);
+    @include planete-anneaux($width-widescreen);
+}
+
+@mixin aurelien-animation($width) {
+    @media only screen and (min-width: $width) {
+        height: $width * 0.382;
+        top: $width * 0.382 * 0.382;
+        left: ($width * 0.382 / 4);
+    }
+}
+
+#aurelien-animation {
+    position: absolute;
+    @include aurelien-animation($width-portrait-phone);
+    @include aurelien-animation($width-landscape-phone);
+    @include aurelien-animation($width-kindle-nook-portrait);
+    @include aurelien-animation($width-ipad-portrait);
+    @include aurelien-animation($width-ipad-landscape);
+    @include aurelien-animation($width-widescreen);
+}
+
+@mixin planete-lune($width) {
+    @media only screen and (min-width: $width) {
+        width: $width *  0.382;
+        height: $width * 0.382;
+        top: $width * 0.382 * 0.618 + ($width *  0.382 / 2);
+        left: -($width * 0.382 / 3) + ($width * 0.382 / 4);
+    }
+}
+#planete-lune {
+    position: absolute;
+    overflow: hidden;
+    @include planete-lune($width-portrait-phone);
+    @include planete-lune($width-landscape-phone);
+    @include planete-lune($width-kindle-nook-portrait);
+    @include planete-lune($width-ipad-portrait);
+    @include planete-lune($width-ipad-landscape);
+    @include planete-lune($width-widescreen);
+}
+
+@mixin planete-rayures($width) {
+    @media only screen and (min-width: $width) {
+        height: $width * 0.618 * 0.382 * 0.382 * 0.382;
+        width: $width * 0.618 * 0.382 * 0.382 * 0.382;
+        top: $width * 0.618;
+        left: $width * 0.382;
+    }
+}
+#planete-rayures {
+    position: absolute;
+    @include planete-rayures($width-portrait-phone);
+    @include planete-rayures($width-landscape-phone);
+    @include planete-rayures($width-kindle-nook-portrait);
+    @include planete-rayures($width-ipad-portrait);
+    @include planete-rayures($width-ipad-landscape);
+    @include planete-rayures($width-widescreen);
+}
+@mixin planete-rouge($width) {
+    @media only screen and (min-width: $width) {
+        width: $width * 0.382 * 0.618;
+        height: $width * 0.382 * 0.618;
+        top: $width  * 0.618 * 0.618;
+        left: $width * 0.618 - ($width * 0.382/3);
+    }
+}
+#planete-rouge {
+    position: absolute;
+
+    @include planete-rouge($width-portrait-phone);
+    @include planete-rouge($width-landscape-phone);
+    @include planete-rouge($width-kindle-nook-portrait);
+    @include planete-rouge($width-ipad-portrait);
+    @include planete-rouge($width-ipad-landscape);
+    @include planete-rouge($width-widescreen);
+}
+@mixin planete-vie($width) {
+    @media only screen and (min-width: $width) {
+        width: $width * 0.382 * 0.618 * 0.618;
+        height: $width * 0.382 * 0.618 * 0.618;
+        top: $width * 0.382 * 0.618;
+        left: $width * 0.618 + ($width * 0.382 / 2);
+    }
+}
+#planete-vie {
+    position: absolute;
+    @include planete-vie($width-portrait-phone);
+    @include planete-vie($width-landscape-phone);
+    @include planete-vie($width-kindle-nook-portrait);
+    @include planete-vie($width-ipad-portrait);
+    @include planete-vie($width-ipad-landscape);
+    @include planete-vie($width-widescreen);
+}
+
+/* start of about section */
+#about {
+    margin: 0 auto;
+    padding: 2em 0 0;
+    background-color: #fffacf;
+    width: 100%;
+    background-position: left top, left bottom;
+    line-height: 1.5em;
+
+    h1 {
+        text-align: center;
+        margin: 1em;
+        font-size: 2em;
+
+        @include responsive(ipad-portrait) {
+            font-size: 3em;
+        };
+    }
+    p {
+        margin: 0em auto;
+        width: 80%;
+
+        @include responsive(ipad-portrait) {
+            width: 30em;
+        };
+
+    }
+
+    ul {
+        margin-left: 0em;
+
+        @include responsive(ipad-portrait) {
+            margin: 1em auto;
+            width: 32em;
+        };
+    }
+}

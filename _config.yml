@@ -1,0 +1,9 @@
+name: Aurélien Bottazini
+highlight: pygments
+exclude: [deploy.sh, originaux, rsyncexclude, doc]
+encoding: utf-8
+markdown: kramdown
+sass:
+  style: :compressed
+kramdown:
+  input: GFM
