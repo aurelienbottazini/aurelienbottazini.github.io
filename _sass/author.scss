@@ -85,6 +85,7 @@ h1 {
 body {
     background: url('../img/stars.png') repeat, url('../img/bleu-marine-texture.jpg') repeat;
     background-size: 588px 594px, 1200px 631px;
+    background-attachment: fixed;
 }
 
 @media (min--moz-device-pixel-ratio: 1.5),
