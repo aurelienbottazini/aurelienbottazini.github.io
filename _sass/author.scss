@@ -82,7 +82,7 @@ h1 {
 }
 
 /* landing section */
-#landing {
+body {
     background: url('../img/stars.png') repeat, url('../img/bleu-marine-texture.jpg') repeat;
     background-size: 588px 594px, 1200px 631px;
 }
@@ -91,7 +91,7 @@ h1 {
 (-o-min-device-pixel-ratio: 3/2),
 (-webkit-min-device-pixel-ratio: 1.5),
 (min-resolution: 1.5dppx) {
-    #landing {
+    body {
         background-size: (588px/2) (594px/2), (1200px/2) (631px/2);
     }
 }
@@ -99,11 +99,6 @@ h1 {
     margin: 0 auto;
     display: block;
     position: relative;
-}
-#scene {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
 
     @include responsive(portrait-phone) {
         width: $width-portrait-phone;
@@ -130,6 +125,11 @@ h1 {
         height: $width-widescreen * 1.382;
     };
 
+}
+#scene {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 @mixin hello($width) {
