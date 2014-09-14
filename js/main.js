@@ -10,15 +10,15 @@ for (i=0;i<elements.length;i++) {
 }
 
 $("#hello").velocity("transition.slideDownBigIn",
-                     { duration: 1500 });
+                     { duration: 1500, delay: 500 });
 $("#planete-anneaux").velocity("transition.slideDownBigIn",
-                     { duration: 1500 });
+                               { duration: 1500, delay: 500 });
 $("#planete-rouge").velocity("transition.expandIn",
-                             { duration: 1500 });
+                             { duration: 1500, delay: 500 });
 
 $("#aurelien-sur-la-lune").velocity("transition.bounceLeftIn",
-                                    {duration: 1500});
+                                    {duration: 1500, delay: 500});
 $("#planete-rayures").velocity("transition.bounceLeftIn",
-                               {duration: 1500});
+                               {duration: 1500, delay: 500});
 $("#planete-vie").velocity("transition.bounceRightIn",
-                               {duration: 1500});
+                           {duration: 1500, delay: 500});
