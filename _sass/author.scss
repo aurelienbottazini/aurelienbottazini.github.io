@@ -1,62 +1,5 @@
 @import "responsive";
-
-@font-face {
-    font-family:'Alegreya';
-    font-style:normal;
-    font-weight:400;
-    src:local('Alegreya'),url("../fonts/alegreya/400.woff") format('woff')}
-
-@font-face {
-    font-family:'Alegreya';
-    font-style:normal;
-    font-weight:700;
-    src:local('Alegreya Bold'),url("../fonts/alegreya/700.woff") format('woff')}
-@font-face {
-    font-family:'Alegreya';
-    font-style:italic;
-    font-weight:400;
-    src:local('Alegreya Italic'),url("../fonts/alegreya/400i.woff") format('woff')}
-@font-face {
-    font-family:'Alegreya';
-    font-style:italic;
-    font-weight:700;
-    src:local('Alegreya Bold Italic'),url("../fonts/alegreya/700i.woff") format('woff')}
-@font-face {
-    font-family:'Alegreya Sans';
-    font-style:normal;
-    font-weight:400;
-    src:local('Alegreya Sans Regular'),url("../fonts/alegreyasans/400.woff") format('woff')}
-@font-face {
-    font-family:'Alegreya Sans';
-    font-style:normal;
-    font-weight:500;
-    src:local('Alegreya Sans Medium'),url("../fonts/alegreyasans/500.woff") format('woff')}
-@font-face {
-    font-family:'Alegreya Sans';
-    font-style:normal;
-    font-weight:700;
-    src:local('Alegreya Sans Bold'),url("../fonts/alegreyasans/700.woff") format('woff')}
-@font-face {
-    font-family:'Alegreya Sans';
-    font-style:normal;
-    font-weight:800;
-    src:local('Alegreya Sans ExtraBold'),url("../fonts/alegreyasans/800.woff") format('woff')}
-@font-face {
-    font-family:'Alegreya Sans';
-    font-style:normal;
-    font-weight:900;
-    src:local('Alegreya Sans Black'),url("../fonts/alegreyasans/900.woff") format('woff')}
-@font-face {
-    font-family:'Alegreya Sans';
-    font-style:italic;
-    font-weight:300;
-    src:local('Alegreya Sans Light Italic'),url("../fonts/alegreyasans/300i.woff") format('woff')}
-@font-face {
-    font-family:'Alegreya Sans';
-    font-style:italic;
-    font-weight:400;
-    src:local('Alegreya Sans Italic'),url("../fonts/alegreyasans/400i.woff") format('woff')}
-
+@import "fonts";
 
 html, body {
     width: 100%;
@@ -155,7 +98,6 @@ body {
     @include hello($width-ipad-landscape);
     @include hello($width-widescreen);
 }
-
 @mixin planete-anneaux($width) {
     @media only screen and (min-width: $width) {
         width: $width * 0.382 * 0.382 * 0.382;
@@ -282,6 +224,30 @@ body {
             font-size: 3em;
         };
     }
+
+
+    @mixin about-me($width) {
+        @media only screen and (min-width: $width) {
+            /* 389 138 */
+            background-size: ($width * 0.618) (138*($width * 0.618)/389);
+            width: $width * 0.618;
+            height: (138*($width * 0.618)/389);
+            left: ($width * 0.382 * 0.618);
+            top: ($width * 0.382 * 0.382 * 0.382 * 0.382);
+        }
+    }
+    #about-me {
+        background: url('../img/about-me.svg') no-repeat;
+        margin: 1em auto;
+        @include about-me($width-portrait-phone);
+        @include about-me($width-landscape-phone);
+        @include about-me($width-kindle-nook-portrait);
+        @include about-me($width-ipad-portrait);
+        @include about-me($width-ipad-landscape);
+        @include about-me($width-widescreen);
+    }
+
+
     p {
         margin: 0em auto;
         width: 80%;
