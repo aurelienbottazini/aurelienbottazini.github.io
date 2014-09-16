@@ -21,3 +21,9 @@ $("#planete-rayures").velocity("transition.bounceLeftIn",
                                {duration: 1500, delay: 500});
 $("#planete-vie").velocity("transition.bounceRightIn",
                            {duration: 1500, delay: 500});
+
+$('#planete-rouge-circles circle').velocity({ fill: "#ff694d"},
+                                            {duration: 3000, loop:
+                                             true });
+$('#planete-rouge-circles path').velocity({ fill: "#ff694d"},
+                                            {duration: 3000, loop: true });
