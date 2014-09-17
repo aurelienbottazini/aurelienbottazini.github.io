@@ -95,6 +95,11 @@ body {
     @include hello($width-ipad-landscape);
     @include hello($width-widescreen);
 }
+#hello-i-am-aurelien{
+    width: 100%;
+    height: 100%;
+}
+
 @mixin planete-anneaux($width) {
     @media only screen and (min-width: $width) {
         width: $width * 0.382 * 0.382 * 0.382;
