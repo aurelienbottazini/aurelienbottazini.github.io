@@ -15,9 +15,6 @@ for (i=0;i<elements.length;i++) {
     }
 }
 
-// $("#hello").velocity("transition.slideDownBigIn",
-//                      { duration: 1500, delay: 500 });
-
 var hello_paths = $('#hello-i-am-aurelien path');
 var hello_paths_length = hello_paths.length;
 var svg_path;
@@ -45,13 +42,33 @@ $("#planete-rayures").velocity("transition.bounceLeftIn",
 $("#planete-vie").velocity("transition.bounceRightIn",
                            {duration: 1500, delay: 500});
 
-// for(i=0 ;i < circles_number; i++) {
-//     planete_rouge_circles_circles.eq(i).velocity({ fill: "#ff694d"}, {duration: 2000, loop: true,
-//                                                                       delay: 600*(i+1)});
-// }
+$( "#planete-rouge" ).mouseenter(function() {
+    for(i=0 ;i < circles_number; i++) {
+        planete_rouge_circles_circles
+            .eq(i)
+            .velocity({ fill: "#ff694d"},
+                      {duration: 500});
+    }
+    for(i=0; i < paths_number; i++) {
+        planete_rouge_paths.eq(i).
+            velocity({ fill: "#ff694d"},
+                     {duration: 500});
+    }
+}).mouseleave(function() {
+    for(i=0 ;i < circles_number; i++) {
+        planete_rouge_circles_circles
+            .eq(i)
+            .velocity({ fill: "#c22327"},
+                      {duration: 500});
+    }
+    for(i=0; i < paths_number; i++) {
+        planete_rouge_paths.eq(i).
+            velocity({ fill: "#c22327"},
+                     {duration: 500});
+    }
+});
 
-// for(i=0; i < paths_number; i++) {
-//     planete_rouge_paths.eq(i).
-//         velocity({ fill: "#ff694d"},
-//                  {delay: 500*(i+1), duration: 1000, loop: true });
-// }
+$('#about-link').click(function() {
+    $('#about').velocity("scroll", 1000);
+    return false;
+});
