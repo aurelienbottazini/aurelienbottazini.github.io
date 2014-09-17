@@ -1,4 +1,10 @@
 var i, src, extension = Modernizr.svg ? '.svg' : '.png';
+var planete_rouge_circles = $('#planete-rouge-circles');
+var planete_rouge_circles_circles =
+        planete_rouge_circles.find('circle');
+var circles_number = planete_rouge_circles_circles.length;
+var planete_rouge_paths = planete_rouge_circles.find('path');
+var paths_number = planete_rouge_paths.length;
 
 elements = $('img');
 for (i=0;i<elements.length;i++) {
@@ -9,8 +15,25 @@ for (i=0;i<elements.length;i++) {
     }
 }
 
-$("#hello").velocity("transition.slideDownBigIn",
-                     { duration: 1500, delay: 500 });
+// $("#hello").velocity("transition.slideDownBigIn",
+//                      { duration: 1500, delay: 500 });
+
+var hello_paths = $('#hello-i-am-aurelien path');
+var hello_paths_length = hello_paths.length;
+var svg_path;
+var svg_path_length;
+for(i = 0; i< hello_paths_length; i++) {
+
+    svg_path = hello_paths.eq(i);
+    svg_path_length = svg_path[0].getTotalLength();
+
+    svg_path.css({"fill-opacity": 0,
+                  "stroke-dasharray": svg_path_length,
+                  "stroke-dashoffset": svg_path_length})
+        .velocity({strokeDashoffset: 0}, {duration: 3000, delay: 600})
+        .velocity({fillOpacity: [1, 0], strokeOpacity:[0,1]});
+}
+
 $("#planete-anneaux").velocity("transition.slideDownBigIn",
                                { duration: 1500, delay: 500 });
 $("#planete-rouge").velocity("transition.expandIn",
@@ -22,89 +45,13 @@ $("#planete-rayures").velocity("transition.bounceLeftIn",
 $("#planete-vie").velocity("transition.bounceRightIn",
                            {duration: 1500, delay: 500});
 
-$('#planete-rouge-circles circle:eq(0)').
-    velocity({ fill: "#ff694d"}, {duration: 2000, loop: true,
-                                  delay: 600});
-$('#planete-rouge-circles circle:eq(1)'). velocity({ fill:
-                                                     "#ff694d"}, {duration: 2000, loop: true, delay: 600*2});
+// for(i=0 ;i < circles_number; i++) {
+//     planete_rouge_circles_circles.eq(i).velocity({ fill: "#ff694d"}, {duration: 2000, loop: true,
+//                                                                       delay: 600*(i+1)});
+// }
 
-$('#planete-rouge-circles circle:eq(2)'). velocity({ fill:
-                                                     "#ff694d"}, {duration: 2000, loop: true, delay: 600*3});
-
-$('#planete-rouge-circles circle:eq(3)'). velocity({ fill:
-                                                     "#ff694d"}, {duration: 2000, loop: true, delay: 600*4});
-
-$('#planete-rouge-circles circle:eq(4)'). velocity({ fill:
-                                                     "#ff694d"}, {duration: 2000, loop: true, delay: 600*5});
-
-$('#planete-rouge-circles path:eq(0)').
-    velocity({ fill: "#ff694d"},
-             {delay: 1000, duration: 2000, loop: true });
-$('#planete-rouge-circles path:eq(1)').
-    velocity({ fill: "#ff694d"},
-             {delay: 900, duration: 2000, loop: true });
-$('#planete-rouge-circles path:eq(2)').
-    velocity({ fill: "#ff694d"},
-             {delay: 1500, duration: 2000, loop: true });
-$('#planete-rouge-circles path:eq(3)').
-    velocity({ fill: "#ff694d"},
-             {delay: 2000, duration: 2000, loop: true });
-$('#planete-rouge-circles path:eq(4)').
-    velocity({ fill: "#ff694d"},
-             {delay: 3000, duration: 2000, loop: true });
-$('#planete-rouge-circles path:eq(5)').
-    velocity({ fill: "#ff694d"},
-             {delay: 2500, duration: 2000, loop: true });
-$('#planete-rouge-circles path:eq(6)').
-    velocity({ fill: "#ff694d"},
-             {delay: 4000, duration: 2000, loop: true });
-$('#planete-rouge-circles path:eq(7)').
-    velocity({ fill: "#ff694d"},
-             {delay: 4500, duration: 2000, loop: true });
-
-
-(function() {
-  window.signature = {
-    initialize: function() {
-      return $('#hello-aurelien').each(function() {
-        var delay, length, path, paths, previousStrokeLength, speed, _i, _len, _results;
-        paths = $('path, circle, rect', this);
-        delay = 0;
-        _results = [];
-        for (_i = 0, _len = paths.length; _i < _len; _i++) {
-          path = paths[_i];
-          length = path.getTotalLength();
-          previousStrokeLength = speed || 0;
-          speed = length < 100 ? 20 : Math.floor(length);
-          delay += previousStrokeLength + 100;
-          _results.push($(path).css('transition', 'none').attr('data-length', length).attr('data-speed', speed).attr('data-delay', delay).attr('stroke-dashoffset', length).attr('stroke-dasharray', length + ',' + length));
-        }
-        return _results;
-      });
-    },
-    animate: function() {
-      return $('#hello-aurelien').each(function() {
-        var delay, length, path, paths, speed, _i, _len, _results;
-        paths = $('path, circle, rect', this);
-        _results = [];
-        for (_i = 0, _len = paths.length; _i < _len; _i++) {
-          path = paths[_i];
-          length = $(path).attr('data-length');
-          speed = $(path).attr('data-speed');
-          delay = $(path).attr('data-delay');
-          _results.push($(path).css('transition', 'stroke-dashoffset ' + speed + 'ms ' + delay + 'ms linear').attr('stroke-dashoffset', '0'));
-        }
-        return _results;
-      });
-    }
-  };
-
-  $(document).ready(function() {
-    window.signature.initialize();
-  });
-
-  $(window).load(function() {
-    return window.signature.animate();
-  });
-
-}).call(this);
+// for(i=0; i < paths_number; i++) {
+//     planete_rouge_paths.eq(i).
+//         velocity({ fill: "#ff694d"},
+//                  {delay: 500*(i+1), duration: 1000, loop: true });
+// }

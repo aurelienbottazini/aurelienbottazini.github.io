@@ -78,8 +78,6 @@ body {
 
 @mixin hello($width) {
     @media only screen and (min-width: $width) {
-        /* 2775 1087 */
-        background-size: ($width * 0.618) (1087*($width * 0.618)/2775);
         width: $width * 0.618;
         height: (1087*($width * 0.618)/2775);
         left: ($width * 0.382 * 0.618);
@@ -88,7 +86,6 @@ body {
 }
 #hello {
     position: absolute;
-    background: url('../img/hello-i-am-aurelien.svg') no-repeat;
     z-index: 1;
 
     @include hello($width-portrait-phone);
@@ -228,8 +225,6 @@ body {
 
     @mixin about-me($width) {
         @media only screen and (min-width: $width) {
-            /* 389 138 */
-            background-size: ($width * 0.618) (138*($width * 0.618)/389);
             width: $width * 0.618;
             height: (138*($width * 0.618)/389);
             left: ($width * 0.382 * 0.618);
@@ -237,7 +232,6 @@ body {
         }
     }
     #about-me {
-        background: url('../img/about-me.svg') no-repeat;
         margin: 1em auto;
         @include about-me($width-portrait-phone);
         @include about-me($width-landscape-phone);
