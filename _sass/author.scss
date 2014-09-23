@@ -190,6 +190,7 @@ body {
     @include planete-rouge($width-ipad-landscape);
     @include planete-rouge($width-widescreen);
 }
+
 @mixin planete-vie($width) {
     @media only screen and (min-width: $width) {
         width: $width * 0.382 * 0.618 * 0.618;
@@ -211,7 +212,8 @@ body {
 /* start of about section */
 #about {
     margin: 0 auto;
-    padding: 2em 0 0;
+    padding-top: 0em;
+    padding-bottom: 0em;
     background-color: #fffacf;
     width: 100%;
     background-position: left top, left bottom;
@@ -219,12 +221,11 @@ body {
 
     h1 {
         text-align: center;
-        margin: 1em;
-        font-size: 2em;
+        margin: 0;
+        font-size: 3em;
+        padding-top: 1em;
+        padding-bottom: 0.382em;
 
-        @include responsive(ipad-portrait) {
-            font-size: 3em;
-        };
     }
 
 
@@ -232,18 +233,15 @@ body {
         @media only screen and (min-width: $width) {
             width: $width * 0.618;
             height: (138*($width * 0.618)/389);
-            left: ($width * 0.382 * 0.618);
-            top: ($width * 0.382 * 0.382 * 0.382 * 0.382);
         }
     }
     #about-me {
-        margin: 1em auto;
+        margin: 0em auto;
         @include about-me($width-portrait-phone);
         @include about-me($width-landscape-phone);
         @include about-me($width-kindle-nook-portrait);
         @include about-me($width-ipad-portrait);
         @include about-me($width-ipad-landscape);
-        @include about-me($width-widescreen);
     }
 
 
@@ -267,7 +265,7 @@ body {
     }
 }
 .js {
-    #planete-rouge, #planete-vie, #planete-anneaux, #aurelien-sur-la-lune, #Planete-rayures {
+    #planete-rouge, #planete-vie, #planete-anneaux, #aurelien-sur-la-lune, #planete-rayures {
         opacity: 0;
     }
 }
