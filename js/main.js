@@ -15,6 +15,7 @@ for (i=0;i<elements.length;i++) {
     }
 }
 
+$('#hello').css({"visibility": "visible"});
 var hello_paths = $('#hello-i-am-aurelien path');
 var hello_paths_length = hello_paths.length;
 var svg_path;
@@ -31,6 +32,7 @@ for(i = 0; i< hello_paths_length; i++) {
         .velocity({fillOpacity: [1, 0], strokeOpacity:[0,1]});
 }
 
+$('#scene').css({"visibility": "visible"});
 $("#planete-anneaux").velocity("transition.slideDownBigIn",
                                { duration: 1500, delay: 500 });
 $("#planete-rouge").velocity("transition.expandIn",
