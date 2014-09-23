@@ -1,4 +1,4 @@
-<svg "planete-rouge" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="1000" height="1000" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+<svg id="planete-rouge" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="1000" height="1000" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
   <path id="planete-rouge-core" fill="#A40612" stroke="#A40612" stroke-miterlimit="10" d="M999.1 499.8c0 276.1-223.8 499.9-499.9 499.9S-0.6 775.9-0.6 499.8c0-276.1 223.8-499.8 499.9-499.8S999.1 223.8 999.1 499.8z"/>
   <g id="planete-rouge-circles">
     <circle fill="#C32428" stroke="#C32428" stroke-miterlimit="10" cx="152.7" cy="359.2" r="32.3"/>
