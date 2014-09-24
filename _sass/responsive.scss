@@ -3,7 +3,7 @@ $width-landscape-phone: 480px;
 $width-kindle-nook-portrait: 600px;
 $width-ipad-portrait: 768px;
 $width-ipad-landscape: 1024px;
-$width-widescreen: 1200px;
+$width-widescreen: 1400px;
 
 @mixin responsive($width) {
     @if $width == widescreen {
