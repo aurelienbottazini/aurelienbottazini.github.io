@@ -1,10 +1,15 @@
 var i, src, extension = Modernizr.svg ? '.svg' : '.png';
+var planete_rouge = $('#planete-rouge');
 var planete_rouge_circles = $('#planete-rouge-circles');
 var planete_rouge_circles_circles =
         planete_rouge_circles.find('circle');
 var circles_number = planete_rouge_circles_circles.length;
 var planete_rouge_paths = planete_rouge_circles.find('path');
 var paths_number = planete_rouge_paths.length;
+var planete_rouge_about_me_letters =
+        $('#planete-rouge-about-me-letters').find('path');
+var planete_rouge_about_me_letters_number =
+        planete_rouge_about_me_letters.length;
 
 elements = $('img');
 for (i=0;i<elements.length;i++) {
@@ -42,7 +47,10 @@ $("#planete-rayures").velocity("transition.bounceLeftIn",
 $("#planete-vie").velocity("transition.bounceRightIn",
                            {duration: 1500, delay: 500});
 
-$( "#planete-rouge" ).mouseenter(function() {
+planete_rouge.mouseenter(function() {
+
+    planete_rouge.velocity({scaleX: 1.1, scaleY: 1.1}, {duration: 500});
+
     for(i=0 ;i < circles_number; i++) {
         planete_rouge_circles_circles
             .eq(i)
@@ -54,7 +62,17 @@ $( "#planete-rouge" ).mouseenter(function() {
             velocity({ fill: "#ff694d"},
                      {duration: 500});
     }
+
+    for(i=0; i <planete_rouge_about_me_letters_number; i++) {
+        planete_rouge_about_me_letters.eq(i).
+            velocity({ fill: "#ff694d"},
+                     {duration: 500});
+    }
 }).mouseleave(function() {
+
+    planete_rouge.velocity({scaleX: 1, scaleY: 1}, {duration:
+                                                    500});
+
     for(i=0 ;i < circles_number; i++) {
         planete_rouge_circles_circles
             .eq(i)
@@ -63,6 +81,11 @@ $( "#planete-rouge" ).mouseenter(function() {
     }
     for(i=0; i < paths_number; i++) {
         planete_rouge_paths.eq(i).
+            velocity({ fill: "#c22327"},
+                     {duration: 500});
+    }
+    for(i=0; i <planete_rouge_about_me_letters_number; i++) {
+        planete_rouge_about_me_letters.eq(i).
             velocity({ fill: "#c22327"},
                      {duration: 500});
     }
