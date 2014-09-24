@@ -5,9 +5,33 @@ html, body {
     width: 100%;
     font-family: "Alegreya";
     font-weight: 400;
-    line-height: 1.382em;
+    line-height: 1.382; //no unit. Line height is not fixed and adapts depending on descendant font-size
+    -webkit-hyphens: auto; // Safari 5.1 thru 6, iOS 4.2 thru 6
+    -moz-hyphens: auto; // Firefox 16 thru 20
+    -ms-hyphens: auto; // IE10
+    -o-hyphens: auto; // PRESTO...haha LOL
+    hyphens: auto; // W3C standard
 }
-
+abbr,
+acronym,
+blockquote,
+code,
+dir,
+kbd,
+listing,
+plaintext,
+q,
+samp,
+tt,
+var,
+xmp {
+    // http://meyerweb.com/eric/thoughts/2012/12/17/where-to-avoid-css-hyphenation
+    -webkit-hyphens: none; // Safari 5.1 thru 6, iOS 4.2 thru 6
+    -moz-hyphens: none; // Firefox 16 thru 20
+    -ms-hyphens: none; // IE10
+    -o-hyphens: none; // PRESTO...haha LOL
+    hyphens: none; // W3C standard
+}
 strong {
     font-family: "Alegreya";
     font-weight: 700;
@@ -18,18 +42,93 @@ em {
     font-weight: 400;
     font-style: italic;
 }
+h1, h2, h3, h4, h5, h6 {
+    text-rendering: optimizeLegibility; //enables kerning and ligatures
+    color: #222;
+}
+p, li {
+    text-rendering: optimizeLegibility;
+}
+p {
+    margin: 1em auto;
+}
+p + p {
+    text-indent: 1em;
+    margin-top: -1em;
+}
+small {
+    font-size: 65%;
+}
+$small-caps-color: gray !default;
+$small-caps-weight: 600 !default;
+@mixin smallcaps($color, $font-weight) {
+	// depends on the font family.
+	// some font-families don’t support small caps
+	// or don’t provide them with their web font.
+	font-variant: small-caps;
+	font-weight: $font-weight;
+	text-transform: lowercase;
+	color: $color;
+}
+abbr {
+	@include smallcaps($small-caps-color, $small-caps-weight);
+	&:hover {
+		cursor: help;
+	}
+}
+@mixin white-space($wrap-space) {
+	@if $wrap-space == 'pre-wrap' {
+		white-space: #{-moz-}$wrap-space; // Firefox 1.0-2.0
+		white-space: $wrap-space;       // current browsers
+	} @else {
+		white-space: $wrap-space;
+	}
+}
 
+pre code {
+	@extend %normal-wrap;
+	@include white-space(pre-wrap);
+}
+
+pre {
+	@include white-space(pre);
+}
+
+code {
+	@include white-space(pre);
+	font-family: monospace;
+}
 h1 {
     font-family: "Alegreya Sans";
     font-weight: 700;
 }
 
-/* landing section */
+.js {
+    #planete-rouge, #planete-vie, #planete-anneaux, #aurelien-sur-la-lune, #planete-rayures {
+        opacity: 0;
+    }
+}
+.highlight {
+    background-color: #f3cb42;
+}
+
 body {
     background: url('../img/stars.png') repeat, url('../img/bleu-marine-texture.jpg') repeat;
     background-size: 588px 594px, 1200px 631px;
     background-attachment: fixed;
+    color: #444;
+    word-wrap: break-word;
 }
+a {
+    color: #0b2292
+}
+a:visited {
+    color: #6616ed;
+}
+a:hover, a:active {
+             color: #a40612;
+         }
+/* landing section */
 
 @media (min--moz-device-pixel-ratio: 1.5),
 (-o-min-device-pixel-ratio: 3/2),
@@ -209,11 +308,11 @@ body {
     @include planete-vie($width-widescreen);
 }
 
-/* start of about section */
+// about section
 #about {
     margin: 0 auto;
     padding-top: 0em;
-    padding-bottom: 0em;
+    padding-bottom: 1em;
     background-color: #fffacf;
     width: 100%;
     background-position: left top, left bottom;
@@ -246,7 +345,6 @@ body {
 
 
     p {
-        margin: 0em auto;
         width: 80%;
 
         @include responsive(ipad-portrait) {
@@ -262,10 +360,5 @@ body {
             margin: 1em auto;
             width: 32em;
         };
-    }
-}
-.js {
-    #planete-rouge, #planete-vie, #planete-anneaux, #aurelien-sur-la-lune, #planete-rayures {
-        opacity: 0;
     }
 }
