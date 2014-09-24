@@ -277,10 +277,11 @@ a:hover, a:active {
 }
 @mixin planete-rouge($width) {
     @media only screen and (min-width: $width) {
-        width: $width * 0.382 * 0.618;
+        //width="984.099px" height="1088.74px"
+        width: ($width*1088/984) * 0.382 * 0.618;
         height: $width * 0.382 * 0.618;
-        top: $width  * 0.618 * 0.618;
-        left: $width * 0.618 - ($width * 0.382/3);
+        top: $width  * 0.382;
+        left: $width * 0.618 - ($width * 0.382/2);
     }
 }
 #planete-rouge {
@@ -296,10 +297,10 @@ a:hover, a:active {
 
 @mixin planete-vie($width) {
     @media only screen and (min-width: $width) {
-        width: $width * 0.382 * 0.618 * 0.618;
-        height: $width * 0.382 * 0.618 * 0.618;
+        width: $width * 0.382 * 0.618;
+        height: $width * 0.382 * 0.618;
         top: $width * 0.382 * 0.618;
-        left: $width * 0.618 + ($width * 0.382 / 2);
+        left: $width * 0.618 + ($width * 0.382 / 3);
     }
 }
 #planete-vie {
@@ -313,14 +314,12 @@ a:hover, a:active {
 }
 
 // about section
-#about {
+
+#about, #contact {
     margin: 0 auto;
     padding-top: 0em;
     padding-bottom: 1em;
-    background-color: #fffacf;
     width: 100%;
-    background-position: left top, left bottom;
-    line-height: 1.5em;
 
     h1 {
         text-align: center;
@@ -331,24 +330,7 @@ a:hover, a:active {
 
     }
 
-
-    @mixin about-me($width) {
-        @media only screen and (min-width: $width) {
-            width: $width * 0.618;
-            height: (138*($width * 0.618)/389);
-        }
-    }
-    #about-me {
-        margin: 0em auto;
-        @include about-me($width-portrait-phone);
-        @include about-me($width-landscape-phone);
-        @include about-me($width-kindle-nook-portrait);
-        @include about-me($width-ipad-portrait);
-        @include about-me($width-ipad-landscape);
-    }
-
-
-    p {
+        p {
         width: 80%;
 
         @include responsive(ipad-portrait) {
@@ -365,4 +347,28 @@ a:hover, a:active {
             width: 32em;
         };
     }
+
+}
+#about {
+    background-color: #fffacf;
+
+    @mixin about-me($width) {
+        @media only screen and (min-width: $width) {
+            width: $width * 0.618;
+            height: (138*($width * 0.618)/389);
+        }
+    }
+    #about-me {
+        margin: 0em auto;
+        @include about-me($width-portrait-phone);
+        @include about-me($width-landscape-phone);
+        @include about-me($width-kindle-nook-portrait);
+        @include about-me($width-ipad-portrait);
+        @include about-me($width-ipad-landscape);
+    }
+
+}
+//contact section
+#contact {
+    background-color: #8790dd;
 }

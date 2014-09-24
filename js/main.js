@@ -1,5 +1,7 @@
 var i, src, extension = Modernizr.svg ? '.svg' : '.png';
 var planete_rouge = $('#planete-rouge');
+var planete_vie = $('#planete-vie');
+
 var planete_rouge_circles = $('#planete-rouge-circles');
 var planete_rouge_circles_circles =
         planete_rouge_circles.find('circle');
@@ -47,9 +49,15 @@ $("#planete-rayures").velocity("transition.bounceLeftIn",
 $("#planete-vie").velocity("transition.bounceRightIn",
                            {duration: 1500, delay: 500});
 
+planete_vie.mouseenter(function() {
+    planete_vie.velocity({scaleX: 1.3, scaleY: 1.3}, {duration: 500});
+}).mouseleave(function() {
+    planete_vie.velocity({scaleX: 1, scaleY: 1}, {duration: 500});
+});
+
 planete_rouge.mouseenter(function() {
 
-    planete_rouge.velocity({scaleX: 1.1, scaleY: 1.1}, {duration: 500});
+    planete_rouge.velocity({scaleX: 1.3, scaleY: 1.3}, {duration: 500});
 
     for(i=0 ;i < circles_number; i++) {
         planete_rouge_circles_circles
@@ -93,5 +101,9 @@ planete_rouge.mouseenter(function() {
 
 $('#about-link').click(function() {
     $('#about').velocity("scroll", 1000);
+    return false;
+});
+$('#contact-link').click(function() {
+    $('#contact').velocity("scroll", 1000);
     return false;
 });
