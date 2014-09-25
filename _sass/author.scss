@@ -350,26 +350,38 @@ a:hover, a:active {
     }
 
 }
+@mixin about-me($width) {
+    @media only screen and (min-width: $width) {
+        width: $width * 0.618;
+        height: (138*($width * 0.618)/389);
+    }
+}
 #about {
     background-color: #fffacf;
-
-    @mixin about-me($width) {
-        @media only screen and (min-width: $width) {
-            width: $width * 0.618;
-            height: (138*($width * 0.618)/389);
-        }
-    }
-    #about-me {
-        margin: 0em auto;
-        @include about-me($width-portrait-phone);
-        @include about-me($width-landscape-phone);
-        @include about-me($width-kindle-nook-portrait);
-        @include about-me($width-ipad-portrait);
-        @include about-me($width-ipad-landscape);
-    }
-
+}
+#about-me {
+    margin: 0em auto;
+    @include about-me($width-portrait-phone);
+    @include about-me($width-landscape-phone);
+    @include about-me($width-kindle-nook-portrait);
+    @include about-me($width-ipad-portrait);
+    @include about-me($width-ipad-landscape);
 }
 //contact section
 #contact {
     background-color: #8790dd;
+}
+@mixin contact-title($width) {
+    @media only screen and (min-width: $width) {
+        width: $width * 0.618;
+        height: (138*($width * 0.618)/389);
+    }
+}
+#contact-title {
+    margin: 0em auto;
+    @include about-me($width-portrait-phone);
+    @include about-me($width-landscape-phone);
+    @include about-me($width-kindle-nook-portrait);
+    @include about-me($width-ipad-portrait);
+    @include about-me($width-ipad-landscape);
 }
