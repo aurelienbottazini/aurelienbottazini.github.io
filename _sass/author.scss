@@ -332,7 +332,8 @@ a:hover, a:active {
 
         p {
         width: 80%;
-
+        font-size: 1.35em;
+        line-height: 1.6;
         @include responsive(ipad-portrait) {
             width: 30em;
         };

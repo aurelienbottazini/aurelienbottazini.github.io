@@ -40,7 +40,7 @@ for(i = 0; i< hello_paths_length; i++) {
 
 $("#planete-anneaux").velocity("transition.slideDownBigIn",
                                { duration: 1500, delay: 500 });
-$("#planete-rouge").velocity("transition.expandIn",
+$("#planete-rouge").velocity("transition.slideUpBigIn",
                              { duration: 1500, delay: 500 });
 $("#aurelien-sur-la-lune").velocity("transition.bounceLeftIn",
                                     {duration: 1500, delay: 500});
