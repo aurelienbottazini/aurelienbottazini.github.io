@@ -180,8 +180,12 @@ a:hover, a:active {
 }
 .fixed_menu {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 10%;
+    left: 10%;
+
+    li {
+        margin-bottom: 1em;
+    }
 }
 @mixin planete-rouge($width) {
     @media only screen and (min-width: $width) {
@@ -192,26 +196,9 @@ a:hover, a:active {
         left: $width * 0.618 - ($width * 0.382/2);
     }
 }
-@mixin planete-rouge-fixed($width) {
-    @media only screen and (min-width: $width) {
-        //width="984.099px" height="1088.74px"
-        width: ($width*1088/984) * 0.382 * 0.618;
-        height: $width * 0.382 * 0.618;
-        top: $width  * 0.382;
-    }
-}
 .fixed_menu #planete-rouge {
-    position: fixed;
-    left: 1em;
-
-    @include planete-rouge-fixed($width-portrait-phone/2);
-    @include planete-rouge-fixed($width-landscape-phone/2);
-    @include planete-rouge-fixed($width-kindle-nook-portrait/2);
-    @include planete-rouge-fixed($width-ipad-portrait/2);
-    @include planete-rouge-fixed($width-ipad-landscape/2);
-    @include planete-rouge-fixed($width-widescreen/2);
-
-
+    width: 10vw;
+    height: (10vw*1088/984);
 }
 .landing_menu #planete-rouge {
     position: absolute;
@@ -226,30 +213,16 @@ a:hover, a:active {
 
 @mixin planete-vie($width) {
     @media only screen and (min-width: $width) {
-        width: $width * 0.382 * 0.618;
+        //width="1179.118px" height="1286.758px"
+        width: ($width*1286/1179) * 0.382 * 0.618;
         height: $width * 0.382 * 0.618;
         top: $width * 0.382 * 0.618;
         left: $width * 0.618 + ($width * 0.382 / 3);
     }
 }
-@mixin planete-vie-fixed($width) {
-    @media only screen and (min-width: $width) {
-        width: $width * 0.382 * 0.618;
-        height: $width * 0.382 * 0.618;
-        top: $width * 0.382 * 0.618;
-    }
-}
 .fixed_menu #planete-vie {
-    position: fixed;
-    left: 1em;
-
-    @include planete-vie-fixed($width-portrait-phone/2);
-    @include planete-vie-fixed($width-landscape-phone/2);
-    @include planete-vie-fixed($width-kindle-nook-portrait/2);
-    @include planete-vie-fixed($width-ipad-portrait/2);
-    @include planete-vie-fixed($width-ipad-landscape/2);
-    @include planete-vie-fixed($width-widescreen/2);
-
+    width: 10vw;
+    height: (10vw*1286/1179);
 }
 .landing_menu #planete-vie {
     position: absolute;

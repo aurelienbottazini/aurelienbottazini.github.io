@@ -177,7 +177,7 @@ $('#contact').mouseenter(function(){
 
 var menu = $('#menu');
 var about = $('#about');
-var current = 0; //0 means default planets mode = in space
+var current = 0; //0 means default planets mode => landing menu
 $(window).scroll(function(){
 
     if ($(window).scrollTop() > about.offset().top) {
@@ -185,13 +185,14 @@ $(window).scroll(function(){
             menu.addClass('fixed_menu');
             menu.css({display: 'none'});
             menu.removeClass('landing_menu');
-
+            menu.velocity("stop");
             menu.velocity("transition.bounceLeftIn");
 
             current = 1;
         }
     }  else {
         if(current == 1) {
+            menu.velocity("stop");
             menu.velocity("transition.bounceLeftOut",
                           {complete:
                            function() {
