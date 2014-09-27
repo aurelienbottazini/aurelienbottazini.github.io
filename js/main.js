@@ -150,25 +150,58 @@ $('#contact-link').click(function() {
     return false;
 });
 
-var animate_contact_points = function () {
-}
-
 var contact_points = $('#contact-points path');
 var contact_points_length = contact_points.length;
-$('#contact').mouseenter(function(){
-    for(i=contact_points_length; i >= 0; i--) {
+var animate_contact_points = function (fill_color, delay) {
+        for(i=contact_points_length; i >= 0; i--) {
         contact_points.eq(i).
-            velocity({ fill: "#22252e"},
+            velocity({ fill: fill_color},
                      {duration: 50,
-                      delay: 500+ 50*(contact_points_length-i)
-                     });
+                      delay: delay + 50*(contact_points_length-i)});
     }
+};
+
+
+$('#contact').mouseenter(function(){
+    animate_contact_points("#d7fffb", 0);
 }).mouseleave(function(){
 
     for(i=contact_points_length; i >= 0; i--) {
         contact_points.eq(i).velocity('stop');
         contact_points.eq(i).
-            velocity({ fill: "#adf4e4"});
+            velocity({ fill: "#22252e"});
     }
 
+});
+
+
+var menu = $('#menu');
+var about = $('#about');
+var current = 0; //0 means default planets mode = in space
+$(window).scroll(function(){
+
+    if ($(window).scrollTop() > about.offset().top) {
+        if(current == 0) {
+            menu.addClass('fixed_menu');
+            menu.css({display: 'none'});
+            menu.removeClass('landing_menu');
+
+            menu.velocity("transition.bounceLeftIn");
+
+            current = 1;
+        }
+    }  else {
+        if(current == 1) {
+            menu.velocity("transition.bounceLeftOut",
+                          {complete:
+                           function() {
+                               menu.css({display: 'block',
+                                         opacity: 1});
+                               menu.removeClass('fixed_menu');
+                               menu.addClass('landing_menu');
+                           }});
+
+            current = 0;
+        }
+    }
 });

@@ -173,11 +173,95 @@ a:hover, a:active {
     };
 
 }
-#scene {
+#menu {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
+.fixed_menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+@mixin planete-rouge($width) {
+    @media only screen and (min-width: $width) {
+        //width="984.099px" height="1088.74px"
+        width: ($width*1088/984) * 0.382 * 0.618;
+        height: $width * 0.382 * 0.618;
+        top: $width  * 0.382;
+        left: $width * 0.618 - ($width * 0.382/2);
+    }
+}
+@mixin planete-rouge-fixed($width) {
+    @media only screen and (min-width: $width) {
+        //width="984.099px" height="1088.74px"
+        width: ($width*1088/984) * 0.382 * 0.618;
+        height: $width * 0.382 * 0.618;
+        top: $width  * 0.382;
+    }
+}
+.fixed_menu #planete-rouge {
+    position: fixed;
+    left: 1em;
+
+    @include planete-rouge-fixed($width-portrait-phone/2);
+    @include planete-rouge-fixed($width-landscape-phone/2);
+    @include planete-rouge-fixed($width-kindle-nook-portrait/2);
+    @include planete-rouge-fixed($width-ipad-portrait/2);
+    @include planete-rouge-fixed($width-ipad-landscape/2);
+    @include planete-rouge-fixed($width-widescreen/2);
+
+
+}
+.landing_menu #planete-rouge {
+    position: absolute;
+
+    @include planete-rouge($width-portrait-phone);
+    @include planete-rouge($width-landscape-phone);
+    @include planete-rouge($width-kindle-nook-portrait);
+    @include planete-rouge($width-ipad-portrait);
+    @include planete-rouge($width-ipad-landscape);
+    @include planete-rouge($width-widescreen);
+}
+
+@mixin planete-vie($width) {
+    @media only screen and (min-width: $width) {
+        width: $width * 0.382 * 0.618;
+        height: $width * 0.382 * 0.618;
+        top: $width * 0.382 * 0.618;
+        left: $width * 0.618 + ($width * 0.382 / 3);
+    }
+}
+@mixin planete-vie-fixed($width) {
+    @media only screen and (min-width: $width) {
+        width: $width * 0.382 * 0.618;
+        height: $width * 0.382 * 0.618;
+        top: $width * 0.382 * 0.618;
+    }
+}
+.fixed_menu #planete-vie {
+    position: fixed;
+    left: 1em;
+
+    @include planete-vie-fixed($width-portrait-phone/2);
+    @include planete-vie-fixed($width-landscape-phone/2);
+    @include planete-vie-fixed($width-kindle-nook-portrait/2);
+    @include planete-vie-fixed($width-ipad-portrait/2);
+    @include planete-vie-fixed($width-ipad-landscape/2);
+    @include planete-vie-fixed($width-widescreen/2);
+
+}
+.landing_menu #planete-vie {
+    position: absolute;
+    @include planete-vie($width-portrait-phone);
+    @include planete-vie($width-landscape-phone);
+    @include planete-vie($width-kindle-nook-portrait);
+    @include planete-vie($width-ipad-portrait);
+    @include planete-vie($width-ipad-landscape);
+    @include planete-vie($width-widescreen);
+}
+
+
 
 @mixin hello($width) {
     @media only screen and (min-width: $width) {
@@ -275,44 +359,6 @@ a:hover, a:active {
     @include planete-rayures($width-ipad-landscape);
     @include planete-rayures($width-widescreen);
 }
-@mixin planete-rouge($width) {
-    @media only screen and (min-width: $width) {
-        //width="984.099px" height="1088.74px"
-        width: ($width*1088/984) * 0.382 * 0.618;
-        height: $width * 0.382 * 0.618;
-        top: $width  * 0.382;
-        left: $width * 0.618 - ($width * 0.382/2);
-    }
-}
-#planete-rouge {
-    position: absolute;
-
-    @include planete-rouge($width-portrait-phone);
-    @include planete-rouge($width-landscape-phone);
-    @include planete-rouge($width-kindle-nook-portrait);
-    @include planete-rouge($width-ipad-portrait);
-    @include planete-rouge($width-ipad-landscape);
-    @include planete-rouge($width-widescreen);
-}
-
-@mixin planete-vie($width) {
-    @media only screen and (min-width: $width) {
-        width: $width * 0.382 * 0.618;
-        height: $width * 0.382 * 0.618;
-        top: $width * 0.382 * 0.618;
-        left: $width * 0.618 + ($width * 0.382 / 3);
-    }
-}
-#planete-vie {
-    position: absolute;
-    @include planete-vie($width-portrait-phone);
-    @include planete-vie($width-landscape-phone);
-    @include planete-vie($width-kindle-nook-portrait);
-    @include planete-vie($width-ipad-portrait);
-    @include planete-vie($width-ipad-landscape);
-    @include planete-vie($width-widescreen);
-}
-
 // about section
 
 #about, #contact {
@@ -328,6 +374,12 @@ a:hover, a:active {
         padding-top: 1em;
         padding-bottom: 0.382em;
 
+    }
+    h2 {
+        text-align: center;
+        font-weight: normal;
+        text-transform: uppercase;
+        font-size: 1.35em;
     }
 
         p {
@@ -356,6 +408,40 @@ a:hover, a:active {
         height: (138*($width * 0.618)/389);
     }
 }
+#skills {
+
+    li {
+        list-style-type: none;
+        float: left;
+        margin-left: 0.382em;
+        margin-bottom: 0.382em;
+    }
+}
+.skill {
+    background-color:#ba2323;
+    display: inline-block;
+    position:relative;
+    text-decoration:none;
+    color:#fff;
+    border: solid 1px #831212;
+    background-image: linear-gradient(bottom, rgb(171,27,27) 0%, rgb(212,51,51) 100%);
+    border-radius: 5px;
+}
+.skill::before {
+    background-color: #CCD0D5;
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 8px;
+    left: -8px;
+    top: -8px;
+    z-index: -1;
+    border-radius: 5px;
+    box-shadow: 0px 1px 1px #909193 inset, 0px 1px 0px #FFF;
+}
+
 #about {
     background-color: #fffacf;
 }
@@ -370,7 +456,19 @@ a:hover, a:active {
 //contact section
 #contact {
     background-color: #8790dd;
+    color: #22252e;
+
+    li {
+        list-style-type: none;
+        height: 3em;
+    }
 }
+.twitter-logo, .github-logo {
+    display: block;
+    float: left;
+    height: 3em;
+}
+
 @mixin contact-title($width) {
     @media only screen and (min-width: $width) {
         width: $width * 0.618;
