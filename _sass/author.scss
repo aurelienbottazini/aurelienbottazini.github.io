@@ -428,6 +428,13 @@ a:hover, a:active {
     @include about-me($width-ipad-portrait);
     @include about-me($width-ipad-landscape);
 }
+#selected_works {
+    img {
+        width: 90%;
+        margin: 0 auto;
+        display: block;
+    }
+}
 //contact section
 #contact {
     background-color: #8790dd;
