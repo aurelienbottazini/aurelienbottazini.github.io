@@ -26,11 +26,11 @@ tt,
 var,
 xmp {
     // http://meyerweb.com/eric/thoughts/2012/12/17/where-to-avoid-css-hyphenation
-    -webkit-hyphens: none; // Safari 5.1 thru 6, iOS 4.2 thru 6
-    -moz-hyphens: none; // Firefox 16 thru 20
-    -ms-hyphens: none; // IE10
-    -o-hyphens: none; // PRESTO...haha LOL
-    hyphens: none; // W3C standard
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    -o-hyphens: none;
+    hyphens: none;
 }
 strong {
     font-family: "Alegreya";
@@ -55,9 +55,6 @@ p {
 p + p {
     text-indent: 1em;
     margin-top: -1em;
-}
-small {
-    font-size: 65%;
 }
 $small-caps-color: gray !default;
 $small-caps-weight: 600 !default;
@@ -333,8 +330,13 @@ a:hover, a:active {
     @include planete-rayures($width-widescreen);
 }
 // about section
-
 #about, #contact {
+    p {
+        font-size: 1.35em;
+        line-height: 1.6;
+    }
+}
+#about {
     margin: 0 auto;
     padding-top: 0em;
     padding-bottom: 1em;
@@ -357,8 +359,7 @@ a:hover, a:active {
 
         p {
         width: 80%;
-        font-size: 1.35em;
-        line-height: 1.6;
+
         @include responsive(ipad-portrait) {
             width: 30em;
         };
@@ -417,6 +418,7 @@ a:hover, a:active {
 
 #about {
     background-color: #fffacf;
+    margin-bottom: -1.5em;
 }
 #about-me {
     margin: 0em auto;
@@ -430,6 +432,9 @@ a:hover, a:active {
 #contact {
     background-color: #8790dd;
     color: #22252e;
+    position: relative;
+    padding-bottom: 3.82%;
+    padding-top: 3.82%;
 
     li {
         list-style-type: none;
@@ -439,20 +444,97 @@ a:hover, a:active {
 .twitter-logo, .github-logo {
     display: block;
     float: left;
-    height: 3em;
+    height: 2em;
 }
 
 @mixin contact-title($width) {
     @media only screen and (min-width: $width) {
         width: $width * 0.618;
-        height: (138*($width * 0.618)/389);
+        height: (($width * 0.618)*240/502);
     }
 }
 #contact-title {
+    //502 width 240 height
     margin: 0em auto;
+    display: block;
     @include about-me($width-portrait-phone);
     @include about-me($width-landscape-phone);
     @include about-me($width-kindle-nook-portrait);
-    @include about-me($width-ipad-portrait);
-    @include about-me($width-ipad-landscape);
+
+    @media only screen and (min-width: $width-ipad-portrait) {
+        position: absolute;
+        left: 55%;
+        top: 11%;
+        width: 40%;
+        height: (40%*240/502);
+    }
+
+}
+#carte_postale {
+    // width="499.222px" height="363.424px"
+    @media only screen and (min-width: $width-portrait-phone) {
+        display:none;
+    }
+    @media only screen and (min-width: $width-ipad-portrait) {
+        display:block;
+        width: 90%;
+        height: (90%*363.424/499.222);
+        margin: 0 auto;
+    }
+}
+#contact-me-text {
+
+    width: 80%;
+    margin: 0 auto;
+
+    @media only screen and (min-width: $width-ipad-portrait) {
+            position: absolute;
+            top: 16%;
+            left: 15%;
+            width: 30%;
+    }
+}
+#contact-me-links {
+
+    font-size: 1.35em;
+
+    @media only screen and (min-width: $width-ipad-portrait) {
+        position: absolute;
+        left: 57%;
+        margin: 0px;
+        top: 35%;
+        display: block;
+        padding: 0px;
+        width: 36%;
+    }
+
+    li {
+        height: 2em;
+        margin-bottom: 1.3em;
+        padding-bottom: 0.5em;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+}
+
+#email-link {
+    background-image: url('../img/carte-postale-bar1.svg');
+
+}
+#twitter-link {
+    background-image: url('../img/carte-postale-bar2.svg');
+}
+#github-link {
+    background-image: url('../img/carte-postale-bar3.svg');
+}
+#email-link, #twitter-link, #github-link {
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    background-size: 100%;
+}
+
+footer {
+    background-color: #8790dd;
+    color: #222;
+    text-align: center;
 }

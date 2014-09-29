@@ -182,27 +182,27 @@ $(window).scroll(function(){
 
     if ($(window).scrollTop() > about.offset().top) {
         if(current == 0) {
-            menu.addClass('fixed_menu');
-            menu.css({display: 'none'});
-            menu.removeClass('landing_menu');
-            menu.velocity("stop");
-            menu.velocity("transition.bounceLeftIn");
+            // menu.addClass('fixed_menu');
+            // menu.css({display: 'none'});
+            // menu.removeClass('landing_menu');
+            // menu.velocity("stop");
+            // menu.velocity("transition.bounceLeftIn");
 
-            current = 1;
+            // current = 1;
         }
     }  else {
         if(current == 1) {
-            menu.velocity("stop");
-            menu.velocity("transition.bounceLeftOut",
-                          {complete:
-                           function() {
-                               menu.css({display: 'block',
-                                         opacity: 1});
-                               menu.removeClass('fixed_menu');
-                               menu.addClass('landing_menu');
-                           }});
+            // menu.velocity("stop");
+            // menu.velocity("transition.bounceLeftOut",
+            //               {complete:
+            //                function() {
+            //                    menu.css({display: 'block',
+            //                              opacity: 1});
+            //                    menu.removeClass('fixed_menu');
+            //                    menu.addClass('landing_menu');
+            //                }});
 
-            current = 0;
+            // current = 0;
         }
     }
 });
