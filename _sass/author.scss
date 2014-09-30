@@ -432,6 +432,8 @@ a:hover, a:active {
     @include about-me($width-ipad-portrait);
     @include about-me($width-ipad-landscape);
 }
+
+
 #selected_works {
     img {
         width: 60%;
@@ -439,11 +441,25 @@ a:hover, a:active {
         display: block;
     }
 
+    .iphone_screens {
+        @include responsive(ipad-portrait) {
+            display: block;
+            width: 767px;
+            margin: 0 auto;
+        }
+    }
+
     .iphone5 {
         display: block;
         max-width: (644px/2);
         margin: 1em auto;
+
+        @include responsive(ipad-portrait) {
+            float: left;
+            margin-left: 41px;
+        }
     }
+
 }
 //contact section
 #contact {
