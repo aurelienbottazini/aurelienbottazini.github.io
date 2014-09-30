@@ -444,9 +444,6 @@ a:hover, a:active {
         max-width: (644px/2);
         margin: 1em auto;
     }
-
-
-
 }
 //contact section
 #contact {
@@ -455,16 +452,11 @@ a:hover, a:active {
     position: relative;
     padding-bottom: 3.82%;
     padding-top: 3.82%;
-
-    li {
-        list-style-type: none;
-        height: 3em;
-    }
 }
 .twitter-logo, .github-logo {
     display: block;
     float: left;
-    height: 2em;
+    height: 1.3em;
 }
 
 @mixin contact-title($width) {
@@ -483,8 +475,8 @@ a:hover, a:active {
 
     @media only screen and (min-width: $width-ipad-portrait) {
         position: absolute;
-        left: 55%;
-        top: 11%;
+        left: 45%;
+        top: 14%;
         width: 40%;
         height: (40%*240/502);
     }
@@ -497,7 +489,7 @@ a:hover, a:active {
     }
     @media only screen and (min-width: $width-ipad-portrait) {
         display:block;
-        width: 90%;
+        width: 61.8%;
         height: (90%*363.424/499.222);
         margin: 0 auto;
     }
@@ -510,30 +502,38 @@ a:hover, a:active {
     @media only screen and (min-width: $width-ipad-portrait) {
             position: absolute;
             top: 16%;
-            left: 15%;
-            width: 30%;
+            left: 24%;
+            width: 25%;
     }
 }
 #contact-me-links {
 
     font-size: 1.35em;
+    width: 90%;
 
     @media only screen and (min-width: $width-ipad-portrait) {
         position: absolute;
-        left: 57%;
+        left: 50%;
         margin: 0px;
-        top: 35%;
+        padding: 0;
+        top: 42%;
         display: block;
-        padding: 0px;
-        width: 36%;
+        padding-bot: 0;
+        width: 29%;
     }
 
     li {
-        height: 2em;
-        margin-bottom: 1.3em;
-        padding-bottom: 0.5em;
+        padding-left: 0.7em;
+        height: 1.2em;
+        margin-bottom: 1em;
+        padding-bottom: 1em;
         overflow: hidden;
         white-space: nowrap;
+
+        @media only screen and (min-width: $width-ipad-portrait) {
+            padding-bottom: 0.5em;
+            padding-left: 0;
+        }
     }
 }
 
