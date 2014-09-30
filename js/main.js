@@ -39,6 +39,7 @@ var draw_text = function(paths_selector) {
     }
 
 };
+
 draw_text('#hello-i-am-aurelien path');
 draw_text('#planete-rouge-about-me-letters path');
 draw_text('#planete-vie-contact-letters path');
@@ -161,9 +162,13 @@ var animate_contact_points = function (fill_color, delay) {
     }
 };
 
+var carte_postale_points = $('#carte-postale-points path');
+var carte_postale_points_length = carte_postale_points.length;
+
 
 $('#contact').mouseenter(function(){
     animate_contact_points("#d7fffb", 0);
+    animate_carte_postale_points();
 }).mouseleave(function(){
 
     for(i=contact_points_length; i >= 0; i--) {
@@ -175,34 +180,34 @@ $('#contact').mouseenter(function(){
 });
 
 
-var menu = $('#menu');
-var about = $('#about');
-var current = 0; //0 means default planets mode => landing menu
-$(window).scroll(function(){
+// var menu = $('#menu');
+// var about = $('#about');
+// var current = 0; //0 means default planets mode => landing menu
+// $(window).scroll(function(){
 
-    if ($(window).scrollTop() > about.offset().top) {
-        if(current == 0) {
-            // menu.addClass('fixed_menu');
-            // menu.css({display: 'none'});
-            // menu.removeClass('landing_menu');
-            // menu.velocity("stop");
-            // menu.velocity("transition.bounceLeftIn");
+//     if ($(window).scrollTop() > about.offset().top) {
+//         if(current == 0) {
+//             // menu.addClass('fixed_menu');
+//             // menu.css({display: 'none'});
+//             // menu.removeClass('landing_menu');
+//             // menu.velocity("stop");
+//             // menu.velocity("transition.bounceLeftIn");
 
-            // current = 1;
-        }
-    }  else {
-        if(current == 1) {
-            // menu.velocity("stop");
-            // menu.velocity("transition.bounceLeftOut",
-            //               {complete:
-            //                function() {
-            //                    menu.css({display: 'block',
-            //                              opacity: 1});
-            //                    menu.removeClass('fixed_menu');
-            //                    menu.addClass('landing_menu');
-            //                }});
+//             // current = 1;
+//         }
+//     }  else {
+//         if(current == 1) {
+//             // menu.velocity("stop");
+//             // menu.velocity("transition.bounceLeftOut",
+//             //               {complete:
+//             //                function() {
+//             //                    menu.css({display: 'block',
+//             //                              opacity: 1});
+//             //                    menu.removeClass('fixed_menu');
+//             //                    menu.addClass('landing_menu');
+//             //                }});
 
-            // current = 0;
-        }
-    }
-});
+//             // current = 0;
+//         }
+//     }
+// });

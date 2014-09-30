@@ -104,6 +104,11 @@ h1 {
     #planete-rouge, #planete-vie, #planete-anneaux, #aurelien-sur-la-lune, #planete-rayures {
         opacity: 0;
     }
+
+    #hello-i-am-aurelien path {
+        fill-opacity: 0;
+    }
+
 }
 .highlight {
     background-color: #f3cb42;
@@ -332,7 +337,7 @@ a:hover, a:active {
 // about section
 #about, #contact {
     p {
-        font-size: 1.35em;
+        font-size: 1.2em;
         line-height: 1.6;
     }
 }
@@ -526,7 +531,7 @@ a:hover, a:active {
 }
 #contact-me-links {
 
-    font-size: 1.35em;
+    font-size: 1.2em;
     width: 90%;
 
     @media only screen and (min-width: $width-ipad-portrait) {
