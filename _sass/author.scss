@@ -366,6 +366,8 @@ a:hover, a:active {
         margin: 1em auto;
         font-style: italic;
         font-weight: normal;
+        text-indent: 1.382em;
+        font-size: 1.2em;
     }
 
     h3, p {
@@ -546,6 +548,7 @@ a:hover, a:active {
     }
 
     li {
+        list-style-type: none;
         padding-left: 0.7em;
         height: 1.2em;
         margin-bottom: 1em;
