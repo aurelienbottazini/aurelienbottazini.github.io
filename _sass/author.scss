@@ -432,6 +432,7 @@ a:hover, a:active {
 #about {
     background-color: #fffacf;
     margin-bottom: -1.5em;
+    padding-bottom: 3em;
 }
 #about-me {
     margin: 0em auto;
@@ -458,7 +459,7 @@ a:hover, a:active {
         @include responsive(ipad-portrait) {
             display: block;
             width: 767px;
-            margin: 0 auto;
+            margin:  0 auto;
         }
     }
 
