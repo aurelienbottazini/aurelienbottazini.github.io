@@ -450,6 +450,10 @@ a:hover, a:active {
         display: block;
     }
 
+    .screenshot {
+        box-shadow: 0px 0.382em 0.382em rgba(0, 0, 0, 0.2);
+    }
+
     .iphone_screens {
         @include responsive(ipad-portrait) {
             display: block;
