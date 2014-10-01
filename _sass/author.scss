@@ -517,14 +517,7 @@ a:hover, a:active {
     @include about-me($width-portrait-phone);
     @include about-me($width-landscape-phone);
     @include about-me($width-kindle-nook-portrait);
-
-    @media only screen and (min-width: $width-ipad-portrait) {
-        position: absolute;
-        left: 45%;
-        top: 14%;
-        width: 40%;
-        height: (40%*240/502);
-    }
+    @include about-me($width-ipad-portrait);
 
 }
 #carte_postale {
@@ -546,7 +539,7 @@ a:hover, a:active {
 
     @media only screen and (min-width: $width-ipad-portrait) {
             position: absolute;
-            top: 16%;
+            top: 37%;
             left: 24%;
             width: 25%;
     }
@@ -561,7 +554,7 @@ a:hover, a:active {
         left: 50%;
         margin: 0px;
         padding: 0;
-        top: 42%;
+        top: 55%;
         display: block;
         padding-bot: 0;
         width: 29%;
