@@ -469,6 +469,21 @@ a:hover, a:active {
         }
     }
 
+    .skill_list {
+        li {
+            display: inline-block;
+            list-style-type: none;
+            background-color: #8790dd;
+            padding: 0.382em;
+            margin-left: 0.382em;
+            color: #22252e;
+            border: 1px solid rgba(0,0,0,0.15);
+            border-radius: 4px;
+
+        }
+
+    }
+
 }
 //contact section
 #contact {
