@@ -12,14 +12,6 @@ var planete_rouge_about_me_letters =
 var planete_rouge_about_me_letters_number =
         planete_rouge_about_me_letters.length;
 
-elements = $('img');
-for (i=0;i<elements.length;i++) {
-    src = elements[i].getAttribute('data-svg');
-    if (src) {
-        elements[i].src = src + extension;
-        elements[i].removeAttribute('data-svg');
-    }
-}
 
 var draw_text = function(paths_selector) {
     var paths = $(paths_selector);
@@ -41,9 +33,6 @@ var draw_text = function(paths_selector) {
 };
 
 draw_text('#hello-i-am-aurelien path');
-draw_text('#planete-rouge-about-me-letters path');
-draw_text('#planete-vie-contact-letters path');
-
 
 $("#planete-anneaux").velocity("transition.slideDownBigIn",
                                { duration: 1500, delay: 500 });
@@ -150,64 +139,3 @@ $('#contact-link').click(function() {
     $('#contact').velocity("scroll", 1000);
     return false;
 });
-
-var contact_points = $('#contact-points path');
-var contact_points_length = contact_points.length;
-var animate_contact_points = function (fill_color, delay) {
-        for(i=contact_points_length; i >= 0; i--) {
-        contact_points.eq(i).
-            velocity({ fill: fill_color},
-                     {duration: 50,
-                      delay: delay + 50*(contact_points_length-i)});
-    }
-};
-
-var carte_postale_points = $('#carte-postale-points path');
-var carte_postale_points_length = carte_postale_points.length;
-
-
-$('#contact').mouseenter(function(){
-    animate_contact_points("#d7fffb", 0);
-    animate_carte_postale_points();
-}).mouseleave(function(){
-
-    for(i=contact_points_length; i >= 0; i--) {
-        contact_points.eq(i).velocity('stop');
-        contact_points.eq(i).
-            velocity({ fill: "#22252e"});
-    }
-
-});
-
-
-// var menu = $('#menu');
-// var about = $('#about');
-// var current = 0; //0 means default planets mode => landing menu
-// $(window).scroll(function(){
-
-//     if ($(window).scrollTop() > about.offset().top) {
-//         if(current == 0) {
-//             // menu.addClass('fixed_menu');
-//             // menu.css({display: 'none'});
-//             // menu.removeClass('landing_menu');
-//             // menu.velocity("stop");
-//             // menu.velocity("transition.bounceLeftIn");
-
-//             // current = 1;
-//         }
-//     }  else {
-//         if(current == 1) {
-//             // menu.velocity("stop");
-//             // menu.velocity("transition.bounceLeftOut",
-//             //               {complete:
-//             //                function() {
-//             //                    menu.css({display: 'block',
-//             //                              opacity: 1});
-//             //                    menu.removeClass('fixed_menu');
-//             //                    menu.addClass('landing_menu');
-//             //                }});
-
-//             // current = 0;
-//         }
-//     }
-// });

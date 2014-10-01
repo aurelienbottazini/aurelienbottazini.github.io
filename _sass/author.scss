@@ -560,7 +560,7 @@ a:hover, a:active {
         left: 50%;
         margin: 0px;
         padding: 0;
-        top: 55%;
+        top: 58%;
         display: block;
         padding-bot: 0;
         width: 29%;
@@ -596,6 +596,17 @@ a:hover, a:active {
     background-repeat: no-repeat;
     background-position: bottom left;
     background-size: 100%;
+}
+
+#contact-portrait {
+    width: 100%;
+
+    @media only screen and (min-width: $width-ipad-portrait) {
+        width: 20%;
+        position: absolute;
+        top: 37.6%;
+        left: 58%;
+    }
 }
 
 footer {
