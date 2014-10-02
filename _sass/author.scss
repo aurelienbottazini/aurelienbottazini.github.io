@@ -490,7 +490,7 @@ a:hover, a:active {
             color: #22252e;
             border: 1px solid rgba(0,0,0,0.15);
             border-radius: 4px;
-
+            margin-bottom: 0.5em;
         }
 
     }
@@ -524,6 +524,8 @@ a:hover, a:active {
     @include about-me($width-landscape-phone);
     @include about-me($width-kindle-nook-portrait);
     @include about-me($width-ipad-portrait);
+    @include about-me($width-ipad-landscape);
+    @include about-me($width-widescreen);
 
 }
 #carte_postale {
