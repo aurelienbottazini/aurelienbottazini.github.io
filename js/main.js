@@ -18,17 +18,19 @@ var draw_text = function(paths_selector) {
     var paths_length = paths.length;
     var svg_path;
     var svg_path_length;
-    for(i = 0; i< paths_length; i++) {
 
-        svg_path = paths.eq(i);
-        svg_path_length = svg_path[0].getTotalLength();
+     for(i = 0; i< paths_length; i++) {
 
-        svg_path.css({"fill-opacity": 0,
-                      "stroke-dasharray": svg_path_length,
-                      "stroke-dashoffset": svg_path_length})
-            .velocity({strokeDashoffset: 0}, {duration: 3000, delay: 600})
-            .velocity({fillOpacity: [1, 0], strokeOpacity:[0,1]});
-    }
+         svg_path = paths.eq(i);
+         svg_path_length = svg_path[0].getTotalLength();
+
+         svg_path.css({"stroke-dasharray": svg_path_length,
+                       "stroke-dashoffset": svg_path_length,
+                       "stroke-opacity": "1"})
+
+             .velocity({strokeDashoffset: 0}, {duration: 3000, delay: 600})
+             .velocity({fillOpacity: [1, 0], strokeOpacity:[0,1]});
+     }
 
 };
 
