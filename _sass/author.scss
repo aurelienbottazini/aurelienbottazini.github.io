@@ -487,12 +487,6 @@ a:hover, a:active {
     padding-bottom: 3.82%;
     padding-top: 3.82%;
 }
-.tweet-logo, .github-logo, .email-logo {
-    display: block;
-    float: left;
-    height: 1.3em;
-    padding-right: 0.3em;
-}
 
 @mixin contact-title($width) {
     @media only screen and (min-width: $width) {
@@ -536,53 +530,49 @@ a:hover, a:active {
             width: 25%;
     }
 }
+
+
 #contact-me-links {
 
     font-size: 1.2em;
-    width: 90%;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 0;
+
+    li img {
+        display: block;
+        float: left;
+        height: 3em;
+        padding-right: 0.3em;
+    }
 
     @media only screen and (min-width: $width-ipad-portrait) {
         position: absolute;
         left: 50%;
         margin: 0px;
-        padding: 0;
         top: 58%;
         display: block;
-        padding-bot: 0;
         width: 29%;
     }
 
     li {
         list-style-type: none;
-        padding-left: 0.7em;
-        height: 1.2em;
-        margin-bottom: 1em;
+        margin-right: 0.7em;
+        padding-top: 1em;
         padding-bottom: 1em;
+        padding-left: 0.5em;
         overflow: hidden;
         white-space: nowrap;
+        float: left;
 
         @media only screen and (min-width: $width-ipad-portrait) {
+            padding-top: 0;
             padding-bottom: 0.5em;
             padding-left: 0;
         }
     }
 }
 
-#email-link {
-    background-image: url('../img/carte-postale-bar1.svg');
-
-}
-#tweet-link {
-    background-image: url('../img/carte-postale-bar2.svg');
-}
-#github-link {
-    background-image: url('../img/carte-postale-bar3.svg');
-}
-#email-link, #tweet-link, #github-link {
-    background-repeat: no-repeat;
-    background-position: bottom left;
-    background-size: 100%;
-}
 #contact-portrait {
     width: 100%;
 
@@ -606,8 +596,14 @@ footer {
 }
 #stamp {
     //width="159.333px" height="93px"
-    position: absolute;
-    top: 40%;
-    left: 58%;
-    width: 20%;
+    width: 61.8%;
+    display: block;
+    margin: 0 auto;
+
+    @media only screen and (min-width: $width-ipad-portrait) {
+        position: absolute;
+        top: 40%;
+        left: 58%;
+        width: 20%;
+    }
 }
