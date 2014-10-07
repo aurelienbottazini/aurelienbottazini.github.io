@@ -101,7 +101,7 @@ h1 {
 }
 
 .js {
-    #planete-rouge, #planete-vie, #planete-anneaux, #aurelien-sur-la-lune, #planete-rayures {
+    #planete-rouge, #planete-vie, #planete-anneaux, #aurelien-sur-la-lune {
         opacity: 0;
     }
 
@@ -316,24 +316,6 @@ a:hover, a:active {
     @include planete-lune($width-ipad-portrait);
     @include planete-lune($width-ipad-landscape);
     @include planete-lune($width-widescreen);
-}
-
-@mixin planete-rayures($width) {
-    @media only screen and (min-width: $width) {
-        height: $width * 0.618 * 0.382 * 0.382 * 0.382;
-        width: $width * 0.618 * 0.382 * 0.382 * 0.382;
-        top: $width * 0.618;
-        left: $width * 0.382;
-    }
-}
-#planete-rayures {
-    position: absolute;
-    @include planete-rayures($width-portrait-phone);
-    @include planete-rayures($width-landscape-phone);
-    @include planete-rayures($width-kindle-nook-portrait);
-    @include planete-rayures($width-ipad-portrait);
-    @include planete-rayures($width-ipad-landscape);
-    @include planete-rayures($width-widescreen);
 }
 // about section
 #about, #contact {
