@@ -60,7 +60,7 @@ planete_vie.mouseenter(function() {
     for(i=0 ;i < planete_vie_contact_letters_number; i++) {
         planete_vie_contact_letters
             .eq(i)
-            .velocity({ fill: "#11ea96"},
+            .velocity({ fill: "#11ea96", stroke: "#11ea96"},
                       {duration: 500});
     }
 
@@ -77,7 +77,7 @@ planete_vie.mouseenter(function() {
     for(i=0 ;i < planete_vie_contact_letters_number; i++) {
         planete_vie_contact_letters
             .eq(i)
-            .velocity({ fill: "#1b8e65"},
+            .velocity({ fill: "#1b8e65", stroke: "#1b8e65" },
                       {duration: 500});
     }
 
@@ -107,7 +107,7 @@ planete_rouge.mouseenter(function() {
 
     for(i=0; i <planete_rouge_about_me_letters_number; i++) {
         planete_rouge_about_me_letters.eq(i).
-            velocity({ fill: "#ff694d"},
+            velocity({ fill: "#ff694d", stroke: "#ff694d"},
                      {duration: 500});
     }
 }).mouseleave(function() {
@@ -128,7 +128,7 @@ planete_rouge.mouseenter(function() {
     }
     for(i=0; i <planete_rouge_about_me_letters_number; i++) {
         planete_rouge_about_me_letters.eq(i).
-            velocity({ fill: "#c22327"},
+            velocity({ fill: "#c22327", stroke: "#c22327"},
                      {duration: 500});
     }
 });
