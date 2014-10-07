@@ -487,10 +487,11 @@ a:hover, a:active {
     padding-bottom: 3.82%;
     padding-top: 3.82%;
 }
-.tweet-logo, .github-logo {
+.tweet-logo, .github-logo, .email-logo {
     display: block;
     float: left;
     height: 1.3em;
+    padding-right: 0.3em;
 }
 
 @mixin contact-title($width) {
