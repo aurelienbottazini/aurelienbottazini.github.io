@@ -498,12 +498,12 @@ a:hover, a:active {
     //502 width 240 height
     margin: 0em auto;
     display: block;
-    @include about-me($width-portrait-phone);
-    @include about-me($width-landscape-phone);
-    @include about-me($width-kindle-nook-portrait);
-    @include about-me($width-ipad-portrait);
-    @include about-me($width-ipad-landscape);
-    @include about-me($width-widescreen);
+    @include contact-title($width-portrait-phone);
+    @include contact-title($width-landscape-phone);
+    @include contact-title($width-kindle-nook-portrait);
+    @include contact-title($width-ipad-portrait);
+    @include contact-title($width-ipad-landscape);
+    @include contact-title($width-widescreen);
 
 }
 #carte_postale {
