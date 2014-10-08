@@ -506,16 +506,38 @@ a:hover, a:active {
     @include contact-title($width-widescreen);
 
 }
-#carte_postale {
-    // width="499.222px" height="363.424px"
+
+$postcard-width: $width-ipad-portrait * (.618 + 0.382/2);
+$postcard-height: ($postcard-width * 363.424 / 499.222);
+#contact-info {
+
     @media only screen and (min-width: $width-portrait-phone) {
-        display:none;
+
     }
+
     @media only screen and (min-width: $width-ipad-portrait) {
+        position: relative;
+        background-image: url('../img/carte-postale.svg');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
         display:block;
-        width: 61.8%;
-        height: (90%*363.424/499.222);
+        // carte-postale size: width="499.222px" height="363.424px"
+        width: $postcard-width;
+        height: $postcard-height;
         margin: 0 auto;
+    }
+}
+#stamp {
+    //width="159.333px" height="93px"
+    width: 61.8%;
+    display: block;
+    margin: 0 auto;
+
+    @media only screen and (min-width: $width-ipad-portrait) {
+        position: absolute;
+        top: 1em;
+        left: $postcard-width * 0.6;
+        width: $postcard-width * 0.3;
     }
 }
 #contact-me-text {
@@ -525,9 +547,9 @@ a:hover, a:active {
 
     @media only screen and (min-width: $width-ipad-portrait) {
             position: absolute;
-            top: 37%;
-            left: 24%;
-            width: 25%;
+            top: $postcard-height * 0.1;
+            left: $postcard-width * 0.1;
+            width: $postcard-width * 0.4;
     }
 }
 
@@ -548,11 +570,13 @@ a:hover, a:active {
 
     @media only screen and (min-width: $width-ipad-portrait) {
         position: absolute;
-        left: 50%;
         margin: 0px;
-        top: 58%;
-        display: block;
+
+        left: $postcard-width * 0.6;
         width: 29%;
+        top: $postcard-height * 0.3;
+        display: block;
+
     }
 
     li {
@@ -593,17 +617,4 @@ footer {
     width: 38.2%;
     margin: 0 auto;
     display: block;
-}
-#stamp {
-    //width="159.333px" height="93px"
-    width: 61.8%;
-    display: block;
-    margin: 0 auto;
-
-    @media only screen and (min-width: $width-ipad-portrait) {
-        position: absolute;
-        top: 40%;
-        left: 58%;
-        width: 20%;
-    }
 }
