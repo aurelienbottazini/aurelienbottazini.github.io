@@ -507,8 +507,18 @@ a:hover, a:active {
 
 }
 
-$postcard-width: $width-ipad-portrait * (.618 + 0.382/2);
-$postcard-height: ($postcard-width * 363.424 / 499.222);
+
+@mixin contact-info($width) {
+    @media only screen and (min-width: $width) {
+        // carte-postale size: width="499.222px" height="363.424px"
+        $postcard-width: $width * (.618 + 0.382/3);
+        $postcard-height: ($postcard-width * 363.424 / 499.222);
+        width: $postcard-width;
+        height: $postcard-height;
+    }
+}
+
+
 #contact-info {
 
     @media only screen and (min-width: $width-portrait-phone) {
@@ -521,11 +531,13 @@ $postcard-height: ($postcard-width * 363.424 / 499.222);
         background-repeat: no-repeat;
         background-size: 100% 100%;
         display:block;
-        // carte-postale size: width="499.222px" height="363.424px"
-        width: $postcard-width;
-        height: $postcard-height;
         margin: 0 auto;
     }
+
+    @include contact-info($width-ipad-portrait);
+    @include contact-info($width-ipad-landscape);
+    @include contact-info($width-widescreen);
+
 }
 #stamp {
     //width="159.333px" height="93px"
@@ -535,9 +547,9 @@ $postcard-height: ($postcard-width * 363.424 / 499.222);
 
     @media only screen and (min-width: $width-ipad-portrait) {
         position: absolute;
-        top: 1em;
-        left: $postcard-width * 0.6;
-        width: $postcard-width * 0.3;
+        top: 5%;
+        right: 5%;
+        width: 30%;
     }
 }
 #contact-me-text {
@@ -547,9 +559,9 @@ $postcard-height: ($postcard-width * 363.424 / 499.222);
 
     @media only screen and (min-width: $width-ipad-portrait) {
             position: absolute;
-            top: $postcard-height * 0.1;
-            left: $postcard-width * 0.1;
-            width: $postcard-width * 0.4;
+            top:  10%;
+            left: 10%;
+            width: 40%;
     }
 }
 
@@ -596,15 +608,11 @@ $postcard-height: ($postcard-width * 363.424 / 499.222);
         position: absolute;
         margin: 0px;
 
-        left: $postcard-width * 0.6;
-        width: $postcard-width * 0.35;
-        top: $postcard-height * 0.3;
+        left: 60%;
+        width: 35%;
+        top: 35%;
         display: block;
 
-        .tweet-logo, .stack-overflow {
-            height: 3em;
-            padding: 0.5em;
-        }
     }
 
 
