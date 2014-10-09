@@ -568,24 +568,26 @@ $postcard-height: ($postcard-width * 363.424 / 499.222);
         padding-right: 0.3em;
     }
 
-    .rounded-link {
-        background-color: #eaeaea;
-        background-image: -webkit-gradient(linear, left top, left bottom, from(#f6f6f6), to(#eaeaea));
-	background-image: -webkit-linear-gradient(top, #f6f6f6, #eaeaea);
-	background-image: -moz-linear-gradient(top, #f6f6f6, #eaeaea);
-	background-image: -ms-linear-gradient(top, #f6f6f6, #eaeaea);
-	background-image: -o-linear-gradient(top, #f6f6f6, #eaeaea);
-	background-image: linear-gradient(top, #f6f6f6, #eaeaea);
-        -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .25), 0 2px 3px rgba(0, 0, 0, .1);
-	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .25), 0 2px 3px rgba(0, 0, 0, .1);
-	box-shadow: 0 1px 1px rgba(0, 0, 0, .25), 0 2px 3px rgba(0, 0, 0, .1);
+    @media only screen and (max-width: $width-ipad-portrait) {
+        .rounded-link {
+            background-color: #eaeaea;
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#f6f6f6), to(#eaeaea));
+	    background-image: -webkit-linear-gradient(top, #f6f6f6, #eaeaea);
+	    background-image: -moz-linear-gradient(top, #f6f6f6, #eaeaea);
+	    background-image: -ms-linear-gradient(top, #f6f6f6, #eaeaea);
+	    background-image: -o-linear-gradient(top, #f6f6f6, #eaeaea);
+	    background-image: linear-gradient(top, #f6f6f6, #eaeaea);
+            -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .25), 0 2px 3px rgba(0, 0, 0, .1);
+	    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .25), 0 2px 3px rgba(0, 0, 0, .1);
+	    box-shadow: 0 1px 1px rgba(0, 0, 0, .25), 0 2px 3px rgba(0, 0, 0, .1);
 
-        display: inline-block;
-        border-radius: 1.5em;
+            display: inline-block;
+            border-radius: 1.5em;
 
-        .tweet-logo, .stack-overflow {
-            height: 2em;
-            padding: 0.5em;
+            .tweet-logo, .stack-overflow {
+                height: 2em;
+                padding: 0.5em;
+            }
         }
     }
 
