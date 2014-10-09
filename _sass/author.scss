@@ -435,7 +435,12 @@ a:hover, a:active {
 
 #selected_works {
     img {
-        width: 60%;
+        width: 90%;
+
+        @include responsive(ipad-portrait) {
+            width: 40em;
+        };
+
         margin: 0 auto;
         display: block;
     }
@@ -640,7 +645,11 @@ footer {
 }
 #card-portrait {
     //width="1332" height="2082"
-    width: 38.2%;
+    width: 90%;
+
+    @include responsive(ipad-portrait) {
+        width: 30em;
+    };
     margin: 0 auto;
     display: block;
 }
