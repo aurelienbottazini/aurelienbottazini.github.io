@@ -378,12 +378,7 @@ a:hover, a:active {
     }
 
 }
-@mixin about-me($width) {
-    @media only screen and (min-width: $width) {
-        width: $width * 0.618;
-        height: (138*($width * 0.618)/389);
-    }
-}
+
 #skills {
 
     li {
@@ -422,6 +417,13 @@ a:hover, a:active {
     background-color: #fffacf;
     margin-bottom: -1.5em;
     padding-bottom: 3em;
+}
+@mixin about-me($width) {
+    @media only screen and (min-width: $width) {
+        // width="391.333" height="142"
+        width: $width * 0.618;
+        height: (142*($width * 0.618)/391.333);
+    }
 }
 #about-me {
     margin: 0em auto;
