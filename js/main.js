@@ -141,3 +141,12 @@ $('#contact-link').click(function() {
     $('#contact').velocity("scroll", 1000);
     return false;
 });
+
+var contact_links_li = $('#contact-me-links li');
+var contact_links_li_length = contact_links_li.length;
+for(i = 0; i < contact_links_li_length; i++) {
+    contact_links_li.eq(i).mouseenter(function () {
+        console.log('here');
+        $(this).velocity("callout.pulse", {duration: 500});
+    });
+}
