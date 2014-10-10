@@ -51,7 +51,7 @@ var planete_vie_contact_letters =
         $('#planete-vie-contact-letters path');
 var planete_vie_contact_letters_number =
         planete_vie_contact_letters.length;
-var planete_vie_continents = $('#planete-vie-continents path');
+var planete_vie_continents = $('#planete-vie-continents');
 var planete_vie_continents_number = planete_vie_continents.length;
 planete_vie.mouseenter(function() {
     planete_vie.velocity({scaleX: 1.3, scaleY: 1.3}, {duration:
@@ -146,7 +146,6 @@ var contact_links_li = $('#contact-me-links li');
 var contact_links_li_length = contact_links_li.length;
 for(i = 0; i < contact_links_li_length; i++) {
     contact_links_li.eq(i).mouseenter(function () {
-        console.log('here');
         $(this).velocity("callout.pulse", {duration: 500});
     });
 }
