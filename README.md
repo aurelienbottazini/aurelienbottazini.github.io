@@ -1,6 +1,6 @@
 aurelienbottazini.github.io
 ===========================
-Hello Visitor :). I ´m happy to see you checking my code as
+Hello Visitor :). I´m happy to see you checking my code as
 curiosity is a great quality to have as a programmer.
 The source code of this website is available here:
 https://github.com/aurelienbottazini/aurelienbottazini.github.io
