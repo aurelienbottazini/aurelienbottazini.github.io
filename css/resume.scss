@@ -49,7 +49,7 @@ p + p {
     text-indent: 1em;
     margin-top: -1em;
 }
-$small-caps-color: gray !default;
+$small-caps-color: #484a51 !default;
 $small-caps-weight: 600 !default;
 @mixin smallcaps($color, $font-weight) {
 	// depends on the font family.
@@ -60,7 +60,7 @@ $small-caps-weight: 600 !default;
 	text-transform: lowercase;
 	color: $color;
 }
-abbr {
+acronym, abbr {
 	@include smallcaps($small-caps-color, $small-caps-weight);
 	&:hover {
 		cursor: help;
@@ -103,21 +103,48 @@ body {
     font-size: 1.1em;
 }
 section {
-    width: 40em;
+    width: 90%;
+    @media only screen and (min-width: 54em) {
+        width: 40em;
+    }
     margin: 0 auto;
 }
 h1, h2, h3, h4, h5, h6 {
    font-family: "Alegreya Sans";
    font-weight: 700;
 }
+ul {
+    padding-left: 0;
+}
+a {
+    color: #0b2292;
+
+}
+a:visited {
+    color: #0b2292;
+}
+a:hover {
+    color: #a40612;
+}
+.ampersand {
+    font-family: "Alegreya";
+    font-style: italic;
+}
 //4 - 5 - 6.5 - 8 - 10.5 - 13 - 17 - 21 - 27.5 - 34 - 44.5 -
 //55 - 72 - 89
 #frame {
-    width: 50em;
-    margin: 0 auto;
-    padding: 2em;
-    margin-top: 5.5em;
-    margin-bottom: 5.5em;
+
+    width: 100%;
+    margin: 2em auto;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    @media only screen and (min-width: 54em) {
+        width: 50em;
+        padding: 2em;
+        margin-top: 5.5em;
+        margin-bottom: 5.5em;
+    }
+
     background-color: #f2f3f3;
     color: #22252e;
 }
@@ -130,6 +157,22 @@ h1, h2, h3, h4, h5, h6 {
     #accroche {
         font-size: 1.7em;
     }
+    #portrait_aurelien {
+        width: 12.35em;
+        margin: 1em auto;
+        display: block;
+        @media only screen and (min-width: 54em) {
+            float: right;
+            margin: 0;
+            margin-left: 1em;
+        }
+    }
+}
+.email {
+    font-size: 1em;
+    margin-top: -1.5em;
+    margin-bottom: 3em;
+    font-style: italic;
 }
 #skills, #education, #experience, #portfolio {
     h1 {
