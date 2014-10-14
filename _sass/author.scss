@@ -3,7 +3,7 @@
 
 html, body {
     width: 100%;
-    font-family: "Alegreya";
+    font-family: "Alegreya", "Hoefler Text", Georgia, Tahoma, sans-serif;
     font-weight: 400;
     line-height: 1.382; //no unit. Line height is not fixed and adapts depending on descendant font-size
     -webkit-hyphens: auto; // Safari 5.1 thru 6, iOS 4.2 thru 6
@@ -43,6 +43,7 @@ em {
     font-style: italic;
 }
 h1, h2, h3, h4, h5, h6 {
+    font-family: "Alegreya Sans", 'Helvetica Neue', Helvetica, Arial, sans-serif;
     text-rendering: optimizeLegibility; //enables kerning and ligatures
     color: #222;
 }
@@ -96,7 +97,7 @@ code {
     font-family: monospace;
 }
 h1 {
-    font-family: "Alegreya Sans";
+    font-family: "Alegreya Sans", 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 700;
 }
 
