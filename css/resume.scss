@@ -256,5 +256,32 @@ p.first:first-letter {
         margin-top: -1em;
     }
 }
+#skill_list {
+    list-style-type: none;
+    margin: 1em auto;
+    width: 15em;
 
+    @media only screen and (min-width: 54em) {
+        width: 30em;
+    }
+
+    li {
+        float: left;
+        margin-right: 0.5em;
+        margin-left: 0.5em;
+        margin-bottom: 0.5em;
+        background-color: #22252e;
+        border-radius: 3em;
+        height: 2em;
+        width: 2em;
+        padding: 1em;
+        color: #f2f3f3;
+        text-align: center;
+        line-height: 2em;
+
+        acronym {
+            color: #f2f3f3;
+        }
+    }
+}
 @import "bottom-boilerplate";
