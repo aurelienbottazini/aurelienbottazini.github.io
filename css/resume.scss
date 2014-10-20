@@ -285,3 +285,10 @@ p.first:first-letter {
     }
 }
 @import "bottom-boilerplate";
+
+
+@media print {
+    .print_no_after_content[href]:after {
+        content: "";
+    }
+}
