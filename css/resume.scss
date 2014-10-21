@@ -286,9 +286,21 @@ p.first:first-letter {
 }
 @import "bottom-boilerplate";
 
+.only_print {
+    display: none
+}
 
 @media print {
     .print_no_after_content[href]:after {
         content: "";
+    }
+    .email {
+        margin-bottom: 1em;
+    }
+    .only_print {
+        display: block;
+        margin-bottom: 3em;
+        font-size: 1em;
+        font-style: italic
     }
 }
