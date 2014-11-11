@@ -11,6 +11,9 @@ module.exports = function(grunt) {
                 },
                 bowerOptions: {
                     relative: false
+                },
+                mainFiles: {
+                    'velocity': ['velocity.js', 'velocity.ui.js']
                 }
             }
         },
@@ -32,7 +35,9 @@ module.exports = function(grunt) {
                 },
                 files: {                         // Dictionary of files
                     'css/main.css': '_sass/main.scss',       // 'destination': 'source'
-                    'css/resume.css': '_sass/resume.scss'
+                    'css/resume.css': '_sass/resume.scss',
+                    'easyLearning/css/main.css': '_sass/easylearning.scss',
+                    'cubex/css/main.css': '_sass/cubex.scss'
                 }
             }
         },
@@ -40,7 +45,9 @@ module.exports = function(grunt) {
             combine: {
                 files: {
                     'css/resume.css': ['_css/_bower.css', 'css/resume.css'],
-                    'css/main.css': ['_css/_bower.css', 'css/main.css']
+                    'css/main.css': ['_css/_bower.css', 'css/main.css'],
+                    'easyLearning/css/main.css': ['_css/_bower.css', 'easyLearning/css/main.css'],
+                    'cubex/css/main.css': ['_css/_bower.css', 'cubex/css/main.css']
                 }
             },
         }
