@@ -1,0 +1,1574 @@
+* Bootstrapping your ruby literacy
+** Variables
+
+   | Type     | Ruby Convention | Nonconventional             |
+   |----------+-----------------+-----------------------------|
+   | Local    | ~first_name~    | ~firstName, +firstName~     |
+   | Instance | ~@first_name~   | ~@FirstName, @firstname~    |
+   | Class    | ~@@first_name~  | ~@@First_name, @@firstName~ |
+   | Global   | ~$FIRST_NAME~   | ~$first_name, $firstName~   |
+
+   instance variable are initialized to nil
+   #+BEGIN_SRC ruby
+     @var
+   #+END_SRC
+
+   #+RESULTS:
+   : nil
+
+   local variable are not initialized, not even to nil
+   #+BEGIN_SRC ruby
+     var
+   #+END_SRC
+
+   #+RESULTS:
+   : undefined local variable or method `var' for main:Object (NameError)
+
+** Installation directories
+
+   ~$ irb -simple-prompt -rrbconfig~
+
+   will launch irb and load rbconfig interface which contains a lot
+   of compiled information about your ruby installation
+
+   Then you can use ~RbConfig::CONFIG~ to get information about your
+   ruby installation.
+
+   Notable directories are
+
+| Term        | Directory contents                                                      |
+|-------------+-------------------------------------------------------------------------|
+| rubylibdir  | Ruby Standard library                                                   |
+| bindir      | Ruby command line tools                                                 |
+| archdir     | Architecture-specific extensions and librairies (compiled binary files) |
+| sitedir     | Your own or third party librairies (in Ruby)                            |
+| vendordir   | Third-party extensions and librairies (in Ruby)                         |
+| sitelibdir  | Your own Ruby language extensions  (in Ruby)                            |
+| sitearchdir | Your own Ruby language extensions (in C)                                |
+
+** Load and Require
+
+~$:~ is the load path global variable. You can add directories to load
+path. For example =~$: << '.'~=.
+One major difference between /load/ and /require/ if called more
+than once with the same arguments is that require doesn’t reload
+files it’s already loaded.
+
+* Objects, methods and local variables
+  method definitions evaluates to the symbol ~:m~ representing the
+  name of the method that’s just defined.
+
+** ?
+
+  Use question mark for method names that evaluate to ~true~ or ~false~.
+
+** nil ~= false != true
+
+   Everything in Ruby has a Boolean value.
+   ~nil~ and ~false~ both have a Boolean value of /false/.
+   Furthermore ~true~, ~nil~ and ~false~ are objects.
+   Note that ~puts~ returns nil
+
+** Object behavior
+
+   3 very useful and common functions
+   + ~object_id~
+   + ~respond_to?~
+   + ~send~ (you can use ~__send__~ if you want to
+     make sure you use Ruby’s built in method send)
+
+   #+BEGIN_SRC ruby
+     if object.respond_to?(request)
+       puts ticket.send(request)
+     end
+   #+END_SRC
+
+** Arguments
+
+   ~*~ allows any number of arguments and /sponges/ arguments if
+   placed between other arguments.
+   Use ~=~ to supply a default value for arguments.
+
+| method signature                        | sample call(s)                | variable assignements                                             |
+|-----------------------------------------+-------------------------------+-------------------------------------------------------------------|
+| ~def m(*a)~                             | ~m(1,2,3)~                    | ~a = [1,2,3]~                                                     |
+| ~def m(a, b=1)~                         | ~m(2)~                        | ~a = 2, b = 1~                                                    |
+|                                         | ~m(2,3)~                      | ~a = 2, b = 3~                                                    |
+| ~def m(a, b = 2, *c, d)~                | ~m(1, 3)~                     | ~a = 1, b = 2, c = [], d = 3~                                     |
+|                                         | ~m(1, 3, 5, 7)~               | ~a = 1, b = 3, c = [5], d = 7~                                    |
+|                                         | ~m(1, 3, 5, 7, 9)~            | ~a = 1, b = 3, c = [5, 7], d = 9~                                 |
+| ~def m(a:, b:)~                         | ~m(a:1, b:2)~                 | ~a = 1, b = 2~                                                    |
+| ~def m(a: 1, b: 2)~                     | ~m~                           | ~a = 1, b = 2~                                                    |
+|                                         | ~m(3, 4)~                     | ~a = 3, b = 4~                                                    |
+| ~def m(x, y, *z, a:1, b:, **c, &block)~ | ~m(1,2,3,4,5,b:10,p:20,q:30)~ | ~x = 1, y= 2, z=[3,4,5], a = 1, b = 10, c = {:p => 20, :q => 30}~ |
+| c here absorbs unknown named arguments  |                               |                                                                   |
+
+  When using ~Hashes~ as arguments. If it is the last argument you
+  can write it without curly braces
+
+  #+BEGIN_SRC ruby
+    add_to_database('Lille', country: 'France', postal_code: 62000)
+  #+END_SRC
+
+  If it is the first argument you must use parentheses (or ruby
+  will think it is a block) and curly braces
+
+  #+BEGIN_SRC ruby
+    add_to_database({country => 'France', postal_code => 62000}, 'Lille')
+  #+END_SRC
+
+** Immediate values
+
+   Some objects like /Integers/, /symbols/ and ~true~, ~false~,
+   ~nil~ are stored in variables as immediate value. The variable
+   holds the value itself rather than a reference to it.
+
+   It follows that there is only one object ~1~, only one ~true~.
+   And that's why there is no ~++~ operator in ruby. Because ~1++~
+   means you'd be changing the number 1 to 2 and that makes no
+   sense.
+
+** Freeze, Dup and Clone
+   You can freeze an object ruby to prevent and object from
+   undergoing further changes.
+
+   ~dup~ duplicates an object. ~clone~ duplicate an object and if
+   the cloned object was frozen, the clone is also frozen.
+
+* Organizing objects with classes
+  Everything you handle in Ruby is either an object or a construct
+  that evaluates to an object.
+  Every object is an instance of some class.
+
+  Class definitions evaluates to the last expression contained
+  inside it, or ~nil~ if the block is empty.
+
+** initialize
+   Arguments used with ~new~ are automatically sent to ~initialize~.
+** % sign technique
+   Allows to use sprintf-like syntax. Run ri sprintf for full documentation.
+   #+BEGIN_SRC ruby
+     price = 2.84839849
+     p "#{"%.2f" % price}"
+   #+END_SRC
+
+   #+RESULTS:
+: 2.85
+
+** assignment-like methods
+
+#+BEGIN_SRC ruby
+ticket.price=(63.00)
+ticket.price = 63.00
+#+END_SRC
+
+   The second version is syntactic sugar for the first one. It is
+   important to understand and remember. ~=~ is a method (like
+   other operators) and can be overloaded.
+
+** setter methods
+   They behave like assignment. They return the value of the
+   expression rather than the last expression evaluated during
+   execution (for example when your assignement methods returns a
+   string "Hah ha!")
+
+#+BEGIN_SRC ruby
+  class Ticket
+    def price=(price)
+      @price = price
+      return 'ahah'
+    end
+
+  end
+
+  if (Ticket.new.price = 65) == 65 # true
+    puts 'my return value is 65' #gets printed
+  end
+#+END_SRC
+
+** attributes
+
+  | method name     | effect                                             | example                | equivalent code   |
+  | ~attr_reader~   | creates a read method                              | ~attr_reader :venue~   | def venue         |
+  |                 |                                                    |                        | @venue            |
+  |                 |                                                    |                        | end               |
+  | ~attr_writer~   | creates a writer method                            | ~attr_writer :price~   | def price=(price) |
+  |                 |                                                    |                        | @price = price    |
+  |                 |                                                    |                        | end               |
+  | ~attr_accessor~ | creates reader and writer method                   | ~attr_accessor :price~ |                   |
+  | ~attr~          | creates a reader method                            | ~attr :venue~          |                   |
+  |                 | and a writer method if the second argument is true | ~attr :price, true~    |                   |
+
+   Those family methods are defined in /Module/
+
+** Subclass
+
+   ~<~ designates a subclass.
+
+#+BEGIN_SRC ruby
+  class Publication
+  end
+
+  class Magazine < Publication
+  end
+
+#+END_SRC
+
+** Superclass & Modules
+   A Ruby /class/ can have only one /superclass/ (/single
+   inheritance/).
+   Ruby provides modules that you can /mix in/ your class's family
+   tree to provide as many methods for your objects as you need.
+
+** ~BasicObject~, ~Object~ & ~Kernel~
+
+   ~BasicObject~ comes before ~Object~ in the ruby family tree.
+   ~BasicObject~ offers a blank state object. an object with
+   almost no methods. At the time of writing (Ruby 2.1),
+   ~BasicObject~ has 7 instance methods and ~Object~
+   about 55.
+
+   ~Kernel~ module contains the majority of the methods common to
+   all objects
+
+   ~BasicObject~, ~Object~ & ~Kernel~ are written in C. Here is a
+   Ruby mockup of their relationship
+
+#+BEGIN_SRC ruby
+  class BasicObject
+    # 7 methods
+  end
+  module Kernel
+    # over 100 method definitions
+  end
+  class Object < BasicObject
+    include Kernel
+  end
+#+END_SRC
+
+** Methods & Constant notation
+
+   + ~Ticket#price~: instance method ~price~ in the /class/
+     ~Ticket~
+   + ~Ticket.most_expensive~: /class/ method ~most_expensive~ in
+     the class Ticket
+   + ~Ticket::most_expensive~: /class/ method ~most_expensive~ in
+     the class Ticket
+   + ~Ticket::VENUES~: constant ~VENUES~ in class ~Ticket~
+
+**  Constants
+
+    It is possible to perform an assingment on a constant you
+    already assigned.
+
+#+BEGIN_SRC ruby
+  A = 1
+  A = 2
+#+END_SRC
+
+    You will get a warning
+
+#+BEGIN_SRC ruby
+  venues = Ticket::VENUES
+  venues << 'High School Gym'
+#+END_SRC
+
+    no warning because there is no redefinition of a constant. We
+    are modifying an array and array has no knowleged it has been
+    assigned to a constant.
+
+** ~inspect~
+   You can override it and have useful info about your custom class.
+
+* Modules and program organization
+
+  Modules don't have instances. It follows that entities or things
+  are best modeled in classes and characteristics or properties
+  are best encapsulated in modules.
+
+  The /class/ of ~Class~ and ~Module~ is /class/. The /superclass/ of
+  ~Class~ is ~Module~. The /superclass/ of ~Module~ is object.
+
+  modules get /mixed in/ to classes using ~include~ or ~prepend~.
+  A /mixed in/ module is referred as a /mix in/.
+
+#+BEGIN_SRC ruby
+  class ModuleTester
+    include MyFirstModule
+  end
+#+END_SRC
+
+  The main difference between inheriting from a /class/ and
+  /modules/ is that you can /mix in/ more that one module
+
+** Class and Module naming
+
+  It is common to have /class/’s name as noun and /module/’s as an adjective
+
+#+BEGIN_SRC ruby
+  class Stack
+    include Stacklike
+  end
+#+END_SRC
+
+** ~method_missing~
+
+  Get called as a last resort for unmatched messages. You can
+  override ~method_missing~
+
+  A good example of a ~method_missing~ override:
+
+#+BEGIN_SRC ruby
+  class Person
+    def self.method_missing(m, *args)
+      method = m.to_s
+      if method.start_with?('all_with_')
+        # Handle request here"
+      else
+        super
+      end
+    end
+  end
+#+END_SRC
+
+** including a module several times
+
+  Reincluding a /module/ does not do anything as the modle is
+  already in the search path. In the following example, if /N/ and
+  /M/ have some methods with the same name, the method defined in
+  /N/ will be called.
+
+#+BEGIN_SRC ruby
+  class C
+    include M
+    include N
+    include M
+  end
+#+END_SRC
+
+** ~prepend~
+
+   ~prepend~ appeared with Ruby 2. The difference between
+   ~include~ and ~prepend~ is that when you ~prepend a module~,
+   the object looks in the module first instead of looking in the
+   class.
+
+** method lookup summary
+
+   To look for a method, an object looks in:
+
+   1. Modules prepended
+   2. It’s class
+   3. Modules in it class
+   4. Modules prepended to its superclass
+   5. It’s class superclass
+   6. Modules included in its superclass
+   7. and so on up to ~BasicObject~
+
+** ~super~
+
+   - Called with no arguments, ~super~ automatically forwards
+     arguments passed to the method from which it’s called.
+   - with an empty argument list ~super()~ sends no
+     argument
+   - called with specific arguments ~super(a, b, c)~ sends those
+     arguments
+
+** Nesting modules and classes
+
+#+BEGIN_SRC ruby
+  module Tools
+    class Hammer
+    end
+  end
+#+END_SRC
+
+   Used to separate namespaces for classes, modules and methods.
+   However if you see a construct like ~Tools::Hammer~ you can't
+   say from that construct if ~Hammer~ is a class or a module. You
+   know it through the documentation or because you wrote the
+   code. The notation in itself does not tell you everything.
+
+* The default Object (self), scope & visibility
+
+  | Context              | Example                          | Which object is self?               |
+  |----------------------+----------------------------------+-------------------------------------|
+  | Top level of program | Any code                         | ~main~                              |
+  | Class definition     | class C                          | class object C                      |
+  |                      | self                             |                                     |
+  | Module definition    | module M                         | module object M                     |
+  |                      | self                             |                                     |
+  | Method definitions   | 1. Top level                     | whatever object is self             |
+  |                      | def method_name                  | when the method is called           |
+  |                      | self                             |                                     |
+  |                      | 2. class instance-method         | An instance of C                    |
+  |                      | class C                          |                                     |
+  |                      | def method_name                  |                                     |
+  |                      | self                             |                                     |
+  |                      | 3. module instance-method        | - Individual oject extented by M    |
+  |                      | module M                         | - Instance of class that mixes in M |
+  |                      | def method_name                  |                                     |
+  |                      | self                             |                                     |
+  |                      | 4. Singleton method on an object | Obj                                 |
+  |                      | def obj.method_name              |                                     |
+  |                      | self                             |                                     |
+
+
+**  Don't hard code class names.
+    It is bad in case you want to rename  your class. Instead use self
+
+#+BEGIN_SRC ruby
+  class C
+    def C.y # bad
+    end
+
+    def self.x # good
+    end
+  end
+#+END_SRC
+
+** instance variables
+   every instance variable belongs to whatever object is the
+   current object (/self) at that point.
+
+#+BEGIN_SRC ruby
+  class C
+    p self
+    @v = "top level instance variable "
+    p @v
+
+    def show_v
+      p self
+      p @v
+    end
+  end
+
+  c = C.new
+  c.show_v
+#+END_SRC
+
+  will return
+
+#+BEGIN_EXAMPLE
+ C
+ "top level instance variable"
+ #<C:0x007fe37388d9d0>
+ nil
+#+END_EXAMPLE
+
+ The two variables ~@v~ are different
+
+
+** built-in classes
+
+   You can create you own /string/ class
+
+#+BEGIN_SRC ruby
+  class MyClass
+    class String
+
+    end
+    def initialize
+      String.new
+  end
+#+END_SRC
+
+   Here the ~String~ used will be the new one defined in
+   ~MyClass~. To use the build in Ruby ~String~ you can use ~::String.new~.
+   ~::~ in front of a constant means “start the search for this at
+   the top level”
+
+** class variables (@@)
+
+   class variables are class-hierarchy scoped.
+
+#+BEGIN_SRC ruby
+  class Parent
+    @@value = 100
+  end
+
+  class Child < Parent
+    @@value = 200
+  end
+
+  class Parent
+    puts @@value
+  end
+#+END_SRC
+
+   Here 200 will get printed
+
+
+** public, private, protected
+
+   you either do
+   ~private :first_method, :second_method, :third_method~. To make
+   those three methods private. Or Use ~private~ as a switch
+   without arguments then ll methods below ~private~ in your class
+   will be private.
+
+*** private setter methods
+
+    you can omit ~self~ when defining private access. It won't
+    clash with an ipothetic class variable. Ruby is smart enough
+    to understand what you mean.
+
+#+BEGIN_SRC ruby
+  class Dog
+    attr_reader :age, :dog_years
+    def dog_years=(years)
+      @dog_years = years
+    end
+    def age=(years)
+      @age = years
+      self.dog_years = years * 7 # = @dog_years = years * 7
+    end
+    private :dog_years=
+  end
+
+  luigi = Dog.new
+  luigi.age = 10
+#+END_SRC
+
+
+** top level method
+
+#+BEGIN_SRC ruby
+  def talk
+    puts 'hello'
+  end
+#+END_SRC
+
+   is equivalent to
+
+#+BEGIN_SRC ruby
+  class Object
+    private
+    def talk
+      puts 'hello'
+    end
+  end
+#+END_SRC
+* Control-flow techniques
+** if
+
+#+BEGIN_SRC ruby
+  if x > 10
+    puts x
+  end
+
+  if x > 10 then puts x end
+
+  if x > 10; puts x; end
+
+  puts x if x > 10
+#+END_SRC
+
+   If an ~if~ statement does not suceed it returns ~nil~
+   It it succeeds the entite statement evaluates to whatever is
+   represented by the code in the successful branch.
+
+** unless
+   same as ~if not~ or ~if!~
+
+** case
+   At most one match will succeed and have its code executed.
+   You can put more than one possible match in a single ~when~
+
+#+BEGIN_SRC ruby
+  case answer
+  when 'y', 'yes'
+    puts 'affirmative!'
+  when 'n', 'no'
+    puts 'negative!'
+  else
+    puts 'not sure'
+  end
+#+END_SRC
+
+** /===/
+   For ~String~ and any object that does not ovveride it, ~===~
+   works the same as ~==~. Every class can define its own ~===~
+   method. It is used in /case when/ equality logic.
+
+** loop
+
+   loop is an iterator. In Ruby an iterator is a method that
+   expects you to provide a code block.
+
+#+BEGIN_SRC ruby
+  loop { puts 'looping forever' }
+
+  n = 1
+  loop do
+    n += 1
+    next unless n == 10
+    break
+  end
+#+END_SRC
+
+   Here is how we can write loop
+
+#+BEGIN_SRC ruby
+  def my_loop
+    yield while true
+  end
+#+END_SRC
+
+** while and until modifiers
+
+#+BEGIN_SRC ruby
+  n += 1 until n == 10
+  n += 1 while n < 10
+#+END_SRC
+
+** for
+
+#+BEGIN_SRC ruby
+  numbers = [0, 10, 20, 30, 40, 50]
+  for n in numbers
+    puts n
+  end
+#+END_SRC
+
+** curly braces vs do/end code block
+
+   The difference between the two is a difference in precedence
+
+#+BEGIN_SRC ruby
+  puts [1, 2, 3].map { |n| n * 10 }
+  # is like
+  puts ([1, 2, 3].map { |n| n * 10 })
+#+END_SRC
+   will ouput 10, 20 , 30
+
+#+BEGIN_SRC ruby
+  puts [1, 2, 3].map do |n| n * 10 end
+  # is like
+  puts ([1, 2, 3].map) do |n| n * 10 end
+  # is like
+  puts [1, 2, 3].map
+#+END_SRC
+   will output an enumerator
+
+** each and map
+
+   - ~each~ returns its receiver
+   - ~map~ returns a new array
+
+
+**  Block parameters and scope
+
+    If you have a variable of a given name in scope and also use
+    that name as one of your block parameters, then the two
+    variables are not the same as each other.
+    You can use this to your advantage to make sure a temporary
+    variable inside a block does not reuse a variable from outside
+    the block
+
+#+BEGIN_SRC ruby
+  x = "original x"
+  3.times do |i;x|
+    x = i
+  end
+  x
+#+END_SRC
+
+#+RESULTS:
+: original x
+
+    ~;~ indicates the block needs its own x.
+
+** rescue
+
+#+BEGIN_SRC ruby
+  begin
+    #some code
+  rescue ArgumentError => e
+  #rescue code
+    puts e.backtrace
+    puts e.message
+  ensure
+    #make sure this runs
+  end
+#+END_SRC
+
+   if you put rescue at the end of a method you don't need to say
+   begin explicitely. Recue will govern the entire method block
+
+#+BEGIN_SRC ruby
+  def method_name
+    puts 'hello'
+    rescue
+    puts 'rescued'
+  end
+#+END_SRC
+
+* Built in essentials
+** Literal constructors
+   Special notatoin instead of a call to ~new~ to create a new
+   object of that class.
+
+   | Class         | Examples(s)              |
+   |---------------+--------------------------|
+   | String        | "Hello"                  |
+   |               | 'hello'                  |
+   | Symbol        | :hello                   |
+   | Array         | [1, 2, 3, 4]             |
+   | Hash          | { 'Hello' -> 'Bonjour' } |
+   | Range         | 0..9                     |
+   |               | 0...10                   |
+   | Regexp        | /([a-z]+)/               |
+   | Proc (lambda) | ->(x, y) { x * y }       |
+
+** Shortcut operators (syntactic sugar)
+
+   Ruby has shortcut operators like ~||=~, ~+=~, ~-=~, ~*=~, ~&=~
+   (bitwise AND), ~|=~ (bitwise OR), ~^=~ (bitwise EXCLUSIVE OR)
+
+   If you define a ~+~ method you can use the ~+=~ syntax.
+   Similarly if you define a ~-~ method you can use the ~-=~ syntax
+   and so on for all other operators.
+
+   Shortcut operators are:
+   | Category      | Operators          |
+   |---------------+--------------------|
+   | Arithmetic    | ~+ - * / % **~     |
+   | Data          | ~[] []= <<~        |
+   | Comparison    | ~<=> == > < >= <=~ |
+   | Case equality | ~===~              |
+   | Bitwise       | \vert & ^              |
+
+** Unary operators
+
+   ~+~ and ~-~ as in ~+1~ and ~-1~ can be customized
+
+#+BEGIN_SRC ruby
+  def +@
+  end
+
+  def -@
+  end
+#+END_SRC
+
+   You can customize ~!~ which also gives you ~not~
+
+#+BEGIN_SRC ruby
+  def !
+    #some code
+  end
+#+END_SRC
+
+** dangerous_method!
+
+   When you have a ! at the end of a method name. It usually means
+   this methods permanently modifies its reveiver. But It is not
+   always the case. Expecially when ! methods don't have nonbang
+   equivalent.
+   Ex: ~String.clear~. No ! but it changes the receiver.
+
+   + Don't use ! except in M/M! methods pars
+   + Don't equate ! with destructive behavior or vice versa
+     It can mean something else.
+
+** conversions
+
+   + ~to_s~
+     used by certain methods — like ~puts~ — and string interpolation. If you write your
+     own ~to_s~ ofr a class you can take advantage of it.
+   + ~to_a~ and ~*~
+     The ~*~ turns any array into the equivalent of a bare list
+     #+BEGIN_SRC ruby
+       [*[1, 2, 3, 4, 5]] == [1, 2, 3, 4, 5]
+     #+END_SRC
+
+     #+RESULTS:
+     : true
+   + ~to_i~, ~Integer~, ~to_f~, ~Float~
+     To convert integers and float. ~Integer~ and ~Float~ are
+     stricter versions
+   + Role-playing
+     + ~to_str~
+       If you want to be able to add a string with your object,
+       you can define ~to_str~ for your object. ~to_str~ is used
+       by ruby for /String#+/ and /String#<</
+     + ~to_ary~
+       To use ruby methods like /Array#concat/
+
+** Comparisons
+   if you define ~==~, you automatically define ~!=~ for your
+   object.
+   ~==~ and ~eql?~ are usually redefined to do meaningful work.
+   ~equal?~ is usually left alone to check wether two objects are
+   exactly the same object.
+
+*** Comparable module
+    If you want objects of ~MyClass~ to have the full comparison
+    suite:
+
+    + mixin ~Comparable~
+    + Define ~<=>~ (spaceship operator) for your class
+      ~<=>~ can return -1 (less than), 0 (equal) and 1 (greater
+      than)
+** Inspecting
+
+   ~String.methods.sort~
+   ~String.instance_methods.sort~
+   Use ~String.instance_methods(false).sort~ to not see instance
+   methods provided by class’s ancestors.
+
+#+BEGIN_SRC ruby
+  str = 'ok'
+  def str.shout
+    self.upcase
+  end
+  str.singleton_methods
+#+END_SRC
+
+#+RESULTS:
+| :shout |
+** ~try_convert~
+   ~try_convert~ looks for a conversion method on argument object.
+   If it exists, it gets called, if not it returns ~nil~. If the
+   object returned class is different that the class to which
+   conversion is attempted it returns a fatal error.
+
+#+BEGIN_SRC ruby
+  obj = Object.new
+  Array.try_convert(obj)
+#+END_SRC
+
+#+RESULTS:
+: nil
+
+#+BEGIN_SRC ruby
+  obj = Object.new
+  def obj.to_ary
+    [1, 2, 3]
+  end
+  Array.try_convert(obj)
+#+END_SRC
+
+#+RESULTS:
+| 1 | 2 | 3 |
+
+* Strings, symbols and other scalar objects
+  A string literal is enclosed between ~"~ or ~'~ quotation marks
+  string interpolation does not work with ~'~
+** String interpolation
+
+   #+BEGIN_SRC ruby
+     puts "I’m #{first_name}"
+   #+END_SRC
+
+
+   You can also create a string with ~%charDELIMITERtextDELIMITER~. ~char~ can be
+   + ~%q~. Creates a single-quote string
+   + ~%Q~. Creates a double-quote string
+   + ~%~. Creates a double-quote string
+
+     delimiter can be any of two same character as long as you
+     match it on both end of the string. It can be a pair of
+     braces too.
+
+** “Here” document or /here-doc/
+
+#+BEGIN_SRC ruby
+  too = 'too'
+  text = <<EOM
+  This text is splendid.
+  Full of words, lines & punctuations.
+  And with interpolation #{too}
+  EOM
+#+END_SRC
+
+#+RESULTS:
+: This text is splendid.
+: Full of words, lines & punctuations.
+: And with interpolation too
+
+   You can add single quotes for single quoted /here-doc/
+
+#+BEGIN_SRC ruby
+  var_too = 'too'
+  text = <<'EOM'
+  No interpolation #{var_too}
+  EOM
+#+END_SRC
+
+#+RESULTS:
+: No interpolation #{var_too}
+
+   /EOM/ does not have to be the last thing on the line
+
+#+BEGIN_SRC ruby
+  a = <<EOM.to_i * 10
+  5
+  EOM
+#+END_SRC
+
+#+RESULTS:
+: 50
+
+#+BEGIN_SRC ruby
+  array = [1, 2, 3, <<EOM.to_i, 5]
+  4
+  EOM
+#+END_SRC
+
+#+RESULTS:
+| 1 | 2 | 3 | 4 | 5 |
+
+#+BEGIN_SRC ruby
+  long_args(a, b, <<EOM)
+  http://supersupersupersupersupersupersuperlongurl.com
+  EOM
+#+END_SRC
+
+** Basic string manipulation
+
+*** Selection
+   + negative numbers index from the end of the string
+#+BEGIN_SRC ruby
+  string = "ruby is cool"
+  string[-1]
+#+END_SRC
+
+#+RESULTS:
+: l
+   + You can ask for a substring
+#+BEGIN_SRC ruby
+  string = "ruby is cool"
+  string[5, 7]
+#+END_SRC
+
+#+RESULTS:
+: is cool
+
+   + You can provide a range
+#+BEGIN_SRC ruby
+  string = "ruby is cool"
+ string[5..11]
+#+END_SRC
+
+#+RESULTS:
+: is cool
+
+#+BEGIN_SRC ruby
+  string = "ruby is cool"
+  string[5...11]
+#+END_SRC
+
+#+RESULTS:
+: is coo
+   + You can use substring search
+#+BEGIN_SRC ruby
+  string = "ruby is cool"
+  string['is']
+#+END_SRC
+
+#+RESULTS:
+: is
+  + And regular expression
+#+BEGIN_SRC ruby
+  string = "ruby is cool"
+  string[/co+l/]
+#+END_SRC
+
+#+RESULTS:
+: cool
+
+*** changing strings
+  + You can change part of a string using the same selection arguments
+#+BEGIN_SRC ruby
+  string = "ruby is cool"
+  string['cool'] = 'great'
+  string
+#+END_SRC
+
+#+RESULTS:
+: ruby is great
+
+  + You can combine strings
+    With ~+~ the string you get back is always a new string. With
+    ~<<~ we append permanently. No new string.
+
+** Querying strings
+
+   + ~String#include?('cool')~
+   + ~String#start_with?('ruby')~
+   + ~String#empty?~
+   + ~String#size~
+   + ~String#count('a')~, range of letters ~String#count('a-c')~ and you can
+     combine arguments ~String#count('a-c', '^b' )~ (any letters from a
+     to c that is not b)
+   + ~String#index('cool')~
+   + ~String#ord~ gives ordinal code of first character. Reverse
+     operation is ~String#chr~
+
+** String comparison
+   + ~==~ for equality of content
+   + ~String#equal?~ for equality of object
+
+** transformations
+
+   + ~String#upcase~
+   + ~String#downcase~
+   + ~String#upcase~
+   + ~String#swapcase~
+   + ~String#capitalize~
+   + ~String#rjust(5)~ and ~String#ljust(5)~ add padding to the
+     right of left with either blank spaces or a char if you add a
+     second char parameter.
+   + ~String#center(5)~. Same as /rjust/ and /ljust/ for parameters
+   + ~String#strip~, ~String#lstrip~ & ~String#rstrip~ removes
+     whitespaces
+   + ~String#chop~ to remove a character at the end of the string
+   + ~String#chomp~ to remove a newline character. You can target
+     other characters or strings by providing an argument ~String#chomp('ab')~
+   + ~String#clear~ clears the receiver. No ! but it changes the receiver.
+   + ~String#replace~
+   + ~String#delete~ same rules for arguments as with count.
+   + ~String#succ~ increment letters in a string. Handy when you
+     need a batch of generated unique strings.
+
+** Conversions
+   ~to_sum~, ~to_f~, ~to_i~
+   You can provide a parameter to ~to_i~ to specify a base.
+   ~.oct~ for octal and ~.hex~ for hexadecimal.
+
+** Encoding
+   In Ruby 2 the default encoding for ruby scripts is UTF-8.
+
+   you can use ~__ENCODING__~ to know the encoding value. Directly
+   in the file. If you run this command on the command line
+   through ~$ ruby -e 'puts __ENCODING__~ you will get the current
+   locale setting which can differ.
+
+   You can use a magic comment at the top of the file ~# encoding:
+   encoding_Value~ to change the encoding of a file.
+
+*** Strings
+
+    ~String#encoding~ to get the encoding.
+
+    You can encode a string in a different encoding as long as the
+    conversion is permitted. This is called transcoding.
+    ~String.encode('US-ASCII')~. The bang version changes the
+    encoding of the string permanently.
+
+    You can force an encoding ~String#force_encoding('US-ASCII')~
+
+    You can represent characters with escape sequence. ~\x~ for
+    two digit hexadecimal numbers representing a byte. ~\u~
+    followed by a UTF-8 code to insert the corresponding
+    character. By doing this you can change a string encoding to
+    UTF-8 (if it was in ASCII and the character inserted does not
+    exist in ASCII).
+
+** Symbols
+
+   literal constructor ~:symbol_name~
+
+   + symbols are immutable
+   + symbols are unique. Thus there is no point in having
+     constructor for them. They are like integers in that respect
+
+   When you bin a variable to a symbol you bind its value, not a
+   reference to it.
+
+   You can list all symbols with ~Symbol.all_symbols~
+
+   If you want to check if a symbol exist you can use /grep/
+
+#+BEGIN_SRC ruby
+  Symbol.all_symbols.grep(/abc/)
+#+END_SRC
+
+   Don't use ~include?(:abc)~ because this very act creates the
+   symbol!
+
+   Symbols appears most of the times in method arguments and hash
+   keys. They are better for hash keys because ruby can process
+   them faster and they —look good— as hash keys. Ruby also use a
+   convenient way to use symbol as hash keys
+
+   The following two are equivalent
+#+BEGIN_SRC ruby
+  hash = { :name => 'David', :age => 35 }
+  hash = { name: 'David', age: 35}
+#+END_SRC
+
+
+** Numerical object
+
+   At the top /Numeric/.
+   /Float/ and /Integer/ below.
+   /Fixnum/ and /Bignum/ below Integer. Ruby handles the
+   conversion automatically when you need /Bignum/.
+
+   With divisions, when you want integers you have to specify it.
+
+#+BEGIN_SRC ruby
+  3 / 2
+#+END_SRC
+
+#+RESULTS:
+: 1
+
+
+#+BEGIN_SRC ruby
+  3 / 2.0
+#+END_SRC
+
+#+RESULTS:
+: 1.5
+
+   Hexadecimals with leading 0x
+
+#+BEGIN_SRC ruby
+  0x12 + 10
+#+END_SRC
+
+#+RESULTS:
+: 28
+
+   Octals when leading 0
+
+#+BEGIN_SRC ruby
+  012 + 10
+#+END_SRC
+
+#+RESULTS:
+: 20
+
+
+** Times and dates
+
+   3 classes. /Time/, /Date/ and /DateTime/
+
+#+BEGIN_SRC ruby
+  require 'time'
+  require 'date' #provides both Date and Datetime
+#+END_SRC
+
+   You can query for ~leap?~ years and ~dst?~ (daylight saving
+   time)
+   There is an ~strftime~ methods to format
+   Precooked format /rfc2822/ for email and ~httpdate~ (RFC 2616
+   standard).
+   You can use ~upto~ and ~downto~ to iterate over a range of them
+
+#+BEGIN_SRC ruby
+  require 'date'
+  d = Date.today
+  next_week = d + 7
+
+  d.upto(next_week)
+#+END_SRC
+
+#+RESULTS:
+: #<Enumerator: #<Date: 2014-10-30 ((2456961j,0s,0n),+0s,2299161j)>:upto(#<Date: 2014-11-06 ((2456968j,0s,0n),+0s,2299161j)>)>
+
+* Collection and container objects
+
+  Ruby implements collections principally through classes that min
+  in ~Enumerable~.
+
+  ~with_index~ is a method which yields a counter value along with
+  the enumerator. Pretty new and preferable to ~each_with_index~.
+
+** Array
+   You can create an array with
+   + ~Array.new~
+#+BEGIN_SRC ruby
+  Array.new(3) # [nil, nil, nil]
+#+END_SRC
+
+   Be careful with the following example. The 3 elements of the
+   array are initialized with the same string. If you modify it
+   for one element, you modify it for all elements of the Array.
+#+BEGIN_SRC ruby
+  Array.new(3, 'abc')
+#+END_SRC
+
+#+RESULTS:
+| abc | abc | abc |
+
+   With a block, all 3 strings are different
+#+BEGIN_SRC ruby
+Array.new(3) { 'abc'}
+#+END_SRC
+
+#+RESULTS:
+| abc | abc | abc |
+
+#+BEGIN_SRC ruby
+  n = 0
+  Array.new(3) { n += 1; n * 10}
+#+END_SRC
+
+#+RESULTS:
+| 10 | 20 | 30 |
+
+
+   + []
+   + top level method ~Array~
+     If an element has an ~to~ary~ method the ~Array~ call use
+     that method. If not it tries with ~to_a~. If not it wraps the
+     object in an Array
+
+#+BEGIN_SRC ruby
+  string = "cool"
+  def string.to_a
+    split(//)
+  end
+  Array(string)
+#+END_SRC
+
+#+RESULTS:
+| c | o | o | l |
+
+   + special notations %w{} and #i{}
+
+     %w single quoted and %W double quoted
+#+BEGIN_SRC ruby
+%w{ It is a small world }
+#+END_SRC
+
+#+RESULTS:
+| It | is | a | small | world |
+
+     %i and %I for array of symbols single and double quoted
+
+#+BEGIN_SRC ruby
+%i{It is a small world}
+#+END_SRC
+
+#+RESULTS:
+| :It | :is | :a | :small | :world |
+
+*** Inserting, retrieving and removing from an array
+
+| Sample call                    | Meaning                                             |
+|--------------------------------+-----------------------------------------------------|
+| ~a[3, 2]~                      | select two elements starting at index 3             |
+| ~array.values_At(0,3)~         | select values at index 0 and 3                      |
+| ~a.unshift(0)~                 | adds 0 at start of array                            |
+| ~a.shift(n=1)~                 | remove n elements from beginning of array           |
+| ~a.pop(n=1)~                   | remove n elements from end of array                 |
+| ~a.push(6,7,8)~                | adds 6, 7 and 8 at the end of the array             |
+| ~a << 5~                       | add 5 at the end of the array                       |
+| ~[1, 2, 3].concat([4, 5, 6])~  | ~[1, 2, 3, 4, 5, 6]~ – changes permanently receiver |
+| ~[1, 2, 3] + [4, 5, 6]~        | ~[1, 2, 3, 4, 5, 6]~ – creates a new array          |
+| ~[1, 2, 4].replace([4, 5, 6])~ | ~[4, 5, 6]~ – Keeps same object                     |
+| ~[1, [2, [3, 4]]].flatten~     | ~[1, 2, 3]~ – flattens completely                   |
+| ~[1, [2, [3, 4]]].flatten(1)~  | ~[1, 2, [3, 4]]~ – flattens one level               |
+| ~[1, 2, 3, 4].reverse~         | ~[4, 3, 2, 1]~                                      |
+| ~['abc', 'def'].join(arg='')~  | ~abcdef~ – join all argument and returns a string   |
+| ~[1, 1, 2, 3].uniq~            | ~[1, 2, 3]~                                         |
+| ~[1, nil, 2, nil].compact~     | ~[1, 2]~ – removes nil                              |
+
+*** Querying
+
+| Sample call             | Meaning                          |
+|-------------------------+----------------------------------|
+| ~a.size~ and ~a.length~ | Number of elements in array      |
+| ~a.empty?~              | True if a is empty               |
+| ~a.include?(element)~   | True if array includes ~element~ |
+| ~a.count(element)~      | number of ~element~              |
+| ~a.first(n=1)~          | first n elements                 |
+| ~a.last(n=1)~           | last n elements                  |
+| ~a.smaple(n=1)~         | n random elements                |
+
+** Hashes
+   Hashes are now ordered collections.
+
+   You can use ~(key, value)~ in blocks to get the hash element
+   array distributed accross two parameters.
+   Key values are unique
+   Hash provides quick lookup in better than linear time
+
+#+BEGIN_SRC ruby
+  hash = { red: 'ruby', white: 'diamond', green: 'emerald'}
+  output = ''
+  hash.each.with_index do |(key, value), i|
+    output << "PAIR #{i} is #{key}/#{value}\n"
+  end
+  output
+#+END_SRC
+
+#+RESULTS:
+: PAIR 0 is red/ruby
+: PAIR 1 is white/diamond
+: PAIR 2 is green/emerald
+
+   You can create an Hash with:
+   + ~{}~
+     #+BEGIN_SRC ruby
+       h = {}
+     #+END_SRC
+   + ~Hash.new~
+     #+BEGIN_SRC ruby
+       h = Hash.new(3) #argument serves as default value for nonexistent hash keys
+       h[:my_key]
+     #+END_SRC
+
+     #+RESULTS:
+     : 3
+
+     You can use blocks too!
+     #+BEGIN_SRC ruby
+       h = Hash.new {|hash, key| hash[key] = 0 }
+       h[:my_key]
+     #+END_SRC
+
+     #+RESULTS:
+     : 0
+
+   + ~Hash.[]~
+     If you provide an odd number of argument a fatal error is raised
+     #+BEGIN_SRC ruby
+       Hash['France', 'fr', 'USA', 'us']
+     #+END_SRC
+
+     #+RESULTS:
+     | France | => | fr | USA | => | us |
+   + ~Hash~
+     Calls ~to_hash~ on its single argument. Except if you pass it
+     an empty ~Array~ or ~nil~ — it returns an empty hash ~{}~
+
+     #+BEGIN_SRC ruby
+       Hash([])
+     #+END_SRC
+
+     #+RESULTS:
+     : {}
+
+*** Hash methods
+
+   | Sample call                        | Meaning                                               |
+   |------------------------------------+-------------------------------------------------------|
+   | ~=h['France'] = 'fr'=~             | adds a key/value pair                                 |
+   | ~h.store('France', 'fr')~          | adds a key/value pair                                 |
+   | ~h['France']~                      | fetch value                                           |
+   | ~h.fetch('France')~                | fetch value, raises an exception for non existent key |
+   | ~h.values_att('France', 'USA')~    | return arrays of value                                |
+   | ~h1.update(h2)~ or ~h1.merge!(h2)~ | h1 keys are overwritted with corresponding h2 keys    |
+   | ~h1.merge(h2)~                     | creates a new hash combining h1 and h2.               |
+   |                                    | If both hash have keys in common h2 keys win          |
+   | ~h.select {\vert{}k,v\vert k > 1}~           | creates a subhash by selection                        |
+   | ~h.reject {\vert{}k,v\vert k > 1}~           | creates a subhash by rejection                        |
+   | ~select!~ and ~reject!~            | returns nil if hash does not change                   |
+   | ~keep_if~ and ~delete_if~          | returns original hash even if it’s unchanged          |
+   | ~h.invert~                         | invert keys and values. Careful:keys must be unique   |
+   | ~h.clear~                          | clears a hash                                         |
+   | ~h.replace~                        | replace content of a hash                             |
+
+
+*** Querying
+
+    | Method name       | Meaning |
+    | ~h.has_key(1)~    |         |
+    | ~h.include?(1)~   |         |
+    | ~h.member?(1)~    |         |
+    | ~h.has_value?(1)~ |         |
+    | ~h.value?(1)~     |         |
+    | ~h.empty?~        |         |
+    | ~h.size~          |         |
+
+** Ranges
+   Semantics of range:
+   + /Inclusion/
+   + /Enumeration/
+
+     You can remember inclusive /../ and exclusive /.../ range
+     notation by thinking of a range as always reaching to the
+     point represented by whatever follows the second dot.
+
+
+   You can create ranges with
+   + ~Range.new~
+     #+BEGIN_SRC ruby
+       Range.new(1, 100)
+     #+END_SRC
+
+     #+RESULTS:
+     : 1..100
+
+     #+BEGIN_SRC ruby
+       Range.new(1, 100, true)
+     #+END_SRC
+
+     #+RESULTS:
+     : 1...100
+
+   + Literal syntax
+     #+BEGIN_SRC ruby
+       1..100
+     #+END_SRC
+
+     #+RESULTS:
+     : 1..100
+
+
+   Ranges have ~begin~ and ~end~ method which report their
+   beginning and end point.
+   They also have ~exclude_end?~ which tells you if it is an
+   exclusive or inclusive range.
+   They have a ~cover?~ method to know if parameter falls in
+   range.
+   #+BEGIN_SRC ruby
+     ('a'..'z').cover?('abc')
+   #+END_SRC
+
+   #+RESULTS:
+   : true
+
+   They have an ~include?~ method which treats range as arrays.
+   Therefore results differs from ~cover?~
+   #+BEGIN_SRC ruby
+     ('a'..'z').include?('abc')
+   #+END_SRC
+
+   #+RESULTS:
+   : false
+
+   Don't create backward range. They won't do what you think they
+   do.
+
+   #+BEGIN_SRC ruby
+     (100..1).include?(50)
+   #+END_SRC
+
+   #+RESULTS:
+   : false
+
+** Sets
+   A set is a unique collection of objects.
+
+   You need to
+   #+BEGIN_SRC ruby
+     require 'set'
+   #+END_SRC
+
+
+   You can create sets with ~Set.new~ by providing a collection of
+   objects and optionally a code block.
+
+   #+BEGIN_SRC ruby
+     require 'set'
+     Set.new(['Aurélien','Romain', 'Andréa']) {|name| name.upcase}
+   #+END_SRC
+
+   Use ~<<~ to add a single object to a set.
+   You can also use ~add~ to add an object to a set. ~add?~
+   returns nil if the set is unchanged after add operation.
+   Use ~delete~ to remove an object for a set.
+
+
+   You can use ~&~ to perform intersections. ~+~ and ~|~ for
+   unions and ~-~ for differences.
+   There is also an ~^~ exclusive or operator.
+
+   Merging a hash into a set results in the addition of
+   two-element.
+   You can test for ~subset?~ and ~superset?~.
+
+* Collections Central: Enumerable and Enumerator
+
+  You can mixin in ~Enumerable~ and define an ~each~ instance
+  method. You will be able to call any instance method defined in
+  ~Enumerable~.
+  ~each~ job is to /yield/ items.
+
+  #+BEGIN_SRC ruby
+    class BlueColors
+      include Enumerable
+
+      def each
+        yield 'Light Blue'
+        yield 'Blue'
+        yield 'Dark Blue'
+      end
+    end
+
+    BlueColors.new.each { |c| puts c }
+    BlueColors.find { |c| c.start_with?('B') }
+  #+END_SRC
+
+
+**  Queries:
+   + ~include?~
+   + ~all?~
+   + ~any?~
+   + ~one?~
+   + ~none?~
+
+
+   Be careful when enumerating with ranges.
+
+   #+BEGIN_SRC ruby
+     (1.0..10.0).one? { |n| n == 5}
+   #+END_SRC
+
+   #+RESULTS:
+   : can't iterate from Float (TypeError)
+
+
+** Search and Select
+
+   + ~find~. You can provide a failure-handling function
+     #+BEGIN_SRC ruby
+       failure = lambda { 11 }
+       [1,2,3,4,5,6].find(failure) {|n| n> 10}
+     #+END_SRC
+
+     #+RESULTS:
+     : 11
+
+   + ~find_all~ also known as ~select~. Always returns an array.
+     There’s a ~select!~.
+   + ~reject~. Always returns an array
+   + ~grep~. Based on ~===~
+   + ~group_by~. Returns a Hash
+     #+BEGIN_SRC ruby
+       colors = %w{ red orange yellow green blue indigo violet}
+       colors.group_by {|color| color.size}
+     #+END_SRC
+
+     #+RESULTS:
+     | 3=> | (red) | 6=> | (orange yellow indigo violet) | 5=> | (green) | 4=> | (blue) |
+   + ~partition~. Similar to ~group_by~ but split into two arrays.
+
+
+** Element operations:
+   + ~first~. There is no default ~last~ because there are some
+     iterations that goes forever. ~Array~ and ~Range~ have a
+     ~last~ method.
+   + ~take~ and ~take_while~
+   + ~drop~ and ~drop_while~
+   + ~min~ and ~max~. Determined by ~<=>~ (spaceship operator).
+   + ~min_by~ and ~max_by~
+   + ~minmax_by~ and ~maxmin_by~
+
+
+** Each relatives
+   + ~reverse_each~
+   + ~with_index~. ~each_with_index~ is somewhat deprecated.
+     With ~with_index~ you can provide an argument that will be
+     used as the first index value.
+   + ~each_slice(n)~ handles each element once. ~each_cons(3)~
+     takes a new grouping at each element.
+   + ~cycle(n)~ to decide how many times you want to cycle through
+     a collection.
+   + ~inject~ similar to reduce and fold in functional languages.
+     #+BEGIN_SRC ruby
+       [1,2,3,4].inject(0) {|acc, n| acc + n}
+     #+END_SRC
+
+     #+RESULTS:
+     : 10
+   + ~map~ also available as ~collect~
+     ~each~ returns its receiver
+     ~map~ returns a new object
