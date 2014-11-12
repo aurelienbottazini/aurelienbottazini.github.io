@@ -40,8 +40,8 @@ $(document).ready(function(){
                                    { duration: 1500, delay: 500 });
     $("#planete-rouge").velocity("transition.slideUpBigIn",
                                  { duration: 1500, delay: 500 });
-    $("#aurelien-sur-la-lune").velocity("transition.bounceLeftIn",
-                                        {duration: 1500, delay: 500});
+    // $("#aurelien-sur-la-lune").velocity("transition.bounceLeftIn",
+    //                                     {duration: 1500, delay: 500});
     $("#planete-rayures").velocity("transition.bounceLeftIn",
                                    {duration: 1500, delay: 500});
     $("#planete-vie").velocity("transition.bounceRightIn",
@@ -90,7 +90,6 @@ $(document).ready(function(){
     });
 
     planete_rouge.mouseenter(function() {
-
         planete_rouge.velocity({scaleX: 1.3, scaleY: 1.3}, {duration: 500});
 
         for(i=0 ;i < circles_number; i++) {

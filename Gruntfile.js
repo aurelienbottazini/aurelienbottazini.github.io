@@ -69,8 +69,8 @@ module.exports = function(grunt) {
                     interrupt: true
                 }
             },
-            html: {
-                files: ['**/*.html', '!_site/**'],
+            anything_but_underscore: {
+                files: ['**/*.html', '**/*.gif', '!_**/*'],
                 tasks: ['exec:jekyll'],
                 options: {
                     spawn: false,
