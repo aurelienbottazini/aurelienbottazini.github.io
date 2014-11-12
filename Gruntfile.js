@@ -50,6 +50,40 @@ module.exports = function(grunt) {
                     'cubex/css/main.css': ['_css/_bower.css', 'cubex/css/main.css']
                 }
             },
+        },
+
+        watch: {
+            scripts: {
+                files: ['_js/*.js'],
+                tasks: ['uglify', 'exec:jekyll'],
+                options: {
+                    spawn: false,
+                    interrupt: true
+                },
+            },
+            css: {
+                files: ['_sass/*.scss'],
+                tasks: ['sass', 'cssmin', 'exec:jekyll'],
+                options: {
+                    spawn: false,
+                    interrupt: true
+                }
+            },
+            html: {
+                files: ['**/*.html', '!_site/**'],
+                tasks: ['exec:jekyll'],
+                options: {
+                    spawn: false,
+                    interrupt: true
+                }
+            }
+        },
+
+        exec: {
+            jekyll: {
+                cmd: 'jekyll build'
+            }
+
         }
     });
     grunt.loadNpmTasks('grunt-bower-concat');
@@ -57,6 +91,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-exec');
 
-    grunt.registerTask('default', ['bower_concat', 'sass', 'cssmin', 'uglify']);
+    grunt.registerTask('default', ['bower_concat', 'sass', 'cssmin', 'uglify', 'exec:jekyll']);
 };

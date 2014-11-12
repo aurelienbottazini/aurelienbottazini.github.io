@@ -3,3 +3,4 @@ _site
 _stuff/*
 *.mov
 node_modules
+npm-debug.log

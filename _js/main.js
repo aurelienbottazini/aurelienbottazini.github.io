@@ -13,7 +13,6 @@ $(document).ready(function(){
     var planete_rouge_about_me_letters_number =
         planete_rouge_about_me_letters.length;
 
-
     var draw_text = function(paths_selector) {
         var paths = $(paths_selector);
         var paths_length = paths.length;

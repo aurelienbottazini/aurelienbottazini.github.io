@@ -1,6 +1,6 @@
 name: Aurélien Bottazini
 highlight: pygments
-exclude: [deploy.sh, originaux, rsyncexclude, doc]
+exclude: [deploy.sh, originaux, rsyncexclude, doc, node_modules, bower_components]
 encoding: utf-8
 markdown: kramdown
 sass:
