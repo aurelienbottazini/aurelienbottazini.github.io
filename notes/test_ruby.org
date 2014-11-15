@@ -1,0 +1,704 @@
+* Bootstrapping your ruby literacy
+** Variables
+
+   | Type     | Ruby Convention | Nonconventional             |
+   |----------+-----------------+-----------------------------|
+   | Local    | ~first_name~    | ~firstName~, ~firstName~      |
+   | Instance | ~@first_name~   | ~@FirstName, @firstname~    |
+   | Class    | ~@@first_name~  | ~@@First_name, @@firstName~ |
+   | Global   | ~$FIRST_NAME~   | ~$first_name, $firstName~   |
+
+   Instance variable are initialized to nil.
+   #+BEGIN_SRC ruby :exports both
+     @var
+   #+END_SRC
+
+   #+RESULTS:
+   : nil
+
+   Local variables are not initialized, not even to nil.
+   #+BEGIN_SRC ruby
+     var
+   #+END_SRC
+
+   #+RESULTS:
+   : undefined local variable or method `var' for main:Object (NameError)
+
+** Installation directories
+
+   ~$ irb -simple-prompt -rrbconfig~
+
+   will launch irb and load rbconfig interface which contains a lot
+   of compiled information about your ruby installation
+
+   Then you can use ~RbConfig::CONFIG~ to get information about your
+   ruby installation.
+
+   Notable directories are
+
+  | Term          | Directory contents                                                      |
+  |---------------+-------------------------------------------------------------------------|
+  | ~rubylibdir~  | Ruby Standard library                                                   |
+  | ~bindir~      | Ruby command line tools                                                 |
+  | ~archdir~     | Architecture-specific extensions and librairies (compiled binary files) |
+  | ~sitedir~     | Your own or third party librairies (in Ruby)                            |
+  | ~vendordir~   | Third-party extensions and librairies (in Ruby)                         |
+  | ~sitelibdir~  | Your own Ruby language extensions  (in Ruby)                            |
+  | ~sitearchdir~ | Your own Ruby language extensions (in C)                                |
+
+** Load and Require
+
+   ~$:~ is the load path global variable. You can add directories to load
+   path. For example =~$: << '.'~=.
+   One major difference between /load/ and /require/ if called more
+   than once with the same arguments is that require doesn’t reload
+   files it’s already loaded.
+
+* Objects, methods and local variables
+  method definitions evaluates to the symbol ~:m~ representing the
+  name of the method that’s just defined.
+
+** ?
+  Use question mark for method names that evaluate to ~true~ or ~false~.
+
+** nil ~= false != true
+   Everything in Ruby has a Boolean value.
+   ~nil~ and ~false~ both have a Boolean value of /false/.
+   Furthermore ~true~, ~nil~ and ~false~ are objects.
+   Note that ~puts~ returns nil.
+
+** Object behavior
+   3 very useful and common functions
+   + ~object_id~
+   + ~respond_to?~
+   + ~send~ (you can use ~__send__~ if you want to
+     make sure you use Ruby’s built in method send)
+
+   #+BEGIN_SRC ruby
+     if object.respond_to?(request)
+       puts ticket.send(request)
+     end
+   #+END_SRC
+
+** Arguments
+
+   ~*~ allows any number of arguments and /sponges/ arguments if
+   placed between other arguments.
+   Use ~=~ to supply a default value for arguments.
+
+  | method signature                        | sample call(s)                | variable assignements                                             |
+  |-----------------------------------------+-------------------------------+-------------------------------------------------------------------|
+  | ~def m(*a)~                             | ~m(1,2,3)~                    | ~a = [1,2,3]~                                                     |
+  | ~def m(a, b=1)~                         | ~m(2)~                        | ~a = 2, b = 1~                                                    |
+  |                                         | ~m(2,3)~                      | ~a = 2, b = 3~                                                    |
+  | ~def m(a, b = 2, *c, d)~                | ~m(1, 3)~                     | ~a = 1, b = 2, c = [], d = 3~                                     |
+  |                                         | ~m(1, 3, 5, 7)~               | ~a = 1, b = 3, c = [5], d = 7~                                    |
+  |                                         | ~m(1, 3, 5, 7, 9)~            | ~a = 1, b = 3, c = [5, 7], d = 9~                                 |
+  | ~def m(a:, b:)~                         | ~m(a:1, b:2)~                 | ~a = 1, b = 2~                                                    |
+  | ~def m(a: 1, b: 2)~                     | ~m~                           | ~a = 1, b = 2~                                                    |
+  |                                         | ~m(3, 4)~                     | ~a = 3, b = 4~                                                    |
+  | ~def m(x, y, *z, a:1, b:, **c, &block)~ | ~m(1,2,3,4,5,b:10,p:20,q:30)~ | ~x = 1, y= 2, z=[3,4,5], a = 1, b = 10, c = {:p => 20, :q => 30}~ |
+  | c here absorbs unknown named arguments  |                               |                                                                   |
+
+  When using ~Hashes~ as arguments. If it is the last argument you
+  can write it without curly braces
+
+  #+BEGIN_SRC ruby
+    add_to_database('Lille', country: 'France', postal_code: 62000)
+  #+END_SRC
+
+  If it is the first argument you must use parentheses (or ruby
+  will think it is a block) and curly braces
+
+  #+BEGIN_SRC ruby
+    add_to_database({country => 'France', postal_code => 62000}, 'Lille')
+  #+END_SRC
+
+** Immediate values
+
+   Some objects like /Integers/, /symbols/ and ~true~, ~false~,
+   ~nil~ are stored in variables as immediate value. The variable
+   holds the value itself rather than a reference to it.
+
+   It follows that there is only one object ~1~, only one ~true~.
+   And that's why there is no ~++~ operator in ruby. Because ~1++~
+   means you'd be changing the number 1 to 2 and that makes no
+   sense.
+
+** Freeze, Dup and Clone
+   You can freeze an object ruby to prevent and object from
+   undergoing further changes.
+
+   ~dup~ duplicates an object. ~clone~ duplicate an object and if
+   the cloned object was frozen, the clone is also frozen.
+
+* Organizing objects with classes
+  Everything you handle in Ruby is either an object or a construct
+  that evaluates to an object.
+  Every object is an instance of some class.
+
+  Class definitions evaluates to the last expression contained
+  inside it, or ~nil~ if the block is empty.
+
+** initialize
+   Arguments used with ~new~ are automatically sent to ~initialize~.
+** % sign technique
+   Allows to use sprintf-like syntax. Run ri sprintf for full documentation.
+   #+BEGIN_SRC ruby
+     price = 2.84839849
+     p "#{"%.2f" % price}"
+   #+END_SRC
+
+   #+RESULTS:
+   : 2.85
+
+** assignment-like methods
+
+  #+BEGIN_SRC ruby
+    ticket.price=(63.00)
+    ticket.price = 63.00
+  #+END_SRC
+
+   The second version is syntactic sugar for the first one. It is
+   important to understand and remember. ~=~ is a method (like
+   other operators) and can be overloaded.
+
+** setter methods
+   They behave like assignment. They return the value of the
+   expression rather than the last expression evaluated during
+   execution (for example when your assignement methods returns a
+   string "Hah ha!")
+
+  #+BEGIN_SRC ruby
+    class Ticket
+      def price=(price)
+        @price = price
+        return 'ahah'
+      end
+
+    end
+
+    if (Ticket.new.price = 65) == 65 # true
+      puts 'my return value is 65' #gets printed
+    end
+  #+END_SRC
+
+** attributes
+
+  | method name     | effect                                             | example                | equivalent code   |
+  | ~attr_reader~   | creates a read method                              | ~attr_reader :venue~   | def venue         |
+  |                 |                                                    |                        | @venue            |
+  |                 |                                                    |                        | end               |
+  | ~attr_writer~   | creates a writer method                            | ~attr_writer :price~   | def price=(price) |
+  |                 |                                                    |                        | @price = price    |
+  |                 |                                                    |                        | end               |
+  | ~attr_accessor~ | creates reader and writer method                   | ~attr_accessor :price~ |                   |
+  | ~attr~          | creates a reader method                            | ~attr :venue~          |                   |
+  |                 | and a writer method if the second argument is true | ~attr :price, true~    |                   |
+
+   Those family methods are defined in /Module/
+
+** Subclass
+
+   ~<~ designates a subclass.
+
+  #+BEGIN_SRC ruby
+    class Publication
+    end
+
+    class Magazine < Publication
+    end
+
+  #+END_SRC
+
+** Superclass & Modules
+   A Ruby /class/ can have only one /superclass/ (/single
+   inheritance/).
+   Ruby provides modules that you can /mix in/ your class's family
+   tree to provide as many methods for your objects as you need.
+
+** ~BasicObject~, ~Object~ & ~Kernel~
+
+   ~BasicObject~ comes before ~Object~ in the ruby family tree.
+   ~BasicObject~ offers a blank state object. an object with
+   almost no methods. At the time of writing (Ruby 2.1),
+   ~BasicObject~ has 7 instance methods and ~Object~
+   about 55.
+
+   ~Kernel~ module contains the majority of the methods common to
+   all objects
+
+   ~BasicObject~, ~Object~ & ~Kernel~ are written in C. Here is a
+   Ruby mockup of their relationship
+
+  #+BEGIN_SRC ruby
+    class BasicObject
+      # 7 methods
+    end
+    module Kernel
+      # over 100 method definitions
+    end
+    class Object < BasicObject
+      include Kernel
+    end
+  #+END_SRC
+
+** Methods & Constant notation
+
+   + ~Ticket#price~: instance method ~price~ in the /class/
+     ~Ticket~
+   + ~Ticket.most_expensive~: /class/ method ~most_expensive~ in
+     the class Ticket
+   + ~Ticket::most_expensive~: /class/ method ~most_expensive~ in
+     the class Ticket
+   + ~Ticket::VENUES~: constant ~VENUES~ in class ~Ticket~
+
+**  Constants
+
+    It is possible to perform an assingment on a constant you
+    already assigned.
+
+  #+BEGIN_SRC ruby
+    A = 1
+    A = 2
+  #+END_SRC
+
+    You will get a warning
+
+  #+BEGIN_SRC ruby
+    venues = Ticket::VENUES
+    venues << 'High School Gym'
+  #+END_SRC
+
+    no warning because there is no redefinition of a constant. We
+    are modifying an array and array has no knowleged it has been
+    assigned to a constant.
+
+** ~inspect~
+   You can override it and have useful info about your custom class.
+
+* Modules and program organization
+
+  Modules don't have instances. It follows that entities or things
+  are best modeled in classes and characteristics or properties
+  are best encapsulated in modules.
+
+  The /class/ of ~Class~ and ~Module~ is /class/. The /superclass/ of
+  ~Class~ is ~Module~. The /superclass/ of ~Module~ is object.
+
+  modules get /mixed in/ to classes using ~include~ or ~prepend~.
+  A /mixed in/ module is referred as a /mix in/.
+
+#+BEGIN_SRC ruby
+  class ModuleTester
+    include MyFirstModule
+  end
+#+END_SRC
+
+  The main difference between inheriting from a /class/ and
+  /modules/ is that you can /mix in/ more that one module
+
+** Class and Module naming
+
+  It is common to have /class/’s name as noun and /module/’s as an adjective
+
+  #+BEGIN_SRC ruby
+    class Stack
+      include Stacklike
+    end
+  #+END_SRC
+
+** ~method_missing~
+
+  Get called as a last resort for unmatched messages. You can
+  override ~method_missing~
+
+  A good example of a ~method_missing~ override:
+
+  #+BEGIN_SRC ruby
+    class Person
+      def self.method_missing(m, *args)
+        method = m.to_s
+        if method.start_with?('all_with_')
+          # Handle request here"
+        else
+          super
+        end
+      end
+    end
+  #+END_SRC
+
+** including a module several times
+
+   Re-including a /module/ does not do anything as the modle is
+   already in the search path. In the following example, if /N/ and
+   /M/ have some methods with the same name, the method defined in
+   /N/ will be called.
+
+  #+BEGIN_SRC ruby
+    class C
+      include M
+      include N
+      include M
+    end
+  #+END_SRC
+
+** ~prepend~
+
+   ~prepend~ appeared with Ruby 2. The difference between
+   ~include~ and ~prepend~ is that when you ~prepend a module~,
+   the object looks in the module first instead of looking in the
+   class.
+
+** method look-up summary
+
+   To look for a method, an object looks in:
+
+   1. Modules pre-pended
+   2. singleton class
+   3. It’s class
+   4. Modules in it class
+   5. Modules prepended to its superclass
+   6. It’s class superclass
+   7. Modules included in its superclass
+   8. and so on up to ~BasicObject~
+
+   A method defined as a singleton method of a class object can
+   also be called on sub-classes of that class. The singleton
+   class is considered the ancestor of the singleton class of
+   sub-classes.
+
+** ~super~
+
+   + Called with no arguments, ~super~ automatically forwards
+     arguments passed to the method from which it’s called.
+   + with an empty argument list ~super()~ sends no
+     argument.
+   + called with specific arguments ~super(a, b, c)~ sends those
+     arguments.
+
+** Nesting modules and classes
+
+  #+BEGIN_SRC ruby
+    module Tools
+      class Hammer
+      end
+    end
+  #+END_SRC
+
+   Used to separate namespaces for classes, modules and methods.
+   However if you see a construct like ~Tools::Hammer~ you can't
+   say from that construct if ~Hammer~ is a class or a module. You
+   know it through the documentation or because you wrote the
+   code. The notation in itself does not tell you everything.
+
+* The default Object (self), scope & visibility
+
+  | Context              | Example                          | Which object is self?               |
+  |----------------------+----------------------------------+-------------------------------------|
+  | Top level of program | Any code                         | ~main~                              |
+  | Class definition     | class C                          | class object C                      |
+  |                      | self                             |                                     |
+  | Module definition    | module M                         | module object M                     |
+  |                      | self                             |                                     |
+  | Method definitions   | 1. Top level                     | whatever object is self             |
+  |                      | def method_name                   | when the method is called           |
+  |                      | self                             |                                     |
+  |                      | 2. class instance-method         | An instance of C                    |
+  |                      | class C                          |                                     |
+  |                      | def method_name                   |                                     |
+  |                      | self                             |                                     |
+  |                      | 3. module instance-method        | - Individual oject extented by M    |
+  |                      | module M                         | - Instance of class that mixes in M |
+  |                      | def method_name                   |                                     |
+  |                      | self                             |                                     |
+  |                      | 4. Singleton method on an object | Obj                                 |
+  |                      | def obj.method_name               |                                     |
+  |                      | self                             |                                     |
+
+
+**  Don't hard code class names.
+    It is bad in case you want to rename  your class. Instead use self
+
+  #+BEGIN_SRC ruby
+    class C
+      def C.y # bad
+      end
+
+      def self.x # good
+      end
+    end
+  #+END_SRC
+
+** instance variables
+   every instance variable belongs to whatever object is the
+   current object (/self) at that point.
+
+    #+BEGIN_SRC ruby
+      class C
+        p self
+        @v = "top level instance variable "
+        p @v
+
+        def show_v
+          p self
+          p @v
+        end
+      end
+
+      c = C.new
+      c.show_v
+    #+END_SRC
+
+   will return
+
+    #+BEGIN_EXAMPLE
+    C
+    "top level instance variable"
+    #<C:0x007fe37388d9d0>
+    nil
+    #+END_EXAMPLE
+
+   The two variables ~@v~ are different
+
+
+** built-in classes
+   You can create you own /string/ class
+
+    #+BEGIN_SRC ruby
+      class MyClass
+        class String
+
+        end
+        def initialize
+          String.new
+      end
+    #+END_SRC
+
+   Here the ~String~ used will be the new one defined in
+   ~MyClass~. To use the build in Ruby ~String~ you can use ~::String.new~.
+   ~::~ in front of a constant means “start the search for this at
+   the top level”
+
+** class variables (@@)
+
+   class variables are class-hierarchy scoped.
+
+   #+BEGIN_SRC ruby
+     class Parent
+       @@value = 100
+     end
+
+     class Child < Parent
+       @@value = 200
+     end
+
+     class Parent
+       puts @@value
+     end
+   #+END_SRC
+
+   Here 200 will get printed
+
+
+** public, private, protected
+   you either do
+   ~private :first_method, :second_method, :third_method~. To make
+   those three methods private. Or Use ~private~ as a switch
+   without arguments then ll methods below ~private~ in your class
+   will be private.
+
+*** private setter methods
+    you can omit ~self~ when defining private access. It won't
+    clash with an ipothetic class variable. Ruby is smart enough
+    to understand what you mean.
+
+    #+BEGIN_SRC ruby
+      class Dog
+        attr_reader :age, :dog_years
+        def dog_years=(years)
+          @dog_years = years
+        end
+        def age=(years)
+          @age = years
+          self.dog_years = years * 7 # = @dog_years = years * 7
+        end
+        private :dog_years=
+      end
+
+      luigi = Dog.new
+      luigi.age = 10
+    #+END_SRC
+
+** top level method
+
+#+BEGIN_SRC ruby
+  def talk
+    puts 'hello'
+  end
+#+END_SRC
+
+   is equivalent to
+
+#+BEGIN_SRC ruby
+  class Object
+    private
+    def talk
+      puts 'hello'
+    end
+  end
+#+END_SRC
+* Control-flow techniques
+** if
+
+#+BEGIN_SRC ruby
+  if x > 10
+    puts x
+  end
+
+  if x > 10 then puts x end
+
+  if x > 10; puts x; end
+
+  puts x if x > 10
+#+END_SRC
+
+   If an ~if~ statement does not suceed it returns ~nil~
+   It it succeeds the entite statement evaluates to whatever is
+   represented by the code in the successful branch.
+
+** unless
+   same as ~if not~ or ~if!~
+
+** case
+   At most one match will succeed and have its code executed.
+   You can put more than one possible match in a single ~when~
+
+#+BEGIN_SRC ruby
+  case answer
+  when 'y', 'yes'
+    puts 'affirmative!'
+  when 'n', 'no'
+    puts 'negative!'
+  else
+    puts 'not sure'
+  end
+#+END_SRC
+
+** /===/
+   For ~String~ and any object that does not ovveride it, ~===~
+   works the same as ~==~. Every class can define its own ~===~
+   method. It is used in /case when/ equality logic.
+
+** loop
+
+   loop is an iterator. In Ruby an iterator is a method that
+   expects you to provide a code block.
+
+#+BEGIN_SRC ruby
+  loop { puts 'looping forever' }
+
+  n = 1
+  loop do
+    n += 1
+    next unless n == 10
+    break
+  end
+#+END_SRC
+
+   Here is how we can write loop
+
+#+BEGIN_SRC ruby
+  def my_loop
+    yield while true
+  end
+#+END_SRC
+
+** while and until modifiers
+
+#+BEGIN_SRC ruby
+  n += 1 until n == 10
+  n += 1 while n < 10
+#+END_SRC
+
+** for
+
+#+BEGIN_SRC ruby
+  numbers = [0, 10, 20, 30, 40, 50]
+  for n in numbers
+    puts n
+  end
+#+END_SRC
+
+** curly braces vs do/end code block
+
+   The difference between the two is a difference in precedence
+
+#+BEGIN_SRC ruby
+  puts [1, 2, 3].map { |n| n * 10 }
+  # is like
+  puts ([1, 2, 3].map { |n| n * 10 })
+#+END_SRC
+   will ouput 10, 20 , 30
+
+#+BEGIN_SRC ruby
+  puts [1, 2, 3].map do |n| n * 10 end
+  # is like
+  puts ([1, 2, 3].map) do |n| n * 10 end
+  # is like
+  puts [1, 2, 3].map
+#+END_SRC
+   will output an enumerator
+
+** each and map
+
+   - ~each~ returns its receiver
+   - ~map~ returns a new array
+
+
+**  Block parameters and scope
+
+    If you have a variable of a given name in scope and also use
+    that name as one of your block parameters, then the two
+    variables are not the same as each other.
+    You can use this to your advantage to make sure a temporary
+    variable inside a block does not reuse a variable from outside
+    the block
+
+#+BEGIN_SRC ruby
+  x = "original x"
+  3.times do |i;x|
+    x = i
+  end
+  x
+#+END_SRC
+
+#+RESULTS:
+: original x
+
+    ~;~ indicates the block needs its own x.
+
+** rescue
+
+#+BEGIN_SRC ruby
+  begin
+    #some code
+  rescue ArgumentError => e
+  #rescue code
+    puts e.backtrace
+    puts e.message
+  ensure
+    #make sure this runs
+  end
+#+END_SRC
+
+   if you put rescue at the end of a method you don't need to say
+   begin explicitely. Recue will govern the entire method block
+
+#+BEGIN_SRC ruby
+  def method_name
+    puts 'hello'
+    rescue
+    puts 'rescued'
+  end
+#+END_SRC

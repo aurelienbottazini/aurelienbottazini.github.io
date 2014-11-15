@@ -70,7 +70,7 @@ module.exports = function(grunt) {
                 }
             },
             anything_but_underscore: {
-                files: ['**/*.html', '**/*.gif', '!_**/*'],
+                files: ['**/*.html', '**/*.[gif|svg|jpg]', '!_*/**'],
                 tasks: ['exec:jekyll'],
                 options: {
                     spawn: false,
