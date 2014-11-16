@@ -1110,12 +1110,10 @@ string
     end
   end
 
-  puts 'hello' ^ 'secret key'
   puts 'hello' ^ 'secret key' ^ 'secret key'
 #+END_SRC
 
 #+RESULTS:
-:  
 : hello
 
    Here ~pack("C*")~ turns an array into a string. The ~C*~
