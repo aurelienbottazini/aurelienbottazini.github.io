@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>ruby</title>
-<!-- 2014-11-16 Sun 11:24 -->
+<!-- 2014-11-16 Sun 12:04 -->
 <meta  charset="utf-8">
 <meta  name="generator" content="Org-mode">
 <meta  name="author" content="Aurélien Bottazini">
@@ -441,7 +441,7 @@ for the JavaScript code in this tag.
 <li><a href="#sec-14-7">14.7. <code>open</code> and <code>open3</code></a></li>
 </ul>
 </li>
-<li><a href="#sec-15">15. Callbacks, hooks and runtime introspection</a>
+<li><a href="#sec-15">15. Callbacks, hooks and run-time introspection</a>
 <ul>
 <li><a href="#sec-15-1">15.1. <code>method_missing</code></a></li>
 <li><a href="#sec-15-2">15.2. prepend and include</a></li>
@@ -498,7 +498,7 @@ US-ASCII
 <tr>
 <th scope="col" class="left">Type</th>
 <th scope="col" class="left">Ruby Convention</th>
-<th scope="col" class="left">Nonconventional</th>
+<th scope="col" class="left">Non-conventional</th>
 </tr>
 </thead>
 <tbody>
@@ -601,17 +601,17 @@ Notable directories are
 
 <tr>
 <td class="left"><code>archdir</code></td>
-<td class="left">Architecture-specific extensions and librairies (compiled binary files)</td>
+<td class="left">Architecture-specific extensions and libraries (compiled binary files)</td>
 </tr>
 
 <tr>
 <td class="left"><code>sitedir</code></td>
-<td class="left">Your own or third party librairies (in Ruby)</td>
+<td class="left">Your own or third party libraries (in Ruby)</td>
 </tr>
 
 <tr>
 <td class="left"><code>vendordir</code></td>
-<td class="left">Third-party extensions and librairies (in Ruby)</td>
+<td class="left">Third-party extensions and libraries (in Ruby)</td>
 </tr>
 
 <tr>
@@ -721,7 +721,7 @@ Use <code>=</code> to supply a default value for arguments.
 <tr>
 <th scope="col" class="left">method signature</th>
 <th scope="col" class="left">sample call(s)</th>
-<th scope="col" class="left">variable assignements</th>
+<th scope="col" class="left">variable assignments</th>
 </tr>
 </thead>
 <tbody>
@@ -913,7 +913,7 @@ other operators) and can be overloaded.
 <p>
 They behave like assignment. They return the value of the
 expression rather than the last expression evaluated during
-execution (for example when your assignement methods returns a
+execution (for example when your assignment methods returns a
 string "Hah ha!")
 </p>
 
@@ -1078,7 +1078,7 @@ all objects
 
 <p>
 <code>BasicObject</code>, <code>Object</code> &amp; <code>Kernel</code> are written in C. Here is a
-Ruby mockup of their relationship
+Ruby mock-up of their relationship
 </p>
 
 <div class="org-src-container">
@@ -1120,7 +1120,7 @@ the class Ticket
 <h3 id="sec-3-10"><span class="section-number-3">3.10</span> Constants</h3>
 <div class="outline-text-3" id="text-3-10">
 <p>
-It is possible to perform an assingment on a constant you
+It is possible to perform an assignment on a constant you
 already assigned.
 </p>
 
@@ -1144,7 +1144,7 @@ venues &lt;&lt; <span style="color: #8b2252;">'High School Gym'</span>
 
 <p>
 no warning because there is no redefinition of a constant. We
-are modifying an array and array has no knowleged it has been
+are modifying an array and array has no knowledge it has been
 assigned to a constant.
 </p>
 </div>
@@ -1243,7 +1243,7 @@ A good example of a <code>method_missing</code> override:
 <h3 id="sec-4-3"><span class="section-number-3">4.3</span> including a module several times</h3>
 <div class="outline-text-3" id="text-4-3">
 <p>
-Re-including a <i>module</i> does not do anything as the modle is
+Re-including a <i>module</i> does not do anything as the module is
 already in the search path. In the following example, if <i>N</i> and
 <i>M</i> have some methods with the same name, the method defined in
 <i>N</i> will be called.
@@ -1289,7 +1289,7 @@ To look for a method, an object looks in:
 </li>
 <li>Modules in it class
 </li>
-<li>Modules prepended to its superclass
+<li>Modules pre-pended to its superclass
 </li>
 <li>It's class superclass
 </li>
@@ -1338,7 +1338,7 @@ arguments.
 </div>
 
 <p>
-Used to separate namespaces for classes, modules and methods.
+Used to separate name-spaces for classes, modules and methods.
 However if you see a construct like <code>Tools::Hammer</code> you can't
 say from that construct if <code>Hammer</code> is a class or a module. You
 know it through the documentation or because you wrote the
@@ -1444,7 +1444,7 @@ code. The notation in itself does not tell you everything.
 <tr>
 <td class="left">&#xa0;</td>
 <td class="left">3. module instance-method</td>
-<td class="left">- Individual oject extented by M</td>
+<td class="left">- Individual object extended by M</td>
 </tr>
 
 <tr>
@@ -1627,7 +1627,7 @@ will be private.
 <div class="outline-text-4" id="text-5-5-1">
 <p>
 you can omit <code>self</code> when defining private access. It won't
-clash with an ipothetic class variable. Ruby is smart enough
+clash with an hypothetic class variable. Ruby is smart enough
 to understand what you mean.
 </p>
 
@@ -1702,8 +1702,8 @@ is equivalent to
 </div>
 
 <p>
-If an <code>if</code> statement does not suceed it returns <code>nil</code>
-It it succeeds the entite statement evaluates to whatever is
+If an <code>if</code> statement does not succeed it returns <code>nil</code>
+It it succeeds the entire statement evaluates to whatever is
 represented by the code in the successful branch.
 </p>
 </div>
@@ -1745,7 +1745,7 @@ You can put more than one possible match in a single <code>when</code>
 <h3 id="sec-6-4"><span class="section-number-3">6.4</span> <i><code>=</code></i></h3>
 <div class="outline-text-3" id="text-6-4">
 <p>
-For <code>String</code> and any object that does not ovveride it, <code>===</code>
+For <code>String</code> and any object that does not override it, <code>===</code>
 works the same as <code>==</code>. Every class can define its own <code>===</code>
 method. It is used in <i>case when</i> equality logic.
 </p>
@@ -1832,7 +1832,7 @@ The difference between the two is a difference in precedence
 </pre>
 </div>
 <p>
-will ouput 10, 20 , 30
+will output 10, 20 , 30
 </p>
 
 <div class="org-src-container">
@@ -1910,7 +1910,7 @@ x
 
 <p>
 if you put rescue at the end of a method you don't need to say
-begin explicitely. Recue will govern the entire method block
+begin explicitly. Rescue will govern the entire method block
 </p>
 
 <div class="org-src-container">
@@ -1933,7 +1933,7 @@ begin explicitely. Recue will govern the entire method block
 <h3 id="sec-7-1"><span class="section-number-3">7.1</span> Literal constructors</h3>
 <div class="outline-text-3" id="text-7-1">
 <p>
-Special notatoin instead of a call to <code>new</code> to create a new
+Special notation instead of a call to <code>new</code> to create a new
 object of that class.
 </p>
 
@@ -2098,8 +2098,8 @@ You can customize <code>!</code> which also gives you <code>not</code>
 <div class="outline-text-3" id="text-7-4">
 <p>
 When you have a ! at the end of a method name. It usually means
-this methods permanently modifies its reveiver. But It is not
-always the case. Expecially when ! methods don't have nonbang
+this methods permanently modifies its receiver. But It is not
+always the case. Especially when ! methods don't have non-bang
 equivalent.
 Ex: <code>String.clear</code>. No ! but it changes the receiver.
 </p>
@@ -2120,7 +2120,7 @@ It can mean something else.
 <ul class="org-ul">
 <li><code>to_s</code>
 used by certain methods like <code>puts</code> and string interpolation. If you write your
-own <code>to_s</code> ofr a class you can take advantage of it.
+own <code>to_s</code> for a class you can take advantage of it.
 </li>
 <li><code>to_a</code> and <code>*</code>
      The <code>*</code> turns any array into the equivalent of a bare list
@@ -2162,7 +2162,7 @@ by ruby for <i>String#+</i> and <i>String#&lt;&lt;</i>
 if you define <code>==</code>, you automatically define <code>!=</code> for your
 object.
 <code>==</code> and <code>eql?</code> are usually redefined to do meaningful work.
-<code>equal?</code> is usually left alone to check wether two objects are
+<code>equal?</code> is usually left alone to check whether two objects are
 exactly the same object.
 </p>
 </div>
@@ -2176,7 +2176,7 @@ suite:
 </p>
 
 <ul class="org-ul">
-<li>mixin <code>Comparable</code>
+<li>mix-in <code>Comparable</code>
 </li>
 <li>Define <code>&lt;=&gt;</code> (spaceship operator) for your class
 <code>&lt;=&gt;</code> can return -1 (less than), 0 (equal) and 1 (greater
@@ -2409,7 +2409,7 @@ l
 </pre>
 
 <ul class="org-ul">
-<li>You can ask for a substring
+<li>You can ask for a sub-string
 </li>
 </ul>
 <div class="org-src-container">
@@ -2450,7 +2450,7 @@ is coo
 </pre>
 
 <ul class="org-ul">
-<li>You can use substring search
+<li>You can use sub-string search
 </li>
 </ul>
 <div class="org-src-container">
@@ -2523,7 +2523,7 @@ character. Sometimes due to encoding the number of bytes is
 greater than the number of code points.
 </li>
 <li><code>each_line</code> and <code>lines</code>
-The string is split at each occurence of <code>$/</code>. Which is the
+The string is split at each occurrence of <code>$/</code>. Which is the
 end of lines by default.
 </li>
 </ul>
@@ -2588,7 +2588,7 @@ second char parameter.
 <li><code>String#center(5)</code>. Same as <i>rjust</i> and <i>ljust</i> for parameters
 </li>
 <li><code>String#strip</code>, <code>String#lstrip</code> &amp; <code>String#rstrip</code> removes
-whitespaces
+white-spaces
 </li>
 <li><code>String#chop</code> to remove a character at the end of the string
 </li>
@@ -2648,7 +2648,7 @@ You can use a magic comment at the top of the file <code># encoding:
 
 <p>
 You can encode a string in a different encoding as long as the
-conversion is permitted. This is called transcoding.
+conversion is permitted. This is called trans-coding.
 <code>String.encode('US-ASCII')</code>. The bang version changes the
 encoding of the string permanently.
 </p>
@@ -3254,9 +3254,9 @@ Hashes are now ordered collections.
 
 <p>
 You can use <code>(key, value)</code> in blocks to get the hash element
-array distributed accross two parameters.
+array distributed across two parameters.
 Key values are unique
-Hash provides quick lookup in better than linear time
+Hash provides quick look-up in better than linear time
 </p>
 
 <div class="org-src-container">
@@ -3384,7 +3384,7 @@ an empty <code>Array</code> or <code>nil</code> it returns an empty hash <code>{
 
 <tr>
 <td class="left"><code>h1.update(h2)</code> or <code>h1.merge!(h2)</code></td>
-<td class="left">h1 keys are overwritted with corresponding h2 keys</td>
+<td class="left">h1 keys are overwritten with corresponding h2 keys</td>
 </tr>
 
 <tr>
@@ -3399,12 +3399,12 @@ an empty <code>Array</code> or <code>nil</code> it returns an empty hash <code>{
 
 <tr>
 <td class="left"><code>h.select {\vert{}k,v\vert k &gt; 1}</code></td>
-<td class="left">creates a subhash by selection</td>
+<td class="left">creates a sub-hash by selection</td>
 </tr>
 
 <tr>
 <td class="left"><code>h.reject {\vert{}k,v\vert k &gt; 1}</code></td>
-<td class="left">creates a subhash by rejection</td>
+<td class="left">creates a sub-hash by rejection</td>
 </tr>
 
 <tr>
@@ -3633,7 +3633,7 @@ You can test for <code>subset?</code> and <code>superset?</code>.
 <h2 id="sec-10"><span class="section-number-2">10</span> Collections Central: Enumerable and Enumerator</h2>
 <div class="outline-text-2" id="text-10">
 <p>
-You can mixin in <code>Enumerable</code> and define an <code>each</code> instance
+You can mix-in in <code>Enumerable</code> and define an <code>each</code> instance
 method. You will be able to call any instance method defined in
 <code>Enumerable</code>.
 <code>each</code> job is to <i>yield</i> items.
@@ -4132,7 +4132,7 @@ is matched otherwise matches <code>c</code>.
 <p>
 Regexp modifiers. <code>/abc/i</code> here the <code>i</code> means case insensitive.
 <code>m</code> is for multiline (normally <code>.</code> does not match over lines).
-<code>x</code> ignores whitespaces unless escaped. It lets you add comments
+<code>x</code> ignores white-spaces unless escaped. It lets you add comments
 in your regular expressions
 </p>
 
@@ -4147,7 +4147,7 @@ in your regular expressions
 
 <p>
 You can perform string interpolation inside a regexp. You can
-escape special regex characters inside a string with
+escape special reg-ex characters inside a string with
 <code>Regex.escape</code>.
 </p>
 
@@ -4158,7 +4158,7 @@ escape special regex characters inside a string with
 </div>
 
 <p>
-will print <code>(?-mix:abc)</code> which mins <code>m</code>, <code>x</code> and <code>i</code> modifiers
+will print <code>(?-mix:abc)</code> which means <code>m</code>, <code>x</code> and <code>i</code> modifiers
 are turned off for regular expression <code>/abc/</code>.
 </p>
 </div>
@@ -4263,7 +4263,7 @@ each.
 
 <p>
 You can get keyboard input with <code>gets</code> and <code>getc</code>. With <code>getc</code>
-you need to name your input stream explicitely.
+you need to name your input stream explicitly.
 </p>
 
 <p>
@@ -4382,7 +4382,7 @@ standard C library.
 </p>
 
 <p>
-<code>Kernerl</code> has a <code>test</code> method. It can test for files and
+<code>Kernel</code> has a <code>test</code> method. It can test for files and
 directories.
 </p>
 
@@ -4409,7 +4409,7 @@ With the <code>Dir</code> class.
 <ul class="org-ul">
 <li><code>Dir.entries</code>
 </li>
-<li>Globbing with <code>Dir[]</code> or <code>Dir.glob</code>. With <code>glob</code> you can give
+<li>Globing with <code>Dir[]</code> or <code>Dir.glob</code>. With <code>glob</code> you can give
 flag arguments like <code>File::FNM_CASEFOLD</code>, <code>File::FNM_DOTMATCH</code>
 </li>
 <li><code>mkdir</code>, <code>chdir</code>, <code>rmdir</code>
@@ -4623,7 +4623,7 @@ c = <span style="color: #228b22;">C</span>.new
 </div>
 
 <pre class="example">
-[#&lt;Class:#&lt;C:0x007fce231c6418&gt;&gt;, M, C, Object, Kernel, BasicObject]
+[#&lt;Class:#&lt;C:0x007fe3da0d63d8&gt;&gt;, M, C, Object, Kernel, BasicObject]
 </pre>
 
 <p>
@@ -4638,7 +4638,7 @@ You can refer to the singleton class of an object with the
 </div>
 
 <pre class="example">
-#&lt;Class:#&lt;String:0x007fb04b9c6dc0&gt;&gt;
+#&lt;Class:#&lt;String:0x007f7fc28aae28&gt;&gt;
 String
 Comparable
 Object
@@ -5059,7 +5059,7 @@ of arguments.
 </div>
 
 <pre class="example">
-#&lt;Proc:0x007fcbdb9c5d98@-:3 (lambda)&gt;
+#&lt;Proc:0x007fd2dc869d48@-:3 (lambda)&gt;
 </pre>
 
 <p>
@@ -5161,7 +5161,7 @@ argument it can pass as an argument to the code block
 </p>
 
 <p>
-You can use <code>instance_eval</code> to allow simplified assignement
+You can use <code>instance_eval</code> to allow simplified assignment
 </p>
 
 <p>
@@ -5391,7 +5391,7 @@ last hi
 <h3 id="sec-14-6"><span class="section-number-3">14.6</span> system commands</h3>
 <div class="outline-text-3" id="text-14-6">
 <p>
-With backticks <code>``</code> (returns the output and string interpolation) or <code>system</code>.
+With back-ticks <code>``</code> (returns the output and string interpolation) or <code>system</code>.
 </p>
 
 <p>
@@ -5401,7 +5401,7 @@ status and it is thread-local
 </p>
 
 <p>
-A call to nonexistent system method with backticks raise a fatal error.
+A call to nonexistent system method with back-ticks raise a fatal error.
 You can also use <code>%x{}</code>. It returns the output and allow string
 interpolation.
 </p>
@@ -5439,7 +5439,7 @@ stdout.gets
 </div>
 
 <div id="outline-container-sec-15" class="outline-2">
-<h2 id="sec-15"><span class="section-number-2">15</span> Callbacks, hooks and runtime introspection</h2>
+<h2 id="sec-15"><span class="section-number-2">15</span> Callbacks, hooks and run-time introspection</h2>
 <div class="outline-text-2" id="text-15">
 <p>
 <i>callbacks</i> and <i>hooks are used for meta-programming. They
@@ -5689,8 +5689,8 @@ value of the last expression evaluated by irb.
 </li>
 <li><code>instance_variables</code> list instance variables
 </li>
-<li><code>called</code> provides an array of strings representing the
-stacktrace
+<li><code>caller</code> provides an array of strings representing the
+stack-trace
 
 <div class="org-src-container">
 
@@ -5712,7 +5712,7 @@ z
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Aurélien Bottazini</p>
-<p class="date">Created: 2014-11-16 Sun 11:24</p>
+<p class="date">Created: 2014-11-16 Sun 12:04</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
