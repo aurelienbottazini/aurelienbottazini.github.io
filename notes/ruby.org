@@ -1547,7 +1547,6 @@ output
   ~Enumerable~.
   ~each~ job is to /yield/ items.
 
-TODO find does not work
   #+BEGIN_SRC ruby :exports both :results output
     class BlueColors
       include Enumerable
@@ -1561,7 +1560,7 @@ TODO find does not work
 
     BlueColors.new.each { |c| puts c }
 
-#    BlueColors.find { |c| c.start_with?('B') }
+    puts BlueColors.new.find { |c| c.start_with?('B') }
 
   #+END_SRC
 
@@ -1569,6 +1568,7 @@ TODO find does not work
   : Light Blue
   : Blue
   : Dark Blue
+  : Blue
 
 ** Enumerable
 ***  Queries:
@@ -2440,7 +2440,6 @@ TODO find does not work
 
     You can use ~instance_eval~ to allow simplified assignment
 
-TODO does not work
     #+BEGIN_SRC ruby :exports both :results output
       class Person
         def initialize(&block)
@@ -2448,7 +2447,7 @@ TODO does not work
         end
 
         def name(name=nil)
-          @name ||= nil
+          @name ||= name
         end
 
         def age(age=nil)
@@ -2461,11 +2460,11 @@ TODO does not work
         age 55
       end
 
-      puts p.name
+      puts p.inspect
     #+END_SRC
 
     #+RESULTS:
-    :
+    : #<Person:0x007fb0f48b12d8 @name="David", @age=55>
 
 *** ~class_eval~
 

@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>ruby</title>
-<!-- 2014-11-16 Sun 12:09 -->
+<!-- 2014-11-16 Sun 12:35 -->
 <meta  charset="utf-8">
 <meta  name="generator" content="Org-mode">
 <meta  name="author" content="Aurélien Bottazini">
@@ -3637,24 +3637,21 @@ method. You will be able to call any instance method defined in
 <code>each</code> job is to <i>yield</i> items.
 </p>
 
-<p>
-TODO find does not work
-</p>
 <div class="org-src-container">
 
-<pre class="src src-ruby">    <span style="color: #a020f0;">class</span> <span style="color: #228b22;">BlueColors</span>
-      <span style="color: #483d8b;">include</span> <span style="color: #228b22;">Enumerable</span>
+<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">BlueColors</span>
+  <span style="color: #483d8b;">include</span> <span style="color: #228b22;">Enumerable</span>
 
-      <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">each</span>
-        <span style="color: #a020f0;">yield</span> <span style="color: #8b2252;">'Light Blue'</span>
-        <span style="color: #a020f0;">yield</span> <span style="color: #8b2252;">'Blue'</span>
-        <span style="color: #a020f0;">yield</span> <span style="color: #8b2252;">'Dark Blue'</span>
-      <span style="color: #a020f0;">end</span>
-    <span style="color: #a020f0;">end</span>
+  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">each</span>
+    <span style="color: #a020f0;">yield</span> <span style="color: #8b2252;">'Light Blue'</span>
+    <span style="color: #a020f0;">yield</span> <span style="color: #8b2252;">'Blue'</span>
+    <span style="color: #a020f0;">yield</span> <span style="color: #8b2252;">'Dark Blue'</span>
+  <span style="color: #a020f0;">end</span>
+<span style="color: #a020f0;">end</span>
 
-    <span style="color: #228b22;">BlueColors</span>.new.each { |c| <span style="color: #483d8b;">puts</span> c }
+<span style="color: #228b22;">BlueColors</span>.new.each { |c| <span style="color: #483d8b;">puts</span> c }
 
-<span style="color: #b22222;">#    </span><span style="color: #b22222;">BlueColors.find { |c| c.start_with?('B') }</span>
+<span style="color: #483d8b;">puts</span> <span style="color: #228b22;">BlueColors</span>.new.find { |c| c.start_with?(<span style="color: #8b2252;">'B'</span>) }
 </pre>
 </div>
 
@@ -3662,6 +3659,7 @@ TODO find does not work
 Light Blue
 Blue
 Dark Blue
+Blue
 </pre>
 </div>
 
@@ -4621,7 +4619,7 @@ c = <span style="color: #228b22;">C</span>.new
 </div>
 
 <pre class="example">
-[#&lt;Class:#&lt;C:0x007f994c8d24e8&gt;&gt;, M, C, Object, Kernel, BasicObject]
+[#&lt;Class:#&lt;C:0x007fb43b0923c8&gt;&gt;, M, C, Object, Kernel, BasicObject]
 </pre>
 
 <p>
@@ -4636,7 +4634,7 @@ You can refer to the singleton class of an object with the
 </div>
 
 <pre class="example">
-#&lt;Class:#&lt;String:0x007fb5f11c6e08&gt;&gt;
+#&lt;Class:#&lt;String:0x007fea55882d80&gt;&gt;
 String
 Comparable
 Object
@@ -5057,7 +5055,7 @@ of arguments.
 </div>
 
 <pre class="example">
-#&lt;Proc:0x007fc141965cd0@-:3 (lambda)&gt;
+#&lt;Proc:0x007f909b041ce8@-:3 (lambda)&gt;
 </pre>
 
 <p>
@@ -5162,9 +5160,6 @@ argument it can pass as an argument to the code block
 You can use <code>instance_eval</code> to allow simplified assignment
 </p>
 
-<p>
-TODO does not work
-</p>
 <div class="org-src-container">
 
 <pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Person</span>
@@ -5173,7 +5168,7 @@ TODO does not work
   <span style="color: #a020f0;">end</span>
 
   <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">name</span>(name=<span style="color: #a0522d;">nil</span>)
-    <span style="color: #a0522d;">@name</span> ||= <span style="color: #a0522d;">nil</span>
+    <span style="color: #a0522d;">@name</span> ||= name
   <span style="color: #a020f0;">end</span>
 
   <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">age</span>(age=<span style="color: #a0522d;">nil</span>)
@@ -5186,11 +5181,12 @@ p = <span style="color: #228b22;">Person</span>.new <span style="color: #a020f0;
   age 55
 <span style="color: #a020f0;">end</span>
 
-<span style="color: #483d8b;">puts</span> p.name
+<span style="color: #483d8b;">puts</span> p.inspect
 </pre>
 </div>
 
 <pre class="example">
+#&lt;Person:0x007fb3428bd290 @name="David", @age=55&gt;
 </pre>
 </div>
 </div>
@@ -5710,7 +5706,7 @@ z
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Aurélien Bottazini</p>
-<p class="date">Created: 2014-11-16 Sun 12:09</p>
+<p class="date">Created: 2014-11-16 Sun 12:35</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
