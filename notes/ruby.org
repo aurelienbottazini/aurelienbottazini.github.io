@@ -18,7 +18,7 @@ puts __ENCODING__
 * Bootstrapping your ruby literacy
 ** Variables
 
-   | Type     | Ruby Convention | Nonconventional             |
+   | Type     | Ruby Convention | Non-conventional             |
    |----------+-----------------+-----------------------------|
    | Local    | ~first_name~    | ~firstName~, ~firstName~    |
    | Instance | ~@first_name~   | ~@FirstName, @firstname~    |
@@ -58,9 +58,9 @@ irb -simple-prompt -rrbconfig
   |---------------+-------------------------------------------------------------------------|
   | ~rubylibdir~  | Ruby Standard library                                                   |
   | ~bindir~      | Ruby command line tools                                                 |
-  | ~archdir~     | Architecture-specific extensions and librairies (compiled binary files) |
-  | ~sitedir~     | Your own or third party librairies (in Ruby)                            |
-  | ~vendordir~   | Third-party extensions and librairies (in Ruby)                         |
+  | ~archdir~     | Architecture-specific extensions and libraries (compiled binary files) |
+  | ~sitedir~     | Your own or third party libraries (in Ruby)                            |
+  | ~vendordir~   | Third-party extensions and libraries (in Ruby)                         |
   | ~sitelibdir~  | Your own Ruby language extensions  (in Ruby)                            |
   | ~sitearchdir~ | Your own Ruby language extensions (in C)                                |
 
@@ -104,7 +104,7 @@ irb -simple-prompt -rrbconfig
    placed between other arguments.
    Use ~=~ to supply a default value for arguments.
 
-  | method signature                        | sample call(s)                | variable assignements                                             |
+  | method signature                        | sample call(s)                | variable assignments                                             |
   |-----------------------------------------+-------------------------------+-------------------------------------------------------------------|
   | ~def m(*a)~                             | ~m(1,2,3)~                    | ~a = [1,2,3]~                                                     |
   | ~def m(a, b=1)~                         | ~m(2)~                        | ~a = 2, b = 1~                                                    |
@@ -181,7 +181,7 @@ irb -simple-prompt -rrbconfig
 ** setter methods
    They behave like assignment. They return the value of the
    expression rather than the last expression evaluated during
-   execution (for example when your assignement methods returns a
+   execution (for example when your assignment methods returns a
    string "Hah ha!")
 
   #+BEGIN_SRC ruby
@@ -244,7 +244,7 @@ irb -simple-prompt -rrbconfig
    all objects
 
    ~BasicObject~, ~Object~ & ~Kernel~ are written in C. Here is a
-   Ruby mockup of their relationship
+   Ruby mock-up of their relationship
 
   #+BEGIN_SRC ruby
   class BasicObject
@@ -270,7 +270,7 @@ irb -simple-prompt -rrbconfig
 
 **  Constants
 
-    It is possible to perform an assingment on a constant you
+    It is possible to perform an assignment on a constant you
     already assigned.
 
   #+BEGIN_SRC ruby
@@ -286,7 +286,7 @@ irb -simple-prompt -rrbconfig
   #+END_SRC
 
     no warning because there is no redefinition of a constant. We
-    are modifying an array and array has no knowleged it has been
+    are modifying an array and array has no knowledge it has been
     assigned to a constant.
 
 ** ~inspect~
@@ -345,7 +345,7 @@ end
 
 ** including a module several times
 
-   Re-including a /module/ does not do anything as the modle is
+   Re-including a /module/ does not do anything as the module is
    already in the search path. In the following example, if /N/ and
    /M/ have some methods with the same name, the method defined in
    /N/ will be called.
@@ -373,7 +373,7 @@ end
    2. singleton class
    3. It's class
    4. Modules in it class
-   5. Modules prepended to its superclass
+   5. Modules pre-pended to its superclass
    6. It's class superclass
    7. Modules included in its superclass
    8. and so on up to ~BasicObject~
@@ -401,7 +401,7 @@ end
   end
   #+END_SRC
 
-   Used to separate namespaces for classes, modules and methods.
+   Used to separate name-spaces for classes, modules and methods.
    However if you see a construct like ~Tools::Hammer~ you can't
    say from that construct if ~Hammer~ is a class or a module. You
    know it through the documentation or because you wrote the
@@ -423,7 +423,7 @@ end
   |                      | class C                          |                                     |
   |                      | def method_name                   |                                     |
   |                      | self                             |                                     |
-  |                      | 3. module instance-method        | - Individual oject extented by M    |
+  |                      | 3. module instance-method        | - Individual object extended by M    |
   |                      | module M                         | - Instance of class that mixes in M |
   |                      | def method_name                   |                                     |
   |                      | self                             |                                     |
@@ -525,7 +525,7 @@ end
 
 *** private setter methods
     you can omit ~self~ when defining private access. It won't
-    clash with an ipothetic class variable. Ruby is smart enough
+    clash with an hypothetic class variable. Ruby is smart enough
     to understand what you mean.
 
     #+BEGIN_SRC ruby
@@ -578,8 +578,8 @@ if x > 10; puts x; end
 puts x if x > 10
 #+END_SRC
 
-   If an ~if~ statement does not suceed it returns ~nil~
-   It it succeeds the entite statement evaluates to whatever is
+   If an ~if~ statement does not succeed it returns ~nil~
+   It it succeeds the entire statement evaluates to whatever is
    represented by the code in the successful branch.
 
 ** unless
@@ -601,7 +601,7 @@ end
 #+END_SRC
 
 ** /===/
-   For ~String~ and any object that does not ovveride it, ~===~
+   For ~String~ and any object that does not override it, ~===~
    works the same as ~==~. Every class can define its own ~===~
    method. It is used in /case when/ equality logic.
 
@@ -656,7 +656,7 @@ puts [1, 2, 3].map { |n| n * 10 }
 # is like
 puts ([1, 2, 3].map { |n| n * 10 })
 #+END_SRC
-   will ouput 10, 20 , 30
+   will output 10, 20 , 30
 
 #+BEGIN_SRC ruby
 puts [1, 2, 3].map do |n| n * 10 end
@@ -707,7 +707,7 @@ end
 #+END_SRC
 
    if you put rescue at the end of a method you don't need to say
-   begin explicitely. Recue will govern the entire method block
+   begin explicitly. Rescue will govern the entire method block
 
 #+BEGIN_SRC ruby
 def method_name
@@ -719,7 +719,7 @@ end
 
 * Built in essentials
 ** Literal constructors
-   Special notatoin instead of a call to ~new~ to create a new
+   Special notation instead of a call to ~new~ to create a new
    object of that class.
 
    | Class         | Examples(s)              |
@@ -775,8 +775,8 @@ end
 ** ~dangerous_method!~
 
    When you have a ! at the end of a method name. It usually means
-   this methods permanently modifies its reveiver. But It is not
-   always the case. Expecially when ! methods don't have nonbang
+   this methods permanently modifies its receiver. But It is not
+   always the case. Especially when ! methods don't have non-bang
    equivalent.
    Ex: ~String.clear~. No ! but it changes the receiver.
 
@@ -788,7 +788,7 @@ end
 
    + ~to_s~
      used by certain methods like ~puts~ and string interpolation. If you write your
-     own ~to_s~ ofr a class you can take advantage of it.
+     own ~to_s~ for a class you can take advantage of it.
    + ~to_a~ and ~*~
      The ~*~ turns any array into the equivalent of a bare list
      #+BEGIN_SRC ruby :exports both
@@ -813,14 +813,14 @@ end
    if you define ~==~, you automatically define ~!=~ for your
    object.
    ~==~ and ~eql?~ are usually redefined to do meaningful work.
-   ~equal?~ is usually left alone to check wether two objects are
+   ~equal?~ is usually left alone to check whether two objects are
    exactly the same object.
 
 *** Comparable module
     If you want objects of ~MyClass~ to have the full comparison
     suite:
 
-    + mixin ~Comparable~
+    + mix-in ~Comparable~
     + Define ~<=>~ (spaceship operator) for your class
       ~<=>~ can return -1 (less than), 0 (equal) and 1 (greater
       than)
@@ -955,7 +955,7 @@ EOM
 #+RESULTS:
 : l
 
-   + You can ask for a substring
+   + You can ask for a sub-string
 #+BEGIN_SRC ruby :exports both
 string = "ruby is cool"
 string[5, 7]
@@ -981,7 +981,7 @@ string[5...11]
 #+RESULTS:
 : is coo
 
-   + You can use substring search
+   + You can use sub-string search
 #+BEGIN_SRC ruby :exports both
 string = "ruby is cool"
 string['is']
@@ -1021,7 +1021,7 @@ string
      character. Sometimes due to encoding the number of bytes is
      greater than the number of code points.
    + ~each_line~ and ~lines~
-     The string is split at each occurence of ~$/~. Which is the
+     The string is split at each occurrence of ~$/~. Which is the
      end of lines by default.
 
 ** Querying strings
@@ -1052,7 +1052,7 @@ string
      second char parameter.
    + ~String#center(5)~. Same as /rjust/ and /ljust/ for parameters
    + ~String#strip~, ~String#lstrip~ & ~String#rstrip~ removes
-     whitespaces
+     white-spaces
    + ~String#chop~ to remove a character at the end of the string
    + ~String#chomp~ to remove a newline character. You can target
      other characters or strings by providing an argument ~String#chomp('ab')~
@@ -1083,7 +1083,7 @@ string
     ~String#encoding~ to get the encoding.
 
     You can encode a string in a different encoding as long as the
-    conversion is permitted. This is called transcoding.
+    conversion is permitted. This is called trans-coding.
     ~String.encode('US-ASCII')~. The bang version changes the
     encoding of the string permanently.
 
@@ -1346,9 +1346,9 @@ Array(string)
    Hashes are now ordered collections.
 
    You can use ~(key, value)~ in blocks to get the hash element
-   array distributed accross two parameters.
+   array distributed across two parameters.
    Key values are unique
-   Hash provides quick lookup in better than linear time
+   Hash provides quick look-up in better than linear time
 
 #+BEGIN_SRC ruby
 hash = { red: 'ruby', white: 'diamond', green: 'emerald'}
@@ -1415,11 +1415,11 @@ output
    | ~h['France']~                      | fetch value                                           |
    | ~h.fetch('France')~                | fetch value, raises an exception for non existent key |
    | ~h.values_att('France', 'USA')~    | return arrays of value                                |
-   | ~h1.update(h2)~ or ~h1.merge!(h2)~ | h1 keys are overwritted with corresponding h2 keys    |
+   | ~h1.update(h2)~ or ~h1.merge!(h2)~ | h1 keys are overwritten with corresponding h2 keys    |
    | ~h1.merge(h2)~                     | creates a new hash combining h1 and h2.               |
    |                                    | If both hash have keys in common h2 keys win          |
-   | ~h.select {\vert{}k,v\vert k > 1}~           | creates a subhash by selection                        |
-   | ~h.reject {\vert{}k,v\vert k > 1}~           | creates a subhash by rejection                        |
+   | ~h.select {\vert{}k,v\vert k > 1}~           | creates a sub-hash by selection                        |
+   | ~h.reject {\vert{}k,v\vert k > 1}~           | creates a sub-hash by rejection                        |
    | ~select!~ and ~reject!~            | returns nil if hash does not change                   |
    | ~keep_if~ and ~delete_if~          | returns original hash even if it's unchanged            |
    | ~h.invert~                         | invert keys and values. Careful:keys must be unique   |
@@ -1544,7 +1544,7 @@ output
 
 * Collections Central: Enumerable and Enumerator
 
-  You can mixin in ~Enumerable~ and define an ~each~ instance
+  You can mix-in in ~Enumerable~ and define an ~each~ instance
   method. You will be able to call any instance method defined in
   ~Enumerable~.
   ~each~ job is to /yield/ items.
@@ -1813,7 +1813,7 @@ TODO find does not work
 
   Regexp modifiers. ~/abc/i~ here the ~i~ means case insensitive.
   ~m~ is for multiline (normally ~.~ does not match over lines).
-  ~x~ ignores whitespaces unless escaped. It lets you add comments
+  ~x~ ignores white-spaces unless escaped. It lets you add comments
   in your regular expressions
 
   #+BEGIN_SRC ruby
@@ -1824,14 +1824,14 @@ TODO find does not work
   #+END_SRC
 
   You can perform string interpolation inside a regexp. You can
-  escape special regex characters inside a string with
+  escape special reg-ex characters inside a string with
   ~Regex.escape~.
 
   #+BEGIN_SRC ruby
     /abc/
   #+END_SRC
 
-  will print ~(?-mix:abc)~ which mins ~m~, ~x~ and ~i~ modifiers
+  will print ~(?-mix:abc)~ which means ~m~, ~x~ and ~i~ modifiers
   are turned off for regular expression ~/abc/~.
 
 ** Common methods
@@ -1892,7 +1892,7 @@ TODO find does not work
   each.
 
   You can get keyboard input with ~gets~ and ~getc~. With ~getc~
-  you need to name your input stream explicitely.
+  you need to name your input stream explicitly.
 
   You can use block to economize the hassle to close your file objects.
 
@@ -1955,7 +1955,7 @@ TODO find does not work
    ~File::Stat~ objects have attributes corresponding to the
    standard C library.
 
-   ~Kernerl~ has a ~test~ method. It can test for files and
+   ~Kernel~ has a ~test~ method. It can test for files and
    directories.
 
    #+BEGIN_SRC ruby
@@ -1969,7 +1969,7 @@ TODO find does not work
    With the ~Dir~ class.
 
    + ~Dir.entries~
-   + Globbing with ~Dir[]~ or ~Dir.glob~. With ~glob~ you can give
+   + Globing with ~Dir[]~ or ~Dir.glob~. With ~glob~ you can give
      flag arguments like ~File::FNM_CASEFOLD~, ~File::FNM_DOTMATCH~
    + ~mkdir~, ~chdir~, ~rmdir~
 
@@ -2440,7 +2440,7 @@ TODO find does not work
     ~instance_exec~ is like ~instance_eval~ but it takes a second
     argument it can pass as an argument to the code block
 
-    You can use ~instance_eval~ to allow simplified assignement
+    You can use ~instance_eval~ to allow simplified assignment
 
 TODO does not work
     #+BEGIN_SRC ruby :exports both :results output
@@ -2607,13 +2607,13 @@ TODO does not work
 
 ** system commands
 
-   With backticks ~``~ (returns the output and string interpolation) or ~system~.
+   With back-ticks ~``~ (returns the output and string interpolation) or ~system~.
 
    When you use ~system~ and ~``~, the global variable ~$?~ is set to a
    ~Process::Status~, it contains the process ID and its exit
    status and it is thread-local
 
-   A call to nonexistent system method with backticks raise a fatal error.
+   A call to nonexistent system method with back-ticks raise a fatal error.
    You can also use ~%x{}~. It returns the output and allow string
    interpolation.
 
@@ -2637,7 +2637,7 @@ TODO does not work
    stdout.gets
    #+END_SRC
 
-* Callbacks, hooks and runtime introspection
+* Callbacks, hooks and run-time introspection
 
   /callbacks/ and /hooks are used for meta-programming. They
   activate on /events/.
@@ -2807,7 +2807,7 @@ TODO does not work
    + ~global_variables~ list global variables
    + ~instance_variables~ list instance variables
    + ~caller~ provides an array of strings representing the
-     stacktrace
+     stack-trace
 
      #+BEGIN_SRC ruby :exports both :results output
        def z
