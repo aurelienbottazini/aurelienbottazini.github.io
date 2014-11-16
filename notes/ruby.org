@@ -1,4 +1,11 @@
 Ruby version used for examples:
+
+#+BEGIN_SRC ruby
+'Aurélien'
+#+END_SRC
+
+#+RESULTS:
+
 #+BEGIN_SRC ruby :exports both :results output
 puts RUBY_VERSION
 puts __ENCODING__
@@ -13,7 +20,7 @@ puts __ENCODING__
 
    | Type     | Ruby Convention | Nonconventional             |
    |----------+-----------------+-----------------------------|
-   | Local    | ~first_name~    | ~firstName~, ~firstName~      |
+   | Local    | ~first_name~    | ~firstName~, ~firstName~    |
    | Instance | ~@first_name~   | ~@FirstName, @firstname~    |
    | Class    | ~@@first_name~  | ~@@First_name, @@firstName~ |
    | Global   | ~$FIRST_NAME~   | ~$first_name, $firstName~   |
@@ -62,12 +69,12 @@ irb -simple-prompt -rrbconfig
    ~$:~ is the load path global variable. You can add directories to load
    path. For example =~$: << '.'~=.
    One major difference between /load/ and /require/ if called more
-   than once with the same arguments is that require doesn’t reload
-   files it’s already loaded.
+   than once with the same arguments is that require doesn't reload
+   files it's already loaded.
 
 * Objects, methods and local variables
   method definitions evaluates to the symbol ~:m~ representing the
-  name of the method that’s just defined.
+  name of the method that's just defined.
 
 ** ?
   Use question mark for method names that evaluate to ~true~ or ~false~.
@@ -83,7 +90,7 @@ irb -simple-prompt -rrbconfig
    + ~object_id~
    + ~respond_to?~
    + ~send~ (you can use ~__send__~ if you want to
-     make sure you use Ruby’s built in method send)
+     make sure you use Ruby's built in method send)
 
    #+BEGIN_SRC ruby
    if object.respond_to?(request)
@@ -308,7 +315,7 @@ end
 
 ** Class and Module naming
 
-  It is common to have /class/’s name as noun and /module/’s as an adjective
+  It is common to have /class/'s name as noun and /module/'s as an adjective
 
   #+BEGIN_SRC ruby
   class Stack
@@ -364,10 +371,10 @@ end
 
    1. Modules pre-pended
    2. singleton class
-   3. It’s class
+   3. It's class
    4. Modules in it class
    5. Modules prepended to its superclass
-   6. It’s class superclass
+   6. It's class superclass
    7. Modules included in its superclass
    8. and so on up to ~BasicObject~
 
@@ -379,7 +386,7 @@ end
 ** ~super~
 
    + Called with no arguments, ~super~ automatically forwards
-     arguments passed to the method from which it’s called.
+     arguments passed to the method from which it's called.
    + with an empty argument list ~super()~ sends no
      argument.
    + called with specific arguments ~super(a, b, c)~ sends those
@@ -485,8 +492,8 @@ end
 
    Here the ~String~ used will be the new one defined in
    ~MyClass~. To use the build in Ruby ~String~ you can use ~::String.new~.
-   ~::~ in front of a constant means “start the search for this at
-   the top level”
+   ~::~ in front of a constant means start the search for this at
+   the top level.
 
 ** class variables (@@)
 
@@ -780,7 +787,7 @@ end
 ** conversions
 
    + ~to_s~
-     used by certain methods — like ~puts~ — and string interpolation. If you write your
+     used by certain methods like ~puts~ and string interpolation. If you write your
      own ~to_s~ ofr a class you can take advantage of it.
    + ~to_a~ and ~*~
      The ~*~ turns any array into the equivalent of a bare list
@@ -822,7 +829,7 @@ end
    ~String.methods.sort~
    ~String.instance_methods.sort~
    Use ~String.instance_methods(false).sort~ to not see instance
-   methods provided by class’s ancestors.
+   methods provided by class's ancestors.
 
 #+BEGIN_SRC ruby :exports both
 str = 'ok'
@@ -882,7 +889,7 @@ puts "I'm #{first_name}"
      match it on both end of the string. It can be a pair of
      braces too.
 
-** “Here” document or /here-doc/
+** /Here/ document or /here-doc/
 
 #+BEGIN_SRC ruby :exports both
 too = 'too'
@@ -1140,7 +1147,7 @@ Symbol.all_symbols.grep(/abc/)
 
    Symbols appears most of the times in method arguments and hash
    keys. They are better for hash keys because ruby can process
-   them faster and they —look good— as hash keys. Ruby also use a
+   them faster and they look good as hash keys. Ruby also use a
    convenient way to use symbol as hash keys
 
    The following two are equivalent
@@ -1303,24 +1310,25 @@ Array(string)
 
 *** Inserting, retrieving and removing from an array
 
-   | Sample call                    | Meaning                                             |
-   |--------------------------------+-----------------------------------------------------|
-   | ~a[3, 2]~                      | select two elements starting at index 3             |
-   | ~array.values_At(0,3)~         | select values at index 0 and 3                      |
-   | ~a.unshift(0)~                 | adds 0 at start of array                            |
-   | ~a.shift(n=1)~                 | remove n elements from beginning of array           |
-   | ~a.pop(n=1)~                   | remove n elements from end of array                 |
-   | ~a.push(6,7,8)~                | adds 6, 7 and 8 at the end of the array             |
-   | ~a << 5~                       | add 5 at the end of the array                       |
-   | ~[1, 2, 3].concat([4, 5, 6])~  | ~[1, 2, 3, 4, 5, 6]~ – changes permanently receiver |
-   | ~[1, 2, 3] + [4, 5, 6]~        | ~[1, 2, 3, 4, 5, 6]~ – creates a new array          |
-   | ~[1, 2, 4].replace([4, 5, 6])~ | ~[4, 5, 6]~ – Keeps same object                     |
-   | ~[1, [2, [3, 4]]].flatten~     | ~[1, 2, 3]~ – flattens completely                   |
-   | ~[1, [2, [3, 4]]].flatten(1)~  | ~[1, 2, [3, 4]]~ – flattens one level               |
-   | ~[1, 2, 3, 4].reverse~         | ~[4, 3, 2, 1]~                                      |
-   | ~['abc', 'def'].join(arg='')~  | ~abcdef~ – join all argument and returns a string   |
-   | ~[1, 1, 2, 3].uniq~            | ~[1, 2, 3]~                                         |
-   | ~[1, nil, 2, nil].compact~     | ~[1, 2]~ – removes nil                              |
+   | Sample call                    | Meaning                                           |
+   |--------------------------------+---------------------------------------------------|
+   | ~a[3, 2]~                      | select two elements starting at index 3           |
+   | ~array.values_At(0,3)~         | select values at index 0 and 3                    |
+   | ~a.unshift(0)~                 | adds 0 at start of array                          |
+   | ~a.shift(n=1)~                 | remove n elements from beginning of array         |
+   | ~a.pop(n=1)~                   | remove n elements from end of array               |
+   | ~a.push(6,7,8)~                | adds 6, 7 and 8 at the end of the array           |
+   | ~a << 5~                       | add 5 at the end of the array                     |
+   | ~[1, 2, 3].concat([4, 5, 6])~  | ~[1, 2, 3, 4, 5, 6]~ changes permanently receiver |
+   | ~[1, 2, 3] + [4, 5, 6]~        | ~[1, 2, 3, 4, 5, 6]~ creates a new array          |
+   | ~[1, 2, 4].replace([4, 5, 6])~ | ~[4, 5, 6]~ Keeps same object                     |
+   | ~[1, [2, [3, 4]]].flatten~     | ~[1, 2, 3]~ flattens completely                   |
+   | ~[1, [2, [3, 4]]].flatten(1)~  | ~[1, 2, [3, 4]]~ flattens one level               |
+   | ~[1, 2, 3, 4].reverse~         | ~[4, 3, 2, 1]~                                    |
+   | ~['abc', 'def'].join(arg='')~  | ~abcdef~ join all argument and returns a string   |
+   | ~[1, 1, 2, 3].uniq~            | ~[1, 2, 3]~                                       |
+   | ~[1, nil, 2, nil].compact~     | ~[1, 2]~ removes nil                              |
+
 
 *** Querying
 
@@ -1389,7 +1397,7 @@ output
 
    + ~Hash~
      Calls ~to_hash~ on its single argument. Except if you pass it
-     an empty ~Array~ or ~nil~ — it returns an empty hash ~{}~
+     an empty ~Array~ or ~nil~ it returns an empty hash ~{}~
 
      #+BEGIN_SRC ruby :exports both
        Hash([])
@@ -1413,7 +1421,7 @@ output
    | ~h.select {\vert{}k,v\vert k > 1}~           | creates a subhash by selection                        |
    | ~h.reject {\vert{}k,v\vert k > 1}~           | creates a subhash by rejection                        |
    | ~select!~ and ~reject!~            | returns nil if hash does not change                   |
-   | ~keep_if~ and ~delete_if~          | returns original hash even if it’s unchanged          |
+   | ~keep_if~ and ~delete_if~          | returns original hash even if it's unchanged            |
    | ~h.invert~                         | invert keys and values. Careful:keys must be unique   |
    | ~h.clear~                          | clears a hash                                         |
    | ~h.replace~                        | replace content of a hash                             |
@@ -1598,7 +1606,7 @@ TODO find does not work
      : 11
 
    + ~find_all~ also known as ~select~. Always returns an array.
-     There’s a ~select!~.
+     There's a ~select!~.
    + ~reject~. Always returns an array
    + ~grep~. Based on ~===~
    + ~group_by~. Returns a Hash
@@ -1645,7 +1653,7 @@ TODO find does not work
      ~map~ returns a new object
 
 *** Sorting
-   1. You need to define ~<=>~ — the comparison method for the
+   1. You need to define ~<=>~ the comparison method for the
       class. If you /mixin/ enumerable you get  all comparison
       operations (>, <, and so on).
    2. Place multiples instances of the class in a container
@@ -1664,7 +1672,7 @@ TODO find does not work
 
 ** Enumerator
    ~Enumerator~ uses /Enumerable/ module to define all usual
-   methods — ~inject~, ~select~, ~map~ on top of its ~each~.
+   methods ~inject~, ~select~, ~map~ on top of its ~each~.
 
    After you've told how to do ~each~, ~Enumerator~ takes over and
    figures how to do the rest.
@@ -1696,7 +1704,7 @@ TODO find does not work
 
 **** with ~enum_for~
      In the following example ~each~ serve as a kind of front end
-     to array’s select.
+     to array's select.
 
      #+BEGIN_SRC ruby :exports both
        e = %w{ Paris Boston Tokyo }.enum_for(:select)
@@ -1880,8 +1888,8 @@ TODO find does not work
   ~IO~ objects iterate based on the global input record separator.
   This global input record separator is stored in ~$/~ (by default
   /newline/). It you change ~$/~ you can change the behavior of
-  ~STDIN~ for example. ~$/~ determines the ~IO~ object’s sense of
-  “each”.
+  ~STDIN~ for example. ~$/~ determines the ~IO~ object's sense of
+  each.
 
   You can get keyboard input with ~gets~ and ~getc~. With ~getc~
   you need to name your input stream explicitely.
@@ -1889,9 +1897,9 @@ TODO find does not work
   You can use block to economize the hassle to close your file objects.
 
 ** Reading files
-   + ~gets~ — get a line. ~nil~ after end of file. Since
+   + ~gets~ get a line. ~nil~ after end of file. Since
      ~Enumerable~ is an ancestor you can also use ~each~ with a block
-   + ~readline~ — by lines. /Error/ after end of file
+   + ~readline~ by lines. /Error/ after end of file
    + ~getc~ gets a character. ~ungetc(c)~ replace character just
      read with ~c~.
    + ~getbyte~. Depends on encoding
@@ -2022,7 +2030,7 @@ TODO find does not work
 
 * Object individuation
    Every object has two classes.
-   + The class of which it’s an instance
+   + The class of which it's an instance
    + Its singleton class
 
 
@@ -2241,7 +2249,7 @@ TODO find does not work
 
 ** Procs
    #+BEGIN_SRC ruby
-   pr = Proc.new { puts 'Inside a proc’s block' }
+   pr = Proc.new { puts 'Inside a proc\'s block' }
    pr.call
    #+END_SRC
 
@@ -2262,7 +2270,7 @@ TODO find does not work
 
    A ruby code block is not an object. A code block is part of the
    syntax of the method call. A code block is a syntactic construct
-   and code block aren’t method arguments.
+   and code block aren't method arguments.
 
    Consider:
 
@@ -2294,7 +2302,7 @@ TODO find does not work
    : inside a block
 
    the ~&~ in ~&p~ is a wrapper around the method ~to_proc~. Here
-   ~&~ triggers a call to ~p~’s ~to_proc~ method and it tells ruby
+   ~&~ triggers a call to ~p~'s ~to_proc~ method and it tells ruby
    that the resulting ~Proc~ object is serving as a code block
    stand-in.
 
@@ -2360,7 +2368,7 @@ TODO find does not work
    ~lambda~ proc raise an error when called with the wrong number
    of arguments.
 
-   ~->~ also know as “stabby lambda” is a ~lambda~ constructor.
+   ~->~ also know as stabby lambda is a ~lambda~ constructor.
 
    #+BEGIN_SRC ruby :exports both
    mult = ->(x,y) { x * y }
@@ -2382,7 +2390,7 @@ TODO find does not work
 
 ** Methods as objects
 
-   You can “grab” a method with the ~method~ method.
+   You can grab a method with the ~method~ method.
 
    #+BEGIN_SRC ruby :exports both
    m = 'hello'.method(:upcase)
@@ -2392,7 +2400,7 @@ TODO find does not work
    #+RESULTS:
    : HELLO
 
-   You can “grab” an instance method with ~instance_method~
+   You can grab an instance method with ~instance_method~
 
    You can ~unbind~ a method and ~bind~ it again as long as the
    two objects are of the same class or subclass.
@@ -2423,7 +2431,7 @@ TODO find does not work
     Evaluate string or block of code changing ~self~ to be the
     receiver of ~instance_eval~.
 
-    Useful to break in another object’s private data.
+    Useful to break in another object's private data.
 
     #+BEGIN_SRC ruby
     c.instance_eval { puts @x }
@@ -2798,7 +2806,7 @@ TODO does not work
 
    + ~global_variables~ list global variables
    + ~instance_variables~ list instance variables
-   + ~called~ provides an array of strings representing the
+   + ~caller~ provides an array of strings representing the
      stacktrace
 
      #+BEGIN_SRC ruby :exports both :results output
