@@ -1,19 +1,13 @@
 Ruby version used for examples:
 
-#+BEGIN_SRC ruby
-'Aurélien'
-#+END_SRC
-
-#+RESULTS:
-
 #+BEGIN_SRC ruby :exports both :results output
 puts RUBY_VERSION
 puts __ENCODING__
 #+END_SRC
 
 #+RESULTS:
-: 2.1.1
-: US-ASCII
+: 2.1.5
+: UTF-8
 
 * Bootstrapping your ruby literacy
 ** Variables
@@ -2422,7 +2416,6 @@ output
 
    #+RESULTS:
    : I am a string
-
 
 *** ~instance_eval~
 
