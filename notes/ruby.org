@@ -1,4 +1,5 @@
-Ruby version used for examples:
+* About
+  Ruby version and encoding used for examples:
 
 #+BEGIN_SRC ruby :exports both :results output
 puts RUBY_VERSION
@@ -9,34 +10,13 @@ puts __ENCODING__
 : 2.1.5
 : UTF-8
 
-* Bootstrapping your ruby literacy
-** Variables
+* Installation
+  Make sure you control your Ruby installation and have an up to
+  date version with [[http://rvm.io/][RVM]] or [[https://github.com/sstephenson/rbenv][rbenv]].
+* Where is it?
 
-   | Type     | Ruby Convention | Non-conventional             |
-   |----------+-----------------+-----------------------------|
-   | Local    | ~first_name~    | ~firstName~, ~firstName~    |
-   | Instance | ~@first_name~   | ~@FirstName, @firstname~    |
-   | Class    | ~@@first_name~  | ~@@First_name, @@firstName~ |
-   | Global   | ~$FIRST_NAME~   | ~$first_name, $firstName~   |
-
-   Instance variable are initialized to nil.
-#+BEGIN_SRC ruby
-@var
-#+END_SRC
-
-   Local variables are not initialized, not even to nil.
-#+BEGIN_SRC ruby
-var
-#+END_SRC
-
-#+BEGIN_EXAMPLE
-undefined local variable or method `var' for main:Object (NameError)
-#+END_EXAMPLE
-
-** Installation directories
-
-#+BEGIN_EXAMPLE
-irb -simple-prompt -rrbconfig
+#+BEGIN_EXAMPLE sh
+$ irb -simple-prompt -rrbconfig
 #+END_EXAMPLE
 
 
@@ -48,49 +28,118 @@ irb -simple-prompt -rrbconfig
 
    Notable directories are
 
-  | Term          | Directory contents                                                      |
-  |---------------+-------------------------------------------------------------------------|
-  | ~rubylibdir~  | Ruby Standard library                                                   |
-  | ~bindir~      | Ruby command line tools                                                 |
+  | Term          | Directory contents                                                     |
+  |---------------+------------------------------------------------------------------------|
+  | ~rubylibdir~  | Ruby Standard library                                                  |
+  | ~bindir~      | Ruby command line tools                                                |
   | ~archdir~     | Architecture-specific extensions and libraries (compiled binary files) |
   | ~sitedir~     | Your own or third party libraries (in Ruby)                            |
   | ~vendordir~   | Third-party extensions and libraries (in Ruby)                         |
-  | ~sitelibdir~  | Your own Ruby language extensions  (in Ruby)                            |
-  | ~sitearchdir~ | Your own Ruby language extensions (in C)                                |
+  | ~sitelibdir~  | Your own Ruby language extensions  (in Ruby)                           |
+  | ~sitearchdir~ | Your own Ruby language extensions (in C)                               |
 
-** Load and Require
+* Variables
 
-   ~$:~ is the load path global variable. You can add directories to load
-   path. For example =~$: << '.'~=.
-   One major difference between /load/ and /require/ if called more
-   than once with the same arguments is that require doesn't reload
-   files it's already loaded.
+   | Type     | Ruby Convention | Non-conventional             |
+   |----------+-----------------+-----------------------------|
+   | Local    | ~first_name~    | ~firstName~, ~firstName~    |
+   | Instance | ~@first_name~   | ~@FirstName, @firstname~    |
+   | Class    | ~@@first_name~  | ~@@First_name, @@firstName~ |
+   | Global   | ~$FIRST_NAME~   | ~$first_name, $firstName~   |
 
-* Objects, methods and local variables
-  method definitions evaluates to the symbol ~:m~ representing the
-  name of the method that's just defined.
+   Instance variable are initialized to nil.
+#+BEGIN_SRC ruby :exports both
+@var
+#+END_SRC
 
-** ?
-  Use question mark for method names that evaluate to ~true~ or ~false~.
+#+RESULTS:
+: nil
 
-** nil ~= false != true
-   Everything in Ruby has a Boolean value.
-   ~nil~ and ~false~ both have a Boolean value of /false/.
-   Furthermore ~true~, ~nil~ and ~false~ are objects.
-   Note that ~puts~ returns nil.
+   Local variables are not initialized, not even to nil.
+#+BEGIN_SRC ruby :exports both :results output
+  begin
+    var
+  rescue Exception => e
+    puts e.message
+  end
+#+END_SRC
 
-** Object behavior
-   3 very useful and common functions
-   + ~object_id~
-   + ~respond_to?~
-   + ~send~ (you can use ~__send__~ if you want to
-     make sure you use Ruby's built in method send)
+#+RESULTS:
+: undefined local variable or method `var' for main:Object
 
-   #+BEGIN_SRC ruby
-   if object.respond_to?(request)
-     puts ticket.send(request)
-   end
+** Constants
+
+    It is possible to perform an assignment on a constant you
+    already assigned. You will get a warning.
+
+#+BEGIN_SRC ruby
+  A = 1
+  A = 2
+#+END_SRC
+
+    In the following example, no warning because there is no redefinition of a constant. We
+    are modifying an array and array has no knowledge it has been
+    assigned to a constant.
+
+#+BEGIN_SRC ruby
+  module Earth
+    COUNTRIES = ['Japan', 'USA', 'China', 'Germany', 'Italy']
+  end
+  countries = Earth::COUNTRIES
+  countries << 'France'
+#+End_SRC
+
+
+** class variables — @@
+
+   class variables are class-hierarchy scoped.
+
+   #+BEGIN_SRC ruby :exports both :results output
+     class Parent
+       @@value = 100
+     end
+
+     class Child < Parent
+       @@value = 200
+     end
+
+     class Parent
+       puts @@value
+     end
    #+END_SRC
+
+   #+RESULTS:
+   : 200
+
+* Load and Require
+
+  ~$:~ is the load path global variable. You can add directories to load
+  path. For example =~$: << '.'~=.
+  One major difference between /load/ and /require/ if called more
+  than once with the same arguments is that require doesn’t reload
+  files it’s already loaded.
+
+* nil ~= false != true
+  Everything in Ruby has a Boolean value.
+  ~nil~ and ~false~ both have a Boolean value of /false/.
+  Furthermore ~true~, ~nil~ and ~false~ are objects.
+  Note that ~puts~ returns nil.
+
+* % sign technique
+  Allows to use sprintf-like syntax. Run ri sprintf for full documentation.
+  #+BEGIN_SRC ruby :exports both
+    price = 2.84839849
+    p "#{"%.2f" % price}"
+  #+END_SRC
+
+  #+RESULTS:
+   : 2.85
+
+* Methods
+  method definitions evaluates to the symbol ~:m~ representing the
+  name of the method that’s just defined.
+** ?
+ Use question mark for method names that evaluate to ~true~ or ~false~.
 
 ** Arguments
 
@@ -98,7 +147,7 @@ irb -simple-prompt -rrbconfig
    placed between other arguments.
    Use ~=~ to supply a default value for arguments.
 
-  | method signature                        | sample call(s)                | variable assignments                                             |
+  | method signature                        | sample call(s)                | variable assignments                                              |
   |-----------------------------------------+-------------------------------+-------------------------------------------------------------------|
   | ~def m(*a)~                             | ~m(1,2,3)~                    | ~a = [1,2,3]~                                                     |
   | ~def m(a, b=1)~                         | ~m(2)~                        | ~a = 2, b = 1~                                                    |
@@ -125,6 +174,78 @@ irb -simple-prompt -rrbconfig
   #+BEGIN_SRC ruby
   add_to_database({country => 'France', postal_code => 62000}, 'Lille')
   #+END_SRC
+** Top level methods
+
+   #+BEGIN_SRC ruby
+     def talk
+       puts 'hello'
+     end
+   #+END_SRC
+
+   is equivalent to
+
+   #+BEGIN_SRC ruby
+     class Object
+       private
+       def talk
+         puts 'hello'
+       end
+     end
+#+END_SRC
+** method look-up summary
+
+  To look for a method, an object looks in:
+
+   1. Modules pre-pended
+   2. singleton class
+   3. It’s class
+   4. Modules in it class
+   5. Modules pre-pended to its superclass
+   6. It’s class superclass
+   7. Modules included in its superclass
+   8. and so on up to ~BasicObject~
+
+   A method defined as a singleton method of a class object can
+   also be called on sub-classes of that class. The singleton
+   class is considered the ancestor of the singleton class of
+   sub-classes.
+
+** ~method_missing~
+
+  Get called as a last resort for unmatched messages. You can
+  override ~method_missing~
+
+  A good example of a ~method_missing~ override:
+
+  #+BEGIN_SRC ruby
+    class Person
+      def self.method_missing(m, *args)
+        method = m.to_s
+        if method.start_with?('all_with_')
+        # Handle request here"
+        else
+          super
+        end
+      end
+    end
+  #+END_SRC
+
+* Objects
+  Everything you handle in Ruby is either an object or a construct
+  that evaluates to an object.
+
+** Object behavior
+   3 very useful and common functions
+   + ~object_id~
+   + ~respond_to?~
+   + ~send~ (you can use ~__send__~ if you want to
+     make sure you use Ruby’s built in method send)
+
+   #+BEGIN_SRC ruby
+   if object.respond_to?(request)
+     puts ticket.send(request)
+   end
+   #+END_SRC
 
 ** Immediate values
 
@@ -133,8 +254,8 @@ irb -simple-prompt -rrbconfig
    holds the value itself rather than a reference to it.
 
    It follows that there is only one object ~1~, only one ~true~.
-   And that's why there is no ~++~ operator in ruby. Because ~1++~
-   means you'd be changing the number 1 to 2 and that makes no
+   And that’s why there is no ~++~ operator in ruby. Because ~1++~
+   means you would be changing the number 1 to 2 and that makes no
    sense.
 
 ** Freeze, Dup and Clone
@@ -144,9 +265,47 @@ irb -simple-prompt -rrbconfig
    ~dup~ duplicates an object. ~clone~ duplicate an object and if
    the cloned object was frozen, the clone is also frozen.
 
-* Organizing objects with classes
-  Everything you handle in Ruby is either an object or a construct
-  that evaluates to an object.
+** ~BasicObject~, ~Object~ & ~Kernel~
+
+   ~BasicObject~ comes before ~Object~ in the ruby family tree.
+   ~BasicObject~ offers a blank state object. an object with
+   almost no methods.
+
+#+BEGIN_SRC ruby :exports both :results output
+    puts BasicObject.instance_methods.count
+    puts Object.instance_methods.count
+#+END_SRC
+
+#+RESULTS:
+: 8
+: 55
+
+   ~Kernel~ module contains the majority of the methods common to
+   all objects
+
+   ~BasicObject~, ~Object~ & ~Kernel~ are written in C. Here is a
+   Ruby mock-up of their relationship
+
+   #+BEGIN_SRC ruby
+     class BasicObject
+       # few methods
+     end
+     module Kernel
+       # a lot of method definitions
+     end
+     class Object < BasicObject
+       include Kernel
+     end
+   #+END_SRC
+*** Basic Object
+
+     For any object: ~obj.class.ancestors.last == BasicObject~.
+
+     ~BasicObject~ allows you to create objects that do nothing.
+     Which means you can teach them everything without worrying about
+     clashing with existing methods.
+
+* Classes
   Every object is an instance of some class.
 
   Class definitions evaluates to the last expression contained
@@ -154,43 +313,16 @@ irb -simple-prompt -rrbconfig
 
 ** initialize
    Arguments used with ~new~ are automatically sent to ~initialize~.
-** % sign technique
-   Allows to use sprintf-like syntax. Run ri sprintf for full documentation.
-   #+BEGIN_SRC ruby
-   price = 2.84839849
-   p "#{"%.2f" % price}"
-   #+END_SRC
 
-** assignment-like methods
+** ~super~
 
-  #+BEGIN_SRC ruby
-  ticket.price=(63.00)
-  ticket.price = 63.00
-  #+END_SRC
+   + Called with no arguments, ~super~ automatically forwards
+     arguments passed to the method from which it’s called.
+   + with an empty argument list ~super()~ sends no
+     argument.
+   + called with specific arguments ~super(a, b, c)~ sends those
+     arguments.
 
-   The second version is syntactic sugar for the first one. It is
-   important to understand and remember. ~=~ is a method (like
-   other operators) and can be overloaded.
-
-** setter methods
-   They behave like assignment. They return the value of the
-   expression rather than the last expression evaluated during
-   execution (for example when your assignment methods returns a
-   string "Hah ha!")
-
-  #+BEGIN_SRC ruby
-  class Ticket
-    def price=(price)
-      @price = price
-      return 'ahah'
-    end
-
-  end
-
-  if (Ticket.new.price = 65) == 65 # true
-    puts 'my return value is 65' #gets printed
-  end
-  #+END_SRC
 
 ** attributes
 
@@ -206,6 +338,38 @@ irb -simple-prompt -rrbconfig
   |                 | and a writer method if the second argument is true | ~attr :price, true~    |                   |
 
    Those family methods are defined in /Module/
+** assignment-like methods
+
+  #+BEGIN_SRC ruby
+  ticket.price=(63.00)
+  ticket.price = 63.00
+  #+END_SRC
+
+   The second version is syntactic sugar for the first one. It is
+   important to understand and remember. ~=~ is a method (like
+   other operators) and can be overloaded.
+
+** setter methods
+   They behave like assignment. They return the value of the
+   expression rather than the last expression evaluated during
+   execution.
+
+  #+BEGIN_SRC ruby :exports both :results output
+  class Ticket
+    def price=(price)
+      @price = price
+      return 'ahah'
+    end
+
+  end
+
+  if (Ticket.new.price = 65) == 65
+    puts 'my return value is 65'
+  end
+  #+END_SRC
+
+  #+RESULTS:
+  : my return value is 65
 
 ** Subclass
 
@@ -223,34 +387,8 @@ irb -simple-prompt -rrbconfig
 ** Superclass & Modules
    A Ruby /class/ can have only one /superclass/ (/single
    inheritance/).
-   Ruby provides modules that you can /mix in/ your class's family
+   Ruby provides modules that you can /mix in/ your class’s family
    tree to provide as many methods for your objects as you need.
-
-** ~BasicObject~, ~Object~ & ~Kernel~
-
-   ~BasicObject~ comes before ~Object~ in the ruby family tree.
-   ~BasicObject~ offers a blank state object. an object with
-   almost no methods. At the time of writing (Ruby 2.1),
-   ~BasicObject~ has 7 instance methods and ~Object~
-   about 55.
-
-   ~Kernel~ module contains the majority of the methods common to
-   all objects
-
-   ~BasicObject~, ~Object~ & ~Kernel~ are written in C. Here is a
-   Ruby mock-up of their relationship
-
-  #+BEGIN_SRC ruby
-  class BasicObject
-    # 7 methods
-  end
-  module Kernel
-    # over 100 method definitions
-  end
-  class Object < BasicObject
-    include Kernel
-  end
-  #+END_SRC
 
 ** Methods & Constant notation
 
@@ -262,33 +400,100 @@ irb -simple-prompt -rrbconfig
      the class Ticket
    + ~Ticket::VENUES~: constant ~VENUES~ in class ~Ticket~
 
-**  Constants
-
-    It is possible to perform an assignment on a constant you
-    already assigned.
-
-  #+BEGIN_SRC ruby
-  A = 1
-  A = 2
-  #+END_SRC
-
-    You will get a warning
-
-  #+BEGIN_SRC ruby
-  venues = Ticket::VENUES
-  venues << 'High School Gym'
-  #+END_SRC
-
-    no warning because there is no redefinition of a constant. We
-    are modifying an array and array has no knowledge it has been
-    assigned to a constant.
-
 ** ~inspect~
-   You can override it and have useful info about your custom class.
+   You can override it and have useful info about your custom
+   class.
+** Don’t hard code class names.
+   It is bad in case you want to rename  your class. Instead use self
 
-* Modules and program organization
+   #+BEGIN_SRC ruby
+     class C
+       def C.y # bad
+       end
 
-  Modules don't have instances. It follows that entities or things
+       def self.x # good
+       end
+     end
+   #+END_SRC
+
+** Instance variables
+   every instance variable belongs to whatever object is the
+   current object (/self) at that point.
+
+   #+BEGIN_SRC ruby :exports both :results output
+     class C
+       p self
+       @v = "top level instance variable "
+       p @v
+
+       def show_v
+         p self
+         p @v
+       end
+     end
+
+     c = C.new
+     c.show_v
+   #+END_SRC
+
+   #+RESULTS:
+   : C
+   : "top level instance variable "
+   : #<C:0x007f83db86d9c0>
+   : nil
+
+   The two variables ~@v~ are different
+
+** built-in classes
+   You can create you own /string/ class
+
+   #+BEGIN_SRC ruby
+     class MyClass
+       class String
+
+       end
+       def initialize
+         String.new
+       end
+   #+END_SRC
+
+   Here the ~String~ used will be the new one defined in
+   ~MyClass~. To use the build in Ruby ~String~ you can use ~::String.new~.
+   ~::~ in front of a constant means start the search for this at
+   the top level.
+
+** public, private, protected
+   you either do
+   ~private :first_method, :second_method, :third_method~. To make
+   those three methods private. Or Use ~private~ as a switch
+   without arguments then ll methods below ~private~ in your class
+   will be private.
+
+*** private setter methods
+    you can omit ~self~ when defining private access. It won’t
+    clash with an hypothetic class variable. Ruby is smart enough
+    to understand what you mean.
+
+    #+BEGIN_SRC ruby
+      class Dog
+        attr_reader :age, :dog_years
+        def dog_years=(years)
+          @dog_years = years
+        end
+        def age=(years)
+          @age = years
+          self.dog_years = years * 7 # = @dog_years = years * 7
+        end
+        private :dog_years=
+      end
+
+      luigi = Dog.new
+      luigi.age = 10
+    #+END_SRC
+
+* Modules
+
+  Modules don’t have instances. It follows that entities or things
   are best modeled in classes and characteristics or properties
   are best encapsulated in modules.
 
@@ -309,34 +514,13 @@ end
 
 ** Class and Module naming
 
-  It is common to have /class/'s name as noun and /module/'s as an adjective
+  It is common to have /class/’s name as noun and /module/’s as an adjective
 
   #+BEGIN_SRC ruby
   class Stack
     include Stacklike
   end
   #+END_SRC
-
-** ~method_missing~
-
-  Get called as a last resort for unmatched messages. You can
-  override ~method_missing~
-
-  A good example of a ~method_missing~ override:
-
-  #+BEGIN_SRC ruby
-  class Person
-    def self.method_missing(m, *args)
-      method = m.to_s
-      if method.start_with?('all_with_')
-        # Handle request here"
-      else
-        super
-      end
-    end
-  end
-  #+END_SRC
-
 ** including a module several times
 
    Re-including a /module/ does not do anything as the module is
@@ -359,33 +543,6 @@ end
    the object looks in the module first instead of looking in the
    class.
 
-** method look-up summary
-
-   To look for a method, an object looks in:
-
-   1. Modules pre-pended
-   2. singleton class
-   3. It's class
-   4. Modules in it class
-   5. Modules pre-pended to its superclass
-   6. It's class superclass
-   7. Modules included in its superclass
-   8. and so on up to ~BasicObject~
-
-   A method defined as a singleton method of a class object can
-   also be called on sub-classes of that class. The singleton
-   class is considered the ancestor of the singleton class of
-   sub-classes.
-
-** ~super~
-
-   + Called with no arguments, ~super~ automatically forwards
-     arguments passed to the method from which it's called.
-   + with an empty argument list ~super()~ sends no
-     argument.
-   + called with specific arguments ~super(a, b, c)~ sends those
-     arguments.
-
 ** Nesting modules and classes
 
   #+BEGIN_SRC ruby
@@ -396,12 +553,12 @@ end
   #+END_SRC
 
    Used to separate name-spaces for classes, modules and methods.
-   However if you see a construct like ~Tools::Hammer~ you can't
+   However if you see a construct like ~Tools::Hammer~ you can’t
    say from that construct if ~Hammer~ is a class or a module. You
    know it through the documentation or because you wrote the
    code. The notation in itself does not tell you everything.
 
-* The default Object (self), scope & visibility
+* Self, scope & visibility
 
   | Context              | Example                          | Which object is self?               |
   |----------------------+----------------------------------+-------------------------------------|
@@ -425,138 +582,6 @@ end
   |                      | def obj.method_name               |                                     |
   |                      | self                             |                                     |
 
-
-**  Don't hard code class names.
-    It is bad in case you want to rename  your class. Instead use self
-
-  #+BEGIN_SRC ruby
-  class C
-    def C.y # bad
-    end
-
-    def self.x # good
-    end
-  end
-  #+END_SRC
-
-** instance variables
-   every instance variable belongs to whatever object is the
-   current object (/self) at that point.
-
-    #+BEGIN_SRC ruby
-    class C
-      p self
-      @v = "top level instance variable "
-      p @v
-
-      def show_v
-        p self
-        p @v
-      end
-    end
-
-    c = C.new
-    c.show_v
-    #+END_SRC
-
-   will return
-
-    #+BEGIN_EXAMPLE
-    C
-    "top level instance variable"
-    #<C:0x007fe37388d9d0>
-    nil
-    #+END_EXAMPLE
-
-   The two variables ~@v~ are different
-
-
-** built-in classes
-   You can create you own /string/ class
-
-    #+BEGIN_SRC ruby
-    class MyClass
-      class String
-
-      end
-      def initialize
-        String.new
-    end
-    #+END_SRC
-
-   Here the ~String~ used will be the new one defined in
-   ~MyClass~. To use the build in Ruby ~String~ you can use ~::String.new~.
-   ~::~ in front of a constant means start the search for this at
-   the top level.
-
-** class variables (@@)
-
-   class variables are class-hierarchy scoped.
-
-   #+BEGIN_SRC ruby
-   class Parent
-     @@value = 100
-   end
-
-   class Child < Parent
-     @@value = 200
-   end
-
-   class Parent
-     puts @@value
-   end
-   #+END_SRC
-
-   Here 200 will get printed
-
-
-** public, private, protected
-   you either do
-   ~private :first_method, :second_method, :third_method~. To make
-   those three methods private. Or Use ~private~ as a switch
-   without arguments then ll methods below ~private~ in your class
-   will be private.
-
-*** private setter methods
-    you can omit ~self~ when defining private access. It won't
-    clash with an hypothetic class variable. Ruby is smart enough
-    to understand what you mean.
-
-    #+BEGIN_SRC ruby
-    class Dog
-      attr_reader :age, :dog_years
-      def dog_years=(years)
-        @dog_years = years
-      end
-      def age=(years)
-        @age = years
-        self.dog_years = years * 7 # = @dog_years = years * 7
-      end
-      private :dog_years=
-    end
-
-    luigi = Dog.new
-    luigi.age = 10
-    #+END_SRC
-
-** top level method
-
-#+BEGIN_SRC ruby
-def talk
-  puts 'hello'
-end
-#+END_SRC
-
-   is equivalent to
-
-#+BEGIN_SRC ruby
-class Object
-  private
-  def talk
-    puts 'hello'
-  end
-end
-#+END_SRC
 * Control-flow techniques
 ** if
 
@@ -666,8 +691,7 @@ puts [1, 2, 3].map
    - ~each~ returns its receiver
    - ~map~ returns a new array
 
-
-**  Block parameters and scope
+** Block parameters and scope
 
     If you have a variable of a given name in scope and also use
     that name as one of your block parameters, then the two
@@ -700,7 +724,7 @@ ensure
 end
 #+END_SRC
 
-   if you put rescue at the end of a method you don't need to say
+   if you put rescue at the end of a method you don’t need to say
    begin explicitly. Rescue will govern the entire method block
 
 #+BEGIN_SRC ruby
@@ -728,7 +752,7 @@ end
    | Regexp        | /([a-z]+)/               |
    | Proc (lambda) | ->(x, y) { x * y }       |
 
-** Shortcut operators (syntactic sugar)
+** Shortcut operators
 
    Ruby has shortcut operators like ~||=~, ~+=~, ~-=~, ~*=~, ~&=~
    (bitwise AND), ~|=~ (bitwise OR), ~^=~ (bitwise EXCLUSIVE OR)
@@ -770,12 +794,12 @@ end
 
    When you have a ! at the end of a method name. It usually means
    this methods permanently modifies its receiver. But It is not
-   always the case. Especially when ! methods don't have non-bang
+   always the case. Especially when ! methods don’t have non-bang
    equivalent.
    Ex: ~String.clear~. No ! but it changes the receiver.
 
-   + Don't use ! except in M/M! methods pars
-   + Don't equate ! with destructive behavior or vice versa
+   + Don’t use ! except in M/M! methods pars
+   + Don’t equate ! with destructive behavior or vice versa
      It can mean something else.
 
 ** conversions
@@ -823,7 +847,7 @@ end
    ~String.methods.sort~
    ~String.instance_methods.sort~
    Use ~String.instance_methods(false).sort~ to not see instance
-   methods provided by class's ancestors.
+   methods provided by class’s ancestors.
 
 #+BEGIN_SRC ruby :exports both
 str = 'ok'
@@ -861,18 +885,18 @@ Array.try_convert(obj)
 #+RESULTS:
 | 1 | 2 | 3 |
 
-* Strings, symbols and other scalar objects
+* Strings
   A string literal is enclosed between ~"~ or ~'~ quotation marks
   string interpolation does not work with ~'~
 ** String interpolation
 
 #+BEGIN_SRC ruby :results output :exports both
-first_name = 'Auray'
-puts "I'm #{first_name}"
+first_name = 'Aurélien'
+puts "I’m #{first_name}"
 #+END_SRC
 
 #+RESULTS:
-: I'm Auray
+: I'm Aurélien
 
    You can also create a string with ~%charDELIMITERtextDELIMITER~. ~char~ can be
    + ~%q~. Creates a single-quote string
@@ -1072,23 +1096,21 @@ string
    You can use a magic comment at the top of the file ~# encoding:
    encoding_Value~ to change the encoding of a file.
 
-*** Strings
+   ~String#encoding~ to get the encoding.
 
-    ~String#encoding~ to get the encoding.
+   You can encode a string in a different encoding as long as the
+   conversion is permitted. This is called trans-coding.
+   ~String.encode('US-ASCII')~. The bang version changes the
+   encoding of the string permanently.
 
-    You can encode a string in a different encoding as long as the
-    conversion is permitted. This is called trans-coding.
-    ~String.encode('US-ASCII')~. The bang version changes the
-    encoding of the string permanently.
+   You can force an encoding ~String#force_encoding('US-ASCII')~
 
-    You can force an encoding ~String#force_encoding('US-ASCII')~
-
-    You can represent characters with escape sequence. ~\x~ for
-    two digit hexadecimal numbers representing a byte. ~\u~
-    followed by a UTF-8 code to insert the corresponding
-    character. By doing this you can change a string encoding to
-    UTF-8 (if it was in ASCII and the character inserted does not
-    exist in ASCII).
+   You can represent characters with escape sequence. ~\x~ for
+   two digit hexadecimal numbers representing a byte. ~\u~
+   followed by a UTF-8 code to insert the corresponding
+   character. By doing this you can change a string encoding to
+   UTF-8 (if it was in ASCII and the character inserted does not
+   exist in ASCII).
 
 ** XOR and strings
    If you XOR two times the same things you get back the original
@@ -1115,7 +1137,7 @@ string
    unsigned integer representing a single character (~C~) and process
    all of them (~*~).
 
-** Symbols
+* Symbols
 
    literal constructor ~:symbol_name~
 
@@ -1134,7 +1156,7 @@ string
 Symbol.all_symbols.grep(/abc/)
 #+END_SRC
 
-   Don't use ~include?(:abc)~ because this very act creates the
+   Don’t use ~include?(:abc)~ because this very act creates the
    symbol!
 
    Symbols appears most of the times in method arguments and hash
@@ -1144,11 +1166,11 @@ Symbol.all_symbols.grep(/abc/)
 
    The following two are equivalent
 #+BEGIN_SRC ruby
-hash = { :name => 'David', :age => 35 }
-hash = { name: 'David', age: 35}
+hash = { :name => 'Aurélien', :age => 35 }
+hash = { name: 'Aurélien', age: 35}
 #+END_SRC
 
-** Numerical object
+* Numerical
 
    At the top /Numeric/.
    /Float/ and /Integer/ below.
@@ -1190,7 +1212,7 @@ hash = { name: 'David', age: 35}
 #+RESULTS:
 : 20
 
-** Times and dates
+* Times and dates
 
    3 classes. /Time/, /Date/ and /DateTime/
 
@@ -1217,7 +1239,7 @@ d.upto(next_week)
 #+RESULTS:
 : #<Enumerator: #<Date: 2014-11-15 ((2456977j,0s,0n),+0s,2299161j)>:upto(#<Date: 2014-11-22 ((2456984j,0s,0n),+0s,2299161j)>)>
 
-* Collection and container objects
+* Collections
 
   Ruby implements collections principally through classes that min
   in ~Enumerable~.
@@ -1487,7 +1509,7 @@ output
    #+RESULTS:
    : false
 
-   Don't create backward range. They won't do what you think they
+   Don’t create backward range. They won’t do what you think they
    do.
 
    #+BEGIN_SRC ruby :exports both
@@ -1514,7 +1536,7 @@ output
 
    #+BEGIN_SRC ruby :exports both
    require 'set'
-   Set.new(['Auray','Rom', 'And']) {|name| name.upcase}
+   Set.new(['Aurélien','Romain', 'Andréa']) {|name| name.upcase}
    #+END_SRC
 
    #+RESULTS:
@@ -1534,7 +1556,7 @@ output
    two-element.
    You can test for ~subset?~ and ~superset?~.
 
-* Collections Central: Enumerable and Enumerator
+* Enumerable and Enumerator
 
   You can mix-in in ~Enumerable~ and define an ~each~ instance
   method. You will be able to call any instance method defined in
@@ -1565,7 +1587,7 @@ output
   : Blue
 
 ** Enumerable
-***  Queries:
+*** Queries
    + ~include?~
    + ~all?~
    + ~any?~
@@ -1585,7 +1607,6 @@ output
    #+RESULTS:
    : can't iterate from Float
 
-
 *** Search and Select
 
    + ~find~. You can provide a failure-handling function
@@ -1598,7 +1619,7 @@ output
      : 11
 
    + ~find_all~ also known as ~select~. Always returns an array.
-     There's a ~select!~.
+     There’s a ~select!~.
    + ~reject~. Always returns an array
    + ~grep~. Based on ~===~
    + ~group_by~. Returns a Hash
@@ -1666,7 +1687,7 @@ output
    ~Enumerator~ uses /Enumerable/ module to define all usual
    methods ~inject~, ~select~, ~map~ on top of its ~each~.
 
-   After you've told how to do ~each~, ~Enumerator~ takes over and
+   After you’ve told how to do ~each~, ~Enumerator~ takes over and
    figures how to do the rest.
 
 *** creating enumerators
@@ -1684,7 +1705,7 @@ output
      ~1~, then ~2~, then ~3~. ~<<~ tells ~y~ what it should yield.
      You could also write ~y.yield(1)~.
 
-     Note you don't /yield/ from the block. The following is wrong:
+     Note you don’t /yield/ from the block. The following is wrong:
 
      #+BEGIN_SRC ruby
      Enumerator.new do #wrong
@@ -1696,7 +1717,7 @@ output
 
 **** with ~enum_for~
      In the following example ~each~ serve as a kind of front end
-     to array's select.
+     to array’s select.
 
      #+BEGIN_SRC ruby :exports both
        e = %w{ Paris Boston Tokyo }.enum_for(:select)
@@ -1706,7 +1727,7 @@ output
      #+RESULTS:
      | Paris |
 
-     Most built-in iterators return an enumerator when they're
+     Most built-in iterators return an enumerator when they’re
      called without a block. The following two are equivalent
 
      #+BEGIN_SRC ruby :exports both
@@ -1720,7 +1741,7 @@ output
 *** Protecting from change
 
     Instead of passing an original array you can pass an
-    enumerator. This way your enumerator won't absorb changes.
+    enumerator. This way your enumerator won’t absorb changes.
 
     #+BEGIN_SRC ruby
     class Cards
@@ -1880,13 +1901,13 @@ output
   ~IO~ objects iterate based on the global input record separator.
   This global input record separator is stored in ~$/~ (by default
   /newline/). It you change ~$/~ you can change the behavior of
-  ~STDIN~ for example. ~$/~ determines the ~IO~ object's sense of
+  ~STDIN~ for example. ~$/~ determines the ~IO~ object’s sense of
   each.
 
   You can get keyboard input with ~gets~ and ~getc~. With ~getc~
   you need to name your input stream explicitly.
 
-  You can use block to economize the hassle to close your file objects.
+  You can use blocks to economize the hassle to close your file objects.
 
 ** Reading files
    + ~gets~ get a line. ~nil~ after end of file. Since
@@ -1900,7 +1921,7 @@ output
    + ~read~ and ~readlines~
      They take care of opening and closing the file handle for you.
    + ~sysseek~, ~sysread~, ~syswrite~. Low level /I/O/.
-     Un-buffered, don't mix with higher-level methods.
+     Un-buffered, don’t mix with higher-level methods.
 
 *** Internal pointer
     You can manipulate it with ~seek~ (moves around) and ~pos~
@@ -1911,7 +1932,6 @@ output
     f.seek(15, IO::SEEK_CUR) # advance 15 byte from current position
     f.seek(-10, IO::SEEK_END) # 10 bytes before end
     #+END_SRC
-
 
 ** Writing to files
    + ~puts~. Returns ~nil~.
@@ -1978,7 +1998,7 @@ output
    Those methods can be used with ~FileUtils::DryRun~ to see the
    output of the equivalent unix method call.
 
-   You can use ~FileUtils::NoWrite~ to make sure you don't
+   You can use ~FileUtils::NoWrite~ to make sure you don’t
    accidentally delete, overwrite or move files.
 
 ** ~Pathname~
@@ -2022,10 +2042,10 @@ output
 
 * Object individuation
    Every object has two classes.
-   + The class of which it's an instance
+   + The class of which it’s an instance
    + Its singleton class
 
-
+** Singleton classes
    Singleton classes are anonymous, they appear automatically
    without being given a name.
 
@@ -2070,7 +2090,7 @@ output
    end
    #+END_SRC
 
-
+** Ancestors
    ~ancestors~ is a useful method to look-up the class hierarchy
 
    #+BEGIN_SRC ruby :exports both :results output
@@ -2103,6 +2123,7 @@ output
    : Kernel
    : BasicObject
 
+** Alias
    An alias is a synonym for a method name. By convention when we
    create an alias with use ~__old_method_name__~ to make an alias
    for ~method_name~.
@@ -2110,135 +2131,126 @@ output
    difference is that ~alias_method~ takes objects (/symbols/ or
    /strings) instead of bare method names.
 
-   #+BEGIN_SRC ruby
+#+BEGIN_SRC ruby
    alias __old_method method # no comma
    alias_method :__old_method, :method
-   #+END_SRC
+#+END_SRC
 
    The ~tap~ method execute a code block (yielding the receiver to
    the block) and returns the receiver.
 
-   #+BEGIN_SRC ruby :exports both :results output
+#+BEGIN_SRC ruby :exports both :results output
      puts 'hello'.tap {|s| puts s.upcase }.reverse
-   #+END_SRC
+#+END_SRC
 
-   #+RESULTS:
-   : HELLO
-   : olleh
+#+RESULTS:
+: HELLO
+: olleh
 
+** Modifications
+*** Additive changes
+    Danger: two programmer add a method with the same name.
 
-** Additive changes
-   Danger: two programmer add a method with the same name.
+*** Pass-through overrides
+    The original version of the method end up being called
 
-** Pass-through overrides
-   The original version of the method end up being called
+    #+BEGIN_SRC ruby :exports both :results output
+      class String
+        alias __old_reverse__ reverse
 
-   #+BEGIN_SRC ruby :exports both :results output
-     class String
-       alias __old_reverse__ reverse
+        def reverse
+          puts 'reversing a string!'
+          __old_reverse__
+        end
+      end
+      puts 'hello'.reverse
+    #+END_SRC
 
-       def reverse
-         puts 'reversing a string!'
-         __old_reverse__
-       end
-     end
-     puts 'hello'.reverse
-   #+END_SRC
+    #+RESULTS:
+    : reversing a string!
+    : olleh
 
-   #+RESULTS:
-   : reversing a string!
-   : olleh
+*** Additive/pass-through hybrids
+    same name, calls the old version and adds something to the
+    interface. It offers a superset of the functionality of the
+    original method.
 
-** Additive/pass-through hybrids
-   same name, calls the old version and adds something to the
-   interface. It offers a superset of the functionality of the
-   original method.
+    For example /Active Support/ allows ~Time.now.to_s~ to take an
+    argument to specify a formatting like ~Time.now.to_s(:db)~
 
-   For example /Active Support/ allows ~Time.now.to_s~ to take an
-   argument to specify a formatting like ~Time.now.to_s(:db)~
+*** Extend
+    Safest way to add functionality on a strictly per-object basis.
 
-** Extend
-   Safest way to add functionality on a strictly per-object basis.
+    You can mix-in modules with /extend/ in objects respective
+    singleton class on directly on class.
 
-   You can mix-in modules with /extend/ in objects respective
-   singleton class on directly on class.
+    #+BEGIN_SRC ruby :exports both :results output
+      module Secretive
+        def name
+          'not available'
+        end
+      end
 
-   #+BEGIN_SRC ruby :exports both :results output
-     module Secretive
-       def name
-         'not available'
-       end
-     end
+      class Person
+        attr_accessor :name
+      end
 
-     class Person
-       attr_accessor :name
-     end
+      david = Person.new
+      david.name = 'Aurélien'
+      david.extend(Secretive)
+      puts david.name
+    #+END_SRC
 
-     david = Person.new
-     david.name = 'David'
-     david.extend(Secretive)
-     puts david.name
-   #+END_SRC
+    #+RESULTS:
+    : not available
 
-   #+RESULTS:
-   : not available
+    #+BEGIN_SRC ruby
+    module Makers
+      def makes
+        %w{ Honda Ford Toyota Audi }
+      end
+    end
+    class Car
+      extend Makers
+    end
+    #+END_SRC
 
-   #+BEGIN_SRC ruby
-   module Makers
-     def makes
-       %w{ Honda Ford Toyota Audi }
-     end
-   end
-   class Car
-     extend Makers
-   end
-   #+END_SRC
+*** Refinements
+    New in Ruby 2.0. The idea is to make a temporary, limited-scope
+    change to a class.
 
-** Refinements
-   New in Ruby 2.0. The idea is to make a temporary, limited-scope
-   change to a class.
+    #+BEGIN_SRC ruby :exports both :results output
+      module Shout
+        refine String do
+          def shout
+            self.upcase + '!!!'
+          end
+        end
+      end
 
-   #+BEGIN_SRC ruby :exports both :results output
-     module Shout
-       refine String do
-         def shout
-           self.upcase + '!!!'
-         end
-       end
-     end
+      class Person
+        attr_accessor :name
 
-     class Person
-       attr_accessor :name
+        using Shout
 
-       using Shout
+        def announce
+          puts "I’m #{name.shout}"
+        end
+      end
 
-       def announce
-         puts "I'm #{name.shout}"
-       end
-     end
+      auray = Person.new
+      auray.name = 'Aurélien'
+      puts auray.announce
+    #+END_SRC
 
-     auray = Person.new
-     auray.name = 'Auray'
-     puts auray.announce
-   #+END_SRC
+    #+RESULTS:
+    : I'm AURAY!!!
+    :
 
-   #+RESULTS:
-   : I'm AURAY!!!
-   :
-
-   If you use ~using~ outside of a class of module, the
-   refinements persists to the end of the file.
-
-** Basic Object
-
-   For any object: ~obj.class.ancestors.last == BasicObject~.
-
-   ~BasicObject~ allows you to create objects that do nothing.
-   Which means you can teach them everything without worrying about
-   clashing with existing methods.
+    If you use ~using~ outside of a class of module, the
+    refinements persists to the end of the file.
 
 * Callable and runnable object
-
 ** Procs
    #+BEGIN_SRC ruby
    pr = Proc.new { puts 'Inside a proc\'s block' }
@@ -2257,12 +2269,12 @@ output
 
    #+BEGIN_SRC ruby
    p = proc {|x| puts x.upcase }
-   %w{ David Black }.each(&p)
+   %w{ Aurélien Bottazini }.each(&p)
    #+END_SRC
 
    A ruby code block is not an object. A code block is part of the
    syntax of the method call. A code block is a syntactic construct
-   and code block aren't method arguments.
+   and code block aren’t method arguments.
 
    Consider:
 
@@ -2294,7 +2306,7 @@ output
    : inside a block
 
    the ~&~ in ~&p~ is a wrapper around the method ~to_proc~. Here
-   ~&~ triggers a call to ~p~'s ~to_proc~ method and it tells ruby
+   ~&~ triggers a call to ~p~’s ~to_proc~ method and it tells ruby
    that the resulting ~Proc~ object is serving as a code block
    stand-in.
 
@@ -2346,8 +2358,8 @@ output
    #+RESULTS:
    | inside calling_proc | outside calling_proc |
 
-   ~Proc~ doesn't care about the number of arguments. Without arguments
-   it's single argument is set to ~nil~. With more than one
+   ~Proc~ doesn’t care about the number of arguments. Without arguments
+   it’s single argument is set to ~nil~. With more than one
    argument the remaining ones are discarded.
 
    ~lambda~ returns a ~Proc~ object. There is no ~lambda~ class.
@@ -2397,7 +2409,7 @@ output
    You can ~unbind~ a method and ~bind~ it again as long as the
    two objects are of the same class or subclass.
 
-** Eval
+* Eval
 
    ~Binding~ encapsulates the local variable bindings. There is
    also a top-level method ~binding~ which returns whatever the
@@ -2417,12 +2429,12 @@ output
    #+RESULTS:
    : I am a string
 
-*** ~instance_eval~
+** ~instance_eval~
 
     Evaluate string or block of code changing ~self~ to be the
     receiver of ~instance_eval~.
 
-    Useful to break in another object's private data.
+    Useful to break in another object’s private data.
 
     #+BEGIN_SRC ruby
     c.instance_eval { puts @x }
@@ -2449,7 +2461,7 @@ output
       end
 
       p = Person.new do
-        name 'David'
+        name 'Aurélien'
         age 55
       end
 
@@ -2459,7 +2471,7 @@ output
     #+RESULTS:
     : #<Person:0x007fb0f48b12d8 @name="David", @age=55>
 
-*** ~class_eval~
+** ~class_eval~
 
     It puts you inside a class-definition body
 
@@ -2471,7 +2483,7 @@ output
     end
     #+END_SRC
 
-*** ~define_method~
+** ~define_method~
 
     useful to bring an outer scope variable  into an instance
     method
@@ -2490,7 +2502,7 @@ output
 
     works because the block keeps the scope.
 
-** Threads
+* Threads
 
    #+BEGIN_SRC ruby :exports both :results output
    t = Thread.new do
@@ -2507,7 +2519,7 @@ output
    : starting
    : end
 
-   Don't forget to use ~join~ to allow the thread to finish
+   Don’t forget to use ~join~ to allow the thread to finish
    executing (if it takes more time than the remaining of the
    program).
 
@@ -2536,7 +2548,7 @@ output
    : [:message]
    : Hello
 
-*** example chat server using sockets and threads
+** Example chat server using sockets and threads
 
     #+BEGIN_SRC ruby
     require 'socket'
@@ -2573,7 +2585,7 @@ output
     end
     #+END_SRC
 
-** Fibers
+* Fibers
    Fibers are like re-entrant code blocks. They can yield back and
    forth to their calling context multiple times.
 
@@ -2595,7 +2607,7 @@ output
    : hi again
    : last hi
 
-** system commands
+* System commands
 
    With back-ticks ~``~ (returns the output and string interpolation) or ~system~.
 
@@ -2653,9 +2665,9 @@ output
    private instance of method ~Object~. Thus it is available for
    all objects except instances of ~BasicObject~.
 
-   ~method_missing~ and ~respond_to?~ don't play well together. If
+   ~method_missing~ and ~respond_to?~ don’t play well together. If
    you create methods dynamically inside ~method_missing~ but
-   ~respond_to?~ will still say they don't exist. To go around
+   ~respond_to?~ will still say they don’t exist. To go around
    that problem you can implement ~respond_to_missing?~
 
    Here is an example
@@ -2759,12 +2771,11 @@ output
    end
    #+END_SRC
 
-
 ** listing methods
    With ~methods~ you can list the non-private methods of the
-   object itself. You don't get the methods from /mix-ins/ for
+   object itself. You don’t get the methods from /mix-ins/ for
    examples. It can take an argument, if you set it to false you
-   won't get methods from ancestors.
+   won’t get methods from ancestors.
 
    ~private_methods~ list private methods
    ~protected_methods~ list protected methods

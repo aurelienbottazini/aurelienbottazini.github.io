@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>ruby</title>
-<!-- 2014-11-16 Sun 22:23 -->
+<!-- 2014-11-17 Mon 09:48 -->
 <meta  charset="utf-8">
 <meta  name="generator" content="Org-mode">
 <meta  name="author" content="Aurélien Bottazini">
@@ -232,232 +232,246 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. Bootstrapping your ruby literacy</a>
+<li><a href="#sec-1">1. About</a></li>
+<li><a href="#sec-2">2. Installation</a></li>
+<li><a href="#sec-3">3. Where is it?</a></li>
+<li><a href="#sec-4">4. Variables</a>
 <ul>
-<li><a href="#sec-1-1">1.1. Variables</a></li>
-<li><a href="#sec-1-2">1.2. Installation directories</a></li>
-<li><a href="#sec-1-3">1.3. Load and Require</a></li>
+<li><a href="#sec-4-1">4.1. Constants</a></li>
+<li><a href="#sec-4-2">4.2. class variables — @@</a></li>
 </ul>
 </li>
-<li><a href="#sec-2">2. Objects, methods and local variables</a>
+<li><a href="#sec-5">5. Load and Require</a></li>
+<li><a href="#sec-6">6. nil ~= false != true</a></li>
+<li><a href="#sec-7">7. % sign technique</a></li>
+<li><a href="#sec-8">8. Methods</a>
 <ul>
-<li><a href="#sec-2-1">2.1. ?</a></li>
-<li><a href="#sec-2-2">2.2. nil ~= false != true</a></li>
-<li><a href="#sec-2-3">2.3. Object behavior</a></li>
-<li><a href="#sec-2-4">2.4. Arguments</a></li>
-<li><a href="#sec-2-5">2.5. Immediate values</a></li>
-<li><a href="#sec-2-6">2.6. Freeze, Dup and Clone</a></li>
+<li><a href="#sec-8-1">8.1. ?</a></li>
+<li><a href="#sec-8-2">8.2. Arguments</a></li>
+<li><a href="#sec-8-3">8.3. Top level methods</a></li>
+<li><a href="#sec-8-4">8.4. method look-up summary</a></li>
+<li><a href="#sec-8-5">8.5. <code>method_missing</code></a></li>
 </ul>
 </li>
-<li><a href="#sec-3">3. Organizing objects with classes</a>
+<li><a href="#sec-9">9. Objects</a>
 <ul>
-<li><a href="#sec-3-1">3.1. initialize</a></li>
-<li><a href="#sec-3-2">3.2. % sign technique</a></li>
-<li><a href="#sec-3-3">3.3. assignment-like methods</a></li>
-<li><a href="#sec-3-4">3.4. setter methods</a></li>
-<li><a href="#sec-3-5">3.5. attributes</a></li>
-<li><a href="#sec-3-6">3.6. Subclass</a></li>
-<li><a href="#sec-3-7">3.7. Superclass &amp; Modules</a></li>
-<li><a href="#sec-3-8">3.8. <code>BasicObject</code>, <code>Object</code> &amp; <code>Kernel</code></a></li>
-<li><a href="#sec-3-9">3.9. Methods &amp; Constant notation</a></li>
-<li><a href="#sec-3-10">3.10. Constants</a></li>
-<li><a href="#sec-3-11">3.11. <code>inspect</code></a></li>
-</ul>
-</li>
-<li><a href="#sec-4">4. Modules and program organization</a>
+<li><a href="#sec-9-1">9.1. Object behavior</a></li>
+<li><a href="#sec-9-2">9.2. Immediate values</a></li>
+<li><a href="#sec-9-3">9.3. Freeze, Dup and Clone</a></li>
+<li><a href="#sec-9-4">9.4. <code>BasicObject</code>, <code>Object</code> &amp; <code>Kernel</code></a>
 <ul>
-<li><a href="#sec-4-1">4.1. Class and Module naming</a></li>
-<li><a href="#sec-4-2">4.2. <code>method_missing</code></a></li>
-<li><a href="#sec-4-3">4.3. including a module several times</a></li>
-<li><a href="#sec-4-4">4.4. <code>prepend</code></a></li>
-<li><a href="#sec-4-5">4.5. method look-up summary</a></li>
-<li><a href="#sec-4-6">4.6. <code>super</code></a></li>
-<li><a href="#sec-4-7">4.7. Nesting modules and classes</a></li>
-</ul>
-</li>
-<li><a href="#sec-5">5. The default Object (self), scope &amp; visibility</a>
-<ul>
-<li><a href="#sec-5-1">5.1. Don't hard code class names.</a></li>
-<li><a href="#sec-5-2">5.2. instance variables</a></li>
-<li><a href="#sec-5-3">5.3. built-in classes</a></li>
-<li><a href="#sec-5-4">5.4. class variables (@@)</a></li>
-<li><a href="#sec-5-5">5.5. public, private, protected</a>
-<ul>
-<li><a href="#sec-5-5-1">5.5.1. private setter methods</a></li>
-</ul>
-</li>
-<li><a href="#sec-5-6">5.6. top level method</a></li>
-</ul>
-</li>
-<li><a href="#sec-6">6. Control-flow techniques</a>
-<ul>
-<li><a href="#sec-6-1">6.1. if</a></li>
-<li><a href="#sec-6-2">6.2. unless</a></li>
-<li><a href="#sec-6-3">6.3. case</a></li>
-<li><a href="#sec-6-4">6.4. <i><code>=</code></i></a></li>
-<li><a href="#sec-6-5">6.5. loop</a></li>
-<li><a href="#sec-6-6">6.6. while and until modifiers</a></li>
-<li><a href="#sec-6-7">6.7. for</a></li>
-<li><a href="#sec-6-8">6.8. curly braces vs do/end code block</a></li>
-<li><a href="#sec-6-9">6.9. each and map</a></li>
-<li><a href="#sec-6-10">6.10. Block parameters and scope</a></li>
-<li><a href="#sec-6-11">6.11. rescue</a></li>
-</ul>
-</li>
-<li><a href="#sec-7">7. Built in essentials</a>
-<ul>
-<li><a href="#sec-7-1">7.1. Literal constructors</a></li>
-<li><a href="#sec-7-2">7.2. Shortcut operators (syntactic sugar)</a></li>
-<li><a href="#sec-7-3">7.3. Unary operators</a></li>
-<li><a href="#sec-7-4">7.4. <code>dangerous_method!</code></a></li>
-<li><a href="#sec-7-5">7.5. conversions</a></li>
-<li><a href="#sec-7-6">7.6. Comparisons</a>
-<ul>
-<li><a href="#sec-7-6-1">7.6.1. Comparable module</a></li>
-</ul>
-</li>
-<li><a href="#sec-7-7">7.7. Inspecting</a></li>
-<li><a href="#sec-7-8">7.8. <code>try_convert</code></a></li>
-</ul>
-</li>
-<li><a href="#sec-8">8. Strings, symbols and other scalar objects</a>
-<ul>
-<li><a href="#sec-8-1">8.1. String interpolation</a></li>
-<li><a href="#sec-8-2">8.2. <i>Here</i> document or <i>here-doc</i></a></li>
-<li><a href="#sec-8-3">8.3. Basic string manipulation</a>
-<ul>
-<li><a href="#sec-8-3-1">8.3.1. Selection</a></li>
-<li><a href="#sec-8-3-2">8.3.2. changing strings</a></li>
-</ul>
-</li>
-<li><a href="#sec-8-4">8.4. Enumerable strings</a></li>
-<li><a href="#sec-8-5">8.5. Querying strings</a></li>
-<li><a href="#sec-8-6">8.6. String comparison</a></li>
-<li><a href="#sec-8-7">8.7. transformations</a></li>
-<li><a href="#sec-8-8">8.8. Conversions</a></li>
-<li><a href="#sec-8-9">8.9. Encoding</a>
-<ul>
-<li><a href="#sec-8-9-1">8.9.1. Strings</a></li>
-</ul>
-</li>
-<li><a href="#sec-8-10">8.10. XOR and strings</a></li>
-<li><a href="#sec-8-11">8.11. Symbols</a></li>
-<li><a href="#sec-8-12">8.12. Numerical object</a></li>
-<li><a href="#sec-8-13">8.13. Times and dates</a></li>
-</ul>
-</li>
-<li><a href="#sec-9">9. Collection and container objects</a>
-<ul>
-<li><a href="#sec-9-1">9.1. Array</a>
-<ul>
-<li><a href="#sec-9-1-1">9.1.1. Inserting, retrieving and removing from an array</a></li>
-<li><a href="#sec-9-1-2">9.1.2. Querying</a></li>
-</ul>
-</li>
-<li><a href="#sec-9-2">9.2. Hashes</a>
-<ul>
-<li><a href="#sec-9-2-1">9.2.1. Hash methods</a></li>
-<li><a href="#sec-9-2-2">9.2.2. Querying</a></li>
-</ul>
-</li>
-<li><a href="#sec-9-3">9.3. Ranges</a></li>
-<li><a href="#sec-9-4">9.4. Sets</a></li>
-</ul>
-</li>
-<li><a href="#sec-10">10. Collections Central: Enumerable and Enumerator</a>
-<ul>
-<li><a href="#sec-10-1">10.1. Enumerable</a>
-<ul>
-<li><a href="#sec-10-1-1">10.1.1. Queries:</a></li>
-<li><a href="#sec-10-1-2">10.1.2. Search and Select</a></li>
-<li><a href="#sec-10-1-3">10.1.3. Element operations:</a></li>
-<li><a href="#sec-10-1-4">10.1.4. Each relatives</a></li>
-<li><a href="#sec-10-1-5">10.1.5. Sorting</a></li>
-</ul>
-</li>
-<li><a href="#sec-10-2">10.2. Enumerator</a>
-<ul>
-<li><a href="#sec-10-2-1">10.2.1. creating enumerators</a></li>
-<li><a href="#sec-10-2-2">10.2.2. Protecting from change</a></li>
-<li><a href="#sec-10-2-3">10.2.3. Slow motion</a></li>
-<li><a href="#sec-10-2-4">10.2.4. Adding enumerability with an enumerator</a></li>
-<li><a href="#sec-10-2-5">10.2.5. Chaining</a></li>
-<li><a href="#sec-10-2-6">10.2.6. Lazy enumerators</a></li>
+<li><a href="#sec-9-4-1">9.4.1. Basic Object</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#sec-11">11. Regular Expressions</a>
+<li><a href="#sec-10">10. Classes</a>
 <ul>
-<li><a href="#sec-11-1">11.1. Common methods</a></li>
+<li><a href="#sec-10-1">10.1. initialize</a></li>
+<li><a href="#sec-10-2">10.2. <code>super</code></a></li>
+<li><a href="#sec-10-3">10.3. attributes</a></li>
+<li><a href="#sec-10-4">10.4. assignment-like methods</a></li>
+<li><a href="#sec-10-5">10.5. setter methods</a></li>
+<li><a href="#sec-10-6">10.6. Subclass</a></li>
+<li><a href="#sec-10-7">10.7. Superclass &amp; Modules</a></li>
+<li><a href="#sec-10-8">10.8. Methods &amp; Constant notation</a></li>
+<li><a href="#sec-10-9">10.9. <code>inspect</code></a></li>
+<li><a href="#sec-10-10">10.10. Don’t hard code class names.</a></li>
+<li><a href="#sec-10-11">10.11. Instance variables</a></li>
+<li><a href="#sec-10-12">10.12. built-in classes</a></li>
+<li><a href="#sec-10-13">10.13. public, private, protected</a>
+<ul>
+<li><a href="#sec-10-13-1">10.13.1. private setter methods</a></li>
 </ul>
 </li>
-<li><a href="#sec-12">12. File and I/O operations</a>
-<ul>
-<li><a href="#sec-12-1">12.1. Reading files</a>
-<ul>
-<li><a href="#sec-12-1-1">12.1.1. Internal pointer</a></li>
 </ul>
 </li>
-<li><a href="#sec-12-2">12.2. Writing to files</a></li>
-<li><a href="#sec-12-3">12.3. File enumerability</a></li>
-<li><a href="#sec-12-4">12.4. Querying</a></li>
-<li><a href="#sec-12-5">12.5. Directory manipulation</a></li>
-<li><a href="#sec-12-6">12.6. <code>FileUtils</code></a></li>
-<li><a href="#sec-12-7">12.7. <code>Pathname</code></a></li>
-<li><a href="#sec-12-8">12.8. <code>StringIO</code></a></li>
-<li><a href="#sec-12-9">12.9. <code>Tempfile</code></a></li>
-<li><a href="#sec-12-10">12.10. <code>open-uri</code></a></li>
+<li><a href="#sec-11">11. Modules</a>
+<ul>
+<li><a href="#sec-11-1">11.1. Class and Module naming</a></li>
+<li><a href="#sec-11-2">11.2. including a module several times</a></li>
+<li><a href="#sec-11-3">11.3. <code>prepend</code></a></li>
+<li><a href="#sec-11-4">11.4. Nesting modules and classes</a></li>
 </ul>
 </li>
-<li><a href="#sec-13">13. Object individuation</a>
+<li><a href="#sec-12">12. Self, scope &amp; visibility</a></li>
+<li><a href="#sec-13">13. Control-flow techniques</a>
 <ul>
-<li><a href="#sec-13-1">13.1. Additive changes</a></li>
-<li><a href="#sec-13-2">13.2. Pass-through overrides</a></li>
-<li><a href="#sec-13-3">13.3. Additive/pass-through hybrids</a></li>
-<li><a href="#sec-13-4">13.4. Extend</a></li>
-<li><a href="#sec-13-5">13.5. Refinements</a></li>
-<li><a href="#sec-13-6">13.6. Basic Object</a></li>
+<li><a href="#sec-13-1">13.1. if</a></li>
+<li><a href="#sec-13-2">13.2. unless</a></li>
+<li><a href="#sec-13-3">13.3. case</a></li>
+<li><a href="#sec-13-4">13.4. <i><code>=</code></i></a></li>
+<li><a href="#sec-13-5">13.5. loop</a></li>
+<li><a href="#sec-13-6">13.6. while and until modifiers</a></li>
+<li><a href="#sec-13-7">13.7. for</a></li>
+<li><a href="#sec-13-8">13.8. curly braces vs do/end code block</a></li>
+<li><a href="#sec-13-9">13.9. each and map</a></li>
+<li><a href="#sec-13-10">13.10. Block parameters and scope</a></li>
+<li><a href="#sec-13-11">13.11. rescue</a></li>
 </ul>
 </li>
-<li><a href="#sec-14">14. Callable and runnable object</a>
+<li><a href="#sec-14">14. Built in essentials</a>
 <ul>
-<li><a href="#sec-14-1">14.1. Procs</a></li>
-<li><a href="#sec-14-2">14.2. Methods as objects</a></li>
-<li><a href="#sec-14-3">14.3. Eval</a>
+<li><a href="#sec-14-1">14.1. Literal constructors</a></li>
+<li><a href="#sec-14-2">14.2. Shortcut operators</a></li>
+<li><a href="#sec-14-3">14.3. Unary operators</a></li>
+<li><a href="#sec-14-4">14.4. <code>dangerous_method!</code></a></li>
+<li><a href="#sec-14-5">14.5. conversions</a></li>
+<li><a href="#sec-14-6">14.6. Comparisons</a>
 <ul>
-<li><a href="#sec-14-3-1">14.3.1. <code>instance_eval</code></a></li>
-<li><a href="#sec-14-3-2">14.3.2. <code>class_eval</code></a></li>
-<li><a href="#sec-14-3-3">14.3.3. <code>define_method</code></a></li>
+<li><a href="#sec-14-6-1">14.6.1. Comparable module</a></li>
 </ul>
 </li>
-<li><a href="#sec-14-4">14.4. Threads</a>
-<ul>
-<li><a href="#sec-14-4-1">14.4.1. example chat server using sockets and threads</a></li>
+<li><a href="#sec-14-7">14.7. Inspecting</a></li>
+<li><a href="#sec-14-8">14.8. <code>try_convert</code></a></li>
 </ul>
 </li>
-<li><a href="#sec-14-5">14.5. Fibers</a></li>
-<li><a href="#sec-14-6">14.6. system commands</a></li>
-<li><a href="#sec-14-7">14.7. <code>open</code> and <code>open3</code></a></li>
+<li><a href="#sec-15">15. Strings</a>
+<ul>
+<li><a href="#sec-15-1">15.1. String interpolation</a></li>
+<li><a href="#sec-15-2">15.2. <i>Here</i> document or <i>here-doc</i></a></li>
+<li><a href="#sec-15-3">15.3. Basic string manipulation</a>
+<ul>
+<li><a href="#sec-15-3-1">15.3.1. Selection</a></li>
+<li><a href="#sec-15-3-2">15.3.2. changing strings</a></li>
 </ul>
 </li>
-<li><a href="#sec-15">15. Callbacks, hooks and run-time introspection</a>
+<li><a href="#sec-15-4">15.4. Enumerable strings</a></li>
+<li><a href="#sec-15-5">15.5. Querying strings</a></li>
+<li><a href="#sec-15-6">15.6. String comparison</a></li>
+<li><a href="#sec-15-7">15.7. transformations</a></li>
+<li><a href="#sec-15-8">15.8. Conversions</a></li>
+<li><a href="#sec-15-9">15.9. Encoding</a></li>
+<li><a href="#sec-15-10">15.10. XOR and strings</a></li>
+</ul>
+</li>
+<li><a href="#sec-16">16. Symbols</a></li>
+<li><a href="#sec-17">17. Numerical</a></li>
+<li><a href="#sec-18">18. Times and dates</a></li>
+<li><a href="#sec-19">19. Collections</a>
 <ul>
-<li><a href="#sec-15-1">15.1. <code>method_missing</code></a></li>
-<li><a href="#sec-15-2">15.2. prepend and include</a></li>
-<li><a href="#sec-15-3">15.3. extended</a></li>
-<li><a href="#sec-15-4">15.4. intercepting inheritance</a></li>
-<li><a href="#sec-15-5">15.5. <code>const_missing</code></a></li>
-<li><a href="#sec-15-6">15.6. <code>method_added</code></a></li>
-<li><a href="#sec-15-7">15.7. listing methods</a></li>
-<li><a href="#sec-15-8">15.8. instropection</a></li>
+<li><a href="#sec-19-1">19.1. Array</a>
+<ul>
+<li><a href="#sec-19-1-1">19.1.1. Inserting, retrieving and removing from an array</a></li>
+<li><a href="#sec-19-1-2">19.1.2. Querying</a></li>
+</ul>
+</li>
+<li><a href="#sec-19-2">19.2. Hashes</a>
+<ul>
+<li><a href="#sec-19-2-1">19.2.1. Hash methods</a></li>
+<li><a href="#sec-19-2-2">19.2.2. Querying</a></li>
+</ul>
+</li>
+<li><a href="#sec-19-3">19.3. Ranges</a></li>
+<li><a href="#sec-19-4">19.4. Sets</a></li>
+</ul>
+</li>
+<li><a href="#sec-20">20. Enumerable and Enumerator</a>
+<ul>
+<li><a href="#sec-20-1">20.1. Enumerable</a>
+<ul>
+<li><a href="#sec-20-1-1">20.1.1. Queries</a></li>
+<li><a href="#sec-20-1-2">20.1.2. Search and Select</a></li>
+<li><a href="#sec-20-1-3">20.1.3. Element operations:</a></li>
+<li><a href="#sec-20-1-4">20.1.4. Each relatives</a></li>
+<li><a href="#sec-20-1-5">20.1.5. Sorting</a></li>
+</ul>
+</li>
+<li><a href="#sec-20-2">20.2. Enumerator</a>
+<ul>
+<li><a href="#sec-20-2-1">20.2.1. creating enumerators</a></li>
+<li><a href="#sec-20-2-2">20.2.2. Protecting from change</a></li>
+<li><a href="#sec-20-2-3">20.2.3. Slow motion</a></li>
+<li><a href="#sec-20-2-4">20.2.4. Adding enumerability with an enumerator</a></li>
+<li><a href="#sec-20-2-5">20.2.5. Chaining</a></li>
+<li><a href="#sec-20-2-6">20.2.6. Lazy enumerators</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-21">21. Regular Expressions</a>
+<ul>
+<li><a href="#sec-21-1">21.1. Common methods</a></li>
+</ul>
+</li>
+<li><a href="#sec-22">22. File and I/O operations</a>
+<ul>
+<li><a href="#sec-22-1">22.1. Reading files</a>
+<ul>
+<li><a href="#sec-22-1-1">22.1.1. Internal pointer</a></li>
+</ul>
+</li>
+<li><a href="#sec-22-2">22.2. Writing to files</a></li>
+<li><a href="#sec-22-3">22.3. File enumerability</a></li>
+<li><a href="#sec-22-4">22.4. Querying</a></li>
+<li><a href="#sec-22-5">22.5. Directory manipulation</a></li>
+<li><a href="#sec-22-6">22.6. <code>FileUtils</code></a></li>
+<li><a href="#sec-22-7">22.7. <code>Pathname</code></a></li>
+<li><a href="#sec-22-8">22.8. <code>StringIO</code></a></li>
+<li><a href="#sec-22-9">22.9. <code>Tempfile</code></a></li>
+<li><a href="#sec-22-10">22.10. <code>open-uri</code></a></li>
+</ul>
+</li>
+<li><a href="#sec-23">23. Object individuation</a>
+<ul>
+<li><a href="#sec-23-1">23.1. Singleton classes</a></li>
+<li><a href="#sec-23-2">23.2. Ancestors</a></li>
+<li><a href="#sec-23-3">23.3. Alias</a></li>
+<li><a href="#sec-23-4">23.4. Modifications</a>
+<ul>
+<li><a href="#sec-23-4-1">23.4.1. Additive changes</a></li>
+<li><a href="#sec-23-4-2">23.4.2. Pass-through overrides</a></li>
+<li><a href="#sec-23-4-3">23.4.3. Additive/pass-through hybrids</a></li>
+<li><a href="#sec-23-4-4">23.4.4. Extend</a></li>
+<li><a href="#sec-23-4-5">23.4.5. Refinements</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-24">24. Callable and runnable object</a>
+<ul>
+<li><a href="#sec-24-1">24.1. Procs</a></li>
+<li><a href="#sec-24-2">24.2. Methods as objects</a></li>
+</ul>
+</li>
+<li><a href="#sec-25">25. Eval</a>
+<ul>
+<li><a href="#sec-25-1">25.1. <code>instance_eval</code></a></li>
+<li><a href="#sec-25-2">25.2. <code>class_eval</code></a></li>
+<li><a href="#sec-25-3">25.3. <code>define_method</code></a></li>
+</ul>
+</li>
+<li><a href="#sec-26">26. Threads</a>
+<ul>
+<li><a href="#sec-26-1">26.1. Example chat server using sockets and threads</a></li>
+</ul>
+</li>
+<li><a href="#sec-27">27. Fibers</a></li>
+<li><a href="#sec-28">28. System commands</a>
+<ul>
+<li><a href="#sec-28-1">28.1. <code>open</code> and <code>open3</code></a></li>
+</ul>
+</li>
+<li><a href="#sec-29">29. Callbacks, hooks and run-time introspection</a>
+<ul>
+<li><a href="#sec-29-1">29.1. <code>method_missing</code></a></li>
+<li><a href="#sec-29-2">29.2. prepend and include</a></li>
+<li><a href="#sec-29-3">29.3. extended</a></li>
+<li><a href="#sec-29-4">29.4. intercepting inheritance</a></li>
+<li><a href="#sec-29-5">29.5. <code>const_missing</code></a></li>
+<li><a href="#sec-29-6">29.6. <code>method_added</code></a></li>
+<li><a href="#sec-29-7">29.7. listing methods</a></li>
+<li><a href="#sec-29-8">29.8. instropection</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> About</h2>
+<div class="outline-text-2" id="text-1">
 <p>
-Ruby version used for examples:
+Ruby version and encoding used for examples:
 </p>
 
 <div class="org-src-container">
@@ -471,86 +485,23 @@ Ruby version used for examples:
 2.1.5
 UTF-8
 </pre>
+</div>
+</div>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> Bootstrapping your ruby literacy</h2>
-<div class="outline-text-2" id="text-1">
-</div><div id="outline-container-sec-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Variables</h3>
-<div class="outline-text-3" id="text-1-1">
-<table>
-
-
-<colgroup>
-<col  class="left">
-
-<col  class="left">
-
-<col  class="left">
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="left">Type</th>
-<th scope="col" class="left">Ruby Convention</th>
-<th scope="col" class="left">Non-conventional</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="left">Local</td>
-<td class="left"><code>first_name</code></td>
-<td class="left"><code>firstName</code>, <code>firstName</code></td>
-</tr>
-
-<tr>
-<td class="left">Instance</td>
-<td class="left"><code>@first_name</code></td>
-<td class="left"><code>@FirstName, @firstname</code></td>
-</tr>
-
-<tr>
-<td class="left">Class</td>
-<td class="left"><code>@@first_name</code></td>
-<td class="left"><code>@@First_name, @@firstName</code></td>
-</tr>
-
-<tr>
-<td class="left">Global</td>
-<td class="left"><code>$FIRST_NAME</code></td>
-<td class="left"><code>$first_name, $firstName</code></td>
-</tr>
-</tbody>
-</table>
-
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Installation</h2>
+<div class="outline-text-2" id="text-2">
 <p>
-Instance variable are initialized to nil.
+Make sure you control your Ruby installation and have an up to
+date version with <a href="http://rvm.io/">RVM</a> or <a href="https://github.com/sstephenson/rbenv">rbenv</a>.
 </p>
-<div class="org-src-container">
-
-<pre class="src src-ruby"><span style="color: #a0522d;">@var</span>
-</pre>
 </div>
-
-<p>
-Local variables are not initialized, not even to nil.
-</p>
-<div class="org-src-container">
-
-<pre class="src src-ruby">var
-</pre>
 </div>
-
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Where is it?</h2>
+<div class="outline-text-2" id="text-3">
 <pre class="example">
-undefined local variable or method `var' for main:Object (NameError)
-</pre>
-</div>
-</div>
-
-<div id="outline-container-sec-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Installation directories</h3>
-<div class="outline-text-3" id="text-1-2">
-<pre class="example">
-irb -simple-prompt -rrbconfig
+$ irb -simple-prompt -rrbconfig
 </pre>
 
 
@@ -622,41 +573,164 @@ Notable directories are
 </div>
 </div>
 
-<div id="outline-container-sec-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Load and Require</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Variables</h2>
+<div class="outline-text-2" id="text-4">
+<table>
+
+
+<colgroup>
+<col  class="left">
+
+<col  class="left">
+
+<col  class="left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Type</th>
+<th scope="col" class="left">Ruby Convention</th>
+<th scope="col" class="left">Non-conventional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">Local</td>
+<td class="left"><code>first_name</code></td>
+<td class="left"><code>firstName</code>, <code>firstName</code></td>
+</tr>
+
+<tr>
+<td class="left">Instance</td>
+<td class="left"><code>@first_name</code></td>
+<td class="left"><code>@FirstName, @firstname</code></td>
+</tr>
+
+<tr>
+<td class="left">Class</td>
+<td class="left"><code>@@first_name</code></td>
+<td class="left"><code>@@First_name, @@firstName</code></td>
+</tr>
+
+<tr>
+<td class="left">Global</td>
+<td class="left"><code>$FIRST_NAME</code></td>
+<td class="left"><code>$first_name, $firstName</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Instance variable are initialized to nil.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-ruby"><span style="color: #a0522d;">@var</span>
+</pre>
+</div>
+
+<pre class="example">
+nil
+</pre>
+
+<p>
+Local variables are not initialized, not even to nil.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-ruby"><span style="color: #a020f0;">begin</span>
+  var
+<span style="color: #a020f0;">rescue</span> <span style="color: #228b22;">Exception</span> =&gt; e
+  <span style="color: #483d8b;">puts</span> e.message
+<span style="color: #a020f0;">end</span>
+</pre>
+</div>
+
+<pre class="example">
+undefined local variable or method `var' for main:Object
+</pre>
+</div>
+
+<div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Constants</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+It is possible to perform an assignment on a constant you
+already assigned. You will get a warning.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-ruby"><span style="color: #228b22;">A</span> = 1
+<span style="color: #228b22;">A</span> = 2
+</pre>
+</div>
+
+<p>
+In the following example, no warning because there is no redefinition of a constant. We
+are modifying an array and array has no knowledge it has been
+assigned to a constant.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-ruby"><span style="color: #a020f0;">module</span> <span style="color: #228b22;">Earth</span>
+  <span style="color: #228b22;">COUNTRIES</span> = [<span style="color: #8b2252;">'Japan'</span>, <span style="color: #8b2252;">'USA'</span>, <span style="color: #8b2252;">'China'</span>, <span style="color: #8b2252;">'Germany'</span>, <span style="color: #8b2252;">'Italy'</span>]
+<span style="color: #a020f0;">end</span>
+countries = <span style="color: #228b22;">Earth</span>::<span style="color: #228b22;">COUNTRIES</span>
+countries &lt;&lt; <span style="color: #8b2252;">'France'</span>
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> class variables — @@</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+class variables are class-hierarchy scoped.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Parent</span>
+  <span style="color: #a0522d;">@@value</span> = 100
+<span style="color: #a020f0;">end</span>
+
+<span style="color: #a020f0;">class</span> <span style="color: #228b22;">Child</span> &lt; <span style="color: #228b22;">Parent</span>
+  <span style="color: #a0522d;">@@value</span> = 200
+<span style="color: #a020f0;">end</span>
+
+<span style="color: #a020f0;">class</span> <span style="color: #228b22;">Parent</span>
+  <span style="color: #483d8b;">puts</span> <span style="color: #a0522d;">@@value</span>
+<span style="color: #a020f0;">end</span>
+</pre>
+</div>
+
+<pre class="example">
+200
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Load and Require</h2>
+<div class="outline-text-2" id="text-5">
 <p>
 <code>$:</code> is the load path global variable. You can add directories to load
 path. For example <code>~$: &lt;&lt; '.'~</code>.
 One major difference between <i>load</i> and <i>require</i> if called more
-than once with the same arguments is that require doesn't reload
-files it's already loaded.
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> Objects, methods and local variables</h2>
-<div class="outline-text-2" id="text-2">
-<p>
-method definitions evaluates to the symbol <code>:m</code> representing the
-name of the method that's just defined.
-</p>
-</div>
-
-<div id="outline-container-sec-2-1" class="outline-3">
-<h3 id="sec-2-1"><span class="section-number-3">2.1</span> ?</h3>
-<div class="outline-text-3" id="text-2-1">
-<p>
-Use question mark for method names that evaluate to <code>true</code> or <code>false</code>.
+than once with the same arguments is that require doesn’t reload
+files it’s already loaded.
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-2-2" class="outline-3">
-<h3 id="sec-2-2"><span class="section-number-3">2.2</span> nil ~= false != true</h3>
-<div class="outline-text-3" id="text-2-2">
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> nil ~= false != true</h2>
+<div class="outline-text-2" id="text-6">
 <p>
 Everything in Ruby has a Boolean value.
 <code>nil</code> and <code>false</code> both have a Boolean value of <i>false</i>.
@@ -666,35 +740,45 @@ Note that <code>puts</code> returns nil.
 </div>
 </div>
 
-<div id="outline-container-sec-2-3" class="outline-3">
-<h3 id="sec-2-3"><span class="section-number-3">2.3</span> Object behavior</h3>
-<div class="outline-text-3" id="text-2-3">
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> % sign technique</h2>
+<div class="outline-text-2" id="text-7">
 <p>
-3 very useful and common functions
+Allows to use sprintf-like syntax. Run ri sprintf for full documentation.
 </p>
-<ul class="org-ul">
-<li><code>object_id</code>
-</li>
-<li><code>respond_to?</code>
-</li>
-<li><code>send</code> (you can use <code>__send__</code> if you want to
-make sure you use Ruby's built in method send)
-</li>
-</ul>
-
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">if</span> object.respond_to?(request)
-  <span style="color: #483d8b;">puts</span> ticket.send(request)
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby">price = 2.84839849
+<span style="color: #483d8b;">p</span> <span style="color: #8b2252;">"</span><span style="color: #a0522d;">#{"%.2f" % price}</span><span style="color: #8b2252;">"</span>
+</pre>
+</div>
+
+<pre class="example">
+2.85
 </pre>
 </div>
 </div>
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> Methods</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+method definitions evaluates to the symbol <code>:m</code> representing the
+name of the method that’s just defined.
+</p>
+</div>
+<div id="outline-container-sec-8-1" class="outline-3">
+<h3 id="sec-8-1"><span class="section-number-3">8.1</span> ?</h3>
+<div class="outline-text-3" id="text-8-1">
+<p>
+Use question mark for method names that evaluate to <code>true</code> or <code>false</code>.
+</p>
+</div>
 </div>
 
-<div id="outline-container-sec-2-4" class="outline-3">
-<h3 id="sec-2-4"><span class="section-number-3">2.4</span> Arguments</h3>
-<div class="outline-text-3" id="text-2-4">
+<div id="outline-container-sec-8-2" class="outline-3">
+<h3 id="sec-8-2"><span class="section-number-3">8.2</span> Arguments</h3>
+<div class="outline-text-3" id="text-8-2">
 <p>
 <code>*</code> allows any number of arguments and <i>sponges</i> arguments if
 placed between other arguments.
@@ -810,10 +894,136 @@ will think it is a block) and curly braces
 </div>
 </div>
 </div>
+<div id="outline-container-sec-8-3" class="outline-3">
+<h3 id="sec-8-3"><span class="section-number-3">8.3</span> Top level methods</h3>
+<div class="outline-text-3" id="text-8-3">
+<div class="org-src-container">
 
-<div id="outline-container-sec-2-5" class="outline-3">
-<h3 id="sec-2-5"><span class="section-number-3">2.5</span> Immediate values</h3>
-<div class="outline-text-3" id="text-2-5">
+<pre class="src src-ruby"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">talk</span>
+  <span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">'hello'</span>
+<span style="color: #a020f0;">end</span>
+</pre>
+</div>
+
+<p>
+is equivalent to
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Object</span>
+  <span style="color: #483d8b;">private</span>
+  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">talk</span>
+    <span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">'hello'</span>
+  <span style="color: #a020f0;">end</span>
+<span style="color: #a020f0;">end</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-8-4" class="outline-3">
+<h3 id="sec-8-4"><span class="section-number-3">8.4</span> method look-up summary</h3>
+<div class="outline-text-3" id="text-8-4">
+<p>
+To look for a method, an object looks in:
+</p>
+
+<ol class="org-ol">
+<li>Modules pre-pended
+</li>
+<li>singleton class
+</li>
+<li>It’s class
+</li>
+<li>Modules in it class
+</li>
+<li>Modules pre-pended to its superclass
+</li>
+<li>It’s class superclass
+</li>
+<li>Modules included in its superclass
+</li>
+<li>and so on up to <code>BasicObject</code>
+</li>
+</ol>
+
+<p>
+A method defined as a singleton method of a class object can
+also be called on sub-classes of that class. The singleton
+class is considered the ancestor of the singleton class of
+sub-classes.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-8-5" class="outline-3">
+<h3 id="sec-8-5"><span class="section-number-3">8.5</span> <code>method_missing</code></h3>
+<div class="outline-text-3" id="text-8-5">
+<p>
+Get called as a last resort for unmatched messages. You can
+override <code>method_missing</code>
+</p>
+
+<p>
+A good example of a <code>method_missing</code> override:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Person</span>
+  <span style="color: #a020f0;">def</span> <span style="color: #a0522d;">self</span>.<span style="color: #0000ff;">method_missing</span>(m, *args)
+    method = m.to_s
+    <span style="color: #a020f0;">if</span> method.start_with?(<span style="color: #8b2252;">'all_with_'</span>)
+    <span style="color: #b22222;"># </span><span style="color: #b22222;">Handle request here"</span>
+    <span style="color: #a020f0;">else</span>
+      <span style="color: #a020f0;">super</span>
+    <span style="color: #a020f0;">end</span>
+  <span style="color: #a020f0;">end</span>
+<span style="color: #a020f0;">end</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> Objects</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+Everything you handle in Ruby is either an object or a construct
+that evaluates to an object.
+</p>
+</div>
+
+<div id="outline-container-sec-9-1" class="outline-3">
+<h3 id="sec-9-1"><span class="section-number-3">9.1</span> Object behavior</h3>
+<div class="outline-text-3" id="text-9-1">
+<p>
+3 very useful and common functions
+</p>
+<ul class="org-ul">
+<li><code>object_id</code>
+</li>
+<li><code>respond_to?</code>
+</li>
+<li><code>send</code> (you can use <code>__send__</code> if you want to
+make sure you use Ruby’s built in method send)
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-ruby"><span style="color: #a020f0;">if</span> object.respond_to?(request)
+  <span style="color: #483d8b;">puts</span> ticket.send(request)
+<span style="color: #a020f0;">end</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-9-2" class="outline-3">
+<h3 id="sec-9-2"><span class="section-number-3">9.2</span> Immediate values</h3>
+<div class="outline-text-3" id="text-9-2">
 <p>
 Some objects like <i>Integers</i>, <i>symbols</i> and <code>true</code>, <code>false</code>,
 <code>nil</code> are stored in variables as immediate value. The variable
@@ -822,16 +1032,16 @@ holds the value itself rather than a reference to it.
 
 <p>
 It follows that there is only one object <code>1</code>, only one <code>true</code>.
-And that's why there is no <code>++</code> operator in ruby. Because <code>1++</code>
-means you'd be changing the number 1 to 2 and that makes no
+And that’s why there is no <code>++</code> operator in ruby. Because <code>1++</code>
+means you would be changing the number 1 to 2 and that makes no
 sense.
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-2-6" class="outline-3">
-<h3 id="sec-2-6"><span class="section-number-3">2.6</span> Freeze, Dup and Clone</h3>
-<div class="outline-text-3" id="text-2-6">
+<div id="outline-container-sec-9-3" class="outline-3">
+<h3 id="sec-9-3"><span class="section-number-3">9.3</span> Freeze, Dup and Clone</h3>
+<div class="outline-text-3" id="text-9-3">
 <p>
 You can freeze an object ruby to prevent and object from
 undergoing further changes.
@@ -843,14 +1053,73 @@ the cloned object was frozen, the clone is also frozen.
 </p>
 </div>
 </div>
+
+<div id="outline-container-sec-9-4" class="outline-3">
+<h3 id="sec-9-4"><span class="section-number-3">9.4</span> <code>BasicObject</code>, <code>Object</code> &amp; <code>Kernel</code></h3>
+<div class="outline-text-3" id="text-9-4">
+<p>
+<code>BasicObject</code> comes before <code>Object</code> in the ruby family tree.
+<code>BasicObject</code> offers a blank state object. an object with
+almost no methods.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-ruby"><span style="color: #483d8b;">puts</span> <span style="color: #228b22;">BasicObject</span>.instance_methods.count
+<span style="color: #483d8b;">puts</span> <span style="color: #228b22;">Object</span>.instance_methods.count
+</pre>
 </div>
 
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> Organizing objects with classes</h2>
-<div class="outline-text-2" id="text-3">
+<pre class="example">
+8
+55
+</pre>
+
 <p>
-Everything you handle in Ruby is either an object or a construct
-that evaluates to an object.
+<code>Kernel</code> module contains the majority of the methods common to
+all objects
+</p>
+
+<p>
+<code>BasicObject</code>, <code>Object</code> &amp; <code>Kernel</code> are written in C. Here is a
+Ruby mock-up of their relationship
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">BasicObject</span>
+  <span style="color: #b22222;"># </span><span style="color: #b22222;">few methods</span>
+<span style="color: #a020f0;">end</span>
+<span style="color: #a020f0;">module</span> <span style="color: #228b22;">Kernel</span>
+  <span style="color: #b22222;"># </span><span style="color: #b22222;">a lot of method definitions</span>
+<span style="color: #a020f0;">end</span>
+<span style="color: #a020f0;">class</span> <span style="color: #228b22;">Object</span> &lt; <span style="color: #228b22;">BasicObject</span>
+  <span style="color: #483d8b;">include</span> <span style="color: #228b22;">Kernel</span>
+<span style="color: #a020f0;">end</span>
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-9-4-1" class="outline-4">
+<h4 id="sec-9-4-1"><span class="section-number-4">9.4.1</span> Basic Object</h4>
+<div class="outline-text-4" id="text-9-4-1">
+<p>
+For any object: <code>obj.class.ancestors.last == BasicObject</code>.
+</p>
+
+<p>
+<code>BasicObject</code> allows you to create objects that do nothing.
+Which means you can teach them everything without worrying about
+clashing with existing methods.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10"><span class="section-number-2">10</span> Classes</h2>
+<div class="outline-text-2" id="text-10">
+<p>
 Every object is an instance of some class.
 </p>
 
@@ -860,78 +1129,36 @@ inside it, or <code>nil</code> if the block is empty.
 </p>
 </div>
 
-<div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1"><span class="section-number-3">3.1</span> initialize</h3>
-<div class="outline-text-3" id="text-3-1">
+<div id="outline-container-sec-10-1" class="outline-3">
+<h3 id="sec-10-1"><span class="section-number-3">10.1</span> initialize</h3>
+<div class="outline-text-3" id="text-10-1">
 <p>
 Arguments used with <code>new</code> are automatically sent to <code>initialize</code>.
 </p>
 </div>
 </div>
-<div id="outline-container-sec-3-2" class="outline-3">
-<h3 id="sec-3-2"><span class="section-number-3">3.2</span> % sign technique</h3>
-<div class="outline-text-3" id="text-3-2">
-<p>
-Allows to use sprintf-like syntax. Run ri sprintf for full documentation.
-</p>
-<div class="org-src-container">
 
-<pre class="src src-ruby">price = 2.84839849
-<span style="color: #483d8b;">p</span> <span style="color: #8b2252;">"</span><span style="color: #a0522d;">#{"%.2f" % price}</span><span style="color: #8b2252;">"</span>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-sec-3-3" class="outline-3">
-<h3 id="sec-3-3"><span class="section-number-3">3.3</span> assignment-like methods</h3>
-<div class="outline-text-3" id="text-3-3">
-<div class="org-src-container">
-
-<pre class="src src-ruby">ticket.price=(63.00)
-ticket.price = 63.00
-</pre>
-</div>
-
-<p>
-The second version is syntactic sugar for the first one. It is
-important to understand and remember. <code>=</code> is a method (like
-other operators) and can be overloaded.
-</p>
+<div id="outline-container-sec-10-2" class="outline-3">
+<h3 id="sec-10-2"><span class="section-number-3">10.2</span> <code>super</code></h3>
+<div class="outline-text-3" id="text-10-2">
+<ul class="org-ul">
+<li>Called with no arguments, <code>super</code> automatically forwards
+arguments passed to the method from which it’s called.
+</li>
+<li>with an empty argument list <code>super()</code> sends no
+argument.
+</li>
+<li>called with specific arguments <code>super(a, b, c)</code> sends those
+arguments.
+</li>
+</ul>
 </div>
 </div>
 
-<div id="outline-container-sec-3-4" class="outline-3">
-<h3 id="sec-3-4"><span class="section-number-3">3.4</span> setter methods</h3>
-<div class="outline-text-3" id="text-3-4">
-<p>
-They behave like assignment. They return the value of the
-expression rather than the last expression evaluated during
-execution (for example when your assignment methods returns a
-string "Hah ha!")
-</p>
 
-<div class="org-src-container">
-
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Ticket</span>
-  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">price=</span>(price)
-    <span style="color: #a0522d;">@price</span> = price
-    <span style="color: #a020f0;">return</span> <span style="color: #8b2252;">'ahah'</span>
-  <span style="color: #a020f0;">end</span>
-
-<span style="color: #a020f0;">end</span>
-
-<span style="color: #a020f0;">if</span> (<span style="color: #228b22;">Ticket</span>.new.price = 65) == 65 <span style="color: #b22222;"># </span><span style="color: #b22222;">true</span>
-  <span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">'my return value is 65'</span> <span style="color: #b22222;">#</span><span style="color: #b22222;">gets printed</span>
-<span style="color: #a020f0;">end</span>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-sec-3-5" class="outline-3">
-<h3 id="sec-3-5"><span class="section-number-3">3.5</span> attributes</h3>
-<div class="outline-text-3" id="text-3-5">
+<div id="outline-container-sec-10-3" class="outline-3">
+<h3 id="sec-10-3"><span class="section-number-3">10.3</span> attributes</h3>
+<div class="outline-text-3" id="text-10-3">
 <table>
 
 
@@ -1022,10 +1249,58 @@ Those family methods are defined in <i>Module</i>
 </p>
 </div>
 </div>
+<div id="outline-container-sec-10-4" class="outline-3">
+<h3 id="sec-10-4"><span class="section-number-3">10.4</span> assignment-like methods</h3>
+<div class="outline-text-3" id="text-10-4">
+<div class="org-src-container">
 
-<div id="outline-container-sec-3-6" class="outline-3">
-<h3 id="sec-3-6"><span class="section-number-3">3.6</span> Subclass</h3>
-<div class="outline-text-3" id="text-3-6">
+<pre class="src src-ruby">ticket.price=(63.00)
+ticket.price = 63.00
+</pre>
+</div>
+
+<p>
+The second version is syntactic sugar for the first one. It is
+important to understand and remember. <code>=</code> is a method (like
+other operators) and can be overloaded.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-10-5" class="outline-3">
+<h3 id="sec-10-5"><span class="section-number-3">10.5</span> setter methods</h3>
+<div class="outline-text-3" id="text-10-5">
+<p>
+They behave like assignment. They return the value of the
+expression rather than the last expression evaluated during
+execution.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Ticket</span>
+  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">price=</span>(price)
+    <span style="color: #a0522d;">@price</span> = price
+    <span style="color: #a020f0;">return</span> <span style="color: #8b2252;">'ahah'</span>
+  <span style="color: #a020f0;">end</span>
+
+<span style="color: #a020f0;">end</span>
+
+<span style="color: #a020f0;">if</span> (<span style="color: #228b22;">Ticket</span>.new.price = 65) == 65
+  <span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">'my return value is 65'</span>
+<span style="color: #a020f0;">end</span>
+</pre>
+</div>
+
+<pre class="example">
+my return value is 65
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-10-6" class="outline-3">
+<h3 id="sec-10-6"><span class="section-number-3">10.6</span> Subclass</h3>
+<div class="outline-text-3" id="text-10-6">
 <p>
 <code>&lt;</code> designates a subclass.
 </p>
@@ -1042,58 +1317,21 @@ Those family methods are defined in <i>Module</i>
 </div>
 </div>
 
-<div id="outline-container-sec-3-7" class="outline-3">
-<h3 id="sec-3-7"><span class="section-number-3">3.7</span> Superclass &amp; Modules</h3>
-<div class="outline-text-3" id="text-3-7">
+<div id="outline-container-sec-10-7" class="outline-3">
+<h3 id="sec-10-7"><span class="section-number-3">10.7</span> Superclass &amp; Modules</h3>
+<div class="outline-text-3" id="text-10-7">
 <p>
 A Ruby <i>class</i> can have only one <i>superclass</i> (<i>single
 inheritance</i>).
-Ruby provides modules that you can <i>mix in</i> your class's family
+Ruby provides modules that you can <i>mix in</i> your class’s family
 tree to provide as many methods for your objects as you need.
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-3-8" class="outline-3">
-<h3 id="sec-3-8"><span class="section-number-3">3.8</span> <code>BasicObject</code>, <code>Object</code> &amp; <code>Kernel</code></h3>
-<div class="outline-text-3" id="text-3-8">
-<p>
-<code>BasicObject</code> comes before <code>Object</code> in the ruby family tree.
-<code>BasicObject</code> offers a blank state object. an object with
-almost no methods. At the time of writing (Ruby 2.1),
-<code>BasicObject</code> has 7 instance methods and <code>Object</code>
-about 55.
-</p>
-
-<p>
-<code>Kernel</code> module contains the majority of the methods common to
-all objects
-</p>
-
-<p>
-<code>BasicObject</code>, <code>Object</code> &amp; <code>Kernel</code> are written in C. Here is a
-Ruby mock-up of their relationship
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">BasicObject</span>
-  <span style="color: #b22222;"># </span><span style="color: #b22222;">7 methods</span>
-<span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">module</span> <span style="color: #228b22;">Kernel</span>
-  <span style="color: #b22222;"># </span><span style="color: #b22222;">over 100 method definitions</span>
-<span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">class</span> <span style="color: #228b22;">Object</span> &lt; <span style="color: #228b22;">BasicObject</span>
-  <span style="color: #483d8b;">include</span> <span style="color: #228b22;">Kernel</span>
-<span style="color: #a020f0;">end</span>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-sec-3-9" class="outline-3">
-<h3 id="sec-3-9"><span class="section-number-3">3.9</span> Methods &amp; Constant notation</h3>
-<div class="outline-text-3" id="text-3-9">
+<div id="outline-container-sec-10-8" class="outline-3">
+<h3 id="sec-10-8"><span class="section-number-3">10.8</span> Methods &amp; Constant notation</h3>
+<div class="outline-text-3" id="text-10-8">
 <ul class="org-ul">
 <li><code>Ticket#price</code>: instance method <code>price</code> in the <i>class</i>
      <code>Ticket</code>
@@ -1110,55 +1348,152 @@ the class Ticket
 </div>
 </div>
 
-<div id="outline-container-sec-3-10" class="outline-3">
-<h3 id="sec-3-10"><span class="section-number-3">3.10</span> Constants</h3>
-<div class="outline-text-3" id="text-3-10">
+<div id="outline-container-sec-10-9" class="outline-3">
+<h3 id="sec-10-9"><span class="section-number-3">10.9</span> <code>inspect</code></h3>
+<div class="outline-text-3" id="text-10-9">
 <p>
-It is possible to perform an assignment on a constant you
-already assigned.
+You can override it and have useful info about your custom
+class.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-10-10" class="outline-3">
+<h3 id="sec-10-10"><span class="section-number-3">10.10</span> Don’t hard code class names.</h3>
+<div class="outline-text-3" id="text-10-10">
+<p>
+It is bad in case you want to rename  your class. Instead use self
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #228b22;">A</span> = 1
-<span style="color: #228b22;">A</span> = 2
+<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">C</span>
+  <span style="color: #a020f0;">def</span> <span style="color: #228b22;">C</span>.<span style="color: #0000ff;">y</span> <span style="color: #b22222;"># </span><span style="color: #b22222;">bad</span>
+  <span style="color: #a020f0;">end</span>
+
+  <span style="color: #a020f0;">def</span> <span style="color: #a0522d;">self</span>.<span style="color: #0000ff;">x</span> <span style="color: #b22222;"># </span><span style="color: #b22222;">good</span>
+  <span style="color: #a020f0;">end</span>
+<span style="color: #a020f0;">end</span>
 </pre>
 </div>
+</div>
+</div>
 
+<div id="outline-container-sec-10-11" class="outline-3">
+<h3 id="sec-10-11"><span class="section-number-3">10.11</span> Instance variables</h3>
+<div class="outline-text-3" id="text-10-11">
 <p>
-You will get a warning
+every instance variable belongs to whatever object is the
+current object (/self) at that point.
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-ruby">venues = <span style="color: #228b22;">Ticket</span>::<span style="color: #228b22;">VENUES</span>
-venues &lt;&lt; <span style="color: #8b2252;">'High School Gym'</span>
+<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">C</span>
+  <span style="color: #483d8b;">p</span> <span style="color: #a0522d;">self</span>
+  <span style="color: #a0522d;">@v</span> = <span style="color: #8b2252;">"top level instance variable "</span>
+  <span style="color: #483d8b;">p</span> <span style="color: #a0522d;">@v</span>
+
+  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">show_v</span>
+    <span style="color: #483d8b;">p</span> <span style="color: #a0522d;">self</span>
+    <span style="color: #483d8b;">p</span> <span style="color: #a0522d;">@v</span>
+  <span style="color: #a020f0;">end</span>
+<span style="color: #a020f0;">end</span>
+
+c = <span style="color: #228b22;">C</span>.new
+c.show_v
+</pre>
+</div>
+
+<pre class="example">
+C
+"top level instance variable "
+#&lt;C:0x007fa18a045a00&gt;
+nil
+</pre>
+
+<p>
+The two variables <code>@v</code> are different
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-10-12" class="outline-3">
+<h3 id="sec-10-12"><span class="section-number-3">10.12</span> built-in classes</h3>
+<div class="outline-text-3" id="text-10-12">
+<p>
+You can create you own <i>string</i> class
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">MyClass</span>
+  <span style="color: #a020f0;">class</span> <span style="color: #228b22;">String</span>
+
+  <span style="color: #a020f0;">end</span>
+  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">initialize</span>
+    <span style="color: #228b22;">String</span>.new
+  <span style="color: #a020f0;">end</span>
 </pre>
 </div>
 
 <p>
-no warning because there is no redefinition of a constant. We
-are modifying an array and array has no knowledge it has been
-assigned to a constant.
+Here the <code>String</code> used will be the new one defined in
+<code>MyClass</code>. To use the build in Ruby <code>String</code> you can use <code>::String.new</code>.
+<code>::</code> in front of a constant means start the search for this at
+the top level.
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-3-11" class="outline-3">
-<h3 id="sec-3-11"><span class="section-number-3">3.11</span> <code>inspect</code></h3>
-<div class="outline-text-3" id="text-3-11">
+<div id="outline-container-sec-10-13" class="outline-3">
+<h3 id="sec-10-13"><span class="section-number-3">10.13</span> public, private, protected</h3>
+<div class="outline-text-3" id="text-10-13">
 <p>
-You can override it and have useful info about your custom class.
+you either do
+<code>private :first_method, :second_method, :third_method</code>. To make
+those three methods private. Or Use <code>private</code> as a switch
+without arguments then ll methods below <code>private</code> in your class
+will be private.
 </p>
+</div>
+
+<div id="outline-container-sec-10-13-1" class="outline-4">
+<h4 id="sec-10-13-1"><span class="section-number-4">10.13.1</span> private setter methods</h4>
+<div class="outline-text-4" id="text-10-13-1">
+<p>
+you can omit <code>self</code> when defining private access. It won’t
+clash with an hypothetic class variable. Ruby is smart enough
+to understand what you mean.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Dog</span>
+  <span style="color: #483d8b;">attr_reader</span> <span style="color: #008b8b;">:age</span>, <span style="color: #008b8b;">:dog_years</span>
+  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">dog_years=</span>(years)
+    <span style="color: #a0522d;">@dog_years</span> = years
+  <span style="color: #a020f0;">end</span>
+  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">age=</span>(years)
+    <span style="color: #a0522d;">@age</span> = years
+    <span style="color: #a0522d;">self</span>.dog_years = years * 7 <span style="color: #b22222;"># </span><span style="color: #b22222;">= @dog_years = years * 7</span>
+  <span style="color: #a020f0;">end</span>
+  <span style="color: #483d8b;">private</span> <span style="color: #008b8b;">:dog_years=</span>
+<span style="color: #a020f0;">end</span>
+
+luigi = <span style="color: #228b22;">Dog</span>.new
+luigi.age = 10
+</pre>
+</div>
+</div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> Modules and program organization</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11"><span class="section-number-2">11</span> Modules</h2>
+<div class="outline-text-2" id="text-11">
 <p>
-Modules don't have instances. It follows that entities or things
+Modules don’t have instances. It follows that entities or things
 are best modeled in classes and characteristics or properties
 are best encapsulated in modules.
 </p>
@@ -1187,11 +1522,11 @@ The main difference between inheriting from a <i>class</i> and
 </p>
 </div>
 
-<div id="outline-container-sec-4-1" class="outline-3">
-<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Class and Module naming</h3>
-<div class="outline-text-3" id="text-4-1">
+<div id="outline-container-sec-11-1" class="outline-3">
+<h3 id="sec-11-1"><span class="section-number-3">11.1</span> Class and Module naming</h3>
+<div class="outline-text-3" id="text-11-1">
 <p>
-It is common to have <i>class</i>'s name as noun and <i>module</i>'s as an adjective
+It is common to have /class/’s name as noun and /module/’s as an adjective
 </p>
 
 <div class="org-src-container">
@@ -1203,39 +1538,9 @@ It is common to have <i>class</i>'s name as noun and <i>module</i>'s as an adjec
 </div>
 </div>
 </div>
-
-<div id="outline-container-sec-4-2" class="outline-3">
-<h3 id="sec-4-2"><span class="section-number-3">4.2</span> <code>method_missing</code></h3>
-<div class="outline-text-3" id="text-4-2">
-<p>
-Get called as a last resort for unmatched messages. You can
-override <code>method_missing</code>
-</p>
-
-<p>
-A good example of a <code>method_missing</code> override:
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Person</span>
-  <span style="color: #a020f0;">def</span> <span style="color: #a0522d;">self</span>.<span style="color: #0000ff;">method_missing</span>(m, *args)
-    method = m.to_s
-    <span style="color: #a020f0;">if</span> method.start_with?(<span style="color: #8b2252;">'all_with_'</span>)
-      <span style="color: #b22222;"># </span><span style="color: #b22222;">Handle request here"</span>
-    <span style="color: #a020f0;">else</span>
-      <span style="color: #a020f0;">super</span>
-    <span style="color: #a020f0;">end</span>
-  <span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">end</span>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-sec-4-3" class="outline-3">
-<h3 id="sec-4-3"><span class="section-number-3">4.3</span> including a module several times</h3>
-<div class="outline-text-3" id="text-4-3">
+<div id="outline-container-sec-11-2" class="outline-3">
+<h3 id="sec-11-2"><span class="section-number-3">11.2</span> including a module several times</h3>
+<div class="outline-text-3" id="text-11-2">
 <p>
 Re-including a <i>module</i> does not do anything as the module is
 already in the search path. In the following example, if <i>N</i> and
@@ -1255,9 +1560,9 @@ already in the search path. In the following example, if <i>N</i> and
 </div>
 </div>
 
-<div id="outline-container-sec-4-4" class="outline-3">
-<h3 id="sec-4-4"><span class="section-number-3">4.4</span> <code>prepend</code></h3>
-<div class="outline-text-3" id="text-4-4">
+<div id="outline-container-sec-11-3" class="outline-3">
+<h3 id="sec-11-3"><span class="section-number-3">11.3</span> <code>prepend</code></h3>
+<div class="outline-text-3" id="text-11-3">
 <p>
 <code>prepend</code> appeared with Ruby 2. The difference between
 <code>include</code> and <code>prepend</code> is that when you <code>prepend a module</code>,
@@ -1267,61 +1572,9 @@ class.
 </div>
 </div>
 
-<div id="outline-container-sec-4-5" class="outline-3">
-<h3 id="sec-4-5"><span class="section-number-3">4.5</span> method look-up summary</h3>
-<div class="outline-text-3" id="text-4-5">
-<p>
-To look for a method, an object looks in:
-</p>
-
-<ol class="org-ol">
-<li>Modules pre-pended
-</li>
-<li>singleton class
-</li>
-<li>It's class
-</li>
-<li>Modules in it class
-</li>
-<li>Modules pre-pended to its superclass
-</li>
-<li>It's class superclass
-</li>
-<li>Modules included in its superclass
-</li>
-<li>and so on up to <code>BasicObject</code>
-</li>
-</ol>
-
-<p>
-A method defined as a singleton method of a class object can
-also be called on sub-classes of that class. The singleton
-class is considered the ancestor of the singleton class of
-sub-classes.
-</p>
-</div>
-</div>
-
-<div id="outline-container-sec-4-6" class="outline-3">
-<h3 id="sec-4-6"><span class="section-number-3">4.6</span> <code>super</code></h3>
-<div class="outline-text-3" id="text-4-6">
-<ul class="org-ul">
-<li>Called with no arguments, <code>super</code> automatically forwards
-arguments passed to the method from which it's called.
-</li>
-<li>with an empty argument list <code>super()</code> sends no
-argument.
-</li>
-<li>called with specific arguments <code>super(a, b, c)</code> sends those
-arguments.
-</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-sec-4-7" class="outline-3">
-<h3 id="sec-4-7"><span class="section-number-3">4.7</span> Nesting modules and classes</h3>
-<div class="outline-text-3" id="text-4-7">
+<div id="outline-container-sec-11-4" class="outline-3">
+<h3 id="sec-11-4"><span class="section-number-3">11.4</span> Nesting modules and classes</h3>
+<div class="outline-text-3" id="text-11-4">
 <div class="org-src-container">
 
 <pre class="src src-ruby"><span style="color: #a020f0;">module</span> <span style="color: #228b22;">Tools</span>
@@ -1333,7 +1586,7 @@ arguments.
 
 <p>
 Used to separate name-spaces for classes, modules and methods.
-However if you see a construct like <code>Tools::Hammer</code> you can't
+However if you see a construct like <code>Tools::Hammer</code> you can’t
 say from that construct if <code>Hammer</code> is a class or a module. You
 know it through the documentation or because you wrote the
 code. The notation in itself does not tell you everything.
@@ -1342,9 +1595,9 @@ code. The notation in itself does not tell you everything.
 </div>
 </div>
 
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5"><span class="section-number-2">5</span> The default Object (self), scope &amp; visibility</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12"><span class="section-number-2">12</span> Self, scope &amp; visibility</h2>
+<div class="outline-text-2" id="text-12">
 <table>
 
 
@@ -1479,208 +1732,14 @@ code. The notation in itself does not tell you everything.
 </tbody>
 </table>
 </div>
-
-
-<div id="outline-container-sec-5-1" class="outline-3">
-<h3 id="sec-5-1"><span class="section-number-3">5.1</span> Don't hard code class names.</h3>
-<div class="outline-text-3" id="text-5-1">
-<p>
-It is bad in case you want to rename  your class. Instead use self
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">C</span>
-  <span style="color: #a020f0;">def</span> <span style="color: #228b22;">C</span>.<span style="color: #0000ff;">y</span> <span style="color: #b22222;"># </span><span style="color: #b22222;">bad</span>
-  <span style="color: #a020f0;">end</span>
-
-  <span style="color: #a020f0;">def</span> <span style="color: #a0522d;">self</span>.<span style="color: #0000ff;">x</span> <span style="color: #b22222;"># </span><span style="color: #b22222;">good</span>
-  <span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">end</span>
-</pre>
-</div>
-</div>
 </div>
 
-<div id="outline-container-sec-5-2" class="outline-3">
-<h3 id="sec-5-2"><span class="section-number-3">5.2</span> instance variables</h3>
-<div class="outline-text-3" id="text-5-2">
-<p>
-every instance variable belongs to whatever object is the
-current object (/self) at that point.
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">C</span>
-  <span style="color: #483d8b;">p</span> <span style="color: #a0522d;">self</span>
-  <span style="color: #a0522d;">@v</span> = <span style="color: #8b2252;">"top level instance variable "</span>
-  <span style="color: #483d8b;">p</span> <span style="color: #a0522d;">@v</span>
-
-  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">show_v</span>
-    <span style="color: #483d8b;">p</span> <span style="color: #a0522d;">self</span>
-    <span style="color: #483d8b;">p</span> <span style="color: #a0522d;">@v</span>
-  <span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">end</span>
-
-c = <span style="color: #228b22;">C</span>.new
-c.show_v
-</pre>
-</div>
-
-<p>
-will return
-</p>
-
-<pre class="example">
-C
-"top level instance variable"
-#&lt;C:0x007fe37388d9d0&gt;
-nil
-</pre>
-
-<p>
-The two variables <code>@v</code> are different
-</p>
-</div>
-</div>
-
-
-<div id="outline-container-sec-5-3" class="outline-3">
-<h3 id="sec-5-3"><span class="section-number-3">5.3</span> built-in classes</h3>
-<div class="outline-text-3" id="text-5-3">
-<p>
-You can create you own <i>string</i> class
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">MyClass</span>
-  <span style="color: #a020f0;">class</span> <span style="color: #228b22;">String</span>
-
-  <span style="color: #a020f0;">end</span>
-  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">initialize</span>
-    <span style="color: #228b22;">String</span>.new
-<span style="color: #a020f0;">end</span>
-</pre>
-</div>
-
-<p>
-Here the <code>String</code> used will be the new one defined in
-<code>MyClass</code>. To use the build in Ruby <code>String</code> you can use <code>::String.new</code>.
-<code>::</code> in front of a constant means start the search for this at
-the top level.
-</p>
-</div>
-</div>
-
-<div id="outline-container-sec-5-4" class="outline-3">
-<h3 id="sec-5-4"><span class="section-number-3">5.4</span> class variables (@@)</h3>
-<div class="outline-text-3" id="text-5-4">
-<p>
-class variables are class-hierarchy scoped.
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Parent</span>
-  <span style="color: #a0522d;">@@value</span> = 100
-<span style="color: #a020f0;">end</span>
-
-<span style="color: #a020f0;">class</span> <span style="color: #228b22;">Child</span> &lt; <span style="color: #228b22;">Parent</span>
-  <span style="color: #a0522d;">@@value</span> = 200
-<span style="color: #a020f0;">end</span>
-
-<span style="color: #a020f0;">class</span> <span style="color: #228b22;">Parent</span>
-  <span style="color: #483d8b;">puts</span> <span style="color: #a0522d;">@@value</span>
-<span style="color: #a020f0;">end</span>
-</pre>
-</div>
-
-<p>
-Here 200 will get printed
-</p>
-</div>
-</div>
-
-
-<div id="outline-container-sec-5-5" class="outline-3">
-<h3 id="sec-5-5"><span class="section-number-3">5.5</span> public, private, protected</h3>
-<div class="outline-text-3" id="text-5-5">
-<p>
-you either do
-<code>private :first_method, :second_method, :third_method</code>. To make
-those three methods private. Or Use <code>private</code> as a switch
-without arguments then ll methods below <code>private</code> in your class
-will be private.
-</p>
-</div>
-
-<div id="outline-container-sec-5-5-1" class="outline-4">
-<h4 id="sec-5-5-1"><span class="section-number-4">5.5.1</span> private setter methods</h4>
-<div class="outline-text-4" id="text-5-5-1">
-<p>
-you can omit <code>self</code> when defining private access. It won't
-clash with an hypothetic class variable. Ruby is smart enough
-to understand what you mean.
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Dog</span>
-  <span style="color: #483d8b;">attr_reader</span> <span style="color: #008b8b;">:age</span>, <span style="color: #008b8b;">:dog_years</span>
-  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">dog_years=</span>(years)
-    <span style="color: #a0522d;">@dog_years</span> = years
-  <span style="color: #a020f0;">end</span>
-  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">age=</span>(years)
-    <span style="color: #a0522d;">@age</span> = years
-    <span style="color: #a0522d;">self</span>.dog_years = years * 7 <span style="color: #b22222;"># </span><span style="color: #b22222;">= @dog_years = years * 7</span>
-  <span style="color: #a020f0;">end</span>
-  <span style="color: #483d8b;">private</span> <span style="color: #008b8b;">:dog_years=</span>
-<span style="color: #a020f0;">end</span>
-
-luigi = <span style="color: #228b22;">Dog</span>.new
-luigi.age = 10
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-sec-5-6" class="outline-3">
-<h3 id="sec-5-6"><span class="section-number-3">5.6</span> top level method</h3>
-<div class="outline-text-3" id="text-5-6">
-<div class="org-src-container">
-
-<pre class="src src-ruby"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">talk</span>
-  <span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">'hello'</span>
-<span style="color: #a020f0;">end</span>
-</pre>
-</div>
-
-<p>
-is equivalent to
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Object</span>
-  <span style="color: #483d8b;">private</span>
-  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">talk</span>
-    <span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">'hello'</span>
-  <span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">end</span>
-</pre>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6"><span class="section-number-2">6</span> Control-flow techniques</h2>
-<div class="outline-text-2" id="text-6">
-</div><div id="outline-container-sec-6-1" class="outline-3">
-<h3 id="sec-6-1"><span class="section-number-3">6.1</span> if</h3>
-<div class="outline-text-3" id="text-6-1">
+<div id="outline-container-sec-13" class="outline-2">
+<h2 id="sec-13"><span class="section-number-2">13</span> Control-flow techniques</h2>
+<div class="outline-text-2" id="text-13">
+</div><div id="outline-container-sec-13-1" class="outline-3">
+<h3 id="sec-13-1"><span class="section-number-3">13.1</span> if</h3>
+<div class="outline-text-3" id="text-13-1">
 <div class="org-src-container">
 
 <pre class="src src-ruby"><span style="color: #a020f0;">if</span> x &gt; 10
@@ -1703,18 +1762,18 @@ represented by the code in the successful branch.
 </div>
 </div>
 
-<div id="outline-container-sec-6-2" class="outline-3">
-<h3 id="sec-6-2"><span class="section-number-3">6.2</span> unless</h3>
-<div class="outline-text-3" id="text-6-2">
+<div id="outline-container-sec-13-2" class="outline-3">
+<h3 id="sec-13-2"><span class="section-number-3">13.2</span> unless</h3>
+<div class="outline-text-3" id="text-13-2">
 <p>
 same as <code>if not</code> or <code>if!</code>
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-6-3" class="outline-3">
-<h3 id="sec-6-3"><span class="section-number-3">6.3</span> case</h3>
-<div class="outline-text-3" id="text-6-3">
+<div id="outline-container-sec-13-3" class="outline-3">
+<h3 id="sec-13-3"><span class="section-number-3">13.3</span> case</h3>
+<div class="outline-text-3" id="text-13-3">
 <p>
 At most one match will succeed and have its code executed.
 You can put more than one possible match in a single <code>when</code>
@@ -1735,9 +1794,9 @@ You can put more than one possible match in a single <code>when</code>
 </div>
 </div>
 
-<div id="outline-container-sec-6-4" class="outline-3">
-<h3 id="sec-6-4"><span class="section-number-3">6.4</span> <i><code>=</code></i></h3>
-<div class="outline-text-3" id="text-6-4">
+<div id="outline-container-sec-13-4" class="outline-3">
+<h3 id="sec-13-4"><span class="section-number-3">13.4</span> <i><code>=</code></i></h3>
+<div class="outline-text-3" id="text-13-4">
 <p>
 For <code>String</code> and any object that does not override it, <code>===</code>
 works the same as <code>==</code>. Every class can define its own <code>===</code>
@@ -1746,9 +1805,9 @@ method. It is used in <i>case when</i> equality logic.
 </div>
 </div>
 
-<div id="outline-container-sec-6-5" class="outline-3">
-<h3 id="sec-6-5"><span class="section-number-3">6.5</span> loop</h3>
-<div class="outline-text-3" id="text-6-5">
+<div id="outline-container-sec-13-5" class="outline-3">
+<h3 id="sec-13-5"><span class="section-number-3">13.5</span> loop</h3>
+<div class="outline-text-3" id="text-13-5">
 <p>
 loop is an iterator. In Ruby an iterator is a method that
 expects you to provide a code block.
@@ -1785,9 +1844,9 @@ Here is how we can write loop
 </div>
 </div>
 
-<div id="outline-container-sec-6-6" class="outline-3">
-<h3 id="sec-6-6"><span class="section-number-3">6.6</span> while and until modifiers</h3>
-<div class="outline-text-3" id="text-6-6">
+<div id="outline-container-sec-13-6" class="outline-3">
+<h3 id="sec-13-6"><span class="section-number-3">13.6</span> while and until modifiers</h3>
+<div class="outline-text-3" id="text-13-6">
 <div class="org-src-container">
 
 <pre class="src src-ruby">n += 1 <span style="color: #a020f0;">until</span> n == 10
@@ -1797,9 +1856,9 @@ n += 1 <span style="color: #a020f0;">while</span> n &lt; 10
 </div>
 </div>
 
-<div id="outline-container-sec-6-7" class="outline-3">
-<h3 id="sec-6-7"><span class="section-number-3">6.7</span> for</h3>
-<div class="outline-text-3" id="text-6-7">
+<div id="outline-container-sec-13-7" class="outline-3">
+<h3 id="sec-13-7"><span class="section-number-3">13.7</span> for</h3>
+<div class="outline-text-3" id="text-13-7">
 <div class="org-src-container">
 
 <pre class="src src-ruby">numbers = [0, 10, 20, 30, 40, 50]
@@ -1811,9 +1870,9 @@ n += 1 <span style="color: #a020f0;">while</span> n &lt; 10
 </div>
 </div>
 
-<div id="outline-container-sec-6-8" class="outline-3">
-<h3 id="sec-6-8"><span class="section-number-3">6.8</span> curly braces vs do/end code block</h3>
-<div class="outline-text-3" id="text-6-8">
+<div id="outline-container-sec-13-8" class="outline-3">
+<h3 id="sec-13-8"><span class="section-number-3">13.8</span> curly braces vs do/end code block</h3>
+<div class="outline-text-3" id="text-13-8">
 <p>
 The difference between the two is a difference in precedence
 </p>
@@ -1844,9 +1903,9 @@ will output an enumerator
 </div>
 </div>
 
-<div id="outline-container-sec-6-9" class="outline-3">
-<h3 id="sec-6-9"><span class="section-number-3">6.9</span> each and map</h3>
-<div class="outline-text-3" id="text-6-9">
+<div id="outline-container-sec-13-9" class="outline-3">
+<h3 id="sec-13-9"><span class="section-number-3">13.9</span> each and map</h3>
+<div class="outline-text-3" id="text-13-9">
 <ul class="org-ul">
 <li><code>each</code> returns its receiver
 </li>
@@ -1856,10 +1915,9 @@ will output an enumerator
 </div>
 </div>
 
-
-<div id="outline-container-sec-6-10" class="outline-3">
-<h3 id="sec-6-10"><span class="section-number-3">6.10</span> Block parameters and scope</h3>
-<div class="outline-text-3" id="text-6-10">
+<div id="outline-container-sec-13-10" class="outline-3">
+<h3 id="sec-13-10"><span class="section-number-3">13.10</span> Block parameters and scope</h3>
+<div class="outline-text-3" id="text-13-10">
 <p>
 If you have a variable of a given name in scope and also use
 that name as one of your block parameters, then the two
@@ -1885,9 +1943,9 @@ x
 </div>
 </div>
 
-<div id="outline-container-sec-6-11" class="outline-3">
-<h3 id="sec-6-11"><span class="section-number-3">6.11</span> rescue</h3>
-<div class="outline-text-3" id="text-6-11">
+<div id="outline-container-sec-13-11" class="outline-3">
+<h3 id="sec-13-11"><span class="section-number-3">13.11</span> rescue</h3>
+<div class="outline-text-3" id="text-13-11">
 <div class="org-src-container">
 
 <pre class="src src-ruby"><span style="color: #a020f0;">begin</span>
@@ -1903,7 +1961,7 @@ x
 </div>
 
 <p>
-if you put rescue at the end of a method you don't need to say
+if you put rescue at the end of a method you don’t need to say
 begin explicitly. Rescue will govern the entire method block
 </p>
 
@@ -1920,12 +1978,12 @@ begin explicitly. Rescue will govern the entire method block
 </div>
 </div>
 
-<div id="outline-container-sec-7" class="outline-2">
-<h2 id="sec-7"><span class="section-number-2">7</span> Built in essentials</h2>
-<div class="outline-text-2" id="text-7">
-</div><div id="outline-container-sec-7-1" class="outline-3">
-<h3 id="sec-7-1"><span class="section-number-3">7.1</span> Literal constructors</h3>
-<div class="outline-text-3" id="text-7-1">
+<div id="outline-container-sec-14" class="outline-2">
+<h2 id="sec-14"><span class="section-number-2">14</span> Built in essentials</h2>
+<div class="outline-text-2" id="text-14">
+</div><div id="outline-container-sec-14-1" class="outline-3">
+<h3 id="sec-14-1"><span class="section-number-3">14.1</span> Literal constructors</h3>
+<div class="outline-text-3" id="text-14-1">
 <p>
 Special notation instead of a call to <code>new</code> to create a new
 object of that class.
@@ -1995,9 +2053,9 @@ object of that class.
 </div>
 </div>
 
-<div id="outline-container-sec-7-2" class="outline-3">
-<h3 id="sec-7-2"><span class="section-number-3">7.2</span> Shortcut operators (syntactic sugar)</h3>
-<div class="outline-text-3" id="text-7-2">
+<div id="outline-container-sec-14-2" class="outline-3">
+<h3 id="sec-14-2"><span class="section-number-3">14.2</span> Shortcut operators</h3>
+<div class="outline-text-3" id="text-14-2">
 <p>
 Ruby has shortcut operators like <code>||=</code>, <code>+=</code>, <code>-=</code>, <code>*=</code>, <code>&amp;=</code>
 (bitwise AND), <code>|=</code> (bitwise OR), <code>^=</code> (bitwise EXCLUSIVE OR)
@@ -2056,9 +2114,9 @@ Shortcut operators are:
 </div>
 </div>
 
-<div id="outline-container-sec-7-3" class="outline-3">
-<h3 id="sec-7-3"><span class="section-number-3">7.3</span> Unary operators</h3>
-<div class="outline-text-3" id="text-7-3">
+<div id="outline-container-sec-14-3" class="outline-3">
+<h3 id="sec-14-3"><span class="section-number-3">14.3</span> Unary operators</h3>
+<div class="outline-text-3" id="text-14-3">
 <p>
 <code>+</code> and <code>-</code> as in <code>+1</code> and <code>-1</code> can be customized
 </p>
@@ -2087,30 +2145,30 @@ You can customize <code>!</code> which also gives you <code>not</code>
 </div>
 </div>
 
-<div id="outline-container-sec-7-4" class="outline-3">
-<h3 id="sec-7-4"><span class="section-number-3">7.4</span> <code>dangerous_method!</code></h3>
-<div class="outline-text-3" id="text-7-4">
+<div id="outline-container-sec-14-4" class="outline-3">
+<h3 id="sec-14-4"><span class="section-number-3">14.4</span> <code>dangerous_method!</code></h3>
+<div class="outline-text-3" id="text-14-4">
 <p>
 When you have a ! at the end of a method name. It usually means
 this methods permanently modifies its receiver. But It is not
-always the case. Especially when ! methods don't have non-bang
+always the case. Especially when ! methods don’t have non-bang
 equivalent.
 Ex: <code>String.clear</code>. No ! but it changes the receiver.
 </p>
 
 <ul class="org-ul">
-<li>Don't use ! except in M/M! methods pars
+<li>Don’t use ! except in M/M! methods pars
 </li>
-<li>Don't equate ! with destructive behavior or vice versa
+<li>Don’t equate ! with destructive behavior or vice versa
 It can mean something else.
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-7-5" class="outline-3">
-<h3 id="sec-7-5"><span class="section-number-3">7.5</span> conversions</h3>
-<div class="outline-text-3" id="text-7-5">
+<div id="outline-container-sec-14-5" class="outline-3">
+<h3 id="sec-14-5"><span class="section-number-3">14.5</span> conversions</h3>
+<div class="outline-text-3" id="text-14-5">
 <ul class="org-ul">
 <li><code>to_s</code>
 used by certain methods like <code>puts</code> and string interpolation. If you write your
@@ -2149,9 +2207,9 @@ by ruby for <i>String#+</i> and <i>String#&lt;&lt;</i>
 </div>
 </div>
 
-<div id="outline-container-sec-7-6" class="outline-3">
-<h3 id="sec-7-6"><span class="section-number-3">7.6</span> Comparisons</h3>
-<div class="outline-text-3" id="text-7-6">
+<div id="outline-container-sec-14-6" class="outline-3">
+<h3 id="sec-14-6"><span class="section-number-3">14.6</span> Comparisons</h3>
+<div class="outline-text-3" id="text-14-6">
 <p>
 if you define <code>==</code>, you automatically define <code>!=</code> for your
 object.
@@ -2161,9 +2219,9 @@ exactly the same object.
 </p>
 </div>
 
-<div id="outline-container-sec-7-6-1" class="outline-4">
-<h4 id="sec-7-6-1"><span class="section-number-4">7.6.1</span> Comparable module</h4>
-<div class="outline-text-4" id="text-7-6-1">
+<div id="outline-container-sec-14-6-1" class="outline-4">
+<h4 id="sec-14-6-1"><span class="section-number-4">14.6.1</span> Comparable module</h4>
+<div class="outline-text-4" id="text-14-6-1">
 <p>
 If you want objects of <code>MyClass</code> to have the full comparison
 suite:
@@ -2180,14 +2238,14 @@ than)
 </div>
 </div>
 </div>
-<div id="outline-container-sec-7-7" class="outline-3">
-<h3 id="sec-7-7"><span class="section-number-3">7.7</span> Inspecting</h3>
-<div class="outline-text-3" id="text-7-7">
+<div id="outline-container-sec-14-7" class="outline-3">
+<h3 id="sec-14-7"><span class="section-number-3">14.7</span> Inspecting</h3>
+<div class="outline-text-3" id="text-14-7">
 <p>
 <code>String.methods.sort</code>
 <code>String.instance_methods.sort</code>
 Use <code>String.instance_methods(false).sort</code> to not see instance
-methods provided by class's ancestors.
+methods provided by class’s ancestors.
 </p>
 
 <div class="org-src-container">
@@ -2215,9 +2273,9 @@ str.singleton_methods
 </div>
 </div>
 
-<div id="outline-container-sec-7-8" class="outline-3">
-<h3 id="sec-7-8"><span class="section-number-3">7.8</span> <code>try_convert</code></h3>
-<div class="outline-text-3" id="text-7-8">
+<div id="outline-container-sec-14-8" class="outline-3">
+<h3 id="sec-14-8"><span class="section-number-3">14.8</span> <code>try_convert</code></h3>
+<div class="outline-text-3" id="text-14-8">
 <p>
 <code>try_convert</code> looks for a conversion method on argument object.
 If it exists, it gets called, if not it returns <code>nil</code>. If the
@@ -2268,26 +2326,26 @@ nil
 </div>
 </div>
 
-<div id="outline-container-sec-8" class="outline-2">
-<h2 id="sec-8"><span class="section-number-2">8</span> Strings, symbols and other scalar objects</h2>
-<div class="outline-text-2" id="text-8">
+<div id="outline-container-sec-15" class="outline-2">
+<h2 id="sec-15"><span class="section-number-2">15</span> Strings</h2>
+<div class="outline-text-2" id="text-15">
 <p>
 A string literal is enclosed between ~"~ or ~'~ quotation marks
 string interpolation does not work with ~'~
 </p>
 </div>
-<div id="outline-container-sec-8-1" class="outline-3">
-<h3 id="sec-8-1"><span class="section-number-3">8.1</span> String interpolation</h3>
-<div class="outline-text-3" id="text-8-1">
+<div id="outline-container-sec-15-1" class="outline-3">
+<h3 id="sec-15-1"><span class="section-number-3">15.1</span> String interpolation</h3>
+<div class="outline-text-3" id="text-15-1">
 <div class="org-src-container">
 
-<pre class="src src-ruby">first_name = <span style="color: #8b2252;">'Auray'</span>
-<span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">"I'm </span><span style="color: #a0522d;">#{first_name}</span><span style="color: #8b2252;">"</span>
+<pre class="src src-ruby">first_name = <span style="color: #8b2252;">'Aur&#233;lien'</span>
+<span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">"I&#8217;m </span><span style="color: #a0522d;">#{first_name}</span><span style="color: #8b2252;">"</span>
 </pre>
 </div>
 
 <pre class="example">
-I'm Auray
+I’m Aurélien
 </pre>
 
 <p>
@@ -2310,9 +2368,9 @@ braces too.
 </div>
 </div>
 
-<div id="outline-container-sec-8-2" class="outline-3">
-<h3 id="sec-8-2"><span class="section-number-3">8.2</span> <i>Here</i> document or <i>here-doc</i></h3>
-<div class="outline-text-3" id="text-8-2">
+<div id="outline-container-sec-15-2" class="outline-3">
+<h3 id="sec-15-2"><span class="section-number-3">15.2</span> <i>Here</i> document or <i>here-doc</i></h3>
+<div class="outline-text-3" id="text-15-2">
 <div class="org-src-container">
 
 <pre class="src src-ruby">too = <span style="color: #8b2252;">'too'</span>
@@ -2381,12 +2439,12 @@ No interpolation #{var_too}
 </div>
 </div>
 
-<div id="outline-container-sec-8-3" class="outline-3">
-<h3 id="sec-8-3"><span class="section-number-3">8.3</span> Basic string manipulation</h3>
-<div class="outline-text-3" id="text-8-3">
-</div><div id="outline-container-sec-8-3-1" class="outline-4">
-<h4 id="sec-8-3-1"><span class="section-number-4">8.3.1</span> Selection</h4>
-<div class="outline-text-4" id="text-8-3-1">
+<div id="outline-container-sec-15-3" class="outline-3">
+<h3 id="sec-15-3"><span class="section-number-3">15.3</span> Basic string manipulation</h3>
+<div class="outline-text-3" id="text-15-3">
+</div><div id="outline-container-sec-15-3-1" class="outline-4">
+<h4 id="sec-15-3-1"><span class="section-number-4">15.3.1</span> Selection</h4>
+<div class="outline-text-4" id="text-15-3-1">
 <ul class="org-ul">
 <li>negative numbers index from the end of the string
 </li>
@@ -2475,9 +2533,9 @@ cool
 </div>
 </div>
 
-<div id="outline-container-sec-8-3-2" class="outline-4">
-<h4 id="sec-8-3-2"><span class="section-number-4">8.3.2</span> changing strings</h4>
-<div class="outline-text-4" id="text-8-3-2">
+<div id="outline-container-sec-15-3-2" class="outline-4">
+<h4 id="sec-15-3-2"><span class="section-number-4">15.3.2</span> changing strings</h4>
+<div class="outline-text-4" id="text-15-3-2">
 <ul class="org-ul">
 <li>You can change part of a string using the same selection arguments
 </li>
@@ -2504,9 +2562,9 @@ With <code>+</code> the string you get back is always a new string. With
 </div>
 </div>
 
-<div id="outline-container-sec-8-4" class="outline-3">
-<h3 id="sec-8-4"><span class="section-number-3">8.4</span> Enumerable strings</h3>
-<div class="outline-text-3" id="text-8-4">
+<div id="outline-container-sec-15-4" class="outline-3">
+<h3 id="sec-15-4"><span class="section-number-3">15.4</span> Enumerable strings</h3>
+<div class="outline-text-3" id="text-15-4">
 <ul class="org-ul">
 <li><code>each_byte</code> and <code>bytes</code>
 </li>
@@ -2524,9 +2582,9 @@ end of lines by default.
 </div>
 </div>
 
-<div id="outline-container-sec-8-5" class="outline-3">
-<h3 id="sec-8-5"><span class="section-number-3">8.5</span> Querying strings</h3>
-<div class="outline-text-3" id="text-8-5">
+<div id="outline-container-sec-15-5" class="outline-3">
+<h3 id="sec-15-5"><span class="section-number-3">15.5</span> Querying strings</h3>
+<div class="outline-text-3" id="text-15-5">
 <ul class="org-ul">
 <li><code>String#include?('cool')</code>
 </li>
@@ -2549,9 +2607,9 @@ operation is <code>String#chr</code>
 </div>
 </div>
 
-<div id="outline-container-sec-8-6" class="outline-3">
-<h3 id="sec-8-6"><span class="section-number-3">8.6</span> String comparison</h3>
-<div class="outline-text-3" id="text-8-6">
+<div id="outline-container-sec-15-6" class="outline-3">
+<h3 id="sec-15-6"><span class="section-number-3">15.6</span> String comparison</h3>
+<div class="outline-text-3" id="text-15-6">
 <ul class="org-ul">
 <li><code>==</code> for equality of content
 </li>
@@ -2561,9 +2619,9 @@ operation is <code>String#chr</code>
 </div>
 </div>
 
-<div id="outline-container-sec-8-7" class="outline-3">
-<h3 id="sec-8-7"><span class="section-number-3">8.7</span> transformations</h3>
-<div class="outline-text-3" id="text-8-7">
+<div id="outline-container-sec-15-7" class="outline-3">
+<h3 id="sec-15-7"><span class="section-number-3">15.7</span> transformations</h3>
+<div class="outline-text-3" id="text-15-7">
 <ul class="org-ul">
 <li><code>String#upcase</code>
 </li>
@@ -2602,9 +2660,9 @@ need a batch of generated unique strings.
 </div>
 </div>
 
-<div id="outline-container-sec-8-8" class="outline-3">
-<h3 id="sec-8-8"><span class="section-number-3">8.8</span> Conversions</h3>
-<div class="outline-text-3" id="text-8-8">
+<div id="outline-container-sec-15-8" class="outline-3">
+<h3 id="sec-15-8"><span class="section-number-3">15.8</span> Conversions</h3>
+<div class="outline-text-3" id="text-15-8">
 <p>
 <code>to_sum</code>, <code>to_f</code>, <code>to_i</code>
 You can provide a parameter to <code>to_i</code> to specify a base.
@@ -2613,9 +2671,9 @@ You can provide a parameter to <code>to_i</code> to specify a base.
 </div>
 </div>
 
-<div id="outline-container-sec-8-9" class="outline-3">
-<h3 id="sec-8-9"><span class="section-number-3">8.9</span> Encoding</h3>
-<div class="outline-text-3" id="text-8-9">
+<div id="outline-container-sec-15-9" class="outline-3">
+<h3 id="sec-15-9"><span class="section-number-3">15.9</span> Encoding</h3>
+<div class="outline-text-3" id="text-15-9">
 <p>
 In Ruby 2 the default encoding for ruby scripts is UTF-8.
 </p>
@@ -2631,11 +2689,7 @@ locale setting which can differ.
 You can use a magic comment at the top of the file <code># encoding:
    encoding_Value</code> to change the encoding of a file.
 </p>
-</div>
 
-<div id="outline-container-sec-8-9-1" class="outline-4">
-<h4 id="sec-8-9-1"><span class="section-number-4">8.9.1</span> Strings</h4>
-<div class="outline-text-4" id="text-8-9-1">
 <p>
 <code>String#encoding</code> to get the encoding.
 </p>
@@ -2661,11 +2715,10 @@ exist in ASCII).
 </p>
 </div>
 </div>
-</div>
 
-<div id="outline-container-sec-8-10" class="outline-3">
-<h3 id="sec-8-10"><span class="section-number-3">8.10</span> XOR and strings</h3>
-<div class="outline-text-3" id="text-8-10">
+<div id="outline-container-sec-15-10" class="outline-3">
+<h3 id="sec-15-10"><span class="section-number-3">15.10</span> XOR and strings</h3>
+<div class="outline-text-3" id="text-15-10">
 <p>
 If you XOR two times the same things you get back the original
 value.
@@ -2698,10 +2751,11 @@ all of them (<code>*</code>).
 </p>
 </div>
 </div>
+</div>
 
-<div id="outline-container-sec-8-11" class="outline-3">
-<h3 id="sec-8-11"><span class="section-number-3">8.11</span> Symbols</h3>
-<div class="outline-text-3" id="text-8-11">
+<div id="outline-container-sec-16" class="outline-2">
+<h2 id="sec-16"><span class="section-number-2">16</span> Symbols</h2>
+<div class="outline-text-2" id="text-16">
 <p>
 literal constructor <code>:symbol_name</code>
 </p>
@@ -2734,7 +2788,7 @@ If you want to check if a symbol exist you can use <i>grep</i>
 </div>
 
 <p>
-Don't use <code>include?(:abc)</code> because this very act creates the
+Don’t use <code>include?(:abc)</code> because this very act creates the
 symbol!
 </p>
 
@@ -2750,16 +2804,16 @@ The following two are equivalent
 </p>
 <div class="org-src-container">
 
-<pre class="src src-ruby">hash = { <span style="color: #008b8b;">:name</span> =&gt; <span style="color: #8b2252;">'David'</span>, <span style="color: #008b8b;">:age</span> =&gt; 35 }
-hash = { <span style="color: #008b8b;">name</span>: <span style="color: #8b2252;">'David'</span>, <span style="color: #008b8b;">age</span>: 35}
+<pre class="src src-ruby">hash = { <span style="color: #008b8b;">:name</span> =&gt; <span style="color: #8b2252;">'Aur&#233;lien'</span>, <span style="color: #008b8b;">:age</span> =&gt; 35 }
+hash = { <span style="color: #008b8b;">name</span>: <span style="color: #8b2252;">'Aur&#233;lien'</span>, <span style="color: #008b8b;">age</span>: 35}
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-8-12" class="outline-3">
-<h3 id="sec-8-12"><span class="section-number-3">8.12</span> Numerical object</h3>
-<div class="outline-text-3" id="text-8-12">
+<div id="outline-container-sec-17" class="outline-2">
+<h2 id="sec-17"><span class="section-number-2">17</span> Numerical</h2>
+<div class="outline-text-2" id="text-17">
 <p>
 At the top <i>Numeric</i>.
 <i>Float</i> and <i>Integer</i> below.
@@ -2822,9 +2876,9 @@ Octals when leading 0
 </div>
 </div>
 
-<div id="outline-container-sec-8-13" class="outline-3">
-<h3 id="sec-8-13"><span class="section-number-3">8.13</span> Times and dates</h3>
-<div class="outline-text-3" id="text-8-13">
+<div id="outline-container-sec-18" class="outline-2">
+<h2 id="sec-18"><span class="section-number-2">18</span> Times and dates</h2>
+<div class="outline-text-2" id="text-18">
 <p>
 3 classes. <i>Time</i>, <i>Date</i> and <i>DateTime</i>
 </p>
@@ -2856,15 +2910,14 @@ d.upto(next_week)
 </div>
 
 <pre class="example">
-#&lt;Enumerator: #&lt;Date: 2014-11-16 ((2456978j,0s,0n),+0s,2299161j)&gt;:upto(#&lt;Date: 2014-11-23 ((2456985j,0s,0n),+0s,2299161j)&gt;)&gt;
+#&lt;Enumerator: #&lt;Date: 2014-11-17 ((2456979j,0s,0n),+0s,2299161j)&gt;:upto(#&lt;Date: 2014-11-24 ((2456986j,0s,0n),+0s,2299161j)&gt;)&gt;
 </pre>
 </div>
 </div>
-</div>
 
-<div id="outline-container-sec-9" class="outline-2">
-<h2 id="sec-9"><span class="section-number-2">9</span> Collection and container objects</h2>
-<div class="outline-text-2" id="text-9">
+<div id="outline-container-sec-19" class="outline-2">
+<h2 id="sec-19"><span class="section-number-2">19</span> Collections</h2>
+<div class="outline-text-2" id="text-19">
 <p>
 Ruby implements collections principally through classes that min
 in <code>Enumerable</code>.
@@ -2876,9 +2929,9 @@ the enumerator. Pretty new and preferable to <code>each_with_index</code>.
 </p>
 </div>
 
-<div id="outline-container-sec-9-1" class="outline-3">
-<h3 id="sec-9-1"><span class="section-number-3">9.1</span> Array</h3>
-<div class="outline-text-3" id="text-9-1">
+<div id="outline-container-sec-19-1" class="outline-3">
+<h3 id="sec-19-1"><span class="section-number-3">19.1</span> Array</h3>
+<div class="outline-text-3" id="text-19-1">
 <p>
 You can create an array with
 </p>
@@ -3076,9 +3129,9 @@ object in an Array
 </div>
 </div>
 
-<div id="outline-container-sec-9-1-1" class="outline-4">
-<h4 id="sec-9-1-1"><span class="section-number-4">9.1.1</span> Inserting, retrieving and removing from an array</h4>
-<div class="outline-text-4" id="text-9-1-1">
+<div id="outline-container-sec-19-1-1" class="outline-4">
+<h4 id="sec-19-1-1"><span class="section-number-4">19.1.1</span> Inserting, retrieving and removing from an array</h4>
+<div class="outline-text-4" id="text-19-1-1">
 <table>
 
 
@@ -3179,9 +3232,9 @@ object in an Array
 </div>
 
 
-<div id="outline-container-sec-9-1-2" class="outline-4">
-<h4 id="sec-9-1-2"><span class="section-number-4">9.1.2</span> Querying</h4>
-<div class="outline-text-4" id="text-9-1-2">
+<div id="outline-container-sec-19-1-2" class="outline-4">
+<h4 id="sec-19-1-2"><span class="section-number-4">19.1.2</span> Querying</h4>
+<div class="outline-text-4" id="text-19-1-2">
 <table>
 
 
@@ -3237,9 +3290,9 @@ object in an Array
 </div>
 </div>
 
-<div id="outline-container-sec-9-2" class="outline-3">
-<h3 id="sec-9-2"><span class="section-number-3">9.2</span> Hashes</h3>
-<div class="outline-text-3" id="text-9-2">
+<div id="outline-container-sec-19-2" class="outline-3">
+<h3 id="sec-19-2"><span class="section-number-3">19.2</span> Hashes</h3>
+<div class="outline-text-3" id="text-19-2">
 <p>
 Hashes are now ordered collections.
 </p>
@@ -3331,9 +3384,9 @@ an empty <code>Array</code> or <code>nil</code> it returns an empty hash <code>{
 </ul>
 </div>
 
-<div id="outline-container-sec-9-2-1" class="outline-4">
-<h4 id="sec-9-2-1"><span class="section-number-4">9.2.1</span> Hash methods</h4>
-<div class="outline-text-4" id="text-9-2-1">
+<div id="outline-container-sec-19-2-1" class="outline-4">
+<h4 id="sec-19-2-1"><span class="section-number-4">19.2.1</span> Hash methods</h4>
+<div class="outline-text-4" id="text-19-2-1">
 <table>
 
 
@@ -3429,9 +3482,9 @@ an empty <code>Array</code> or <code>nil</code> it returns an empty hash <code>{
 </div>
 
 
-<div id="outline-container-sec-9-2-2" class="outline-4">
-<h4 id="sec-9-2-2"><span class="section-number-4">9.2.2</span> Querying</h4>
-<div class="outline-text-4" id="text-9-2-2">
+<div id="outline-container-sec-19-2-2" class="outline-4">
+<h4 id="sec-19-2-2"><span class="section-number-4">19.2.2</span> Querying</h4>
+<div class="outline-text-4" id="text-19-2-2">
 <ul class="org-ul">
 <li><code>h.has_key(1)</code>
 </li>
@@ -3452,9 +3505,9 @@ an empty <code>Array</code> or <code>nil</code> it returns an empty hash <code>{
 </div>
 </div>
 
-<div id="outline-container-sec-9-3" class="outline-3">
-<h3 id="sec-9-3"><span class="section-number-3">9.3</span> Ranges</h3>
-<div class="outline-text-3" id="text-9-3">
+<div id="outline-container-sec-19-3" class="outline-3">
+<h3 id="sec-19-3"><span class="section-number-3">19.3</span> Ranges</h3>
+<div class="outline-text-3" id="text-19-3">
 <p>
 Semantics of range:
 </p>
@@ -3545,7 +3598,7 @@ false
 </pre>
 
 <p>
-Don't create backward range. They won't do what you think they
+Don’t create backward range. They won’t do what you think they
 do.
 </p>
 
@@ -3561,9 +3614,9 @@ false
 </div>
 </div>
 
-<div id="outline-container-sec-9-4" class="outline-3">
-<h3 id="sec-9-4"><span class="section-number-3">9.4</span> Sets</h3>
-<div class="outline-text-3" id="text-9-4">
+<div id="outline-container-sec-19-4" class="outline-3">
+<h3 id="sec-19-4"><span class="section-number-3">19.4</span> Sets</h3>
+<div class="outline-text-3" id="text-19-4">
 <p>
 A set is a unique collection of objects.
 </p>
@@ -3590,12 +3643,12 @@ objects and optionally a code block.
 <div class="org-src-container">
 
 <pre class="src src-ruby"><span style="color: #483d8b;">require</span> <span style="color: #8b2252;">'set'</span>
-<span style="color: #228b22;">Set</span>.new([<span style="color: #8b2252;">'Auray'</span>,<span style="color: #8b2252;">'Rom'</span>, <span style="color: #8b2252;">'And'</span>]) {|name| name.upcase}
+<span style="color: #228b22;">Set</span>.new([<span style="color: #8b2252;">'Aur&#233;lien'</span>,<span style="color: #8b2252;">'Romain'</span>, <span style="color: #8b2252;">'Andr&#233;a'</span>]) {|name| name.upcase}
 </pre>
 </div>
 
 <pre class="example">
-#&lt;Set: {"AURAY", "ROM", "AND"}&gt;
+#&lt;Set: {"AURéLIEN", "ROMAIN", "ANDRéA"}&gt;
 </pre>
 
 <p>
@@ -3621,9 +3674,9 @@ You can test for <code>subset?</code> and <code>superset?</code>.
 </div>
 </div>
 
-<div id="outline-container-sec-10" class="outline-2">
-<h2 id="sec-10"><span class="section-number-2">10</span> Collections Central: Enumerable and Enumerator</h2>
-<div class="outline-text-2" id="text-10">
+<div id="outline-container-sec-20" class="outline-2">
+<h2 id="sec-20"><span class="section-number-2">20</span> Enumerable and Enumerator</h2>
+<div class="outline-text-2" id="text-20">
 <p>
 You can mix-in in <code>Enumerable</code> and define an <code>each</code> instance
 method. You will be able to call any instance method defined in
@@ -3657,12 +3710,12 @@ Blue
 </pre>
 </div>
 
-<div id="outline-container-sec-10-1" class="outline-3">
-<h3 id="sec-10-1"><span class="section-number-3">10.1</span> Enumerable</h3>
-<div class="outline-text-3" id="text-10-1">
-</div><div id="outline-container-sec-10-1-1" class="outline-4">
-<h4 id="sec-10-1-1"><span class="section-number-4">10.1.1</span> Queries:</h4>
-<div class="outline-text-4" id="text-10-1-1">
+<div id="outline-container-sec-20-1" class="outline-3">
+<h3 id="sec-20-1"><span class="section-number-3">20.1</span> Enumerable</h3>
+<div class="outline-text-3" id="text-20-1">
+</div><div id="outline-container-sec-20-1-1" class="outline-4">
+<h4 id="sec-20-1-1"><span class="section-number-4">20.1.1</span> Queries</h4>
+<div class="outline-text-4" id="text-20-1-1">
 <ul class="org-ul">
 <li><code>include?</code>
 </li>
@@ -3696,10 +3749,9 @@ can't iterate from Float
 </div>
 </div>
 
-
-<div id="outline-container-sec-10-1-2" class="outline-4">
-<h4 id="sec-10-1-2"><span class="section-number-4">10.1.2</span> Search and Select</h4>
-<div class="outline-text-4" id="text-10-1-2">
+<div id="outline-container-sec-20-1-2" class="outline-4">
+<h4 id="sec-20-1-2"><span class="section-number-4">20.1.2</span> Search and Select</h4>
+<div class="outline-text-4" id="text-20-1-2">
 <ul class="org-ul">
 <li><code>find</code>. You can provide a failure-handling function
 <div class="org-src-container">
@@ -3711,7 +3763,7 @@ can't iterate from Float
 </li>
 
 <li><code>find_all</code> also known as <code>select</code>. Always returns an array.
-There's a <code>select!</code>.
+There’s a <code>select!</code>.
 </li>
 <li><code>reject</code>. Always returns an array
 </li>
@@ -3733,9 +3785,9 @@ colors.group_by {|color| color.size}
 </div>
 </div>
 
-<div id="outline-container-sec-10-1-3" class="outline-4">
-<h4 id="sec-10-1-3"><span class="section-number-4">10.1.3</span> Element operations:</h4>
-<div class="outline-text-4" id="text-10-1-3">
+<div id="outline-container-sec-20-1-3" class="outline-4">
+<h4 id="sec-20-1-3"><span class="section-number-4">20.1.3</span> Element operations:</h4>
+<div class="outline-text-4" id="text-20-1-3">
 <ul class="org-ul">
 <li><code>first</code>. There is no default <code>last</code> because there are some
 iterations that goes forever. <code>Array</code> and <code>Range</code> have a
@@ -3755,9 +3807,9 @@ iterations that goes forever. <code>Array</code> and <code>Range</code> have a
 </div>
 </div>
 
-<div id="outline-container-sec-10-1-4" class="outline-4">
-<h4 id="sec-10-1-4"><span class="section-number-4">10.1.4</span> Each relatives</h4>
-<div class="outline-text-4" id="text-10-1-4">
+<div id="outline-container-sec-20-1-4" class="outline-4">
+<h4 id="sec-20-1-4"><span class="section-number-4">20.1.4</span> Each relatives</h4>
+<div class="outline-text-4" id="text-20-1-4">
 <ul class="org-ul">
 <li><code>reverse_each</code>
 </li>
@@ -3791,9 +3843,9 @@ a collection.
 </div>
 </div>
 
-<div id="outline-container-sec-10-1-5" class="outline-4">
-<h4 id="sec-10-1-5"><span class="section-number-4">10.1.5</span> Sorting</h4>
-<div class="outline-text-4" id="text-10-1-5">
+<div id="outline-container-sec-20-1-5" class="outline-4">
+<h4 id="sec-20-1-5"><span class="section-number-4">20.1.5</span> Sorting</h4>
+<div class="outline-text-4" id="text-20-1-5">
 <ol class="org-ol">
 <li>You need to define <code>&lt;=&gt;</code> the comparison method for the
 class. If you <i>mixin</i> enumerable you get  all comparison
@@ -3843,24 +3895,24 @@ Two sorting methods for <i>enumerable</i>:
 </div>
 </div>
 
-<div id="outline-container-sec-10-2" class="outline-3">
-<h3 id="sec-10-2"><span class="section-number-3">10.2</span> Enumerator</h3>
-<div class="outline-text-3" id="text-10-2">
+<div id="outline-container-sec-20-2" class="outline-3">
+<h3 id="sec-20-2"><span class="section-number-3">20.2</span> Enumerator</h3>
+<div class="outline-text-3" id="text-20-2">
 <p>
 <code>Enumerator</code> uses <i>Enumerable</i> module to define all usual
 methods <code>inject</code>, <code>select</code>, <code>map</code> on top of its <code>each</code>.
 </p>
 
 <p>
-After you've told how to do <code>each</code>, <code>Enumerator</code> takes over and
+After you’ve told how to do <code>each</code>, <code>Enumerator</code> takes over and
 figures how to do the rest.
 </p>
 </div>
 
-<div id="outline-container-sec-10-2-1" class="outline-4">
-<h4 id="sec-10-2-1"><span class="section-number-4">10.2.1</span> creating enumerators</h4>
-<div class="outline-text-4" id="text-10-2-1">
-</div><ol class="org-ol"><li><a id="sec-10-2-1-1" name="sec-10-2-1-1"></a>with a code block<br ><div class="outline-text-5" id="text-10-2-1-1">
+<div id="outline-container-sec-20-2-1" class="outline-4">
+<h4 id="sec-20-2-1"><span class="section-number-4">20.2.1</span> creating enumerators</h4>
+<div class="outline-text-4" id="text-20-2-1">
+</div><ol class="org-ol"><li><a id="sec-20-2-1-1" name="sec-20-2-1-1"></a>with a code block<br ><div class="outline-text-5" id="text-20-2-1-1">
 <div class="org-src-container">
 
 <pre class="src src-ruby"><span style="color: #228b22;">Enumerator</span>.new <span style="color: #a020f0;">do</span> |y|
@@ -3879,7 +3931,7 @@ You could also write <code>y.yield(1)</code>.
 </p>
 
 <p>
-Note you don't <i>yield</i> from the block. The following is wrong:
+Note you don’t <i>yield</i> from the block. The following is wrong:
 </p>
 
 <div class="org-src-container">
@@ -3894,10 +3946,10 @@ Note you don't <i>yield</i> from the block. The following is wrong:
 </div>
 </li>
 
-<li><a id="sec-10-2-1-2" name="sec-10-2-1-2"></a>with <code>enum_for</code><br ><div class="outline-text-5" id="text-10-2-1-2">
+<li><a id="sec-20-2-1-2" name="sec-20-2-1-2"></a>with <code>enum_for</code><br ><div class="outline-text-5" id="text-20-2-1-2">
 <p>
 In the following example <code>each</code> serve as a kind of front end
-to array's select.
+to array’s select.
 </p>
 
 <div class="org-src-container">
@@ -3921,7 +3973,7 @@ e.each {|n| n.include?(<span style="color: #8b2252;">'a'</span>)}
 </table>
 
 <p>
-Most built-in iterators return an enumerator when they're
+Most built-in iterators return an enumerator when they’re
 called without a block. The following two are equivalent
 </p>
 
@@ -3939,12 +3991,12 @@ called without a block. The following two are equivalent
 </li></ol>
 </div>
 
-<div id="outline-container-sec-10-2-2" class="outline-4">
-<h4 id="sec-10-2-2"><span class="section-number-4">10.2.2</span> Protecting from change</h4>
-<div class="outline-text-4" id="text-10-2-2">
+<div id="outline-container-sec-20-2-2" class="outline-4">
+<h4 id="sec-20-2-2"><span class="section-number-4">20.2.2</span> Protecting from change</h4>
+<div class="outline-text-4" id="text-20-2-2">
 <p>
 Instead of passing an original array you can pass an
-enumerator. This way your enumerator won't absorb changes.
+enumerator. This way your enumerator won’t absorb changes.
 </p>
 
 <div class="org-src-container">
@@ -3959,18 +4011,18 @@ enumerator. This way your enumerator won't absorb changes.
 </div>
 </div>
 
-<div id="outline-container-sec-10-2-3" class="outline-4">
-<h4 id="sec-10-2-3"><span class="section-number-4">10.2.3</span> Slow motion</h4>
-<div class="outline-text-4" id="text-10-2-3">
+<div id="outline-container-sec-20-2-3" class="outline-4">
+<h4 id="sec-20-2-3"><span class="section-number-4">20.2.3</span> Slow motion</h4>
+<div class="outline-text-4" id="text-20-2-3">
 <p>
 You can use <code>next</code>, <code>rewind</code> to move in <code>slow motion</code>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-10-2-4" class="outline-4">
-<h4 id="sec-10-2-4"><span class="section-number-4">10.2.4</span> Adding enumerability with an enumerator</h4>
-<div class="outline-text-4" id="text-10-2-4">
+<div id="outline-container-sec-20-2-4" class="outline-4">
+<h4 id="sec-20-2-4"><span class="section-number-4">20.2.4</span> Adding enumerability with an enumerator</h4>
+<div class="outline-text-4" id="text-20-2-4">
 <div class="org-src-container">
 
 <pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Scale</span>
@@ -3990,9 +4042,9 @@ And you can use all <i>enumerable</i> methods on <code>enum</code>.
 </div>
 </div>
 
-<div id="outline-container-sec-10-2-5" class="outline-4">
-<h4 id="sec-10-2-5"><span class="section-number-4">10.2.5</span> Chaining</h4>
-<div class="outline-text-4" id="text-10-2-5">
+<div id="outline-container-sec-20-2-5" class="outline-4">
+<h4 id="sec-20-2-5"><span class="section-number-4">20.2.5</span> Chaining</h4>
+<div class="outline-text-4" id="text-20-2-5">
 <p>
 Be careful when chaining. <code>names.each.inject</code> can be
 <code>names.inject</code> and <code>names.map.select</code> can be <code>names.select</code>
@@ -4000,9 +4052,9 @@ Be careful when chaining. <code>names.each.inject</code> can be
 </div>
 </div>
 
-<div id="outline-container-sec-10-2-6" class="outline-4">
-<h4 id="sec-10-2-6"><span class="section-number-4">10.2.6</span> Lazy enumerators</h4>
-<div class="outline-text-4" id="text-10-2-6">
+<div id="outline-container-sec-20-2-6" class="outline-4">
+<h4 id="sec-20-2-6"><span class="section-number-4">20.2.6</span> Lazy enumerators</h4>
+<div class="outline-text-4" id="text-20-2-6">
 <p>
 To enumerate selectively over infinitely large collections.
 </p>
@@ -4057,9 +4109,9 @@ To enumerate selectively over infinitely large collections.
 </div>
 </div>
 
-<div id="outline-container-sec-11" class="outline-2">
-<h2 id="sec-11"><span class="section-number-2">11</span> Regular Expressions</h2>
-<div class="outline-text-2" id="text-11">
+<div id="outline-container-sec-21" class="outline-2">
+<h2 id="sec-21"><span class="section-number-2">21</span> Regular Expressions</h2>
+<div class="outline-text-2" id="text-21">
 <p>
 <a href="http://rubular.com/">Rubular</a>: online Ruby regular expression editor
 </p>
@@ -4153,9 +4205,9 @@ are turned off for regular expression <code>/abc/</code>.
 </p>
 </div>
 
-<div id="outline-container-sec-11-1" class="outline-3">
-<h3 id="sec-11-1"><span class="section-number-3">11.1</span> Common methods</h3>
-<div class="outline-text-3" id="text-11-1">
+<div id="outline-container-sec-21-1" class="outline-3">
+<h3 id="sec-21-1"><span class="section-number-3">21.1</span> Common methods</h3>
+<div class="outline-text-3" id="text-21-1">
 <p>
 You can always use match operation as a test in find
 operations.
@@ -4226,9 +4278,9 @@ If you provide a code block you get a combined <i>select/map</i>
 </div>
 </div>
 
-<div id="outline-container-sec-12" class="outline-2">
-<h2 id="sec-12"><span class="section-number-2">12</span> File and I/O operations</h2>
-<div class="outline-text-2" id="text-12">
+<div id="outline-container-sec-22" class="outline-2">
+<h2 id="sec-22"><span class="section-number-2">22</span> File and I/O operations</h2>
+<div class="outline-text-2" id="text-22">
 <p>
 <code>IO</code> handles all input and output by itself or through descendent
 like <code>File</code>.
@@ -4247,7 +4299,7 @@ without losing original streams.
 <code>IO</code> objects iterate based on the global input record separator.
 This global input record separator is stored in <code>$/</code> (by default
 <i>newline</i>). It you change <code>$/</code> you can change the behavior of
-<code>STDIN</code> for example. <code>$/</code> determines the <code>IO</code> object's sense of
+<code>STDIN</code> for example. <code>$/</code> determines the <code>IO</code> object’s sense of
 each.
 </p>
 
@@ -4257,13 +4309,13 @@ you need to name your input stream explicitly.
 </p>
 
 <p>
-You can use block to economize the hassle to close your file objects.
+You can use blocks to economize the hassle to close your file objects.
 </p>
 </div>
 
-<div id="outline-container-sec-12-1" class="outline-3">
-<h3 id="sec-12-1"><span class="section-number-3">12.1</span> Reading files</h3>
-<div class="outline-text-3" id="text-12-1">
+<div id="outline-container-sec-22-1" class="outline-3">
+<h3 id="sec-22-1"><span class="section-number-3">22.1</span> Reading files</h3>
+<div class="outline-text-3" id="text-22-1">
 <ul class="org-ul">
 <li><code>gets</code> get a line. <code>nil</code> after end of file. Since
 <code>Enumerable</code> is an ancestor you can also use <code>each</code> with a block
@@ -4282,14 +4334,14 @@ raise <i>Error</i> on end of file.
      They take care of opening and closing the file handle for you.
 </li>
 <li><code>sysseek</code>, <code>sysread</code>, <code>syswrite</code>. Low level <i>I/O</i>.
-Un-buffered, don't mix with higher-level methods.
+Un-buffered, don’t mix with higher-level methods.
 </li>
 </ul>
 </div>
 
-<div id="outline-container-sec-12-1-1" class="outline-4">
-<h4 id="sec-12-1-1"><span class="section-number-4">12.1.1</span> Internal pointer</h4>
-<div class="outline-text-4" id="text-12-1-1">
+<div id="outline-container-sec-22-1-1" class="outline-4">
+<h4 id="sec-22-1-1"><span class="section-number-4">22.1.1</span> Internal pointer</h4>
+<div class="outline-text-4" id="text-22-1-1">
 <p>
 You can manipulate it with <code>seek</code> (moves around) and <code>pos</code>
 (returns position) and <code>rewind</code> (returns to beginning of file)
@@ -4306,10 +4358,9 @@ f.seek(-10, <span style="color: #228b22;">IO</span>::<span style="color: #228b22
 </div>
 </div>
 
-
-<div id="outline-container-sec-12-2" class="outline-3">
-<h3 id="sec-12-2"><span class="section-number-3">12.2</span> Writing to files</h3>
-<div class="outline-text-3" id="text-12-2">
+<div id="outline-container-sec-22-2" class="outline-3">
+<h3 id="sec-22-2"><span class="section-number-3">22.2</span> Writing to files</h3>
+<div class="outline-text-3" id="text-22-2">
 <ul class="org-ul">
 <li><code>puts</code>. Returns <code>nil</code>.
 </li>
@@ -4321,9 +4372,9 @@ f.seek(-10, <span style="color: #228b22;">IO</span>::<span style="color: #228b22
 </div>
 </div>
 
-<div id="outline-container-sec-12-3" class="outline-3">
-<h3 id="sec-12-3"><span class="section-number-3">12.3</span> File enumerability</h3>
-<div class="outline-text-3" id="text-12-3">
+<div id="outline-container-sec-22-3" class="outline-3">
+<h3 id="sec-22-3"><span class="section-number-3">22.3</span> File enumerability</h3>
+<div class="outline-text-3" id="text-22-3">
 <p>
 You can read a whole file into an array (with <code>readline</code>) but it takes memory and
 it is usually a bad thing to do.
@@ -4339,9 +4390,9 @@ Instead you can iterate on the file which saves memory.
 </div>
 </div>
 
-<div id="outline-container-sec-12-4" class="outline-3">
-<h3 id="sec-12-4"><span class="section-number-3">12.4</span> Querying</h3>
-<div class="outline-text-3" id="text-12-4">
+<div id="outline-container-sec-22-4" class="outline-3">
+<h3 id="sec-22-4"><span class="section-number-3">22.4</span> Querying</h3>
+<div class="outline-text-3" id="text-22-4">
 <p>
 Two closely related module and class: <code>File::Stat and
    FileTest</code>. The methods available in <code>File</code> and <code>FileTest</code> are
@@ -4389,9 +4440,9 @@ regular file, <code>?z</code> for zero length file.
 </div>
 </div>
 
-<div id="outline-container-sec-12-5" class="outline-3">
-<h3 id="sec-12-5"><span class="section-number-3">12.5</span> Directory manipulation</h3>
-<div class="outline-text-3" id="text-12-5">
+<div id="outline-container-sec-22-5" class="outline-3">
+<h3 id="sec-22-5"><span class="section-number-3">22.5</span> Directory manipulation</h3>
+<div class="outline-text-3" id="text-22-5">
 <p>
 With the <code>Dir</code> class.
 </p>
@@ -4408,9 +4459,9 @@ flag arguments like <code>File::FNM_CASEFOLD</code>, <code>File::FNM_DOTMATCH</c
 </div>
 </div>
 
-<div id="outline-container-sec-12-6" class="outline-3">
-<h3 id="sec-12-6"><span class="section-number-3">12.6</span> <code>FileUtils</code></h3>
-<div class="outline-text-3" id="text-12-6">
+<div id="outline-container-sec-22-6" class="outline-3">
+<h3 id="sec-22-6"><span class="section-number-3">22.6</span> <code>FileUtils</code></h3>
+<div class="outline-text-3" id="text-22-6">
 <ul class="org-ul">
 <li><code>FileUtils.rm_rf</code>
 </li>
@@ -4434,15 +4485,15 @@ output of the equivalent unix method call.
 </p>
 
 <p>
-You can use <code>FileUtils::NoWrite</code> to make sure you don't
+You can use <code>FileUtils::NoWrite</code> to make sure you don’t
 accidentally delete, overwrite or move files.
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-12-7" class="outline-3">
-<h3 id="sec-12-7"><span class="section-number-3">12.7</span> <code>Pathname</code></h3>
-<div class="outline-text-3" id="text-12-7">
+<div id="outline-container-sec-22-7" class="outline-3">
+<h3 id="sec-22-7"><span class="section-number-3">22.7</span> <code>Pathname</code></h3>
+<div class="outline-text-3" id="text-22-7">
 <ul class="org-ul">
 <li><code>basename</code>
 </li>
@@ -4469,18 +4520,18 @@ block
 </div>
 </div>
 
-<div id="outline-container-sec-12-8" class="outline-3">
-<h3 id="sec-12-8"><span class="section-number-3">12.8</span> <code>StringIO</code></h3>
-<div class="outline-text-3" id="text-12-8">
+<div id="outline-container-sec-22-8" class="outline-3">
+<h3 id="sec-22-8"><span class="section-number-3">22.8</span> <code>StringIO</code></h3>
+<div class="outline-text-3" id="text-22-8">
 <p>
 treats string like IO objects. You can see trough them, rewind etc.
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-12-9" class="outline-3">
-<h3 id="sec-12-9"><span class="section-number-3">12.9</span> <code>Tempfile</code></h3>
-<div class="outline-text-3" id="text-12-9">
+<div id="outline-container-sec-22-9" class="outline-3">
+<h3 id="sec-22-9"><span class="section-number-3">22.9</span> <code>Tempfile</code></h3>
+<div class="outline-text-3" id="text-22-9">
 <p>
 Useful to run tests
 </p>
@@ -4493,9 +4544,9 @@ Useful to run tests
 </div>
 </div>
 
-<div id="outline-container-sec-12-10" class="outline-3">
-<h3 id="sec-12-10"><span class="section-number-3">12.10</span> <code>open-uri</code></h3>
-<div class="outline-text-3" id="text-12-10">
+<div id="outline-container-sec-22-10" class="outline-3">
+<h3 id="sec-22-10"><span class="section-number-3">22.10</span> <code>open-uri</code></h3>
+<div class="outline-text-3" id="text-22-10">
 <p>
 Standard <i>HTTP</i> and <i>HTTPS</i> library.
 </p>
@@ -4507,24 +4558,31 @@ webpage = <span style="color: #483d8b;">open</span>(<span style="color: #8b2252;
 webpage.gets
 </pre>
 </div>
+
+<pre class="example">
+&lt;!DOCTYPE html&gt;
+</pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-13" class="outline-2">
-<h2 id="sec-13"><span class="section-number-2">13</span> Object individuation</h2>
-<div class="outline-text-2" id="text-13">
+<div id="outline-container-sec-23" class="outline-2">
+<h2 id="sec-23"><span class="section-number-2">23</span> Object individuation</h2>
+<div class="outline-text-2" id="text-23">
 <p>
 Every object has two classes.
 </p>
 <ul class="org-ul">
-<li>The class of which it's an instance
+<li>The class of which it’s an instance
 </li>
 <li>Its singleton class
 </li>
 </ul>
+</div>
 
-
+<div id="outline-container-sec-23-1" class="outline-3">
+<h3 id="sec-23-1"><span class="section-number-3">23.1</span> Singleton classes</h3>
+<div class="outline-text-3" id="text-23-1">
 <p>
 Singleton classes are anonymous, they appear automatically
 without being given a name.
@@ -4588,8 +4646,12 @@ Outside the body of a class you can define the same method with
 <span style="color: #a020f0;">end</span>
 </pre>
 </div>
+</div>
+</div>
 
-
+<div id="outline-container-sec-23-2" class="outline-3">
+<h3 id="sec-23-2"><span class="section-number-3">23.2</span> Ancestors</h3>
+<div class="outline-text-3" id="text-23-2">
 <p>
 <code>ancestors</code> is a useful method to look-up the class hierarchy
 </p>
@@ -4609,7 +4671,7 @@ c = <span style="color: #228b22;">C</span>.new
 </div>
 
 <pre class="example">
-[#&lt;Class:#&lt;C:0x007f855106dd20&gt;&gt;, M, C, Object, Kernel, BasicObject]
+[#&lt;Class:#&lt;C:0x007fb32a1fdd00&gt;&gt;, M, C, Object, Kernel, BasicObject]
 </pre>
 
 <p>
@@ -4624,14 +4686,19 @@ You can refer to the singleton class of an object with the
 </div>
 
 <pre class="example">
-#&lt;Class:#&lt;String:0x007f8cd0922570&gt;&gt;
+#&lt;Class:#&lt;String:0x007fb0e09e2530&gt;&gt;
 String
 Comparable
 Object
 Kernel
 BasicObject
 </pre>
+</div>
+</div>
 
+<div id="outline-container-sec-23-3" class="outline-3">
+<h3 id="sec-23-3"><span class="section-number-3">23.3</span> Alias</h3>
+<div class="outline-text-3" id="text-23-3">
 <p>
 An alias is a synonym for a method name. By convention when we
 create an alias with use <code>__old_method_name__</code> to make an alias
@@ -4664,20 +4731,23 @@ HELLO
 olleh
 </pre>
 </div>
+</div>
 
-
-<div id="outline-container-sec-13-1" class="outline-3">
-<h3 id="sec-13-1"><span class="section-number-3">13.1</span> Additive changes</h3>
-<div class="outline-text-3" id="text-13-1">
+<div id="outline-container-sec-23-4" class="outline-3">
+<h3 id="sec-23-4"><span class="section-number-3">23.4</span> Modifications</h3>
+<div class="outline-text-3" id="text-23-4">
+</div><div id="outline-container-sec-23-4-1" class="outline-4">
+<h4 id="sec-23-4-1"><span class="section-number-4">23.4.1</span> Additive changes</h4>
+<div class="outline-text-4" id="text-23-4-1">
 <p>
 Danger: two programmer add a method with the same name.
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-13-2" class="outline-3">
-<h3 id="sec-13-2"><span class="section-number-3">13.2</span> Pass-through overrides</h3>
-<div class="outline-text-3" id="text-13-2">
+<div id="outline-container-sec-23-4-2" class="outline-4">
+<h4 id="sec-23-4-2"><span class="section-number-4">23.4.2</span> Pass-through overrides</h4>
+<div class="outline-text-4" id="text-23-4-2">
 <p>
 The original version of the method end up being called
 </p>
@@ -4703,9 +4773,9 @@ olleh
 </div>
 </div>
 
-<div id="outline-container-sec-13-3" class="outline-3">
-<h3 id="sec-13-3"><span class="section-number-3">13.3</span> Additive/pass-through hybrids</h3>
-<div class="outline-text-3" id="text-13-3">
+<div id="outline-container-sec-23-4-3" class="outline-4">
+<h4 id="sec-23-4-3"><span class="section-number-4">23.4.3</span> Additive/pass-through hybrids</h4>
+<div class="outline-text-4" id="text-23-4-3">
 <p>
 same name, calls the old version and adds something to the
 interface. It offers a superset of the functionality of the
@@ -4719,9 +4789,9 @@ argument to specify a formatting like <code>Time.now.to_s(:db)</code>
 </div>
 </div>
 
-<div id="outline-container-sec-13-4" class="outline-3">
-<h3 id="sec-13-4"><span class="section-number-3">13.4</span> Extend</h3>
-<div class="outline-text-3" id="text-13-4">
+<div id="outline-container-sec-23-4-4" class="outline-4">
+<h4 id="sec-23-4-4"><span class="section-number-4">23.4.4</span> Extend</h4>
+<div class="outline-text-4" id="text-23-4-4">
 <p>
 Safest way to add functionality on a strictly per-object basis.
 </p>
@@ -4744,7 +4814,7 @@ singleton class on directly on class.
 <span style="color: #a020f0;">end</span>
 
 david = <span style="color: #228b22;">Person</span>.new
-david.name = <span style="color: #8b2252;">'David'</span>
+david.name = <span style="color: #8b2252;">'Aur&#233;lien'</span>
 david.extend(<span style="color: #228b22;">Secretive</span>)
 <span style="color: #483d8b;">puts</span> david.name
 </pre>
@@ -4769,9 +4839,9 @@ not available
 </div>
 </div>
 
-<div id="outline-container-sec-13-5" class="outline-3">
-<h3 id="sec-13-5"><span class="section-number-3">13.5</span> Refinements</h3>
-<div class="outline-text-3" id="text-13-5">
+<div id="outline-container-sec-23-4-5" class="outline-4">
+<h4 id="sec-23-4-5"><span class="section-number-4">23.4.5</span> Refinements</h4>
+<div class="outline-text-4" id="text-23-4-5">
 <p>
 New in Ruby 2.0. The idea is to make a temporary, limited-scope
 change to a class.
@@ -4793,18 +4863,18 @@ change to a class.
   <span style="color: #483d8b;">using</span> <span style="color: #228b22;">Shout</span>
 
   <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">announce</span>
-    <span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">"I'm </span><span style="color: #a0522d;">#{name.shout}</span><span style="color: #8b2252;">"</span>
+    <span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">"I&#8217;m </span><span style="color: #a0522d;">#{name.shout}</span><span style="color: #8b2252;">"</span>
   <span style="color: #a020f0;">end</span>
 <span style="color: #a020f0;">end</span>
 
 auray = <span style="color: #228b22;">Person</span>.new
-auray.name = <span style="color: #8b2252;">'Auray'</span>
+auray.name = <span style="color: #8b2252;">'Aur&#233;lien'</span>
 <span style="color: #483d8b;">puts</span> auray.announce
 </pre>
 </div>
 
 <pre class="example">
-I'm AURAY!!!
+I’m AURéLIEN!!!
 </pre>
 
 <p>
@@ -4813,29 +4883,15 @@ refinements persists to the end of the file.
 </p>
 </div>
 </div>
-
-<div id="outline-container-sec-13-6" class="outline-3">
-<h3 id="sec-13-6"><span class="section-number-3">13.6</span> Basic Object</h3>
-<div class="outline-text-3" id="text-13-6">
-<p>
-For any object: <code>obj.class.ancestors.last == BasicObject</code>.
-</p>
-
-<p>
-<code>BasicObject</code> allows you to create objects that do nothing.
-Which means you can teach them everything without worrying about
-clashing with existing methods.
-</p>
-</div>
 </div>
 </div>
 
-<div id="outline-container-sec-14" class="outline-2">
-<h2 id="sec-14"><span class="section-number-2">14</span> Callable and runnable object</h2>
-<div class="outline-text-2" id="text-14">
-</div><div id="outline-container-sec-14-1" class="outline-3">
-<h3 id="sec-14-1"><span class="section-number-3">14.1</span> Procs</h3>
-<div class="outline-text-3" id="text-14-1">
+<div id="outline-container-sec-24" class="outline-2">
+<h2 id="sec-24"><span class="section-number-2">24</span> Callable and runnable object</h2>
+<div class="outline-text-2" id="text-24">
+</div><div id="outline-container-sec-24-1" class="outline-3">
+<h3 id="sec-24-1"><span class="section-number-3">24.1</span> Procs</h3>
+<div class="outline-text-3" id="text-24-1">
 <div class="org-src-container">
 
 <pre class="src src-ruby">pr = <span style="color: #228b22;">Proc</span>.new { <span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">'Inside a proc\'s block'</span> }
@@ -4862,14 +4918,14 @@ A <i>proc</i> can serve in place of a code block in a method call
 <div class="org-src-container">
 
 <pre class="src src-ruby">p = <span style="color: #483d8b;">proc</span> {|x| <span style="color: #483d8b;">puts</span> x.upcase }
-<span style="color: #8b2252;">%w{ David Black }</span>.each(&amp;p)
+<span style="color: #8b2252;">%w{ Aur&#233;lien Bottazini }</span>.each(&amp;p)
 </pre>
 </div>
 
 <p>
 A ruby code block is not an object. A code block is part of the
 syntax of the method call. A code block is a syntactic construct
-and code block aren't method arguments.
+and code block aren’t method arguments.
 </p>
 
 <p>
@@ -4913,7 +4969,7 @@ inside a block
 
 <p>
 the <code>&amp;</code> in <code>&amp;p</code> is a wrapper around the method <code>to_proc</code>. Here
-<code>&amp;</code> triggers a call to <code>p</code>'s <code>to_proc</code> method and it tells ruby
+<code>&amp;</code> triggers a call to <code>p~’s ~to_proc</code> method and it tells ruby
 that the resulting <code>Proc</code> object is serving as a code block
 stand-in.
 </p>
@@ -5013,8 +5069,8 @@ calling_proc(pr)
 </table>
 
 <p>
-<code>Proc</code> doesn't care about the number of arguments. Without arguments
-it's single argument is set to <code>nil</code>. With more than one
+<code>Proc</code> doesn’t care about the number of arguments. Without arguments
+it’s single argument is set to <code>nil</code>. With more than one
 argument the remaining ones are discarded.
 </p>
 
@@ -5045,7 +5101,7 @@ of arguments.
 </div>
 
 <pre class="example">
-#&lt;Proc:0x007fd49600daa8@-:3 (lambda)&gt;
+#&lt;Proc:0x007fbb8c145a88@-:3 (lambda)&gt;
 </pre>
 
 <p>
@@ -5066,9 +5122,9 @@ twelve = mult[3,4]
 </div>
 </div>
 
-<div id="outline-container-sec-14-2" class="outline-3">
-<h3 id="sec-14-2"><span class="section-number-3">14.2</span> Methods as objects</h3>
-<div class="outline-text-3" id="text-14-2">
+<div id="outline-container-sec-24-2" class="outline-3">
+<h3 id="sec-24-2"><span class="section-number-3">24.2</span> Methods as objects</h3>
+<div class="outline-text-3" id="text-24-2">
 <p>
 You can grab a method with the <code>method</code> method.
 </p>
@@ -5094,10 +5150,11 @@ two objects are of the same class or subclass.
 </p>
 </div>
 </div>
+</div>
 
-<div id="outline-container-sec-14-3" class="outline-3">
-<h3 id="sec-14-3"><span class="section-number-3">14.3</span> Eval</h3>
-<div class="outline-text-3" id="text-14-3">
+<div id="outline-container-sec-25" class="outline-2">
+<h2 id="sec-25"><span class="section-number-2">25</span> Eval</h2>
+<div class="outline-text-2" id="text-25">
 <p>
 <code>Binding</code> encapsulates the local variable bindings. There is
 also a top-level method <code>binding</code> which returns whatever the
@@ -5122,16 +5179,16 @@ I am a string
 </pre>
 </div>
 
-<div id="outline-container-sec-14-3-1" class="outline-4">
-<h4 id="sec-14-3-1"><span class="section-number-4">14.3.1</span> <code>instance_eval</code></h4>
-<div class="outline-text-4" id="text-14-3-1">
+<div id="outline-container-sec-25-1" class="outline-3">
+<h3 id="sec-25-1"><span class="section-number-3">25.1</span> <code>instance_eval</code></h3>
+<div class="outline-text-3" id="text-25-1">
 <p>
 Evaluate string or block of code changing <code>self</code> to be the
 receiver of <code>instance_eval</code>.
 </p>
 
 <p>
-Useful to break in another object's private data.
+Useful to break in another object’s private data.
 </p>
 
 <div class="org-src-container">
@@ -5166,7 +5223,7 @@ You can use <code>instance_eval</code> to allow simplified assignment
 <span style="color: #a020f0;">end</span>
 
 p = <span style="color: #228b22;">Person</span>.new <span style="color: #a020f0;">do</span>
-  name <span style="color: #8b2252;">'David'</span>
+  name <span style="color: #8b2252;">'Aur&#233;lien'</span>
   age 55
 <span style="color: #a020f0;">end</span>
 
@@ -5175,14 +5232,14 @@ p = <span style="color: #228b22;">Person</span>.new <span style="color: #a020f0;
 </div>
 
 <pre class="example">
-#&lt;Person:0x007fb28a06d558 @name="David", @age=55&gt;
+#&lt;Person:0x007fd7b11fd4f8 @name="Aurélien", @age=55&gt;
 </pre>
 </div>
 </div>
 
-<div id="outline-container-sec-14-3-2" class="outline-4">
-<h4 id="sec-14-3-2"><span class="section-number-4">14.3.2</span> <code>class_eval</code></h4>
-<div class="outline-text-4" id="text-14-3-2">
+<div id="outline-container-sec-25-2" class="outline-3">
+<h3 id="sec-25-2"><span class="section-number-3">25.2</span> <code>class_eval</code></h3>
+<div class="outline-text-3" id="text-25-2">
 <p>
 It puts you inside a class-definition body
 </p>
@@ -5199,9 +5256,9 @@ c.class_eval <span style="color: #a020f0;">do</span>
 </div>
 </div>
 
-<div id="outline-container-sec-14-3-3" class="outline-4">
-<h4 id="sec-14-3-3"><span class="section-number-4">14.3.3</span> <code>define_method</code></h4>
-<div class="outline-text-4" id="text-14-3-3">
+<div id="outline-container-sec-25-3" class="outline-3">
+<h3 id="sec-25-3"><span class="section-number-3">25.3</span> <code>define_method</code></h3>
+<div class="outline-text-3" id="text-25-3">
 <p>
 useful to bring an outer scope variable  into an instance
 method
@@ -5232,9 +5289,9 @@ works because the block keeps the scope.
 </div>
 </div>
 
-<div id="outline-container-sec-14-4" class="outline-3">
-<h3 id="sec-14-4"><span class="section-number-3">14.4</span> Threads</h3>
-<div class="outline-text-3" id="text-14-4">
+<div id="outline-container-sec-26" class="outline-2">
+<h2 id="sec-26"><span class="section-number-2">26</span> Threads</h2>
+<div class="outline-text-2" id="text-26">
 <div class="org-src-container">
 
 <pre class="src src-ruby">t = <span style="color: #228b22;">Thread</span>.new <span style="color: #a020f0;">do</span>
@@ -5254,7 +5311,7 @@ end
 </pre>
 
 <p>
-Don't forget to use <code>join</code> to allow the thread to finish
+Don’t forget to use <code>join</code> to allow the thread to finish
 executing (if it takes more time than the remaining of the
 program).
 </p>
@@ -5296,9 +5353,9 @@ Hello
 </pre>
 </div>
 
-<div id="outline-container-sec-14-4-1" class="outline-4">
-<h4 id="sec-14-4-1"><span class="section-number-4">14.4.1</span> example chat server using sockets and threads</h4>
-<div class="outline-text-4" id="text-14-4-1">
+<div id="outline-container-sec-26-1" class="outline-3">
+<h3 id="sec-26-1"><span class="section-number-3">26.1</span> Example chat server using sockets and threads</h3>
+<div class="outline-text-3" id="text-26-1">
 <div class="org-src-container">
 
 <pre class="src src-ruby"><span style="color: #483d8b;">require</span> <span style="color: #8b2252;">'socket'</span>
@@ -5339,9 +5396,9 @@ chatters = []
 </div>
 </div>
 
-<div id="outline-container-sec-14-5" class="outline-3">
-<h3 id="sec-14-5"><span class="section-number-3">14.5</span> Fibers</h3>
-<div class="outline-text-3" id="text-14-5">
+<div id="outline-container-sec-27" class="outline-2">
+<h2 id="sec-27"><span class="section-number-2">27</span> Fibers</h2>
+<div class="outline-text-2" id="text-27">
 <p>
 Fibers are like re-entrant code blocks. They can yield back and
 forth to their calling context multiple times.
@@ -5370,9 +5427,9 @@ last hi
 </div>
 </div>
 
-<div id="outline-container-sec-14-6" class="outline-3">
-<h3 id="sec-14-6"><span class="section-number-3">14.6</span> system commands</h3>
-<div class="outline-text-3" id="text-14-6">
+<div id="outline-container-sec-28" class="outline-2">
+<h2 id="sec-28"><span class="section-number-2">28</span> System commands</h2>
+<div class="outline-text-2" id="text-28">
 <p>
 With back-ticks <code>``</code> (returns the output and string interpolation) or <code>system</code>.
 </p>
@@ -5389,11 +5446,10 @@ You can also use <code>%x{}</code>. It returns the output and allow string
 interpolation.
 </p>
 </div>
-</div>
 
-<div id="outline-container-sec-14-7" class="outline-3">
-<h3 id="sec-14-7"><span class="section-number-3">14.7</span> <code>open</code> and <code>open3</code></h3>
-<div class="outline-text-3" id="text-14-7">
+<div id="outline-container-sec-28-1" class="outline-3">
+<h3 id="sec-28-1"><span class="section-number-3">28.1</span> <code>open</code> and <code>open3</code></h3>
+<div class="outline-text-3" id="text-28-1">
 <div class="org-src-container">
 
 <pre class="src src-ruby">d = <span style="color: #483d8b;">open</span>(<span style="color: #8b2252;">'|cat'</span>, <span style="color: #8b2252;">'w+'</span>)
@@ -5421,9 +5477,9 @@ stdout.gets
 </div>
 </div>
 
-<div id="outline-container-sec-15" class="outline-2">
-<h2 id="sec-15"><span class="section-number-2">15</span> Callbacks, hooks and run-time introspection</h2>
-<div class="outline-text-2" id="text-15">
+<div id="outline-container-sec-29" class="outline-2">
+<h2 id="sec-29"><span class="section-number-2">29</span> Callbacks, hooks and run-time introspection</h2>
+<div class="outline-text-2" id="text-29">
 <p>
 <i>callbacks</i> and <i>hooks are used for meta-programming. They
 activate on /events</i>.
@@ -5448,9 +5504,9 @@ An event can be something like:
 </div>
 
 
-<div id="outline-container-sec-15-1" class="outline-3">
-<h3 id="sec-15-1"><span class="section-number-3">15.1</span> <code>method_missing</code></h3>
-<div class="outline-text-3" id="text-15-1">
+<div id="outline-container-sec-29-1" class="outline-3">
+<h3 id="sec-29-1"><span class="section-number-3">29.1</span> <code>method_missing</code></h3>
+<div class="outline-text-3" id="text-29-1">
 <div class="org-src-container">
 
 <pre class="src src-ruby"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">method_missing</span>(m, *args, &amp;block)
@@ -5466,9 +5522,9 @@ all objects except instances of <code>BasicObject</code>.
 </p>
 
 <p>
-<code>method_missing</code> and <code>respond_to?</code> don't play well together. If
+<code>method_missing</code> and <code>respond_to?</code> don’t play well together. If
 you create methods dynamically inside <code>method_missing</code> but
-<code>respond_to?</code> will still say they don't exist. To go around
+<code>respond_to?</code> will still say they don’t exist. To go around
 that problem you can implement <code>respond_to_missing?</code>
 </p>
 
@@ -5491,9 +5547,9 @@ Here is an example
 </div>
 </div>
 
-<div id="outline-container-sec-15-2" class="outline-3">
-<h3 id="sec-15-2"><span class="section-number-3">15.2</span> prepend and include</h3>
-<div class="outline-text-3" id="text-15-2">
+<div id="outline-container-sec-29-2" class="outline-3">
+<h3 id="sec-29-2"><span class="section-number-3">29.2</span> prepend and include</h3>
+<div class="outline-text-3" id="text-29-2">
 <p>
 You can define special methods called <code>included</code> and <code>prepended</code>
 </p>
@@ -5536,9 +5592,9 @@ You can even add class methods with this technique
 </div>
 </div>
 
-<div id="outline-container-sec-15-3" class="outline-3">
-<h3 id="sec-15-3"><span class="section-number-3">15.3</span> extended</h3>
-<div class="outline-text-3" id="text-15-3">
+<div id="outline-container-sec-29-3" class="outline-3">
+<h3 id="sec-29-3"><span class="section-number-3">29.3</span> extended</h3>
+<div class="outline-text-3" id="text-29-3">
 <div class="org-src-container">
 
 <pre class="src src-ruby"><span style="color: #a020f0;">module</span> <span style="color: #228b22;">M</span>
@@ -5550,9 +5606,9 @@ You can even add class methods with this technique
 </div>
 </div>
 
-<div id="outline-container-sec-15-4" class="outline-3">
-<h3 id="sec-15-4"><span class="section-number-3">15.4</span> intercepting inheritance</h3>
-<div class="outline-text-3" id="text-15-4">
+<div id="outline-container-sec-29-4" class="outline-3">
+<h3 id="sec-29-4"><span class="section-number-3">29.4</span> intercepting inheritance</h3>
+<div class="outline-text-3" id="text-29-4">
 <p>
 With <code>inherited</code>
 </p>
@@ -5582,9 +5638,9 @@ cascade. <code>inherited</code> does not work on singleton class.
 </div>
 </div>
 
-<div id="outline-container-sec-15-5" class="outline-3">
-<h3 id="sec-15-5"><span class="section-number-3">15.5</span> <code>const_missing</code></h3>
-<div class="outline-text-3" id="text-15-5">
+<div id="outline-container-sec-29-5" class="outline-3">
+<h3 id="sec-29-5"><span class="section-number-3">29.5</span> <code>const_missing</code></h3>
+<div class="outline-text-3" id="text-29-5">
 <div class="org-src-container">
 
 <pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">C</span>
@@ -5603,9 +5659,9 @@ cascade. <code>inherited</code> does not work on singleton class.
 </div>
 </div>
 
-<div id="outline-container-sec-15-6" class="outline-3">
-<h3 id="sec-15-6"><span class="section-number-3">15.6</span> <code>method_added</code></h3>
-<div class="outline-text-3" id="text-15-6">
+<div id="outline-container-sec-29-6" class="outline-3">
+<h3 id="sec-29-6"><span class="section-number-3">29.6</span> <code>method_added</code></h3>
+<div class="outline-text-3" id="text-29-6">
 <div class="org-src-container">
 
 <pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">C</span>
@@ -5617,15 +5673,14 @@ cascade. <code>inherited</code> does not work on singleton class.
 </div>
 </div>
 
-
-<div id="outline-container-sec-15-7" class="outline-3">
-<h3 id="sec-15-7"><span class="section-number-3">15.7</span> listing methods</h3>
-<div class="outline-text-3" id="text-15-7">
+<div id="outline-container-sec-29-7" class="outline-3">
+<h3 id="sec-29-7"><span class="section-number-3">29.7</span> listing methods</h3>
+<div class="outline-text-3" id="text-29-7">
 <p>
 With <code>methods</code> you can list the non-private methods of the
-object itself. You don't get the methods from <i>mix-ins</i> for
+object itself. You don’t get the methods from <i>mix-ins</i> for
 examples. It can take an argument, if you set it to false you
-won't get methods from ancestors.
+won’t get methods from ancestors.
 </p>
 
 <p>
@@ -5659,9 +5714,9 @@ singleton_methods
 </div>
 </div>
 
-<div id="outline-container-sec-15-8" class="outline-3">
-<h3 id="sec-15-8"><span class="section-number-3">15.8</span> instropection</h3>
-<div class="outline-text-3" id="text-15-8">
+<div id="outline-container-sec-29-8" class="outline-3">
+<h3 id="sec-29-8"><span class="section-number-3">29.8</span> instropection</h3>
+<div class="outline-text-3" id="text-29-8">
 <ul class="org-ul">
 <li><code>local_variables</code> list local variables. Inside irb you will
 see <code>[:_]</code>. It is a special irb variable. It represents the
@@ -5695,7 +5750,7 @@ z
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Aurélien Bottazini</p>
-<p class="date">Created: 2014-11-16 Sun 22:23</p>
+<p class="date">Created: 2014-11-17 Mon 09:48</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
