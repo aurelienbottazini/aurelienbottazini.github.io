@@ -2,15 +2,12 @@
 <html>
 <head>
 <title>ruby</title>
-<!-- 2014-11-17 Mon 09:48 -->
+<!-- 2014-11-19 Wed 11:06 -->
 <meta  charset="utf-8">
 <meta  name="generator" content="Org-mode">
 <meta  name="author" content="Aurélien Bottazini">
 <style type="text/css">
-/* http://meyerweb.com/eric/tools/css/reset/
-v2.0 | 20110126
-License: none (public domain)
-*/
+<!--/*--><![CDATA[/*><!--*/
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -24,159 +21,199 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-margin: 0;
-padding: 0;
-border: 0;
-font-size: 100%;
-font: inherit;
-vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-display: block;
+    display: block;
 }
 body {
-line-height: 1;
+    line-height: 1;
 }
 ol, ul {
-list-style: none;
+    list-style: none;
 }
 blockquote, q {
-quotes: none;
+    quotes: none;
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
-content: '';
-content: none;
-}
+              content: '';
+              content: none;
+          }
 table {
-border-collapse: collapse;
-border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 /* End of reset
 Start of custom styles
 double stranded finobacci used by le corbusier
-4 - 5 - 6.5 - 8 - 10.5 - 13 - 17 - 21 - 27.5 - 34 - 44.5 -
-55 - 72 - 89
+4 - 5 - 6.5 - 8 - 10.5 - 13 - 17 - 21 - 27.5 - 34 - 44.5 - 55 - 72 - 89
 */
 body {
-font-family: Mercury-TextG3Roman, HoeflerText-Regular, Georgia, Times, serif;
-font-size: 1em;
-font-size: 1.3em;
-color: rgba(0,0,0,0.8);
--webkit-font-smoothing: antialiased;
-text-rendering: optimizeLegibility;
-width: 80%;
-margin: 0 auto;
+    font-family: "Hoefler Text", Georgia, Times, serif;
+    font-size: 1em;
+    font-size: 1.1em;
+    color: rgba(0,0,0,0.8);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    width: 95%;
+    margin: 0 auto;
 }
 @media screen {
-body {
-background-color: rgb(255, 255, 255);
+    body {
+        background-color: rgb(255, 255, 255);
+    }
 }
+@media only screen and (min-width:54em) {
+    body {
+        width: 50em;
+    }
 }
 h1, h2, h3, h4, h5, h6, p, ul {
-margin: 1em;
-font-size: 1em;
-line-height: 1.3em;
-page-break-after: avoid;
+    margin: 1em;
+    font-size: 1em;
+    line-height: 1.3em;
+    page-break-after: avoid;
 }
-#text-table-of-contents ul {
-list-style-type: none;
+h1, h2, h3, h4 {
+    font-family: Helvetica, "Trebuchet MS";
 }
-ul {
-list-style-type: disc;
-page-break-inside: avoid;
-}
-ol {
-list-style-type: decimal;
-}
-p {
-page-break-inside: avoid;
-}
-pre.example {
-margin: 1em;
-background-color: aliceblue;
-padding: 1em;
-background-color: rgba(0,0,0,0.05);
-}
-h1 {
-font-family: GothamHTF-Medium, Helvetica;
-}
-h2, h3 {
-font-family: GothamHTF-BookItalic, Helvetica;
-text-shadow: 0px 1px 1px rgba(0,0,0,0.2);
-}
-a {
-color: #263bd2;
-}
-a:hover, a.active {
-color: #dc322f;
-}
-a.visited {
-color: rebeccapurple;
-}
-h1 {
-font-size: 3.4em;
-text-transform: uppercase;
-line-height: 1em;
-text-align: center;
-color: #dc322f;
-text-shadow: -.010em .010em rgb(255, 255, 255),
--.050em .050em #cdcdcd;
-page-break-after: always;
-}
-#table-of-contents {
-page-break-after: always;
-}
-h2 {
-font-size: 1.3em;
-line-height: 1em;
-}
-h3 {
-font-size: 1em;
-text-align: center;
-}
-.src, code, pre.example {
-font-family: 'Source Code Pro', 'Menlo Regular', 'Bitstream Vera Sans';
-font-size: 0.8em;
-line-height: 1.3em;
-page-break-inside: avoid;
-overflow: auto;
-}
-.src {
-padding: 1em;
-background-color: #ececec;
-}
-code {
-display: inline;
-}
-div.org-src-container {
-margin: 1em;
-}
-table {
-border-top: 2px solid #cdcdcd;
-margin: 1em auto;
-}
-thead {
-background-color: #ececec;
-}
-th {
-font-weight: bold
-}
-th, td {
-padding: 1em;
-border-left: 2px solid #cdcdcd;
-border-right: 2px solid #cdcdcd;
-}
-tr {
-border-bottom: 2px solid #cdcdcd;
-}
-#postamble {
-font-size: 0.65em;
-text-align: right;
+h2, h3, h4 {
+    text-shadow: 0px 1px 1px rgba(0,0,0,0.2);
 }
 
+    #text-table-of-contents ul {
+        list-style-type: none;
+    }
+    ul {
+        list-style-type: disc;
+        page-break-inside: avoid;
+    }
+    ol {
+        list-style-type: decimal;
+    }
+    p {
+        page-break-inside: avoid;
+    }
+    pre.example {
+        margin: 1em;
+        background-color: aliceblue;
+        padding: 1em;
+        background-color: rgba(0,0,0,0.05);
+    }
+    a {
+        color: #263bd2;
+    }
+    a:hover, a.active {
+        color: #dc322f;
+    }
+    a.visited {
+        color: rebeccapurple;
+    }
+    h1 {
+        font-size: 3.4em;
+        text-transform: uppercase;
+        line-height: 1em;
+        text-align: center;
+        color: #dc322f;
+        text-shadow: -.010em .010em rgb(255, 255, 255),
+        -.050em .050em #cdcdcd;
+        page-break-after: always;
+    }
+    #table-of-contents {
+        page-break-after: always;
+    }
+    h2 {
+        font-size: 1.3em;
+        line-height: 1em;
+        margin-top: 2em;
+    }
+    h3 {
+        font-size: 1.1em;
+        text-indent: 2em;
+    }
+    h4 {
+        font-size: 1em;
+        text-indent: 4em;
+    }
+    .src, code, pre.example {
+        font-family: 'Source Code Pro', 'Menlo Regular', 'Bitstream Vera Sans';
+        font-size: 0.8em;
+        line-height: 1.3em;
+        page-break-inside: avoid;
+        overflow: auto;
+    }
+    .src {
+        padding: 1em;
+        background-color: #ececec;
+    }
+    code {
+        display: inline;
+    }
+    div.org-src-container {
+        margin: 1em;
+    }
+    table {
+        border-top: 2px solid #cdcdcd;
+        margin: 1em auto;
+    }
+    thead {
+        background-color: #ececec;
+    }
+    th {
+        font-weight: bold
+    }
+    th, td {
+        padding: 1em;
+        border-left: 2px solid #cdcdcd;
+        border-right: 2px solid #cdcdcd;
+    }
+    tr {
+        border-bottom: 2px solid #cdcdcd;
+    }
+    #postamble {
+        font-size: 0.65em;
+        text-align: right;
+    }
+
+          #text-table-of-contents {
+        display: none;
+  padding: 1em;
+          }
+        #table-of-contents h2{
+
+    font-size: 1.1em;
+    margin: 1em;
+        }
+      #table-of-contents {
+      cursor: pointer;
+          float: right;
+          border: 1px solid #CCC;
+          overflow: auto;
+    font-size: 1em;
+      }
+      #table-of-contents {
+          position: fixed;
+          left: 0;
+          top: 0;
+          background-color: #FFF;
+          line-height: 12pt;
+          text-align: left;
+          box-shadow: 0px 0px 1em #777;
+          max-height: 80%;
+    }
+    #table-of-contents ul {
+    margin-top: 0;
+    margin-bottom: 0;
+    }
+    </style>/*]]>*/-->
 </style>
 <script type="text/javascript">
 /*
@@ -1407,7 +1444,7 @@ c.show_v
 <pre class="example">
 C
 "top level instance variable "
-#&lt;C:0x007fa18a045a00&gt;
+#&lt;C:0x007fbd89145ac0&gt;
 nil
 </pre>
 
@@ -2910,7 +2947,7 @@ d.upto(next_week)
 </div>
 
 <pre class="example">
-#&lt;Enumerator: #&lt;Date: 2014-11-17 ((2456979j,0s,0n),+0s,2299161j)&gt;:upto(#&lt;Date: 2014-11-24 ((2456986j,0s,0n),+0s,2299161j)&gt;)&gt;
+#&lt;Enumerator: #&lt;Date: 2014-11-19 ((2456981j,0s,0n),+0s,2299161j)&gt;:upto(#&lt;Date: 2014-11-26 ((2456988j,0s,0n),+0s,2299161j)&gt;)&gt;
 </pre>
 </div>
 </div>
@@ -3912,7 +3949,7 @@ figures how to do the rest.
 <div id="outline-container-sec-20-2-1" class="outline-4">
 <h4 id="sec-20-2-1"><span class="section-number-4">20.2.1</span> creating enumerators</h4>
 <div class="outline-text-4" id="text-20-2-1">
-</div><ol class="org-ol"><li><a id="sec-20-2-1-1" name="sec-20-2-1-1"></a>with a code block<br ><div class="outline-text-5" id="text-20-2-1-1">
+</div><ol class="org-ol"><li><a id="sec-20-2-1-1"></a>with a code block<br ><div class="outline-text-5" id="text-20-2-1-1">
 <div class="org-src-container">
 
 <pre class="src src-ruby"><span style="color: #228b22;">Enumerator</span>.new <span style="color: #a020f0;">do</span> |y|
@@ -3946,7 +3983,7 @@ Note you don’t <i>yield</i> from the block. The following is wrong:
 </div>
 </li>
 
-<li><a id="sec-20-2-1-2" name="sec-20-2-1-2"></a>with <code>enum_for</code><br ><div class="outline-text-5" id="text-20-2-1-2">
+<li><a id="sec-20-2-1-2"></a>with <code>enum_for</code><br ><div class="outline-text-5" id="text-20-2-1-2">
 <p>
 In the following example <code>each</code> serve as a kind of front end
 to array’s select.
@@ -4558,10 +4595,6 @@ webpage = <span style="color: #483d8b;">open</span>(<span style="color: #8b2252;
 webpage.gets
 </pre>
 </div>
-
-<pre class="example">
-&lt;!DOCTYPE html&gt;
-</pre>
 </div>
 </div>
 </div>
@@ -4671,7 +4704,7 @@ c = <span style="color: #228b22;">C</span>.new
 </div>
 
 <pre class="example">
-[#&lt;Class:#&lt;C:0x007fb32a1fdd00&gt;&gt;, M, C, Object, Kernel, BasicObject]
+[#&lt;Class:#&lt;C:0x007ff8191fdce0&gt;&gt;, M, C, Object, Kernel, BasicObject]
 </pre>
 
 <p>
@@ -4686,7 +4719,7 @@ You can refer to the singleton class of an object with the
 </div>
 
 <pre class="example">
-#&lt;Class:#&lt;String:0x007fb0e09e2530&gt;&gt;
+#&lt;Class:#&lt;String:0x007fceaa1da558&gt;&gt;
 String
 Comparable
 Object
@@ -5101,7 +5134,7 @@ of arguments.
 </div>
 
 <pre class="example">
-#&lt;Proc:0x007fbb8c145a88@-:3 (lambda)&gt;
+#&lt;Proc:0x007fdfe3069a80@-:3 (lambda)&gt;
 </pre>
 
 <p>
@@ -5232,7 +5265,7 @@ p = <span style="color: #228b22;">Person</span>.new <span style="color: #a020f0;
 </div>
 
 <pre class="example">
-#&lt;Person:0x007fd7b11fd4f8 @name="Aurélien", @age=55&gt;
+#&lt;Person:0x007fbc1b9194f0 @name="Aurélien", @age=55&gt;
 </pre>
 </div>
 </div>
@@ -5750,7 +5783,7 @@ z
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Aurélien Bottazini</p>
-<p class="date">Created: 2014-11-17 Mon 09:48</p>
+<p class="date">Created: 2014-11-19 Wed 11:06</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

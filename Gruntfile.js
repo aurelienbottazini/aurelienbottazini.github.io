@@ -24,7 +24,8 @@ module.exports = function(grunt) {
                     compress: true
                 },
                 files: {
-                    'js/main.min.js': [ '_js/_bower.js', '_js/main.js']
+                    'js/main.min.js': [ '_js/_bower.js', '_js/main.js'],
+                    'js/org-export.min.js': ['_js/bower.js', '_js/org-export.js']
                 }
             }
         },
@@ -37,7 +38,8 @@ module.exports = function(grunt) {
                     'css/main.css': '_sass/main.scss',       // 'destination': 'source'
                     'css/resume.css': '_sass/resume.scss',
                     'easyLearning/css/main.css': '_sass/easylearning.scss',
-                    'cubex/css/main.css': '_sass/cubex.scss'
+                    'cubex/css/main.css': '_sass/cubex.scss',
+                    'css/org-export.css': '_sass/org-export.scss'
                 }
             }
         },
@@ -47,7 +49,8 @@ module.exports = function(grunt) {
                     'css/resume.css': ['_css/_bower.css', 'css/resume.css'],
                     'css/main.css': ['_css/_bower.css', 'css/main.css'],
                     'easyLearning/css/main.css': ['_css/_bower.css', 'easyLearning/css/main.css'],
-                    'cubex/css/main.css': ['_css/_bower.css', 'cubex/css/main.css']
+                    'cubex/css/main.css': ['_css/_bower.css', 'cubex/css/main.css'],
+                    'css/org-export.min.css': ['_css/_bower.css', 'cubex/css/main.css']
                 }
             },
         },
