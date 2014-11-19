@@ -149,4 +149,8 @@ tr {
 #table-of-contents ul {
     margin-top: 0;
     margin-bottom: 0;
+    margin-left: 0;
+}
+#table-of-contents ul + ul {
+    margin-left: 1em;
 }
