@@ -50,7 +50,7 @@ module.exports = function(grunt) {
                     'css/main.css': ['_css/_bower.css', 'css/main.css'],
                     'easyLearning/css/main.css': ['_css/_bower.css', 'easyLearning/css/main.css'],
                     'cubex/css/main.css': ['_css/_bower.css', 'cubex/css/main.css'],
-                    'css/org-export.min.css': ['_css/_bower.css', 'cubex/css/org-export.css']
+                    'css/org-export.min.css': ['_css/_bower.css', 'css/org-export.css']
                 }
             },
         },
