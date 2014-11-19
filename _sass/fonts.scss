@@ -58,3 +58,52 @@ Start of custom styles
 double stranded finobacci used by le corbusier
 4 - 5 - 6.5 - 8 - 10.5 - 13 - 17 - 21 - 27.5 - 34 - 44.5 - 55 - 72 - 89
 */
+body {
+    font-family: "Alegreya", "Hoefler Text", Georgia, Times, Tahoma, sans-serif;
+    font-weight: 400;
+    line-height: 1.382; //no unit. Line height is not fixed and adapts depending on descendant font-size
+    -webkit-hyphens: auto; // Safari 5.1 thru 6, iOS 4.2 thru 6
+    -moz-hyphens: auto; // Firefox 16 thru 20
+    -ms-hyphens: auto; // IE10
+    -o-hyphens: auto; // PRESTO...haha LOL
+    hyphens: auto; // W3C standard
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+abbr,
+acronym,
+blockquote,
+code,
+dir,
+kbd,
+listing,
+plaintext,
+q,
+samp,
+tt,
+var,
+xmp {
+    // http://meyerweb.com/eric/thoughts/2012/12/17/where-to-avoid-css-hyphenation
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    -o-hyphens: none;
+    hyphens: none;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Alegreya Sans", 'Helvetica Neue', Helvetica, "Trebuchet MS", Arial, sans-serif;
+    color: #222;
+}
+p, li {
+
+}
+strong, b {
+    font-family: "Alegreya";
+    font-weight: 700;
+}
+
+em, i {
+    font-family: "Alegreya";
+    font-weight: 400;
+    font-style: italic;
+}
