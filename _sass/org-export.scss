@@ -75,35 +75,34 @@ tr {
     font-size: 0.65em;
     text-align: right;
 }
-
-#text-table-of-contents {
-    display: none;
-    padding: 1em;
-}
 #table-of-contents h2{
     font-size: 1.1em;
     margin: 1em;
 }
 #table-of-contents {
-    cursor: pointer;
-    float: right;
-    border: 1px solid #CCC;
-    overflow: auto;
-    font-size: 1em;
-    position: fixed;
-    left: 0;
-    top: 0;
     background-color: #FFF;
-    line-height: 12pt;
-    text-align: left;
+    border: 1px solid #CCC;
     box-shadow: 0px 0px 1em #777;
+    float: right;
+    font-size: 1em;
+    left: 0;
+    line-height: 12pt;
     max-height: 80%;
+    overflow: auto;
+    position: fixed;
+    text-align: left;
+    top: 0;
+    cursor: pointer;
 }
-#table-of-contents > ul {
-    margin-top: -1em
+#text-table-of-contents {
+    display: none;
+    padding: 1em;
 }
-#table-of-contents ul {
+#text-table-of-contents ul {
     margin-top: 0;
     margin-bottom: 0;
     padding-left: 0;
+}
+#text-table-of-contents > ul {
+    margin-top: -1em
 }
