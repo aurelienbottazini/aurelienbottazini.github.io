@@ -2,219 +2,13 @@
 <html>
 <head>
 <title>ruby</title>
-<!-- 2014-11-19 Wed 11:06 -->
+<!-- 2014-11-20 Thu 10:57 -->
 <meta  charset="utf-8">
 <meta  name="generator" content="Org-mode">
 <meta  name="author" content="Aurélien Bottazini">
-<style type="text/css">
-<!--/*--><![CDATA[/*><!--*/
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-    display: block;
-}
-body {
-    line-height: 1;
-}
-ol, ul {
-    list-style: none;
-}
-blockquote, q {
-    quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-              content: '';
-              content: none;
-          }
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-}
-/* End of reset
-Start of custom styles
-double stranded finobacci used by le corbusier
-4 - 5 - 6.5 - 8 - 10.5 - 13 - 17 - 21 - 27.5 - 34 - 44.5 - 55 - 72 - 89
-*/
-body {
-    font-family: "Hoefler Text", Georgia, Times, serif;
-    font-size: 1em;
-    font-size: 1.1em;
-    color: rgba(0,0,0,0.8);
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    width: 95%;
-    margin: 0 auto;
-}
-@media screen {
-    body {
-        background-color: rgb(255, 255, 255);
-    }
-}
-@media only screen and (min-width:54em) {
-    body {
-        width: 50em;
-    }
-}
-h1, h2, h3, h4, h5, h6, p, ul {
-    margin: 1em;
-    font-size: 1em;
-    line-height: 1.3em;
-    page-break-after: avoid;
-}
-h1, h2, h3, h4 {
-    font-family: Helvetica, "Trebuchet MS";
-}
-h2, h3, h4 {
-    text-shadow: 0px 1px 1px rgba(0,0,0,0.2);
-}
 
-    #text-table-of-contents ul {
-        list-style-type: none;
-    }
-    ul {
-        list-style-type: disc;
-        page-break-inside: avoid;
-    }
-    ol {
-        list-style-type: decimal;
-    }
-    p {
-        page-break-inside: avoid;
-    }
-    pre.example {
-        margin: 1em;
-        background-color: aliceblue;
-        padding: 1em;
-        background-color: rgba(0,0,0,0.05);
-    }
-    a {
-        color: #263bd2;
-    }
-    a:hover, a.active {
-        color: #dc322f;
-    }
-    a.visited {
-        color: rebeccapurple;
-    }
-    h1 {
-        font-size: 3.4em;
-        text-transform: uppercase;
-        line-height: 1em;
-        text-align: center;
-        color: #dc322f;
-        text-shadow: -.010em .010em rgb(255, 255, 255),
-        -.050em .050em #cdcdcd;
-        page-break-after: always;
-    }
-    #table-of-contents {
-        page-break-after: always;
-    }
-    h2 {
-        font-size: 1.3em;
-        line-height: 1em;
-        margin-top: 2em;
-    }
-    h3 {
-        font-size: 1.1em;
-        text-indent: 2em;
-    }
-    h4 {
-        font-size: 1em;
-        text-indent: 4em;
-    }
-    .src, code, pre.example {
-        font-family: 'Source Code Pro', 'Menlo Regular', 'Bitstream Vera Sans';
-        font-size: 0.8em;
-        line-height: 1.3em;
-        page-break-inside: avoid;
-        overflow: auto;
-    }
-    .src {
-        padding: 1em;
-        background-color: #ececec;
-    }
-    code {
-        display: inline;
-    }
-    div.org-src-container {
-        margin: 1em;
-    }
-    table {
-        border-top: 2px solid #cdcdcd;
-        margin: 1em auto;
-    }
-    thead {
-        background-color: #ececec;
-    }
-    th {
-        font-weight: bold
-    }
-    th, td {
-        padding: 1em;
-        border-left: 2px solid #cdcdcd;
-        border-right: 2px solid #cdcdcd;
-    }
-    tr {
-        border-bottom: 2px solid #cdcdcd;
-    }
-    #postamble {
-        font-size: 0.65em;
-        text-align: right;
-    }
-
-          #text-table-of-contents {
-        display: none;
-  padding: 1em;
-          }
-        #table-of-contents h2{
-
-    font-size: 1.1em;
-    margin: 1em;
-        }
-      #table-of-contents {
-      cursor: pointer;
-          float: right;
-          border: 1px solid #CCC;
-          overflow: auto;
-    font-size: 1em;
-      }
-      #table-of-contents {
-          position: fixed;
-          left: 0;
-          top: 0;
-          background-color: #FFF;
-          line-height: 12pt;
-          text-align: left;
-          box-shadow: 0px 0px 1em #777;
-          max-height: 80%;
-    }
-    #table-of-contents ul {
-    margin-top: 0;
-    margin-bottom: 0;
-    }
-    </style>/*]]>*/-->
-</style>
+<link rel="stylesheet" type="text/css" href="http://aurelienbottazini.com/css/org-export.min.css">
+<script src="http://aurelienbottazini.com/js/org-export.min.js"></script>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -295,7 +89,7 @@ for the JavaScript code in this tag.
 <li><a href="#sec-9-1">9.1. Object behavior</a></li>
 <li><a href="#sec-9-2">9.2. Immediate values</a></li>
 <li><a href="#sec-9-3">9.3. Freeze, Dup and Clone</a></li>
-<li><a href="#sec-9-4">9.4. <code>BasicObject</code>, <code>Object</code> &amp; <code>Kernel</code></a>
+<li><a href="#sec-9-4">9.4. <code>BasicObject</code>, <code>Object</code> & <code>Kernel</code></a>
 <ul>
 <li><a href="#sec-9-4-1">9.4.1. Basic Object</a></li>
 </ul>
@@ -310,8 +104,8 @@ for the JavaScript code in this tag.
 <li><a href="#sec-10-4">10.4. assignment-like methods</a></li>
 <li><a href="#sec-10-5">10.5. setter methods</a></li>
 <li><a href="#sec-10-6">10.6. Subclass</a></li>
-<li><a href="#sec-10-7">10.7. Superclass &amp; Modules</a></li>
-<li><a href="#sec-10-8">10.8. Methods &amp; Constant notation</a></li>
+<li><a href="#sec-10-7">10.7. Superclass & Modules</a></li>
+<li><a href="#sec-10-8">10.8. Methods & Constant notation</a></li>
 <li><a href="#sec-10-9">10.9. <code>inspect</code></a></li>
 <li><a href="#sec-10-10">10.10. Don’t hard code class names.</a></li>
 <li><a href="#sec-10-11">10.11. Instance variables</a></li>
@@ -331,7 +125,7 @@ for the JavaScript code in this tag.
 <li><a href="#sec-11-4">11.4. Nesting modules and classes</a></li>
 </ul>
 </li>
-<li><a href="#sec-12">12. Self, scope &amp; visibility</a></li>
+<li><a href="#sec-12">12. Self, scope & visibility</a></li>
 <li><a href="#sec-13">13. Control-flow techniques</a>
 <ul>
 <li><a href="#sec-13-1">13.1. if</a></li>
@@ -513,8 +307,8 @@ Ruby version and encoding used for examples:
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #483d8b;">puts</span> <span style="color: #228b22;">RUBY_VERSION</span>
-<span style="color: #483d8b;">puts</span> <span style="color: #483d8b;">__ENCODING__</span>
+<pre class="src src-ruby"><span class="org-builtin">puts</span> <span class="org-type">RUBY_VERSION</span>
+<span class="org-builtin">puts</span> <span class="org-builtin">__ENCODING__</span>
 </pre>
 </div>
 
@@ -662,7 +456,7 @@ Instance variable are initialized to nil.
 </p>
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a0522d;">@var</span>
+<pre class="src src-ruby"><span class="org-variable-name">@var</span>
 </pre>
 </div>
 
@@ -675,11 +469,11 @@ Local variables are not initialized, not even to nil.
 </p>
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">begin</span>
+<pre class="src src-ruby"><span class="org-keyword">begin</span>
   var
-<span style="color: #a020f0;">rescue</span> <span style="color: #228b22;">Exception</span> =&gt; e
-  <span style="color: #483d8b;">puts</span> e.message
-<span style="color: #a020f0;">end</span>
+<span class="org-keyword">rescue</span> <span class="org-type">Exception</span> => e
+  <span class="org-builtin">puts</span> e.message
+<span class="org-keyword">end</span>
 </pre>
 </div>
 
@@ -698,8 +492,8 @@ already assigned. You will get a warning.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #228b22;">A</span> = 1
-<span style="color: #228b22;">A</span> = 2
+<pre class="src src-ruby"><span class="org-type">A</span> = 1
+<span class="org-type">A</span> = 2
 </pre>
 </div>
 
@@ -711,11 +505,11 @@ assigned to a constant.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">module</span> <span style="color: #228b22;">Earth</span>
-  <span style="color: #228b22;">COUNTRIES</span> = [<span style="color: #8b2252;">'Japan'</span>, <span style="color: #8b2252;">'USA'</span>, <span style="color: #8b2252;">'China'</span>, <span style="color: #8b2252;">'Germany'</span>, <span style="color: #8b2252;">'Italy'</span>]
-<span style="color: #a020f0;">end</span>
-countries = <span style="color: #228b22;">Earth</span>::<span style="color: #228b22;">COUNTRIES</span>
-countries &lt;&lt; <span style="color: #8b2252;">'France'</span>
+<pre class="src src-ruby"><span class="org-keyword">module</span> <span class="org-type">Earth</span>
+  <span class="org-type">COUNTRIES</span> = [<span class="org-string">'Japan'</span>, <span class="org-string">'USA'</span>, <span class="org-string">'China'</span>, <span class="org-string">'Germany'</span>, <span class="org-string">'Italy'</span>]
+<span class="org-keyword">end</span>
+countries = <span class="org-type">Earth</span>::<span class="org-type">COUNTRIES</span>
+countries << <span class="org-string">'France'</span>
 </pre>
 </div>
 </div>
@@ -731,17 +525,17 @@ class variables are class-hierarchy scoped.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Parent</span>
-  <span style="color: #a0522d;">@@value</span> = 100
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">class</span> <span class="org-type">Parent</span>
+  <span class="org-variable-name">@@value</span> = 100
+<span class="org-keyword">end</span>
 
-<span style="color: #a020f0;">class</span> <span style="color: #228b22;">Child</span> &lt; <span style="color: #228b22;">Parent</span>
-  <span style="color: #a0522d;">@@value</span> = 200
-<span style="color: #a020f0;">end</span>
+<span class="org-keyword">class</span> <span class="org-type">Child</span> < <span class="org-type">Parent</span>
+  <span class="org-variable-name">@@value</span> = 200
+<span class="org-keyword">end</span>
 
-<span style="color: #a020f0;">class</span> <span style="color: #228b22;">Parent</span>
-  <span style="color: #483d8b;">puts</span> <span style="color: #a0522d;">@@value</span>
-<span style="color: #a020f0;">end</span>
+<span class="org-keyword">class</span> <span class="org-type">Parent</span>
+  <span class="org-builtin">puts</span> <span class="org-variable-name">@@value</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 
@@ -757,7 +551,7 @@ class variables are class-hierarchy scoped.
 <div class="outline-text-2" id="text-5">
 <p>
 <code>$:</code> is the load path global variable. You can add directories to load
-path. For example <code>~$: &lt;&lt; '.'~</code>.
+path. For example <code>~$: << '.'~</code>.
 One major difference between <i>load</i> and <i>require</i> if called more
 than once with the same arguments is that require doesn’t reload
 files it’s already loaded.
@@ -786,7 +580,7 @@ Allows to use sprintf-like syntax. Run ri sprintf for full documentation.
 <div class="org-src-container">
 
 <pre class="src src-ruby">price = 2.84839849
-<span style="color: #483d8b;">p</span> <span style="color: #8b2252;">"</span><span style="color: #a0522d;">#{"%.2f" % price}</span><span style="color: #8b2252;">"</span>
+<span class="org-builtin">p</span> <span class="org-string">"</span><span class="org-variable-name">#{"%.2f" % price}</span><span class="org-string">"</span>
 </pre>
 </div>
 
@@ -853,7 +647,7 @@ Use <code>=</code> to supply a default value for arguments.
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 <td class="left"><code>m(2,3)</code></td>
 <td class="left"><code>a = 2, b = 3</code></td>
 </tr>
@@ -865,13 +659,13 @@ Use <code>=</code> to supply a default value for arguments.
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 <td class="left"><code>m(1, 3, 5, 7)</code></td>
 <td class="left"><code>a = 1, b = 3, c = [5], d = 7</code></td>
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 <td class="left"><code>m(1, 3, 5, 7, 9)</code></td>
 <td class="left"><code>a = 1, b = 3, c = [5, 7], d = 9</code></td>
 </tr>
@@ -889,21 +683,21 @@ Use <code>=</code> to supply a default value for arguments.
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 <td class="left"><code>m(3, 4)</code></td>
 <td class="left"><code>a = 3, b = 4</code></td>
 </tr>
 
 <tr>
-<td class="left"><code>def m(x, y, *z, a:1, b:, **c, &amp;block)</code></td>
+<td class="left"><code>def m(x, y, *z, a:1, b:, **c, &block)</code></td>
 <td class="left"><code>m(1,2,3,4,5,b:10,p:20,q:30)</code></td>
-<td class="left"><code>x = 1, y= 2, z=[3,4,5], a = 1, b = 10, c = {:p =&gt; 20, :q =&gt; 30}</code></td>
+<td class="left"><code>x = 1, y= 2, z=[3,4,5], a = 1, b = 10, c = {:p => 20, :q => 30}</code></td>
 </tr>
 
 <tr>
 <td class="left">c here absorbs unknown named arguments</td>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
+<td class="left"> </td>
 </tr>
 </tbody>
 </table>
@@ -915,7 +709,7 @@ can write it without curly braces
 
 <div class="org-src-container">
 
-<pre class="src src-ruby">add_to_database(<span style="color: #8b2252;">'Lille'</span>, <span style="color: #008b8b;">country</span>: <span style="color: #8b2252;">'France'</span>, <span style="color: #008b8b;">postal_code</span>: 62000)
+<pre class="src src-ruby">add_to_database(<span class="org-string">'Lille'</span>, <span class="org-constant">country</span>: <span class="org-string">'France'</span>, <span class="org-constant">postal_code</span>: 62000)
 </pre>
 </div>
 
@@ -926,7 +720,7 @@ will think it is a block) and curly braces
 
 <div class="org-src-container">
 
-<pre class="src src-ruby">add_to_database({country =&gt; <span style="color: #8b2252;">'France'</span>, postal_code =&gt; 62000}, <span style="color: #8b2252;">'Lille'</span>)
+<pre class="src src-ruby">add_to_database({country => <span class="org-string">'France'</span>, postal_code => 62000}, <span class="org-string">'Lille'</span>)
 </pre>
 </div>
 </div>
@@ -936,9 +730,9 @@ will think it is a block) and curly braces
 <div class="outline-text-3" id="text-8-3">
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">talk</span>
-  <span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">'hello'</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">def</span> <span class="org-function-name">talk</span>
+  <span class="org-builtin">puts</span> <span class="org-string">'hello'</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 
@@ -948,12 +742,12 @@ is equivalent to
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Object</span>
-  <span style="color: #483d8b;">private</span>
-  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">talk</span>
-    <span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">'hello'</span>
-  <span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">class</span> <span class="org-type">Object</span>
+  <span class="org-builtin">private</span>
+  <span class="org-keyword">def</span> <span class="org-function-name">talk</span>
+    <span class="org-builtin">puts</span> <span class="org-string">'hello'</span>
+  <span class="org-keyword">end</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 </div>
@@ -1007,16 +801,16 @@ A good example of a <code>method_missing</code> override:
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Person</span>
-  <span style="color: #a020f0;">def</span> <span style="color: #a0522d;">self</span>.<span style="color: #0000ff;">method_missing</span>(m, *args)
+<pre class="src src-ruby"><span class="org-keyword">class</span> <span class="org-type">Person</span>
+  <span class="org-keyword">def</span> <span class="org-variable-name">self</span>.<span class="org-function-name">method_missing</span>(m, *args)
     method = m.to_s
-    <span style="color: #a020f0;">if</span> method.start_with?(<span style="color: #8b2252;">'all_with_'</span>)
-    <span style="color: #b22222;"># </span><span style="color: #b22222;">Handle request here"</span>
-    <span style="color: #a020f0;">else</span>
-      <span style="color: #a020f0;">super</span>
-    <span style="color: #a020f0;">end</span>
-  <span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">end</span>
+    <span class="org-keyword">if</span> method.start_with?(<span class="org-string">'all_with_'</span>)
+    <span class="org-comment-delimiter"># </span><span class="org-comment">Handle request here"</span>
+    <span class="org-keyword">else</span>
+      <span class="org-keyword">super</span>
+    <span class="org-keyword">end</span>
+  <span class="org-keyword">end</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 </div>
@@ -1050,9 +844,9 @@ make sure you use Ruby’s built in method send)
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">if</span> object.respond_to?(request)
-  <span style="color: #483d8b;">puts</span> ticket.send(request)
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">if</span> object.respond_to?(request)
+  <span class="org-builtin">puts</span> ticket.send(request)
+<span class="org-keyword">end</span>
 </pre>
 </div>
 </div>
@@ -1092,7 +886,7 @@ the cloned object was frozen, the clone is also frozen.
 </div>
 
 <div id="outline-container-sec-9-4" class="outline-3">
-<h3 id="sec-9-4"><span class="section-number-3">9.4</span> <code>BasicObject</code>, <code>Object</code> &amp; <code>Kernel</code></h3>
+<h3 id="sec-9-4"><span class="section-number-3">9.4</span> <code>BasicObject</code>, <code>Object</code> & <code>Kernel</code></h3>
 <div class="outline-text-3" id="text-9-4">
 <p>
 <code>BasicObject</code> comes before <code>Object</code> in the ruby family tree.
@@ -1102,8 +896,8 @@ almost no methods.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #483d8b;">puts</span> <span style="color: #228b22;">BasicObject</span>.instance_methods.count
-<span style="color: #483d8b;">puts</span> <span style="color: #228b22;">Object</span>.instance_methods.count
+<pre class="src src-ruby"><span class="org-builtin">puts</span> <span class="org-type">BasicObject</span>.instance_methods.count
+<span class="org-builtin">puts</span> <span class="org-type">Object</span>.instance_methods.count
 </pre>
 </div>
 
@@ -1118,21 +912,21 @@ all objects
 </p>
 
 <p>
-<code>BasicObject</code>, <code>Object</code> &amp; <code>Kernel</code> are written in C. Here is a
+<code>BasicObject</code>, <code>Object</code> & <code>Kernel</code> are written in C. Here is a
 Ruby mock-up of their relationship
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">BasicObject</span>
-  <span style="color: #b22222;"># </span><span style="color: #b22222;">few methods</span>
-<span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">module</span> <span style="color: #228b22;">Kernel</span>
-  <span style="color: #b22222;"># </span><span style="color: #b22222;">a lot of method definitions</span>
-<span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">class</span> <span style="color: #228b22;">Object</span> &lt; <span style="color: #228b22;">BasicObject</span>
-  <span style="color: #483d8b;">include</span> <span style="color: #228b22;">Kernel</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">class</span> <span class="org-type">BasicObject</span>
+  <span class="org-comment-delimiter"># </span><span class="org-comment">few methods</span>
+<span class="org-keyword">end</span>
+<span class="org-keyword">module</span> <span class="org-type">Kernel</span>
+  <span class="org-comment-delimiter"># </span><span class="org-comment">a lot of method definitions</span>
+<span class="org-keyword">end</span>
+<span class="org-keyword">class</span> <span class="org-type">Object</span> < <span class="org-type">BasicObject</span>
+  <span class="org-builtin">include</span> <span class="org-type">Kernel</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 </div>
@@ -1224,16 +1018,16 @@ arguments.
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
+<td class="left"> </td>
+<td class="left"> </td>
 <td class="left">@venue</td>
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
+<td class="left"> </td>
+<td class="left"> </td>
 <td class="left">end</td>
 </tr>
 
@@ -1245,16 +1039,16 @@ arguments.
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
+<td class="left"> </td>
+<td class="left"> </td>
 <td class="left">@price = price</td>
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
+<td class="left"> </td>
+<td class="left"> </td>
 <td class="left">end</td>
 </tr>
 
@@ -1262,21 +1056,21 @@ arguments.
 <td class="left"><code>attr_accessor</code></td>
 <td class="left">creates reader and writer method</td>
 <td class="left"><code>attr_accessor :price</code></td>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 </tr>
 
 <tr>
 <td class="left"><code>attr</code></td>
 <td class="left">creates a reader method</td>
 <td class="left"><code>attr :venue</code></td>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 <td class="left">and a writer method if the second argument is true</td>
 <td class="left"><code>attr :price, true</code></td>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 </tr>
 </tbody>
 </table>
@@ -1315,17 +1109,17 @@ execution.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Ticket</span>
-  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">price=</span>(price)
-    <span style="color: #a0522d;">@price</span> = price
-    <span style="color: #a020f0;">return</span> <span style="color: #8b2252;">'ahah'</span>
-  <span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">class</span> <span class="org-type">Ticket</span>
+  <span class="org-keyword">def</span> <span class="org-function-name">price=</span>(price)
+    <span class="org-variable-name">@price</span> = price
+    <span class="org-keyword">return</span> <span class="org-string">'ahah'</span>
+  <span class="org-keyword">end</span>
 
-<span style="color: #a020f0;">end</span>
+<span class="org-keyword">end</span>
 
-<span style="color: #a020f0;">if</span> (<span style="color: #228b22;">Ticket</span>.new.price = 65) == 65
-  <span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">'my return value is 65'</span>
-<span style="color: #a020f0;">end</span>
+<span class="org-keyword">if</span> (<span class="org-type">Ticket</span>.new.price = 65) == 65
+  <span class="org-builtin">puts</span> <span class="org-string">'my return value is 65'</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 
@@ -1339,23 +1133,23 @@ my return value is 65
 <h3 id="sec-10-6"><span class="section-number-3">10.6</span> Subclass</h3>
 <div class="outline-text-3" id="text-10-6">
 <p>
-<code>&lt;</code> designates a subclass.
+<code><</code> designates a subclass.
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Publication</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">class</span> <span class="org-type">Publication</span>
+<span class="org-keyword">end</span>
 
-<span style="color: #a020f0;">class</span> <span style="color: #228b22;">Magazine</span> &lt; <span style="color: #228b22;">Publication</span>
-<span style="color: #a020f0;">end</span>
+<span class="org-keyword">class</span> <span class="org-type">Magazine</span> < <span class="org-type">Publication</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 </div>
 </div>
 
 <div id="outline-container-sec-10-7" class="outline-3">
-<h3 id="sec-10-7"><span class="section-number-3">10.7</span> Superclass &amp; Modules</h3>
+<h3 id="sec-10-7"><span class="section-number-3">10.7</span> Superclass & Modules</h3>
 <div class="outline-text-3" id="text-10-7">
 <p>
 A Ruby <i>class</i> can have only one <i>superclass</i> (<i>single
@@ -1367,7 +1161,7 @@ tree to provide as many methods for your objects as you need.
 </div>
 
 <div id="outline-container-sec-10-8" class="outline-3">
-<h3 id="sec-10-8"><span class="section-number-3">10.8</span> Methods &amp; Constant notation</h3>
+<h3 id="sec-10-8"><span class="section-number-3">10.8</span> Methods & Constant notation</h3>
 <div class="outline-text-3" id="text-10-8">
 <ul class="org-ul">
 <li><code>Ticket#price</code>: instance method <code>price</code> in the <i>class</i>
@@ -1403,13 +1197,13 @@ It is bad in case you want to rename  your class. Instead use self
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">C</span>
-  <span style="color: #a020f0;">def</span> <span style="color: #228b22;">C</span>.<span style="color: #0000ff;">y</span> <span style="color: #b22222;"># </span><span style="color: #b22222;">bad</span>
-  <span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">class</span> <span class="org-type">C</span>
+  <span class="org-keyword">def</span> <span class="org-type">C</span>.<span class="org-function-name">y</span> <span class="org-comment-delimiter"># </span><span class="org-comment">bad</span>
+  <span class="org-keyword">end</span>
 
-  <span style="color: #a020f0;">def</span> <span style="color: #a0522d;">self</span>.<span style="color: #0000ff;">x</span> <span style="color: #b22222;"># </span><span style="color: #b22222;">good</span>
-  <span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">end</span>
+  <span class="org-keyword">def</span> <span class="org-variable-name">self</span>.<span class="org-function-name">x</span> <span class="org-comment-delimiter"># </span><span class="org-comment">good</span>
+  <span class="org-keyword">end</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 </div>
@@ -1425,18 +1219,18 @@ current object (/self) at that point.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">C</span>
-  <span style="color: #483d8b;">p</span> <span style="color: #a0522d;">self</span>
-  <span style="color: #a0522d;">@v</span> = <span style="color: #8b2252;">"top level instance variable "</span>
-  <span style="color: #483d8b;">p</span> <span style="color: #a0522d;">@v</span>
+<pre class="src src-ruby"><span class="org-keyword">class</span> <span class="org-type">C</span>
+  <span class="org-builtin">p</span> <span class="org-variable-name">self</span>
+  <span class="org-variable-name">@v</span> = <span class="org-string">"top level instance variable "</span>
+  <span class="org-builtin">p</span> <span class="org-variable-name">@v</span>
 
-  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">show_v</span>
-    <span style="color: #483d8b;">p</span> <span style="color: #a0522d;">self</span>
-    <span style="color: #483d8b;">p</span> <span style="color: #a0522d;">@v</span>
-  <span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">end</span>
+  <span class="org-keyword">def</span> <span class="org-function-name">show_v</span>
+    <span class="org-builtin">p</span> <span class="org-variable-name">self</span>
+    <span class="org-builtin">p</span> <span class="org-variable-name">@v</span>
+  <span class="org-keyword">end</span>
+<span class="org-keyword">end</span>
 
-c = <span style="color: #228b22;">C</span>.new
+c = <span class="org-type">C</span>.new
 c.show_v
 </pre>
 </div>
@@ -1444,7 +1238,7 @@ c.show_v
 <pre class="example">
 C
 "top level instance variable "
-#&lt;C:0x007fbd89145ac0&gt;
+#<C:0x007f882b9fd9f8>
 nil
 </pre>
 
@@ -1463,13 +1257,13 @@ You can create you own <i>string</i> class
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">MyClass</span>
-  <span style="color: #a020f0;">class</span> <span style="color: #228b22;">String</span>
+<pre class="src src-ruby"><span class="org-keyword">class</span> <span class="org-type">MyClass</span>
+  <span class="org-keyword">class</span> <span class="org-type">String</span>
 
-  <span style="color: #a020f0;">end</span>
-  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">initialize</span>
-    <span style="color: #228b22;">String</span>.new
-  <span style="color: #a020f0;">end</span>
+  <span class="org-keyword">end</span>
+  <span class="org-keyword">def</span> <span class="org-function-name">initialize</span>
+    <span class="org-type">String</span>.new
+  <span class="org-keyword">end</span>
 </pre>
 </div>
 
@@ -1505,19 +1299,19 @@ to understand what you mean.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Dog</span>
-  <span style="color: #483d8b;">attr_reader</span> <span style="color: #008b8b;">:age</span>, <span style="color: #008b8b;">:dog_years</span>
-  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">dog_years=</span>(years)
-    <span style="color: #a0522d;">@dog_years</span> = years
-  <span style="color: #a020f0;">end</span>
-  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">age=</span>(years)
-    <span style="color: #a0522d;">@age</span> = years
-    <span style="color: #a0522d;">self</span>.dog_years = years * 7 <span style="color: #b22222;"># </span><span style="color: #b22222;">= @dog_years = years * 7</span>
-  <span style="color: #a020f0;">end</span>
-  <span style="color: #483d8b;">private</span> <span style="color: #008b8b;">:dog_years=</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">class</span> <span class="org-type">Dog</span>
+  <span class="org-builtin">attr_reader</span> <span class="org-constant">:age</span>, <span class="org-constant">:dog_years</span>
+  <span class="org-keyword">def</span> <span class="org-function-name">dog_years=</span>(years)
+    <span class="org-variable-name">@dog_years</span> = years
+  <span class="org-keyword">end</span>
+  <span class="org-keyword">def</span> <span class="org-function-name">age=</span>(years)
+    <span class="org-variable-name">@age</span> = years
+    <span class="org-variable-name">self</span>.dog_years = years * 7 <span class="org-comment-delimiter"># </span><span class="org-comment">= @dog_years = years * 7</span>
+  <span class="org-keyword">end</span>
+  <span class="org-builtin">private</span> <span class="org-constant">:dog_years=</span>
+<span class="org-keyword">end</span>
 
-luigi = <span style="color: #228b22;">Dog</span>.new
+luigi = <span class="org-type">Dog</span>.new
 luigi.age = 10
 </pre>
 </div>
@@ -1547,9 +1341,9 @@ A <i>mixed in</i> module is referred as a <i>mix in</i>.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">ModuleTester</span>
-  <span style="color: #483d8b;">include</span> <span style="color: #228b22;">MyFirstModule</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">class</span> <span class="org-type">ModuleTester</span>
+  <span class="org-builtin">include</span> <span class="org-type">MyFirstModule</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 
@@ -1568,9 +1362,9 @@ It is common to have /class/’s name as noun and /module/’s as an adjective
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Stack</span>
-  <span style="color: #483d8b;">include</span> <span style="color: #228b22;">Stacklike</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">class</span> <span class="org-type">Stack</span>
+  <span class="org-builtin">include</span> <span class="org-type">Stacklike</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 </div>
@@ -1587,11 +1381,11 @@ already in the search path. In the following example, if <i>N</i> and
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">C</span>
-  <span style="color: #483d8b;">include</span> <span style="color: #228b22;">M</span>
-  <span style="color: #483d8b;">include</span> <span style="color: #228b22;">N</span>
-  <span style="color: #483d8b;">include</span> <span style="color: #228b22;">M</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">class</span> <span class="org-type">C</span>
+  <span class="org-builtin">include</span> <span class="org-type">M</span>
+  <span class="org-builtin">include</span> <span class="org-type">N</span>
+  <span class="org-builtin">include</span> <span class="org-type">M</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 </div>
@@ -1614,10 +1408,10 @@ class.
 <div class="outline-text-3" id="text-11-4">
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">module</span> <span style="color: #228b22;">Tools</span>
-  <span style="color: #a020f0;">class</span> <span style="color: #228b22;">Hammer</span>
-  <span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">module</span> <span class="org-type">Tools</span>
+  <span class="org-keyword">class</span> <span class="org-type">Hammer</span>
+  <span class="org-keyword">end</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 
@@ -1633,7 +1427,7 @@ code. The notation in itself does not tell you everything.
 </div>
 
 <div id="outline-container-sec-12" class="outline-2">
-<h2 id="sec-12"><span class="section-number-2">12</span> Self, scope &amp; visibility</h2>
+<h2 id="sec-12"><span class="section-number-2">12</span> Self, scope & visibility</h2>
 <div class="outline-text-2" id="text-12">
 <table>
 
@@ -1666,9 +1460,9 @@ code. The notation in itself does not tell you everything.
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 <td class="left">self</td>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 </tr>
 
 <tr>
@@ -1678,9 +1472,9 @@ code. The notation in itself does not tell you everything.
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 <td class="left">self</td>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 </tr>
 
 <tr>
@@ -1690,81 +1484,81 @@ code. The notation in itself does not tell you everything.
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 <td class="left">def method<sub>name</sub></td>
 <td class="left">when the method is called</td>
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 <td class="left">self</td>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 <td class="left">2. class instance-method</td>
 <td class="left">An instance of C</td>
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 <td class="left">class C</td>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 <td class="left">def method<sub>name</sub></td>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 <td class="left">self</td>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 <td class="left">3. module instance-method</td>
 <td class="left">- Individual object extended by M</td>
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 <td class="left">module M</td>
 <td class="left">- Instance of class that mixes in M</td>
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 <td class="left">def method<sub>name</sub></td>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 <td class="left">self</td>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 <td class="left">4. Singleton method on an object</td>
 <td class="left">Obj</td>
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 <td class="left">def obj.method<sub>name</sub></td>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 <td class="left">self</td>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 </tr>
 </tbody>
 </table>
@@ -1779,15 +1573,15 @@ code. The notation in itself does not tell you everything.
 <div class="outline-text-3" id="text-13-1">
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">if</span> x &gt; 10
-  <span style="color: #483d8b;">puts</span> x
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">if</span> x > 10
+  <span class="org-builtin">puts</span> x
+<span class="org-keyword">end</span>
 
-<span style="color: #a020f0;">if</span> x &gt; 10 <span style="color: #a020f0;">then</span> <span style="color: #483d8b;">puts</span> x <span style="color: #a020f0;">end</span>
+<span class="org-keyword">if</span> x > 10 <span class="org-keyword">then</span> <span class="org-builtin">puts</span> x <span class="org-keyword">end</span>
 
-<span style="color: #a020f0;">if</span> x &gt; 10; <span style="color: #483d8b;">puts</span> x; <span style="color: #a020f0;">end</span>
+<span class="org-keyword">if</span> x > 10; <span class="org-builtin">puts</span> x; <span class="org-keyword">end</span>
 
-<span style="color: #483d8b;">puts</span> x <span style="color: #a020f0;">if</span> x &gt; 10
+<span class="org-builtin">puts</span> x <span class="org-keyword">if</span> x > 10
 </pre>
 </div>
 
@@ -1818,14 +1612,14 @@ You can put more than one possible match in a single <code>when</code>
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">case</span> answer
-<span style="color: #a020f0;">when</span> <span style="color: #8b2252;">'y'</span>, <span style="color: #8b2252;">'yes'</span>
-  <span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">'affirmative!'</span>
-<span style="color: #a020f0;">when</span> <span style="color: #8b2252;">'n'</span>, <span style="color: #8b2252;">'no'</span>
-  <span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">'negative!'</span>
-<span style="color: #a020f0;">else</span>
-  <span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">'not sure'</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">case</span> answer
+<span class="org-keyword">when</span> <span class="org-string">'y'</span>, <span class="org-string">'yes'</span>
+  <span class="org-builtin">puts</span> <span class="org-string">'affirmative!'</span>
+<span class="org-keyword">when</span> <span class="org-string">'n'</span>, <span class="org-string">'no'</span>
+  <span class="org-builtin">puts</span> <span class="org-string">'negative!'</span>
+<span class="org-keyword">else</span>
+  <span class="org-builtin">puts</span> <span class="org-string">'not sure'</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 </div>
@@ -1852,18 +1646,18 @@ expects you to provide a code block.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #483d8b;">loop</span> { <span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">'looping forever'</span> }
+<pre class="src src-ruby"><span class="org-builtin">loop</span> { <span class="org-builtin">puts</span> <span class="org-string">'looping forever'</span> }
 </pre>
 </div>
 
 <div class="org-src-container">
 
 <pre class="src src-ruby">n = 1
-<span style="color: #483d8b;">loop</span> <span style="color: #a020f0;">do</span>
+<span class="org-builtin">loop</span> <span class="org-keyword">do</span>
   n += 1
-  <span style="color: #a020f0;">next</span> <span style="color: #a020f0;">unless</span> n == 10
-  <span style="color: #a020f0;">break</span>
-<span style="color: #a020f0;">end</span>
+  <span class="org-keyword">next</span> <span class="org-keyword">unless</span> n == 10
+  <span class="org-keyword">break</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 
@@ -1873,9 +1667,9 @@ Here is how we can write loop
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">my_loop</span>
-  <span style="color: #a020f0;">yield</span> <span style="color: #a020f0;">while</span> <span style="color: #a0522d;">true</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">def</span> <span class="org-function-name">my_loop</span>
+  <span class="org-keyword">yield</span> <span class="org-keyword">while</span> <span class="org-variable-name">true</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 </div>
@@ -1886,8 +1680,8 @@ Here is how we can write loop
 <div class="outline-text-3" id="text-13-6">
 <div class="org-src-container">
 
-<pre class="src src-ruby">n += 1 <span style="color: #a020f0;">until</span> n == 10
-n += 1 <span style="color: #a020f0;">while</span> n &lt; 10
+<pre class="src src-ruby">n += 1 <span class="org-keyword">until</span> n == 10
+n += 1 <span class="org-keyword">while</span> n < 10
 </pre>
 </div>
 </div>
@@ -1899,9 +1693,9 @@ n += 1 <span style="color: #a020f0;">while</span> n &lt; 10
 <div class="org-src-container">
 
 <pre class="src src-ruby">numbers = [0, 10, 20, 30, 40, 50]
-<span style="color: #a020f0;">for</span> n <span style="color: #a020f0;">in</span> numbers
-  <span style="color: #483d8b;">puts</span> n
-<span style="color: #a020f0;">end</span>
+<span class="org-keyword">for</span> n <span class="org-keyword">in</span> numbers
+  <span class="org-builtin">puts</span> n
+<span class="org-keyword">end</span>
 </pre>
 </div>
 </div>
@@ -1916,9 +1710,9 @@ The difference between the two is a difference in precedence
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #483d8b;">puts</span> [1, 2, 3].map { |n| n * 10 }
-<span style="color: #b22222;"># </span><span style="color: #b22222;">is like</span>
-<span style="color: #483d8b;">puts</span> ([1, 2, 3].map { |n| n * 10 })
+<pre class="src src-ruby"><span class="org-builtin">puts</span> [1, 2, 3].map { |n| n * 10 }
+<span class="org-comment-delimiter"># </span><span class="org-comment">is like</span>
+<span class="org-builtin">puts</span> ([1, 2, 3].map { |n| n * 10 })
 </pre>
 </div>
 <p>
@@ -1927,11 +1721,11 @@ will output 10, 20 , 30
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #483d8b;">puts</span> [1, 2, 3].map <span style="color: #a020f0;">do</span> |n| n * 10 <span style="color: #a020f0;">end</span>
-<span style="color: #b22222;"># </span><span style="color: #b22222;">is like</span>
-<span style="color: #483d8b;">puts</span> ([1, 2, 3].map) <span style="color: #a020f0;">do</span> |n| n * 10 <span style="color: #a020f0;">end</span>
-<span style="color: #b22222;"># </span><span style="color: #b22222;">is like</span>
-<span style="color: #483d8b;">puts</span> [1, 2, 3].map
+<pre class="src src-ruby"><span class="org-builtin">puts</span> [1, 2, 3].map <span class="org-keyword">do</span> |n| n * 10 <span class="org-keyword">end</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">is like</span>
+<span class="org-builtin">puts</span> ([1, 2, 3].map) <span class="org-keyword">do</span> |n| n * 10 <span class="org-keyword">end</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">is like</span>
+<span class="org-builtin">puts</span> [1, 2, 3].map
 </pre>
 </div>
 <p>
@@ -1966,10 +1760,10 @@ the block
 
 <div class="org-src-container">
 
-<pre class="src src-ruby">x = <span style="color: #8b2252;">"original x"</span>
-3.times <span style="color: #a020f0;">do</span> |i;x|
+<pre class="src src-ruby">x = <span class="org-string">"original x"</span>
+3.times <span class="org-keyword">do</span> |i;x|
   x = i
-<span style="color: #a020f0;">end</span>
+<span class="org-keyword">end</span>
 x
 </pre>
 </div>
@@ -1985,15 +1779,15 @@ x
 <div class="outline-text-3" id="text-13-11">
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">begin</span>
-  <span style="color: #b22222;">#</span><span style="color: #b22222;">some code</span>
-<span style="color: #a020f0;">rescue</span> <span style="color: #228b22;">ArgumentError</span> =&gt; e
-<span style="color: #b22222;">#</span><span style="color: #b22222;">rescue code</span>
-  <span style="color: #483d8b;">puts</span> e.backtrace
-  <span style="color: #483d8b;">puts</span> e.message
-<span style="color: #a020f0;">ensure</span>
-  <span style="color: #b22222;">#</span><span style="color: #b22222;">make sure this runs</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">begin</span>
+  <span class="org-comment-delimiter">#</span><span class="org-comment">some code</span>
+<span class="org-keyword">rescue</span> <span class="org-type">ArgumentError</span> => e
+<span class="org-comment-delimiter">#</span><span class="org-comment">rescue code</span>
+  <span class="org-builtin">puts</span> e.backtrace
+  <span class="org-builtin">puts</span> e.message
+<span class="org-keyword">ensure</span>
+  <span class="org-comment-delimiter">#</span><span class="org-comment">make sure this runs</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 
@@ -2004,11 +1798,11 @@ begin explicitly. Rescue will govern the entire method block
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">method_name</span>
-  <span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">'hello'</span>
-  <span style="color: #a020f0;">rescue</span>
-  <span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">'rescued'</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">def</span> <span class="org-function-name">method_name</span>
+  <span class="org-builtin">puts</span> <span class="org-string">'hello'</span>
+  <span class="org-keyword">rescue</span>
+  <span class="org-builtin">puts</span> <span class="org-string">'rescued'</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 </div>
@@ -2047,7 +1841,7 @@ object of that class.
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 <td class="left">'hello'</td>
 </tr>
 
@@ -2063,7 +1857,7 @@ object of that class.
 
 <tr>
 <td class="left">Hash</td>
-<td class="left">{ 'Hello' -&gt; 'Bonjour' }</td>
+<td class="left">{ 'Hello' -> 'Bonjour' }</td>
 </tr>
 
 <tr>
@@ -2072,8 +1866,8 @@ object of that class.
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
-<td class="left">0&#x2026;10</td>
+<td class="left"> </td>
+<td class="left">0…10</td>
 </tr>
 
 <tr>
@@ -2083,7 +1877,7 @@ object of that class.
 
 <tr>
 <td class="left">Proc (lambda)</td>
-<td class="left">-&gt;(x, y) { x * y }</td>
+<td class="left">->(x, y) { x * y }</td>
 </tr>
 </tbody>
 </table>
@@ -2094,7 +1888,7 @@ object of that class.
 <h3 id="sec-14-2"><span class="section-number-3">14.2</span> Shortcut operators</h3>
 <div class="outline-text-3" id="text-14-2">
 <p>
-Ruby has shortcut operators like <code>||=</code>, <code>+=</code>, <code>-=</code>, <code>*=</code>, <code>&amp;=</code>
+Ruby has shortcut operators like <code>||=</code>, <code>+=</code>, <code>-=</code>, <code>*=</code>, <code>&=</code>
 (bitwise AND), <code>|=</code> (bitwise OR), <code>^=</code> (bitwise EXCLUSIVE OR)
 </p>
 
@@ -2129,12 +1923,12 @@ Shortcut operators are:
 
 <tr>
 <td class="left">Data</td>
-<td class="left"><code>[] []= &lt;&lt;</code></td>
+<td class="left"><code>[] []= <<</code></td>
 </tr>
 
 <tr>
 <td class="left">Comparison</td>
-<td class="left"><code>&lt;=&gt; == &gt; &lt; &gt;= &lt;=</code></td>
+<td class="left"><code><=> == > < >= <=</code></td>
 </tr>
 
 <tr>
@@ -2144,7 +1938,7 @@ Shortcut operators are:
 
 <tr>
 <td class="left">Bitwise</td>
-<td class="left">&vert; &amp; ^</td>
+<td class="left"># & ^</td>
 </tr>
 </tbody>
 </table>
@@ -2160,11 +1954,11 @@ Shortcut operators are:
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">+@</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">def</span> <span class="org-function-name">+@</span>
+<span class="org-keyword">end</span>
 
-<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">-@</span>
-<span style="color: #a020f0;">end</span>
+<span class="org-keyword">def</span> <span class="org-function-name">-@</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 
@@ -2174,9 +1968,9 @@ You can customize <code>!</code> which also gives you <code>not</code>
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">!</span>
-  <span style="color: #b22222;">#</span><span style="color: #b22222;">some code</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">def</span> <span class="org-function-name">!</span>
+  <span class="org-comment-delimiter">#</span><span class="org-comment">some code</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 </div>
@@ -2233,7 +2027,7 @@ stricter versions
 <li><code>to_str</code>
 If you want to be able to add a string with your object,
 you can define <code>to_str</code> for your object. <code>to_str</code> is used
-by ruby for <i>String#+</i> and <i>String#&lt;&lt;</i>
+by ruby for <i>String#+</i> and <i>String#<<</i>
 </li>
 <li><code>to_ary</code>
        To use ruby methods like <i>Array#concat</i>
@@ -2267,8 +2061,8 @@ suite:
 <ul class="org-ul">
 <li>mix-in <code>Comparable</code>
 </li>
-<li>Define <code>&lt;=&gt;</code> (spaceship operator) for your class
-<code>&lt;=&gt;</code> can return -1 (less than), 0 (equal) and 1 (greater
+<li>Define <code><=></code> (spaceship operator) for your class
+<code><=></code> can return -1 (less than), 0 (equal) and 1 (greater
 than)
 </li>
 </ul>
@@ -2287,10 +2081,10 @@ methods provided by class’s ancestors.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby">str = <span style="color: #8b2252;">'ok'</span>
-<span style="color: #a020f0;">def</span> str.<span style="color: #0000ff;">shout</span>
-  <span style="color: #a0522d;">self</span>.upcase
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby">str = <span class="org-string">'ok'</span>
+<span class="org-keyword">def</span> str.<span class="org-function-name">shout</span>
+  <span class="org-variable-name">self</span>.upcase
+<span class="org-keyword">end</span>
 str.singleton_methods
 </pre>
 </div>
@@ -2322,8 +2116,8 @@ conversion is attempted it returns a fatal error.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby">obj = <span style="color: #228b22;">Object</span>.new
-<span style="color: #228b22;">Array</span>.try_convert(obj)
+<pre class="src src-ruby">obj = <span class="org-type">Object</span>.new
+<span class="org-type">Array</span>.try_convert(obj)
 </pre>
 </div>
 
@@ -2333,11 +2127,11 @@ nil
 
 <div class="org-src-container">
 
-<pre class="src src-ruby">obj = <span style="color: #228b22;">Object</span>.new
-<span style="color: #a020f0;">def</span> obj.<span style="color: #0000ff;">to_ary</span>
+<pre class="src src-ruby">obj = <span class="org-type">Object</span>.new
+<span class="org-keyword">def</span> obj.<span class="org-function-name">to_ary</span>
   [1, 2, 3]
-<span style="color: #a020f0;">end</span>
-<span style="color: #228b22;">Array</span>.try_convert(obj)
+<span class="org-keyword">end</span>
+<span class="org-type">Array</span>.try_convert(obj)
 </pre>
 </div>
 
@@ -2376,8 +2170,8 @@ string interpolation does not work with ~'~
 <div class="outline-text-3" id="text-15-1">
 <div class="org-src-container">
 
-<pre class="src src-ruby">first_name = <span style="color: #8b2252;">'Aur&#233;lien'</span>
-<span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">"I&#8217;m </span><span style="color: #a0522d;">#{first_name}</span><span style="color: #8b2252;">"</span>
+<pre class="src src-ruby">first_name = <span class="org-string">'Aurélien'</span>
+<span class="org-builtin">puts</span> <span class="org-string">"I’m </span><span class="org-variable-name">#{first_name}</span><span class="org-string">"</span>
 </pre>
 </div>
 
@@ -2410,18 +2204,18 @@ braces too.
 <div class="outline-text-3" id="text-15-2">
 <div class="org-src-container">
 
-<pre class="src src-ruby">too = <span style="color: #8b2252;">'too'</span>
-text = <span style="color: #8b2252;">&lt;&lt;EOM</span>
-<span style="color: #8b2252;">This text is splendid.</span>
-<span style="color: #8b2252;">Full of words, lines &amp; punctuations.</span>
-<span style="color: #8b2252;">And with interpolation </span><span style="color: #a0522d;">#{too}</span>
-<span style="color: #8b2252;">EOM</span>
+<pre class="src src-ruby">too = <span class="org-string">'too'</span>
+text = <span class="org-string"><<EOM</span>
+<span class="org-string">This text is splendid.</span>
+<span class="org-string">Full of words, lines & punctuations.</span>
+<span class="org-string">And with interpolation </span><span class="org-variable-name">#{too}</span>
+<span class="org-string">EOM</span>
 </pre>
 </div>
 
 <pre class="example">
 This text is splendid.
-Full of words, lines &amp; punctuations.
+Full of words, lines & punctuations.
 And with interpolation too
 </pre>
 
@@ -2431,10 +2225,10 @@ You can add single quotes for single quoted <i>here-doc</i>
 
 <div class="org-src-container">
 
-<pre class="src src-ruby">var_too = <span style="color: #8b2252;">'too'</span>
-text = &lt;&lt;<span style="color: #8b2252;">'EOM'</span>
-<span style="color: #8b2252;">No interpolation </span><span style="color: #a0522d;">#{var_too}</span>
-<span style="color: #8b2252;">EOM</span>
+<pre class="src src-ruby">var_too = <span class="org-string">'too'</span>
+text = <<<span class="org-string">'EOM'</span>
+<span class="org-string">No interpolation </span><span class="org-variable-name">#{var_too}</span>
+<span class="org-string">EOM</span>
 </pre>
 </div>
 
@@ -2448,9 +2242,9 @@ No interpolation #{var_too}
 
 <div class="org-src-container">
 
-<pre class="src src-ruby">a = <span style="color: #8b2252;">&lt;&lt;EOM</span>.to_i * 10
-<span style="color: #8b2252;">5</span>
-<span style="color: #8b2252;">EOM</span>
+<pre class="src src-ruby">a = <span class="org-string"><<EOM</span>.to_i * 10
+<span class="org-string">5</span>
+<span class="org-string">EOM</span>
 </pre>
 </div>
 
@@ -2460,17 +2254,17 @@ No interpolation #{var_too}
 
 <div class="org-src-container">
 
-<pre class="src src-ruby">array = [1, 2, 3, <span style="color: #8b2252;">&lt;&lt;EOM</span>.to_i, 5]
-<span style="color: #8b2252;">4</span>
-<span style="color: #8b2252;">EOM</span>
+<pre class="src src-ruby">array = [1, 2, 3, <span class="org-string"><<EOM</span>.to_i, 5]
+<span class="org-string">4</span>
+<span class="org-string">EOM</span>
 </pre>
 </div>
 
 <div class="org-src-container">
 
-<pre class="src src-ruby">long_args(a, b, <span style="color: #8b2252;">&lt;&lt;EOM</span>)
-<span style="color: #8b2252;">http://supersupersupersupersupersupersuperlongurl.com</span>
-<span style="color: #8b2252;">EOM</span>
+<pre class="src src-ruby">long_args(a, b, <span class="org-string"><<EOM</span>)
+<span class="org-string">http://supersupersupersupersupersupersuperlongurl.com</span>
+<span class="org-string">EOM</span>
 </pre>
 </div>
 </div>
@@ -2488,7 +2282,7 @@ No interpolation #{var_too}
 </ul>
 <div class="org-src-container">
 
-<pre class="src src-ruby">string = <span style="color: #8b2252;">"ruby is cool"</span>
+<pre class="src src-ruby">string = <span class="org-string">"ruby is cool"</span>
 string[-1]
 </pre>
 </div>
@@ -2503,7 +2297,7 @@ l
 </ul>
 <div class="org-src-container">
 
-<pre class="src src-ruby">string = <span style="color: #8b2252;">"ruby is cool"</span>
+<pre class="src src-ruby">string = <span class="org-string">"ruby is cool"</span>
 string[5, 7]
 </pre>
 </div>
@@ -2518,7 +2312,7 @@ is cool
 </ul>
 <div class="org-src-container">
 
-<pre class="src src-ruby"> string = <span style="color: #8b2252;">"ruby is cool"</span>
+<pre class="src src-ruby"> string = <span class="org-string">"ruby is cool"</span>
 string[5..11]
 </pre>
 </div>
@@ -2529,7 +2323,7 @@ is cool
 
 <div class="org-src-container">
 
-<pre class="src src-ruby">string = <span style="color: #8b2252;">"ruby is cool"</span>
+<pre class="src src-ruby">string = <span class="org-string">"ruby is cool"</span>
 string[5...11]
 </pre>
 </div>
@@ -2544,8 +2338,8 @@ is coo
 </ul>
 <div class="org-src-container">
 
-<pre class="src src-ruby">string = <span style="color: #8b2252;">"ruby is cool"</span>
-string[<span style="color: #8b2252;">'is'</span>]
+<pre class="src src-ruby">string = <span class="org-string">"ruby is cool"</span>
+string[<span class="org-string">'is'</span>]
 </pre>
 </div>
 
@@ -2559,8 +2353,8 @@ is
 </ul>
 <div class="org-src-container">
 
-<pre class="src src-ruby">string = <span style="color: #8b2252;">"ruby is cool"</span>
-string[<span style="color: #8b2252;">/co+l/</span>]
+<pre class="src src-ruby">string = <span class="org-string">"ruby is cool"</span>
+string[<span class="org-string">/co+l/</span>]
 </pre>
 </div>
 
@@ -2579,8 +2373,8 @@ cool
 </ul>
 <div class="org-src-container">
 
-<pre class="src src-ruby">string = <span style="color: #8b2252;">"ruby is cool"</span>
-string[<span style="color: #8b2252;">'cool'</span>] = <span style="color: #8b2252;">'great'</span>
+<pre class="src src-ruby">string = <span class="org-string">"ruby is cool"</span>
+string[<span class="org-string">'cool'</span>] = <span class="org-string">'great'</span>
 string
 </pre>
 </div>
@@ -2592,7 +2386,7 @@ ruby is great
 <ul class="org-ul">
 <li>You can combine strings
 With <code>+</code> the string you get back is always a new string. With
-<code>&lt;&lt;</code> we append permanently. No new string.
+<code><<</code> we append permanently. No new string.
 </li>
 </ul>
 </div>
@@ -2676,7 +2470,7 @@ second char parameter.
 </li>
 <li><code>String#center(5)</code>. Same as <i>rjust</i> and <i>ljust</i> for parameters
 </li>
-<li><code>String#strip</code>, <code>String#lstrip</code> &amp; <code>String#rstrip</code> removes
+<li><code>String#strip</code>, <code>String#lstrip</code> & <code>String#rstrip</code> removes
 white-spaces
 </li>
 <li><code>String#chop</code> to remove a character at the end of the string
@@ -2765,14 +2559,14 @@ with strings.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">String</span>
-  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">^</span>(key)
+<pre class="src src-ruby"><span class="org-keyword">class</span> <span class="org-type">String</span>
+  <span class="org-keyword">def</span> <span class="org-function-name">^</span>(key)
     kenum = key.each_byte.cycle
-    each_byte.map {|byte| byte ^ kenum.next }.pack(<span style="color: #8b2252;">"C*"</span>).force_encoding(<span style="color: #a0522d;">self</span>.encoding)
-  <span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">end</span>
+    each_byte.map {|byte| byte ^ kenum.next }.pack(<span class="org-string">"C*"</span>).force_encoding(<span class="org-variable-name">self</span>.encoding)
+  <span class="org-keyword">end</span>
+<span class="org-keyword">end</span>
 
-<span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">'hello'</span> ^ <span style="color: #8b2252;">'secret key'</span> ^ <span style="color: #8b2252;">'secret key'</span>
+<span class="org-builtin">puts</span> <span class="org-string">'hello'</span> ^ <span class="org-string">'secret key'</span> ^ <span class="org-string">'secret key'</span>
 </pre>
 </div>
 
@@ -2820,7 +2614,7 @@ If you want to check if a symbol exist you can use <i>grep</i>
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #228b22;">Symbol</span>.all_symbols.grep(<span style="color: #8b2252;">/abc/</span>)
+<pre class="src src-ruby"><span class="org-type">Symbol</span>.all_symbols.grep(<span class="org-string">/abc/</span>)
 </pre>
 </div>
 
@@ -2841,8 +2635,8 @@ The following two are equivalent
 </p>
 <div class="org-src-container">
 
-<pre class="src src-ruby">hash = { <span style="color: #008b8b;">:name</span> =&gt; <span style="color: #8b2252;">'Aur&#233;lien'</span>, <span style="color: #008b8b;">:age</span> =&gt; 35 }
-hash = { <span style="color: #008b8b;">name</span>: <span style="color: #8b2252;">'Aur&#233;lien'</span>, <span style="color: #008b8b;">age</span>: 35}
+<pre class="src src-ruby">hash = { <span class="org-constant">:name</span> => <span class="org-string">'Aurélien'</span>, <span class="org-constant">:age</span> => 35 }
+hash = { <span class="org-constant">name</span>: <span class="org-string">'Aurélien'</span>, <span class="org-constant">age</span>: 35}
 </pre>
 </div>
 </div>
@@ -2922,8 +2716,8 @@ Octals when leading 0
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #483d8b;">require</span> <span style="color: #8b2252;">'time'</span>
-<span style="color: #483d8b;">require</span> <span style="color: #8b2252;">'date'</span> <span style="color: #b22222;">#</span><span style="color: #b22222;">provides both Date and Datetime</span>
+<pre class="src src-ruby"><span class="org-builtin">require</span> <span class="org-string">'time'</span>
+<span class="org-builtin">require</span> <span class="org-string">'date'</span> <span class="org-comment-delimiter">#</span><span class="org-comment">provides both Date and Datetime</span>
 </pre>
 </div>
 
@@ -2938,8 +2732,8 @@ You can use <code>upto</code> and <code>downto</code> to iterate over a range of
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #483d8b;">require</span> <span style="color: #8b2252;">'date'</span>
-d = <span style="color: #228b22;">Date</span>.today
+<pre class="src src-ruby"><span class="org-builtin">require</span> <span class="org-string">'date'</span>
+d = <span class="org-type">Date</span>.today
 next_week = d + 7
 
 d.upto(next_week)
@@ -2947,7 +2741,7 @@ d.upto(next_week)
 </div>
 
 <pre class="example">
-#&lt;Enumerator: #&lt;Date: 2014-11-19 ((2456981j,0s,0n),+0s,2299161j)&gt;:upto(#&lt;Date: 2014-11-26 ((2456988j,0s,0n),+0s,2299161j)&gt;)&gt;
+#<Enumerator: #<Date: 2014-11-20 ((2456982j,0s,0n),+0s,2299161j)>:upto(#<Date: 2014-11-27 ((2456989j,0s,0n),+0s,2299161j)>)>
 </pre>
 </div>
 </div>
@@ -2978,7 +2772,7 @@ You can create an array with
 </ul>
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #483d8b;">puts</span> <span style="color: #228b22;">Array</span>.new(3)
+<pre class="src src-ruby"><span class="org-builtin">puts</span> <span class="org-type">Array</span>.new(3)
 </pre>
 </div>
 
@@ -2995,7 +2789,7 @@ for one element, you modify it for all elements of the Array.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #228b22;">Array</span>.new(3, <span style="color: #8b2252;">'abc'</span>)
+<pre class="src src-ruby"><span class="org-type">Array</span>.new(3, <span class="org-string">'abc'</span>)
 </pre>
 </div>
 
@@ -3024,7 +2818,7 @@ With a block, all 3 strings are different
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #228b22;">Array</span>.new(3) { <span style="color: #8b2252;">'abc'</span>}
+<pre class="src src-ruby"><span class="org-type">Array</span>.new(3) { <span class="org-string">'abc'</span>}
 </pre>
 </div>
 
@@ -3050,7 +2844,7 @@ With a block, all 3 strings are different
 <div class="org-src-container">
 
 <pre class="src src-ruby">n = 0
-<span style="color: #228b22;">Array</span>.new(3) { n += 1; n * 10}
+<span class="org-type">Array</span>.new(3) { n += 1; n * 10}
 </pre>
 </div>
 
@@ -3086,11 +2880,11 @@ object in an Array
 
 <div class="org-src-container">
 
-<pre class="src src-ruby">string = <span style="color: #8b2252;">"cool"</span>
-<span style="color: #a020f0;">def</span> string.<span style="color: #0000ff;">to_a</span>
-  split(<span style="color: #8b2252;">//</span>)
-<span style="color: #a020f0;">end</span>
-<span style="color: #483d8b;">Array</span>(string)
+<pre class="src src-ruby">string = <span class="org-string">"cool"</span>
+<span class="org-keyword">def</span> string.<span class="org-function-name">to_a</span>
+  split(<span class="org-string">//</span>)
+<span class="org-keyword">end</span>
+<span class="org-builtin">Array</span>(string)
 </pre>
 </div>
 
@@ -3126,7 +2920,7 @@ object in an Array
 </ul>
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #8b2252;">%w{ It is a small world }</span>
+<pre class="src src-ruby"><span class="org-string">%w{ It is a small world }</span>
 </pre>
 </div>
 
@@ -3161,7 +2955,7 @@ object in an Array
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #8b2252;">%i{It is a small world}</span>
+<pre class="src src-ruby"><span class="org-string">%i{It is a small world}</span>
 </pre>
 </div>
 </div>
@@ -3215,7 +3009,7 @@ object in an Array
 </tr>
 
 <tr>
-<td class="left"><code>a &lt;&lt; 5</code></td>
+<td class="left"><code>a << 5</code></td>
 <td class="left">add 5 at the end of the array</td>
 </tr>
 
@@ -3343,11 +3137,11 @@ Hash provides quick look-up in better than linear time
 
 <div class="org-src-container">
 
-<pre class="src src-ruby">hash = { <span style="color: #008b8b;">red</span>: <span style="color: #8b2252;">'ruby'</span>, <span style="color: #008b8b;">white</span>: <span style="color: #8b2252;">'diamond'</span>, <span style="color: #008b8b;">green</span>: <span style="color: #8b2252;">'emerald'</span>}
-output = <span style="color: #8b2252;">''</span>
-hash.each.with_index <span style="color: #a020f0;">do</span> |(key, value), i|
-  output &lt;&lt; <span style="color: #8b2252;">"PAIR </span><span style="color: #a0522d;">#{i}</span><span style="color: #8b2252;"> is </span><span style="color: #a0522d;">#{key}</span><span style="color: #8b2252;">/</span><span style="color: #a0522d;">#{value}</span><span style="color: #8b2252;">\n"</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby">hash = { <span class="org-constant">red</span>: <span class="org-string">'ruby'</span>, <span class="org-constant">white</span>: <span class="org-string">'diamond'</span>, <span class="org-constant">green</span>: <span class="org-string">'emerald'</span>}
+output = <span class="org-string">''</span>
+hash.each.with_index <span class="org-keyword">do</span> |(key, value), i|
+  output << <span class="org-string">"PAIR </span><span class="org-variable-name">#{i}</span><span class="org-string"> is </span><span class="org-variable-name">#{key}</span><span class="org-string">/</span><span class="org-variable-name">#{value}</span><span class="org-string">\n"</span>
+<span class="org-keyword">end</span>
 output
 </pre>
 </div>
@@ -3371,8 +3165,8 @@ You can create an Hash with:
 <li><code>Hash.new</code>
 <div class="org-src-container">
 
-<pre class="src src-ruby">h = <span style="color: #228b22;">Hash</span>.new(3) <span style="color: #b22222;">#</span><span style="color: #b22222;">argument serves as default value for nonexistent hash keys</span>
-h[<span style="color: #008b8b;">:my_key</span>]
+<pre class="src src-ruby">h = <span class="org-type">Hash</span>.new(3) <span class="org-comment-delimiter">#</span><span class="org-comment">argument serves as default value for nonexistent hash keys</span>
+h[<span class="org-constant">:my_key</span>]
 </pre>
 </div>
 
@@ -3385,8 +3179,8 @@ You can use blocks too!
 </p>
 <div class="org-src-container">
 
-<pre class="src src-ruby">h = <span style="color: #228b22;">Hash</span>.new {|hash, key| hash[key] = 0 }
-h[<span style="color: #008b8b;">:my_key</span>]
+<pre class="src src-ruby">h = <span class="org-type">Hash</span>.new {|hash, key| hash[key] = 0 }
+h[<span class="org-constant">:my_key</span>]
 </pre>
 </div>
 
@@ -3399,7 +3193,7 @@ h[<span style="color: #008b8b;">:my_key</span>]
      If you provide an odd number of argument a fatal error is raised
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #228b22;">Hash</span>[<span style="color: #8b2252;">'France'</span>, <span style="color: #8b2252;">'fr'</span>, <span style="color: #8b2252;">'USA'</span>, <span style="color: #8b2252;">'us'</span>]
+<pre class="src src-ruby"><span class="org-type">Hash</span>[<span class="org-string">'France'</span>, <span class="org-string">'fr'</span>, <span class="org-string">'USA'</span>, <span class="org-string">'us'</span>]
 </pre>
 </div>
 </li>
@@ -3410,7 +3204,7 @@ an empty <code>Array</code> or <code>nil</code> it returns an empty hash <code>{
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #483d8b;">Hash</span>([])
+<pre class="src src-ruby"><span class="org-builtin">Hash</span>([])
 </pre>
 </div>
 
@@ -3475,17 +3269,17 @@ an empty <code>Array</code> or <code>nil</code> it returns an empty hash <code>{
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
+<td class="left"> </td>
 <td class="left">If both hash have keys in common h2 keys win</td>
 </tr>
 
 <tr>
-<td class="left"><code>h.select {\vert{}k,v\vert k &gt; 1}</code></td>
+<td class="left"><code>h.select {\vert{}k,v\vert k > 1}</code></td>
 <td class="left">creates a sub-hash by selection</td>
 </tr>
 
 <tr>
-<td class="left"><code>h.reject {\vert{}k,v\vert k &gt; 1}</code></td>
+<td class="left"><code>h.reject {\vert{}k,v\vert k > 1}</code></td>
 <td class="left">creates a sub-hash by rejection</td>
 </tr>
 
@@ -3554,7 +3348,7 @@ Semantics of range:
 <li><i>Enumeration</i>
 
 <p>
-You can remember inclusive <i>..</i> and exclusive <i>&#x2026;</i> range
+You can remember inclusive <i>..</i> and exclusive <i>…</i> range
 notation by thinking of a range as always reaching to the
 point represented by whatever follows the second dot.
 </p>
@@ -3569,7 +3363,7 @@ You can create ranges with
 <li><code>Range.new</code>
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #228b22;">Range</span>.new(1, 100)
+<pre class="src src-ruby"><span class="org-type">Range</span>.new(1, 100)
 </pre>
 </div>
 
@@ -3579,7 +3373,7 @@ You can create ranges with
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #228b22;">Range</span>.new(1, 100, <span style="color: #a0522d;">true</span>)
+<pre class="src src-ruby"><span class="org-type">Range</span>.new(1, 100, <span class="org-variable-name">true</span>)
 </pre>
 </div>
 
@@ -3612,7 +3406,7 @@ range.
 </p>
 <div class="org-src-container">
 
-<pre class="src src-ruby">(<span style="color: #8b2252;">'a'</span>..<span style="color: #8b2252;">'z'</span>).cover?(<span style="color: #8b2252;">'abc'</span>)
+<pre class="src src-ruby">(<span class="org-string">'a'</span>..<span class="org-string">'z'</span>).cover?(<span class="org-string">'abc'</span>)
 </pre>
 </div>
 
@@ -3626,7 +3420,7 @@ Therefore results differs from <code>cover?</code>
 </p>
 <div class="org-src-container">
 
-<pre class="src src-ruby">(<span style="color: #8b2252;">'a'</span>..<span style="color: #8b2252;">'z'</span>).include?(<span style="color: #8b2252;">'abc'</span>)
+<pre class="src src-ruby">(<span class="org-string">'a'</span>..<span class="org-string">'z'</span>).include?(<span class="org-string">'abc'</span>)
 </pre>
 </div>
 
@@ -3663,7 +3457,7 @@ You need to
 </p>
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #483d8b;">require</span> <span style="color: #8b2252;">'set'</span>
+<pre class="src src-ruby"><span class="org-builtin">require</span> <span class="org-string">'set'</span>
 </pre>
 </div>
 
@@ -3679,17 +3473,17 @@ objects and optionally a code block.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #483d8b;">require</span> <span style="color: #8b2252;">'set'</span>
-<span style="color: #228b22;">Set</span>.new([<span style="color: #8b2252;">'Aur&#233;lien'</span>,<span style="color: #8b2252;">'Romain'</span>, <span style="color: #8b2252;">'Andr&#233;a'</span>]) {|name| name.upcase}
+<pre class="src src-ruby"><span class="org-builtin">require</span> <span class="org-string">'set'</span>
+<span class="org-type">Set</span>.new([<span class="org-string">'Aurélien'</span>,<span class="org-string">'Romain'</span>, <span class="org-string">'Andréa'</span>]) {|name| name.upcase}
 </pre>
 </div>
 
 <pre class="example">
-#&lt;Set: {"AURéLIEN", "ROMAIN", "ANDRéA"}&gt;
+#<Set: {"AURéLIEN", "ROMAIN", "ANDRéA"}>
 </pre>
 
 <p>
-Use <code>&lt;&lt;</code> to add a single object to a set.
+Use <code><<</code> to add a single object to a set.
 You can also use <code>add</code> to add an object to a set. <code>add?</code>
 returns nil if the set is unchanged after add operation.
 Use <code>delete</code> to remove an object for a set.
@@ -3697,7 +3491,7 @@ Use <code>delete</code> to remove an object for a set.
 
 
 <p>
-You can use <code>&amp;</code> to perform intersections. <code>+</code> and <code>|</code> for
+You can use <code>&</code> to perform intersections. <code>+</code> and <code>|</code> for
 unions and <code>-</code> for differences.
 There is also an <code>^</code> exclusive or operator.
 </p>
@@ -3723,19 +3517,19 @@ method. You will be able to call any instance method defined in
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">BlueColors</span>
-  <span style="color: #483d8b;">include</span> <span style="color: #228b22;">Enumerable</span>
+<pre class="src src-ruby"><span class="org-keyword">class</span> <span class="org-type">BlueColors</span>
+  <span class="org-builtin">include</span> <span class="org-type">Enumerable</span>
 
-  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">each</span>
-    <span style="color: #a020f0;">yield</span> <span style="color: #8b2252;">'Light Blue'</span>
-    <span style="color: #a020f0;">yield</span> <span style="color: #8b2252;">'Blue'</span>
-    <span style="color: #a020f0;">yield</span> <span style="color: #8b2252;">'Dark Blue'</span>
-  <span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">end</span>
+  <span class="org-keyword">def</span> <span class="org-function-name">each</span>
+    <span class="org-keyword">yield</span> <span class="org-string">'Light Blue'</span>
+    <span class="org-keyword">yield</span> <span class="org-string">'Blue'</span>
+    <span class="org-keyword">yield</span> <span class="org-string">'Dark Blue'</span>
+  <span class="org-keyword">end</span>
+<span class="org-keyword">end</span>
 
-<span style="color: #228b22;">BlueColors</span>.new.each { |c| <span style="color: #483d8b;">puts</span> c }
+<span class="org-type">BlueColors</span>.new.each { |c| <span class="org-builtin">puts</span> c }
 
-<span style="color: #483d8b;">puts</span> <span style="color: #228b22;">BlueColors</span>.new.find { |c| c.start_with?(<span style="color: #8b2252;">'B'</span>) }
+<span class="org-builtin">puts</span> <span class="org-type">BlueColors</span>.new.find { |c| c.start_with?(<span class="org-string">'B'</span>) }
 </pre>
 </div>
 
@@ -3772,11 +3566,11 @@ Be careful when enumerating with ranges.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">begin</span>
-     <span style="color: #483d8b;">puts</span> (1.0..10.0).one? { |n| n == 5}
-<span style="color: #a020f0;">rescue</span> <span style="color: #228b22;">Exception</span> =&gt; e
-  <span style="color: #483d8b;">puts</span> e.message
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">begin</span>
+     <span class="org-builtin">puts</span> (1.0..10.0).one? { |n| n == 5}
+<span class="org-keyword">rescue</span> <span class="org-type">Exception</span> => e
+  <span class="org-builtin">puts</span> e.message
+<span class="org-keyword">end</span>
 </pre>
 </div>
 
@@ -3793,8 +3587,8 @@ can't iterate from Float
 <li><code>find</code>. You can provide a failure-handling function
 <div class="org-src-container">
 
-<pre class="src src-ruby">failure = <span style="color: #483d8b;">lambda</span> { 11 }
-[1,2,3,4,5,6].find(failure) {|n| n&gt; 10}
+<pre class="src src-ruby">failure = <span class="org-builtin">lambda</span> { 11 }
+[1,2,3,4,5,6].find(failure) {|n| n> 10}
 </pre>
 </div>
 </li>
@@ -3810,7 +3604,7 @@ There’s a <code>select!</code>.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby">colors = <span style="color: #8b2252;">%w{ red orange yellow green blue indigo violet}</span>
+<pre class="src src-ruby">colors = <span class="org-string">%w{ red orange yellow green blue indigo violet}</span>
 colors.group_by {|color| color.size}
 </pre>
 </div>
@@ -3834,7 +3628,7 @@ iterations that goes forever. <code>Array</code> and <code>Range</code> have a
 </li>
 <li><code>drop</code> and <code>drop_while</code>
 </li>
-<li><code>min</code> and <code>max</code>. Determined by <code>&lt;=&gt;</code> (spaceship operator).
+<li><code>min</code> and <code>max</code>. Determined by <code><=></code> (spaceship operator).
 </li>
 <li><code>min_by</code> and <code>max_by</code>
 </li>
@@ -3884,9 +3678,9 @@ a collection.
 <h4 id="sec-20-1-5"><span class="section-number-4">20.1.5</span> Sorting</h4>
 <div class="outline-text-4" id="text-20-1-5">
 <ol class="org-ol">
-<li>You need to define <code>&lt;=&gt;</code> the comparison method for the
+<li>You need to define <code><=></code> the comparison method for the
 class. If you <i>mixin</i> enumerable you get  all comparison
-operations (&gt;, &lt;, and so on).
+operations (>, <, and so on).
 </li>
 <li>Place multiples instances of the class in a container
 </li>
@@ -3899,12 +3693,12 @@ operations (&gt;, &lt;, and so on).
 Two sorting methods for <i>enumerable</i>:
 </p>
 <ol class="org-ol">
-<li><code>sort</code>. Can take a block if you did not define <code>&lt;=&gt;</code>
+<li><code>sort</code>. Can take a block if you did not define <code><=></code>
 </li>
 <li><code>sort_by</code>. Always take block
 <div class="org-src-container">
 
-<pre class="src src-ruby">[<span style="color: #8b2252;">'2'</span>, <span style="color: #8b2252;">'1'</span>, <span style="color: #8b2252;">'3'</span>].sort_by {|a| a.to_i }
+<pre class="src src-ruby">[<span class="org-string">'2'</span>, <span class="org-string">'1'</span>, <span class="org-string">'3'</span>].sort_by {|a| a.to_i }
 </pre>
 </div>
 
@@ -3952,18 +3746,18 @@ figures how to do the rest.
 </div><ol class="org-ol"><li><a id="sec-20-2-1-1"></a>with a code block<br ><div class="outline-text-5" id="text-20-2-1-1">
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #228b22;">Enumerator</span>.new <span style="color: #a020f0;">do</span> |y|
-  y &lt;&lt; 1
-  y &lt;&lt; 2
-  y &lt;&lt; 3
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-type">Enumerator</span>.new <span class="org-keyword">do</span> |y|
+  y << 1
+  y << 2
+  y << 3
+<span class="org-keyword">end</span>
 </pre>
 </div>
 
 <p>
 <code>y</code> is a <i>yielder</i>. Here we are saying, when the <i>Enumerator</i>
 get an <i>each</i> call, please take note that your need to yield
-<code>1</code>, then <code>2</code>, then <code>3</code>. <code>&lt;&lt;</code> tells <code>y</code> what it should yield.
+<code>1</code>, then <code>2</code>, then <code>3</code>. <code><<</code> tells <code>y</code> what it should yield.
 You could also write <code>y.yield(1)</code>.
 </p>
 
@@ -3973,11 +3767,11 @@ Note you don’t <i>yield</i> from the block. The following is wrong:
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #228b22;">Enumerator</span>.new <span style="color: #a020f0;">do</span> <span style="color: #b22222;">#</span><span style="color: #b22222;">wrong</span>
-  <span style="color: #a020f0;">yield</span> 1         <span style="color: #b22222;">#</span><span style="color: #b22222;">wrong</span>
-  <span style="color: #a020f0;">yield</span> 2         <span style="color: #b22222;">#</span><span style="color: #b22222;">wrong</span>
-  <span style="color: #a020f0;">yield</span> 3         <span style="color: #b22222;">#</span><span style="color: #b22222;">wrong</span>
-<span style="color: #a020f0;">end</span>               <span style="color: #b22222;">#</span><span style="color: #b22222;">wrong</span>
+<pre class="src src-ruby"><span class="org-type">Enumerator</span>.new <span class="org-keyword">do</span> <span class="org-comment-delimiter">#</span><span class="org-comment">wrong</span>
+  <span class="org-keyword">yield</span> 1         <span class="org-comment-delimiter">#</span><span class="org-comment">wrong</span>
+  <span class="org-keyword">yield</span> 2         <span class="org-comment-delimiter">#</span><span class="org-comment">wrong</span>
+  <span class="org-keyword">yield</span> 3         <span class="org-comment-delimiter">#</span><span class="org-comment">wrong</span>
+<span class="org-keyword">end</span>               <span class="org-comment-delimiter">#</span><span class="org-comment">wrong</span>
 </pre>
 </div>
 </div>
@@ -3991,8 +3785,8 @@ to array’s select.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby">e = <span style="color: #8b2252;">%w{ Paris Boston Tokyo }</span>.enum_for(<span style="color: #008b8b;">:select</span>)
-e.each {|n| n.include?(<span style="color: #8b2252;">'a'</span>)}
+<pre class="src src-ruby">e = <span class="org-string">%w{ Paris Boston Tokyo }</span>.enum_for(<span class="org-constant">:select</span>)
+e.each {|n| n.include?(<span class="org-string">'a'</span>)}
 </pre>
 </div>
 
@@ -4016,13 +3810,13 @@ called without a block. The following two are equivalent
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #8b2252;">%w{ Paris Boston Tokyo }</span>.enum_for(<span style="color: #008b8b;">:select</span>)
-<span style="color: #8b2252;">%w{ Paris Boston Tokyo }</span>.select
+<pre class="src src-ruby"><span class="org-string">%w{ Paris Boston Tokyo }</span>.enum_for(<span class="org-constant">:select</span>)
+<span class="org-string">%w{ Paris Boston Tokyo }</span>.select
 </pre>
 </div>
 
 <pre class="example">
-#&lt;Enumerator: ["Paris", "Boston", "Tokyo"]:select&gt;
+#<Enumerator: ["Paris", "Boston", "Tokyo"]:select>
 </pre>
 </div>
 </li></ol>
@@ -4038,11 +3832,11 @@ enumerator. This way your enumerator won’t absorb changes.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Cards</span>
-  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">cards</span>
-    <span style="color: #a0522d;">@cards</span>.to_enum
-  <span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">class</span> <span class="org-type">Cards</span>
+  <span class="org-keyword">def</span> <span class="org-function-name">cards</span>
+    <span class="org-variable-name">@cards</span>.to_enum
+  <span class="org-keyword">end</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 </div>
@@ -4062,14 +3856,14 @@ You can use <code>next</code>, <code>rewind</code> to move in <code>slow motion<
 <div class="outline-text-4" id="text-20-2-4">
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Scale</span>
-  <span style="color: #228b22;">NOTES</span> = <span style="color: #8b2252;">%w{ do re mi fa sol la si do}</span>
-  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">play</span>
-    <span style="color: #228b22;">NOTES</span>.each {|note| <span style="color: #a020f0;">yield</span> note }
-  <span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">class</span> <span class="org-type">Scale</span>
+  <span class="org-type">NOTES</span> = <span class="org-string">%w{ do re mi fa sol la si do}</span>
+  <span class="org-keyword">def</span> <span class="org-function-name">play</span>
+    <span class="org-type">NOTES</span>.each {|note| <span class="org-keyword">yield</span> note }
+  <span class="org-keyword">end</span>
+<span class="org-keyword">end</span>
 
-enum = <span style="color: #228b22;">Scale</span>.new.enum_for(<span style="color: #008b8b;">:play</span>)
+enum = <span class="org-type">Scale</span>.new.enum_for(<span class="org-constant">:play</span>)
 </pre>
 </div>
 
@@ -4098,7 +3892,7 @@ To enumerate selectively over infinitely large collections.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby">(1..<span style="color: #228b22;">Float</span>::<span style="color: #228b22;">INFINITY</span>).lazy.select { |n| n % 3 == 0 }.first(10)
+<pre class="src src-ruby">(1..<span class="org-type">Float</span>::<span class="org-type">INFINITY</span>).lazy.select { |n| n % 3 == 0 }.first(10)
 </pre>
 </div>
 
@@ -4188,7 +3982,7 @@ the global variable <code>$~</code> to a <i>MatchData</i> object.
 </p>
 
 <p>
-You can specify names for your captures <code>/(?&lt;i_match_abc&gt;abc)/</code>
+You can specify names for your captures <code>/(?<i_match_abc>abc)/</code>
 and then access them with <code>m[:i_match_abc]</code>.
 </p>
 
@@ -4200,7 +3994,7 @@ characters as possible.
 <p>
 Look-ahead assertions. <code>/\d+(?=\.)/</code> match numbers before a dot.
 You have negative look-ahead assertions <code>?!</code> and the
-corresponding look-behind assertions <code>?&lt;=</code> and <code>?&lt;!</code>.
+corresponding look-behind assertions <code>?<=</code> and <code>?<!</code>.
 </p>
 
 <p>
@@ -4217,10 +4011,10 @@ in your regular expressions
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #8b2252;">/</span>
-<span style="color: #8b2252;">a   #this match a</span>
-<span style="color: #8b2252;">\d+ #this match a number</span>
-<span style="color: #8b2252;">/</span><span style="color: #483d8b;">x</span>
+<pre class="src src-ruby"><span class="org-string">/</span>
+<span class="org-string">a   #this match a</span>
+<span class="org-string">\d+ #this match a number</span>
+<span class="org-string">/</span><span class="org-preprocessor">x</span>
 </pre>
 </div>
 
@@ -4232,7 +4026,7 @@ escape special reg-ex characters inside a string with
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #8b2252;">/abc/</span>
+<pre class="src src-ruby"><span class="org-string">/abc/</span>
 </pre>
 </div>
 
@@ -4275,7 +4069,7 @@ captures.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #8b2252;">'aDvid'</span>.sub(<span style="color: #8b2252;">/([a-z])([A-Z])/</span>, <span style="color: #8b2252;">'\2\1'</span>)
+<pre class="src src-ruby"><span class="org-string">'aDvid'</span>.sub(<span class="org-string">/([a-z])([A-Z])/</span>, <span class="org-string">'\2\1'</span>)
 </pre>
 </div>
 
@@ -4290,7 +4084,7 @@ If you provide a code block you get a combined <i>select/map</i>
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #8b2252;">%w{ USA UK France Germany }</span>.grep(<span style="color: #8b2252;">/[a-z]/</span>) { |c| c.upcase }
+<pre class="src src-ruby"><span class="org-string">%w{ USA UK France Germany }</span>.grep(<span class="org-string">/[a-z]/</span>) { |c| c.upcase }
 </pre>
 </div>
 
@@ -4386,9 +4180,9 @@ You can manipulate it with <code>seek</code> (moves around) and <code>pos</code>
 
 <div class="org-src-container">
 
-<pre class="src src-ruby">f.seek(20, <span style="color: #228b22;">IO</span>::<span style="color: #228b22;">SEEK_SET</span>) <span style="color: #b22222;"># </span><span style="color: #b22222;">to byte 20</span>
-f.seek(15, <span style="color: #228b22;">IO</span>::<span style="color: #228b22;">SEEK_CUR</span>) <span style="color: #b22222;"># </span><span style="color: #b22222;">advance 15 byte from current position</span>
-f.seek(-10, <span style="color: #228b22;">IO</span>::<span style="color: #228b22;">SEEK_END</span>) <span style="color: #b22222;"># </span><span style="color: #b22222;">10 bytes before end</span>
+<pre class="src src-ruby">f.seek(20, <span class="org-type">IO</span>::<span class="org-type">SEEK_SET</span>) <span class="org-comment-delimiter"># </span><span class="org-comment">to byte 20</span>
+f.seek(15, <span class="org-type">IO</span>::<span class="org-type">SEEK_CUR</span>) <span class="org-comment-delimiter"># </span><span class="org-comment">advance 15 byte from current position</span>
+f.seek(-10, <span class="org-type">IO</span>::<span class="org-type">SEEK_END</span>) <span class="org-comment-delimiter"># </span><span class="org-comment">10 bytes before end</span>
 </pre>
 </div>
 </div>
@@ -4420,8 +4214,8 @@ Instead you can iterate on the file which saves memory.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #228b22;">File</span>.readlines(<span style="color: #8b2252;">'myfile.txt'</span>).inject(0) {|total, line| <span style="color: #b22222;">#</span><span style="color: #b22222;">do stuff} # bad</span>
-<span style="color: #228b22;">File</span>.open(<span style="color: #8b2252;">'myfile.text'</span>).inject(0) {|total, line| <span style="color: #b22222;">#</span><span style="color: #b22222;">do stuff} # good</span>
+<pre class="src src-ruby"><span class="org-type">File</span>.readlines(<span class="org-string">'myfile.txt'</span>).inject(0) {|total, line| <span class="org-comment-delimiter">#</span><span class="org-comment">do stuff} # bad</span>
+<span class="org-type">File</span>.open(<span class="org-string">'myfile.text'</span>).inject(0) {|total, line| <span class="org-comment-delimiter">#</span><span class="org-comment">do stuff} # good</span>
 </pre>
 </div>
 </div>
@@ -4466,7 +4260,7 @@ directories.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby">test ?e, <span style="color: #8b2252;">'/tmp'</span> <span style="color: #b22222;">#</span><span style="color: #b22222;">exists?</span>
+<pre class="src src-ruby">test ?e, <span class="org-string">'/tmp'</span> <span class="org-comment-delimiter">#</span><span class="org-comment">exists?</span>
 </pre>
 </div>
 
@@ -4542,8 +4336,8 @@ accidentally delete, overwrite or move files.
 block
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #483d8b;">require</span> <span style="color: #8b2252;">'pathname'</span>
-<span style="color: #228b22;">Pathname</span>.new(<span style="color: #228b22;">File</span>.expand_path(<span style="color: #8b2252;">'~'</span>)).ascend {|x| <span style="color: #483d8b;">puts</span> x }
+<pre class="src src-ruby"><span class="org-builtin">require</span> <span class="org-string">'pathname'</span>
+<span class="org-type">Pathname</span>.new(<span class="org-type">File</span>.expand_path(<span class="org-string">'~'</span>)).ascend {|x| <span class="org-builtin">puts</span> x }
 </pre>
 </div>
 
@@ -4575,7 +4369,7 @@ Useful to run tests
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #228b22;">Tempfile</span>.new(<span style="color: #8b2252;">'tmp'</span>)
+<pre class="src src-ruby"><span class="org-type">Tempfile</span>.new(<span class="org-string">'tmp'</span>)
 </pre>
 </div>
 </div>
@@ -4590,11 +4384,15 @@ Standard <i>HTTP</i> and <i>HTTPS</i> library.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #483d8b;">require</span> <span style="color: #8b2252;">'open-uri'</span>
-webpage = <span style="color: #483d8b;">open</span>(<span style="color: #8b2252;">'http://aurelienbottazini.com'</span>)
+<pre class="src src-ruby"><span class="org-builtin">require</span> <span class="org-string">'open-uri'</span>
+webpage = <span class="org-builtin">open</span>(<span class="org-string">'http://aurelienbottazini.com'</span>)
 webpage.gets
 </pre>
 </div>
+
+<pre class="example">
+<!DOCTYPE html>
+</pre>
 </div>
 </div>
 </div>
@@ -4628,14 +4426,14 @@ special notation.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> &lt;&lt; object
-  <span style="color: #b22222;"># </span><span style="color: #b22222;">methods and constants definitions</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">class</span> << object
+  <span class="org-comment-delimiter"># </span><span class="org-comment">methods and constants definitions</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 
 <p>
-<code>&lt;&lt; object</code> means the anonymous, singleton class of object.
+<code><< object</code> means the anonymous, singleton class of object.
 </p>
 
 <p>
@@ -4649,21 +4447,21 @@ the singleton one.
 
 <p>
 you can think <code>class</code> as either willing to accept a <i>constant</i>
-or a  <code>&lt;&lt; object</code> expression.
+or a  <code><< object</code> expression.
 </p>
 
 <p>
-You can define class methods with <code>&lt;&lt;</code>
+You can define class methods with <code><<</code>
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Ticket</span>
-  <span style="color: #a020f0;">class</span> &lt;&lt; <span style="color: #a0522d;">self</span> <span style="color: #b22222;">#</span><span style="color: #b22222;">inside the body, same as class &lt;&lt; Ticket</span>
-    <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">class_method</span>
-    <span style="color: #a020f0;">end</span>
-  <span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">class</span> <span class="org-type">Ticket</span>
+  <span class="org-keyword">class</span> << <span class="org-variable-name">self</span> <span class="org-comment-delimiter">#</span><span class="org-comment">inside the body, same as class << Ticket</span>
+    <span class="org-keyword">def</span> <span class="org-function-name">class_method</span>
+    <span class="org-keyword">end</span>
+  <span class="org-keyword">end</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 
@@ -4673,10 +4471,10 @@ Outside the body of a class you can define the same method with
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> &lt;&lt; <span style="color: #228b22;">Ticket</span>
-  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">class_method</span>
-  <span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">class</span> << <span class="org-type">Ticket</span>
+  <span class="org-keyword">def</span> <span class="org-function-name">class_method</span>
+  <span class="org-keyword">end</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 </div>
@@ -4691,20 +4489,20 @@ Outside the body of a class you can define the same method with
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">module</span> <span style="color: #228b22;">M</span>
-<span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">class</span> <span style="color: #228b22;">C</span>
-<span style="color: #a020f0;">end</span>
-c = <span style="color: #228b22;">C</span>.new
-<span style="color: #a020f0;">class</span> &lt;&lt; c
-  <span style="color: #483d8b;">include</span> <span style="color: #228b22;">M</span>
-  <span style="color: #483d8b;">p</span> ancestors
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">module</span> <span class="org-type">M</span>
+<span class="org-keyword">end</span>
+<span class="org-keyword">class</span> <span class="org-type">C</span>
+<span class="org-keyword">end</span>
+c = <span class="org-type">C</span>.new
+<span class="org-keyword">class</span> << c
+  <span class="org-builtin">include</span> <span class="org-type">M</span>
+  <span class="org-builtin">p</span> ancestors
+<span class="org-keyword">end</span>
 </pre>
 </div>
 
 <pre class="example">
-[#&lt;Class:#&lt;C:0x007ff8191fdce0&gt;&gt;, M, C, Object, Kernel, BasicObject]
+[#<Class:#<C:0x007ff4d2895d40>>, M, C, Object, Kernel, BasicObject]
 </pre>
 
 <p>
@@ -4714,12 +4512,12 @@ You can refer to the singleton class of an object with the
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">'hello'</span>.singleton_class.ancestors
+<pre class="src src-ruby"><span class="org-builtin">puts</span> <span class="org-string">'hello'</span>.singleton_class.ancestors
 </pre>
 </div>
 
 <pre class="example">
-#&lt;Class:#&lt;String:0x007fceaa1da558&gt;&gt;
+#<Class:#<String:0x007fd452082518>>
 String
 Comparable
 Object
@@ -4743,8 +4541,8 @@ difference is that <code>alias_method</code> takes objects (<i>symbols</i> or
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">alias</span> __old_method method <span style="color: #b22222;"># </span><span style="color: #b22222;">no comma</span>
-<span style="color: #483d8b;">alias_method</span> <span style="color: #008b8b;">:__old_method</span>, <span style="color: #008b8b;">:method</span>
+<pre class="src src-ruby"><span class="org-keyword">alias</span> __old_method method <span class="org-comment-delimiter"># </span><span class="org-comment">no comma</span>
+<span class="org-builtin">alias_method</span> <span class="org-constant">:__old_method</span>, <span class="org-constant">:method</span>
 </pre>
 </div>
 
@@ -4755,7 +4553,7 @@ the block) and returns the receiver.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">'hello'</span>.tap {|s| <span style="color: #483d8b;">puts</span> s.upcase }.reverse
+<pre class="src src-ruby"><span class="org-builtin">puts</span> <span class="org-string">'hello'</span>.tap {|s| <span class="org-builtin">puts</span> s.upcase }.reverse
 </pre>
 </div>
 
@@ -4787,15 +4585,15 @@ The original version of the method end up being called
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">String</span>
-  <span style="color: #a020f0;">alias</span> __old_reverse__ reverse
+<pre class="src src-ruby"><span class="org-keyword">class</span> <span class="org-type">String</span>
+  <span class="org-keyword">alias</span> __old_reverse__ reverse
 
-  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">reverse</span>
-    <span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">'reversing a string!'</span>
+  <span class="org-keyword">def</span> <span class="org-function-name">reverse</span>
+    <span class="org-builtin">puts</span> <span class="org-string">'reversing a string!'</span>
     __old_reverse__
-  <span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">end</span>
-<span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">'hello'</span>.reverse
+  <span class="org-keyword">end</span>
+<span class="org-keyword">end</span>
+<span class="org-builtin">puts</span> <span class="org-string">'hello'</span>.reverse
 </pre>
 </div>
 
@@ -4836,20 +4634,20 @@ singleton class on directly on class.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">module</span> <span style="color: #228b22;">Secretive</span>
-  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">name</span>
-    <span style="color: #8b2252;">'not available'</span>
-  <span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">module</span> <span class="org-type">Secretive</span>
+  <span class="org-keyword">def</span> <span class="org-function-name">name</span>
+    <span class="org-string">'not available'</span>
+  <span class="org-keyword">end</span>
+<span class="org-keyword">end</span>
 
-<span style="color: #a020f0;">class</span> <span style="color: #228b22;">Person</span>
-  <span style="color: #483d8b;">attr_accessor</span> <span style="color: #008b8b;">:name</span>
-<span style="color: #a020f0;">end</span>
+<span class="org-keyword">class</span> <span class="org-type">Person</span>
+  <span class="org-builtin">attr_accessor</span> <span class="org-constant">:name</span>
+<span class="org-keyword">end</span>
 
-david = <span style="color: #228b22;">Person</span>.new
-david.name = <span style="color: #8b2252;">'Aur&#233;lien'</span>
-david.extend(<span style="color: #228b22;">Secretive</span>)
-<span style="color: #483d8b;">puts</span> david.name
+david = <span class="org-type">Person</span>.new
+david.name = <span class="org-string">'Aurélien'</span>
+david.extend(<span class="org-type">Secretive</span>)
+<span class="org-builtin">puts</span> david.name
 </pre>
 </div>
 
@@ -4859,14 +4657,14 @@ not available
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">module</span> <span style="color: #228b22;">Makers</span>
-  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">makes</span>
-    <span style="color: #8b2252;">%w{ Honda Ford Toyota Audi }</span>
-  <span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">class</span> <span style="color: #228b22;">Car</span>
-  <span style="color: #483d8b;">extend</span> <span style="color: #228b22;">Makers</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">module</span> <span class="org-type">Makers</span>
+  <span class="org-keyword">def</span> <span class="org-function-name">makes</span>
+    <span class="org-string">%w{ Honda Ford Toyota Audi }</span>
+  <span class="org-keyword">end</span>
+<span class="org-keyword">end</span>
+<span class="org-keyword">class</span> <span class="org-type">Car</span>
+  <span class="org-builtin">extend</span> <span class="org-type">Makers</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 </div>
@@ -4882,27 +4680,27 @@ change to a class.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">module</span> <span style="color: #228b22;">Shout</span>
-  <span style="color: #483d8b;">refine</span> <span style="color: #228b22;">String</span> <span style="color: #a020f0;">do</span>
-    <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">shout</span>
-      <span style="color: #a0522d;">self</span>.upcase + <span style="color: #8b2252;">'!!!'</span>
-    <span style="color: #a020f0;">end</span>
-  <span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">module</span> <span class="org-type">Shout</span>
+  <span class="org-builtin">refine</span> <span class="org-type">String</span> <span class="org-keyword">do</span>
+    <span class="org-keyword">def</span> <span class="org-function-name">shout</span>
+      <span class="org-variable-name">self</span>.upcase + <span class="org-string">'!!!'</span>
+    <span class="org-keyword">end</span>
+  <span class="org-keyword">end</span>
+<span class="org-keyword">end</span>
 
-<span style="color: #a020f0;">class</span> <span style="color: #228b22;">Person</span>
-  <span style="color: #483d8b;">attr_accessor</span> <span style="color: #008b8b;">:name</span>
+<span class="org-keyword">class</span> <span class="org-type">Person</span>
+  <span class="org-builtin">attr_accessor</span> <span class="org-constant">:name</span>
 
-  <span style="color: #483d8b;">using</span> <span style="color: #228b22;">Shout</span>
+  <span class="org-builtin">using</span> <span class="org-type">Shout</span>
 
-  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">announce</span>
-    <span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">"I&#8217;m </span><span style="color: #a0522d;">#{name.shout}</span><span style="color: #8b2252;">"</span>
-  <span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">end</span>
+  <span class="org-keyword">def</span> <span class="org-function-name">announce</span>
+    <span class="org-builtin">puts</span> <span class="org-string">"I’m </span><span class="org-variable-name">#{name.shout}</span><span class="org-string">"</span>
+  <span class="org-keyword">end</span>
+<span class="org-keyword">end</span>
 
-auray = <span style="color: #228b22;">Person</span>.new
-auray.name = <span style="color: #8b2252;">'Aur&#233;lien'</span>
-<span style="color: #483d8b;">puts</span> auray.announce
+auray = <span class="org-type">Person</span>.new
+auray.name = <span class="org-string">'Aurélien'</span>
+<span class="org-builtin">puts</span> auray.announce
 </pre>
 </div>
 
@@ -4927,7 +4725,7 @@ refinements persists to the end of the file.
 <div class="outline-text-3" id="text-24-1">
 <div class="org-src-container">
 
-<pre class="src src-ruby">pr = <span style="color: #228b22;">Proc</span>.new { <span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">'Inside a proc\'s block'</span> }
+<pre class="src src-ruby">pr = <span class="org-type">Proc</span>.new { <span class="org-builtin">puts</span> <span class="org-string">'Inside a proc\'s block'</span> }
 pr.call
 </pre>
 </div>
@@ -4939,8 +4737,8 @@ the following two are equivalent.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #483d8b;">proc</span> { <span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">'Hi!'</span>}
-<span style="color: #228b22;">Proc</span>.new { <span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">'hi!'</span> }
+<pre class="src src-ruby"><span class="org-builtin">proc</span> { <span class="org-builtin">puts</span> <span class="org-string">'Hi!'</span>}
+<span class="org-type">Proc</span>.new { <span class="org-builtin">puts</span> <span class="org-string">'hi!'</span> }
 </pre>
 </div>
 
@@ -4950,8 +4748,8 @@ A <i>proc</i> can serve in place of a code block in a method call
 
 <div class="org-src-container">
 
-<pre class="src src-ruby">p = <span style="color: #483d8b;">proc</span> {|x| <span style="color: #483d8b;">puts</span> x.upcase }
-<span style="color: #8b2252;">%w{ Aur&#233;lien Bottazini }</span>.each(&amp;p)
+<pre class="src src-ruby">p = <span class="org-builtin">proc</span> {|x| <span class="org-builtin">puts</span> x.upcase }
+<span class="org-string">%w{ Aurélien Bottazini }</span>.each(&p)
 </pre>
 </div>
 
@@ -4967,10 +4765,10 @@ Consider:
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">capture_block</span>(&amp;block)
+<pre class="src src-ruby"><span class="org-keyword">def</span> <span class="org-function-name">capture_block</span>(&block)
   block.call
-<span style="color: #a020f0;">end</span>
-capture_block { <span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">'inside a block'</span> }
+<span class="org-keyword">end</span>
+capture_block { <span class="org-builtin">puts</span> <span class="org-string">'inside a block'</span> }
 </pre>
 </div>
 
@@ -4979,20 +4777,20 @@ inside a block
 </pre>
 
 <p>
-Without the special flag <code>&amp;</code>, ruby has no way of knowing that
+Without the special flag <code>&</code>, ruby has no way of knowing that
 you want to stop binding parameters and instead perform a
-block-to-proc conversion. <code>&amp;</code> also appears the other way around.
+block-to-proc conversion. <code>&</code> also appears the other way around.
 i.e use a proc instead of a code block.
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">capture_block</span>(&amp;block)
+<pre class="src src-ruby"><span class="org-keyword">def</span> <span class="org-function-name">capture_block</span>(&block)
   block.call
-<span style="color: #a020f0;">end</span>
+<span class="org-keyword">end</span>
 
-p = <span style="color: #228b22;">Proc</span>.new { <span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">'inside a block'</span> }
-capture_block(&amp;p)
+p = <span class="org-type">Proc</span>.new { <span class="org-builtin">puts</span> <span class="org-string">'inside a block'</span> }
+capture_block(&p)
 </pre>
 </div>
 
@@ -5001,24 +4799,24 @@ inside a block
 </pre>
 
 <p>
-the <code>&amp;</code> in <code>&amp;p</code> is a wrapper around the method <code>to_proc</code>. Here
-<code>&amp;</code> triggers a call to <code>p~’s ~to_proc</code> method and it tells ruby
+the <code>&</code> in <code>&p</code> is a wrapper around the method <code>to_proc</code>. Here
+<code>&</code> triggers a call to <code>p~’s ~to_proc</code> method and it tells ruby
 that the resulting <code>Proc</code> object is serving as a code block
 stand-in.
 </p>
 
 <p>
 You can define <code>to_proc</code> in any class or for any object and the
-<code>&amp;</code> technique will then work on affected objects.
+<code>&</code> technique will then work on affected objects.
 </p>
 
 <p>
-You can use this built in method <code>&amp;</code> in play for conciseness.
+You can use this built in method <code>&</code> in play for conciseness.
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #8b2252;">%w{ ruby haskell}</span>.map(&amp;<span style="color: #008b8b;">:capitalize</span>)
+<pre class="src src-ruby"><span class="org-string">%w{ ruby haskell}</span>.map(&<span class="org-constant">:capitalize</span>)
 </pre>
 </div>
 
@@ -5048,11 +4846,11 @@ If we try to implement it ourselves:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Symbol</span>
-  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">to_proc</span>
-    <span style="color: #228b22;">Proc</span>.new {|obj| obj.send(<span style="color: #a0522d;">self</span>)}
-  <span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">class</span> <span class="org-type">Symbol</span>
+  <span class="org-keyword">def</span> <span class="org-function-name">to_proc</span>
+    <span class="org-type">Proc</span>.new {|obj| obj.send(<span class="org-variable-name">self</span>)}
+  <span class="org-keyword">end</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 
@@ -5073,14 +4871,14 @@ local variables are still in scope.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a0522d;">@a_values</span> = []
-<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">calling_proc</span>(pr)
-  a = <span style="color: #8b2252;">'inside calling_proc'</span>
-  <span style="color: #a0522d;">@a_values</span> &lt;&lt; a
+<pre class="src src-ruby"><span class="org-variable-name">@a_values</span> = []
+<span class="org-keyword">def</span> <span class="org-function-name">calling_proc</span>(pr)
+  a = <span class="org-string">'inside calling_proc'</span>
+  <span class="org-variable-name">@a_values</span> << a
   pr.call
-<span style="color: #a020f0;">end</span>
-a = <span style="color: #8b2252;">'outside calling_proc'</span>
-pr = <span style="color: #228b22;">Proc</span>.new { <span style="color: #a0522d;">@a_values</span> &lt;&lt; a }
+<span class="org-keyword">end</span>
+a = <span class="org-string">'outside calling_proc'</span>
+pr = <span class="org-type">Proc</span>.new { <span class="org-variable-name">@a_values</span> << a }
 calling_proc(pr)
 </pre>
 </div>
@@ -5124,17 +4922,17 @@ of arguments.
 </p>
 
 <p>
-<code>-&gt;</code> also know as stabby lambda is a <code>lambda</code> constructor.
+<code>-></code> also know as stabby lambda is a <code>lambda</code> constructor.
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-ruby">mult = -&gt;(x,y) { x * y }
+<pre class="src src-ruby">mult = ->(x,y) { x * y }
 </pre>
 </div>
 
 <pre class="example">
-#&lt;Proc:0x007fdfe3069a80@-:3 (lambda)&gt;
+#<Proc:0x007fd1d9169ab0@-:3 (lambda)>
 </pre>
 
 <p>
@@ -5144,7 +4942,7 @@ objects
 
 <div class="org-src-container">
 
-<pre class="src src-ruby">mult = -&gt;(x,y) { x * y }
+<pre class="src src-ruby">mult = ->(x,y) { x * y }
 twelve = mult[3,4]
 </pre>
 </div>
@@ -5164,7 +4962,7 @@ You can grab a method with the <code>method</code> method.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby">m = <span style="color: #8b2252;">'hello'</span>.method(<span style="color: #008b8b;">:upcase</span>)
+<pre class="src src-ruby">m = <span class="org-string">'hello'</span>.method(<span class="org-constant">:upcase</span>)
 m.call
 </pre>
 </div>
@@ -5198,12 +4996,12 @@ The most common use of <code>Binding</code> in the second argument of
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">use_a_binding</span>(b)
-  <span style="color: #483d8b;">eval</span>(<span style="color: #8b2252;">"puts str"</span>, b)
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">def</span> <span class="org-function-name">use_a_binding</span>(b)
+  <span class="org-builtin">eval</span>(<span class="org-string">"puts str"</span>, b)
+<span class="org-keyword">end</span>
 
-str = <span style="color: #8b2252;">'I am a string'</span>
-use_a_binding(<span style="color: #483d8b;">binding</span>)
+str = <span class="org-string">'I am a string'</span>
+use_a_binding(<span class="org-builtin">binding</span>)
 </pre>
 </div>
 
@@ -5226,7 +5024,7 @@ Useful to break in another object’s private data.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby">c.instance_eval { <span style="color: #483d8b;">puts</span> <span style="color: #a0522d;">@x</span> }
+<pre class="src src-ruby">c.instance_eval { <span class="org-builtin">puts</span> <span class="org-variable-name">@x</span> }
 </pre>
 </div>
 
@@ -5241,31 +5039,31 @@ You can use <code>instance_eval</code> to allow simplified assignment
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Person</span>
-  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">initialize</span>(&amp;block)
-    instance_eval(&amp;block)
-  <span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">class</span> <span class="org-type">Person</span>
+  <span class="org-keyword">def</span> <span class="org-function-name">initialize</span>(&block)
+    instance_eval(&block)
+  <span class="org-keyword">end</span>
 
-  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">name</span>(name=<span style="color: #a0522d;">nil</span>)
-    <span style="color: #a0522d;">@name</span> ||= name
-  <span style="color: #a020f0;">end</span>
+  <span class="org-keyword">def</span> <span class="org-function-name">name</span>(name=<span class="org-variable-name">nil</span>)
+    <span class="org-variable-name">@name</span> ||= name
+  <span class="org-keyword">end</span>
 
-  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">age</span>(age=<span style="color: #a0522d;">nil</span>)
-    <span style="color: #a0522d;">@age</span> ||= age
-  <span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">end</span>
+  <span class="org-keyword">def</span> <span class="org-function-name">age</span>(age=<span class="org-variable-name">nil</span>)
+    <span class="org-variable-name">@age</span> ||= age
+  <span class="org-keyword">end</span>
+<span class="org-keyword">end</span>
 
-p = <span style="color: #228b22;">Person</span>.new <span style="color: #a020f0;">do</span>
-  name <span style="color: #8b2252;">'Aur&#233;lien'</span>
+p = <span class="org-type">Person</span>.new <span class="org-keyword">do</span>
+  name <span class="org-string">'Aurélien'</span>
   age 55
-<span style="color: #a020f0;">end</span>
+<span class="org-keyword">end</span>
 
-<span style="color: #483d8b;">puts</span> p.inspect
+<span class="org-builtin">puts</span> p.inspect
 </pre>
 </div>
 
 <pre class="example">
-#&lt;Person:0x007fbc1b9194f0 @name="Aurélien", @age=55&gt;
+#<Person:0x007fbe2c06d500 @name="Aurélien", @age=55>
 </pre>
 </div>
 </div>
@@ -5279,11 +5077,11 @@ It puts you inside a class-definition body
 
 <div class="org-src-container">
 
-<pre class="src src-ruby">c = <span style="color: #228b22;">Class</span>.new
-c.class_eval <span style="color: #a020f0;">do</span>
-  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">some_method</span>
-  <span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby">c = <span class="org-type">Class</span>.new
+c.class_eval <span class="org-keyword">do</span>
+  <span class="org-keyword">def</span> <span class="org-function-name">some_method</span>
+  <span class="org-keyword">end</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 </div>
@@ -5299,8 +5097,8 @@ method
 
 <div class="org-src-container">
 
-<pre class="src src-ruby">var = <span style="color: #8b2252;">'hello'</span>
-<span style="color: #228b22;">C</span>.class_eval { <span style="color: #a020f0;">def</span> talk; <span style="color: #483d8b;">puts</span> var; <span style="color: #a020f0;">end</span> }
+<pre class="src src-ruby">var = <span class="org-string">'hello'</span>
+<span class="org-type">C</span>.class_eval { <span class="org-keyword">def</span> talk; <span class="org-builtin">puts</span> var; <span class="org-keyword">end</span> }
 </pre>
 </div>
 
@@ -5310,8 +5108,8 @@ does not work because <code>def</code> creates a new scope.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby">var = <span style="color: #8b2252;">'hello'</span>
-<span style="color: #228b22;">C</span>.class_eval {<span style="color: #483d8b;">define_method</span>(<span style="color: #8b2252;">'talk'</span>) { <span style="color: #483d8b;">puts</span> var }}
+<pre class="src src-ruby">var = <span class="org-string">'hello'</span>
+<span class="org-type">C</span>.class_eval {<span class="org-builtin">define_method</span>(<span class="org-string">'talk'</span>) { <span class="org-builtin">puts</span> var }}
 </pre>
 </div>
 
@@ -5327,12 +5125,12 @@ works because the block keeps the scope.
 <div class="outline-text-2" id="text-26">
 <div class="org-src-container">
 
-<pre class="src src-ruby">t = <span style="color: #228b22;">Thread</span>.new <span style="color: #a020f0;">do</span>
-  <span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">'starting'</span>
-  <span style="color: #483d8b;">sleep</span> 1
-  <span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">'end'</span>
-<span style="color: #a020f0;">end</span>
-<span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">'outside thread'</span>
+<pre class="src src-ruby">t = <span class="org-type">Thread</span>.new <span class="org-keyword">do</span>
+  <span class="org-builtin">puts</span> <span class="org-string">'starting'</span>
+  <span class="org-builtin">sleep</span> 1
+  <span class="org-builtin">puts</span> <span class="org-string">'end'</span>
+<span class="org-keyword">end</span>
+<span class="org-builtin">puts</span> <span class="org-string">'outside thread'</span>
 t.join
 </pre>
 </div>
@@ -5371,12 +5169,12 @@ associate symbols or strings with values.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby">t = <span style="color: #228b22;">Thread</span>.new <span style="color: #a020f0;">do</span>
-  <span style="color: #228b22;">Thread</span>.current[<span style="color: #008b8b;">:message</span>]  = <span style="color: #8b2252;">'Hello'</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby">t = <span class="org-type">Thread</span>.new <span class="org-keyword">do</span>
+  <span class="org-type">Thread</span>.current[<span class="org-constant">:message</span>]  = <span class="org-string">'Hello'</span>
+<span class="org-keyword">end</span>
 t.join
-<span style="color: #483d8b;">p</span> t.keys
-<span style="color: #483d8b;">puts</span> t[<span style="color: #008b8b;">:message</span>]
+<span class="org-builtin">p</span> t.keys
+<span class="org-builtin">puts</span> t[<span class="org-constant">:message</span>]
 </pre>
 </div>
 
@@ -5391,38 +5189,38 @@ Hello
 <div class="outline-text-3" id="text-26-1">
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #483d8b;">require</span> <span style="color: #8b2252;">'socket'</span>
-<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">welcome</span>(chatter)
-  chatter.print <span style="color: #8b2252;">'Welcome! enter your name:'</span>
+<pre class="src src-ruby"><span class="org-builtin">require</span> <span class="org-string">'socket'</span>
+<span class="org-keyword">def</span> <span class="org-function-name">welcome</span>(chatter)
+  chatter.print <span class="org-string">'Welcome! enter your name:'</span>
   chatter.readline.chomp
-<span style="color: #a020f0;">end</span>
+<span class="org-keyword">end</span>
 
-<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">broadcast</span>(message, chatters)
-  chatters.each <span style="color: #a020f0;">do</span> |chatter|
+<span class="org-keyword">def</span> <span class="org-function-name">broadcast</span>(message, chatters)
+  chatters.each <span class="org-keyword">do</span> |chatter|
     chatter.puts message
-  <span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">end</span>
+  <span class="org-keyword">end</span>
+<span class="org-keyword">end</span>
 
-s = <span style="color: #228b22;">TCPServer</span>.new(3939)
+s = <span class="org-type">TCPServer</span>.new(3939)
 chatters = []
 
-<span style="color: #a020f0;">while</span>(chatter = s.accept)
-  <span style="color: #228b22;">Thread</span>.new(chatter) <span style="color: #a020f0;">do</span> |c|
+<span class="org-keyword">while</span>(chatter = s.accept)
+  <span class="org-type">Thread</span>.new(chatter) <span class="org-keyword">do</span> |c|
     name = welcome(chatter)
-    broadcast(<span style="color: #8b2252;">"</span><span style="color: #a0522d;">#{name}</span><span style="color: #8b2252;"> has joined"</span>, chatters)
-    chatters &lt;&lt; chatter
-    <span style="color: #a020f0;">begin</span>
-      <span style="color: #483d8b;">loop</span> <span style="color: #a020f0;">do</span>
-        line = c. <span style="color: #483d8b;">readline</span>
-        broadcast(<span style="color: #8b2252;">"</span><span style="color: #a0522d;">#{name}</span><span style="color: #8b2252;">: </span><span style="color: #a0522d;">#{line}</span><span style="color: #8b2252;">"</span>, chatters)
-      <span style="color: #a020f0;">end</span>
-    <span style="color: #a020f0;">rescue</span> <span style="color: #228b22;">EOFError</span>
+    broadcast(<span class="org-string">"</span><span class="org-variable-name">#{name}</span><span class="org-string"> has joined"</span>, chatters)
+    chatters << chatter
+    <span class="org-keyword">begin</span>
+      <span class="org-builtin">loop</span> <span class="org-keyword">do</span>
+        line = c. <span class="org-builtin">readline</span>
+        broadcast(<span class="org-string">"</span><span class="org-variable-name">#{name}</span><span class="org-string">: </span><span class="org-variable-name">#{line}</span><span class="org-string">"</span>, chatters)
+      <span class="org-keyword">end</span>
+    <span class="org-keyword">rescue</span> <span class="org-type">EOFError</span>
       c.close
       chatters.delete(c)
-      broadcast(<span style="color: #8b2252;">"</span><span style="color: #a0522d;">#{name}</span><span style="color: #8b2252;"> has left"</span>, chatters)
-    <span style="color: #a020f0;">end</span>
-  <span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">end</span>
+      broadcast(<span class="org-string">"</span><span class="org-variable-name">#{name}</span><span class="org-string"> has left"</span>, chatters)
+    <span class="org-keyword">end</span>
+  <span class="org-keyword">end</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 </div>
@@ -5439,13 +5237,13 @@ forth to their calling context multiple times.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby">f = <span style="color: #228b22;">Fiber</span>.new <span style="color: #a020f0;">do</span>
-  <span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">'hi'</span>
-  <span style="color: #228b22;">Fiber</span>.yield
-  <span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">'hi again'</span>
-  <span style="color: #228b22;">Fiber</span>.yield
-  <span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">'last hi'</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby">f = <span class="org-type">Fiber</span>.new <span class="org-keyword">do</span>
+  <span class="org-builtin">puts</span> <span class="org-string">'hi'</span>
+  <span class="org-type">Fiber</span>.yield
+  <span class="org-builtin">puts</span> <span class="org-string">'hi again'</span>
+  <span class="org-type">Fiber</span>.yield
+  <span class="org-builtin">puts</span> <span class="org-string">'last hi'</span>
+<span class="org-keyword">end</span>
 f.resume
 f.resume
 f.resume
@@ -5485,8 +5283,8 @@ interpolation.
 <div class="outline-text-3" id="text-28-1">
 <div class="org-src-container">
 
-<pre class="src src-ruby">d = <span style="color: #483d8b;">open</span>(<span style="color: #8b2252;">'|cat'</span>, <span style="color: #8b2252;">'w+'</span>)
-d.puts <span style="color: #8b2252;">'Hi'</span>
+<pre class="src src-ruby">d = <span class="org-builtin">open</span>(<span class="org-string">'|cat'</span>, <span class="org-string">'w+'</span>)
+d.puts <span class="org-string">'Hi'</span>
 d.gets
 d.close
 </pre>
@@ -5499,9 +5297,9 @@ talk to a program and not open a file.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #483d8b;">require</span> <span style="color: #8b2252;">'open3'</span>
-stdin, stdout, stderr = <span style="color: #228b22;">Open3</span>.popen3(<span style="color: #8b2252;">'cat'</span>)
-stdin.puts(<span style="color: #8b2252;">'Hi.\nBye.'</span>)
+<pre class="src src-ruby"><span class="org-builtin">require</span> <span class="org-string">'open3'</span>
+stdin, stdout, stderr = <span class="org-type">Open3</span>.popen3(<span class="org-string">'cat'</span>)
+stdin.puts(<span class="org-string">'Hi.\nBye.'</span>)
 stdout.gets
 stdout.gets
 </pre>
@@ -5542,9 +5340,9 @@ An event can be something like:
 <div class="outline-text-3" id="text-29-1">
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">method_missing</span>(m, *args, &amp;block)
-  <span style="color: #483d8b;">raise</span> <span style="color: #228b22;">NameError</span>, <span style="color: #8b2252;">"what do you mean by </span><span style="color: #a0522d;">#{m}</span><span style="color: #8b2252;">"</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">def</span> <span class="org-function-name">method_missing</span>(m, *args, &block)
+  <span class="org-builtin">raise</span> <span class="org-type">NameError</span>, <span class="org-string">"what do you mean by </span><span class="org-variable-name">#{m}</span><span class="org-string">"</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 
@@ -5566,15 +5364,15 @@ Here is an example
 </p>
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">method_missing</span>(m, *args, &amp;block)
-  <span style="color: #a020f0;">if</span> <span style="color: #8b2252;">/set_(.)/</span>.match(m)
-    <span style="color: #b22222;">#</span><span style="color: #b22222;">respond to message</span>
-  <span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">def</span> <span class="org-function-name">method_missing</span>(m, *args, &block)
+  <span class="org-keyword">if</span> <span class="org-string">/set_(.)/</span>.match(m)
+    <span class="org-comment-delimiter">#</span><span class="org-comment">respond to message</span>
+  <span class="org-keyword">end</span>
+<span class="org-keyword">end</span>
 
-<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">respond_to_missing?</span>(m, include_private = <span style="color: #a0522d;">false</span>)
-  <span style="color: #8b2252;">/set_/</span>.match(m) || <span style="color: #a020f0;">super</span>
-<span style="color: #a020f0;">end</span>
+<span class="org-keyword">def</span> <span class="org-function-name">respond_to_missing?</span>(m, include_private = <span class="org-variable-name">false</span>)
+  <span class="org-string">/set_/</span>.match(m) || <span class="org-keyword">super</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 </div>
@@ -5589,15 +5387,15 @@ You can define special methods called <code>included</code> and <code>prepended<
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">module</span> <span style="color: #228b22;">M</span>
-  <span style="color: #a020f0;">def</span> <span style="color: #a0522d;">self</span>.<span style="color: #0000ff;">included</span>(c)
-    <span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">"mixed into </span><span style="color: #a0522d;">#{c}</span><span style="color: #8b2252;">"</span>
-  <span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">module</span> <span class="org-type">M</span>
+  <span class="org-keyword">def</span> <span class="org-variable-name">self</span>.<span class="org-function-name">included</span>(c)
+    <span class="org-builtin">puts</span> <span class="org-string">"mixed into </span><span class="org-variable-name">#{c}</span><span class="org-string">"</span>
+  <span class="org-keyword">end</span>
+<span class="org-keyword">end</span>
 
-<span style="color: #a020f0;">class</span> <span style="color: #228b22;">C</span>
-  <span style="color: #483d8b;">include</span> <span style="color: #228b22;">M</span>
-<span style="color: #a020f0;">end</span>
+<span class="org-keyword">class</span> <span class="org-type">C</span>
+  <span class="org-builtin">include</span> <span class="org-type">M</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 
@@ -5611,15 +5409,15 @@ You can even add class methods with this technique
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">module</span> <span style="color: #228b22;">M</span>
-  <span style="color: #a020f0;">def</span> <span style="color: #a0522d;">self</span>.<span style="color: #0000ff;">included</span>(c)
-    <span style="color: #a020f0;">def</span> c.<span style="color: #0000ff;">a_class_method</span>
-    <span style="color: #a020f0;">end</span>
-  <span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">module</span> <span class="org-type">M</span>
+  <span class="org-keyword">def</span> <span class="org-variable-name">self</span>.<span class="org-function-name">included</span>(c)
+    <span class="org-keyword">def</span> c.<span class="org-function-name">a_class_method</span>
+    <span class="org-keyword">end</span>
+  <span class="org-keyword">end</span>
 
-  <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">an_inst_method</span>
-  <span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">end</span>
+  <span class="org-keyword">def</span> <span class="org-function-name">an_inst_method</span>
+  <span class="org-keyword">end</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 </div>
@@ -5630,10 +5428,10 @@ You can even add class methods with this technique
 <div class="outline-text-3" id="text-29-3">
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">module</span> <span style="color: #228b22;">M</span>
-  <span style="color: #a020f0;">def</span> <span style="color: #a0522d;">self</span>.<span style="color: #0000ff;">extended</span>(obj)
-  <span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">module</span> <span class="org-type">M</span>
+  <span class="org-keyword">def</span> <span class="org-variable-name">self</span>.<span class="org-function-name">extended</span>(obj)
+  <span class="org-keyword">end</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 </div>
@@ -5647,15 +5445,15 @@ With <code>inherited</code>
 </p>
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">C</span>
-  <span style="color: #a020f0;">def</span> <span style="color: #a0522d;">self</span>.<span style="color: #0000ff;">inherited</span>(subclass)
-    <span style="color: #483d8b;">puts</span> <span style="color: #8b2252;">"</span><span style="color: #a0522d;">#{self}</span><span style="color: #8b2252;"> inherited from </span><span style="color: #a0522d;">#{subclass}</span><span style="color: #8b2252;">"</span>
-  <span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">class</span> <span style="color: #228b22;">D</span> &lt; <span style="color: #228b22;">C</span> <span style="color: #b22222;"># </span><span style="color: #b22222;">triggers inherited</span>
-<span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">class</span> <span style="color: #228b22;">E</span> &lt; <span style="color: #228b22;">D</span> <span style="color: #b22222;"># </span><span style="color: #b22222;">triggers inherited</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">class</span> <span class="org-type">C</span>
+  <span class="org-keyword">def</span> <span class="org-variable-name">self</span>.<span class="org-function-name">inherited</span>(subclass)
+    <span class="org-builtin">puts</span> <span class="org-string">"</span><span class="org-variable-name">#{self}</span><span class="org-string"> inherited from </span><span class="org-variable-name">#{subclass}</span><span class="org-string">"</span>
+  <span class="org-keyword">end</span>
+<span class="org-keyword">end</span>
+<span class="org-keyword">class</span> <span class="org-type">D</span> < <span class="org-type">C</span> <span class="org-comment-delimiter"># </span><span class="org-comment">triggers inherited</span>
+<span class="org-keyword">end</span>
+<span class="org-keyword">class</span> <span class="org-type">E</span> < <span class="org-type">D</span> <span class="org-comment-delimiter"># </span><span class="org-comment">triggers inherited</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 
@@ -5676,13 +5474,13 @@ cascade. <code>inherited</code> does not work on singleton class.
 <div class="outline-text-3" id="text-29-5">
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">C</span>
-  <span style="color: #a020f0;">def</span> <span style="color: #a0522d;">self</span>.<span style="color: #0000ff;">const_missing</span>(const)
+<pre class="src src-ruby"><span class="org-keyword">class</span> <span class="org-type">C</span>
+  <span class="org-keyword">def</span> <span class="org-variable-name">self</span>.<span class="org-function-name">const_missing</span>(const)
     const_set(const, 1)
-  <span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">end</span>
+  <span class="org-keyword">end</span>
+<span class="org-keyword">end</span>
 
-<span style="color: #483d8b;">puts</span> <span style="color: #228b22;">C</span>::<span style="color: #228b22;">UNKNOWN</span>
+<span class="org-builtin">puts</span> <span class="org-type">C</span>::<span class="org-type">UNKNOWN</span>
 </pre>
 </div>
 
@@ -5697,10 +5495,10 @@ cascade. <code>inherited</code> does not work on singleton class.
 <div class="outline-text-3" id="text-29-6">
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">C</span>
-  <span style="color: #a020f0;">def</span> <span style="color: #a0522d;">self</span>.<span style="color: #0000ff;">method_added</span>(m)
-  <span style="color: #a020f0;">end</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">class</span> <span class="org-type">C</span>
+  <span class="org-keyword">def</span> <span class="org-variable-name">self</span>.<span class="org-function-name">method_added</span>(m)
+  <span class="org-keyword">end</span>
+<span class="org-keyword">end</span>
 </pre>
 </div>
 </div>
@@ -5729,7 +5527,7 @@ listing of your possibilities.
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #483d8b;">puts</span> <span style="color: #228b22;">Object</span>.methods.grep(<span style="color: #8b2252;">/methods/</span>).sort
+<pre class="src src-ruby"><span class="org-builtin">puts</span> <span class="org-type">Object</span>.methods.grep(<span class="org-string">/methods/</span>).sort
 </pre>
 </div>
 
@@ -5765,15 +5563,15 @@ stack-trace
 
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">z</span>
-  <span style="color: #483d8b;">puts</span> <span style="color: #483d8b;">caller</span>
-<span style="color: #a020f0;">end</span>
+<pre class="src src-ruby"><span class="org-keyword">def</span> <span class="org-function-name">z</span>
+  <span class="org-builtin">puts</span> <span class="org-builtin">caller</span>
+<span class="org-keyword">end</span>
 z
 </pre>
 </div>
 
 <pre class="example">
--:4:in `&lt;main&gt;'
+-:4:in `<main>'
 </pre>
 </li>
 </ul>
@@ -5783,7 +5581,7 @@ z
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Aurélien Bottazini</p>
-<p class="date">Created: 2014-11-19 Wed 11:06</p>
+<p class="date">Created: 2014-11-20 Thu 10:57</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

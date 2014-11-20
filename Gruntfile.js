@@ -35,7 +35,7 @@ module.exports = function(grunt) {
                     style: 'compressed'
                 },
                 files: {                         // Dictionary of files
-                    'css/main.css': '_sass/main.scss',       // 'destination': 'source'
+                    'css/main.css': '_sass/main.scss',
                     'css/resume.css': '_sass/resume.scss',
                     'easyLearning/css/main.css': '_sass/easylearning.scss',
                     'cubex/css/main.css': '_sass/cubex.scss',
