@@ -83,7 +83,6 @@ tr {
 #table-of-contents h2{
     font-size: 1.1em;
     margin: 1em;
-    margin-bottom: 0;
 }
 #table-of-contents {
     cursor: pointer;
@@ -91,8 +90,6 @@ tr {
     border: 1px solid #CCC;
     overflow: auto;
     font-size: 1em;
-}
-#table-of-contents {
     position: fixed;
     left: 0;
     top: 0;
@@ -101,6 +98,9 @@ tr {
     text-align: left;
     box-shadow: 0px 0px 1em #777;
     max-height: 80%;
+}
+#table-of-contents > ul {
+    margin-top: -1em
 }
 #table-of-contents ul {
     margin-top: 0;
