@@ -59,16 +59,20 @@ double stranded finobacci used by le corbusier
 4 - 5 - 6.5 - 8 - 10.5 - 13 - 17 - 21 - 27.5 - 34 - 44.5 - 55 - 72 - 89
 */
 body {
-    font-family: "Alegreya", "Hoefler Text", Georgia, Times, Tahoma, sans-serif;
+    font-family: "Alegreya", "Hoefler Text",
+    Georgia, Times, Tahoma, sans-serif;
     font-weight: 400;
-    line-height: 1.382; //no unit. Line height is not fixed and adapts depending on descendant font-size
+    line-height: 1.382;    //no unit. Line height is not fixed and adapts
+                           //depending on descendant font-size
     -webkit-hyphens: auto; // Safari 5.1 thru 6, iOS 4.2 thru 6
-    -moz-hyphens: auto; // Firefox 16 thru 20
-    -ms-hyphens: auto; // IE10
-    -o-hyphens: auto; // PRESTO...haha LOL
-    hyphens: auto; // W3C standard
+    -moz-hyphens: auto;    // Firefox 16 thru 20
+    -ms-hyphens: auto;     // IE10
+    -o-hyphens: auto;      // PRESTO...haha LOL
+    hyphens: auto;         // W3C standard
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+    font-size: 1.1em;
+    color: rgba(0,0,0,0.8);
 }
 abbr,
 acronym,
@@ -94,8 +98,16 @@ h1, h2, h3, h4, h5, h6 {
     font-family: "Alegreya Sans", 'Helvetica Neue', Helvetica, "Trebuchet MS", Arial, sans-serif;
     color: #222;
 }
-p, li {
-
+h2 {
+    font-size: 1.3em;
+}
+h3 {
+    text-indent: 2em;
+    font-size: 1.1em;
+}
+h4 {
+    text-indent: 4em;
+    font-size: 1em;
 }
 strong, b {
     font-family: "Alegreya";
@@ -106,4 +118,35 @@ em, i {
     font-family: "Alegreya";
     font-weight: 400;
     font-style: italic;
+}
+.src, code, pre.example {
+    font-family: 'Source Code Pro', 'Menlo Regular', 'Bitstream Vera Sans';
+    font-size: 0.8em;
+    line-height: 1.3em;
+    page-break-inside: avoid;
+    overflow: auto;
+}
+.src {
+    padding: 1em;
+    background-color: #ececec;
+}
+code {
+    display: inline;
+}
+a {
+    color: #263bd2;
+}
+a:hover, a.active {
+    color: #dc322f;
+}
+a.visited {
+    color: rebeccapurple;
+}
+h2, h3, h4 {
+    text-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+}
+@media screen {
+    body {
+        background-color: rgb(255, 255, 255);
+    }
 }

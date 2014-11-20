@@ -98,4 +98,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-exec');
 
     grunt.registerTask('default', ['bower_concat', 'sass', 'cssmin', 'uglify', 'exec:jekyll']);
+    grunt.registerTask('prepare', ['bower_concat', 'sass', 'cssmin', 'uglify']);
 };

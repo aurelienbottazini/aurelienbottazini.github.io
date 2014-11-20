@@ -1,17 +1,10 @@
 @import "responsive";
 @import "fonts";
 body {
-    font-size: 1.1em;
-    color: rgba(0,0,0,0.8);
     width: 95%;
     margin: 0 auto;
 }
-@media screen {
-    body {
-        background-color: rgb(255, 255, 255);
-    }
-}
-@media only screen and (min-width:54em) {
+@include responsive(width-ipad-portrait) {
     body {
         width: 50em;
     }
@@ -22,10 +15,6 @@ h1, h2, h3, h4, h5, h6, p, ul {
     line-height: 1.3em;
     page-break-after: avoid;
 }
-h2, h3, h4 {
-    text-shadow: 0px 1px 1px rgba(0,0,0,0.2);
-}
-
 #text-table-of-contents ul {
     list-style-type: none;
 }
@@ -45,15 +34,6 @@ pre.example {
     padding: 1em;
     background-color: rgba(0,0,0,0.05);
 }
-a {
-    color: #263bd2;
-}
-a:hover, a.active {
-    color: #dc322f;
-}
-a.visited {
-    color: rebeccapurple;
-}
 h1 {
     font-size: 3.4em;
     text-transform: uppercase;
@@ -68,31 +48,7 @@ h1 {
     page-break-after: always;
 }
 h2 {
-    font-size: 1.3em;
-    line-height: 1em;
     margin-top: 2em;
-}
-h3 {
-    font-size: 1.1em;
-    text-indent: 2em;
-}
-h4 {
-    font-size: 1em;
-    text-indent: 4em;
-}
-.src, code, pre.example {
-    font-family: 'Source Code Pro', 'Menlo Regular', 'Bitstream Vera Sans';
-    font-size: 0.8em;
-    line-height: 1.3em;
-    page-break-inside: avoid;
-    overflow: auto;
-}
-.src {
-    padding: 1em;
-    background-color: #ececec;
-}
-code {
-    display: inline;
 }
 div.org-src-container {
     margin: 1em;
@@ -125,9 +81,9 @@ tr {
     padding: 1em;
 }
 #table-of-contents h2{
-
     font-size: 1.1em;
     margin: 1em;
+    margin-bottom: 0;
 }
 #table-of-contents {
     cursor: pointer;
@@ -149,8 +105,5 @@ tr {
 #table-of-contents ul {
     margin-top: 0;
     margin-bottom: 0;
-    margin-left: 0;
-}
-#table-of-contents ul + ul {
-    margin-left: 1em;
+    padding-left: 0;
 }

@@ -1,0 +1,33 @@
+* Tags
+  On the larger scale, don’t use HTML for presentation. No <font> or
+  <b>, <i> and other presentational elements. Where HTML provides an
+  appropriate element, use it. Where it doesn’t, use classes.
+
+** ~<i>~ and ~<em>~
+  If the reason for italics is emphasis, why mark up your page with
+  the ~<i>~ element? Use the ~<em>~ element.
+
+* “A Dao of Web Design” (http://bkaprt.com/rwd/3/)
+  We should embrace the fact that the web doesn’t have the same
+  constraints, and design for this flexibility. This means pages which
+  adapt to the needs of a reader, whose eyesight is less than perfect,
+  and who wishes to read pages with a very large font size.
+
+* Responsive Web design
+  http://responsivewebdesign.com/robot/
+
+  The long and short of it is that we’re designing for more devices,
+  more input types, more resolutions than ever before.
+
+  1. A flexible, grid-based layout,
+  2. Flexible images and media, and
+  3. Media queries, a module from the CSS3 specification.
+
+* Fonts
+
+  Avoid using absolute font sizes, and use proportional sizes
+  for headings, much more adaptable and accessible.
+
+* Layout
+  Using percentages (or other relative values) to specify page layout
+  in CSS automatically creates adaptive pages
