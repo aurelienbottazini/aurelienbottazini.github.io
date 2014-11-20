@@ -39,7 +39,8 @@ module.exports = function(grunt) {
                     'css/resume.css': '_sass/resume.scss',
                     'easyLearning/css/main.css': '_sass/easylearning.scss',
                     'cubex/css/main.css': '_sass/cubex.scss',
-                    'css/org-export.css': '_sass/org-export.scss'
+                    'css/org-export.css': '_sass/org-export.scss',
+                    '_css/htmlize.css': '_sass/htmlize.scss'
                 }
             }
         },
@@ -50,7 +51,7 @@ module.exports = function(grunt) {
                     'css/main.css': ['_css/_bower.css', 'css/main.css'],
                     'easyLearning/css/main.css': ['_css/_bower.css', 'easyLearning/css/main.css'],
                     'cubex/css/main.css': ['_css/_bower.css', 'cubex/css/main.css'],
-                    'css/org-export.min.css': ['_css/_bower.css', 'css/org-export.css']
+                    'css/org-export.min.css': ['_css/_bower.css', '_css/htmlize.css','css/org-export.css']
                 }
             },
         },
