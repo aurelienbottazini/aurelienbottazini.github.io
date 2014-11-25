@@ -35,7 +35,7 @@ module.exports = function(grunt) {
                     style: 'compressed'
                 },
                 files: {                         // Dictionary of files
-                    'css/main.css': '_sass/main.scss',
+                    '_css/main.css': '_sass/main.scss',
                     'css/resume.css': '_sass/resume.scss',
                     'easyLearning/css/main.css': '_sass/easylearning.scss',
                     'cubex/css/main.css': '_sass/cubex.scss',
@@ -48,7 +48,7 @@ module.exports = function(grunt) {
             combine: {
                 files: {
                     'css/resume.css': ['_css/_bower.css', 'css/resume.css'],
-                    'css/main.css': ['_css/_bower.css', 'css/main.css'],
+                    'css/main.min.css': ['_css/_bower.css', '_css/main.css'],
                     'easyLearning/css/main.css': ['_css/_bower.css', 'easyLearning/css/main.css'],
                     'cubex/css/main.css': ['_css/_bower.css', 'cubex/css/main.css'],
                     'css/org-export.min.css': ['_css/_bower.css', '_css/htmlize.css','css/org-export.css']

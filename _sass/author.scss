@@ -248,16 +248,22 @@ a:hover, a:active {
             top: $width * 0.382 * 0.382;
             left: ($width * 0.382 / 4);
             background-size: $aurelien_width ($aurelien_height * 12);
+            -moz-animation: run-aurelien-animation 1.5s steps(11) infinite;
+            -webkit-animation: run-aurelien-animation 1.5s steps(11) infinite;
+            -ms-animation: run-aurelien-animation 1.5s steps(11) infinite;
+            -o-animation: run-aurelien-animation 1.5s steps(11) infinite;
+            animation: run-aurelien-animation 1.5s steps(11) infinite;
         }
 
+        $background-maximum-height: $aurelien_height * 11;
         @-webkit-keyframes run-aurelien-animation {
-            from {background-position: 0 0; }
-            to {background-position: 0 -($aurelien_height * 11); }
+            from { background-position: 0 0; }
+            to { background-position: 0 (-$background-maximum-height); }
         }
 
         @keyframes run-aurelien-animation {
-            from {background-position: 0 0; }
-            to {background-position: 0 -($aurelien_height * 11); }
+            from { background-position: 0 0; }
+            to { background-position: 0 (-$background-maximum-height); }
         }
     }
 }
@@ -274,11 +280,6 @@ a:hover, a:active {
     background-image: url('../img/aurelien-animation-sprite.png');
     background-position: 0 0;
     background-repeat: no-repeat;
-    /* -moz-animation: run-aurelien-animation 1s steps(11) infinite; */
-    /* -webkit-animation: run-aurelien-animation 1s steps(11) infinite; */
-    /* -ms-animation: run-aurelien-animation 1s steps(11) infinite; */
-    /* -o-animation: run-aurelien-animation 1s steps(11) infinite; */
-    /* animation: run-aurelien-animation 1s steps(11) infinite; */
 }
 
 
