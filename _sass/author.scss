@@ -237,8 +237,8 @@ a:hover, a:active {
 }
 
 @mixin aurelien-animation($width) {
-    $aurelien_height: $width * 0.382;
-    $aurelien_width: $aurelien_height * (360 / 533);
+    $aurelien_height: round($width * 0.382);
+    $aurelien_width: round($aurelien_height * (360 / 533));
 
     @media only screen and (min-width: $width) {
 
