@@ -237,24 +237,50 @@ a:hover, a:active {
 }
 
 @mixin aurelien-animation($width) {
+    $aurelien_height: $width * 0.382;
+    $aurelien_width: $aurelien_height * (360 / 533);
+
     @media only screen and (min-width: $width) {
-        //533 height 360 width
-        height: $width * 0.382;
-        width: $width * 0.382 * (360 / 533);
-        top: $width * 0.382 * 0.382;
-        left: ($width * 0.382 / 4);
+
+        #aurelien-animation {
+            height: $aurelien_height;
+            width: $aurelien_width;
+            top: $width * 0.382 * 0.382;
+            left: ($width * 0.382 / 4);
+            background-size: $aurelien_width ($aurelien_height * 12);
+        }
+
+        @-webkit-keyframes run-aurelien-animation {
+            from {background-position: 0 0; }
+            to {background-position: 0 -($aurelien_height * 11); }
+        }
+
+        @keyframes run-aurelien-animation {
+            from {background-position: 0 0; }
+            to {background-position: 0 -($aurelien_height * 11); }
+        }
     }
 }
 
+@include aurelien-animation($width-portrait-phone);
+@include aurelien-animation($width-landscape-phone);
+@include aurelien-animation($width-kindle-nook-portrait);
+@include aurelien-animation($width-ipad-portrait);
+@include aurelien-animation($width-ipad-landscape);
+@include aurelien-animation($width-widescreen);
+
 #aurelien-animation {
     position: absolute;
-    @include aurelien-animation($width-portrait-phone);
-    @include aurelien-animation($width-landscape-phone);
-    @include aurelien-animation($width-kindle-nook-portrait);
-    @include aurelien-animation($width-ipad-portrait);
-    @include aurelien-animation($width-ipad-landscape);
-    @include aurelien-animation($width-widescreen);
+    background-image: url('../img/aurelien-animation-sprite.png');
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    /* -moz-animation: run-aurelien-animation 1s steps(11) infinite; */
+    /* -webkit-animation: run-aurelien-animation 1s steps(11) infinite; */
+    /* -ms-animation: run-aurelien-animation 1s steps(11) infinite; */
+    /* -o-animation: run-aurelien-animation 1s steps(11) infinite; */
+    /* animation: run-aurelien-animation 1s steps(11) infinite; */
 }
+
 
 @mixin planete-lune($width) {
     @media only screen and (min-width: $width) {
@@ -262,6 +288,7 @@ a:hover, a:active {
         height: $width * 0.382;
         top: $width * 0.382 * 0.618 + ($width *  0.382 / 2);
         left: -($width * 0.382 / 3) + ($width * 0.382 / 4);
+
     }
 }
 #planete-lune {
