@@ -1,64 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>ruby</title>
-<!-- 2014-11-20 Thu 10:57 -->
-<meta  charset="utf-8">
-<meta  name="generator" content="Org-mode">
-<meta  name="author" content="Aurélien Bottazini">
-
-<link rel="stylesheet" type="text/css" href="http://aurelienbottazini.com/css/org-export.min.css">
-<script src="http://aurelienbottazini.com/js/org-export.min.js"></script>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
-</head>
-<body>
-<div id="content">
-<h1 class="title">ruby</h1>
+---
+layout: notes
+---
 <nav id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
@@ -210,7 +152,12 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#sec-20-2">20.2. Enumerator</a>
 <ul>
-<li><a href="#sec-20-2-1">20.2.1. creating enumerators</a></li>
+<li><a href="#sec-20-2-1">20.2.1. creating enumerators</a>
+<ul>
+<li><a href="#sec-20-2-1-1">20.2.1.1. with a code block</a></li>
+<li><a href="#sec-20-2-1-2">20.2.1.2. with <code>enum_for</code></a></li>
+</ul>
+</li>
 <li><a href="#sec-20-2-2">20.2.2. Protecting from change</a></li>
 <li><a href="#sec-20-2-3">20.2.3. Slow motion</a></li>
 <li><a href="#sec-20-2-4">20.2.4. Adding enumerability with an enumerator</a></li>
@@ -298,6 +245,7 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </nav>
+
 <div id="outline-container-sec-1" class="outline-2">
 <h2 id="sec-1"><span class="section-number-2">1</span> About</h2>
 <div class="outline-text-2" id="text-1">
@@ -1238,7 +1186,7 @@ c.show_v
 <pre class="example">
 C
 "top level instance variable "
-#<C:0x007f882b9fd9f8>
+#<C:0x007f9b650699f8>
 nil
 </pre>
 
@@ -1485,13 +1433,13 @@ code. The notation in itself does not tell you everything.
 
 <tr>
 <td class="left"> </td>
-<td class="left">def method<sub>name</sub></td>
+<td class="left"><code>def method_name</code></td>
 <td class="left">when the method is called</td>
 </tr>
 
 <tr>
 <td class="left"> </td>
-<td class="left">self</td>
+<td class="left"><code>self</code></td>
 <td class="left"> </td>
 </tr>
 
@@ -2741,7 +2689,7 @@ d.upto(next_week)
 </div>
 
 <pre class="example">
-#<Enumerator: #<Date: 2014-11-20 ((2456982j,0s,0n),+0s,2299161j)>:upto(#<Date: 2014-11-27 ((2456989j,0s,0n),+0s,2299161j)>)>
+#<Enumerator: #<Date: 2014-11-26 ((2456988j,0s,0n),+0s,2299161j)>:upto(#<Date: 2014-12-03 ((2456995j,0s,0n),+0s,2299161j)>)>
 </pre>
 </div>
 </div>
@@ -3743,7 +3691,9 @@ figures how to do the rest.
 <div id="outline-container-sec-20-2-1" class="outline-4">
 <h4 id="sec-20-2-1"><span class="section-number-4">20.2.1</span> creating enumerators</h4>
 <div class="outline-text-4" id="text-20-2-1">
-</div><ol class="org-ol"><li><a id="sec-20-2-1-1"></a>with a code block<br ><div class="outline-text-5" id="text-20-2-1-1">
+</div><div id="outline-container-sec-20-2-1-1" class="outline-5">
+<h5 id="sec-20-2-1-1"><span class="section-number-5">20.2.1.1</span> with a code block</h5>
+<div class="outline-text-5" id="text-20-2-1-1">
 <div class="org-src-container">
 
 <pre class="src src-ruby"><span class="org-type">Enumerator</span>.new <span class="org-keyword">do</span> |y|
@@ -3775,9 +3725,11 @@ Note you don’t <i>yield</i> from the block. The following is wrong:
 </pre>
 </div>
 </div>
-</li>
+</div>
 
-<li><a id="sec-20-2-1-2"></a>with <code>enum_for</code><br ><div class="outline-text-5" id="text-20-2-1-2">
+<div id="outline-container-sec-20-2-1-2" class="outline-5">
+<h5 id="sec-20-2-1-2"><span class="section-number-5">20.2.1.2</span> with <code>enum_for</code></h5>
+<div class="outline-text-5" id="text-20-2-1-2">
 <p>
 In the following example <code>each</code> serve as a kind of front end
 to array’s select.
@@ -3819,7 +3771,7 @@ called without a block. The following two are equivalent
 #<Enumerator: ["Paris", "Boston", "Tokyo"]:select>
 </pre>
 </div>
-</li></ol>
+</div>
 </div>
 
 <div id="outline-container-sec-20-2-2" class="outline-4">
@@ -3994,7 +3946,7 @@ characters as possible.
 <p>
 Look-ahead assertions. <code>/\d+(?=\.)/</code> match numbers before a dot.
 You have negative look-ahead assertions <code>?!</code> and the
-corresponding look-behind assertions <code>?<=</code> and <code>?<!</code>.
+corresponding look-behind assertions <code>?<=</code> and  <code>?&lt;!</code>.
 </p>
 
 <p>
@@ -4502,7 +4454,7 @@ c = <span class="org-type">C</span>.new
 </div>
 
 <pre class="example">
-[#<Class:#<C:0x007ff4d2895d40>>, M, C, Object, Kernel, BasicObject]
+[#<Class:#<C:0x007fb6fa131ce0>>, M, C, Object, Kernel, BasicObject]
 </pre>
 
 <p>
@@ -4517,7 +4469,7 @@ You can refer to the singleton class of an object with the
 </div>
 
 <pre class="example">
-#<Class:#<String:0x007fd452082518>>
+#<Class:#<String:0x007ffe2a8724d8>>
 String
 Comparable
 Object
@@ -4932,7 +4884,7 @@ of arguments.
 </div>
 
 <pre class="example">
-#<Proc:0x007fd1d9169ab0@-:3 (lambda)>
+#<Proc:0x007fe9229fdab8@-:3 (lambda)>
 </pre>
 
 <p>
@@ -5063,7 +5015,7 @@ p = <span class="org-type">Person</span>.new <span class="org-keyword">do</span>
 </div>
 
 <pre class="example">
-#<Person:0x007fbe2c06d500 @name="Aurélien", @age=55>
+#<Person:0x007f8c429154d0 @name="Aurélien", @age=55>
 </pre>
 </div>
 </div>
@@ -5578,12 +5530,3 @@ z
 </div>
 </div>
 </div>
-</div>
-<div id="postamble" class="status">
-<p class="author">Author: Aurélien Bottazini</p>
-<p class="date">Created: 2014-11-20 Thu 10:57</p>
-<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
-</div>
-</body>
-</html>

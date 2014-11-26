@@ -1,3 +1,10 @@
+#+BEGIN_HTML
+---
+layout: notes
+---
+#+END_HTML
+#+TOC: headlines 4
+
 * About
   Ruby version and encoding used for examples:
 
@@ -568,13 +575,13 @@ end
   | Module definition    | module M                         | module object M                     |
   |                      | self                             |                                     |
   | Method definitions   | 1. Top level                     | whatever object is self             |
-  |                      | def method_name                   | when the method is called           |
-  |                      | self                             |                                     |
+  |                      | ~def method_name~                | when the method is called           |
+  |                      | ~self~                           |                                     |
   |                      | 2. class instance-method         | An instance of C                    |
   |                      | class C                          |                                     |
   |                      | def method_name                   |                                     |
   |                      | self                             |                                     |
-  |                      | 3. module instance-method        | - Individual object extended by M    |
+  |                      | 3. module instance-method        | - Individual object extended by M   |
   |                      | module M                         | - Instance of class that mixes in M |
   |                      | def method_name                   |                                     |
   |                      | self                             |                                     |
@@ -1819,7 +1826,7 @@ output
 
   Look-ahead assertions. ~/\d+(?=\.)/~ match numbers before a dot.
   You have negative look-ahead assertions ~?!~ and the
-  corresponding look-behind assertions ~?<=~ and ~?<!~.
+  corresponding look-behind assertions ~?<=~ and  ~?&lt;!~.
 
   Conditional matches. ~(?(1)b|c)~ matches ~b~ if capture number 1
   is matched otherwise matches ~c~.
