@@ -34,7 +34,8 @@ module.exports = function(grunt) {
                 options: {                       // Target options
                     style: 'compressed'
                 },
-                files: {                         // Dictionary of files
+                files: {
+                    '_css/default.css': '_sass/default.scss',
                     '_css/home.css': '_sass/home.scss',
                     'css/resume.css': '_sass/resume.scss',
                     'easyLearning/css/main.css': '_sass/easylearning.scss',
@@ -47,6 +48,7 @@ module.exports = function(grunt) {
         cssmin: {
             combine: {
                 files: {
+                    'css/default.min.css': ['_css/_bower.css', '_css/default.css'],
                     'css/resume.css': ['_css/_bower.css', 'css/resume.css'],
                     'css/home.min.css': ['_css/_bower.css', '_css/home.css'],
                     'easyLearning/css/main.css': ['_css/_bower.css', 'easyLearning/css/main.css'],

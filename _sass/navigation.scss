@@ -1,0 +1,20 @@
+#main_navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #000;
+    opacity: 0.8;
+    color: #fff;
+    height: 3em;
+    z-index: 1000;
+    ul {
+        margin-left: 32.8%;
+        list-style-type: none;
+    }
+    li {
+        float: left;
+        margin-right: 1em;
+    }
+
+}

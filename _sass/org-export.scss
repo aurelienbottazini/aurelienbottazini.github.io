@@ -1,5 +1,6 @@
 @import "responsive";
 @import "fonts";
+@import "navigation";
 body {
     width: 95%;
     margin: 0 auto;
@@ -7,6 +8,9 @@ body {
     @include responsive(ipad-portrait) {
         width: 50em;
     }
+}
+#wrapper {
+    padding-top: 3em;
 }
 h1, h2, h3, h4, h5, h6, p, ul {
     margin: 1em;
@@ -84,7 +88,7 @@ tr {
     overflow: auto;
     position: fixed;
     text-align: left;
-    top: 0;
+    top: 3em;
     cursor: pointer;
 }
 #text-table-of-contents {
