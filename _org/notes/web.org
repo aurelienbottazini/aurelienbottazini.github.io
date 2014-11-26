@@ -1,20 +1,27 @@
- http://meyerweb.com/eric/thoughts/2012/12/17/where-to-avoid-css-hyphenation
+#+BEGIN_HTML
+---
+layout: notes
+---
+#+END_HTML
+#+TOC: headlines 4
 
 * Tags
   On the larger scale, don’t use HTML for presentation. No <font> or
   <b>, <i> and other presentational elements. Where HTML provides an
   appropriate element, use it. Where it doesn’t, use classes.
 
-** ~<i>~ and ~<em>~
+** ~\lt{}i\gt~ and ~\lt{}em\gt~
   If the reason for italics is emphasis, why mark up your page with
-  the ~<i>~ element? Use the ~<em>~ element.
+  the ~\lt{}i\gt~ element? Use the ~\lt{}em\gt~ element.
 
-* “A Dao of Web Design” (http://bkaprt.com/rwd/3/)
+* [[http://bkaprt.com/rwd/3/][“A Dao of Web Design”]]
   We should embrace the fact that the web doesn’t have the same
   constraints, and design for this flexibility. This means pages which
   adapt to the needs of a reader, whose eyesight is less than perfect,
   and who wishes to read pages with a very large font size.
 
+* Hyphenation
+  http://meyerweb.com/eric/thoughts/2012/12/17/where-to-avoid-css-hyphenation
 * Responsive Web design
   http://responsivewebdesign.com/robot/
 
@@ -32,4 +39,4 @@
 
 * Layout
   Using percentages (or other relative values) to specify page layout
-  in CSS automatically creates adaptive pages
+  in CSS automatically creates adaptive pages.

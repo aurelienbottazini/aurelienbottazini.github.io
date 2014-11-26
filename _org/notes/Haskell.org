@@ -1,0 +1,1382 @@
+#+BEGIN_HTML
+---
+layout: notes
+---
+#+END_HTML
+#+TOC: headlines 4
+
+* Introduction
+  In /functional/ programming we tell what stuff is. In /imperative/
+  programming we give computers a sequence of things to do.
+
+  /Haskell/ has *referential transparency*. If a function is
+  called twice with the same parameters, it is guaranteed to
+  return the same result. It makes it easy to see if a function is
+  correct. The idea is to glue simple functions together.
+
+  Haskell is *lazy*. It waits to execute functions until it needs
+  to show a result. This is made possible thanks to referential
+  transparency.
+  Haskell is statically typed with type inference. It tries to
+  figure out what is a string, what is a number etc.
+
+  /GHCi/ is Haskell interactive environment. Launched from
+  terminal. To load a file inside /GHCi/ use ~:l file name~. It
+  will load filename.hs. ~:r~ reloads the current script.
+
+* Starting Out
+  In GHCi to modify the prompt ~:set prompt your_custom_prompt~
+
+  An /infix function/ is a function with parameters on both sides.
+  For example ~6 * 3~, ~*~ being the function here. A /prefix
+  function/ has all its parameters on the right. For example ~div
+  92 10~.
+
+  /Prefix functions/ can become /infix functions/ by adding
+  back-ticks ~`~.
+
+#+begin_src haskell :exports both
+  let doubleMe x = x + x
+  let doubleUs x y = x * 2 + y * 2
+  let doubleSmallNumber x = (if x > 100 then x else doubleMe x)
+
+  show (doubleMe 3) ++ " " ++  show (doubleUs 2 5) ++ " " ++ show (doubleSmallNumber 2)
+#+end_src
+
+#+RESULTS:
+: 6 14 4
+
+  It is important to note that the /else/ part is mandatory in
+  /Haskell/. /if/ is a function and it needs to return something.
+
+  We use an apostrophe  to note a strict (as opposed to lazy) or slightly
+  modified version of a function.
+
+#+begin_src haskell :exports both
+  let doubleSmallNumber' x = (if x > 100 then x else x * 2) + 1
+      doubleSmallNumber' 10
+#+end_src
+
+#+RESULTS:
+: 21
+
+** Lists
+
+   List are homogeneous. They can't contain elements of different
+   type.
+
+#+name: lists
+#+begin_src haskell
+  [1, 2, 3, 4, 5, 6]
+  "hello" == ['h', 'e', 'l', 'l', 'o']
+#+end_src
+
+#+RESULTS: lists
+: True
+
+   We can use ~++~ to concatenate two lists. But be careful it is
+   slow on long lists.
+
+#+begin_src haskell
+  "A" ++ " small cat"
+#+end_src
+
+#+RESULTS:
+: A small cat
+
+   It is much better to use ~:~ to add a single character as it is quick
+
+#+begin_src haskell
+  'A' : " small cat"
+#+end_src
+
+#+RESULTS:
+: A small cat
+
+   We can use ~!!~ to retrieve a single element from a list
+
+#+begin_src haskell
+ "Aurélien" !! 2
+#+end_src
+
+#+RESULTS:
+: r
+
+   List anatomy:
+   | Head | t | a | i | l |
+
+   | i | n | i | t | last |
+
+** Ranges
+
+   Instead of typing long list we can initialize them quickly with
+   /ranges/.
+
+   + ~[1..20]~
+   + ~[2,4..20]~
+   + ~[12,26..24*13]~
+
+   And since Haskell is lazy (it does not try to evaluate an
+   infinite list immediately) it makes cool things possible.
+
+#+begin_src  haskell
+   take 3 (repeat 5)
+#+end_src
+
+#+RESULTS:
+| 5 | 5 | 5 |
+
+** Lists comprehensions
+
+   Lists comprehensions are a way to filter, transform and combine lists
+
+#+begin_src  haskell
+   [ x * 2 | x <- [1..10]]
+#+end_src
+
+#+RESULTS:
+| 2 | 4 | 6 | 8 | 10 | 12 | 14 | 16 | 18 | 20 |
+
+   ~x <- [1..10]~ is called the generator
+
+   ~_~ can be used as a temporary variable when we don't care about that particular value
+
+#+begin_src haskell
+   let length' xs = sum [1 | _ <- xs]
+   length' [1,2,3]
+#+end_src
+
+#+RESULTS:
+: 3
+
+** Tuples
+
+   /Tuples/ are used to store several heterogeneous elements as a
+   single value. They are useful as a way to enforce homogeneous
+   elements you want a list of vector.
+   As ~[[1,2],[2,3,4],[4,5]]~ is possible but wrong if you want to
+   represent a list of vectors. ~[(1,2),(8,11),(4,5)]~ is much
+   better and we can only add to this list tuples composed of two
+   integers.
+
+#+begin_src  haskell
+   fst (8,11)
+#+end_src
+
+#+RESULTS:
+: 8
+
+#+begin_src  haskell
+   snd (8, 11)
+#+end_src
+
+#+RESULTS:
+: 11
+
+#+begin_src  haskell
+   zip [1,2,3] [4,5,6]
+#+end_src
+
+#+RESULTS:
+| 1 | 4 |
+| 2 | 5 |
+| 3 | 6 |
+
+
+    Here is an example to illustrate everything we learned. How to
+    find all right triangle with side lengths all integers, all
+    side lengths less or equal to ten and a perimeter equal to 24?
+
+#+begin_src  haskell
+[(a,b,c) | c <- [1..10], a <- [1..c], b <- [1..a], a^2 + b^2 == c^2, a+b+c == 24]
+#+end_src
+
+#+RESULTS:
+| 8 | 6 | 10 |
+
+* Believe the type
+
+  Inside GHCi we can use ~:t~ to find the type. It gives us result
+  of the form ~expression::type~. ~::~ can be read as ‘type of’.
+
+  We can use type declarations with our functions. And we are
+  unsure of the type declaration we can use ~:t~ as a way to find
+  or verify the type declaration
+
+#+begin_src haskell
+  let addThree::Int -> Int -> Int -> Int
+  let addThree x y z = x + y + z
+
+  addThree 1 2 3
+#+end_src
+
+#+RESULTS:
+: 6
+
+  Main types in Haskell are
+  + Int
+  + Float
+  + Double
+  + Bool
+  + Char
+  + Tuples
+
+
+  A type variable are used in functions which can take different
+  types. For example /head/ type definition is ~head::[a] -> a~.
+  Functions that use type variables are called polymorphic
+  functions.
+
+** Type Class
+
+  A type class is an interface that defines a behavior.
+
+  Some type class are
+  + Eq
+  + Ord
+  + Ordering
+  + Show
+  + Read
+  + Num
+  + Floating
+  + Integral
+  + Enum
+  + Bounded
+
+    ~==~ as a type definition of ~(==)::(Eq a) => a -> a -> bool~.
+    Everything before ~=>~ are called class constraints. ~==~ type
+    definition means it takes two argument of the same type. Those
+    two elements must be member of the equality class.
+
+    Sometimes we need to specify type annotations to tell Haskell
+    which type an expression should be.
+
+#+begin_src  haskell
+  read "5" :: Int
+#+end_src
+
+#+RESULTS:
+: 5
+  A type can be part of many type classes.
+
+* Syntax in functions
+
+  Define globally a String
+
+#+begin_src haskell
+  niceGreeting :: String
+  niceGreeting = "Hello!, So very nice to see you"
+#+end_src
+
+** Pattern Matching
+   Same function, different bodies
+
+#+begin_src  haskell
+   lucky :: Int-> String
+   lucky 7 = "Lucky Number Seven!"
+   lucky x = "Sorry you're out of luck."
+#+end_src
+
+   The last ~lucky~ body has a /catch all pattern/. It is a
+   pattern which starts with a lowercase.
+   Be careful with the order of body definitions. If we place a
+   /catch all/ first it will catch everything.
+
+** Pattern Matching with tuples
+
+#+begin_src haskell
+  addVectors::(Double, Double) -> (Double, Double) -> (Double, Double)
+  addVectors (x1,y1) (x2,y2) = (x1+x2, y1+y2)
+#+end_src
+
+#+begin_src haskell
+  head'::[a] -> a
+  head'[] = error
+  head'(x:_)= x
+#+end_src
+
+   ~x:xs~ is pattern idiom often used. It means ~head:tail~.
+
+** As pattern
+
+   An /as pattern/ is used to keep reference to an original item.
+   An /as pattern/ is defined with an ~@~.
+
+#+begin_src haskell
+  firstLetter::String -> String
+  firstLetter all@(x:xs) = "First letter of " ++ all ++ " is " ++ [x]
+
+  firstLetter "Amour"
+#+end_src
+
+#+RESULTS:
+: Prelude>
+: <interactive>:29:1: Not in scope: `firstLetter'
+
+** Guards
+
+#+begin_src haskell
+  let bmiTell :: Double -> String
+  let bmiTell bmi
+          | bmi <= 18.5 = "You are skinny"
+          | bmi <= 25.0 = "You are normal"
+          | bmi <= 30.0 = "You are fat!"
+          | otherwise = "You are a whale"
+#+end_src
+
+   A guard is defined with a pipe ~|~ followed by a boolean
+   expression, followed by ~=~ and the function body
+
+** Where
+
+#+begin_src haskell
+  bmiTell :: Double -> Double -> String
+  bmiTell bmi
+          | bmi <= skinny = "You are skinny"
+          | bmi <= normal = "You are normal"
+          | bmi <= fat = "You are fat!"
+          | otherwise = "You are a whale"
+          where bmi = weight/height^2
+               (skinny, normal, fat) = (18.5, 25.0, 30.0)
+#+end_src
+
+** Let expressions
+
+   /Let expressions/ allows us to bind variables at the end of a function
+
+   The syntax is ~let <bindings> in <expression>~. We can omit the
+   in part in GHCi and names will be visible during the while GHCi
+   session.
+
+#+begin_src haskell
+(let (a,b,c) = (1,2,3) in a+b+c) * 100
+#+end_src
+
+#+RESULTS:
+: 600
+
+   We can also use /let expressions/ in list comprehensions.
+
+#+begin_src haskell
+  calcBmis::[(Double, Double)] -> [Double]
+  calcBmis xs = [bmi | (w, h) <- xs, let bmi = w / h^2]
+#+end_src
+
+** Case
+
+   Very similar to imperative languages
+
+#+begin_src haskell
+  head' :: [a] -> a
+  head' xs = case xs of [] -> error "No head for empty list"
+                        (x:_) -> x
+#+end_src
+
+* Hello recursion!
+
+#+begin_src haskell
+
+  maximum' :: (Ord a) => [a] -> a
+  maximum'[] = error 'max of empty list'
+  maximum'[x] = x
+  maximum'(x:xs) = max x (maximum' xs)
+
+  reverse' :: [a] -> [a]
+  reverse' [] = []
+  reverse' (x:xs) = reverse' xs ++ [x]
+
+  replicate' :: Int -> a -> [a]
+  replicate' n x
+      | n <= 0 = []
+      | otherwise = x : replicate' (n-1) x
+
+  quicksort :: (Ord a) => [a] -> [a]
+  quicksort [] = []
+  quicksort (x:xs) =
+      let smallerOrEqual = [a | a <- xs, a <= x]
+          larger = [a | a <- xs, a > x]
+          in quicksort smallerOrEqual ++ [x] ++ quicksort larger
+
+#+end_src
+
+* Higher-Order functions
+
+  An higher order function takes a function as a parameter and/or
+  return a function.
+
+** Curried functions
+
+   In Haskell when a function takes one that more parameter it is
+   a /curried function/. In reality it takes only one parameter
+   then return a function that takes the next parameter etc.
+
+#+BEGIN_SRC haskell
+  let multThree x y z = x * y * z
+  let mulTwoWithNine = multThree 9
+  mulTwoWithNine 2 3
+#+END_SRC
+
+#+RESULTS:
+: 54
+
+** Sections
+
+   Infix functions can be partially applied by using /sections/.
+   We use a section by surrounding the function with parenthesis.
+
+#+BEGIN_SRC haskell
+  let divideByTen = (/10)
+      divideByTen 20
+#+END_SRC
+
+#+RESULTS:
+: 2.0
+
+** Function as a parameter
+
+#+BEGIN_SRC haskell
+  applyTwice :: (a -> a) -> a -> a
+  applyTwice f x = f(f x)
+#+END_SRC
+
+   We surround with parenthesis in the function type declaration to
+   declare that the first parameter is a function.
+
+** Map & Filter
+
+   /map/ and /filter/ are two very useful functions in haskell
+
+#+BEGIN_SRC haskell
+map :: (a -> b) -> [a] -> [b]
+map _ [] = []
+map f(x:xs) = f x : map (f xs)
+#+END_SRC
+
+
+#+BEGIN_SRC haskell
+  filter :: (a -> bool) -> [a] -> [a]
+  filter _ [] = []
+  filter p(x:xs)
+         | p x = x : filter p x
+         | otherwise = filter p xs
+#+END_SRC
+
+   In filter type definition. The first argument is defined as a
+   /predicate function/. A predicate function is a function which
+   returns a boolean.
+
+** Lambdas
+
+   A /lambda/ is an anonymous function. It is declared with ~\~
+
+   For example ~map (+3) [1, 6, 3, 2]~ is equivalent to
+   ~map (\ x -> x + 3) [1, 6, 3, 2]~
+
+** Folds & Scans
+
+   Using the ~x:xs~ pattern were you perform an action on a single
+   element then on the rest of the list is so common that Haskell
+   creators included /folds/ to help us do that.
+
+   A fold takes as parameters a /binary function/ (one that takes
+   two parameter like ~+~), an accumulator (a starting value) and
+   a list to fold up
+
+#+BEGIN_SRC haskell
+
+  sum' :: (Num a) => (a) -> a
+
+  sum' xs = foldl (\acc x -> acc + x) 0 xs
+-- which is equivalent to:
+  sum' = foldl (+) 0
+
+  map' :: (a -> b) -> [a] -> [b]
+  map' f xs = foldr(\ x acc -> f x : acc) [] xs
+#+END_SRC
+
+  ~foldr~ and ~foldl~ are similar except with the order of the
+  parameters. ~foldl~ folds from the left. ~foldr~ folds from the
+  right. Folding from the right allow us to use ~:~ (quick way to
+  add an element to a list). Folding from the right makes it
+  possible to work with infinite list too
+
+#+BEGIN_SRC haskell
+  elem' :: (Eq a) => a -> [a] -> Bool
+  elem' y ys = foldr (\x acc -> if x == y then True else acc) False ys
+#+END_SRC
+
+  ~foldl1~ and ~foldr1~ are like ~foldl~ and ~foldr~ except you
+  don't need to provide an accumulator. The accumulator is either
+  the first or last element of the list
+
+  ~scans~ are like folds except they report all accumulators in
+  the form of a list.
+
+** ~$~ the /function application operator
+
+   It allows use to use less parenthesis.
+   ~$~ is right associative and has the lowest precedence
+
+   so
+
+#+BEGIN_SRC haskell
+  sum (filter ( > 10) (map (*2) [2..10]))
+#+END_SRC
+
+#+RESULTS:
+: 80
+
+   is the same as
+
+#+BEGIN_SRC haskell
+  sum $ filter ( > 10) $ map (*2) [2..10]
+#+END_SRC
+
+#+RESULTS:
+: 80
+
+** Function composition with ~.~
+
+   /(f o g) (x) = f(g(x))/
+
+   it means composing two functions is the equivalent of calling
+   one function with the same value and then calling another one
+   with the result of the first function.
+
+   /function composition/ is right-associative so we can compose
+   many functions at a time.
+
+#+BEGIN_SRC haskell
+  map (\xs -> negate (sum (tail xs))) [[1..5], [3..6], [1..7]]
+#+END_SRC
+
+#+RESULTS:
+| -14 | -15 | -27 |
+
+  is the same as
+
+#+BEGIN_SRC haskell
+  map (negate . sum . tail) [[1..5], [3..6], [1..7]]
+#+END_SRC
+
+#+RESULTS:
+| -14 | -15 | -27 |
+
+  We can use function composition with multiple parameters thanks
+  to ~$~
+
+#+BEGIN_SRC haskell
+  sum . replicate 5 $ max 6.7 8.9
+#+END_SRC
+
+#+RESULTS:
+: 44.5
+
+** Point-Free Style
+
+   Thanks to function composition and currying we can write
+   functions in /point-free style/. That is omit /xs/ or /x/ in
+   our function definitions.
+
+#+BEGIN_SRC haskell
+sum' :: (Num a) => [a] -> a
+
+sum' xs = foldl (+) 0 xs
+-- is equivalent to
+sum' = foldl (+) 0
+-- because this last version creates a function that takes a list
+#+END_SRC
+
+* Modules
+
+  To search for modules functions. http://www.haskell.org/hoogle
+  is awesome. Inside emacs ~M-x haskell-hoogle~
+
+
+** Importing Modules
+
+   With ~import Module.Name~
+
+#+BEGIN_SRC haskell
+  import Data.List --will import everything
+  import Data.List (nub, sort) -- only nub and sort
+  import Data.List hiding (nub) -- everything except nub
+
+  import qualified Data.Map -- Data.Map.functionName to call
+  import qualified Data.Map as M -- M.functionName
+#+END_SRC
+
+   inside GHCi we use ~:m~ to import modules
+
+#+BEGIN_SRC haskell
+  :m + Data.List
+  :m + Data.List Data.Map -- to import several modules at once
+#+END_SRC
+
+** Some Useful Module functions
+
+| Data.List  | Data.char  | Data.Map     |
+|------------+------------+--------------|
+| words      | ord        | lookup       |
+| group      | chr        | fromList     |
+| find       | digitToInt | fromListWith |
+| sort       | isDigit    |              |
+| tails      |            |              |
+| isPrefixOf |            |              |
+| isInfixOf  |            |              |
+
+** Strict folds
+
+   In case of stack overflow don't forget to try strict versions
+   of folds.
+
+   Following is slow because of deferred computations
+#+BEGIN_SRC haskell
+  foldl (+) 0 (replicate 100000000 1)
+#+END_SRC
+
+   Much faster and without stack overflow
+#+BEGIN_SRC haskell
+  :m + Data.list
+  foldl' (+) 0 (replicate 100000 1)
+#+END_SRC
+
+#+RESULTS:
+: <interactive>:156:1:
+:     Not in scope: foldl'
+:     Perhaps you meant one of these:
+:       `foldl1' (imported from Prelude), `foldl' (imported from Prelude),
+:       `foldr' (imported from Prelude)
+
+** Maybe
+
+   Let's look at the type declaration for find
+
+#+BEGIN_SRC haskell
+  :t find
+  find :: (a -> Bool) -> [a] -> Maybe a
+#+END_SRC
+
+   ~Maybe a~ is a special type. It is a list of type ~a~ with
+   either 0 or 1 element. If it has 0 element it returns
+   ~Nothing~. If it has one element it returns ~Just element~
+
+#+BEGIN_SRC haskell
+  find (>4) [3, 4, 5, 6, 7]
+#+END_SRC
+
+   returns ~Just 5~
+
+#+BEGIN_SRC haskell
+  find (== 'z') "mjolnir"
+#+END_SRC
+
+   returns ~Nothing~
+
+** Associations
+
+   We can use ~Data.Map~ to handle associations.
+
+#+BEGIN_SRC haskell
+  import qualified Data.Map as Map
+  phoneBook :: Map.Map String String
+  phoneBook = Map.fromList $
+      [("betty","555-2938")
+      ,("bonnie","452-2928")
+      ,("patsy","493-2928")
+      ,("lucille","205-2928")
+      ,("wendy","939-8282")
+      ,("penny","853-2492")
+      ]
+
+  Map.lookup "wendy" phoneBook
+
+  let newBook = Map.insert "grace" "341-9021" phoneBook
+#+END_SRC
+
+   ~fromList~ delete duplicate keys. ~fromListWith~ does not
+   delete duplicate keys. It takes a function to decide what to do
+   with them.
+
+#+BEGIN_SRC haskell
+Map.fromListWith max [(2,3), (2,5) , (2, 100)]
+#+END_SRC
+
+** Making your own Modules
+
+   A module /exports/ functions. When you import a module you use
+   the functions it exports.
+
+#+BEGIN_SRC haskell
+  module Geometry
+  ( sphereVolume
+  , sphereArea
+  , cubeVolume
+  , cubeArea
+  , cuboidArea
+  , cuboidVolume
+  ) where
+
+  sphereVolume :: Float -> Float
+  sphereVolume radius = (4.0 / 3.0) * pi * (radius ^ 3)
+
+  sphereArea :: Float -> Float
+  sphereArea radius = 4 * pi * (radius ^ 2)
+
+  cubeVolume :: Float -> Float
+  cubeVolume side = cuboidVolume side side side
+
+  cubeArea :: Float -> Float
+  cubeArea side = cuboidArea side side side
+
+  cuboidVolume :: Float -> Float -> Float -> Float
+  cuboidVolume a b c = rectangleArea a b * c
+
+  cuboidArea :: Float -> Float -> Float -> Float
+  cuboidArea a b c = rectangleArea a b * 2 + rectangleArea a c * 2 + rectangleArea c b * 2
+
+  rectangleArea :: Float -> Float -> Float
+  rectangleArea a b = a * b
+#+END_SRC
+
+   rectangleArea is not visible outside of module Geometry.
+
+** Hierarchical Modules
+
+   We can arrange modules in a Hierarchical structure
+
+#+BEGIN_SRC haskell :exports both
+  module Geometry.Sphere
+      ( volume,
+        area
+      ) where
+
+      volume :: Float -> Float
+      volume radius = (4.0 / 3.0) * pi * (radius ^ 3)
+
+      area :: Float -> Float
+      area radius = 4 * pi * (radius ^ 2)
+#+END_SRC
+
+
+   Now we can import it with ~import qualified Geometry.Sphere as
+   Sphere~
+
+* Making your own types and type classes
+
+** Define a new Data Type
+
+#+BEGIN_SRC haskell
+  data Bool = False | True
+#+END_SRC
+
+   The part before the equal sign denotes the type. The part after
+   the equal sign are value constructors.
+   Here it means a ~Bool~ can either have a value of true nor
+   false.
+   Value constructors are functions. They can take parameters and
+   return a value of a data type
+
+#+BEGIN_SRC haskell
+  data Point = Point Float FLoat deriving (Show)
+  data Shape = Circle Point Float | Rectangle Point Point deriving (Show)
+
+  area :: Shape -> Float
+  area (Circle _ r) = pi * r ^ 2
+  area (Rectangle (Point x1 y1) (Point x2 y2)) = (abs $ x2 - x1) * (abs $ y2 - y1)
+#+END_SRC
+
+   If there is one value constructor it is common to use the same
+   name for the data type and the value constructor (here for
+   ~data Point~).
+
+   We can export data types in modules. We can specify the value
+   constructors we want to export or just put two dots to export
+   all value constructors for given type.
+   It we omit the parenthesis for the data type we can we don't
+   export any value constructor.
+
+#+BEGIN_SRC haskell
+  module Shapes
+      ( Point(..)
+      , Shape(..)
+      , area) where
+
+      data Point = Point Float FLoat deriving (Show)
+      data Shape = Circle Point Float | Rectangle Point Point deriving (Show)
+
+      area :: Shape -> Float
+      area (Circle _ r) = pi * r ^ 2
+      area (Rectangle (Point x1 y1) (Point x2 y2)) = (abs $ x2 - x1) * (abs $ y2 - y1)data Point = Point Float FLoat deriving (Show)
+      data Shape = Circle Point Float | Rectangle Point Point deriving (Show)
+
+      area :: Shape -> Float
+      area (Circle _ r) = pi * r ^ 2
+      area (Rectangle (Point x1 y1) (Point x2 y2)) = (abs $ x2 - x1) * (abs $ y2 - y1)
+#+END_SRC
+
+** Record Syntax
+
+#+BEGIN_SRC haskell
+    data Person = Person { firstName :: String
+                         , lastName :: String
+                         , age :: Int
+                         , height :: Float
+                         , phoneNumber :: String
+                         , flavor :: String } deriving (Show)
+#+END_SRC
+
+   It automatically creates functions that look up fields in the
+   data type.
+
+   As a bonus if we derive ~Show~ for that type we have a nicer
+   display if we use a /Record Syntax/.
+
+#+BEGIN_SRC haskell
+let data Car = Car { company :: String, model :: String, year :: Int } deriving (Show)
+Car { company="Ford", model="Mustang",year=1967}
+#+END_SRC
+
+** Type Parameters
+
+   /value constructors/ can take types as parameters to produce new
+   types. When that's the case we call that /particular value/
+   constructor a /type constructor/.
+
+   If a type does not take a type parameter we call it a /concrete
+   type/. If it does take a type parameter it is /polymorphic/.
+
+#+BEGIN_SRC haskell
+  data Maybe a = Nothing | Just a
+#+END_SRC
+
+   ~a~ is the type parameter here. No value can have a type of
+   ~Maybe~ because it is a type constructor. So for example ~Just
+   'a'~ has a type of ~Maybe Char~.
+
+   Type parameters allow us to make data types that can hold
+   different things.
+
+   it is a strong convention in haskell to no put type class
+   constraints in data declarations.
+
+#+BEGIN_SRC haskell
+  data (Ord k) => Map k v = ...
+#+END_SRC
+
+   Why? Because if we put it in the data declaration we have to
+   put the constraint in the type declaration of functions. Even
+   if those functions don't care if keys can be ordered in our map
+   example.
+
+#+BEGIN_SRC haskell
+data Vector a = Vector a a a deriving (Show)
+
+vplus :: (Num a) => Vector a -> Vector a -> Vector a
+(Vector i j k) `vplus` (Vector l m n) = Vector (i+l) (j+m) (k+n)
+#+END_SRC
+
+   Note the difference between the type constructor and the value
+   constructor. When declaring the data type, ~Vector a~ is the
+   type constructor. Our type constructor use the value
+   constructor Vector which has three fields.
+
+** Derived instances
+
+   We make our data type, then we think about how it can act. If
+   it can be ordered we make it an instance of the ~Ord~ class.
+
+#+BEGIN_SRC haskell
+  data Bool = False | True deriving (Ord)
+#+END_SRC
+
+   ~False~ value constructor is defined first. So ~True~ is
+   greater than false. With  ~Maybe~ since ~Nothing~ is defined
+   first ~Nothing~ is always smaller than ~Just a~.
+
+
+   For ~Eq~ haskell checks the data contained inside types by
+   testing each pair of fields. The type of all the fields must be
+   of the ~Eq~ /type class/.
+
+#+BEGIN_SRC haskell
+data Day = Monday | Tuesday | Wednesday | Thursday | Friday | Saturday | Sunday deriving (Eq, Ord, Show, Read, Bounded, Enum)
+
+Saturday > Friday
+minBound :: Day
+maxBound :: Day
+succ Monday
+#+END_SRC
+
+** Type synonyms
+
+#+BEGIN_SRC haskell
+  type String = [Char]
+#+END_SRC
+
+  A new type is not created. This defines a synonym for an
+  existing type.
+  Type synonyms can only be used in the type portion of Haskell
+  (data declarations, type declarations, type annotations).
+
+  Type synonyms can be parameterized
+
+#+BEGIN_SRC haskell
+  type AssocList k v = [(k, v)]
+#+END_SRC
+
+** Either a b
+
+#+BEGIN_SRC haskell
+  data Either a b = Left a | Right b deriving (Eq, Ord, Read, Show)
+#+END_SRC
+
+   When we are interested in how or why some function failed we
+   use ~Either~ data type.
+   ~a~ can tell us something about a possible failure and ~b~ is
+   the type of a successful computation.
+
+#+BEGIN_SRC haskell
+  import qualified Data.Map as Map
+
+  data LockerState = Taken | Free deriving (Show, Eq)
+
+  type Code = String
+
+  type LockerMap = Map.map Int (LockerState, Code)
+
+  lockerLookup :: Int -> LockerMap -> Either String Code
+  lockerLookup lockerNumber map = case Map.lookup lockerNumber map of
+                                    Nothing -> Left $ "Locker " ++ show lockerNumber ++ " doesn't exist!"
+                                    Just (state, code) -> if state /= Taken
+                                                          then Right code
+                                                          else Left $ "Locker" ++ show lockerNumber ++ " is already taken!"
+#+END_SRC
+
+** Recursive data structures
+
+#+BEGIN_SRC haskell
+data List a = Empty | cons a (List a) deriving (Show, Read, Eq, Ord)
+#+END_SRC
+
+   ~Cons~ is another word for ~:~
+
+** Infix
+
+   We can define functions as infix by only using special
+   characters in their name. We can do the same with constructors
+   but they must begin with a semicolon.
+
+#+BEGIN_SRC haskell
+infixr 5 :-:
+data List a = Empty | a :-: (List a) deriving (Show, Read, Eq, Ord)
+#+END_SRC
+
+   ~infixr~ is a /fixity/. Here it means our function is right
+   associative and has a /priority/ of 5. ~*~ as a fixity of
+   ~infixl 7 *~ and ~+~ has a fixity of ~infixl 6~
+
+   Left associative means ~4 * 3 * 2~ is the same has ~((4 * 3) *
+   2)~
+
+   Pattern matching is about done against constructors. So when we
+define our own type, with are own value constructors, we can match
+against them.
+
+#+BEGIN_SRC haskell
+  infixr 5 ^++
+  (^++) :: [a] -> [a] -> [a]
+  Empty ++ ys = ys
+  (x :-: xs) ++ ys = x : (xs ^++ ys)
+#+END_SRC
+
+** Binary Tree
+
+#+BEGIN_SRC haskell
+    data Tree a = EmptyTree | Node a (Tree a) (Tree a) deriving Show
+
+    singleton :: a -> Tree a
+    singleton x = Node x EmptyTree EmptyTree
+
+    treeInsert :: (Ord a) => a -> Tree a -> Tree a
+    treeInsert x EmptyTree = singleton x
+    treeInsert x (Node a left right)
+               | x == a = Node x left right
+               | x < a = Node a (treeInsert x left) right
+               | x > a = Node a left (treeInsert x right)
+
+  treeElem :: (Ord a) => a -> Tree a -> Bool
+  treeElem x EmptyTree = False
+  treeElem x (Node a left right)
+           | x == a = True
+           | x < a = treeElem x left
+           | x > a = treeElem x right
+#+END_SRC
+
+** Type Classes
+
+#+BEGIN_SRC haskell
+
+  class Eq a where
+      (==) :: a -> a -> Bool
+      (/=) :: a -> a -> Bool
+      x == y = not (x /= y)
+      x /= y = not (x == y)
+
+#+END_SRC
+
+   ~class Eq a where~ means a new /type class/ is being defined.
+   It is not mandatory to implement the functions. Only their
+   declaration is mandatory. Note that the function of ~Eq~ are
+   defined in /mutual recursion/
+
+   ~class~ is for defining new type classes.
+
+#+BEGIN_SRC haskell
+  data TrafficLight = Red | Yellow | Green
+
+  instance Eq TrafficLight where
+      Red == Red = True
+      Green == Green = True
+      Yellow == Yellow = True
+      _ == _ = False
+#+END_SRC
+
+   Here we needed only to define ~==~ since in ~Eq~ ~==~ is defined
+   in term of  ~/=~ and vice versa (/mutual recursion/). It is
+   called the /minimal complete definition/ for the type class
+   (here Eq).
+
+   ~instance~ is for making types instances of type classes.
+
+#+BEGIN_SRC haskell
+  instance Show TrafficLight where
+      show Red = "Red light"
+      show Yellow = "Yellow light"
+      show Green = "Green light"
+#+END_SRC
+
+** Sub-classing
+
+#+BEGIN_SRC haskell
+  class (Eq a) => Num a where
+  ...
+#+END_SRC
+
+   Here we state that our type ~a~ must be an instance of ~Eq~
+   before we can make it an instance of ~Num~. Sub-classing is
+   just a class constraint on a class declaration.
+
+** Parameterized types
+
+#+BEGIN_SRC haskell
+  instance (Eq m ) => Eq (Maybe m) where
+      Just x == Just y = x == y
+      Nothing  == Nothing = True
+      _ == _ = False
+#+END_SRC
+
+   Since ~Maybe m~ is a type constructor, we need the class
+   constraint to make sure ~m~ is also a part of ~Eq~.
+
+** The Functor Type Class
+
+   The /Functor/ type class is for things than can be mapped over.
+
+#+BEGIN_SRC haskell
+  class Functor f where
+      fmap :: (a -> b) -> f a -> f b
+#+END_SRC
+
+   Here ~f~ is a type constructor.
+
+   So for ~map :: (a -> b) -> [a] -> [b]~
+
+#+BEGIN_SRC haskell
+  instance Functor [] where
+      fmap = map
+#+END_SRC
+
+   ~map~ is an ~fmap~ that work just on lists.
+
+   So
+
+#+BEGIN_SRC haskell
+  fmap (*2) [1..3]
+
+  map (*2) [1..3]
+#+END_SRC
+
+   are equivalent.
+
+
+   Anything that can act like a box can be functors.
+
+#+BEGIN_SRC haskell
+  instance Functor Maybe where
+      fmap f (Just x) = Just (f x)
+      fmap f Nothing = Nothing
+#+END_SRC
+
+
+#+BEGIN_SRC haskell
+  instance Functor (Either a) where
+      fmap f (Right x) = Right (f x)
+      fmap f (Left x) = Left x
+#+END_SRC
+
+   Functor needs a type constructor with only one parameter, so we
+   provide to either one type parameter. Thanks to currying
+   ~Either a~ is a type constructor that takes one type parameter.
+
+** Kinds
+
+   In GHCi we can use ~:k~ to examine the kind of a type.
+   Kinds are little labels that value carries.
+
+
+#+BEGIN_SRC haskell
+  Int :: *
+#+END_SRC
+
+   ~*~ indicates Int is a concrete type.
+
+#+BEGIN_SRC haskell
+  Maybe :: * -> *
+#+END_SRC
+
+   ~* -> *~ indicates that Maybe type constructor takes one
+   concrete type and returns a concrete type
+
+#+BEGIN_SRC haskell
+  Either :: * -> * -> *
+#+END_SRC
+
+   It means ~Either~ takes two concrete types and produce a
+   concrete type.
+
+* IO chapter skipped
+
+**  We can use ~do~ to glue several IO actions together
+
+  #+BEGIN_SRC haskell
+    main = do
+      putStrLn "Hello"
+      name <- getLine
+      putStrLn ("Hey " ++ name)
+  #+END_SRC
+
+** Useful IO actions
+   - putChar
+   - print
+   - when
+   - sequence
+   - mapM
+   - forM (like mapM but its parameters are switched around)
+   - forever
+
+** FileStreams
+   - ~getContents~ reads everything from the standard input
+   - ~openFile~ opens a file and returns an handle
+   - ~hGetContents~ gets content from that handle
+
+     #+BEGIN_SRC haskell
+       main = do
+         handle <- openFile "myfile.txt" ReadMode
+         contents <- hGetContents handle
+         puStr contents
+         hClose handle
+     #+END_SRC
+   - ~withFile~ is another way
+   - ~readFile~, ~writeFile~ and ~appendFile~ are three functions
+     that make our life easier. They open and close handles automatically.
+   - ~getArgs~ to get command line arguments
+   - Processing files are strings can be slow. That's why haskell
+     has *ByteStrings*, *Lazy and Strict*. With strict Bytestrings
+     all of a file is read at one. With lazy Bytestrings they are
+     read chunks by chunks.
+     Whenever you need better performance in a program that reads
+     a lot of strings use Bytestrings.
+
+* Applicative Functors
+
+  fmap over functions is just function compositions
+
+#+BEGIN_SRC haskell
+  fmap :: (a -> b) -> (r -> a) -> (r -> b)
+#+END_SRC
+
+  ~r ->~ can be viewed as ~(->) r~
+
+  Here we piped the output of ~r->a~ into  the input of ~a->b~ to
+  get a function ~r->b~
+
+#+BEGIN_SRC haskell :exports both
+  fmap (*3) (+100) 1
+#+END_SRC
+
+#+RESULTS:
+: 303
+
+  We can see fmap as a function that takes a function and returns
+  a functions that takes a functor value as parameter and returns
+  a functor value as the result. It takes an ~a->b~ function and
+  returns a function ~f a -> f b~. This is called *lifting* a
+  function.
+
+  #+BEGIN_SRC haskell :exports both
+    fmap (replicate 3) [1,2,3,4]
+  #+END_SRC
+
+  #+RESULTS:
+  | 1 | 1 | 1 |
+  | 2 | 2 | 2 |
+  | 3 | 3 | 3 |
+  | 4 | 4 | 4 |
+
+
+  So we can think of fmap in two ways:
+
+  - As a function that takes a function and a functor value and
+    then maps that function over the functor value.
+  - As a function that takes a function and lifts that function so
+    it operates on functor values.
+
+** 2 Functors Law
+
+   They aren't enforced by Haskell automatically so you need to
+   test them yourself when you make a functor.
+
+*** ~fmap id = id~
+    id is the identity function which just returns its parameter
+    unmodified
+
+    #+BEGIN_SRC haskell
+      fmap id (Just 3)
+    #+END_SRC
+
+    #+RESULTS:
+    : Just 3
+
+*** ~fmap (f . g) = fmap f . fmap g~
+
+** Applicative type class
+
+   With two functions, ~pure~ and ~<*>~.
+
+   ~pure~ only act as a box.
+   ~<*>~ extracts a function from a functor and map it over a
+   second one
+
+   #+BEGIN_SRC haskell
+     :m + Control.Applicative
+     pure (+3) <*> Just 10
+   #+END_SRC
+
+   #+RESULTS:
+   : Just 13
+
+   ~Control.Applicative~ exports another function ~<$>~. It is an fmap as an infix
+   operator.
+
+   So
+   #+BEGIN_SRC haskell
+     :m + Control.Applicative
+     pure (++) <*> Just "John Tra" <*> Just "volta"
+   #+END_SRC
+
+   #+RESULTS:
+   : Just "John TraVolta"
+
+   is the same as
+
+   #+BEGIN_SRC haskell
+     :m + Control.Applicative
+     (++) <$> Just "John Tra" <*> Just "volta"
+   #+END_SRC
+
+   #+RESULTS:
+   : Just "John TraVolta"
+
+** Lists are applicative functors too
+
+   #+BEGIN_SRC haskell
+     :m + Control.Applicative
+     pure "Hey" :: Maybe String
+   #+END_SRC
+
+   #+RESULTS:
+   : Just "Hey"
+
+   #+BEGIN_SRC haskell
+     :m + Control.Applicative
+     [(*0),(+100),(^2)] <*> [1,2,3]
+   #+END_SRC
+
+   #+RESULTS:
+   | 0 | 0 | 0 | 101 | 102 | 103 | 1 | 4 | 9 |
+
+   Applicative style on lists can be a good replacement for list comprehensions.
+
+   #+BEGIN_SRC haskell
+     [ x*y | x <- [2,5,10], y <- [8,10,11]]
+   #+END_SRC
+
+   #+RESULTS:
+   | 16 | 20 | 22 | 40 | 50 | 55 | 80 | 100 | 110 |
+
+   is equivalent to
+
+   #+BEGIN_SRC haskell
+     :m + Control.Applicative
+     (*) <$> [2,5,10] <*> [8,10,11]
+   #+END_SRC
+
+   #+RESULTS:
+   | 16 | 20 | 22 | 40 | 50 | 55 | 80 | 100 | 110 |
+
+** IO is an applicative functor too
+
+   #+BEGIN_SRC haskell
+     (++) <$> getLine <*> getLine
+   #+END_SRC
+
+** Functions as applicative ~-> r~
+
+
+   #+BEGIN_SRC haskell
+     (+) <$> (+3) <*> (*100) $ 5
+   #+END_SRC
+
+   #+RESULTS:
+   : 508
+
+** ZipLists
+
+   It is another way for lists to be applicative
+
+   #+BEGIN_SRC haskell
+     getZipList $ (+) <$> ZipList[1,2,3] <*> ZipList[100,100,100]
+   #+END_SRC
+
+   #+RESULTS:
+   | 101 | 102 | 103 |
+
+   Final list lenght is the length of the smallest list
+
+   #+BEGIN_SRC haskell
+     getZipList $ (+) <$> ZipList[1,2,3] <*> ZipList[100,100..]
+   #+END_SRC
+
+   #+RESULTS:
+   | 101 | 102 | 103 |
+
+
+   #+BEGIN_SRC haskell
+     getZipList $ (,,) <$> ZipList "dog" <*> ZipList "cat" <*> ZipList "rat"
+   #+END_SRC
+
+   #+RESULTS:
+   | d | c | r |
+   | o | a | a |
+   | g | t | t |

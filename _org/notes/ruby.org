@@ -26,7 +26,6 @@ puts __ENCODING__
 $ irb -simple-prompt -rrbconfig
 #+END_EXAMPLE
 
-
    will launch irb and load rbconfig interface which contains a lot
    of compiled information about your ruby installation
 
