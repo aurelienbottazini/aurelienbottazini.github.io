@@ -77,19 +77,6 @@ body {
     color: #444;
     word-wrap: break-word;
 }
-a {
-    color: #0b2292;
-    -webkit-transition: color 0.3s ease;
-    -moz-transition: color 0.3s ease;
-    -o-transition: color 0.3s ease;
-    transition: color 0.3s ease;
-}
-a:visited {
-    color: #6616ed;
-}
-a:hover, a:active {
-             color: #a40612;
-         }
 /* landing section */
 
 @media (min--moz-device-pixel-ratio: 1.5),
@@ -104,7 +91,7 @@ a:hover, a:active {
     margin: 0 auto;
     display: block;
     position: relative;
-
+    margin-top: 3em;
     @include responsive(portrait-phone) {
         width: $width-portrait-phone;
         height: $width-portrait-phone * 1.382;
@@ -284,7 +271,7 @@ a:hover, a:active {
     @media only screen and (min-width: $width) {
         width: $width *  0.382;
         height: $width * 0.382;
-        top: $width * 0.382 * 0.618 + ($width *  0.382 / 2);
+        top: round($width * 0.382 * 0.618 + ($width *  0.382 / 2));
         left: -($width * 0.382 / 3) + ($width * 0.382 / 4);
 
     }

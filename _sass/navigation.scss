@@ -9,8 +9,15 @@
     height: 3em;
     z-index: 1000;
     ul {
-        margin-left: 32.8%;
+        margin-left: 1em;
+
+
         list-style-type: none;
+
+        @include responsive(landscape-phone) {
+            margin-left: 32.8%;
+        }
+
     }
     li {
         float: left;
@@ -19,6 +26,14 @@
 
     a {
         color: #afc0fd;
+    }
+
+    a:hover, a.active {
+    color: #dc322f;
+    }
+
+    a.visited {
+        color: #f8cefc;
     }
 
 }
