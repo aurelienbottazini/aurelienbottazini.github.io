@@ -88,8 +88,10 @@ module.exports = function(grunt) {
         exec: {
             jekyll: {
                 cmd: 'jekyll build'
+            },
+            create_sketchnotes_yaml: {
+                cmd: "ruby -e \"require 'yaml';puts Dir.new('sketchnotes').entries.select { |e| e =~ /\.jpg/}.to_yaml\" | > _data/sketchnotes.yml"
             }
-
         }
     });
     grunt.loadNpmTasks('grunt-bower-concat');
@@ -100,6 +102,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-exec');
 
-    grunt.registerTask('default', ['bower_concat', 'sass', 'cssmin', 'uglify', 'exec:jekyll']);
-    grunt.registerTask('prepare', ['bower_concat', 'sass', 'cssmin', 'uglify']);
+    grunt.registerTask('default', ['prepare', 'exec:jekyll']);
+    grunt.registerTask('prepare', ['bower_concat', 'sass', 'cssmin', 'uglify', 'exec:create_sketchnotes_yaml']);
 };
