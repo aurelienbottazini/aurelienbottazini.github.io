@@ -184,7 +184,13 @@ p + p {
     text-indent: 1em;
     margin-top: -1em;
 }
-
+p.first:first-letter {
+  float: left;
+  font-size: 3.4em;
+  font-family: "Alegreya", Georgia, Tahoma, sans-serif;
+  margin-right: 0.1em;
+  line-height: 0.35em;
+}
 @mixin white-space($wrap-space) {
 	@if $wrap-space == 'pre-wrap' {
 		white-space: #{-moz-}$wrap-space; // Firefox 1.0-2.0
