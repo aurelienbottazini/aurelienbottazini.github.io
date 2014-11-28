@@ -78,10 +78,18 @@ body {
 }
 h1, h2, h3, h4, h5, h6 {
     font-family: "Alegreya Sans", 'Helvetica Neue', Helvetica, "Trebuchet MS", Arial, sans-serif;
+    font-weight: 700;
     color: #222;
 }
 h1 {
-    font-size: 3.4em
+    text-transform: uppercase;
+    line-height: 1em;
+    text-align: center;
+    color: #dc322f;
+    text-shadow: -.010em .010em rgb(255, 255, 255),
+    -.050em .050em #cdcdcd;
+    font-size: 3.4em;
+    page-break-after: always;
 }
 h2 {
     font-size: 1.7em;
@@ -151,4 +159,55 @@ a.visited {
 }
 h2, h3, h4 {
     text-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+}
+$small-caps-color: #484a51 !default;
+$small-caps-weight: 600 !default;
+@mixin smallcaps($color, $font-weight) {
+	// depends on the font family.
+	// some font-families don’t support small caps
+	// or don’t provide them with their web font.
+	font-variant: small-caps;
+	font-weight: $font-weight;
+	text-transform: lowercase;
+	color: $color;
+}
+acronym, abbr {
+	@include smallcaps($small-caps-color, $small-caps-weight);
+	&:hover {
+		cursor: help;
+	}
+}
+p {
+    margin: 1em auto;
+}
+p + p {
+    text-indent: 1em;
+    margin-top: -1em;
+}
+
+@mixin white-space($wrap-space) {
+	@if $wrap-space == 'pre-wrap' {
+		white-space: #{-moz-}$wrap-space; // Firefox 1.0-2.0
+		white-space: $wrap-space;       // current browsers
+	} @else {
+		white-space: $wrap-space;
+	}
+}
+
+pre code {
+    word-wrap: normal;
+    @include white-space(pre-wrap);
+}
+
+pre {
+    @include white-space(pre);
+}
+
+code {
+    @include white-space(pre);
+    font-family: monospace;
+}
+.ampersand {
+    font-family: "Alegreya", 'Gabriela', 'Trebuchet MS', serif;
+    font-style: italic;
 }

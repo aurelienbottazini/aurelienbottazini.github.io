@@ -2,103 +2,8 @@
 @import "responsive";
 @import "navigation";
 @import "fonts";
-
-abbr,
-acronym,
-blockquote,
-code,
-dir,
-kbd,
-listing,
-plaintext,
-q,
-samp,
-tt,
-var,
-xmp {
-    // http://meyerweb.com/eric/thoughts/2012/12/17/where-to-avoid-css-hyphenation
-    -webkit-hyphens: none;
-    -moz-hyphens: none;
-    -ms-hyphens: none;
-    -o-hyphens: none;
-    hyphens: none;
-}
-strong {
-    font-family: "Alegreya";
-    font-weight: 700;
-}
-
-em {
-    font-family: "Alegreya";
-    font-weight: 400;
-    font-style: italic;
-}
-h1, h2, h3, h4, h5, h6 {
-    text-rendering: optimizeLegibility; //enables kerning and ligatures
-    color: #222;
-}
-p, li {
-    text-rendering: optimizeLegibility;
-}
-p {
-    margin: 1em auto;
-}
-p + p {
-    text-indent: 1em;
-    margin-top: -1em;
-}
-$small-caps-color: #484a51 !default;
-$small-caps-weight: 600 !default;
-@mixin smallcaps($color, $font-weight) {
-	// depends on the font family.
-	// some font-families don’t support small caps
-	// or don’t provide them with their web font.
-	font-variant: small-caps;
-	font-weight: $font-weight;
-	text-transform: lowercase;
-	color: $color;
-}
-acronym, abbr {
-	@include smallcaps($small-caps-color, $small-caps-weight);
-	&:hover {
-		cursor: help;
-	}
-}
-@mixin white-space($wrap-space) {
-	@if $wrap-space == 'pre-wrap' {
-		white-space: #{-moz-}$wrap-space; // Firefox 1.0-2.0
-		white-space: $wrap-space;       // current browsers
-	} @else {
-		white-space: $wrap-space;
-	}
-}
-
-pre code {
-    word-wrap: normal;
-    @include white-space(pre-wrap);
-}
-
-pre {
-    @include white-space(pre);
-}
-
-code {
-    @include white-space(pre);
-    font-family: monospace;
-}
-
 body {
-    font-family: "Alegreya", "Hoefler Text", Georgia, Tahoma, sans-serif;
-    font-weight: 400;
-    line-height: 1.382;
-    -webkit-hyphens: auto;
-    -moz-hyphens: auto;
-    -ms-hyphens: auto;
-    -o-hyphens: auto;
-    hyphens: auto;
     background-color: #22252e;
-
-    font-size: 1.1em;
 }
 section {
     width: 90%;
@@ -106,10 +11,6 @@ section {
         width: 40em;
     }
     margin: 0 auto;
-}
-h1, h2, h3, h4, h5, h6 {
-   font-family: "Alegreya Sans", 'Helvetica Neue', Helvetica, Arial, sans-serif;
-   font-weight: 700;
 }
 ul {
     padding-left: 0;
@@ -175,11 +76,6 @@ a:hover {
 .cl-effect-7 a:focus::after {
 	top: 0%;
 	opacity: 1;
-}
-
-.ampersand {
-    font-family: "Alegreya", 'Gabriela', 'Trebuchet MS', serif;
-    font-style: italic;
 }
 p.first:first-letter {
   float: left;

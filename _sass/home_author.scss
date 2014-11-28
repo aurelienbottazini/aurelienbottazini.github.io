@@ -56,7 +56,7 @@ h1 {
 }
 
 .js {
-    #planete-rouge, #planete-vie, #planete-anneaux {
+    #planete-rouge, #planete-vie, #planete-anneaux, #aurelien-sur-la-lune {
         opacity: 0;
     }
 
@@ -191,9 +191,6 @@ a:hover, a:active {
     @include planete-vie($width-ipad-landscape);
     @include planete-vie($width-widescreen);
 }
-
-
-
 @mixin hello($width) {
     @media only screen and (min-width: $width) {
         width: $width * 0.618;

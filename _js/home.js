@@ -1,4 +1,5 @@
-$(document).ready(function(){
+
+window.onload = function(){
     var i, src, extension = Modernizr.svg ? '.svg' : '.png';
     var planete_rouge = $('#planete-rouge');
     var planete_vie = $('#planete-vie');
@@ -40,8 +41,8 @@ $(document).ready(function(){
                                    { duration: 1500, delay: 500 });
     $("#planete-rouge").velocity("transition.slideUpBigIn",
                                  { duration: 1500, delay: 500 });
-    // $("#aurelien-sur-la-lune").velocity("transition.bounceLeftIn",
-    //                                     {duration: 1500, delay: 500});
+    $("#aurelien-sur-la-lune").velocity("transition.bounceLeftIn",
+                                        {duration: 1500, delay: 500});
     $("#planete-rayures").velocity("transition.bounceLeftIn",
                                    {duration: 1500, delay: 500});
     $("#planete-vie").velocity("transition.bounceRightIn",
@@ -148,4 +149,4 @@ $(document).ready(function(){
             $(this).velocity("callout.pulse", {duration: 500});
         });
     }
-});
+};
