@@ -90,7 +90,7 @@ module.exports = function(grunt) {
                 cmd: 'jekyll build'
             },
             create_sketchnotes_yaml: {
-                cmd: "ruby -e \"require 'yaml';puts Dir.new('sketchnotes').entries.select { |e| e =~ /\.jpg/}.to_yaml\" | > _data/sketchnotes.yml"
+                cmd: "ruby -e \"require 'yaml';File.open('_data/sketchnotes.yml', 'w') { |f| f.write Dir.new('sketchnotes').entries.select { |e| e =~ /\.jpg/}.to_yaml }\""
             }
         }
     });

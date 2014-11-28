@@ -10,3 +10,12 @@ layout: default
       {% endif %}
     {% endfor %}
 </ul>
+
+<h1>Sketchnotes</h1>
+<ul>
+    {% for sketchnote in site.data.sketchnotes %}
+    <li>
+        <a href="/sketchnotes/{{ sketchnote }}">{{ sketchnote }}</a>
+    </li>
+    {% endfor %}
+</ul>
