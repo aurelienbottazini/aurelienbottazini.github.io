@@ -10,12 +10,11 @@
     z-index: 1000;
     ul {
         margin-left: 1em;
-
-
+        padding-left: 0;
         list-style-type: none;
 
         @include responsive(landscape-phone) {
-            margin-left: 32.8%;
+            margin-left: 32.8em;
         }
 
     }
