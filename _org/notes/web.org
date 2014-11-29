@@ -33,10 +33,108 @@ layout: notes
   3. Media queries, a module from the CSS3 specification.
 
 * Fonts
+  Avoid using absolute font sizes, and use proportional sizes for
+  headings, much more adaptable and accessible. I like to use /ems/.
 
-  Avoid using absolute font sizes, and use proportional sizes
-  for headings, much more adaptable and accessible.
+  By setting the font size to 100% we set the base type to the
+  browser’s default (16 in most cases).
+
+  When you use ems you can be translate back into pixel with ~target /
+  context = result~. So for example with a body size of 100% (16px),
+  if we want a h1 of 24px, which value should we set for em? 24 / 16 =
+  1.5em.
+
+  This way you can translate your /Photoshop/ design font-sizes (with
+  pixels) to flexible font-sizes.
 
 * Layout
   Using percentages (or other relative values) to specify page layout
   in CSS automatically creates adaptive pages.
+
+** Flexible grid
+   We can use ~target / context = result~ to convert pixels to % in
+   our designs. We can use it for width, height, margins, paddings.
+   You *can* round up the result if you want.
+
+* Flexible Media
+
+#+BEGIN_SRC css
+  img, embed, object, video {
+      max-width: 100%;
+  }
+#+END_SRC
+
+  ~overflow: hidden~ is also a pretty useful property
+* Consistent baseline
+  I like [[https://necolas.github.io/normalize.css/][Normalize]] to get consistent CSS styles across all browsers.
+* Media Queries
+  *Design for mobile first*
+
+  You can test with:
+  + width
+  + height
+  + device-width
+  + device-height
+  + orientation (portrait and landscape)
+  + aspect-ratio
+  + device-aspect-ratio
+  + color
+  + color-index
+  + monochrome
+  + resolution
+  + scan
+  + grid
+
+#+BEGIN_SRC css
+  @media screen and (min-width: 1024px) {
+      body {
+            font-size: 100%;
+        }
+  }
+
+  @import url("wide.css") screen and (min-width: 1024px);
+
+  @media screen and (min-device-width: 480px) and (orientation: landscape) { }
+#+END_SRC
+
+#+BEGIN_SRC html
+  <link rel="stylesheet" href="wide.css" media="screen and (min-width: 1024px)" />
+#+END_SRC
+
+  Resolutions Breakpoints:
+
+  + 320 pixels
+    For small screen devices, like phones, held in portrait mode.
+  + 480 pixels
+    For small screen devices, like phones, held in landscape mode.
+  + 600 pixels
+    Smaller tablets, like the Amazon Kindle (600×800) and Barnes & Noble Nook (600×1024), held in portrait mode.
+  + 768 pixels
+    Ten-inch tablets like the iPad (768×1024) held in portrait mode.
+  + 1024 pixels
+    Tablets like the iPad (1024×768) held in landscape mode, as well as certain laptop, netbook, and desktop displays.
+  + 1200 pixels
+    For wide-screen displays, primarily laptop and desktop browsers.
+
+* View-port
+  Introduced by apple to set rendering width for mobile browsers
+
+  Fixed width
+#+BEGIN_SRC html
+  <meta name="viewport" content="width=320" />
+#+END_SRC
+
+
+  Resolution agnostic setup.
+#+BEGIN_SRC html
+  <meta name="viewport" content="initial-scale=1.0,
+  width=device-width" />
+#+END_SRC
+* !important
+  Ignore subsequent rules or more specific rules, apply this one.
+
+#+BEGIN_SRC css
+  a {
+      color: blue !important;
+  }
+#+END_SRC
