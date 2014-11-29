@@ -10,9 +10,9 @@ layout: notes
   <b>, <i> and other presentational elements. Where HTML provides an
   appropriate element, use it. Where it doesn’t, use classes.
 
-** ~\lt{}i\gt~ and ~\lt{}em\gt~
+** <i> and \lt{}em\gt
   If the reason for italics is emphasis, why mark up your page with
-  the ~\lt{}i\gt~ element? Use the ~\lt{}em\gt~ element.
+  the <i> element? Use the <em> element.
 
 * [[http://bkaprt.com/rwd/3/][“A Dao of Web Design”]]
   We should embrace the fact that the web doesn’t have the same
