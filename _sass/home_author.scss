@@ -616,11 +616,13 @@ footer {
 }
 #card-portrait {
     //width="1332" height="2082"
-    width: 90%;
+    width: 61.8%;
+    margin: 0 auto;
+    margin-top: -1em;
 
     @include responsive(ipad-portrait) {
-        width: 30em;
+        width: 20em;
+        margin-top: -4em;
     };
-    margin: 0 auto;
     display: block;
 }
