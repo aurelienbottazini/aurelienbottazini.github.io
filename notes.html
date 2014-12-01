@@ -10,7 +10,8 @@ what’s important and hard to grasp.
     <li><a href="http://aurelienbottazini.com/emacs.d/aurelien-emacs-config.html">emacs config</li>
     {% for page in site.pages %}
       {% if page.url contains '/notes/' %}
-    <li><a href="{{ page.url }}">{{ page.url }}</a></li>
+    <li><a href="{{ page.url }}">{{ page.url | remove: '.html' |
+      remove: '/notes/' }}</a></li>
       {% endif %}
     {% endfor %}
 </ul>

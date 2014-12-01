@@ -1,0 +1,38 @@
+#+BEGIN_HTML
+---
+layout: notes
+---
+#+END_HTML
+
+* create a branch based on commit
+  ~git branch branchname <sha1-of-commit>~
+
+  or by using a symbolic ref. Following example will create a
+  branch using commit 3 revisions before head
+  ~git branch branchname HEAD~3~
+* Push new branch on remote repository
+  ~git push -u origin feature_branch_name~
+* create branch without any parents
+  ~git checkout --orphan gh-pages~
+* delete branch on remote server
+  ~git push origin --delete <branch_name>~
+* Remove files added to a pending commit with ~git add~
+  ~git rm -r --cached <files>~
+* Remove a file from git, history included
+  https://help.github.com/articles/remove-sensitive-data/
+
+  Supposing we want to remove ~Rakefile~
+
+#+BEGIN_SRC sh
+  git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch Rakefile' --prune-empty --tag-name-filter cat -- --all
+
+  echo "Rakefile" >> .gitignore
+  git add .gitignore
+  git commit -m "Add Rakefile to .gitignore"
+
+  git push origin --force --all
+
+  git push origin --force --tags
+#+END_SRC
+
+  Another possibility with https://rtyley.github.io/bfg-repo-cleaner/
