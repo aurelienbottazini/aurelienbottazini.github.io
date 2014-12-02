@@ -1,5 +1,6 @@
 ---
 layout: default
+title: Notes
 ---
 <h1>Programming Notes</h1>
 
@@ -7,7 +8,7 @@ Personal notes on various subjects. They help me learn and remember
 what’s important and hard to grasp.
 
 <ul>
-    <li><a href="http://aurelienbottazini.com/emacs.d/aurelien-emacs-config.html">emacs config</li>
+    <li><a href="http://aurelienbottazini.com/emacs.d/aurelien-emacs-config.html">emacs config</a></li>
     {% for page in site.pages %}
       {% if page.url contains '/notes/' %}
     <li><a href="{{ page.url }}">{{ page.url | remove: '.html' | remove: '/notes/' }}</a></li>
