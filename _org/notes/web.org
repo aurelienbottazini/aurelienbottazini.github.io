@@ -5,47 +5,46 @@ layout: notes
 #+END_HTML
 #+TOC: headlines 4
 
-* Tags
-  On the larger scale, don’t use HTML for presentation. No <font> or
-  <b>, <i> and other presentational elements. Where HTML provides an
-  appropriate element, use it. Where it doesn’t, use classes.
-
-** <i> and \lt{}em\gt
-  If the reason for italics is emphasis, why mark up your page with
-  the <i> element? Use the <em> element.
-
 * [[http://bkaprt.com/rwd/3/][“A Dao of Web Design”]]
   We should embrace the fact that the web doesn’t have the same
   constraints, and design for this flexibility. This means pages which
   adapt to the needs of a reader, whose eyesight is less than perfect,
   and who wishes to read pages with a very large font size.
+* Consistent baseline
+  I like [[https://necolas.github.io/normalize.css/][Normalize]] to get consistent CSS styles across all browsers.
 
-* Hyphenation
+* Tags
+  On the larger scale, don’t use HTML for presentation. No <font> or
+  <b>, <i> and other presentational elements. Where HTML provides an
+  appropriate element, use it. Where it doesn’t, use classes.
+
+** /i/ and /em/
+  If the reason for italics is emphasis, why mark up your page with
+  the /i/ element? Use the /em/ element.
+* Typography
+** Hyphenation
   http://meyerweb.com/eric/thoughts/2012/12/17/where-to-avoid-css-hyphenation
-* Responsive Web design
-  http://responsivewebdesign.com/robot/
 
-  The long and short of it is that we’re designing for more devices,
-  more input types, more resolutions than ever before.
+#+BEGIN_SRC css
+  body {hyphens: auto;}
+  code, var, kbd, samp, tt, dir, listing, plaintext, xmp,
+  abbr, acronym, blockquote, q {hyphens: none;}
+#+END_SRC
 
-  1. A flexible, grid-based layout,
-  2. Flexible images and media, and
-  3. Media queries, a module from the CSS3 specification.
+** Fonts
+   Avoid using absolute font sizes, and use proportional sizes for
+   headings, much more adaptable and accessible. I like to use /ems/.
 
-* Fonts
-  Avoid using absolute font sizes, and use proportional sizes for
-  headings, much more adaptable and accessible. I like to use /ems/.
+   By setting the font size to 100% we set the base type to the
+   browser’s default (16 in most cases).
 
-  By setting the font size to 100% we set the base type to the
-  browser’s default (16 in most cases).
+   When you use ems you can be translate back into pixel with ~target /
+   context = result~. So for example with a body size of 100% (16px),
+   if we want a h1 of 24px, which value should we set for em? 24 / 16 =
+   1.5em.
 
-  When you use ems you can be translate back into pixel with ~target /
-  context = result~. So for example with a body size of 100% (16px),
-  if we want a h1 of 24px, which value should we set for em? 24 / 16 =
-  1.5em.
-
-  This way you can translate your /Photoshop/ design font-sizes (with
-  pixels) to flexible font-sizes.
+   This way you can translate your /Photoshop/ design font-sizes (with
+   pixels) to flexible font-sizes.
 
 * Layout
   Using percentages (or other relative values) to specify page layout
@@ -56,7 +55,17 @@ layout: notes
    our designs. We can use it for width, height, margins, paddings.
    You *can* round up the result if you want.
 
-* Flexible Media
+** Responsive Web design
+   http://responsivewebdesign.com/robot/
+
+   The long and short of it is that we’re designing for more devices,
+   more input types, more resolutions than ever before.
+
+   1. A flexible, grid-based layout,
+   2. Flexible images and media, and
+   3. Media queries, a module from the CSS3 specification.
+
+** Flexible Media
 
 #+BEGIN_SRC css
   img, embed, object, video {
@@ -65,8 +74,6 @@ layout: notes
 #+END_SRC
 
   ~overflow: hidden~ is also a pretty useful property
-* Consistent baseline
-  I like [[https://necolas.github.io/normalize.css/][Normalize]] to get consistent CSS styles across all browsers.
 * Media Queries
   *Design for mobile first*
 
@@ -131,7 +138,7 @@ layout: notes
   width=device-width" />
 #+END_SRC
 * !important
-  Ignore subsequent rules or more specific rules, apply this one.
+  Ignore subsequent or more specific rules, apply this one.
 
 #+BEGIN_SRC css
   a {

@@ -14,23 +14,28 @@ layout: notes
   return the same result. It makes it easy to see if a function is
   correct. The idea is to glue simple functions together.
 
-  Haskell is *lazy*. It waits to execute functions until it needs
-  to show a result. This is made possible thanks to referential
-  transparency.
-  Haskell is statically typed with type inference. It tries to
-  figure out what is a string, what is a number etc.
+  Haskell is *lazy*. It waits to execute functions until it needs to
+  show a result. This is made possible thanks to *referential
+  transparency*. Haskell is statically typed with type inference. It
+  tries to figure out what is a string, what is a number etc.
 
   /GHCi/ is Haskell interactive environment. Launched from
   terminal. To load a file inside /GHCi/ use ~:l file name~. It
   will load filename.hs. ~:r~ reloads the current script.
 
-* Starting Out
-  In GHCi to modify the prompt ~:set prompt your_custom_prompt~
+#+BEGIN_SRC sh :exports both
+  ghci --version
+#+END_SRC
 
-  An /infix function/ is a function with parameters on both sides.
-  For example ~6 * 3~, ~*~ being the function here. A /prefix
-  function/ has all its parameters on the right. For example ~div
-  92 10~.
+#+RESULTS:
+| The Glorious Glasgow Haskell Compilation System | version 7.8.3 |
+
+* Starting Out
+  In GHCi to modify the prompt ~:set prompt <your_custom_prompt>~
+
+  An /infix function/ is a function with parameters on both sides. For
+  example ~6 * 3~, ~*~ being the function here. A /prefix function/
+  has all its parameters on the right. For example ~div 92 10~.
 
   /Prefix functions/ can become /infix functions/ by adding
   back-ticks ~`~.
@@ -62,22 +67,21 @@ layout: notes
 
 ** Lists
 
-   List are homogeneous. They can't contain elements of different
+   List are homogeneous. They can’t contain elements of different
    type.
 
-#+name: lists
-#+begin_src haskell
+#+begin_src haskell :exports both
   [1, 2, 3, 4, 5, 6]
   "hello" == ['h', 'e', 'l', 'l', 'o']
 #+end_src
 
-#+RESULTS: lists
+#+RESULTS:
 : True
 
    We can use ~++~ to concatenate two lists. But be careful it is
    slow on long lists.
 
-#+begin_src haskell
+#+begin_src haskell :exports both
   "A" ++ " small cat"
 #+end_src
 
@@ -86,7 +90,7 @@ layout: notes
 
    It is much better to use ~:~ to add a single character as it is quick
 
-#+begin_src haskell
+#+begin_src haskell :exports both
   'A' : " small cat"
 #+end_src
 
@@ -95,7 +99,7 @@ layout: notes
 
    We can use ~!!~ to retrieve a single element from a list
 
-#+begin_src haskell
+#+begin_src haskell :exports both
  "Aurélien" !! 2
 #+end_src
 
@@ -119,7 +123,7 @@ layout: notes
    And since Haskell is lazy (it does not try to evaluate an
    infinite list immediately) it makes cool things possible.
 
-#+begin_src  haskell
+#+begin_src haskell :exports both
    take 3 (repeat 5)
 #+end_src
 
@@ -130,7 +134,7 @@ layout: notes
 
    Lists comprehensions are a way to filter, transform and combine lists
 
-#+begin_src  haskell
+#+begin_src  haskell :exports both
    [ x * 2 | x <- [1..10]]
 #+end_src
 
@@ -141,7 +145,7 @@ layout: notes
 
    ~_~ can be used as a temporary variable when we don't care about that particular value
 
-#+begin_src haskell
+#+begin_src haskell :exports both
    let length' xs = sum [1 | _ <- xs]
    length' [1,2,3]
 #+end_src
@@ -153,27 +157,27 @@ layout: notes
 
    /Tuples/ are used to store several heterogeneous elements as a
    single value. They are useful as a way to enforce homogeneous
-   elements you want a list of vector.
+   elements.
    As ~[[1,2],[2,3,4],[4,5]]~ is possible but wrong if you want to
    represent a list of vectors. ~[(1,2),(8,11),(4,5)]~ is much
    better and we can only add to this list tuples composed of two
    integers.
 
-#+begin_src  haskell
+#+begin_src haskell :exports both
    fst (8,11)
 #+end_src
 
 #+RESULTS:
 : 8
 
-#+begin_src  haskell
+#+begin_src haskell :exports both
    snd (8, 11)
 #+end_src
 
 #+RESULTS:
 : 11
 
-#+begin_src  haskell
+#+begin_src haskell :exports both
    zip [1,2,3] [4,5,6]
 #+end_src
 
@@ -187,8 +191,8 @@ layout: notes
     find all right triangle with side lengths all integers, all
     side lengths less or equal to ten and a perimeter equal to 24?
 
-#+begin_src  haskell
-[(a,b,c) | c <- [1..10], a <- [1..c], b <- [1..a], a^2 + b^2 == c^2, a+b+c == 24]
+#+begin_src haskell :exports both
+  [(a,b,c) | c <- [1..10], a <- [1..c], b <- [1..a], a^2 + b^2 == c^2, a+b+c == 24]
 #+end_src
 
 #+RESULTS:
@@ -197,13 +201,13 @@ layout: notes
 * Believe the type
 
   Inside GHCi we can use ~:t~ to find the type. It gives us result
-  of the form ~expression::type~. ~::~ can be read as ‘type of’.
+  of the form ~expression::type~. ~::~ can be read as “type of”.
 
   We can use type declarations with our functions. And we are
   unsure of the type declaration we can use ~:t~ as a way to find
   or verify the type declaration
 
-#+begin_src haskell
+#+begin_src haskell :exports both
   let addThree::Int -> Int -> Int -> Int
   let addThree x y z = x + y + z
 
@@ -221,15 +225,15 @@ layout: notes
   + Char
   + Tuples
 
-
-  A type variable are used in functions which can take different
+  Type variables are used in functions which can take different
   types. For example /head/ type definition is ~head::[a] -> a~.
   Functions that use type variables are called polymorphic
   functions.
 
 ** Type Class
 
-  A type class is an interface that defines a behavior.
+  A type class is an interface that defines a behavior. It is very
+  different from regular classes in other programming languages.
 
   Some type class are
   + Eq
@@ -243,7 +247,7 @@ layout: notes
   + Enum
   + Bounded
 
-    ~==~ as a type definition of ~(==)::(Eq a) => a -> a -> bool~.
+    ~==~ has a type definition of ~(==)::(Eq a) => a -> a -> bool~.
     Everything before ~=>~ are called class constraints. ~==~ type
     definition means it takes two argument of the same type. Those
     two elements must be member of the equality class.
@@ -251,17 +255,18 @@ layout: notes
     Sometimes we need to specify type annotations to tell Haskell
     which type an expression should be.
 
-#+begin_src  haskell
+#+begin_src  haskell :exports both
   read "5" :: Int
 #+end_src
 
 #+RESULTS:
 : 5
+
   A type can be part of many type classes.
 
 * Syntax in functions
 
-  Define globally a String
+  Define globally a String (act like a variable).
 
 #+begin_src haskell
   niceGreeting :: String
@@ -271,8 +276,8 @@ layout: notes
 ** Pattern Matching
    Same function, different bodies
 
-#+begin_src  haskell
-   lucky :: Int-> String
+#+begin_src haskell
+   lucky :: Int -> String
    lucky 7 = "Lucky Number Seven!"
    lucky x = "Sorry you're out of luck."
 #+end_src
@@ -295,23 +300,22 @@ layout: notes
   head'(x:_)= x
 #+end_src
 
-   ~x:xs~ is pattern idiom often used. It means ~head:tail~.
+   ~x:xs~ is a pattern idiom often used. It means ~head:tail~.
 
 ** As pattern
 
    An /as pattern/ is used to keep reference to an original item.
    An /as pattern/ is defined with an ~@~.
 
-#+begin_src haskell
-  firstLetter::String -> String
-  firstLetter all@(x:xs) = "First letter of " ++ all ++ " is " ++ [x]
+#+begin_src haskell :exports both
+  let firstLetter::String -> String
+  let firstLetter all@(x:xs) = "First letter of " ++ all ++ " is " ++ [x]
 
   firstLetter "Amour"
 #+end_src
 
 #+RESULTS:
-: Prelude>
-: <interactive>:29:1: Not in scope: `firstLetter'
+: First letter of Amour is A
 
 ** Guards
 
@@ -325,7 +329,7 @@ layout: notes
 #+end_src
 
    A guard is defined with a pipe ~|~ followed by a boolean
-   expression, followed by ~=~ and the function body
+   expression, followed by ~=~ and the function body.
 
 ** Where
 
@@ -336,7 +340,7 @@ layout: notes
           | bmi <= normal = "You are normal"
           | bmi <= fat = "You are fat!"
           | otherwise = "You are a whale"
-          where bmi = weight/height^2
+          where bmi = weight / height^2
                (skinny, normal, fat) = (18.5, 25.0, 30.0)
 #+end_src
 
@@ -345,10 +349,10 @@ layout: notes
    /Let expressions/ allows us to bind variables at the end of a function
 
    The syntax is ~let <bindings> in <expression>~. We can omit the
-   in part in GHCi and names will be visible during the while GHCi
+   in part in GHCi and names will be visible during the while /GHCi/
    session.
 
-#+begin_src haskell
+#+begin_src haskell :exports both
 (let (a,b,c) = (1,2,3) in a+b+c) * 100
 #+end_src
 
@@ -406,11 +410,11 @@ layout: notes
 
 ** Curried functions
 
-   In Haskell when a function takes one that more parameter it is
+   In Haskell when a function takes more than one parameter it is
    a /curried function/. In reality it takes only one parameter
    then return a function that takes the next parameter etc.
 
-#+BEGIN_SRC haskell
+#+BEGIN_SRC haskell :exports both
   let multThree x y z = x * y * z
   let mulTwoWithNine = multThree 9
   mulTwoWithNine 2 3
@@ -424,7 +428,7 @@ layout: notes
    Infix functions can be partially applied by using /sections/.
    We use a section by surrounding the function with parenthesis.
 
-#+BEGIN_SRC haskell
+#+BEGIN_SRC haskell :exports both
   let divideByTen = (/10)
       divideByTen 20
 #+END_SRC
@@ -447,9 +451,9 @@ layout: notes
    /map/ and /filter/ are two very useful functions in haskell
 
 #+BEGIN_SRC haskell
-map :: (a -> b) -> [a] -> [b]
-map _ [] = []
-map f(x:xs) = f x : map (f xs)
+  map :: (a -> b) -> [a] -> [b]
+  map _ [] = []
+  map f(x:xs) = f x : map (f xs)
 #+END_SRC
 
 
@@ -519,7 +523,7 @@ map f(x:xs) = f x : map (f xs)
 
    so
 
-#+BEGIN_SRC haskell
+#+BEGIN_SRC haskell :exports both
   sum (filter ( > 10) (map (*2) [2..10]))
 #+END_SRC
 
@@ -528,7 +532,7 @@ map f(x:xs) = f x : map (f xs)
 
    is the same as
 
-#+BEGIN_SRC haskell
+#+BEGIN_SRC haskell :exports both
   sum $ filter ( > 10) $ map (*2) [2..10]
 #+END_SRC
 
@@ -539,14 +543,14 @@ map f(x:xs) = f x : map (f xs)
 
    /(f o g) (x) = f(g(x))/
 
-   it means composing two functions is the equivalent of calling
+   It means composing two functions is the equivalent of calling
    one function with the same value and then calling another one
    with the result of the first function.
 
    /function composition/ is right-associative so we can compose
    many functions at a time.
 
-#+BEGIN_SRC haskell
+#+BEGIN_SRC haskell :exports both
   map (\xs -> negate (sum (tail xs))) [[1..5], [3..6], [1..7]]
 #+END_SRC
 
@@ -555,7 +559,7 @@ map f(x:xs) = f x : map (f xs)
 
   is the same as
 
-#+BEGIN_SRC haskell
+#+BEGIN_SRC haskell :exports both
   map (negate . sum . tail) [[1..5], [3..6], [1..7]]
 #+END_SRC
 
@@ -565,7 +569,7 @@ map f(x:xs) = f x : map (f xs)
   We can use function composition with multiple parameters thanks
   to ~$~
 
-#+BEGIN_SRC haskell
+#+BEGIN_SRC haskell :exports both
   sum . replicate 5 $ max 6.7 8.9
 #+END_SRC
 
@@ -575,7 +579,7 @@ map f(x:xs) = f x : map (f xs)
 ** Point-Free Style
 
    Thanks to function composition and currying we can write
-   functions in /point-free style/. That is omit /xs/ or /x/ in
+   functions in /point-free style/. That is, omit /xs/ or /x/ in
    our function definitions.
 
 #+BEGIN_SRC haskell
@@ -591,7 +595,6 @@ sum' = foldl (+) 0
 
   To search for modules functions. http://www.haskell.org/hoogle
   is awesome. Inside emacs ~M-x haskell-hoogle~
-
 
 ** Importing Modules
 
@@ -641,13 +644,6 @@ sum' = foldl (+) 0
   foldl' (+) 0 (replicate 100000 1)
 #+END_SRC
 
-#+RESULTS:
-: <interactive>:156:1:
-:     Not in scope: foldl'
-:     Perhaps you meant one of these:
-:       `foldl1' (imported from Prelude), `foldl' (imported from Prelude),
-:       `foldr' (imported from Prelude)
-
 ** Maybe
 
    Let's look at the type declaration for find
@@ -678,20 +674,19 @@ sum' = foldl (+) 0
    We can use ~Data.Map~ to handle associations.
 
 #+BEGIN_SRC haskell
-  import qualified Data.Map as Map
-  phoneBook :: Map.Map String String
-  phoneBook = Map.fromList $
-      [("betty","555-2938")
-      ,("bonnie","452-2928")
-      ,("patsy","493-2928")
-      ,("lucille","205-2928")
-      ,("wendy","939-8282")
-      ,("penny","853-2492")
-      ]
+ import qualified Data.Map as Map
+ phoneBook :: Map.Map String String
+ phoneBook = Map.fromList $
+             [("betty","555-2938"),
+              ("bonnie","452-2928"),
+              ("patsy","493-2928"),
+              ("lucille","205-2928"),
+              ("wendy","939-8282"),
+              ("penny","853-2492")]
 
-  Map.lookup "wendy" phoneBook
+    Map.lookup "wendy" phoneBook
 
-  let newBook = Map.insert "grace" "341-9021" phoneBook
+    let newBook = Map.insert "grace" "341-9021" phoneBook
 #+END_SRC
 
    ~fromList~ delete duplicate keys. ~fromListWith~ does not
@@ -745,7 +740,7 @@ Map.fromListWith max [(2,3), (2,5) , (2, 100)]
 
    We can arrange modules in a Hierarchical structure
 
-#+BEGIN_SRC haskell :exports both
+#+BEGIN_SRC haskell
   module Geometry.Sphere
       ( volume,
         area
@@ -757,7 +752,6 @@ Map.fromListWith max [(2,3), (2,5) , (2, 100)]
       area :: Float -> Float
       area radius = 4 * pi * (radius ^ 2)
 #+END_SRC
-
 
    Now we can import it with ~import qualified Geometry.Sphere as
    Sphere~
@@ -818,12 +812,12 @@ Map.fromListWith max [(2,3), (2,5) , (2, 100)]
 ** Record Syntax
 
 #+BEGIN_SRC haskell
-    data Person = Person { firstName :: String
-                         , lastName :: String
-                         , age :: Int
-                         , height :: Float
-                         , phoneNumber :: String
-                         , flavor :: String } deriving (Show)
+  data Person = Person { firstName :: String,
+                         lastName :: String,
+                         age :: Int,
+                         height :: Float,
+                         phoneNumber :: String,
+                         flavor :: String } deriving (Show)
 #+END_SRC
 
    It automatically creates functions that look up fields in the
@@ -833,8 +827,8 @@ Map.fromListWith max [(2,3), (2,5) , (2, 100)]
    display if we use a /Record Syntax/.
 
 #+BEGIN_SRC haskell
-let data Car = Car { company :: String, model :: String, year :: Int } deriving (Show)
-Car { company="Ford", model="Mustang",year=1967}
+  let data Car = Car { company :: String, model :: String, year :: Int } deriving (Show)
+  Car { company="Ford", model="Mustang",year=1967}
 #+END_SRC
 
 ** Type Parameters
@@ -894,18 +888,16 @@ vplus :: (Num a) => Vector a -> Vector a -> Vector a
    greater than false. With  ~Maybe~ since ~Nothing~ is defined
    first ~Nothing~ is always smaller than ~Just a~.
 
-
    For ~Eq~ haskell checks the data contained inside types by
    testing each pair of fields. The type of all the fields must be
    of the ~Eq~ /type class/.
 
 #+BEGIN_SRC haskell
-data Day = Monday | Tuesday | Wednesday | Thursday | Friday | Saturday | Sunday deriving (Eq, Ord, Show, Read, Bounded, Enum)
-
-Saturday > Friday
-minBound :: Day
-maxBound :: Day
-succ Monday
+  data Day = Monday | Tuesday | Wednesday | Thursday | Friday | Saturday | Sunday deriving (Eq, Ord, Show, Read, Bounded, Enum)
+       Saturday > Friday
+       minBound :: Day
+       maxBound :: Day
+       succ Monday
 #+END_SRC
 
 ** Type synonyms
@@ -956,7 +948,7 @@ succ Monday
 ** Recursive data structures
 
 #+BEGIN_SRC haskell
-data List a = Empty | cons a (List a) deriving (Show, Read, Eq, Ord)
+  data List a = Empty | cons a (List a) deriving (Show, Read, Eq, Ord)
 #+END_SRC
 
    ~Cons~ is another word for ~:~
@@ -968,8 +960,8 @@ data List a = Empty | cons a (List a) deriving (Show, Read, Eq, Ord)
    but they must begin with a semicolon.
 
 #+BEGIN_SRC haskell
-infixr 5 :-:
-data List a = Empty | a :-: (List a) deriving (Show, Read, Eq, Ord)
+  infixr 5 :-:
+  data List a = Empty | a :-: (List a) deriving (Show, Read, Eq, Ord)
 #+END_SRC
 
    ~infixr~ is a /fixity/. Here it means our function is right
@@ -980,8 +972,8 @@ data List a = Empty | a :-: (List a) deriving (Show, Read, Eq, Ord)
    2)~
 
    Pattern matching is about done against constructors. So when we
-define our own type, with are own value constructors, we can match
-against them.
+   define our own type, with are own value constructors, we can match
+   against them.
 
 #+BEGIN_SRC haskell
   infixr 5 ^++
@@ -993,36 +985,34 @@ against them.
 ** Binary Tree
 
 #+BEGIN_SRC haskell
-    data Tree a = EmptyTree | Node a (Tree a) (Tree a) deriving Show
+  data Tree a = EmptyTree | Node a (Tree a) (Tree a) deriving Show
 
-    singleton :: a -> Tree a
-    singleton x = Node x EmptyTree EmptyTree
+  singleton :: a -> Tree a
+  singleton x = Node x EmptyTree EmptyTree
 
-    treeInsert :: (Ord a) => a -> Tree a -> Tree a
-    treeInsert x EmptyTree = singleton x
-    treeInsert x (Node a left right)
-               | x == a = Node x left right
-               | x < a = Node a (treeInsert x left) right
-               | x > a = Node a left (treeInsert x right)
+  treeInsert :: (Ord a) => a -> Tree a -> Tree a
+  treeInsert x EmptyTree = singleton x
+  treeInsert x (Node a left right)
+             | x == a = Node x left right
+             | x < a = Node a (treeInsert x left) right
+             | x > a = Node a left (treeInsert x right)
 
   treeElem :: (Ord a) => a -> Tree a -> Bool
   treeElem x EmptyTree = False
   treeElem x (Node a left right)
-           | x == a = True
-           | x < a = treeElem x left
-           | x > a = treeElem x right
+    | x == a = True
+    | x < a = treeElem x left
+    | x > a = treeElem x right
 #+END_SRC
 
 ** Type Classes
 
 #+BEGIN_SRC haskell
-
   class Eq a where
       (==) :: a -> a -> Bool
       (/=) :: a -> a -> Bool
       x == y = not (x /= y)
       x /= y = not (x == y)
-
 #+END_SRC
 
    ~class Eq a where~ means a new /type class/ is being defined.
@@ -1060,7 +1050,6 @@ against them.
 
 #+BEGIN_SRC haskell
   class (Eq a) => Num a where
-  ...
 #+END_SRC
 
    Here we state that our type ~a~ must be an instance of ~Eq~
@@ -1131,9 +1120,8 @@ against them.
 
 ** Kinds
 
-   In GHCi we can use ~:k~ to examine the kind of a type.
+   Inside /GHCi/ we can use ~:k~ to examine the kind of a type.
    Kinds are little labels that value carries.
-
 
 #+BEGIN_SRC haskell
   Int :: *
@@ -1157,7 +1145,7 @@ against them.
 
 * IO chapter skipped
 
-**  We can use ~do~ to glue several IO actions together
+** We can use ~do~ to glue several IO actions together
 
   #+BEGIN_SRC haskell
     main = do
@@ -1191,12 +1179,12 @@ against them.
    - ~readFile~, ~writeFile~ and ~appendFile~ are three functions
      that make our life easier. They open and close handles automatically.
    - ~getArgs~ to get command line arguments
-   - Processing files are strings can be slow. That's why haskell
-     has *ByteStrings*, *Lazy and Strict*. With strict Bytestrings
+   - Processing files as strings can be slow. That's why haskell
+     has *Byte-Strings*, *Lazy and Strict*. With strict Bytestrings
      all of a file is read at one. With lazy Bytestrings they are
      read chunks by chunks.
      Whenever you need better performance in a program that reads
-     a lot of strings use Bytestrings.
+     a lot of strings use Byte-strings.
 
 * Applicative Functors
 
@@ -1224,16 +1212,15 @@ against them.
   returns a function ~f a -> f b~. This is called *lifting* a
   function.
 
-  #+BEGIN_SRC haskell :exports both
-    fmap (replicate 3) [1,2,3,4]
-  #+END_SRC
+#+BEGIN_SRC haskell :exports both
+  fmap (replicate 3) [1,2,3,4]
+#+END_SRC
 
-  #+RESULTS:
-  | 1 | 1 | 1 |
-  | 2 | 2 | 2 |
-  | 3 | 3 | 3 |
-  | 4 | 4 | 4 |
-
+#+RESULTS:
+| 1 | 1 | 1 |
+| 2 | 2 | 2 |
+| 3 | 3 | 3 |
+| 4 | 4 | 4 |
 
   So we can think of fmap in two ways:
 
@@ -1268,7 +1255,7 @@ against them.
    ~<*>~ extracts a function from a functor and map it over a
    second one
 
-   #+BEGIN_SRC haskell
+   #+BEGIN_SRC haskell :exports both
      :m + Control.Applicative
      pure (+3) <*> Just 10
    #+END_SRC
@@ -1280,27 +1267,27 @@ against them.
    operator.
 
    So
-   #+BEGIN_SRC haskell
+   #+BEGIN_SRC haskell :exports both
      :m + Control.Applicative
      pure (++) <*> Just "John Tra" <*> Just "volta"
    #+END_SRC
 
    #+RESULTS:
-   : Just "John TraVolta"
+   : Just "John Travolta"
 
    is the same as
 
-   #+BEGIN_SRC haskell
+   #+BEGIN_SRC haskell :exports both
      :m + Control.Applicative
      (++) <$> Just "John Tra" <*> Just "volta"
    #+END_SRC
 
    #+RESULTS:
-   : Just "John TraVolta"
+   : Just "John Travolta"
 
 ** Lists are applicative functors too
 
-   #+BEGIN_SRC haskell
+   #+BEGIN_SRC haskell :exports both
      :m + Control.Applicative
      pure "Hey" :: Maybe String
    #+END_SRC
@@ -1308,7 +1295,7 @@ against them.
    #+RESULTS:
    : Just "Hey"
 
-   #+BEGIN_SRC haskell
+   #+BEGIN_SRC haskell :exports both
      :m + Control.Applicative
      [(*0),(+100),(^2)] <*> [1,2,3]
    #+END_SRC
@@ -1318,7 +1305,7 @@ against them.
 
    Applicative style on lists can be a good replacement for list comprehensions.
 
-   #+BEGIN_SRC haskell
+   #+BEGIN_SRC haskell :exports both
      [ x*y | x <- [2,5,10], y <- [8,10,11]]
    #+END_SRC
 
@@ -1327,7 +1314,7 @@ against them.
 
    is equivalent to
 
-   #+BEGIN_SRC haskell
+   #+BEGIN_SRC haskell :exports both
      :m + Control.Applicative
      (*) <$> [2,5,10] <*> [8,10,11]
    #+END_SRC
@@ -1344,7 +1331,7 @@ against them.
 ** Functions as applicative ~-> r~
 
 
-   #+BEGIN_SRC haskell
+   #+BEGIN_SRC haskell :exports both
      (+) <$> (+3) <*> (*100) $ 5
    #+END_SRC
 
@@ -1355,7 +1342,7 @@ against them.
 
    It is another way for lists to be applicative
 
-   #+BEGIN_SRC haskell
+   #+BEGIN_SRC haskell :exports both
      getZipList $ (+) <$> ZipList[1,2,3] <*> ZipList[100,100,100]
    #+END_SRC
 
@@ -1364,7 +1351,7 @@ against them.
 
    Final list lenght is the length of the smallest list
 
-   #+BEGIN_SRC haskell
+   #+BEGIN_SRC haskell :exports both
      getZipList $ (+) <$> ZipList[1,2,3] <*> ZipList[100,100..]
    #+END_SRC
 
@@ -1372,7 +1359,7 @@ against them.
    | 101 | 102 | 103 |
 
 
-   #+BEGIN_SRC haskell
+   #+BEGIN_SRC haskell :exports both
      getZipList $ (,,) <$> ZipList "dog" <*> ZipList "cat" <*> ZipList "rat"
    #+END_SRC
 
