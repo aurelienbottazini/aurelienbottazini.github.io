@@ -5,13 +5,13 @@ layout: notes
 #+END_HTML
 #+TOC: headlines 4
 
-C provides no operation to deal directly with composite objects such
-as character strings, sets, lists, or arrays.
-The is no heap or garbage collection.
-You need to explicitly use functions provided by most C
-implementations.
-
 * Starting Out
+
+  C provides no operation to deal directly with composite objects such
+  as character strings, sets, lists, or arrays.
+  There is no heap or garbage collection.
+  You need to explicitly use functions provided by most C
+  implementations.
 
 ** Main
   Programs begin executing at the start of main. Every program must
