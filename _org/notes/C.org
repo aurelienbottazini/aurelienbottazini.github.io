@@ -5,7 +5,7 @@ layout: notes
 #+END_HTML
 #+TOC: headlines 4
 
-* Starting Out
+* Small but powerful
 
   C provides no operation to deal directly with composite objects such
   as character strings, sets, lists, or arrays.
@@ -13,7 +13,7 @@ layout: notes
   You need to explicitly use functions provided by most C
   implementations.
 
-** Main
+* Main
   Programs begin executing at the start of main. Every program must
   have a main somewhere.
 
@@ -25,7 +25,7 @@ layout: notes
   }
 #+END_SRC
 
-** Data types
+* Data types
 
    + ~char~ :: a single byte. A character written between single
                quotes represents an integer value equal to the
@@ -46,10 +46,16 @@ layout: notes
                #+END_SRC
 
    + ~int~ :: at least 16 bits (-32768 and +32767). 32 bits on some machine.
-   + ~short~ :: short integer
-   + ~long~ :: at least 32 bits
-   + ~float~
-   + ~double~
+   + ~short~ or ~short int~ :: short integer. Often 16 bits
+   + ~long~ or ~long int~ :: at least 32 bits. Often 32 bits
+   + ~float~ :: single-precision floating point
+   + ~double~ :: double-precision floating point
+
+   ~signed~ or ~unsigned~ can be applied to ~char~ or ~integer~.
+   ~unsigned~ numbers are always positive  or zero and obey the laws
+   of arithmetic modulo 2^n. So if /chars/ are 8 bits, ~unsigned char~
+   variables have values between 0 and 255 (2^8 = 256). ~signed char~
+   variables have values between -128 and 127
 
      Integer division truncates.
 
@@ -67,18 +73,17 @@ layout: notes
 
    Sets all variables to 0 because assignment is an expression with a value.
 
-
    By convention, a string constant ends with ~\0~ to mark the end.
 
-*** ~++~ and ~--~
+* ~++~ and ~--~
     To decrement ~--n~ and increment ~++n~ by 1. More concise and often efficient
     than ~n = n + 1~
 
-*** ~||~ and ~&&~
+* ~||~ and ~&&~
     Evaluate from left to right and stop as soon as the truth or
     falsehood is known.
 
-** Symbolic constants
+* Symbolic constants
    ~#define~ defines a symbolic name or symbolic constant. They are
    conventionally written in UPPER CASE.
 
@@ -87,8 +92,8 @@ layout: notes
      #define UPPER 300
    #+END_SRC
 
-** Character Input and Output
-*** ~printf~ & ~scanf~
+* Character Input and Output
+** ~printf~ & ~scanf~
 
     First argument is a string of characters to be printed. Each ~%~
     indicating where one of the other arguments is to be substituted.
@@ -110,7 +115,7 @@ layout: notes
 
    ~scanf~ is like ~printf~ except that it reads input instead of
    writing output.
-*** ~getchar~ and ~putchar~
+** ~getchar~ and ~putchar~
     One character at a time
 
     #+BEGIN_SRC C :exports both
@@ -136,11 +141,11 @@ layout: notes
       main()
       {
         int c;
-        whil`````````````e ((c = getchar()) != EOF)
+        while ((c = getchar()) != EOF)
           putchar(c);
       }
     #+END_SRC
-** Functions
+* Functions
    A function does not need to return a value.
    A function returns 0 upon normal termination.
 
@@ -155,7 +160,7 @@ layout: notes
    different with arrays*. The value passed is the location of the
    address of the beginning of the array. There is no copying of array
    elements.
-** External variables
+* External variables
 
    An external variable must be defined exactly once. The variable
    must also be declared in each function that wants to access it.
@@ -176,3 +181,9 @@ layout: notes
    of the source file and then omit all ~extern~ declarations.
    The usual practice is to collect all ~extern~ declarations of
    variables and functions in a separate file, an /header/ file.
+
+* Types, Operators, and Expressions
+
+  Don’t begin variable names with underscore, library routines often
+  use such names. Traditional C practice is to use lower case for
+  variable name and all upper case for symbolic constants.

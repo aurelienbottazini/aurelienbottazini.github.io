@@ -14,8 +14,8 @@ layout: notes
   I like [[https://necolas.github.io/normalize.css/][Normalize]] to get consistent CSS styles across all browsers.
 
 * Tags
-  On the larger scale, don’t use HTML for presentation. No <font> or
-  <b>, <i> and other presentational elements. Where HTML provides an
+  On the larger scale, don’t use HTML for presentation. No ~font~ or
+  ~b~, ~i~ and other presentational elements. Where HTML provides an
   appropriate element, use it. Where it doesn’t, use classes.
 
 ** /i/ and /em/
