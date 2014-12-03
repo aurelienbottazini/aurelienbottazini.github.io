@@ -12,15 +12,55 @@ layout: notes
   and who wishes to read pages with a very large font size.
 * Consistent baseline
   I like [[https://necolas.github.io/normalize.css/][Normalize]] to get consistent CSS styles across all browsers.
-
+* Header
+  #+BEGIN_SRC html
+    <!DOCTYPE html>
+    <head>
+        <meta charset="UTF-8">
+        <!-- browsers assume type="text/javascript" -->
+        <script src="file.js"></script>
+        <!-- browsers assume type="text/css" -->
+        <link rel="stylesheet" href="file.css">
+    </head>
+  #+END_SRC
 * Tags
+  With HTML5 your tags can be uppercase, lowercase, self closing
+  ~<br />~ or not ~<br>~. Attributes can be quoted or not.
+
   On the larger scale, don’t use HTML for presentation. No ~<font>~ or
   ~<b>~, ~<i>~ and other presentational elements. Where HTML provides an
   appropriate element, use it. Where it doesn’t, use classes.
 
-** <i> and <em>
+** ~<i>~ and ~<em>~
   If the reason for italics is emphasis, why mark up your page with
   the ~<i>~ element? Use the ~<em>~ element.
+  ~<i>~ means text is an alternate voice or mood.
+
+** ~<b>~ and ~<strong>~
+   ~<b>~ for stylistically offset from the normal prose without
+   conveying any extra importance. If the text has any extra
+   importance, use ~<strong>~.
+
+** ~<small>~
+   Represents the small print for legalese, or terms and conditions.
+
+** ~<cite>~
+   Title of a work, not a person. Feels wrong :(
+
+** obsolete
+   + ~<frame>~
+   + ~<frameset>~
+   + ~<noframes>~
+   + ~<acronym>~. Use ~<abbr>~ instead
+   + ~<font~
+   + ~<big>~
+   + ~<center>~
+   + ~<strike>~
+   + presentational attributes like ~bgcolor~, ~cellpading~,
+     ~cellspacing~, ~valign~
+
+
+
 * Typography
 ** Hyphenation
   http://meyerweb.com/eric/thoughts/2012/12/17/where-to-avoid-css-hyphenation
