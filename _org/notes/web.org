@@ -23,6 +23,21 @@ layout: notes
         <link rel="stylesheet" href="file.css">
     </head>
   #+END_SRC
+
+** View-port
+  Introduced by apple to set rendering width for mobile browsers
+
+  Fixed width
+#+BEGIN_SRC html
+  <meta name="viewport" content="width=320" />
+#+END_SRC
+
+
+  Resolution agnostic setup.
+#+BEGIN_SRC html
+  <meta name="viewport" content="initial-scale=1.0,
+  width=device-width" />
+#+END_SRC
 * Tags
   With HTML5 your tags can be uppercase, lowercase, self closing
   ~<br />~ or not ~<br>~. Attributes can be quoted or not.
@@ -60,6 +75,24 @@ layout: notes
      ~cellspacing~, ~valign~
 
 
+* Canvas
+  For creating dynamic images
+  [[https://html.spec.whatwg.org/multipage/scripting.html#the-canvas-element][Spec]]ification
+
+  #+BEGIN_SRC html
+    <canvas id="my-first-canvas" width="360" height="240">
+            <p>No canvas support? Have an old-fashioned image
+            instead:</p>
+            <img src="puppy.jpg" alt="a cute puppy">
+    </canvas>
+  #+END_SRC
+
+  Then you interact with it with JavaScript
+
+  #+BEGIN_SRC js
+    var canvas = document.getElementById('my-first-canvas');
+    var context = canvas.getContext('2d');
+  #+END_SRC
 
 * Typography
 ** Hyphenation
@@ -163,20 +196,65 @@ layout: notes
   + 1200 pixels
     For wide-screen displays, primarily laptop and desktop browsers.
 
-* View-port
-  Introduced by apple to set rendering width for mobile browsers
+* Accessibility
+  http://www.w3.org/WAI/PF/html-task-force
+* Audio
+  #+BEGIN_SRC html
+    <audio src="johnny_cash_hurt.mp3" autoplay loop controls></audio>
+  #+END_SRC
 
-  Fixed width
-#+BEGIN_SRC html
-  <meta name="viewport" content="width=320" />
-#+END_SRC
+  ~autoplay~, ~loop~ and ~control~ are boolean attributes. Giving the
+  attributed a value does not matter. It is either present or not.
+  You can also use ~preload~ attribute and set it to ~none~, ~auto~
+  and ~metadata~.
 
+  You can use js to control the player.
 
-  Resolution agnostic setup.
-#+BEGIN_SRC html
-  <meta name="viewport" content="initial-scale=1.0,
-  width=device-width" />
-#+END_SRC
+  #+BEGIN_SRC js
+    document.getElementById('player').play()
+  #+END_SRC
+
+  You can provide different format, specifying mime types help the browser.
+  #+BEGIN_SRC html
+    <audio controls>
+        <source src="johnny_cash.ogg" type="audio/ogg">
+        <source src="johnny_cash.mp3" type="audio/mpeg">
+    </audio>
+  #+END_SRC
+
+  Support for browsers not supporting ~<audio>~ and not including /flash/.
+  #+BEGIN_SRC html
+    <audio controls>
+     <source src="johnny_cash.ogg" type="audio/ogg">
+     <source src="johnny_cash.mp3" type="audio/mpeg">
+     <object type="application/x-shockwave-flash" »
+             data="player.swf?soundFile=johnny_cash.mp3">
+         <param name="movie" value="player.swf?soundFile=johnny_cash.mp3">
+         <a href="johnny_cash.mp3">Download the song</a>
+     </object>
+    </audio>
+  #+END_SRC
+* Video
+  ~<video>~ works like ~<audio>~. ~autoplay~, ~loop~, ~control~
+  attributes. ~preload~ also available.
+  You can have a placeholder image with the poster attribute.
+
+  #+BEGIN_SRC html
+    <video controls width="360" height="240" »
+            poster="placeholder.jpg">
+      <source src="movie.ogv" type="video/ogg">
+      <source src="movie.mp4" type="video/mp4">
+      <object type="application/x-shockwave-flash" »
+              width="360" height="240" »
+              data="player.swf?file=movie.mp4">
+          <param name="movie" »
+                 value="player.swf?file=movie.mp4">
+          <a href="movie.mp4">Download the movie</a>
+      </object>
+    </video>
+  #+END_SRC
+
+  Scriptable, styleable.
 * !important
   Ignore subsequent or more specific rules, apply this one.
 
