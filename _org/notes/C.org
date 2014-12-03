@@ -45,6 +45,8 @@ layout: notes
                #+BEGIN_SRC C
                  c - '0'
                #+END_SRC
+               Because the values of ~0~, ~1~, etc. form a contiguous
+               increasing sequence.
 
    + ~int~ :: at least 16 bits (-32768 and +32767). 32 bits on some
               machine. An integer can be represented in octal with a
@@ -58,9 +60,11 @@ layout: notes
    ~unsigned~ numbers are always positive  or zero and obey the laws
    of arithmetic modulo 2^n. So if /chars/ are 8 bits, ~unsigned char~
    variables have values between 0 and 255 (2^8 = 256). ~signed char~
-   variables have values between -128 and 127
+   variables have values between -128 and 127.
 
-     Integer division truncates.
+   ~%~ cannot be applied to ~float~ or ~double~.
+
+   Integer division truncates.
 
    #+BEGIN_SRC C :exports both
      float f = 5/2;
@@ -78,28 +82,95 @@ layout: notes
 
    By convention, a string constant ends with ~\0~ to mark the end.
 
+   Type conversions can be forced (/coerced/) with an unary operator
+   called a cast.
+
+   #+BEGIN_SRC C
+     sqrt((double) n)
+   #+END_SRC
+
 * ~++~ and ~--~
     To decrement ~--n~ and increment ~++n~ by 1. More concise and often efficient
     than ~n = n + 1~
 
-* ~||~ and ~&&~
+    They can be used as prefix (~++n~) and postfix operators (~n++~).
+    ~++n~ increments before the value is used
+
+    #+BEGIN_SRC C
+      int n = 5;
+      int m = 5;
+
+      printf("%d, %d", ++n, m++);
+    #+END_SRC
+
+    #+RESULTS:
+    | 6 | 5 |
+
+* Logical Operators ~||~ and ~&&~
     Evaluate from left to right and stop as soon as the truth or
     falsehood is known.
 
-* Symbolic constants
-   ~#define~ defines a symbolic name or symbolic constant. They are
-   conventionally written in UPPER CASE.
+* Bitwise Operators
+
+  + ~&~ :: bitwise AND. Often used to mask off some set of bits
+           #+BEGIN_SRC C
+             n = n & 0177; //sets to zero all but the low-order 7 bits of n
+           #+END_SRC
+  + ~|~ :: bitwise inclusive OR. Used to turn its on
+           #+BEGIN_SRC C
+             x = x | SET_ON; //set to one in x the bits that are set to one in SET_ON
+           #+END_SRC
+  + ~^~ :: bitwise exclusive OR. Sets a one in each bit position where
+           its operands have different bits, and zero where they are
+           the same
+  + ~<<~ :: left shift. Shift to the left, filling vacated bits with
+            zero. ~<< 2~ is equivalent to multiplication by 4 (2^2).
+  + ~>>~ :: right shift. ~unsigned~ ensures right-shifted vacated bits
+            will be filled with zero.
+  + =~= :: one's complement (unary). Convert's each 1-bit into a 0-bit
+           and vice versa.
+
+* Constants
+
+** Symbolic Constants
+    ~#define~ defines a symbolic name or symbolic constant. They are
+    conventionally written in UPPER CASE.
+
+    #+BEGIN_SRC C
+      #define LOWER 0
+      #define UPPER 300
+    #+END_SRC
+
+    A long constant is written with a terminal ~l~ or ~L~. Unsigned
+    constants are written with a terminal ~u~ or ~U~. For example ~ul~
+    indicates ~unsigned long~.
+    With a decimal point, ~f~ or ~F~ indicates float, ~l~ or ~L~
+    indicate ~long double~.
+
+** Enumeration constant
 
    #+BEGIN_SRC C
-     #define LOWER 0
-     #define UPPER 300
+     enum boolean { NO, YES };
    #+END_SRC
 
-   A long constant is written with a terminal ~l~ or ~L~. Unsigned
-   constants are written with a terminal ~u~ or ~U~. For example ~ul~
-   indicates ~unsigned long~.
-   With a decimal point, ~f~ or ~F~ indicates float, ~l~ or ~L~
-   indicate ~long double~.
+   The first name in an ~enum~ has a value of 0, the next a value of 1
+   and so on.
+
+** ~const~
+
+   The qualifier ~const~ can be applied to the declaration of any
+   variable to specify that its value will not be changed.
+
+   #+BEGIN_SRC C
+     const double e = 2.483995598;
+   #+END_SRC
+
+   It can also be used with array arguments to indicate that the
+   function does not change the array
+
+   #+BEGIN_SRC C
+     int strlen(const char[]);
+   #+END_SRC
 
 * Character Input and Output
 ** ~printf~ & ~scanf~
@@ -197,6 +268,19 @@ layout: notes
   use such names. Traditional C practice is to use lower case for
   variable name and all upper case for symbolic constants.
 
+  There are /assignment operators/
+  #+BEGIN_SRC C
+    i = i + 2;
+    i += 2;
+  #+END_SRC
+  Available for
+  : + - * / % << >> & ^ |
+
+** Conditional expressions
+
+   #+BEGIN_SRC C
+     z = (a > b) ? a : b; // z = max(a,b)
+   #+END_SRC
 * Escape sequences
 
   + ~\a~ :: alert (bell) character
@@ -208,11 +292,10 @@ layout: notes
   + ~\v~ :: vertical tab
   + ~\\~ :: backslash
   + ~\?~ :: question mark
-  + ~\'~ :: single quote
-  + ~\"~ :: double quote
+  + ~\' (single quote)~ :: single quote
+  + ~\" (double quote)~ :: double quote
   + ~\ooo~ :: octal number
   + ~\xhh~ :: hexadecimal number
-
 
 * String
   #+BEGIN_SRC C
