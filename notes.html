@@ -16,6 +16,15 @@ what’s important and hard to grasp.
     {% endfor %}
 </ul>
 
+<h1>Books</h1>
+<ul>
+    {% for page in site.pages %}
+      {% if page.url contains '/books/' %}
+    <li><a href="{{ page.url }}">{{ page.url | remove: '.html' | remove: '/books/' }}</a></li>
+      {% endif %}
+    {% endfor %}
+</ul>
+
 <h1>Sketchnotes</h1>
 <ul>
     {% for sketchnote in site.data.sketchnotes %}
