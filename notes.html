@@ -11,7 +11,7 @@ what’s important and hard to grasp.
     <li><a href="http://aurelienbottazini.com/emacs.d/aurelien-emacs-config.html">emacs config</a></li>
     {% for page in site.pages %}
       {% if page.url contains '/notes/' %}
-    <li><a href="{{ page.url }}">{{ page.url | remove: '.html' | remove: '/notes/' | replace '%20', ' ' }}</a></li>
+    <li><a href="{{ page.url }}">{{ page.url | remove: '.html' | remove: '/notes/' | replace: '%20', ' ' }}</a></li>
       {% endif %}
     {% endfor %}
 </ul>
@@ -20,7 +20,7 @@ what’s important and hard to grasp.
 <ul>
     {% for page in site.pages %}
       {% if page.url contains '/books/' %}
-    <li><a href="{{ page.url }}">{{ page.url | remove: '.html' | remove: '/books/' | replace '%20', ' ' }}</a></li>
+    <li><a href="{{ page.url }}">{{ page.url | remove: '.html' | remove: '/books/' | replace: '%20', ' ' }}</a></li>
       {% endif %}
     {% endfor %}
 </ul>
