@@ -17,6 +17,8 @@ puts __ENCODING__
 : 2.1.5
 : UTF-8
 
+* Style Guide
+  https://github.com/bbatsov/ruby-style-guide
 * Installation
   Make sure you control your Ruby installation and have an up to
   date version with [[http://rvm.io/][RVM]] or [[https://github.com/sstephenson/rbenv][rbenv]].
@@ -270,6 +272,38 @@ $ irb -simple-prompt -rrbconfig
 
    ~dup~ duplicates an object. ~clone~ duplicate an object and if
    the cloned object was frozen, the clone is also frozen.
+
+*** Array deep copy
+
+    Dup and clone do not make deep copies of Arrays.
+
+    #+BEGIN_SRC ruby :results output :exports both
+      a = [2, [2,3]]
+      b = a.dup
+      a[1] << 4
+      puts b[1]
+    #+END_SRC
+
+    #+RESULTS:
+    : 2
+    : 3
+    : 4
+
+
+    There is a /trick/ to do it with
+
+    #+BEGIN_SRC ruby :results output :exports both
+      a = [2, [2,3]]
+      b = Marshal.load(Marshal.dump(a))
+      a[1] << 4
+      puts b[1]
+    #+END_SRC
+
+    #+RESULTS:
+    : 2
+    : 3
+
+    However it is naive and might not work on all Arrays. Use with caution.
 
 ** ~BasicObject~, ~Object~ & ~Kernel~
 

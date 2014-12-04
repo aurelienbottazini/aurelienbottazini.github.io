@@ -38,6 +38,8 @@ layout: notes
   <meta name="viewport" content="initial-scale=1.0,
   width=device-width" />
 #+END_SRC
+* favicon
+  https://github.com/audreyr/favicon-cheat-sheet
 * Tags
   With HTML5 your tags can be uppercase, lowercase, self closing
   ~<br />~ or not ~<br>~. Attributes can be quoted or not.
@@ -73,8 +75,6 @@ layout: notes
    + ~<strike>~
    + presentational attributes like ~bgcolor~, ~cellpading~,
      ~cellspacing~, ~valign~
-
-
 * Canvas
   For creating dynamic images
   [[https://html.spec.whatwg.org/multipage/scripting.html#the-canvas-element][Spec]]ification
@@ -118,7 +118,6 @@ layout: notes
 
    This way you can translate your /Photoshop/ design font-sizes (with
    pixels) to flexible font-sizes.
-
 * Layout
   Using percentages (or other relative values) to specify page layout
   in CSS automatically creates adaptive pages.
@@ -255,7 +254,8 @@ layout: notes
   #+END_SRC
 
   Scriptable, styleable.
-* !important
+* CSS
+** !important
   Ignore subsequent or more specific rules, apply this one.
 
 #+BEGIN_SRC css
@@ -263,3 +263,16 @@ layout: notes
       color: blue !important;
   }
 #+END_SRC
+* svg
+** png mask for transparent jpegs
+   #+BEGIN_SRC html
+     <svg preserveAspectRatio="xMinYMin" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 560 1388">
+     <defs>
+     <mask id="mask">
+     <image width="560" height="1388" xlink:href="img/mask.png"></image>
+     </mask>
+     </defs>
+     <image mask="url(#mask)" id="image_masked" width="560" height="1388" xlink:href="image_to_mask.jpg"></image>
+     </svg>
+   #+END_SRC

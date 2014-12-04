@@ -3,7 +3,8 @@
 layout: notes
 ---
 #+END_HTML
-
+* Cheatsheet
+  https://github.com/tiimgreen/github-cheat-sheet
 * create a branch based on commit
   ~git branch branchname <sha1-of-commit>~
 
