@@ -2,13 +2,12 @@
 layout: default
 title: Notes
 ---
-<h1>Programming Notes</h1>
+<h1>Notes</h1>
 
-Personal notes on various subjects. They help me learn and remember
-what’s important and hard to grasp.
+<h2>Programming Notes</h2>
 
 <ul>
-    <li><a href="http://aurelienbottazini.com/emacs.d/aurelien-emacs-config.html">emacs config</a></li>
+    <li><a href="http://aurelienbottazini.com/emacs.d/aurelien-emacs-config.html">Emacs config</a></li>
     {% for page in site.pages %}
       {% if page.url contains '/notes/' %}
     <li><a href="{{ page.url }}">{{ page.url | remove: '.html' | remove: '/notes/' | replace: '%20', ' ' }}</a></li>
@@ -16,7 +15,7 @@ what’s important and hard to grasp.
     {% endfor %}
 </ul>
 
-<h1>Books</h1>
+<h2>Books</h2>
 <ul>
     {% for page in site.pages %}
       {% if page.url contains '/books/' %}
@@ -25,7 +24,7 @@ what’s important and hard to grasp.
     {% endfor %}
 </ul>
 
-<h1>Sketchnotes</h1>
+<h2>Sketchnotes</h2>
 <ul>
     {% for sketchnote in site.data.sketchnotes %}
     <li>
