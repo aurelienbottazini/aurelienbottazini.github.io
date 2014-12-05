@@ -8,6 +8,9 @@ layout: notes
 * Introduction
   Fight your fear, stop procrastination, follow your passions, do
   what's important.
+
+  http://theflinch.com/
+
 * Highlights
 + The Flinch is your real opponent, and information won't help you
    fight it.
