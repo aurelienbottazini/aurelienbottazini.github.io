@@ -7,3 +7,6 @@ sass:
   style: compressed
 kramdown:
   input: GFM
+gems:
+  - jekyll-sitemap
+  - jemoji
