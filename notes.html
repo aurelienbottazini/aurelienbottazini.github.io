@@ -24,6 +24,16 @@ title: Notes
     {% endfor %}
 </ul>
 
+<h2>Courses</h2>
+<ul>
+    {% for page in site.pages %}
+      {% if page.url contains '/courses/' %}
+    <li><a href="{{ page.url }}">{{ page.url | remove: '.html' | remove: '/courses/' | replace: '%20', ' ' }}</a></li>
+      {% endif %}
+    {% endfor %}
+</ul>
+
+
 <h2>Sketchnotes</h2>
 <ul>
     {% for sketchnote in site.data.sketchnotes %}
