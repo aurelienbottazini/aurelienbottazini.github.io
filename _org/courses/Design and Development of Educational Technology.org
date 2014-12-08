@@ -7,7 +7,9 @@ layout: notes
 
 * Introduction
   Course available on [[https://www.edx.org/][edX]]
+
   MITx: 11.132x Design and Development of Educational Technology
+
 * Week 1 - Everything Old is New Again
   + Behaviorism
     The term behaviorism refers to the school of psychology founded by
