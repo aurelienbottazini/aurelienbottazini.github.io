@@ -304,3 +304,100 @@ layout: notes
   #+END_SRC
 
   null character ~\0~ at the end
+
+* Control Flow
+
+** ~if~
+   #+BEGIN_SRC C :exports both
+     int x = 6;
+     if (x > 10)
+       printf("large x");
+      else  if (x > 5)
+        printf("small x");
+      else
+        printf("tiny x");
+   #+END_SRC
+
+   #+RESULTS:
+   : small x
+
+** ~switch~
+   As a matter of good form we put a ~break~ after the last case even
+   though it is unnecessary.
+
+   #+BEGIN_SRC C :exports both
+     int c = 'a';
+
+     switch(c) {
+      case 'a':
+        printf("this is a");
+        break;
+      case 'b': case 'c': case 'd':
+        printf("not a");
+        break;
+      default:
+        break;
+      }
+
+   #+END_SRC
+
+   #+RESULTS:
+   : this is a
+
+   The ~break~ statements cause an immediate exit from the ~switch~.
+
+** Loops
+
+   #+BEGIN_SRC C
+     while((c = getchar()) != EOF)
+       {
+         // do stuff
+       }
+   #+END_SRC
+
+   There is a ~do while~ which execute a first time the loop before
+   the loop condition is evaluated.
+
+   #+BEGIN_SRC C
+     int x = 0;
+     do {
+       // do something
+       x++;
+      } while (x > 10)
+   #+END_SRC
+
+   #+BEGIN_SRC C
+     int i, j;
+
+     for (i = 0, j = strlen(s)-1; i< j; i++, j--) {
+       // do stuff
+      }
+   #+END_SRC
+
+   Infinite loop:
+   #+BEGIN_SRC C
+     for (;;) {
+      }
+   #+END_SRC
+
+** Break and continue
+
+   The ~break~ statements cause an immediate exit from a ~switch~.
+   It also forces an immediate exit from ~while~, ~for~ and ~do~ loops.
+
+   A ~break~ causes the innermost enclosing loop or switch to be
+   exited immediately.
+
+   The ~continue~ statement causes the next iteration of the enclosing
+   loop to begin immediately.
+
+** Goto and Labels
+
+   *Don't use them*
+
+   #+BEGIN_SRC C
+     goto found;
+
+     found:
+     // more code
+   #+END_SRC
