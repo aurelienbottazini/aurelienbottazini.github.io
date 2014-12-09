@@ -12,10 +12,9 @@ layout: notes
   and who wishes to read pages with a very large font size.
 
 * WHATWG
-  https://whatwg.org/
-  irc://irc.freenode.org/whatwg
-
-  [[https://developers.whatwg.org/][Readable HTML doc]]
+  + https://whatwg.org/
+  + irc://irc.freenode.org/whatwg
+  + [[https://developers.whatwg.org/][Readable HTML doc]]
 
 * Can I use?
   Check browsers support for web technologies.
