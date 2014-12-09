@@ -10,9 +10,30 @@ layout: notes
   constraints, and design for this flexibility. This means pages which
   adapt to the needs of a reader, whose eyesight is less than perfect,
   and who wishes to read pages with a very large font size.
+
+* WHATWG
+  https://whatwg.org/
+  irc://irc.freenode.org/whatwg
+
+  [[https://developers.whatwg.org/][Readable HTML doc]]
+
+* Can I use?
+  Check browsers support for web technologies.
+  http://caniuse.com/
+
+* Modernizr
+  http://modernizr.com/
+  Detect support for web technologies through JavaScript.
+
+  #+BEGIN_SRC javascript
+    if (!Modernizr.inputtypes.color) {
+        // JavaScript fallback goes here.
+    }
+  #+END_SRC
 * Consistent baseline
   I like [[https://necolas.github.io/normalize.css/][Normalize]] to get consistent CSS styles across all browsers.
-* Header
+
+* ~<head>~
   #+BEGIN_SRC html
     <!DOCTYPE html>
     <head>
@@ -38,8 +59,8 @@ layout: notes
   <meta name="viewport" content="initial-scale=1.0,
   width=device-width" />
 #+END_SRC
-* favicon
-  https://github.com/audreyr/favicon-cheat-sheet
+** favicon
+   https://github.com/audreyr/favicon-cheat-sheet
 * Tags
   With HTML5 your tags can be uppercase, lowercase, self closing
   ~<br />~ or not ~<br>~. Attributes can be quoted or not.
@@ -47,6 +68,70 @@ layout: notes
   On the larger scale, don’t use HTML for presentation. No ~<font>~ or
   ~<b>~, ~<i>~ and other presentational elements. Where HTML provides an
   appropriate element, use it. Where it doesn’t, use classes.
+** headings
+*** ~<hgroup>~
+    When you want to use a heading element but you don’t want its
+    contents to appear in the document outline.
+
+    Only the first heading contribute to the outline.
+    #+BEGIN_SRC html
+      <hgroup>
+            <h1>I contribute to the outline</h1>
+            <h2>I don't</h2>
+      </hgroup>
+    #+END_SRC
+*** sectioning roots
+
+    ~<blockquote>~, ~<fieldset>~, and ~<td>~ elements are all immune to the
+    outline algorithm. These elements are called “sectioning roots”.
+
+** ~<section>~
+   The section element is used for grouping together
+   thematically-related content.
+   Thus you can start each section element with an ~<h1>~ (or ~<h2>~,
+   ~<h3>~ you choose). Sections help you to stay coherent.
+
+   It’s helpful to think of ~<header>~, ~<footer>~, ~<nav>~, ~<aside>~
+   and ~<article>~ as being specialized forms of the section element.
+
+*** ~<header>~
+    A document can have multiple header elements.
+    A header will usually appear at the top of a document or section.
+
+*** ~<footer>~
+    Like header we can have several footer elements. Usually at end of
+    document or section.
+    The specification explicitly mentions authorship information as
+    being suitable for footers.
+
+*** ~<aside>~
+    The aside element should be used for tangentially related content.
+
+*** ~<nav>~
+    The nav element contains navigation information, usually a list of
+    links. However The nav element is intended for major navigation
+    information.
+
+*** ~<article>~
+     The article element is specifically designed for syndication.
+
+     If you use a time element within an article, you can add an
+     optional pubdate Boolean attribute to indicate that it contains
+     the date of publication .
+
+     #+BEGIN_SRC html
+       <article>
+           <header>
+               <h1>My article title</h1>
+           </header>
+           <p>My article content</p>
+           <footer>
+               <p>Published on
+                   <time datetime="1980-07-01T15:13" pubdate> 3:13pm on July 1st, 1980</time>
+               </p>
+           </footer>
+       </article>
+     #+END_SRC
 
 ** ~<i>~ and ~<em>~
   If the reason for italics is emphasis, why mark up your page with
@@ -63,6 +148,51 @@ layout: notes
 
 ** ~<cite>~
    Title of a work, not a person. Feels wrong :(
+** ~<mark>~
+   mark denotes “a run of text in one document marked or highlighted
+   for reference purposes, due to its relevance in another context”.
+** ~<time>~
+   The time element can be used for dates, times, or combinations of
+   both
+
+   #+BEGIN_SRC html
+     <time datetime="17:00">5pm</time>
+     <time datetime="2010-04-07">April 7th</time>
+     <time datetime="2010-04-07T17:00">5pm on April 7th</time>
+   #+END_SRC
+
+** ~<meter>~
+   The meter element can be used to mark up measurements, provided
+   that those measurements are part of a scale with minimum and
+   maximum values
+
+   #+BEGIN_SRC html
+     <meter low="-273" high="100" min="12" max="30" »
+            optimum="21" value="25">
+         It's quite warm for this time of year.
+     </meter>
+   #+END_SRC
+
+** ~<progress>~
+    Progress element allows you to mark up a value that is in the
+    process of changing.
+
+    #+BEGIN_SRC html
+      <progress min="0" max="100" value="60"></progress>
+    #+END_SRC
+** roles
+  http://www.w3.org/TR/wai-aria/roles#role_definitions
+
+  Useful for assistive technology
+
+  #+BEGIN_SRC html
+    <form role="search">
+    </form>
+  #+END_SRC
+
+  #+BEGIN_SRC css
+    form[role="search"] { }
+  #+END_SRC
 
 ** obsolete
    + ~<frame>~
@@ -75,25 +205,157 @@ layout: notes
    + ~<strike>~
    + presentational attributes like ~bgcolor~, ~cellpading~,
      ~cellspacing~, ~valign~
-* Canvas
-  For creating dynamic images
-  [[https://html.spec.whatwg.org/multipage/scripting.html#the-canvas-element][Spec]]ification
 
+** Test if an element supports an attribute
+   #+BEGIN_SRC javascript
+     function elementSupportsAttribute(element,attribute) {
+         var test = document.createElement(element);
+         if (attribute in test) {
+             return true;
+         } else {
+             return false;
+         }
+     }
+
+     if (!elementSupportsAttribute('input','placeholder')) {
+         // JavaScript fallback goes here.
+     }
+   #+END_SRC
+* Forms
+
+   Think long before using ~autofocus~ attribute. It can be annoying
+   for the user.
+   You can test with JavaScript ~tag~ and properties support.
+
+   #+BEGIN_SRC html
+     <!-- autocomplete is on by default -->
+     <form autocomplete="off">
+         <label for="status">What's happening?</label>
+         <!-- you can use autofocus to put focus on a form element -->
+         <input id="status" name="status" type="text" autofocus>
+         <label for="pass">Your password</label>
+         <!-- you can disable autocomplete -->
+         <input id="pass" name="pass" type="password" required autocomplete="off">
+         <label for="hobbies">Your hobbies</label>
+         <!-- you don't need js anymore for placeholders -->
+         <input id="hobbies" name="hobbies" type="text" placeholder="Owl
+                                                                     stretching">
+
+         <label for="homeworld">Your home planet</label>
+         <input type="text" name="homeworld" id="homeworld" list="planets">
+         <!-- datalist allows to make a mix between a select and a regular input -->
+         <datalist id="planets">
+             <option value="Mercury">
+             <option value="Venus">
+             <option value="Earth">
+             <option value="Mars">
+             <option value="Jupiter">
+             <option value="Saturn">
+             <option value="Uranus">
+             <option value="Neptune">
+         </datalist>
+
+         <!-- some new useful input types -->
+         <label for="query">Search</label>
+         <input id="query" name="query" type="search">
+         <label for="email">Email address</label>
+         <input id="email" name="email" type="email">
+         <label for="website">Website</label>
+         <input id="website" name="website" type="url">
+         <label for="phone">Telephone</label>
+         <input id="phone" name="phone" type="tel">
+
+         <!-- slider! -->
+         <label for="amount">How much?</label>
+         <input id="amount" name="amount" type="range" min="1" max="5">
+
+         <!-- increase and decrease -->
+         <label for="amount">How much?</label>
+         <input id="amount" name="amount" type="number" » min="5" max="20">
+
+         <!-- date -->
+         <label for="dtstart">Start date</label>
+         <input id="dtstart" name="dtstart" type="date">
+
+         <!-- color picker -->
+         <label for="bgcolor">Background color</label>
+         <input id="bgcolor" name="bgcolor" type="color">
+
+         <!-- specify the kind of value you want -->
+         <label for="zip">US Zip code</label>
+         <input id="zip" name="zip" pattern="[\d]{5}(-[\d]{4})">
+     </form>
+   #+END_SRC
+* Audio
   #+BEGIN_SRC html
-    <canvas id="my-first-canvas" width="360" height="240">
-            <p>No canvas support? Have an old-fashioned image
-            instead:</p>
-            <img src="puppy.jpg" alt="a cute puppy">
-    </canvas>
+    <audio src="johnny_cash_hurt.mp3" autoplay loop controls></audio>
   #+END_SRC
 
-  Then you interact with it with JavaScript
+  ~autoplay~, ~loop~ and ~control~ are boolean attributes. Giving the
+  attributed a value does not matter. It is either present or not.
+  You can also use ~preload~ attribute and set it to ~none~, ~auto~
+  and ~metadata~.
+
+  You can use js to control the player.
 
   #+BEGIN_SRC js
-    var canvas = document.getElementById('my-first-canvas');
-    var context = canvas.getContext('2d');
+    document.getElementById('player').play()
   #+END_SRC
 
+  You can provide different format, specifying mime types help the browser.
+  #+BEGIN_SRC html
+    <audio controls>
+        <source src="johnny_cash.ogg" type="audio/ogg">
+        <source src="johnny_cash.mp3" type="audio/mpeg">
+    </audio>
+  #+END_SRC
+
+  Support for browsers not supporting ~<audio>~ and not including /flash/.
+  #+BEGIN_SRC html
+    <audio controls>
+     <source src="johnny_cash.ogg" type="audio/ogg">
+     <source src="johnny_cash.mp3" type="audio/mpeg">
+     <object type="application/x-shockwave-flash" »
+             data="player.swf?soundFile=johnny_cash.mp3">
+         <param name="movie" value="player.swf?soundFile=johnny_cash.mp3">
+         <a href="johnny_cash.mp3">Download the song</a>
+     </object>
+    </audio>
+  #+END_SRC
+* Video
+  ~<video>~ works like ~<audio>~. ~autoplay~, ~loop~, ~control~
+  attributes. ~preload~ also available.
+  You can have a placeholder image with the poster attribute.
+
+  #+BEGIN_SRC html
+    <video controls width="360" height="240" »
+            poster="placeholder.jpg">
+      <source src="movie.ogv" type="video/ogg">
+      <source src="movie.mp4" type="video/mp4">
+      <object type="application/x-shockwave-flash" »
+              width="360" height="240" »
+              data="player.swf?file=movie.mp4">
+          <param name="movie" »
+                 value="player.swf?file=movie.mp4">
+          <a href="movie.mp4">Download the movie</a>
+      </object>
+    </video>
+  #+END_SRC
+
+  Scriptable, styleable.
+
+* [[http://microformats.org/][Microformats]]
+  Set of conventions agreed on by a community. Used to “extend” HTML5.
+  They do it using the ~class~ attributes.
+
+  #+BEGIN_SRC html
+    <span class="vcard">
+        <span class="fn">Jeremy Keith</span>,
+        <span class="org">Clearleft</span>
+    </span>
+  #+END_SRC
+
+  There are browsers extensions and parsers that work with them
 * Typography
 ** Hyphenation
   http://meyerweb.com/eric/thoughts/2012/12/17/where-to-avoid-css-hyphenation
@@ -197,63 +459,6 @@ layout: notes
 
 * Accessibility
   http://www.w3.org/WAI/PF/html-task-force
-* Audio
-  #+BEGIN_SRC html
-    <audio src="johnny_cash_hurt.mp3" autoplay loop controls></audio>
-  #+END_SRC
-
-  ~autoplay~, ~loop~ and ~control~ are boolean attributes. Giving the
-  attributed a value does not matter. It is either present or not.
-  You can also use ~preload~ attribute and set it to ~none~, ~auto~
-  and ~metadata~.
-
-  You can use js to control the player.
-
-  #+BEGIN_SRC js
-    document.getElementById('player').play()
-  #+END_SRC
-
-  You can provide different format, specifying mime types help the browser.
-  #+BEGIN_SRC html
-    <audio controls>
-        <source src="johnny_cash.ogg" type="audio/ogg">
-        <source src="johnny_cash.mp3" type="audio/mpeg">
-    </audio>
-  #+END_SRC
-
-  Support for browsers not supporting ~<audio>~ and not including /flash/.
-  #+BEGIN_SRC html
-    <audio controls>
-     <source src="johnny_cash.ogg" type="audio/ogg">
-     <source src="johnny_cash.mp3" type="audio/mpeg">
-     <object type="application/x-shockwave-flash" »
-             data="player.swf?soundFile=johnny_cash.mp3">
-         <param name="movie" value="player.swf?soundFile=johnny_cash.mp3">
-         <a href="johnny_cash.mp3">Download the song</a>
-     </object>
-    </audio>
-  #+END_SRC
-* Video
-  ~<video>~ works like ~<audio>~. ~autoplay~, ~loop~, ~control~
-  attributes. ~preload~ also available.
-  You can have a placeholder image with the poster attribute.
-
-  #+BEGIN_SRC html
-    <video controls width="360" height="240" »
-            poster="placeholder.jpg">
-      <source src="movie.ogv" type="video/ogg">
-      <source src="movie.mp4" type="video/mp4">
-      <object type="application/x-shockwave-flash" »
-              width="360" height="240" »
-              data="player.swf?file=movie.mp4">
-          <param name="movie" »
-                 value="player.swf?file=movie.mp4">
-          <a href="movie.mp4">Download the movie</a>
-      </object>
-    </video>
-  #+END_SRC
-
-  Scriptable, styleable.
 * CSS
 ** !important
   Ignore subsequent or more specific rules, apply this one.
@@ -263,7 +468,42 @@ layout: notes
       color: blue !important;
   }
 #+END_SRC
-* svg
+** scoped styles
+
+  You can scope styles and they only apply to the containing section
+  element.
+
+  Poor support
+  http://caniuse.com/#feat=style-scoped
+
+  #+BEGIN_SRC html
+    <article>
+        <style scoped>
+            h1 { font-size: 75% }
+        </style>
+        <h1>article title</h1>
+        <p>article text.</p>
+    </article>
+  #+END_SRC
+* Canvas
+  For creating dynamic images
+  [[https://html.spec.whatwg.org/multipage/scripting.html#the-canvas-element][Spec]]ification
+
+  #+BEGIN_SRC html
+    <canvas id="my-first-canvas" width="360" height="240">
+            <p>No canvas support? Have an old-fashioned image
+            instead:</p>
+            <img src="puppy.jpg" alt="a cute puppy">
+    </canvas>
+  #+END_SRC
+
+  Then you interact with it with JavaScript
+
+  #+BEGIN_SRC js
+    var canvas = document.getElementById('my-first-canvas');
+    var context = canvas.getContext('2d');
+  #+END_SRC
+* SVG
 ** png mask for transparent jpegs
    #+BEGIN_SRC html
      <svg preserveAspectRatio="xMinYMin" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
