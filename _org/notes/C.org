@@ -569,3 +569,130 @@ layout: notes
   | 11 |
   |  3 |
   |  4 |
+
+
+  You can use pointers to have function parameters changed by
+  functions.
+
+  #+BEGIN_SRC C
+    void swap(int *px, int *py)
+    {
+      temp = *px;
+      *px = *py;
+      *py = temp;
+    }
+
+    swap(&a, &b); // & produces the address of a bariable, so &a is a pointer to a
+  #+END_SRC
+
+  The constant zero may be assigned to a pointer, and a pointer can be
+  compared to zero. The Symbolic constant ~NULL~ is often used in
+  place of zero.
+
+  Common idiom:
+  #+BEGIN_SRC C
+    // copy t to s
+    void strcpy(char *s, char *t)
+    {
+      while (*s++ = *t++)
+        ;
+    }
+  #+END_SRC
+
+  Copies two strings, works because, strings ends with ~\0~ in C, So
+  the loop will continue as long as ~\0~ in t has not been reached.
+
+  #+BEGIN_SRC C
+    *p++ = val; // push val on stack
+    val = *--p  // pop top of stack into val
+                // (decrements p before fetching the character that p points to)
+  #+END_SRC
+
+** Pointers and Arrays
+
+   If ~pa~ points to an element to an array then by definition ~pa+i~
+   points i elements after ~pa~.
+
+   The correspondence between indexing and pointer arithmetic is very
+   close. The value of a variable or expression of type array is the
+   address of element zero of the array
+
+   So the following two are equivalent
+   #+BEGIN_SRC C
+     pa = &a[0];
+     pa = a
+   #+END_SRC
+
+   Similarly you can convert ~a[i]~ to ~*(a+i)~ and that’s what C does.
+   The difference between an array name and a pointer is that a
+   pointer is a variable to ~pa = a~ and ~pa++~ are legal but ~a = pa~
+   and ~a++~ are illegal.
+
+   The following two are equivalent
+   #+BEGIN_SRC C
+     char s[];
+     char *s;
+   #+END_SRC
+
+   You can pass a sub-array to a function by passing a pointer to the
+   beginning of the sub-array.
+
+   #+BEGIN_SRC C
+     f(&a[2]);
+   #+END_SRC
+
+   #+BEGIN_SRC C
+   char *lineptr[MAXLINES] // each element is a pointer to a char
+   #+END_SRC
+
+   With two-dimensional arrays, you don't have to pass the number of
+   rows (irrelevant since what is passed is a pointer to an array of
+   rows — viewed as columns), only the number of columns.
+
+   #+BEGIN_SRC C
+     f(int daytab[][13]);
+     //or
+     f(int (*daytab)[13]);
+   #+END_SRC
+
+
+   ~[]~ has higher precedence than ~*~.
+   #+BEGIN_SRC C
+     int *daytab[13];   //Array of 13 pointers to integers
+   #+END_SRC
+
+   With
+   #+BEGIN_SRC C
+   int a[10][20];
+   int *b[10];
+   #+END_SRC
+   ~a~ has 200 int-sized locations.
+   ~b~ has 10 pointers and does not initialize them. Rows of the array
+   can be of different lengths.
+
+** Pointers to function
+   A function is not a variable but it is possible to define pointers
+   to functions.
+
+   #+BEGIN_SRC C
+     void qsort(void *v[], int left, int right, int (*comp)(void *, void *))
+   #+END_SRC
+
+   : int (*comp)(void *, void *)
+   says that ~comp~ is a pointer to a function that has two ~void *~
+   arguments and returns an int.
+
+   Very different from
+   : int *comp(void *, void *)
+   Here ~comp~ is a function returning a pointer to an int.
+
+* Command line arguments
+  When ~main~ is called it has two arguments
+
+  + ~argc~ :: the number of command line arguments
+  + ~argv~ :: a pointer to an array of character strings that contain
+              the arguments.
+
+  By convention ~argv[0]~ is the name by which the program was
+  invoked.
+  ~argv[argc]~ is a null pointer.
