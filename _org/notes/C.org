@@ -96,7 +96,7 @@ layout: notes
     They can be used as prefix (~++n~) and postfix operators (~n++~).
     ~++n~ increments before the value is used
 
-    #+BEGIN_SRC C
+    #+BEGIN_SRC C :exports both
       int n = 5;
       int m = 5;
 
@@ -298,10 +298,14 @@ layout: notes
   + ~\xhh~ :: hexadecimal number
 
 * String
-  #+BEGIN_SRC C
-    "I’m a string";
-    "I’m " "a string";
+  #+BEGIN_SRC C :exports both
+    char string[] = "I’m a string";
+    char another_string[] = "I’m " "a string";
+    printf("%s", another_string);
   #+END_SRC
+
+  #+RESULTS:
+  : I’m a string
 
   null character ~\0~ at the end
 
@@ -400,4 +404,108 @@ layout: notes
 
      found:
      // more code
+   #+END_SRC
+* Functions
+  Minimal function, ~int~ return type is assumed:
+
+  #+BEGIN_SRC C
+  dummy () {}
+  #+END_SRC
+
+  #+BEGIN_SRC C
+  double sum, atof(char[]);
+  #+END_SRC
+
+  means that sum is a ~double~ variable and that ~atof~ is a function
+  that takes one ~char[]~ argument and returns a double.
+  If there is no function prototype, a function is implicitly declared
+  by its first appearance in an expression. This can lead to
+  incoherent results.
+
+  You can type /cast/ function results.
+  #+BEGIN_SRC C
+  return (int) atof(s);
+  #+END_SRC
+
+* Static variables
+  Limits the scope of an external variable or function to the rest of
+  the source file.
+  You can also applied it to variables internal to a particular
+  functions. They are local to the function but they remain in
+  existence between function calls.
+
+  #+BEGIN_SRC C
+    static char buf[BUFSIZE];
+  #+END_SRC
+
+* Register variables
+
+  Advises the compiler that the variable will be heavily used.
+  Registers variables are to be placed in machine registers, results
+  in smaller and faster programs. Too many ~register~ declarations are
+  harmless (they are ignored).
+
+  #+BEGIN_SRC C
+    register int i;
+  #+END_SRC
+
+* Variable initialization
+  Without explicit initialization, External and static variables are
+  guaranteed to be initialized to zero. If they have an initializer it
+  must be a constant expression.
+
+  Automatic and register variables have undefined initial values.
+
+
+  Array initialization examples
+  #+BEGIN_SRC C
+    int day[] = { 31, 28, 31, 30 };
+    char pattern[] = "ould";
+  #+END_SRC
+
+* C pre-processor
+** include
+  ~#include<>~ searches in implementation defined directories. With
+  quotes searches for source file where the source program was found
+  then.
+
+** define
+  ~#define name replacement_text~ is for macro substitution. You can
+  ~undef~ too to make sure a name is available (usually to ensure that
+  a routine is a function not a macro).
+
+  #+BEGIN_SRC C
+    #define forever for(;;)
+    #define max(A, B) ((A) > (B) ? (A) : (B))
+
+    // # makes expr expanded into a quoted string
+    #define dprint(expr) printf(#expr " = %g\n", expr)
+    dprint(x/y);
+
+    // ## concatenates arguments
+    #define paste(front, back) front ## back
+    paste(name1); //creates name1
+
+    #undef forever
+  #+END_SRC
+
+** conditional inclusion
+
+   Provides code inclusion during compilation.
+   Can help to avoid including a file multiple times
+
+   #+BEGIN_SRC C
+     #if !define(HDR)
+     #define HDR
+     /* more code */
+     #elif !define(LDR)
+     /* more code */
+     #endif
+
+     #ifndef HDR
+     #define HDR
+     #endif
+
+     #ifdef HDR
+     #endif
    #+END_SRC

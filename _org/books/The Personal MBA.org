@@ -6,11 +6,16 @@ layout: notes
 #+TOC: headlines 4
 
 * Introduction
+  The book title does not lie. This the best book on finance and
+  marketing for techies.
   http://personalmba.com/
+
 * Inspiring Quotes
 
-  + Self-education is, I firmly believe, the only kind of education
-    there is. — Isaac Asimov, former professor of biochemistry at boston university and author of over five hundred books
+  + =Self-education is, I firmly believe, the only kind of education
+    there is.=
+    — Isaac Asimov, former professor of biochemistry at boston
+    university and author of over five hundred books
   + Whoever best describes the problem is the one most likely to solve
     it. — Dan Roam, author of the back of the napkin
   + You wasted $150,000 on an education you could have got for a buck
