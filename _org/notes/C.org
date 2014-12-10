@@ -509,3 +509,63 @@ layout: notes
      #ifdef HDR
      #endif
    #+END_SRC
+* Pointers and Arrays
+  A pointer is a variable that contains the address of a variable.
+
+  The unary operator ~&~ gives the address of an object. ~&~ only
+  applies to objects in memory: variables and array elements.
+  #+BEGIN_SRC C
+    p = &c;
+  #+END_SRC
+
+  The adress of ~c~ is the variable ~p~ and p is said to /point to/ ~c~.
+
+  The unary operator ~*~ is the /indirection/ or /de-referencing/
+  operator. When applied to a pointer it accesses the object the
+  pointer points to.
+
+  A pointer to ~void~ is used to hold any type of pointer but cannot
+  be de-referenced itself
+
+  #+BEGIN_SRC C :exports both
+    int x = 1, y = 2, z[10];
+    int *ip, *iq;
+    ip = &x;
+    printf("%i\n", *ip);
+
+    y = *ip;
+    printf("%i\n", y);
+
+    ,*ip = 0;
+    printf("%i\n", x);
+
+    z[0] = 9;
+
+    ip = &z[0];
+    printf("%i\n", *ip);
+
+    ,*ip += 1;
+    printf("%i\n", *ip);
+
+    ++*ip;
+    printf("%i\n", *ip);
+
+    z[1] = 3;
+    ,*ip++; // careful here, you increment ip, not what it points to
+    printf("%i\n", *ip);
+
+    (*ip)++;
+    printf("%i\n", *ip);
+
+    iq = ip; // making iq points to whatever ip points to
+  #+END_SRC
+
+  #+RESULTS:
+  |  1 |
+  |  1 |
+  |  0 |
+  |  9 |
+  | 10 |
+  | 11 |
+  |  3 |
+  |  4 |
