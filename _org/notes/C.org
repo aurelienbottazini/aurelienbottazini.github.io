@@ -240,6 +240,24 @@ layout: notes
    different with arrays*. The value passed is the location of the
    address of the beginning of the array. There is no copying of array
    elements.
+** variable length argument lists
+
+   Possible with ~...~. Must appear at the end of the argument list
+
+   ~va_list~ is used to declare a variable that will refer to each
+   argument in turn. ~va_start~ initializes ~ap~ to point to the first
+   unnamed argument.
+
+   #+BEGIN_SRC C
+     int minprintf(char *fmt, ...)
+       {
+         va_list ap; // points to each argument in turn.
+         va_start(ap, fmt); //makes app point to 1st unnamed arg in turn.
+         va_arg(ap , double); // returns one argument and steps ap to the next
+         va_end(ap); // clean up when done
+       }
+   #+END_SRC
+
 * External variables
 
    An external variable must be defined exactly once. The variable
@@ -511,6 +529,7 @@ layout: notes
    #+END_SRC
 * Pointers and Arrays
   A pointer is a variable that contains the address of a variable.
+  The addition and subtraction of two pointers is illegal.
 
   The unary operator ~&~ gives the address of an object. ~&~ only
   applies to objects in memory: variables and array elements.
@@ -672,18 +691,33 @@ layout: notes
 
 ** Pointers to function
    A function is not a variable but it is possible to define pointers
-   to functions.
+   to functions. And the generic pointer type ~void *~ is used for the
+   pointer arguments.
 
    #+BEGIN_SRC C
-     void qsort(void *v[], int left, int right, int (*comp)(void *, void *))
+     void qsort(void *v[], int left, int right, int (*comp)(void *, void *));
+
+
+     // example usage
+     char *lineptr[MAXLINES];
+     qsort((void **) lineptr, 0, nlines-1, (int (*)(void*, void*)) (numeric ? numcmp : strcmp));
    #+END_SRC
 
-   : int (*comp)(void *, void *)
+   ~strcmp~ and ~numcmp~~ are addresses of functions.
+
+   #+BEGIN_SRC C
+     int (*comp)(void *, void *)
+   #+END_SRC
+
    says that ~comp~ is a pointer to a function that has two ~void *~
    arguments and returns an int.
 
    Very different from
-   : int *comp(void *, void *)
+
+   #+BEGIN_SRC C
+     int *comp(void *, void *)
+   #+END_SRC
+
    Here ~comp~ is a function returning a pointer to an int.
 
 * Command line arguments
@@ -696,3 +730,127 @@ layout: notes
   By convention ~argv[0]~ is the name by which the program was
   invoked.
   ~argv[argc]~ is a null pointer.
+
+* Structures
+  A ~struct~ declaration defines a type
+
+  #+BEGIN_SRC C :exports both
+    struct point {
+      int x;
+      int y;
+    } x, y , z;
+
+    struct point maxpt = { 320, 200 };
+
+    printf("%d, %d", maxpt.x, maxpt.y);
+  #+END_SRC
+
+  #+RESULTS:
+  | 320 | 200 |
+
+  With a large structure, it is generally more efficient to pass a
+  pointer.
+
+  #+BEGIN_SRC C
+    struct point *pp;
+    pp->x = 300;
+    pp-> y = 200;
+  #+END_SRC
+
+  Example of a tree
+  #+BEGIN_SRC C
+    struct tnode {
+      char *word;
+      int count;
+      struct tnode *left;
+      struct tnode *right;
+    };
+  #+END_SRC
+
+* ~typdedef~
+
+  ~typdedef~ is for creating new data type names.
+
+  #+BEGIN_SRC C
+    typedef int Length;
+    Length len, maxlen;
+  #+END_SRC
+
+  Reasons to use ~typedefs~:
+  + Aesthetic issues
+  + Parameterize a program against portability problems.
+  + Provide better documentation for a program.
+
+* ~union~
+  A union is a variable that hold objects of different types and
+  sizes.
+
+  #+BEGIN_SRC C
+    union u_tag {
+      int ival;
+      float fval;
+      char *sval;
+    } u;
+  #+END_SRC
+
+  Unions are accessed just as for structures with ~.~ and ~->~.
+  An ~union~ may occur withing structures and arrays.
+
+* ~sizeof~
+
+  Can be used to compute the size of any object.
+
+  #+BEGIN_SRC C :exports both
+    int x = 3;
+    printf("%d\n", sizeof x);
+    printf("%d", sizeof(int));
+  #+END_SRC
+
+  #+RESULTS:
+  | 4 |
+  | 4 |
+
+* ~malloc~ and ~free~
+  ~malloc~ returns ~NULL~ if no space is available.
+
+* ~install~ and ~lookup~
+
+  #+BEGIN_SRC C
+    #define IN 1
+  #+END_SRC
+
+* Input and Output
+
+  + ~int getchar(void)~ :: read one character at a time. Returns ~EOF~
+       when it encounters end of file. Can be directed to a file with
+       ~<~. ~prog < infile~
+
+  + ~int putchar(int)~ :: returns the character written or ~EOF~ if an
+       errors occur. Can be directed to a file with ~>~. ~prog >
+       outfile~
+
+  + ~|~ :: runs two programs and pipes the standard output of the
+           first one into the standard input for the second one.
+           ~other_prog | prog~. ~other_prog~ output is the input of ~prog~.
+
+  + ~int printf(char *format, arg1, arg2, …)~ :: converts format and prints its arguments on the
+                standard output under control of the format.
+                ~printf("%s", s)~.
+
+  + ~int scanf(char *format, ...)~ :: analog of ~printf~. There is also
+       ~sscanf~ which reads from a string instead of standard input.
+       *Each other argument must be a pointer*. One of the most common
+       error is to forget ~&~ on arguments.
+       #+BEGIN_SRC C
+         // & not needed for monthname since an array name is a pointer
+         scanf("%d %s %d", &day, monthname, &year)
+       #+END_SRC
+
+  + ~FILE *fopen(char *name, char *mode)~ :: mode includes ~("r")~,
+       ~("w")~, ~("a")~. If a file does not exists for writing or
+       appending it is created. Opening a file for writing causes the
+       old content to be discarded. If there is any error, ~fopen~
+       returns ~NULL~.
+       #+BEGIN_SRC C
+       fp = fopen(name, mode);
+       #+END_SRC
