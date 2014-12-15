@@ -891,6 +891,91 @@ layout: notes
   + ~int ungetc(ing c, FILE *fp)~ :: pushes c back onto file fp and
        returns either c or ~EOF~ for error.
 
+
+
+** low level I/O
+
+  The maximum length of a filename component is ~NAME_MAX~ which is
+  system dependent and defined in ~dirent.h~
+
+*** Read and Write
+
+   #+BEGIN_SRC C
+     int n_read = read(int fd, char *buf, int n);
+     int n_written = write(int fd, char *buf, int n);
+   #+END_SRC
+
+   ~fd~ can be 0, 1 and 2 for standard input, output and standard
+   error (don’t forget you can redirect program input and output with
+   ~<~ and ~>~ ). Each calls returns the number of calls transferred.
+   The most common values for the number o bytes to e written are 1
+   (un-buffered), 1024 and 4096 that corresponds to physical block
+   size on a peripheral device. ~BUFSIZ~ defined in ~syscalls.h~ is a
+   good size for the local system.
+
+   #+BEGIN_SRC c
+   #include "syscalls.h"
+   char buf[BUFSIZ];
+   read(0, buf, BUFSIZ);
+   write(1, buf, BUFSIZ);
+   #+END_SRC
+
+*** ~open~, ~creat~, ~close~, ~unlink~
+
+    ~open~ is like ~fopen~ except it returns a file descriptor instead
+    of a file pointer. It returns -1 if an error occurs. It is an
+    error to open a file that does not exist.
+
+    #+BEGIN_SRC C
+      #include <fcnt1.h>
+      int fd;
+      int open(char *name, int flags, int perms);
+      fd = open(name, O_RDONLY, 0);
+    #+END_SRC
+
+    Main flags are ~O_RDONLY~, ~OWRONLY~ and ~ORDWR~.
+
+    ~creat~ is used to create new files or to rewrite old ones
+
+    #+BEGIN_SRC C
+      int creat(char *name, int perms);
+      // create files with permissions specified by perms (like chmod)
+
+      fd = creat(name, perms);
+    #+END_SRC
+
+    There is a limit to the number of file that a program can have
+    open simultaneously (often about 20).
+
+    ~close(int fd)~ breaks the connection between file descriptor and
+    an open file.
+
+    ~unlink(char *name)~ removes the file name from the file system.
+    Equivalent to standard library ~remove~.
+
+*** ~lseek~ and ~fseek~
+    Provides a way to move around in a file without reading or writing
+    any data
+
+    #+BEGIN_SRC C
+    long lseek(int fd, long offset, int origin);
+    #+END_SRC
+
+    ~origin~ can be 0, 1, 2 for beginning, current position or end of
+    file.
+
+    #+BEGIN_SRC C
+      //OL can be written as 0 ifn lseek is properly declared.
+      lseek(fd, 0L, 2); //end of file
+      lseek(fd, 0L, 0); // beginning of file
+    #+END_SRC
+
+    The return value gives the new position in the file or -1 if an
+    error occurs.
+
+    ~fseek~ is similar to ~lseek~ except that the first argument is a
+    ~File *~ and it returns non zero if an error occurred.
+
 * String operations
   From ~<string.h>~
 
