@@ -810,8 +810,18 @@ layout: notes
   | 4 |
   | 4 |
 
-* ~malloc~ and ~free~
-  ~malloc~ returns ~NULL~ if no space is available.
+* Storage / memory management
+  #+BEGIN_SRC C
+    // returns a pointer to n bytes of uninitialized storage
+    void *malloc(size_t n);
+    // returns enough space for an array of n objects ot the specified size
+    void *calloc(size_t n, site_t size);
+
+    // frees the space pointed to by p
+    free(p);
+  #+END_SRC
+
+  ~malloc~  and ~calloc~ return ~NULL~ if no space is available.
 
 * ~install~ and ~lookup~
 
@@ -854,3 +864,98 @@ layout: notes
        #+BEGIN_SRC C
        fp = fopen(name, mode);
        #+END_SRC
+
+  + ~int getc(FILE *fp)~ :: returns next character from the steam
+       ~fp~. ~EOF~ for end of file or error.
+
+  + ~int putc(int c, FILE *fp)~ :: writes c to the file ~fp~ and
+       returns character written or ~EOF~ on error.
+
+  + ~fscanf~ and ~fprintf~:: similar to ~printf~ and ~scanf~ but for
+    files.
+
+  + ~in fclose(FILE *fp)~ :: don’t forget to close your file!
+
+  + ~int ferror(FILE *fp)~ :: returns non zero if an error occurred on
+       the stream ~fp~.
+
+  + ~int feof(FILE *fp)~ :: returns non-zero if end of file error has
+       occurred on ~fp~.
+
+  + ~char *fgets(char *line, int maxline, FILE *fp)~ :: read the next
+       input line. Returns ~NULL~ on end of file or error.
+
+  + ~int fputs(char *line, FILE *fp)~ :: writes a string. Returns
+       ~EOF~ if an error occurs. 0 otherwise.
+
+  + ~int ungetc(ing c, FILE *fp)~ :: pushes c back onto file fp and
+       returns either c or ~EOF~ for error.
+
+* String operations
+  From ~<string.h>~
+
+  + ~strcat(s,t)~ :: concatenate t to end of s
+  + ~strncat(s,t,n)~ :: concatenate only n characters of t to end of s
+  + ~strcmp(s,t)~ :: return negative, zero or positive for ~s < t~, ~s
+                     == t~ and ~s > t~
+  + ~strncmp(s,t,n)~ :: compare only first n characters
+  + ~strcpy(s,t)~ :: copy t to s
+  + ~strncpy(s,t,n)~ :: copy at most n characters of t to s
+  + ~strlen(s)~ :: length of s
+  + ~strchr(s,c)~ :: return pointer to first c in s, ~NULL~ if not present
+  + ~strrchr(s,c)~ :: return pointer to last c in s, ~NULL~ if not present
+
+* Character testing
+  From ~<ctype.h>~
+
+  + ~isalpha(c)~ :: non zero if c is alphabetic
+  + ~isupper(c)~ :: non zero if c is upper case
+  + ~islower(c)~ :: non zero if c is lower case
+  + ~isdigit(c)~ :: nonzero if c is digit
+  + ~isalnum(c)~ :: non zero if c is alphabetic or digit
+  + ~isspace(c)~ :: non zero for blank, tab, newline, return,
+                    formfeed, vertical tab
+  + ~toupper(c)~ :: return c converted to upper case
+  + ~tolower(c)~ :: return c converted to lower case
+
+* exit
+  Terminates program execution when it is used.
+
+  #+BEGIN_SRC C
+    exit(0)
+  #+END_SRC
+
+  ~exit~ calls ~fclose~ for each open output file to flush out any
+  buffered output
+
+* system
+  Execute command on local operating system.
+
+  #+BEGIN_SRC C
+    system("date");
+  #+END_SRC
+
+* Mathematical functions
+  From ~<math.h>~
+
+  + ~sin(x)~
+  + ~cos(x)~
+  + ~atan2(y/x)~ /arctangent/
+  + ~exp(x)~ e^x
+  + ~log(x)~
+  + ~log10(x)~
+  + ~pow(x,y)~ x^y
+  + ~sqrt(x)~
+  + ~fabs(x)~ absolute value of x
+
+* Random numbers
+  #+BEGIN_SRC C
+    // random integers in the range zero to RAND_MAX
+    rand()
+
+    // random float numbers greater than or equal to zero but less than one
+    #define frand() ((double) rand() / (RAND_MAX+1.0))
+
+    // sets the seed for rand
+    srand(unsigned);
+  #+END_SRC
