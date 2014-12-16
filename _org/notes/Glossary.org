@@ -1,0 +1,25 @@
+#+BEGIN_HTML
+---
+layout: notes
+---
+#+END_HTML
+#+TOC: headlines 4
+
+* Polymorphism
+
+  Objects from different classes can define methods that share the
+  same name.
+
+* Dynamic typing
+
+  Defers the determination of the class that on object belongs to
+  until the program is executing.
+
+* Static typing
+
+  A variable is always used to store objects of the same type.
+
+* Dynamic binding
+
+  Defers the determination of the actual method to invoke on an object
+  until program execution time.

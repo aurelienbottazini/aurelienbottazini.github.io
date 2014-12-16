@@ -1,0 +1,231 @@
+#+BEGIN_HTML
+---
+layout: notes
+---
+#+END_HTML
+#+TOC: headlines 4
+
+
+* Learn C
+  Objective comes on top of C. So if you want to be really good at
+  Objective C, learn C before hand.
+  In those notes I focus on Objective C.
+
+* gcc
+  You can use gcc to compile and link your program
+
+  #+BEGIN_SRC sh
+    gcc -framework Foundation files -o progname
+  #+END_SRC
+
+* ~NSLog~
+  First argument is the character string to be displayed.
+
+  #+BEGIN_SRC C
+    NSLog(@"the sum of %i and %i is %i", value1, value2, sum);
+  #+END_SRC
+
+* Classes
+
+  ~[MyClass alloc] init]~
+  ~[MyClass new]~
+
+  and once you are done
+
+  ~[MyClass release];~
+
+** calling class or instance methods
+   #+BEGIN_SRC C
+     [ClassOrInstance method];
+
+     //Another way to look at it
+     [receiver message];
+   #+END_SRC
+
+** @interface
+
+   Describes the class, its data components and methods
+   #+BEGIN_SRC C
+     @interface NewClassName: ParentClassName
+     {
+       int member;
+       int another_member;
+     }
+
+     -(void) method1;
+     +(int) method2;
+     @end
+   #+END_SRC
+
+** @implementation
+
+   Contain code that implements the class and instance methods.
+
+** ~- (void) methodName: (int)n;~
+
+   ~-~ is the method type. ~-~ is for instance methods, ~+~ indicates
+   a class method.
+   ~(void)~ is the return type. If you don't specify a return type,
+   ~id~ is the default.
+
+** synthesized accessor methods
+
+   Automatic /get/ and /set/.
+   Add ~@property~ to your class interface and ~@synthetize~ in your
+   implementation.
+
+   #+BEGIN_SRC C
+     @interface MyClass : NSObject
+     {
+       int member;
+       int another_member;
+     }
+
+     @property int member, another_member;
+
+     @end
+
+     @implementation
+
+     @synthesize member, another_member;
+
+     @end
+   #+END_SRC
+
+** dot
+   As of Objective-C 2.0 you can access properties using the dot
+   operator.
+
+   #+BEGIN_SRC C
+     [myInstance property]
+     myInstance.property
+   #+END_SRC
+
+** ~@class~
+
+   You can either ~#import~ an header file or use ~@class MyClass~.
+   ~@class~ is more efficient because the compiler does not need to
+   process the entire header file.
+
+* inheritance
+  #+BEGIN_SRC C
+    @interface Child: Parent
+
+    @end
+  #+END_SRC
+
+* ~id~
+
+  ~id~ is a data type used to store an object of any type. In a sense,
+  it is a generic object type.
+
+  We don't declare all objects as ~id~ because static typing allows
+  the compiler to check for errors. And it is better to get errors
+  during the compilation time than during execution time.
+* instropection
+
+  + ~isKindOfClass~
+  + ~isMemberOfClass~
+  + ~respondsToSelector~
+  + ~isSubclassofClass~
+  + ~performSelector~
+
+* Selectors
+
+  #+BEGIN_SRC C
+  @selector (alloc)
+  #+END_SRC
+
+  Produces a value of type ~SEL~ the method named ~alloc~
+
+* try & catch
+
+  #+BEGIN_SRC C
+    @try {
+
+    }
+    @catch (NSException *exception){
+
+    }
+  #+END_SRC
+
+  There is also a ~@finally~ block. It executes whether or not a
+  statement in a ~@try~ throws an exception.
+
+  You can ~@throw~ you own exception. Inside a ~@catch~, ~@throw;~
+  throw the same exception that took you into the block.
+
+* auto
+  To declare an automatic local variable as opposed to a static one.
+  It is the default for a variable.
+
+* volatile
+  Inverse to ~const~ (sort of). Tells the compiler that the specified
+  variable will change its value. Prevent the compiler from optimizing
+  redundant assignments to a variable.
+
+* ~enum~
+
+  #+BEGIN_SRC C
+    // up = 0, down = 1, left = 10, right = left + 1 = 11
+    enum direction { up, down, left = 10, right};
+  #+END_SRC
+
+* categories
+
+  Provides a way to modularize the definition of a class into groups
+  or categories.
+
+  #+BEGIN_SRC C
+    @interface MyClass (MyCategory)
+    @end
+
+    @implementation MyClass (MyCategory)
+    @end
+  #+END_SRC
+
+
+* protocols
+
+  A protocol is a list of methods that is shared among classes.
+
+  #+BEGIN_SRC C
+  @interface MyClass: NSObject <NSCopying, NSCoding>
+  #+END_SRC
+
+  And you need to implement the methods to conform to the protocol
+
+  Here ~Drawing~ protocol requires you to implement ~paint~ in your
+  classes. ~outline~ can be implemented too but it is optional.
+
+  #+BEGIN_SRC C
+    @protocol Drawing
+    -(void) paint;
+    @optional
+    -(void) outline;
+    @end
+  #+END_SRC
+
+
+  You help the compiler to check for compliance of ~id~ variables and
+  protocols.
+
+  #+BEGIN_SRC C
+  id <Drawing> currentObject;
+  #+END_SRC
+
+
+  An /informal protocol/ is really a category that lists a group of methods but
+  does not implement them. They can also be referred as /abstract/
+  protocols.
+
+* compound literal
+
+  A /compound literal/ is a type name enclosed in parentheses followed
+  by an initialization list.
+
+  #+BEGIN_SRC C
+  (struct date) { .month = 7, .day =2, .year = 2004 };
+  int intPtr *;
+  intPrt = (int [100]) {[0] = 1, [50] = 50, [99] = 99 };
+  #+END_SRC
