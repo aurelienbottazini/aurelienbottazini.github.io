@@ -24,8 +24,17 @@ module.exports = function(grunt) {
                     compress: true
                 },
                 files: {
-                    'js/home.min.js': [ '_js/_bower.js', '_js/home.js'],
-                    'js/org-export.min.js': ['_js/bower.js', '_js/org-export.js']
+                    'js/home.min.js':
+                    [
+                        '_js/_bower.js',
+                        '_js/common.js',
+                        '_js/home.js'],
+                    'js/org-export.min.js':
+                    ['_js/bower.js',
+                     '_js/org-export.js'],
+                    'js/resume.min.js':
+                    ['_js/_bower.js',
+                    '_js/common.js']
                 }
             }
         },

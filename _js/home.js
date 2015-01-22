@@ -1,5 +1,5 @@
 
-window.onload = function(){
+var setUpHome = function(){
     var i, src, extension = Modernizr.svg ? '.svg' : '.png';
     var planete_rouge = $('#planete-rouge');
     var planete_vie = $('#planete-vie');
@@ -150,3 +150,5 @@ window.onload = function(){
         });
     }
 };
+
+addListener('load', window, setUpHome);
