@@ -10,3 +10,10 @@ kramdown:
 gems:
   - jekyll-sitemap
   - jemoji
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
