@@ -1,0 +1,193 @@
+Running Lean: Iterate from Plan A to a Plan That Works (Lean Series)
+— Ash Maurya
+http://theleanstartup.com.
+
+Another authoritative guide:
+Eric Ries — The Lean Startup
+
+Amazing Marketing Book:
+Al Ries and Jack Trout — Positioning: The Battle for Your Mind
+
+Software pricing:
+Neil Davidson — Don’t Just Roll the Dice.
+
+* Advice
+
+  + Practice Trumps Theory
+  + You get a gold star not for following a process, but for achieving results.
+  + When the time comes, it is important to get competent professional advice about financing and structuring your company and its intellectual property assets.
+  + Your job isn’t just building the best solution, but owning the entire business model and making all the pieces fit.
+  + The bigger risk for most startups is building something nobody wants.
+  + Be different, but make sure your difference matters.
+  + Think in the present. Business plans try too hard to predict the
+    future, which is impossible.
+  + Be concise. It’s a lot easier to describe something in a paragraph than in a single sentence.
+  + Instant Clarity Headline = End Result Customer Wants + Specific Period of Time + Address the Objections
+  + Study other good UVPs.
+    The best way to craft a good UVP is to study the UVPs of the
+    brands you admire. Visit their landing pages and deconstruct how
+    and why their messaging works. Some of my best teachers have been
+    Apple, 37signals, and FreshBooks.
+  + The initial goal of a startup is to learn, not to scale.
+    So, at first it’s OK to rely on any channels that get you in front
+    of potential customers. A commonly cited paid channel is search
+    engine marketing (SEM) (hard to do today because of cost increases).
+  + You need to have a product worth spreading first.
+  + Focus on finished story benefits.
+  + Pivots are about finding a plan that works, while optimizations are about accelerating that plan.
+  + “Life is too short to keep building something nobody (or not enough people) want.”
+  + It is imperative that you share your model with at least one other person.
+  + It’s not what you measure, but how.
+  + Make Feedback Easy
+  + Catch and report unexpected errors. When early users run into problems, they don’t turn into testers. They leave.
+  + Reach out to your users. You should be able to extract the list of users that failed at a particular step in your funnel. If you know what went wrong, correct it, and ask those users to come back.
+  + Get “lost sales” prospects to talk to you.
+    Offer a $25–$50 gift card or donation to charity in exchange for
+    15 minutes of their time.
+  + Your goal is to establish “just enough” traffic to support learning.
+  + Features Must Be Pulled, Not Pushed.
+  + building enough of a runway so that I could afford my creative addiction was the prize here.
+  + Challenge yourself to find the simplest thing you can do to test a hypothesis.
+  + Give your MVP a chance. First troubleshoot and resolve issues with existing features before chasing new features.
+  + Backlog All potential features start life in the Backlog bucket. They get in there in one of the following ways: Existing feature improvements (e.g., refined signup flow) Customer feature requests Your feature requests (e.g., the nice-to-haves you deferred earlier)
+  + The burden of quickly identifying problems and reaching out to
+    your users is yours.
+  + What Are the Early Traction Exit Criteria?
+    You are done when you can: Retain 40% of your users and pass the Sean Ellis Test
+  + The key is not to take this feedback as either “judgment” or “validation,” but rather as a means of identifying and prioritizing risk.
+  + I specifically want to know: What do they consider to be the riskiest aspect of this plan? Have they overcome similar risks? How? How would they go about testing these risks? Are there other people I should speak with?
+  + Validating hypotheses in this way — first qualitatively, then quantitatively — is a key principle we’ll see applied in various stages throughout this book.
+  + Getting the product right First make sure you have a problem worth solving. Then define the smallest possible solution (MVP). Build and validate your MVP at small scale (demonstrate UVP). Then verify it at large scale.
+  + Product/Market fit means being in a good market with a product that can satisfy that market.
+
+* Team
+
+  + Organize around two teams, the Problem team and the Solution team.
+  + team The Problem team is mostly involved with “outside-the-building” activities such as interviewing customers, running usability tests, and so on. The Solution team The Solution team is mostly involved with “inside-the-building” activities such as writing code, running tests, deploying releases, and so on. I say “mostly” because these teams need to be highly cross-functional with overlapping members.
+  + At this stage of a product, you’re best served with having a single Problem/Solution team. Start with the Smallest Team Possible, but No Smaller The ideal Problem/Solution team size is two or three people.
+
+* What you will learn
+
+  + How to first find a problem worth solving before defining a solution
+  + How to find early customers
+  + When is the ideal time to raise funding
+    The ideal time to raise your big round of funding is after
+    product/market fit, because at that time, both you and your
+    investors have aligned goals: to scale the business.
+  + How to test pricing
+  + How to decide what goes into Release 1.0
+  + How to build and measure what customers want
+  + How to maximize for speed, learning, and focus
+  + What is product/market fit
+  + How to iterate to product/market fit
+  + Everyone gets hit by ideas when they least expect them (in the shower, while driving, etc.). Most people ignore them. Entrepreneurs choose to act on them.
+  + Customers don’t care about your solution. They care about their problems.
+
+* Startups
+
+  + Of those startups that succeed, two-thirds report having drastically changed their plans along the way.
+  + The second realization was that startups can consume years of your life.
+
+* Customers
+
+  + Even though customers hold all the answers, you simply cannot ask
+    them what they want.
+  + We started listening to the most popular (vocal) requests and ended up with a bloated application and lots of one-time-use features.
+  + Maximize learning (about customers) per unit time.
+  + In order to maximize learning, you have to pick bold outcomes
+    instead of chasing incremental improvements.
+    So, rather than changing the color of your call-to-action button,
+    change your entire landing page. Rather than tweaking your unique
+    value proposition (UVP) for a single customer segment, experiment
+    with different UVPs for different customer segments.
+  + Distinguish between customers and users.
+    If you have multiple user roles in your product, identify your
+    customers. A customer is someone who pays for your product. A user
+    does not.
+  + You need to start with a specific customer in mind.
+  + Target early adopters.
+  + Don’t ask customers what they want. Measure what they do.
+  + Prefer face-to-face interviews.
+  + Start with people you know.
+  + Prepare yourself to interview 30 to 60 people.
+  + With my latest product, USERcycle, I used only customer interviews, HTML, and Illustrator mock-ups to understand the problem, define the solution, and sign up 100 paying customers before I started building the MVP.
+  + Prioritize customer segments that you believe will need your product the most. The goal is to have one or more of your top three problems as must-haves for them. Ease of reach (Channels) Building a path to customers is one of the harder aspects of building a successful product. If you have an easier path to one segment of customers over others, take that into consideration. It doesn’t guarantee you’ll find a problem worth solving or a viable business model, but it will get you out of the building faster and speed up your learning. Price/gross margin (Revenue Streams/Cost Structure) What you can charge for your product is largely driven by the customer segment. Pick a customer segment that allows you to maximize on your margins. The more money you get to keep, the fewer customers you need to reach to break even. Market size (Customer Segments) Pick a customer segment that represents a big enough market given the goals for your business. Technical feasibility (Solution) Visit your Solution box to ensure that your planned solution not only is feasible, but also represents the minimum feature set to put in front of customers.
+  + The fastest way to learn is to talk to customers. Not releasing code, or collecting analytics, but talking to people.
+  + You can’t see the customer during a survey. Body language cues are as much an indicator of Problem/Solution Fit as the answers themselves.
+  + I prefer getting feedback from customers in person or over the phone than through other means like email, forums, or discussion boards.
+  + Get paying customers to talk to you. Get them on the phone, thank them for upgrading, and ask them: How they heard about you (if you don’t know) Why they bought from you What could be improved
+
+
+* Lean
+
+  + “Being Lean” is fundamentally about eliminating waste or being
+    efficient with resources,
+  + Three steps:
+    - Document your Plan A.
+    - Identify the riskiest parts of your plan.
+    - Systematically test your plan.
+  + The first step is writing down your initial vision and then
+    sharing it with at least one other person. Use a one-page business
+    model for that (Lean canvas) - Figure 1-1
+  + Your first goal should be to establish just enough of a runway to
+    allow you to start testing and validating your business model with
+    customers.
+  + USERcycle is a customer lifecycle management software.
+    It helps companies convert their users into passionate customers.
+    Passionate customers come back and use your product, tell others
+    about your product, and pay for your product (or get you paid).
+
+* Lean canvas
+  http://LeanCanvas.com
+
+  + Lean Canvas helps deconstruct your business model into nine distinct subparts that are then systematically tested, in order of highest to lowest risk.
+  + Lean Canvas is a business model validation tool.
+    It’s a companion tool to this book that helps you document your
+    business model, measure progress, and communicate learning with
+    your internal and external stakeholders.
+  + Sketch a Lean Canvas for each customer segment.
+    I recommend starting with the top two or three customer segments
+    you feel you understand the best or find most promising.
+  + Sketch a canvas in one sitting.
+  + It’s OK to leave sections blank.
+  + A real unfair advantage is something that cannot be easily copied or bought.
+
+* Questions
+
+  + Is it something customers want? (must-have) Will they pay for it? If not, who will? (viable) Can it be solved? (feasible)
+  + Have I built something people want?
+  + Scale Key question: How do I accelerate growth?
+  + What are you solving? (Problem)
+  + How do customers rank the top three problems?
+  + Who is the competition? (Existing Alternatives)
+  + How do customers solve these problems today?
+  +  Who has the pain? (Customer Segments)
+
+* Tools
+
+  + There are lots of third-party analytics products on the market.
+    I have cut my teeth on Google Analytics, KISSmetrics, and Mixpanel.
+
+* Interesting figures
+
+  + Figure 1-6. Build-Measure-Learn loop
+  + Figure 1-7. Iteration meta-pattern
+  + Figure 3-1. Lean Canvas
+  + Figure 5-3. Lessons learned
+  + Figure 14-2 captures the workflow we’ve followed throughout this book.
+  + Figure 3-7. Dave McClure’s Pirate Metrics
+  + Figure 13-4. Getting Things Done (GTD) style workflow for how to process new work requests
+  + Figure 13-5. Kanban board
+  + Figure 9-6. There are several basic elements that make up a successful landing page
+    - Unique value proposition Put the latest refinement of your UVP here.
+    - Supporting visual Support your UVP with a visual aid that resonates strongly with your target audience. The actual medium may be an image, a screenshot, or a video depending on your specific audience.
+    - A clear call to action Every page needs to have a single, clear call to action. It should stand out and set a clear expectation as to what happens next.
+    - Invitation to learn more Some visitors may need more information before they’re convinced.
+    - Provide additional links to your tour page (if you have one), or
+      your 1-800 number.
+    - Social proof Social proof elements help to raise your
+      credibility and trust.
+      They are typically provided through customer testimonials and
+      “As Seen On” logos. The reason they are absent from the landing
+      page in Figure 9-6 is that you don’t have these yet and will get
+      them later from your early adopters.
