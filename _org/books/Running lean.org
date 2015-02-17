@@ -1,3 +1,10 @@
+#+BEGIN_HTML
+---
+layout: notes
+---
+#+END_HTML
+#+TOC: headlines 4
+
 Running Lean: Iterate from Plan A to a Plan That Works (Lean Series)
 — Ash Maurya
 http://theleanstartup.com.
@@ -83,7 +90,7 @@ Neil Davidson — Don’t Just Roll the Dice.
   + Everyone gets hit by ideas when they least expect them (in the shower, while driving, etc.). Most people ignore them. Entrepreneurs choose to act on them.
   + Customers don’t care about your solution. They care about their problems.
 
-* Startups
+* Start ups
 
   + Of those startups that succeed, two-thirds report having drastically changed their plans along the way.
   + The second realization was that startups can consume years of your life.
