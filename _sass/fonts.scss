@@ -75,6 +75,9 @@ body {
         background-color: rgb(255, 255, 255);
     }
 }
+p, ul, ol {
+    font-size: 1.3em;
+}
 h1, h2, h3, h4, h5, h6 {
     font-family: "Alegreya Sans", 'Helvetica Neue', Helvetica, "Trebuchet MS", Arial, sans-serif;
     font-weight: 700;
@@ -87,7 +90,7 @@ h1 {
     color: #dc322f;
     text-shadow: -.010em .010em rgb(255, 255, 255),
     -.050em .050em #cdcdcd;
-    font-size: 3.4em;
+    font-size: 2.75em;
     page-break-after: always;
 }
 h2 {

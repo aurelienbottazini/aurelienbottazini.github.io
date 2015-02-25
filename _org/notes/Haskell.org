@@ -19,6 +19,9 @@ layout: notes
   transparency*. Haskell is statically typed with type inference. It
   tries to figure out what is a string, what is a number etc.
 
+  The easiest way to get started with haskell is to install the
+  [[https://www.haskell.org/platform/][haskell platform]].
+
   /GHCi/ is Haskell interactive environment. Launched from
   terminal. To load a file inside /GHCi/ use ~:l file name~. It
   will load filename.hs. ~:r~ reloads the current script.
