@@ -1,0 +1,518 @@
+#+BEGIN_HTML
+---
+layout: notes
+---
+#+END_HTML
+#+TOC: headlines 4
+
+[[https://docs.angularjs.org/tutorial][Tutorial]]
+[[https://docs.angularjs.org/guide/][Developer Guide]]
+
+
+Plugins:
+ - http://ng-inspector.org/
+ - https://github.com/angular/angularjs-batarang
+
+* Basics
+
+#+BEGIN_SRC html
+<html ng-app>
+#+END_SRC
+
+It flags the html element that Angular should consider to be the root
+element of your application. Developer can choose only part of their
+web-page to treated as angular applications.
+
+#+BEGIN_SRC js
+<script src="bower_components/angular/angular.js">
+#+END_SRC
+
+Download and loads Angular. Looks for ~ngApp~ directive and if it
+finds it bootstrap the application with corresponding root element.
+
+spinal-case for custom attributes and camelCase for corresponding
+directives.
+
+Using ~ng-app~ is the automatic way to bootstrap your application.
+You can also do it manually for complex cases https://docs.angularjs.org/guide/bootstrap.
+
+#+BEGIN_SRC html
+  hello {{ 'world' }}
+#+END_SRC
+
+~{{}}~ will make angular evaluate the expression. Evaluated in the
+context of current model scope.
+
+[[https://github.com/angular/angular-seed][Template for typical Angular application]]
+
+MVC pattern is encouraged.
+
+~ng-repeat~ is angular repeat directive
+~ng-controller~ attach to a controller the corresponding tag
+
+#+BEGIN_SRC html
+  <ul ng-controller="PhoneListCtrl">
+    <li ng-repeat="phone in phones">
+        {{ phone.name }} - {{ phone.snippet }}
+    </li>
+  </ul>
+#+END_SRC
+
+And inside ~app/js/controllers.js~
+
+#+BEGIN_SRC js
+var phonecatApp = angular.module('phonecatApp', []);
+
+phonecatApp.controller('PhoneListCtrl', function($scope) {
+  $scope.phones = [
+    {'name': 'Nexus S',
+     'snippet': 'Fast just got faster with Nexus S.'},
+    {'name': 'Motorola XOOM™ with Wi-Fi',
+     'snippet': 'The Next, Next Generation tablet.'},
+    {'name': 'MOTOROLA XOOM™',
+     'snippet': 'The Next, Next Generation tablet.'}
+  ];
+});
+#+END_SRC
+
+~$scope~ is a prototypical descendent of the root scope defined when
+application creation.
+https://docs.angularjs.org/api/ng/type/$rootScope.Scope.
+Any changes to the model are reflected in the view and any changes
+that occur in the view are reflected in the model.
+
+This is a *two way data binding*
+
+* Bind template
+To prevent the display of {{}} while angular is loading in title
+before angular loads you can use ~ngBind~ and ~ngBindTemplate~
+
+#+BEGIN_SRC html
+<title ng-bind-template="Google Phone Gallery: {{query}}">Google Phone Gallery</title>
+#+END_SRC
+
+* ~ngSrc~
+  Prevents browsers to make an http request to an invalid location before
+  Angular has the chance to evaluate the expression
+
+  #+BEGIN_SRC html
+    <img ng-src="{{phone.imageUrl}}">
+  #+END_SRC
+* Search
+  #+BEGIN_SRC html
+    <input ng-model="query">
+
+    <li ng-repeat="phone in phones | filter:query">
+  #+END_SRC
+
+  Angular bings the name of the input box (~query~) to a variable of
+  the same name. That variable is used as a filter in the list
+  repeater.
+  Everything is transparent to the developer
+
+** orderProp
+
+   Can be used to sort (and filter) results.
+   #+BEGIN_SRC html
+     <select ng-model="orderProp">
+         <option value="name">Alphabetical</option>
+         <option value="age">Newest</option>
+         <option value="-age">Oldest</option>
+     </select>
+
+     <li ng-repeat="phone in phones | filter:query | orderBy:orderProp">
+   #+END_SRC
+
+* Tests
+
+  Angular developers prefer to use [[https://jasmine.github.io/][Jasmine]]
+
+** Unit tests
+  Angular seed project uses [[https://karma-runner.github.io/][Karma]] to run unit tests
+  To run units tests and watch for changes ~npm test~. Don't minimize
+  your browser. It can lead to tests running very slowly on some OS.
+
+  Easy to do thanks to MVC
+
+  #+BEGIN_SRC js
+    describe('PhoneListCtrl', function(){
+
+        it('should create "phones" model with 3 phones', function() {
+            var scope = {},
+                ctrl = new PhoneListCtrl(scope);
+
+            expect(scope.phones.length).toBe(3);
+        });
+
+    });
+  #+END_SRC
+
+  Angular provides a ~$controller~ which can be used to retrieve a
+  controller by name.
+
+  Every controller has an associated $scope object
+
+  #+BEGIN_SRC js
+    describe('PhoneListCtrl', function(){
+
+        beforeEach(module('phonecatApp'));
+
+        it('should create "phones" model with 3 phones', inject(function($controller) {
+            var scope = {},
+                ctrl = $controller('PhoneListCtrl', {$scope:scope});
+
+            expect(scope.phones.length).toBe(3);
+        }));
+
+    });
+  #+END_SRC
+
+** ~$http~
+   Angular provides a mock ~$http~ service for tests: ~$httpBackend~
+
+   #+BEGIN_SRC js
+     // inject guarantees each test is isolated from others.
+     beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
+         $httpBackend = _$httpBackend_;
+         $httpBackend.expectGET('phones/phones.json').
+             respond([{name: 'Nexus S'}, {name: 'Motorola DROID'}]);
+
+         scope = $rootScope.$new();
+         ctrl = $controller('PhoneListCtrl', {$scope: scope});
+     }));
+
+     it('should create "phones" model with 2 phones fetched from xhr', function() {
+         expect(scope.phones).toBeUndefined();
+         $httpBackend.flush(); // returns http request response
+
+         expect(scope.phones).toEqual([{name: 'Nexus S'},
+                                       {name: 'Motorola DROID'}]);
+     });
+   #+END_SRC
+
+** Scenarios (e2e)
+   With [[https://github.com/angular/protractor][Protractor]]
+   Before testing e2e You need to
+
+   + make sure the application is running ~npm start~
+   + install and update webdriver ~npm install~ & ~npm run update-webdriver~
+   + ~npm run protractor~
+
+   #+BEGIN_SRC js
+     describe('PhoneCat App', function() {
+
+         describe('Phone list view', function() {
+
+             beforeEach(function() {
+                 browser.get('app/index.html');
+             });
+
+
+             it('should filter the phone list as a user types into the search box', function() {
+
+                 var phoneList = element.all(by.repeater('phone in phones'));
+                 var query = element(by.model('query'));
+
+                 expect(phoneList.count()).toBe(3);
+
+                 query.sendKeys('nexus');
+                 expect(phoneList.count()).toBe(1);
+
+                 query.clear();
+                 query.sendKeys('motorola');
+                 expect(phoneList.count()).toBe(2);
+             });
+         });
+     });
+   #+END_SRC
+
+** ~ngResource~
+   You need to load angular-resource inside Karma configuration if you
+   are using ~ngResource~. You should also use ~toEqualData~ instead of
+   ~toEqual~ to compare objects
+
+  #+BEGIN_SRC js
+    it('should create "phones" model with 2 phones fetched from xhr', function() {
+        expect(scope.phones).toEqualData([]);
+        $httpBackend.flush();
+
+        expect(scope.phones).toEqualData(
+            [{name: 'Nexus S'}, {name: 'Motorola DROID'}]);
+      });
+  #+END_SRC
+* [[https://docs.angularjs.org/guide/services][Services]]
+
+  Angular services are substitutable objects that are wired together
+  using dependency injection (DI). You can use services to organize
+  and share code across your app.
+
+  Angular services are:
+
+  Lazily instantiated – Angular only instantiates a service when an
+  application component depends on it. Singletons – Each component
+  dependent on a service gets a reference to the single instance
+  generated by the service factory.
+
+  Angular offers several useful services (like ~$http~), but for most
+  applications you'll also want to create your own.
+
+
+** ~$http~
+  To use a service in angular you declare the dependencies as
+  arguments in your controller’s constructor.
+
+  #+BEGIN_SRC js
+    phonecatApp.controller('PhoneListCtrl', function ($scope, $http) {
+        $http.get('phones/phones.json').success(function(data) {
+            $scope.phones = data;
+        });
+    });
+  #+END_SRC
+
+  Angular parsed the json response for us.
+
+  You can have problems  when you minify the javascript code as all
+  functions arguments will be minified as well.
+  A good way to overcome this problem is to use an inline annotation.
+
+  #+BEGIN_SRC js
+    function PhoneListCtrl($scope, $http) {...}
+    phonecatApp.controller('PhoneListCtrl', ['$scope', '$http', PhoneListCtrl]);
+  #+END_SRC
+* ~ngRoute~
+
+  Distributed separately from the core Angular framework.
+
+  Install it with bower and load it.
+
+  #+BEGIN_SRC html
+    <script src="bower_components/angular-route/angular-route.js"></script>
+  #+END_SRC
+
+
+  #+BEGIN_SRC js
+    phonecatApp.config(['$routeProvider',
+                        function($routeProvider) {
+                            $routeProvider.
+                                when('/phones', {
+                                    templateUrl: 'partials/phone-list.html',
+                                    controller: 'PhoneListCtrl'
+                                }).
+                                when('/phones/:phoneId', {
+                                    templateUrl: 'partials/phone-detail.html',
+                                    controller: 'PhoneDetailCtrl'
+                                }).
+                                otherwise({
+                                    redirectTo: '/phones'
+                                });
+                        }]);
+  #+END_SRC
+
+  Anything with a ~:~ notation is extracted to ~$routeParams~ object.
+
+  #+BEGIN_SRC js
+    var phonecatControllers = angular.module('phonecatControllers', []);
+
+    phonecatControllers.controller('PhoneListCtrl', ['$scope', '$http',
+                                                     function ($scope, $http) {
+                                                         $http.get('phones/phones.json').success(function(data) {
+                                                             $scope.phones = data;
+                                                         });
+
+                                                         $scope.orderProp = 'age';
+                                                     }]);
+
+    phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams',
+                                                       function($scope, $routeParams) {
+                                                           $scope.phoneId = $routeParams.phoneId;
+                                                       }]);
+  #+END_SRC
+* ~ng-view~
+  #+BEGIN_SRC html
+    <body>
+
+        <div ng-view></div>
+
+    </body>
+  #+END_SRC
+
+  And we use routes and partials to display the correct view.
+
+* filters
+
+** Built in
+
+     - {{ "lower cap string" | uppercase }}
+
+** Custom
+
+   #+BEGIN_SRC js
+     angular.module('phonecatFilters', []).filter('checkmark', function() {
+         return function(input) {
+             return input ? '\u2713' : '\u2718';
+         };
+     });
+   #+END_SRC
+
+* ~ng-click~
+
+  #+BEGIN_SRC html
+    <img ng-src="{{img}}" ng-click="setImage(img)">
+  #+END_SRC
+
+  #+BEGIN_SRC js
+    var phonecatControllers = angular.module('phonecatControllers',[]);
+
+    phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams', '$http',
+                                                       function($scope, $routeParams, $http) {
+                                                           $http.get('phones/' + $routeParams.phoneId + '.json').success(function(data) {
+                                                               $scope.phone = data;
+                                                               $scope.mainImageUrl = data.images[0];
+                                                           });
+
+                                                           $scope.setImage = function(imageUrl) {
+                                                               $scope.mainImageUrl = imageUrl;
+                                                           }
+                                                       }]);
+  #+END_SRC
+
+* REST
+
+  Provided by ~ngResource~. Use Bower to install it.
+
+  #+BEGIN_SRC html
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+  #+END_SRC
+
+
+  #+BEGIN_SRC js
+    var phonecatServices = angular.module('phonecatServices', ['ngResource']);
+
+    phonecatServices.factory('Phone', ['$resource',
+                                       function($resource){
+                                           return $resource('phones/:phoneId.json', {}, {
+                                               query: {method:'GET', params:{phoneId:'phones'}, isArray:true}
+                                           });
+                                       }]);
+  #+END_SRC
+
+  We pass to the factory function the name of the service and the
+  factory function. The factory function is similar to the controller
+  function in the sense it can have dependencies injected as function
+  arguments.
+
+  #+BEGIN_SRC js
+    phonecatControllers.controller('PhoneListCtrl', ['$scope', 'Phone', function($scope, Phone) {
+        $scope.phones = Phone.query();
+        $scope.orderProp = 'age';
+    }]);
+  #+END_SRC
+
+* ~ngAnimate~
+  https://docs.angularjs.org/guide/animations
+
+  Distributed separately
+
+  Animations are completely based on CSS classes
+
+  The ng-enter class is applied to the element when a new phone is added to the list and rendered on the page.
+  The ng-move class is applied when items are moved around in the list.
+  The ng-leave class is applied when they're removed from the list.
+
+  #+BEGIN_SRC html
+    <div class="view-container">
+        <div ng-view class="view-frame"></div>
+    </div>
+  #+END_SRC
+
+  #+BEGIN_SRC css
+    // need vendor prefixes to be useful
+    .view-frame.ng-enter {
+        animation: 0.5s fade-in;
+        z-index: 100;
+    }
+    @keyframes fade-in {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+  #+END_SRC
+
+  You can also use javascript
+
+  #+BEGIN_SRC html
+      <div class="phone-images">
+      <img ng-src="{{img}}"
+           class="phone"
+           ng-repeat="img in phone.images"
+           ng-class="{active:mainImageUrl==img}">
+    </div>
+  #+END_SRC
+
+  Here we use ng-class and a repeater to make changes whenever the
+  element becomes active
+
+  #+BEGIN_SRC js
+    var phonecatAnimations = angular.module('phonecatAnimations', ['ngAnimate']);
+
+    phonecatAnimations.animation('.phone', function() {
+
+        var animateUp = function(element, className, done) {
+            if(className != 'active') {
+                return;
+            }
+            element.css({
+                position: 'absolute',
+                top: 500,
+                left: 0,
+                display: 'block'
+            });
+
+            jQuery(element).animate({
+                top: 0
+            }, done);
+
+            return function(cancel) {
+                if(cancel) {
+                    element.stop();
+                }
+            };
+        }
+
+        var animateDown = function(element, className, done) {
+            if(className != 'active') {
+                return;
+            }
+            element.css({
+                position: 'absolute',
+                left: 0,
+                top: 0
+            });
+
+            jQuery(element).animate({
+                top: -500
+            }, done);
+
+            return function(cancel) {
+                if(cancel) {
+                    element.stop();
+                }
+            };
+        }
+
+        return {
+            addClass: animateUp,
+            removeClass: animateDown
+        };
+    });
+  #+END_SRC
+* UI
+
+  + [[https://angular-ui.github.io/bootstrap/][Bootstrap]]
+  + [[https://material.angularjs.org/#/][Material]]
+* Debug
+  Access scope in console:
+  ~angular.element($0).scope()~
+
+  In webkit $0 is a reference to the selected DOM node in the elements
+  tab, so by doing this you get the selected DOM node scope printed
+  out in the console
