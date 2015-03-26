@@ -16,7 +16,7 @@ Amazing Marketing Book:
 Al Ries and Jack Trout — Positioning: The Battle for Your Mind
 
 Software pricing:
-Neil Davidson — Don’t Just Roll the Dice.
+[[http://neildavidson.com/downloads/dont-just-roll-the-dice-2.0.0.pdf][Neil Davidson — Don’t Just Roll the Dice]]
 
 * Advice
 

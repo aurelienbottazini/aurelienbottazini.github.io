@@ -1,0 +1,800 @@
+---
+layout: notes
+---
+<nav id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Basics</a></li>
+<li><a href="#sec-2">2. Bind template</a></li>
+<li><a href="#sec-3">3. <code>ngSrc</code></a></li>
+<li><a href="#sec-4">4. Search</a>
+<ul>
+<li><a href="#sec-4-1">4.1. orderProp</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5. Tests</a>
+<ul>
+<li><a href="#sec-5-1">5.1. Unit tests</a></li>
+<li><a href="#sec-5-2">5.2. <code>$http</code></a></li>
+<li><a href="#sec-5-3">5.3. Scenarios (e2e)</a></li>
+<li><a href="#sec-5-4">5.4. <code>ngResource</code></a></li>
+</ul>
+</li>
+<li><a href="#sec-6">6. Services</a>
+<ul>
+<li><a href="#sec-6-1">6.1. <code>$http</code></a></li>
+</ul>
+</li>
+<li><a href="#sec-7">7. <code>ngRoute</code></a></li>
+<li><a href="#sec-8">8. <code>ng-view</code></a></li>
+<li><a href="#sec-9">9. filters</a>
+<ul>
+<li><a href="#sec-9-1">9.1. Built in</a></li>
+<li><a href="#sec-9-2">9.2. Custom</a></li>
+</ul>
+</li>
+<li><a href="#sec-10">10. <code>ng-click</code></a></li>
+<li><a href="#sec-11">11. REST</a></li>
+<li><a href="#sec-12">12. <code>ngAnimate</code></a></li>
+<li><a href="#sec-13">13. UI</a></li>
+<li><a href="#sec-14">14. Debug</a></li>
+</ul>
+</div>
+</nav>
+
+<p>
+<a href="https://docs.angularjs.org/tutorial">Tutorial</a>
+<a href="https://docs.angularjs.org/guide/">Developer Guide</a>
+</p>
+
+
+<p>
+Plugins:
+</p>
+<ul class="org-ul">
+<li><a href="http://ng-inspector.org/">http://ng-inspector.org/</a>
+</li>
+<li><a href="https://github.com/angular/angularjs-batarang">https://github.com/angular/angularjs-batarang</a>
+</li>
+</ul>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Basics</h2>
+<div class="outline-text-2" id="text-1">
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span class="org-function-name">html</span> ng-app&gt;
+</pre>
+</div>
+
+<p>
+It flags the html element that Angular should consider to be the root
+element of your application. Developer can choose only part of their
+web-page to treated as angular applications.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-js">&lt;script src=<span class="org-string">"bower_components/angular/angular.js"</span>&gt;
+</pre>
+</div>
+
+<p>
+Download and loads Angular. Looks for <code>ngApp</code> directive and if it
+finds it bootstrap the application with corresponding root element.
+</p>
+
+<p>
+spinal-case for custom attributes and camelCase for corresponding
+directives.
+</p>
+
+<p>
+Using <code>ng-app</code> is the automatic way to bootstrap your application.
+You can also do it manually for complex cases <a href="https://docs.angularjs.org/guide/bootstrap">https://docs.angularjs.org/guide/bootstrap</a>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-html">hello {{ 'world' }}
+</pre>
+</div>
+
+<p>
+<code>{{}}</code> will make angular evaluate the expression. Evaluated in the
+context of current model scope.
+</p>
+
+<p>
+<a href="https://github.com/angular/angular-seed">Template for typical Angular application</a>
+</p>
+
+<p>
+MVC pattern is encouraged.
+</p>
+
+<p>
+<code>ng-repeat</code> is angular repeat directive
+<code>ng-controller</code> attach to a controller the corresponding tag
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span class="org-function-name">ul</span> <span class="org-variable-name">ng-controller</span>=<span class="org-string">"PhoneListCtrl"</span>&gt;
+  &lt;<span class="org-function-name">li</span> <span class="org-variable-name">ng-repeat</span>=<span class="org-string">"phone in phones"</span>&gt;
+      {{ phone.name }} - {{ phone.snippet }}
+  &lt;/<span class="org-function-name">li</span>&gt;
+&lt;/<span class="org-function-name">ul</span>&gt;
+</pre>
+</div>
+
+<p>
+And inside <code>app/js/controllers.js</code>
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-js"><span class="org-keyword">var</span> <span class="org-variable-name">phonecatApp</span> = angular.module(<span class="org-string">'phonecatApp'</span>, []);
+
+phonecatApp.controller(<span class="org-string">'PhoneListCtrl'</span>, <span class="org-keyword">function</span>(<span class="org-variable-name">$scope</span>) {
+  $scope.phones = [
+    {<span class="org-string">'name'</span>: <span class="org-string">'Nexus S'</span>,
+     <span class="org-string">'snippet'</span>: <span class="org-string">'Fast just got faster with Nexus S.'</span>},
+    {<span class="org-string">'name'</span>: <span class="org-string">'Motorola XOOM&#8482; with Wi-Fi'</span>,
+     <span class="org-string">'snippet'</span>: <span class="org-string">'The Next, Next Generation tablet.'</span>},
+    {<span class="org-string">'name'</span>: <span class="org-string">'MOTOROLA XOOM&#8482;'</span>,
+     <span class="org-string">'snippet'</span>: <span class="org-string">'The Next, Next Generation tablet.'</span>}
+  ];
+});
+</pre>
+</div>
+
+<p>
+<code>$scope</code> is a prototypical descendent of the root scope defined when
+application creation.
+<a href="https://docs.angularjs.org/api/ng/type/$rootScope.Scope">https://docs.angularjs.org/api/ng/type/$rootScope.Scope</a>.
+Any changes to the model are reflected in the view and any changes
+that occur in the view are reflected in the model.
+</p>
+
+<p>
+This is a <b>two way data binding</b>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Bind template</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+To prevent the display of {{}} while angular is loading in title
+before angular loads you can use <code>ngBind</code> and <code>ngBindTemplate</code>
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span class="org-function-name">title</span> <span class="org-variable-name">ng-bind-template</span>=<span class="org-string">"Google Phone Gallery: {{query}}"</span>&gt;<span class="org-underline"><span class="org-bold">Google Phone Gallery</span></span>&lt;/<span class="org-function-name">title</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> <code>ngSrc</code></h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Prevents browsers to make an http request to an invalid location before
+Angular has the chance to evaluate the expression
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span class="org-function-name">img</span> <span class="org-variable-name">ng-src</span>=<span class="org-string">"{{phone.imageUrl}}"</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Search</h2>
+<div class="outline-text-2" id="text-4">
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span class="org-function-name">input</span> <span class="org-variable-name">ng-model</span>=<span class="org-string">"query"</span>&gt;
+
+&lt;<span class="org-function-name">li</span> <span class="org-variable-name">ng-repeat</span>=<span class="org-string">"phone in phones | filter:query"</span>&gt;
+</pre>
+</div>
+
+<p>
+Angular bings the name of the input box (<code>query</code>) to a variable of
+the same name. That variable is used as a filter in the list
+repeater.
+Everything is transparent to the developer
+</p>
+</div>
+
+<div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> orderProp</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+Can be used to sort (and filter) results.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span class="org-function-name">select</span> <span class="org-variable-name">ng-model</span>=<span class="org-string">"orderProp"</span>&gt;
+    &lt;<span class="org-function-name">option</span> <span class="org-variable-name">value</span>=<span class="org-string">"name"</span>&gt;Alphabetical&lt;/<span class="org-function-name">option</span>&gt;
+    &lt;<span class="org-function-name">option</span> <span class="org-variable-name">value</span>=<span class="org-string">"age"</span>&gt;Newest&lt;/<span class="org-function-name">option</span>&gt;
+    &lt;<span class="org-function-name">option</span> <span class="org-variable-name">value</span>=<span class="org-string">"-age"</span>&gt;Oldest&lt;/<span class="org-function-name">option</span>&gt;
+&lt;/<span class="org-function-name">select</span>&gt;
+
+&lt;<span class="org-function-name">li</span> <span class="org-variable-name">ng-repeat</span>=<span class="org-string">"phone in phones | filter:query | orderBy:orderProp"</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Tests</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+Angular developers prefer to use <a href="https://jasmine.github.io/">Jasmine</a>
+</p>
+</div>
+
+<div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> Unit tests</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+Angular seed project uses <a href="https://karma-runner.github.io/">Karma</a> to run unit tests
+To run units tests and watch for changes <code>npm test</code>. Don't minimize
+your browser. It can lead to tests running very slowly on some OS.
+</p>
+
+<p>
+Easy to do thanks to MVC
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-js">describe(<span class="org-string">'PhoneListCtrl'</span>, <span class="org-keyword">function</span>(){
+
+    it(<span class="org-string">'should create "phones" model with 3 phones'</span>, <span class="org-keyword">function</span>() {
+        <span class="org-keyword">var</span> <span class="org-variable-name">scope</span> = {},
+            ctrl = <span class="org-keyword">new</span> <span class="org-type">PhoneListCtrl</span>(scope);
+
+        expect(scope.phones.length).toBe(3);
+    });
+
+});
+</pre>
+</div>
+
+<p>
+Angular provides a <code>$controller</code> which can be used to retrieve a
+controller by name.
+</p>
+
+<p>
+Every controller has an associated $scope object
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-js">describe(<span class="org-string">'PhoneListCtrl'</span>, <span class="org-keyword">function</span>(){
+
+    beforeEach(module(<span class="org-string">'phonecatApp'</span>));
+
+    it(<span class="org-string">'should create "phones" model with 3 phones'</span>, inject(<span class="org-keyword">function</span>(<span class="org-variable-name">$controller</span>) {
+        <span class="org-keyword">var</span> <span class="org-variable-name">scope</span> = {},
+            ctrl = $controller(<span class="org-string">'PhoneListCtrl'</span>, {$scope:scope});
+
+        expect(scope.phones.length).toBe(3);
+    }));
+
+});
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> <code>$http</code></h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+Angular provides a mock <code>$http</code> service for tests: <code>$httpBackend</code>
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-js"><span class="org-comment-delimiter">// </span><span class="org-comment">inject guarantees each test is isolated from others.</span>
+beforeEach(inject(<span class="org-keyword">function</span>(<span class="org-variable-name">_$httpBackend_</span>, <span class="org-variable-name">$rootScope</span>, <span class="org-variable-name">$controller</span>) {
+    $httpBackend = _$httpBackend_;
+    $httpBackend.expectGET(<span class="org-string">'phones/phones.json'</span>).
+        respond([{name: <span class="org-string">'Nexus S'</span>}, {name: <span class="org-string">'Motorola DROID'</span>}]);
+
+    scope = $rootScope.$new();
+    ctrl = $controller(<span class="org-string">'PhoneListCtrl'</span>, {$scope: scope});
+}));
+
+it(<span class="org-string">'should create "phones" model with 2 phones fetched from xhr'</span>, <span class="org-keyword">function</span>() {
+    expect(scope.phones).toBeUndefined();
+    $httpBackend.flush(); <span class="org-comment-delimiter">// </span><span class="org-comment">returns http request response</span>
+
+    expect(scope.phones).toEqual([{name: <span class="org-string">'Nexus S'</span>},
+                                  {name: <span class="org-string">'Motorola DROID'</span>}]);
+});
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5-3" class="outline-3">
+<h3 id="sec-5-3"><span class="section-number-3">5.3</span> Scenarios (e2e)</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+With <a href="https://github.com/angular/protractor">Protractor</a>
+Before testing e2e You need to
+</p>
+
+<ul class="org-ul">
+<li>make sure the application is running <code>npm start</code>
+</li>
+<li>install and update webdriver <code>npm install</code> &amp; <code>npm run update-webdriver</code>
+</li>
+<li><code>npm run protractor</code>
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-js">describe(<span class="org-string">'PhoneCat App'</span>, <span class="org-keyword">function</span>() {
+
+    describe(<span class="org-string">'Phone list view'</span>, <span class="org-keyword">function</span>() {
+
+        beforeEach(<span class="org-keyword">function</span>() {
+            browser.get(<span class="org-string">'app/index.html'</span>);
+        });
+
+
+        it(<span class="org-string">'should filter the phone list as a user types into the search box'</span>, <span class="org-keyword">function</span>() {
+
+            <span class="org-keyword">var</span> <span class="org-variable-name">phoneList</span> = element.all(by.repeater(<span class="org-string">'phone in phones'</span>));
+            <span class="org-keyword">var</span> <span class="org-variable-name">query</span> = element(by.model(<span class="org-string">'query'</span>));
+
+            expect(phoneList.count()).toBe(3);
+
+            query.sendKeys(<span class="org-string">'nexus'</span>);
+            expect(phoneList.count()).toBe(1);
+
+            query.clear();
+            query.sendKeys(<span class="org-string">'motorola'</span>);
+            expect(phoneList.count()).toBe(2);
+        });
+    });
+});
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5-4" class="outline-3">
+<h3 id="sec-5-4"><span class="section-number-3">5.4</span> <code>ngResource</code></h3>
+<div class="outline-text-3" id="text-5-4">
+<p>
+You need to load angular-resource inside Karma configuration if you
+are using <code>ngResource</code>. You should also use <code>toEqualData</code> instead of
+<code>toEqual</code> to compare objects
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-js">it(<span class="org-string">'should create "phones" model with 2 phones fetched from xhr'</span>, <span class="org-keyword">function</span>() {
+    expect(scope.phones).toEqualData([]);
+    $httpBackend.flush();
+
+    expect(scope.phones).toEqualData(
+        [{name: <span class="org-string">'Nexus S'</span>}, {name: <span class="org-string">'Motorola DROID'</span>}]);
+  });
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> <a href="https://docs.angularjs.org/guide/services">Services</a></h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Angular services are substitutable objects that are wired together
+using dependency injection (DI). You can use services to organize
+and share code across your app.
+</p>
+
+<p>
+Angular services are:
+</p>
+
+<p>
+Lazily instantiated – Angular only instantiates a service when an
+application component depends on it. Singletons – Each component
+dependent on a service gets a reference to the single instance
+generated by the service factory.
+</p>
+
+<p>
+Angular offers several useful services (like <code>$http</code>), but for most
+applications you'll also want to create your own.
+</p>
+</div>
+
+
+<div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1"><span class="section-number-3">6.1</span> <code>$http</code></h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+To use a service in angular you declare the dependencies as
+arguments in your controller’s constructor.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-js">phonecatApp.controller(<span class="org-string">'PhoneListCtrl'</span>, <span class="org-keyword">function</span> (<span class="org-variable-name">$scope</span>, <span class="org-variable-name">$http</span>) {
+    $http.get(<span class="org-string">'phones/phones.json'</span>).success(<span class="org-keyword">function</span>(<span class="org-variable-name">data</span>) {
+        $scope.phones = data;
+    });
+});
+</pre>
+</div>
+
+<p>
+Angular parsed the json response for us.
+</p>
+
+<p>
+You can have problems  when you minify the javascript code as all
+functions arguments will be minified as well.
+A good way to overcome this problem is to use an inline annotation.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-js"><span class="org-keyword">function</span> <span class="org-function-name">PhoneListCtrl</span>(<span class="org-variable-name">$scope</span>, <span class="org-variable-name">$http</span>) {...}
+phonecatApp.controller(<span class="org-string">'PhoneListCtrl'</span>, [<span class="org-string">'$scope'</span>, <span class="org-string">'$http'</span>, PhoneListCtrl]);
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> <code>ngRoute</code></h2>
+<div class="outline-text-2" id="text-7">
+<p>
+Distributed separately from the core Angular framework.
+</p>
+
+<p>
+Install it with bower and load it.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span class="org-function-name">script</span> <span class="org-variable-name">src</span>=<span class="org-string">"bower_components/angular-route/angular-route.js"</span>&gt;&lt;/<span class="org-function-name">script</span>&gt;
+</pre>
+</div>
+
+
+<div class="org-src-container">
+
+<pre class="src src-js">phonecatApp.config([<span class="org-string">'$routeProvider'</span>,
+                    <span class="org-keyword">function</span>(<span class="org-variable-name">$routeProvider</span>) {
+                        $routeProvider.
+                            when(<span class="org-string">'/phones'</span>, {
+                                templateUrl: <span class="org-string">'partials/phone-list.html'</span>,
+                                controller: <span class="org-string">'PhoneListCtrl'</span>
+                            }).
+                            when(<span class="org-string">'/phones/:phoneId'</span>, {
+                                templateUrl: <span class="org-string">'partials/phone-detail.html'</span>,
+                                controller: <span class="org-string">'PhoneDetailCtrl'</span>
+                            }).
+                            otherwise({
+                                redirectTo: <span class="org-string">'/phones'</span>
+                            });
+                    }]);
+</pre>
+</div>
+
+<p>
+Anything with a <code>:</code> notation is extracted to <code>$routeParams</code> object.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-js"><span class="org-keyword">var</span> <span class="org-variable-name">phonecatControllers</span> = angular.module(<span class="org-string">'phonecatControllers'</span>, []);
+
+phonecatControllers.controller(<span class="org-string">'PhoneListCtrl'</span>, [<span class="org-string">'$scope'</span>, <span class="org-string">'$http'</span>,
+                                                 <span class="org-keyword">function</span> (<span class="org-variable-name">$scope</span>, <span class="org-variable-name">$http</span>) {
+                                                     $http.get(<span class="org-string">'phones/phones.json'</span>).success(<span class="org-keyword">function</span>(<span class="org-variable-name">data</span>) {
+                                                         $scope.phones = data;
+                                                     });
+
+                                                     $scope.orderProp = <span class="org-string">'age'</span>;
+                                                 }]);
+
+phonecatControllers.controller(<span class="org-string">'PhoneDetailCtrl'</span>, [<span class="org-string">'$scope'</span>, <span class="org-string">'$routeParams'</span>,
+                                                   <span class="org-keyword">function</span>(<span class="org-variable-name">$scope</span>, <span class="org-variable-name">$routeParams</span>) {
+                                                       $scope.phoneId = $routeParams.phoneId;
+                                                   }]);
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> <code>ng-view</code></h2>
+<div class="outline-text-2" id="text-8">
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span class="org-function-name">body</span>&gt;
+
+    &lt;<span class="org-function-name">div</span> ng-view&gt;&lt;/<span class="org-function-name">div</span>&gt;
+
+&lt;/<span class="org-function-name">body</span>&gt;
+</pre>
+</div>
+
+<p>
+And we use routes and partials to display the correct view.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> filters</h2>
+<div class="outline-text-2" id="text-9">
+</div><div id="outline-container-sec-9-1" class="outline-3">
+<h3 id="sec-9-1"><span class="section-number-3">9.1</span> Built in</h3>
+<div class="outline-text-3" id="text-9-1">
+<ul class="org-ul">
+<li>{{ "lower cap string" | uppercase }}
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-9-2" class="outline-3">
+<h3 id="sec-9-2"><span class="section-number-3">9.2</span> Custom</h3>
+<div class="outline-text-3" id="text-9-2">
+<div class="org-src-container">
+
+<pre class="src src-js">angular.module(<span class="org-string">'phonecatFilters'</span>, []).filter(<span class="org-string">'checkmark'</span>, <span class="org-keyword">function</span>() {
+    <span class="org-keyword">return</span> <span class="org-keyword">function</span>(<span class="org-variable-name">input</span>) {
+        <span class="org-keyword">return</span> input ? <span class="org-string">'\u2713'</span> : <span class="org-string">'\u2718'</span>;
+    };
+});
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10"><span class="section-number-2">10</span> <code>ng-click</code></h2>
+<div class="outline-text-2" id="text-10">
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span class="org-function-name">img</span> <span class="org-variable-name">ng-src</span>=<span class="org-string">"{{img}}"</span> <span class="org-variable-name">ng-click</span>=<span class="org-string">"setImage(img)"</span>&gt;
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-js"><span class="org-keyword">var</span> <span class="org-variable-name">phonecatControllers</span> = angular.module(<span class="org-string">'phonecatControllers'</span>,[]);
+
+phonecatControllers.controller(<span class="org-string">'PhoneDetailCtrl'</span>, [<span class="org-string">'$scope'</span>, <span class="org-string">'$routeParams'</span>, <span class="org-string">'$http'</span>,
+                                                   <span class="org-keyword">function</span>(<span class="org-variable-name">$scope</span>, <span class="org-variable-name">$routeParams</span>, <span class="org-variable-name">$http</span>) {
+                                                       $http.get(<span class="org-string">'phones/'</span> + $routeParams.phoneId + <span class="org-string">'.json'</span>).success(<span class="org-keyword">function</span>(<span class="org-variable-name">data</span>) {
+                                                           $scope.phone = data;
+                                                           $scope.mainImageUrl = data.images[0];
+                                                       });
+
+                                                       $scope.setImage = <span class="org-keyword">function</span>(<span class="org-variable-name">imageUrl</span>) {
+                                                           $scope.mainImageUrl = imageUrl;
+                                                       }
+                                                   }]);
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11"><span class="section-number-2">11</span> REST</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+Provided by <code>ngResource</code>. Use Bower to install it.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span class="org-function-name">script</span> <span class="org-variable-name">src</span>=<span class="org-string">"bower_components/angular-resource/angular-resource.js"</span>&gt;&lt;/<span class="org-function-name">script</span>&gt;
+</pre>
+</div>
+
+
+<div class="org-src-container">
+
+<pre class="src src-js"><span class="org-keyword">var</span> <span class="org-variable-name">phonecatServices</span> = angular.module(<span class="org-string">'phonecatServices'</span>, [<span class="org-string">'ngResource'</span>]);
+
+phonecatServices.factory(<span class="org-string">'Phone'</span>, [<span class="org-string">'$resource'</span>,
+                                   <span class="org-keyword">function</span>(<span class="org-variable-name">$resource</span>){
+                                       <span class="org-keyword">return</span> $resource(<span class="org-string">'phones/:phoneId.json'</span>, {}, {
+                                           query: {method:<span class="org-string">'GET'</span>, params:{phoneId:<span class="org-string">'phones'</span>}, isArray:<span class="org-constant">true</span>}
+                                       });
+                                   }]);
+</pre>
+</div>
+
+<p>
+We pass to the factory function the name of the service and the
+factory function. The factory function is similar to the controller
+function in the sense it can have dependencies injected as function
+arguments.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-js">phonecatControllers.controller(<span class="org-string">'PhoneListCtrl'</span>, [<span class="org-string">'$scope'</span>, <span class="org-string">'Phone'</span>, <span class="org-keyword">function</span>(<span class="org-variable-name">$scope</span>, <span class="org-variable-name">Phone</span>) {
+    $scope.phones = Phone.query();
+    $scope.orderProp = <span class="org-string">'age'</span>;
+}]);
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12"><span class="section-number-2">12</span> <code>ngAnimate</code></h2>
+<div class="outline-text-2" id="text-12">
+<p>
+<a href="https://docs.angularjs.org/guide/animations">https://docs.angularjs.org/guide/animations</a>
+</p>
+
+<p>
+Distributed separately
+</p>
+
+<p>
+Animations are completely based on CSS classes
+</p>
+
+<p>
+The ng-enter class is applied to the element when a new phone is added to the list and rendered on the page.
+The ng-move class is applied when items are moved around in the list.
+The ng-leave class is applied when they're removed from the list.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span class="org-function-name">div</span> <span class="org-variable-name">class</span>=<span class="org-string">"view-container"</span>&gt;
+    &lt;<span class="org-function-name">div</span> ng-view <span class="org-variable-name">class</span>=<span class="org-string">"view-frame"</span>&gt;&lt;/<span class="org-function-name">div</span>&gt;
+&lt;/<span class="org-function-name">div</span>&gt;
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-css"><span class="org-css-selector"><span class="org-comment">// need vendor prefixes to be useful</span></span>
+<span class="org-css-selector">.view-frame.ng-enter </span>{
+    <span class="org-css-property">animation</span>: 0.5s fade-in;
+    <span class="org-css-property">z-index</span>: 100;
+}
+<span class="org-builtin">@keyframes</span> fade-in {
+<span class="org-css-selector">    from </span>{ <span class="org-css-property">opacity</span>: 0; }
+<span class="org-css-selector">    to </span>{ <span class="org-css-property">opacity</span>: 1; }
+}
+</pre>
+</div>
+
+<p>
+You can also use javascript
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-html">  &lt;<span class="org-function-name">div</span> <span class="org-variable-name">class</span>=<span class="org-string">"phone-images"</span>&gt;
+  &lt;<span class="org-function-name">img</span> <span class="org-variable-name">ng-src</span>=<span class="org-string">"{{img}}"</span>
+       <span class="org-variable-name">class</span>=<span class="org-string">"phone"</span>
+       <span class="org-variable-name">ng-repeat</span>=<span class="org-string">"img in phone.images"</span>
+       <span class="org-variable-name">ng-class</span>=<span class="org-string">"{active:mainImageUrl==img}"</span>&gt;
+&lt;/<span class="org-function-name">div</span>&gt;
+</pre>
+</div>
+
+<p>
+Here we use ng-class and a repeater to make changes whenever the
+element becomes active
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-js"><span class="org-keyword">var</span> <span class="org-variable-name">phonecatAnimations</span> = angular.module(<span class="org-string">'phonecatAnimations'</span>, [<span class="org-string">'ngAnimate'</span>]);
+
+phonecatAnimations.animation(<span class="org-string">'.phone'</span>, <span class="org-keyword">function</span>() {
+
+    <span class="org-keyword">var</span> <span class="org-variable-name">animateUp</span> = <span class="org-keyword">function</span>(<span class="org-variable-name">element</span>, <span class="org-variable-name">className</span>, <span class="org-variable-name">done</span>) {
+        <span class="org-keyword">if</span>(className != <span class="org-string">'active'</span>) {
+            <span class="org-keyword">return</span>;
+        }
+        element.css({
+            position: <span class="org-string">'absolute'</span>,
+            top: 500,
+            left: 0,
+            display: <span class="org-string">'block'</span>
+        });
+
+        jQuery(element).animate({
+            top: 0
+        }, done);
+
+        <span class="org-keyword">return</span> <span class="org-keyword">function</span>(<span class="org-variable-name">cancel</span>) {
+            <span class="org-keyword">if</span>(cancel) {
+                element.stop();
+            }
+        };
+    }
+
+    <span class="org-keyword">var</span> <span class="org-variable-name">animateDown</span> = <span class="org-keyword">function</span>(<span class="org-variable-name">element</span>, <span class="org-variable-name">className</span>, <span class="org-variable-name">done</span>) {
+        <span class="org-keyword">if</span>(className != <span class="org-string">'active'</span>) {
+            <span class="org-keyword">return</span>;
+        }
+        element.css({
+            position: <span class="org-string">'absolute'</span>,
+            left: 0,
+            top: 0
+        });
+
+        jQuery(element).animate({
+            top: -500
+        }, done);
+
+        <span class="org-keyword">return</span> <span class="org-keyword">function</span>(<span class="org-variable-name">cancel</span>) {
+            <span class="org-keyword">if</span>(cancel) {
+                element.stop();
+            }
+        };
+    }
+
+    <span class="org-keyword">return</span> {
+        addClass: animateUp,
+        removeClass: animateDown
+    };
+});
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-13" class="outline-2">
+<h2 id="sec-13"><span class="section-number-2">13</span> UI</h2>
+<div class="outline-text-2" id="text-13">
+<ul class="org-ul">
+<li><a href="https://angular-ui.github.io/bootstrap/">Bootstrap</a>
+</li>
+<li><a href="https://material.angularjs.org/#/">Material</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-14" class="outline-2">
+<h2 id="sec-14"><span class="section-number-2">14</span> Debug</h2>
+<div class="outline-text-2" id="text-14">
+<p>
+Access scope in console:
+<code>angular.element($0).scope()</code>
+</p>
+
+<p>
+In webkit $0 is a reference to the selected DOM node in the elements
+tab, so by doing this you get the selected DOM node scope printed
+out in the console
+</p>
+</div>
+</div>
