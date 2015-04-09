@@ -13,6 +13,9 @@
     margin: 3em auto;
     margin-top: 6em;
 }
-.post p {
+.post p, .post ul {
     width: 30em;
+}
+.post ul {
+    width: 32em;
 }
