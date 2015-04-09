@@ -14,9 +14,16 @@
     margin-top: 6em;
 }
 .post p {
-    width: 30em;
+    width: 95%;
+
+    @include responsive(ipad-portrait) {
+        width: 30em;
+    }
 }
 .post ul {
-    width: 32em;
+    width: 95%;
     margin: 0 auto;
+    @include responsive(ipad-portrait) {
+        width: 32em;
+    }
 }
