@@ -1,7 +1,7 @@
 I am always surprised by the number of people who refuse to read books. They
 often seem proud of it. It is a big mistake.
 
-Books are a **shortcut**. It’s a shortcut toward:
+Books are **shortcuts**. They are shortcuts toward:
 
 * a better job
 * smarter decisions
