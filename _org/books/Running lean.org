@@ -5,7 +5,8 @@ layout: notes
 #+END_HTML
 #+TOC: headlines 4
 
-Running Lean: Iterate from Plan A to a Plan That Works (Lean Series) — Ash Maurya
+Running Lean: Iterate from Plan A to a Plan That Works (Lean Series)
+— Ash Maurya
 
 http://theleanstartup.com.
 

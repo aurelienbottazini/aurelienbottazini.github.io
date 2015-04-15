@@ -1,0 +1,121 @@
+#+BEGIN_HTML
+---
+layout: notes
+---
+#+END_HTML
+#+TOC: headlines 4
+
+Scrum: a Breathtakingly Brief and Agile Introduction
+Chris Sims, Hillary Louise Johnson
+
+One of the mantras of scrum is “inspect and adapt,” and scrum teams
+are characterized by an intense focus on continuous improvement—of
+their process, but also of the product.
+
+Three roles:
+
+1. product owner
+2. Scrum master
+3. Team member
+
+One way that the product owner maximizes ROI is by directing the team
+toward the most valuable work
+
+Product owner controls the order, sometimes called
+priority, of items in the team’s backlog.
+
+In scrum, no-one but the product owner is authorized to ask the team
+to do work or to change the order of backlog items.
+
+The product owner is responsible for recording the requirements, often
+in the form of user stories (eg, “As a role, I want a
+feature so that I can accomplish something”)
+
+The Product Owner Role in a Nutshell: holds the vision for the product
+represents the interests of the  business represents the customers
+owns the product backlog orders (prioritizes) the items in the product
+backlog creates acceptance criteria for the backlog items is available
+to answer team members’ questions.
+
+The list of user stories is ordered such that the most important
+story, the one that the team should do next, is at the top of the
+list. Right below it is the story that the team should do second, and
+so on.
+
+The scrum master is not—we repeat, not—the team’s boss.
+
+The scrum master role in a Nutshell: scrum expert and advisor coach
+impediment bulldozer facilitator
+
+The Team Member Role in a Nutshell: responsible for completing user
+stories to incrementally increase the value of the product
+self-organizes to get all of the necessary work done creates and owns
+the estimates owns the “ how to do the work” decisions avoids siloed
+“not my job” thinking.
+
+7 +/- 2
+So, how many team members should a scrum team have? The common rule of
+thumb is seven, plus or minus two. That is, from five to nine.
+
+Each item, or story, in the product backlog should include the
+following information: Which users the story will benefit (who it is
+for) A brief description of the desired functionality (what needs to
+be built) The reason that this story is valuable (why we should do it)
+An estimate as to how much work the story requires to implement
+Acceptance criteria that will help us know when it has been
+implemented correctly.
+
+A story is something a team delivers; a task is a bit of work that a
+person does. Each story will normally require many tasks.
+
+This confusion about what “done” means can cause plenty of confusion
+and trouble, when the salesperson asks why the team is still working
+on the same story that the programmer said was done two weeks ago!
+
+In order to avoid confusion, good scrum teams create their own
+definition of the word “done”
+
+The team’s definition may include things like: code written, code
+reviewed, unit tests passing, regression tests passing, documentation
+written, product owner sign-off, and so on.
+
+The Sprint Cycle The sprint cycle consists of several meetings, often
+called ceremonies: sprint planning daily scrum story time sprint
+review retrospective.
+
+The shorter the sprint cycle, the more frequently the team is
+delivering value to the business.
+
+The meeting lengths shown are an appropriate starting point for a team
+doing one-week sprints.
+
+We recommend one to two hours of sprint planning per week of
+development.
+
+Part One: “What will we do?”
+
+the product owner decides which stories will be considered, but the
+team members doing the actual work are the ones who decide how much
+work they can take on.
+
+Part 2: “How will we do it?”
+
+The output of the sprint planning meeting is the sprint backlog, the
+list of all the committed stories, with their associated tasks.
+
+Daily Stand-ups:
+
+Each participant quickly shares: What tasks I’ve completed
+since the last daily scrum. What tasks I expect to complete by the
+next daily scrum. What obstacles are slowing me down.
+
+
+We recommend one to two hours of retrospective time for each week of
+development. Unlike the traditional “post mortem,” the aim of a
+retrospective is never to generate a long laundry list of things that
+went well and things that went wrong, but to identify no more than one
+or two strategic changes to make in the next sprint. It’s about
+process improvement.
+
+So, why do we do development work in these short cycles? To learn.
+Experience is the best teacher.
