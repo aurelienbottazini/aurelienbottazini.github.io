@@ -21,7 +21,7 @@ module.exports = function(grunt) {
             bower: {
                 options: {
                     mangle: true,
-                    compress: true
+                    compress: {}
                 },
                 files: {
                     'js/home.min.js':
@@ -96,7 +96,7 @@ module.exports = function(grunt) {
 
         exec: {
             jekyll: {
-                cmd: 'jekyll build'
+                cmd: 'bundle exec jekyll build'
             },
             create_sketchnotes_yaml: {
                 cmd: "ruby -e \"require 'yaml';File.open('_data/sketchnotes.yml', 'w') { |f| f.write Dir.new('sketchnotes').entries.select { |e| e =~ /\.jpg/}.to_yaml }\""
