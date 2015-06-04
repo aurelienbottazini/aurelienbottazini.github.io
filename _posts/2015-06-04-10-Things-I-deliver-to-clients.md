@@ -1,0 +1,10 @@
+- Trust
+- Passion
+- Honesty
+- Solutions
+- Positivism
+- Compassion
+- Optimism
+- Dedication
+- Skills
+- Integrity
