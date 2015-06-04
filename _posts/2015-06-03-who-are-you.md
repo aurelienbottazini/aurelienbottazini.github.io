@@ -1,3 +1,4 @@
+
 This is an exercise from a course I am taking on Udemy: "A course for
 freelancers who want to move up" from the incredible _Seth Godin_.
 
@@ -25,7 +26,7 @@ passion. I need variety but I don't want to be in a position when I
 need to stop. I want to be somewhere where I don't want to stop.
 
 I want to change people I interact with and show them the way to
-success. My previous successes are a proof I know how to do. I
+success. My previous successes are a proof I know how to do it. I
 need to capitalize on it and put it on another level.
 
 ## How much risk? How much are you willing to put at stake to make the change you seek ##
