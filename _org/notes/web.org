@@ -458,6 +458,15 @@ layout: notes
 
 * Accessibility
   http://www.w3.org/WAI/PF/html-task-force
+
+  alt test to every image
+  alt="" where screen reader should ignore
+  webaim.org
+
+  Skip to main content link
+  Everything accessible through keyboard
+  No labels inside form fields
+  Distinction between visited and unvisited
 * CSS
 ** !important
   Ignore subsequent or more specific rules, apply this one.
