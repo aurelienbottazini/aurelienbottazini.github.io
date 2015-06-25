@@ -4,3 +4,5 @@ _stuff/*
 *.mov
 npm-debug.log
 .DS_Store
+_vendor
+.bundle
