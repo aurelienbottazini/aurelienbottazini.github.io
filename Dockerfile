@@ -30,11 +30,20 @@ RUN gem install bundler
 RUN apt-get install -y curl
 RUN curl -sL https://deb.nodesource.com/setup | sudo bash -
 RUN apt-get install -y nodejs
+RUN npm install npm -g
+RUN npm install -g grunt-cli
+RUN gem install sass
+
+RUN locale-gen en_US.UTF-8
+RUN dpkg-reconfigure locales
 
 RUN useradd -ms /bin/bash deploy
 USER deploy
 RUN bundle config --global path /home/deploy/blog/_vendor/bundle
 WORKDIR /home/deploy/blog
+
+ENV LANG en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
 
 #docker build -t blogimage1 .
 #docker run -v /projects/blog:/home/deploy/blog -it blogimage1 /bin/bash
