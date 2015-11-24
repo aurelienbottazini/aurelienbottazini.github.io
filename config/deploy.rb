@@ -45,7 +45,7 @@ namespace :deploy do
   task :restart do
     on roles(:app) do
       execute 'mkdir -p /home/deploy/aurelienbottazini.com'
-      system "scp docker-compose.yml deploy@ns395832.ip-176-31-103.eu:#{fetch(:deploy_to)}/docker-compose.yml"
+      system "scp ../secrets/aurelienbottazini.com/docker-compose.yml deploy@ns395832.ip-176-31-103.eu:#{fetch(:deploy_to)}/docker-compose.yml"
       execute 'cd /home/deploy/aurelienbottazini.com && docker-compose stop'
       execute 'cd /home/deploy/aurelienbottazini.com && docker-compose up -d'
     end
