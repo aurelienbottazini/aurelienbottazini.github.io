@@ -1,7 +1,7 @@
 web:
   image: eu.gcr.io/dulcet-palace-105616/aurelienbottazini.com 
-  volumes:
-    - .:/srv/jekyll
   ports:
     - 4000:4000
   command: jekyll s
+  environment:
+    - VIRTUAL_HOST=aurelienbottazini.com
