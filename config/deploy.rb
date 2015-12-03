@@ -1,7 +1,6 @@
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
-set :application, 'avocatsimmobiliers.com'
 set :repo_url, 'git@bitbucket.org:abottazini/aurelienbottazini.com.git'
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

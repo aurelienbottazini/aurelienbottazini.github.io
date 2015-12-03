@@ -1,10 +1,3 @@
-aurelienbottazini.github.io
-===========================
-Hello Visitor :). I´m happy to see you checking my code as
-curiosity is a great quality to have as a programmer.
-The source code of this website is available here:
-https://github.com/aurelienbottazini/aurelienbottazini.github.io
-
 This Website was made using Emacs
 (https://www.gnu.org/software/emacs/) and Jekyll
 (http://www.jekyllrb.com)
@@ -24,3 +17,8 @@ Technology used:
 * Velocity.js
 * Boilerplate
 * Photoshop & Illustrator
+
+This project uses grunt to minify and compress all files and update yaml files when needed (for a list of sketchnotes for examples)
+
+It uses docker and capistrano for deployment
+`cap production deploy`
