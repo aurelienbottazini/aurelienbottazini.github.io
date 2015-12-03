@@ -7,12 +7,16 @@ title: Notes
 <h2>Programming Notes</h2>
 
 <ul>
-    <li><a href="http://aurelienbottazini.com/emacs.d/aurelien-emacs-config.html">Emacs config</a></li>
     {% for page in site.pages %}
       {% if page.url contains '/notes/' %}
     <li><a href="{{ page.url }}">{{ page.url | remove: '.html' | remove: '/notes/' | replace: '%20', ' ' }}</a></li>
       {% endif %}
     {% endfor %}
+</ul>
+
+<h2>Screencasts</h2>
+<ul>
+  <li><a href="videos/introduction_to_docker.flv">Introduction to docker</a></li>
 </ul>
 
 <h2>Books</h2>
