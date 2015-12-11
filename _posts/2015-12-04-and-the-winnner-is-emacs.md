@@ -109,6 +109,6 @@ The good news is those two courses make you learn
 My point is, everything is available in Emacs. Almost all options are
 more powerful.
 
-Take a loot at [Magit](http://magit.vc) and [Helm](https://emacs-helm.github.io/helm/)
+Take a look at [Magit](http://magit.vc) and [Helm](https://emacs-helm.github.io/helm/)
 
 It takes more time. But if you take it you won't regret it.
