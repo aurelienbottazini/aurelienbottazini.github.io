@@ -76,7 +76,7 @@ web-page to treated as angular applications.
 
 <div class="org-src-container">
 
-<pre class="src src-js">&lt;script src=<span class="org-string">"bower_components/angular/angular.js"</span>&gt;
+<pre class="src src-js">&lt;<span class="org-rainbow-identifiers-identifier-9">script</span> <span class="org-rainbow-identifiers-identifier-9">src</span>=<span class="org-string">"bower_components/angular/angular.js"</span>&gt;
 </pre>
 </div>
 
@@ -135,18 +135,18 @@ And inside <code>app/js/controllers.js</code>
 
 <div class="org-src-container">
 
-<pre class="src src-js"><span class="org-keyword">var</span> <span class="org-variable-name">phonecatApp</span> = angular.module(<span class="org-string">'phonecatApp'</span>, []);
+<pre class="src src-js"><span class="org-keyword">var</span> <span class="org-variable-name">phonecatApp</span> = <span class="org-rainbow-identifiers-identifier-15">angular</span>.<span class="org-rainbow-identifiers-identifier-2">module</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'phonecatApp'</span>, <span class="org-rainbow-delimiters-depth-2">[]</span><span class="org-rainbow-delimiters-depth-1">)</span>;
 
-phonecatApp.controller(<span class="org-string">'PhoneListCtrl'</span>, <span class="org-keyword">function</span>(<span class="org-variable-name">$scope</span>) {
-  $scope.phones = [
-    {<span class="org-string">'name'</span>: <span class="org-string">'Nexus S'</span>,
-     <span class="org-string">'snippet'</span>: <span class="org-string">'Fast just got faster with Nexus S.'</span>},
-    {<span class="org-string">'name'</span>: <span class="org-string">'Motorola XOOM&#8482; with Wi-Fi'</span>,
-     <span class="org-string">'snippet'</span>: <span class="org-string">'The Next, Next Generation tablet.'</span>},
-    {<span class="org-string">'name'</span>: <span class="org-string">'MOTOROLA XOOM&#8482;'</span>,
-     <span class="org-string">'snippet'</span>: <span class="org-string">'The Next, Next Generation tablet.'</span>}
-  ];
-});
+<span class="org-rainbow-identifiers-identifier-10">phonecatApp</span>.<span class="org-rainbow-identifiers-identifier-14">controller</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'PhoneListCtrl'</span>, <span class="org-keyword">function</span><span class="org-rainbow-delimiters-depth-2">(</span><span class="org-variable-name">$scope</span><span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">{</span>
+  <span class="org-rainbow-identifiers-identifier-7">$scope</span>.<span class="org-rainbow-identifiers-identifier-9">phones</span> = <span class="org-rainbow-delimiters-depth-3">[</span>
+    <span class="org-rainbow-delimiters-depth-4">{</span><span class="org-string">'name'</span>: <span class="org-string">'Nexus S'</span>,
+     <span class="org-string">'snippet'</span>: <span class="org-string">'Fast just got faster with Nexus S.'</span><span class="org-rainbow-delimiters-depth-4">}</span>,
+    <span class="org-rainbow-delimiters-depth-4">{</span><span class="org-string">'name'</span>: <span class="org-string">'Motorola XOOM&#8482; with Wi-Fi'</span>,
+     <span class="org-string">'snippet'</span>: <span class="org-string">'The Next, Next Generation tablet.'</span><span class="org-rainbow-delimiters-depth-4">}</span>,
+    <span class="org-rainbow-delimiters-depth-4">{</span><span class="org-string">'name'</span>: <span class="org-string">'MOTOROLA XOOM&#8482;'</span>,
+     <span class="org-string">'snippet'</span>: <span class="org-string">'The Next, Next Generation tablet.'</span><span class="org-rainbow-delimiters-depth-4">}</span>
+  <span class="org-rainbow-delimiters-depth-3">]</span>;
+<span class="org-rainbow-delimiters-depth-2">}</span><span class="org-rainbow-delimiters-depth-1">)</span>;
 </pre>
 </div>
 
@@ -258,16 +258,16 @@ Easy to do thanks to MVC
 
 <div class="org-src-container">
 
-<pre class="src src-js">describe(<span class="org-string">'PhoneListCtrl'</span>, <span class="org-keyword">function</span>(){
+<pre class="src src-js"><span class="org-rainbow-identifiers-identifier-7">describe</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'PhoneListCtrl'</span>, <span class="org-keyword">function</span><span class="org-rainbow-delimiters-depth-2">(){</span>
 
-    it(<span class="org-string">'should create "phones" model with 3 phones'</span>, <span class="org-keyword">function</span>() {
-        <span class="org-keyword">var</span> <span class="org-variable-name">scope</span> = {},
-            ctrl = <span class="org-keyword">new</span> <span class="org-type">PhoneListCtrl</span>(scope);
+    <span class="org-rainbow-identifiers-identifier-13">it</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">'should create "phones" model with 3 phones'</span>, <span class="org-keyword">function</span><span class="org-rainbow-delimiters-depth-4">()</span> <span class="org-rainbow-delimiters-depth-4">{</span>
+        <span class="org-keyword">var</span> <span class="org-variable-name">scope</span> = <span class="org-rainbow-delimiters-depth-5">{}</span>,
+            <span class="org-rainbow-identifiers-identifier-11">ctrl</span> = <span class="org-keyword">new</span> <span class="org-type">PhoneListCtrl</span><span class="org-rainbow-delimiters-depth-5">(</span><span class="org-rainbow-identifiers-identifier-13">scope</span><span class="org-rainbow-delimiters-depth-5">)</span>;
 
-        expect(scope.phones.length).toBe(3);
-    });
+        <span class="org-rainbow-identifiers-identifier-7">expect</span><span class="org-rainbow-delimiters-depth-5">(</span><span class="org-rainbow-identifiers-identifier-13">scope</span>.<span class="org-rainbow-identifiers-identifier-9">phones</span>.<span class="org-rainbow-identifiers-identifier-5">length</span><span class="org-rainbow-delimiters-depth-5">)</span>.<span class="org-rainbow-identifiers-identifier-7">toBe</span><span class="org-rainbow-delimiters-depth-5">(</span><span class="org-rainbow-identifiers-identifier-10">3</span><span class="org-rainbow-delimiters-depth-5">)</span>;
+    <span class="org-rainbow-delimiters-depth-4">}</span><span class="org-rainbow-delimiters-depth-3">)</span>;
 
-});
+<span class="org-rainbow-delimiters-depth-2">}</span><span class="org-rainbow-delimiters-depth-1">)</span>;
 </pre>
 </div>
 
@@ -282,18 +282,18 @@ Every controller has an associated $scope object
 
 <div class="org-src-container">
 
-<pre class="src src-js">describe(<span class="org-string">'PhoneListCtrl'</span>, <span class="org-keyword">function</span>(){
+<pre class="src src-js"><span class="org-rainbow-identifiers-identifier-7">describe</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'PhoneListCtrl'</span>, <span class="org-keyword">function</span><span class="org-rainbow-delimiters-depth-2">(){</span>
 
-    beforeEach(module(<span class="org-string">'phonecatApp'</span>));
+    <span class="org-rainbow-identifiers-identifier-6">beforeEach</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-identifiers-identifier-2">module</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-string">'phonecatApp'</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>;
 
-    it(<span class="org-string">'should create "phones" model with 3 phones'</span>, inject(<span class="org-keyword">function</span>(<span class="org-variable-name">$controller</span>) {
-        <span class="org-keyword">var</span> <span class="org-variable-name">scope</span> = {},
-            ctrl = $controller(<span class="org-string">'PhoneListCtrl'</span>, {$scope:scope});
+    <span class="org-rainbow-identifiers-identifier-13">it</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">'should create "phones" model with 3 phones'</span>, <span class="org-rainbow-identifiers-identifier-7">inject</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-keyword">function</span><span class="org-rainbow-delimiters-depth-5">(</span><span class="org-variable-name">$controller</span><span class="org-rainbow-delimiters-depth-5">)</span> <span class="org-rainbow-delimiters-depth-5">{</span>
+        <span class="org-keyword">var</span> <span class="org-variable-name">scope</span> = <span class="org-rainbow-delimiters-depth-6">{}</span>,
+            <span class="org-rainbow-identifiers-identifier-11">ctrl</span> = <span class="org-rainbow-identifiers-identifier-13">$controller</span><span class="org-rainbow-delimiters-depth-6">(</span><span class="org-string">'PhoneListCtrl'</span>, <span class="org-rainbow-delimiters-depth-7">{</span><span class="org-rainbow-identifiers-identifier-7">$scope</span>:<span class="org-rainbow-identifiers-identifier-13">scope</span><span class="org-rainbow-delimiters-depth-7">}</span><span class="org-rainbow-delimiters-depth-6">)</span>;
 
-        expect(scope.phones.length).toBe(3);
-    }));
+        <span class="org-rainbow-identifiers-identifier-7">expect</span><span class="org-rainbow-delimiters-depth-6">(</span><span class="org-rainbow-identifiers-identifier-13">scope</span>.<span class="org-rainbow-identifiers-identifier-9">phones</span>.<span class="org-rainbow-identifiers-identifier-5">length</span><span class="org-rainbow-delimiters-depth-6">)</span>.<span class="org-rainbow-identifiers-identifier-7">toBe</span><span class="org-rainbow-delimiters-depth-6">(</span><span class="org-rainbow-identifiers-identifier-10">3</span><span class="org-rainbow-delimiters-depth-6">)</span>;
+    <span class="org-rainbow-delimiters-depth-5">}</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>;
 
-});
+<span class="org-rainbow-delimiters-depth-2">}</span><span class="org-rainbow-delimiters-depth-1">)</span>;
 </pre>
 </div>
 </div>
@@ -309,22 +309,22 @@ Angular provides a mock <code>$http</code> service for tests: <code>$httpBackend
 <div class="org-src-container">
 
 <pre class="src src-js"><span class="org-comment-delimiter">// </span><span class="org-comment">inject guarantees each test is isolated from others.</span>
-beforeEach(inject(<span class="org-keyword">function</span>(<span class="org-variable-name">_$httpBackend_</span>, <span class="org-variable-name">$rootScope</span>, <span class="org-variable-name">$controller</span>) {
-    $httpBackend = _$httpBackend_;
-    $httpBackend.expectGET(<span class="org-string">'phones/phones.json'</span>).
-        respond([{name: <span class="org-string">'Nexus S'</span>}, {name: <span class="org-string">'Motorola DROID'</span>}]);
+<span class="org-rainbow-identifiers-identifier-6">beforeEach</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-identifiers-identifier-7">inject</span><span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">function</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-variable-name">_$httpBackend_</span>, <span class="org-variable-name">$rootScope</span>, <span class="org-variable-name">$controller</span><span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-rainbow-delimiters-depth-3">{</span>
+    <span class="org-rainbow-identifiers-identifier-1">$httpBackend</span> = <span class="org-rainbow-identifiers-identifier-8">_$httpBackend_</span>;
+    <span class="org-rainbow-identifiers-identifier-1">$httpBackend</span>.<span class="org-rainbow-identifiers-identifier-1">expectGET</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-string">'phones/phones.json'</span><span class="org-rainbow-delimiters-depth-4">)</span>.
+        <span class="org-rainbow-identifiers-identifier-4">respond</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-rainbow-delimiters-depth-5">[</span><span class="org-rainbow-delimiters-depth-6">{</span><span class="org-rainbow-identifiers-identifier-3">name</span>: <span class="org-string">'Nexus S'</span><span class="org-rainbow-delimiters-depth-6">}</span>, <span class="org-rainbow-delimiters-depth-6">{</span><span class="org-rainbow-identifiers-identifier-3">name</span>: <span class="org-string">'Motorola DROID'</span><span class="org-rainbow-delimiters-depth-6">}</span><span class="org-rainbow-delimiters-depth-5">]</span><span class="org-rainbow-delimiters-depth-4">)</span>;
 
-    scope = $rootScope.$new();
-    ctrl = $controller(<span class="org-string">'PhoneListCtrl'</span>, {$scope: scope});
-}));
+    <span class="org-rainbow-identifiers-identifier-13">scope</span> = <span class="org-rainbow-identifiers-identifier-5">$rootScope</span>.<span class="org-rainbow-identifiers-identifier-1">$new</span><span class="org-rainbow-delimiters-depth-4">()</span>;
+    <span class="org-rainbow-identifiers-identifier-11">ctrl</span> = <span class="org-rainbow-identifiers-identifier-13">$controller</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-string">'PhoneListCtrl'</span>, <span class="org-rainbow-delimiters-depth-5">{</span><span class="org-rainbow-identifiers-identifier-7">$scope</span>: <span class="org-rainbow-identifiers-identifier-13">scope</span><span class="org-rainbow-delimiters-depth-5">}</span><span class="org-rainbow-delimiters-depth-4">)</span>;
+<span class="org-rainbow-delimiters-depth-3">}</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>;
 
-it(<span class="org-string">'should create "phones" model with 2 phones fetched from xhr'</span>, <span class="org-keyword">function</span>() {
-    expect(scope.phones).toBeUndefined();
-    $httpBackend.flush(); <span class="org-comment-delimiter">// </span><span class="org-comment">returns http request response</span>
+<span class="org-rainbow-identifiers-identifier-13">it</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'should create "phones" model with 2 phones fetched from xhr'</span>, <span class="org-keyword">function</span><span class="org-rainbow-delimiters-depth-2">()</span> <span class="org-rainbow-delimiters-depth-2">{</span>
+    <span class="org-rainbow-identifiers-identifier-7">expect</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-identifiers-identifier-13">scope</span>.<span class="org-rainbow-identifiers-identifier-9">phones</span><span class="org-rainbow-delimiters-depth-3">)</span>.<span class="org-rainbow-identifiers-identifier-2">toBeUndefined</span><span class="org-rainbow-delimiters-depth-3">()</span>;
+    <span class="org-rainbow-identifiers-identifier-1">$httpBackend</span>.<span class="org-rainbow-identifiers-identifier-1">flush</span><span class="org-rainbow-delimiters-depth-3">()</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">returns http request response</span>
 
-    expect(scope.phones).toEqual([{name: <span class="org-string">'Nexus S'</span>},
-                                  {name: <span class="org-string">'Motorola DROID'</span>}]);
-});
+    <span class="org-rainbow-identifiers-identifier-7">expect</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-identifiers-identifier-13">scope</span>.<span class="org-rainbow-identifiers-identifier-9">phones</span><span class="org-rainbow-delimiters-depth-3">)</span>.<span class="org-rainbow-identifiers-identifier-8">toEqual</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">[</span><span class="org-rainbow-delimiters-depth-5">{</span><span class="org-rainbow-identifiers-identifier-3">name</span>: <span class="org-string">'Nexus S'</span><span class="org-rainbow-delimiters-depth-5">}</span>,
+                                  <span class="org-rainbow-delimiters-depth-5">{</span><span class="org-rainbow-identifiers-identifier-3">name</span>: <span class="org-string">'Motorola DROID'</span><span class="org-rainbow-delimiters-depth-5">}</span><span class="org-rainbow-delimiters-depth-4">]</span><span class="org-rainbow-delimiters-depth-3">)</span>;
+<span class="org-rainbow-delimiters-depth-2">}</span><span class="org-rainbow-delimiters-depth-1">)</span>;
 </pre>
 </div>
 </div>
@@ -349,31 +349,31 @@ Before testing e2e You need to
 
 <div class="org-src-container">
 
-<pre class="src src-js">describe(<span class="org-string">'PhoneCat App'</span>, <span class="org-keyword">function</span>() {
+<pre class="src src-js"><span class="org-rainbow-identifiers-identifier-7">describe</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'PhoneCat App'</span>, <span class="org-keyword">function</span><span class="org-rainbow-delimiters-depth-2">()</span> <span class="org-rainbow-delimiters-depth-2">{</span>
 
-    describe(<span class="org-string">'Phone list view'</span>, <span class="org-keyword">function</span>() {
+    <span class="org-rainbow-identifiers-identifier-7">describe</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">'Phone list view'</span>, <span class="org-keyword">function</span><span class="org-rainbow-delimiters-depth-4">()</span> <span class="org-rainbow-delimiters-depth-4">{</span>
 
-        beforeEach(<span class="org-keyword">function</span>() {
-            browser.get(<span class="org-string">'app/index.html'</span>);
-        });
+        <span class="org-rainbow-identifiers-identifier-6">beforeEach</span><span class="org-rainbow-delimiters-depth-5">(</span><span class="org-keyword">function</span><span class="org-rainbow-delimiters-depth-6">()</span> <span class="org-rainbow-delimiters-depth-6">{</span>
+            <span class="org-rainbow-identifiers-identifier-5">browser</span>.<span class="org-rainbow-identifiers-identifier-13">get</span><span class="org-rainbow-delimiters-depth-7">(</span><span class="org-string">'app/index.html'</span><span class="org-rainbow-delimiters-depth-7">)</span>;
+        <span class="org-rainbow-delimiters-depth-6">}</span><span class="org-rainbow-delimiters-depth-5">)</span>;
 
 
-        it(<span class="org-string">'should filter the phone list as a user types into the search box'</span>, <span class="org-keyword">function</span>() {
+        <span class="org-rainbow-identifiers-identifier-13">it</span><span class="org-rainbow-delimiters-depth-5">(</span><span class="org-string">'should filter the phone list as a user types into the search box'</span>, <span class="org-keyword">function</span><span class="org-rainbow-delimiters-depth-6">()</span> <span class="org-rainbow-delimiters-depth-6">{</span>
 
-            <span class="org-keyword">var</span> <span class="org-variable-name">phoneList</span> = element.all(by.repeater(<span class="org-string">'phone in phones'</span>));
-            <span class="org-keyword">var</span> <span class="org-variable-name">query</span> = element(by.model(<span class="org-string">'query'</span>));
+            <span class="org-keyword">var</span> <span class="org-variable-name">phoneList</span> = <span class="org-rainbow-identifiers-identifier-3">element</span>.<span class="org-rainbow-identifiers-identifier-3">all</span><span class="org-rainbow-delimiters-depth-7">(</span><span class="org-rainbow-identifiers-identifier-13">by</span>.<span class="org-rainbow-identifiers-identifier-9">repeater</span><span class="org-rainbow-delimiters-depth-8">(</span><span class="org-string">'phone in phones'</span><span class="org-rainbow-delimiters-depth-8">)</span><span class="org-rainbow-delimiters-depth-7">)</span>;
+            <span class="org-keyword">var</span> <span class="org-variable-name">query</span> = <span class="org-rainbow-identifiers-identifier-3">element</span><span class="org-rainbow-delimiters-depth-7">(</span><span class="org-rainbow-identifiers-identifier-13">by</span>.<span class="org-rainbow-identifiers-identifier-13">model</span><span class="org-rainbow-delimiters-depth-8">(</span><span class="org-string">'query'</span><span class="org-rainbow-delimiters-depth-8">)</span><span class="org-rainbow-delimiters-depth-7">)</span>;
 
-            expect(phoneList.count()).toBe(3);
+            <span class="org-rainbow-identifiers-identifier-7">expect</span><span class="org-rainbow-delimiters-depth-7">(</span><span class="org-rainbow-identifiers-identifier-2">phoneList</span>.<span class="org-rainbow-identifiers-identifier-9">count</span><span class="org-rainbow-delimiters-depth-8">()</span><span class="org-rainbow-delimiters-depth-7">)</span>.<span class="org-rainbow-identifiers-identifier-7">toBe</span><span class="org-rainbow-delimiters-depth-7">(</span><span class="org-rainbow-identifiers-identifier-10">3</span><span class="org-rainbow-delimiters-depth-7">)</span>;
 
-            query.sendKeys(<span class="org-string">'nexus'</span>);
-            expect(phoneList.count()).toBe(1);
+            <span class="org-rainbow-identifiers-identifier-11">query</span>.<span class="org-rainbow-identifiers-identifier-2">sendKeys</span><span class="org-rainbow-delimiters-depth-7">(</span><span class="org-string">'nexus'</span><span class="org-rainbow-delimiters-depth-7">)</span>;
+            <span class="org-rainbow-identifiers-identifier-7">expect</span><span class="org-rainbow-delimiters-depth-7">(</span><span class="org-rainbow-identifiers-identifier-2">phoneList</span>.<span class="org-rainbow-identifiers-identifier-9">count</span><span class="org-rainbow-delimiters-depth-8">()</span><span class="org-rainbow-delimiters-depth-7">)</span>.<span class="org-rainbow-identifiers-identifier-7">toBe</span><span class="org-rainbow-delimiters-depth-7">(</span><span class="org-rainbow-identifiers-identifier-1">1</span><span class="org-rainbow-delimiters-depth-7">)</span>;
 
-            query.clear();
-            query.sendKeys(<span class="org-string">'motorola'</span>);
-            expect(phoneList.count()).toBe(2);
-        });
-    });
-});
+            <span class="org-rainbow-identifiers-identifier-11">query</span>.<span class="org-rainbow-identifiers-identifier-11">clear</span><span class="org-rainbow-delimiters-depth-7">()</span>;
+            <span class="org-rainbow-identifiers-identifier-11">query</span>.<span class="org-rainbow-identifiers-identifier-2">sendKeys</span><span class="org-rainbow-delimiters-depth-7">(</span><span class="org-string">'motorola'</span><span class="org-rainbow-delimiters-depth-7">)</span>;
+            <span class="org-rainbow-identifiers-identifier-7">expect</span><span class="org-rainbow-delimiters-depth-7">(</span><span class="org-rainbow-identifiers-identifier-2">phoneList</span>.<span class="org-rainbow-identifiers-identifier-9">count</span><span class="org-rainbow-delimiters-depth-8">()</span><span class="org-rainbow-delimiters-depth-7">)</span>.<span class="org-rainbow-identifiers-identifier-7">toBe</span><span class="org-rainbow-delimiters-depth-7">(</span><span class="org-rainbow-identifiers-identifier-4">2</span><span class="org-rainbow-delimiters-depth-7">)</span>;
+        <span class="org-rainbow-delimiters-depth-6">}</span><span class="org-rainbow-delimiters-depth-5">)</span>;
+    <span class="org-rainbow-delimiters-depth-4">}</span><span class="org-rainbow-delimiters-depth-3">)</span>;
+<span class="org-rainbow-delimiters-depth-2">}</span><span class="org-rainbow-delimiters-depth-1">)</span>;
 </pre>
 </div>
 </div>
@@ -390,13 +390,13 @@ are using <code>ngResource</code>. You should also use <code>toEqualData</code> 
 
 <div class="org-src-container">
 
-<pre class="src src-js">it(<span class="org-string">'should create "phones" model with 2 phones fetched from xhr'</span>, <span class="org-keyword">function</span>() {
-    expect(scope.phones).toEqualData([]);
-    $httpBackend.flush();
+<pre class="src src-js"><span class="org-rainbow-identifiers-identifier-13">it</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'should create "phones" model with 2 phones fetched from xhr'</span>, <span class="org-keyword">function</span><span class="org-rainbow-delimiters-depth-2">()</span> <span class="org-rainbow-delimiters-depth-2">{</span>
+    <span class="org-rainbow-identifiers-identifier-7">expect</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-identifiers-identifier-13">scope</span>.<span class="org-rainbow-identifiers-identifier-9">phones</span><span class="org-rainbow-delimiters-depth-3">)</span>.<span class="org-rainbow-identifiers-identifier-1">toEqualData</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">[]</span><span class="org-rainbow-delimiters-depth-3">)</span>;
+    <span class="org-rainbow-identifiers-identifier-1">$httpBackend</span>.<span class="org-rainbow-identifiers-identifier-1">flush</span><span class="org-rainbow-delimiters-depth-3">()</span>;
 
-    expect(scope.phones).toEqualData(
-        [{name: <span class="org-string">'Nexus S'</span>}, {name: <span class="org-string">'Motorola DROID'</span>}]);
-  });
+    <span class="org-rainbow-identifiers-identifier-7">expect</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-identifiers-identifier-13">scope</span>.<span class="org-rainbow-identifiers-identifier-9">phones</span><span class="org-rainbow-delimiters-depth-3">)</span>.<span class="org-rainbow-identifiers-identifier-1">toEqualData</span><span class="org-rainbow-delimiters-depth-3">(</span>
+        <span class="org-rainbow-delimiters-depth-4">[</span><span class="org-rainbow-delimiters-depth-5">{</span><span class="org-rainbow-identifiers-identifier-3">name</span>: <span class="org-string">'Nexus S'</span><span class="org-rainbow-delimiters-depth-5">}</span>, <span class="org-rainbow-delimiters-depth-5">{</span><span class="org-rainbow-identifiers-identifier-3">name</span>: <span class="org-string">'Motorola DROID'</span><span class="org-rainbow-delimiters-depth-5">}</span><span class="org-rainbow-delimiters-depth-4">]</span><span class="org-rainbow-delimiters-depth-3">)</span>;
+  <span class="org-rainbow-delimiters-depth-2">}</span><span class="org-rainbow-delimiters-depth-1">)</span>;
 </pre>
 </div>
 </div>
@@ -439,11 +439,11 @@ arguments in your controller’s constructor.
 
 <div class="org-src-container">
 
-<pre class="src src-js">phonecatApp.controller(<span class="org-string">'PhoneListCtrl'</span>, <span class="org-keyword">function</span> (<span class="org-variable-name">$scope</span>, <span class="org-variable-name">$http</span>) {
-    $http.get(<span class="org-string">'phones/phones.json'</span>).success(<span class="org-keyword">function</span>(<span class="org-variable-name">data</span>) {
-        $scope.phones = data;
-    });
-});
+<pre class="src src-js"><span class="org-rainbow-identifiers-identifier-10">phonecatApp</span>.<span class="org-rainbow-identifiers-identifier-14">controller</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'PhoneListCtrl'</span>, <span class="org-keyword">function</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-variable-name">$scope</span>, <span class="org-variable-name">$http</span><span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">{</span>
+    <span class="org-rainbow-identifiers-identifier-5">$http</span>.<span class="org-rainbow-identifiers-identifier-13">get</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">'phones/phones.json'</span><span class="org-rainbow-delimiters-depth-3">)</span>.<span class="org-rainbow-identifiers-identifier-5">success</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword">function</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-variable-name">data</span><span class="org-rainbow-delimiters-depth-4">)</span> <span class="org-rainbow-delimiters-depth-4">{</span>
+        <span class="org-rainbow-identifiers-identifier-7">$scope</span>.<span class="org-rainbow-identifiers-identifier-9">phones</span> = <span class="org-rainbow-identifiers-identifier-12">data</span>;
+    <span class="org-rainbow-delimiters-depth-4">}</span><span class="org-rainbow-delimiters-depth-3">)</span>;
+<span class="org-rainbow-delimiters-depth-2">}</span><span class="org-rainbow-delimiters-depth-1">)</span>;
 </pre>
 </div>
 
@@ -459,8 +459,8 @@ A good way to overcome this problem is to use an inline annotation.
 
 <div class="org-src-container">
 
-<pre class="src src-js"><span class="org-keyword">function</span> <span class="org-function-name">PhoneListCtrl</span>(<span class="org-variable-name">$scope</span>, <span class="org-variable-name">$http</span>) {...}
-phonecatApp.controller(<span class="org-string">'PhoneListCtrl'</span>, [<span class="org-string">'$scope'</span>, <span class="org-string">'$http'</span>, PhoneListCtrl]);
+<pre class="src src-js"><span class="org-keyword">function</span> <span class="org-function-name">PhoneListCtrl</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-variable-name">$scope</span>, <span class="org-variable-name">$http</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">{</span>...<span class="org-rainbow-delimiters-depth-1">}</span>
+<span class="org-rainbow-identifiers-identifier-10">phonecatApp</span>.<span class="org-rainbow-identifiers-identifier-14">controller</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'PhoneListCtrl'</span>, <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">'$scope'</span>, <span class="org-string">'$http'</span>, <span class="org-rainbow-identifiers-identifier-7">PhoneListCtrl</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>;
 </pre>
 </div>
 </div>
@@ -486,21 +486,21 @@ Install it with bower and load it.
 
 <div class="org-src-container">
 
-<pre class="src src-js">phonecatApp.config([<span class="org-string">'$routeProvider'</span>,
-                    <span class="org-keyword">function</span>(<span class="org-variable-name">$routeProvider</span>) {
-                        $routeProvider.
-                            when(<span class="org-string">'/phones'</span>, {
-                                templateUrl: <span class="org-string">'partials/phone-list.html'</span>,
-                                controller: <span class="org-string">'PhoneListCtrl'</span>
-                            }).
-                            when(<span class="org-string">'/phones/:phoneId'</span>, {
-                                templateUrl: <span class="org-string">'partials/phone-detail.html'</span>,
-                                controller: <span class="org-string">'PhoneDetailCtrl'</span>
-                            }).
-                            otherwise({
-                                redirectTo: <span class="org-string">'/phones'</span>
-                            });
-                    }]);
+<pre class="src src-js"><span class="org-rainbow-identifiers-identifier-10">phonecatApp</span>.<span class="org-rainbow-identifiers-identifier-12">config</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">'$routeProvider'</span>,
+                    <span class="org-keyword">function</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-variable-name">$routeProvider</span><span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-rainbow-delimiters-depth-3">{</span>
+                        <span class="org-rainbow-identifiers-identifier-9">$routeProvider</span>.
+                            <span class="org-rainbow-identifiers-identifier-10">when</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-string">'/phones'</span>, <span class="org-rainbow-delimiters-depth-5">{</span>
+                                <span class="org-rainbow-identifiers-identifier-5">templateUrl</span>: <span class="org-string">'partials/phone-list.html'</span>,
+                                <span class="org-rainbow-identifiers-identifier-14">controller</span>: <span class="org-string">'PhoneListCtrl'</span>
+                            <span class="org-rainbow-delimiters-depth-5">}</span><span class="org-rainbow-delimiters-depth-4">)</span>.
+                            <span class="org-rainbow-identifiers-identifier-10">when</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-string">'/phones/:phoneId'</span>, <span class="org-rainbow-delimiters-depth-5">{</span>
+                                <span class="org-rainbow-identifiers-identifier-5">templateUrl</span>: <span class="org-string">'partials/phone-detail.html'</span>,
+                                <span class="org-rainbow-identifiers-identifier-14">controller</span>: <span class="org-string">'PhoneDetailCtrl'</span>
+                            <span class="org-rainbow-delimiters-depth-5">}</span><span class="org-rainbow-delimiters-depth-4">)</span>.
+                            <span class="org-rainbow-identifiers-identifier-4">otherwise</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-rainbow-delimiters-depth-5">{</span>
+                                <span class="org-rainbow-identifiers-identifier-8">redirectTo</span>: <span class="org-string">'/phones'</span>
+                            <span class="org-rainbow-delimiters-depth-5">}</span><span class="org-rainbow-delimiters-depth-4">)</span>;
+                    <span class="org-rainbow-delimiters-depth-3">}</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>;
 </pre>
 </div>
 
@@ -510,21 +510,21 @@ Anything with a <code>:</code> notation is extracted to <code>$routeParams</code
 
 <div class="org-src-container">
 
-<pre class="src src-js"><span class="org-keyword">var</span> <span class="org-variable-name">phonecatControllers</span> = angular.module(<span class="org-string">'phonecatControllers'</span>, []);
+<pre class="src src-js"><span class="org-keyword">var</span> <span class="org-variable-name">phonecatControllers</span> = <span class="org-rainbow-identifiers-identifier-15">angular</span>.<span class="org-rainbow-identifiers-identifier-2">module</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'phonecatControllers'</span>, <span class="org-rainbow-delimiters-depth-2">[]</span><span class="org-rainbow-delimiters-depth-1">)</span>;
 
-phonecatControllers.controller(<span class="org-string">'PhoneListCtrl'</span>, [<span class="org-string">'$scope'</span>, <span class="org-string">'$http'</span>,
-                                                 <span class="org-keyword">function</span> (<span class="org-variable-name">$scope</span>, <span class="org-variable-name">$http</span>) {
-                                                     $http.get(<span class="org-string">'phones/phones.json'</span>).success(<span class="org-keyword">function</span>(<span class="org-variable-name">data</span>) {
-                                                         $scope.phones = data;
-                                                     });
+<span class="org-rainbow-identifiers-identifier-6">phonecatControllers</span>.<span class="org-rainbow-identifiers-identifier-14">controller</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'PhoneListCtrl'</span>, <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">'$scope'</span>, <span class="org-string">'$http'</span>,
+                                                 <span class="org-keyword">function</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-variable-name">$scope</span>, <span class="org-variable-name">$http</span><span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-rainbow-delimiters-depth-3">{</span>
+                                                     <span class="org-rainbow-identifiers-identifier-5">$http</span>.<span class="org-rainbow-identifiers-identifier-13">get</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-string">'phones/phones.json'</span><span class="org-rainbow-delimiters-depth-4">)</span>.<span class="org-rainbow-identifiers-identifier-5">success</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-keyword">function</span><span class="org-rainbow-delimiters-depth-5">(</span><span class="org-variable-name">data</span><span class="org-rainbow-delimiters-depth-5">)</span> <span class="org-rainbow-delimiters-depth-5">{</span>
+                                                         <span class="org-rainbow-identifiers-identifier-7">$scope</span>.<span class="org-rainbow-identifiers-identifier-9">phones</span> = <span class="org-rainbow-identifiers-identifier-12">data</span>;
+                                                     <span class="org-rainbow-delimiters-depth-5">}</span><span class="org-rainbow-delimiters-depth-4">)</span>;
 
-                                                     $scope.orderProp = <span class="org-string">'age'</span>;
-                                                 }]);
+                                                     <span class="org-rainbow-identifiers-identifier-7">$scope</span>.<span class="org-rainbow-identifiers-identifier-8">orderProp</span> = <span class="org-string">'age'</span>;
+                                                 <span class="org-rainbow-delimiters-depth-3">}</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>;
 
-phonecatControllers.controller(<span class="org-string">'PhoneDetailCtrl'</span>, [<span class="org-string">'$scope'</span>, <span class="org-string">'$routeParams'</span>,
-                                                   <span class="org-keyword">function</span>(<span class="org-variable-name">$scope</span>, <span class="org-variable-name">$routeParams</span>) {
-                                                       $scope.phoneId = $routeParams.phoneId;
-                                                   }]);
+<span class="org-rainbow-identifiers-identifier-6">phonecatControllers</span>.<span class="org-rainbow-identifiers-identifier-14">controller</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'PhoneDetailCtrl'</span>, <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">'$scope'</span>, <span class="org-string">'$routeParams'</span>,
+                                                   <span class="org-keyword">function</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-variable-name">$scope</span>, <span class="org-variable-name">$routeParams</span><span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-rainbow-delimiters-depth-3">{</span>
+                                                       <span class="org-rainbow-identifiers-identifier-7">$scope</span>.<span class="org-rainbow-identifiers-identifier-4">phoneId</span> = <span class="org-rainbow-identifiers-identifier-7">$routeParams</span>.<span class="org-rainbow-identifiers-identifier-4">phoneId</span>;
+                                                   <span class="org-rainbow-delimiters-depth-3">}</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>;
 </pre>
 </div>
 </div>
@@ -566,11 +566,11 @@ And we use routes and partials to display the correct view.
 <div class="outline-text-3" id="text-9-2">
 <div class="org-src-container">
 
-<pre class="src src-js">angular.module(<span class="org-string">'phonecatFilters'</span>, []).filter(<span class="org-string">'checkmark'</span>, <span class="org-keyword">function</span>() {
-    <span class="org-keyword">return</span> <span class="org-keyword">function</span>(<span class="org-variable-name">input</span>) {
-        <span class="org-keyword">return</span> input ? <span class="org-string">'\u2713'</span> : <span class="org-string">'\u2718'</span>;
-    };
-});
+<pre class="src src-js"><span class="org-rainbow-identifiers-identifier-15">angular</span>.<span class="org-rainbow-identifiers-identifier-2">module</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'phonecatFilters'</span>, <span class="org-rainbow-delimiters-depth-2">[]</span><span class="org-rainbow-delimiters-depth-1">)</span>.<span class="org-rainbow-identifiers-identifier-9">filter</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'checkmark'</span>, <span class="org-keyword">function</span><span class="org-rainbow-delimiters-depth-2">()</span> <span class="org-rainbow-delimiters-depth-2">{</span>
+    <span class="org-keyword">return</span> <span class="org-keyword">function</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-variable-name">input</span><span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-rainbow-delimiters-depth-3">{</span>
+        <span class="org-keyword">return</span> <span class="org-rainbow-identifiers-identifier-6">input</span> ? <span class="org-string">'\u2713'</span> : <span class="org-string">'\u2718'</span>;
+    <span class="org-rainbow-delimiters-depth-3">}</span>;
+<span class="org-rainbow-delimiters-depth-2">}</span><span class="org-rainbow-delimiters-depth-1">)</span>;
 </pre>
 </div>
 </div>
@@ -588,19 +588,19 @@ And we use routes and partials to display the correct view.
 
 <div class="org-src-container">
 
-<pre class="src src-js"><span class="org-keyword">var</span> <span class="org-variable-name">phonecatControllers</span> = angular.module(<span class="org-string">'phonecatControllers'</span>,[]);
+<pre class="src src-js"><span class="org-keyword">var</span> <span class="org-variable-name">phonecatControllers</span> = <span class="org-rainbow-identifiers-identifier-15">angular</span>.<span class="org-rainbow-identifiers-identifier-2">module</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'phonecatControllers'</span>,<span class="org-rainbow-delimiters-depth-2">[]</span><span class="org-rainbow-delimiters-depth-1">)</span>;
 
-phonecatControllers.controller(<span class="org-string">'PhoneDetailCtrl'</span>, [<span class="org-string">'$scope'</span>, <span class="org-string">'$routeParams'</span>, <span class="org-string">'$http'</span>,
-                                                   <span class="org-keyword">function</span>(<span class="org-variable-name">$scope</span>, <span class="org-variable-name">$routeParams</span>, <span class="org-variable-name">$http</span>) {
-                                                       $http.get(<span class="org-string">'phones/'</span> + $routeParams.phoneId + <span class="org-string">'.json'</span>).success(<span class="org-keyword">function</span>(<span class="org-variable-name">data</span>) {
-                                                           $scope.phone = data;
-                                                           $scope.mainImageUrl = data.images[0];
-                                                       });
+<span class="org-rainbow-identifiers-identifier-6">phonecatControllers</span>.<span class="org-rainbow-identifiers-identifier-14">controller</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'PhoneDetailCtrl'</span>, <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">'$scope'</span>, <span class="org-string">'$routeParams'</span>, <span class="org-string">'$http'</span>,
+                                                   <span class="org-keyword">function</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-variable-name">$scope</span>, <span class="org-variable-name">$routeParams</span>, <span class="org-variable-name">$http</span><span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-rainbow-delimiters-depth-3">{</span>
+                                                       <span class="org-rainbow-identifiers-identifier-5">$http</span>.<span class="org-rainbow-identifiers-identifier-13">get</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-string">'phones/'</span> + <span class="org-rainbow-identifiers-identifier-7">$routeParams</span>.<span class="org-rainbow-identifiers-identifier-4">phoneId</span> + <span class="org-string">'.json'</span><span class="org-rainbow-delimiters-depth-4">)</span>.<span class="org-rainbow-identifiers-identifier-5">success</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-keyword">function</span><span class="org-rainbow-delimiters-depth-5">(</span><span class="org-variable-name">data</span><span class="org-rainbow-delimiters-depth-5">)</span> <span class="org-rainbow-delimiters-depth-5">{</span>
+                                                           <span class="org-rainbow-identifiers-identifier-7">$scope</span>.<span class="org-rainbow-identifiers-identifier-14">phone</span> = <span class="org-rainbow-identifiers-identifier-12">data</span>;
+                                                           <span class="org-rainbow-identifiers-identifier-7">$scope</span>.<span class="org-rainbow-identifiers-identifier-4">mainImageUrl</span> = <span class="org-rainbow-identifiers-identifier-12">data</span>.<span class="org-rainbow-identifiers-identifier-6">images</span><span class="org-rainbow-delimiters-depth-6">[</span><span class="org-rainbow-identifiers-identifier-12">0</span><span class="org-rainbow-delimiters-depth-6">]</span>;
+                                                       <span class="org-rainbow-delimiters-depth-5">}</span><span class="org-rainbow-delimiters-depth-4">)</span>;
 
-                                                       $scope.setImage = <span class="org-keyword">function</span>(<span class="org-variable-name">imageUrl</span>) {
-                                                           $scope.mainImageUrl = imageUrl;
-                                                       }
-                                                   }]);
+                                                       <span class="org-rainbow-identifiers-identifier-7">$scope</span>.<span class="org-rainbow-identifiers-identifier-5">setImage</span> = <span class="org-keyword">function</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-variable-name">imageUrl</span><span class="org-rainbow-delimiters-depth-4">)</span> <span class="org-rainbow-delimiters-depth-4">{</span>
+                                                           <span class="org-rainbow-identifiers-identifier-7">$scope</span>.<span class="org-rainbow-identifiers-identifier-4">mainImageUrl</span> = <span class="org-rainbow-identifiers-identifier-11">imageUrl</span>;
+                                                       <span class="org-rainbow-delimiters-depth-4">}</span>
+                                                   <span class="org-rainbow-delimiters-depth-3">}</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>;
 </pre>
 </div>
 </div>
@@ -622,14 +622,14 @@ Provided by <code>ngResource</code>. Use Bower to install it.
 
 <div class="org-src-container">
 
-<pre class="src src-js"><span class="org-keyword">var</span> <span class="org-variable-name">phonecatServices</span> = angular.module(<span class="org-string">'phonecatServices'</span>, [<span class="org-string">'ngResource'</span>]);
+<pre class="src src-js"><span class="org-keyword">var</span> <span class="org-variable-name">phonecatServices</span> = <span class="org-rainbow-identifiers-identifier-15">angular</span>.<span class="org-rainbow-identifiers-identifier-2">module</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'phonecatServices'</span>, <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">'ngResource'</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>;
 
-phonecatServices.factory(<span class="org-string">'Phone'</span>, [<span class="org-string">'$resource'</span>,
-                                   <span class="org-keyword">function</span>(<span class="org-variable-name">$resource</span>){
-                                       <span class="org-keyword">return</span> $resource(<span class="org-string">'phones/:phoneId.json'</span>, {}, {
-                                           query: {method:<span class="org-string">'GET'</span>, params:{phoneId:<span class="org-string">'phones'</span>}, isArray:<span class="org-constant">true</span>}
-                                       });
-                                   }]);
+<span class="org-rainbow-identifiers-identifier-13">phonecatServices</span>.<span class="org-rainbow-identifiers-identifier-4">factory</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'Phone'</span>, <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">'$resource'</span>,
+                                   <span class="org-keyword">function</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-variable-name">$resource</span><span class="org-rainbow-delimiters-depth-3">){</span>
+                                       <span class="org-keyword">return</span> <span class="org-rainbow-identifiers-identifier-3">$resource</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-string">'phones/:phoneId.json'</span>, <span class="org-rainbow-delimiters-depth-5">{}</span>, <span class="org-rainbow-delimiters-depth-5">{</span>
+                                           <span class="org-rainbow-identifiers-identifier-11">query</span>: <span class="org-rainbow-delimiters-depth-6">{</span><span class="org-rainbow-identifiers-identifier-11">method</span>:<span class="org-string">'GET'</span>, <span class="org-rainbow-identifiers-identifier-9">params</span>:<span class="org-rainbow-delimiters-depth-7">{</span><span class="org-rainbow-identifiers-identifier-4">phoneId</span>:<span class="org-string">'phones'</span><span class="org-rainbow-delimiters-depth-7">}</span>, <span class="org-rainbow-identifiers-identifier-1">isArray</span>:<span class="org-constant">true</span><span class="org-rainbow-delimiters-depth-6">}</span>
+                                       <span class="org-rainbow-delimiters-depth-5">}</span><span class="org-rainbow-delimiters-depth-4">)</span>;
+                                   <span class="org-rainbow-delimiters-depth-3">}</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>;
 </pre>
 </div>
 
@@ -642,10 +642,10 @@ arguments.
 
 <div class="org-src-container">
 
-<pre class="src src-js">phonecatControllers.controller(<span class="org-string">'PhoneListCtrl'</span>, [<span class="org-string">'$scope'</span>, <span class="org-string">'Phone'</span>, <span class="org-keyword">function</span>(<span class="org-variable-name">$scope</span>, <span class="org-variable-name">Phone</span>) {
-    $scope.phones = Phone.query();
-    $scope.orderProp = <span class="org-string">'age'</span>;
-}]);
+<pre class="src src-js"><span class="org-rainbow-identifiers-identifier-6">phonecatControllers</span>.<span class="org-rainbow-identifiers-identifier-14">controller</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'PhoneListCtrl'</span>, <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">'$scope'</span>, <span class="org-string">'Phone'</span>, <span class="org-keyword">function</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-variable-name">$scope</span>, <span class="org-variable-name">Phone</span><span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-rainbow-delimiters-depth-3">{</span>
+    <span class="org-rainbow-identifiers-identifier-7">$scope</span>.<span class="org-rainbow-identifiers-identifier-9">phones</span> = <span class="org-rainbow-identifiers-identifier-6">Phone</span>.<span class="org-rainbow-identifiers-identifier-11">query</span><span class="org-rainbow-delimiters-depth-4">()</span>;
+    <span class="org-rainbow-identifiers-identifier-7">$scope</span>.<span class="org-rainbow-identifiers-identifier-8">orderProp</span> = <span class="org-string">'age'</span>;
+<span class="org-rainbow-delimiters-depth-3">}</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>;
 </pre>
 </div>
 </div>
@@ -682,7 +682,7 @@ The ng-leave class is applied when they're removed from the list.
 
 <div class="org-src-container">
 
-<pre class="src src-css"><span class="org-css-selector"><span class="org-comment">// need vendor prefixes to be useful</span></span>
+<pre class="src src-css"><span class="org-css-selector">// need vendor prefixes to be useful</span>
 <span class="org-css-selector">.view-frame.ng-enter </span>{
     <span class="org-css-property">animation</span>: 0.5s fade-in;
     <span class="org-css-property">z-index</span>: 100;
@@ -716,58 +716,58 @@ element becomes active
 
 <div class="org-src-container">
 
-<pre class="src src-js"><span class="org-keyword">var</span> <span class="org-variable-name">phonecatAnimations</span> = angular.module(<span class="org-string">'phonecatAnimations'</span>, [<span class="org-string">'ngAnimate'</span>]);
+<pre class="src src-js"><span class="org-keyword">var</span> <span class="org-variable-name">phonecatAnimations</span> = <span class="org-rainbow-identifiers-identifier-15">angular</span>.<span class="org-rainbow-identifiers-identifier-2">module</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'phonecatAnimations'</span>, <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-string">'ngAnimate'</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>;
 
-phonecatAnimations.animation(<span class="org-string">'.phone'</span>, <span class="org-keyword">function</span>() {
+<span class="org-rainbow-identifiers-identifier-5">phonecatAnimations</span>.<span class="org-rainbow-identifiers-identifier-2">animation</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">'.phone'</span>, <span class="org-keyword">function</span><span class="org-rainbow-delimiters-depth-2">()</span> <span class="org-rainbow-delimiters-depth-2">{</span>
 
-    <span class="org-keyword">var</span> <span class="org-variable-name">animateUp</span> = <span class="org-keyword">function</span>(<span class="org-variable-name">element</span>, <span class="org-variable-name">className</span>, <span class="org-variable-name">done</span>) {
-        <span class="org-keyword">if</span>(className != <span class="org-string">'active'</span>) {
+    <span class="org-keyword">var</span> <span class="org-variable-name">animateUp</span> = <span class="org-keyword">function</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-variable-name">element</span>, <span class="org-variable-name">className</span>, <span class="org-variable-name">done</span><span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-rainbow-delimiters-depth-3">{</span>
+        <span class="org-keyword">if</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-rainbow-identifiers-identifier-4">className</span> != <span class="org-string">'active'</span><span class="org-rainbow-delimiters-depth-4">)</span> <span class="org-rainbow-delimiters-depth-4">{</span>
             <span class="org-keyword">return</span>;
-        }
-        element.css({
-            position: <span class="org-string">'absolute'</span>,
-            top: 500,
-            left: 0,
-            display: <span class="org-string">'block'</span>
-        });
+        <span class="org-rainbow-delimiters-depth-4">}</span>
+        <span class="org-rainbow-identifiers-identifier-3">element</span>.<span class="org-rainbow-identifiers-identifier-9">css</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-rainbow-delimiters-depth-5">{</span>
+            <span class="org-rainbow-identifiers-identifier-2">position</span>: <span class="org-string">'absolute'</span>,
+            <span class="org-rainbow-identifiers-identifier-1">top</span>: <span class="org-rainbow-identifiers-identifier-7">500</span>,
+            <span class="org-rainbow-identifiers-identifier-9">left</span>: <span class="org-rainbow-identifiers-identifier-12">0</span>,
+            <span class="org-rainbow-identifiers-identifier-10">display</span>: <span class="org-string">'block'</span>
+        <span class="org-rainbow-delimiters-depth-5">}</span><span class="org-rainbow-delimiters-depth-4">)</span>;
 
-        jQuery(element).animate({
-            top: 0
-        }, done);
+        <span class="org-rainbow-identifiers-identifier-3">jQuery</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-rainbow-identifiers-identifier-3">element</span><span class="org-rainbow-delimiters-depth-4">)</span>.<span class="org-rainbow-identifiers-identifier-10">animate</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-rainbow-delimiters-depth-5">{</span>
+            <span class="org-rainbow-identifiers-identifier-1">top</span>: <span class="org-rainbow-identifiers-identifier-12">0</span>
+        <span class="org-rainbow-delimiters-depth-5">}</span>, <span class="org-rainbow-identifiers-identifier-8">done</span><span class="org-rainbow-delimiters-depth-4">)</span>;
 
-        <span class="org-keyword">return</span> <span class="org-keyword">function</span>(<span class="org-variable-name">cancel</span>) {
-            <span class="org-keyword">if</span>(cancel) {
-                element.stop();
-            }
-        };
-    }
+        <span class="org-keyword">return</span> <span class="org-keyword">function</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-variable-name">cancel</span><span class="org-rainbow-delimiters-depth-4">)</span> <span class="org-rainbow-delimiters-depth-4">{</span>
+            <span class="org-keyword">if</span><span class="org-rainbow-delimiters-depth-5">(</span><span class="org-rainbow-identifiers-identifier-13">cancel</span><span class="org-rainbow-delimiters-depth-5">)</span> <span class="org-rainbow-delimiters-depth-5">{</span>
+                <span class="org-rainbow-identifiers-identifier-3">element</span>.<span class="org-rainbow-identifiers-identifier-2">stop</span><span class="org-rainbow-delimiters-depth-6">()</span>;
+            <span class="org-rainbow-delimiters-depth-5">}</span>
+        <span class="org-rainbow-delimiters-depth-4">}</span>;
+    <span class="org-rainbow-delimiters-depth-3">}</span>
 
-    <span class="org-keyword">var</span> <span class="org-variable-name">animateDown</span> = <span class="org-keyword">function</span>(<span class="org-variable-name">element</span>, <span class="org-variable-name">className</span>, <span class="org-variable-name">done</span>) {
-        <span class="org-keyword">if</span>(className != <span class="org-string">'active'</span>) {
+    <span class="org-keyword">var</span> <span class="org-variable-name">animateDown</span> = <span class="org-keyword">function</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-variable-name">element</span>, <span class="org-variable-name">className</span>, <span class="org-variable-name">done</span><span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-rainbow-delimiters-depth-3">{</span>
+        <span class="org-keyword">if</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-rainbow-identifiers-identifier-4">className</span> != <span class="org-string">'active'</span><span class="org-rainbow-delimiters-depth-4">)</span> <span class="org-rainbow-delimiters-depth-4">{</span>
             <span class="org-keyword">return</span>;
-        }
-        element.css({
-            position: <span class="org-string">'absolute'</span>,
-            left: 0,
-            top: 0
-        });
+        <span class="org-rainbow-delimiters-depth-4">}</span>
+        <span class="org-rainbow-identifiers-identifier-3">element</span>.<span class="org-rainbow-identifiers-identifier-9">css</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-rainbow-delimiters-depth-5">{</span>
+            <span class="org-rainbow-identifiers-identifier-2">position</span>: <span class="org-string">'absolute'</span>,
+            <span class="org-rainbow-identifiers-identifier-9">left</span>: <span class="org-rainbow-identifiers-identifier-12">0</span>,
+            <span class="org-rainbow-identifiers-identifier-1">top</span>: <span class="org-rainbow-identifiers-identifier-12">0</span>
+        <span class="org-rainbow-delimiters-depth-5">}</span><span class="org-rainbow-delimiters-depth-4">)</span>;
 
-        jQuery(element).animate({
-            top: -500
-        }, done);
+        <span class="org-rainbow-identifiers-identifier-3">jQuery</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-rainbow-identifiers-identifier-3">element</span><span class="org-rainbow-delimiters-depth-4">)</span>.<span class="org-rainbow-identifiers-identifier-10">animate</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-rainbow-delimiters-depth-5">{</span>
+            <span class="org-rainbow-identifiers-identifier-1">top</span>: -<span class="org-rainbow-identifiers-identifier-7">500</span>
+        <span class="org-rainbow-delimiters-depth-5">}</span>, <span class="org-rainbow-identifiers-identifier-8">done</span><span class="org-rainbow-delimiters-depth-4">)</span>;
 
-        <span class="org-keyword">return</span> <span class="org-keyword">function</span>(<span class="org-variable-name">cancel</span>) {
-            <span class="org-keyword">if</span>(cancel) {
-                element.stop();
-            }
-        };
-    }
+        <span class="org-keyword">return</span> <span class="org-keyword">function</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-variable-name">cancel</span><span class="org-rainbow-delimiters-depth-4">)</span> <span class="org-rainbow-delimiters-depth-4">{</span>
+            <span class="org-keyword">if</span><span class="org-rainbow-delimiters-depth-5">(</span><span class="org-rainbow-identifiers-identifier-13">cancel</span><span class="org-rainbow-delimiters-depth-5">)</span> <span class="org-rainbow-delimiters-depth-5">{</span>
+                <span class="org-rainbow-identifiers-identifier-3">element</span>.<span class="org-rainbow-identifiers-identifier-2">stop</span><span class="org-rainbow-delimiters-depth-6">()</span>;
+            <span class="org-rainbow-delimiters-depth-5">}</span>
+        <span class="org-rainbow-delimiters-depth-4">}</span>;
+    <span class="org-rainbow-delimiters-depth-3">}</span>
 
-    <span class="org-keyword">return</span> {
-        addClass: animateUp,
-        removeClass: animateDown
-    };
-});
+    <span class="org-keyword">return</span> <span class="org-rainbow-delimiters-depth-3">{</span>
+        <span class="org-rainbow-identifiers-identifier-13">addClass</span>: <span class="org-rainbow-identifiers-identifier-12">animateUp</span>,
+        <span class="org-rainbow-identifiers-identifier-7">removeClass</span>: <span class="org-rainbow-identifiers-identifier-9">animateDown</span>
+    <span class="org-rainbow-delimiters-depth-3">}</span>;
+<span class="org-rainbow-delimiters-depth-2">}</span><span class="org-rainbow-delimiters-depth-1">)</span>;
 </pre>
 </div>
 </div>
@@ -792,9 +792,15 @@ Access scope in console:
 </p>
 
 <p>
-In webkit $0 is a reference to the selected DOM node in the elements
+In Chrome and Webkit $0 is a reference to the selected DOM node in the elements
 tab, so by doing this you get the selected DOM node scope printed
 out in the console
+</p>
+
+<p>
+You should learn your console tools. If you are using chrome, Take
+10 minutes and read:
+<a href="https://developer.chrome.com/devtools/docs/console">https://developer.chrome.com/devtools/docs/console</a>
 </p>
 </div>
 </div>

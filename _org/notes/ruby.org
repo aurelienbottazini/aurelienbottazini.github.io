@@ -2859,3 +2859,42 @@ output
 
      #+RESULTS:
      : -:4:in `<main>'
+* New in ruby 2.3
+
+Safe navigation operator ~&.~
+
+#+begin_src ruby
+  if user&.admin?
+    # do something
+  end
+#+end_src
+
+You can add ~frozen_string_literal: true~ as a comment at the top of
+the file to make all strings frozen by default
+
+There is a dig method for easier access to nested arrays or hash.
+
+#+begin_src ruby
+  dict = {
+    a: { x: 23, y: 29 },
+    b: { x: 31, z: 37 }
+  }
+
+  dict.dig(:a, :x) #=> 23
+#+end_src
+
+On enumerables ~grep_v~ returns the list of items that do not match a condition.
+
+Hash ~to_proc~ returns a lambda that maps the key with the value.
+
+Allowing us to do cool things like:
+
+#+begin_src ruby
+  h = { foo: 1, bar: 2, baz: 3}
+  p = h.to_proc
+
+  p.call(:foo)  #=> 1
+  p.call(:quux) #=> nil
+
+  [:foo, :bar].map(&h) #=> [1, 2]
+#+end_src

@@ -55,7 +55,7 @@ You can use gcc to compile and link your program
 
 <div class="org-src-container">
 
-<pre class="src src-sh">gcc -framework Foundation files -o progname
+<pre class="src src-sh"><span class="org-rainbow-identifiers-identifier-6">gcc</span> <span class="org-rainbow-identifiers-identifier-3">-framework</span> <span class="org-rainbow-identifiers-identifier-15">Foundation</span> <span class="org-rainbow-identifiers-identifier-10">files</span> <span class="org-rainbow-identifiers-identifier-2">-o</span> <span class="org-rainbow-identifiers-identifier-7">progname</span>
 </pre>
 </div>
 </div>
@@ -70,7 +70,7 @@ First argument is the character string to be displayed.
 
 <div class="org-src-container">
 
-<pre class="src src-C">NSLog(@<span class="org-string">"the sum of %i and %i is %i"</span>, value1, value2, sum);
+<pre class="src src-C"><span class="org-rainbow-identifiers-identifier-1">NSLog</span><span class="org-rainbow-delimiters-depth-1">(</span>@<span class="org-string">"the sum of %i and %i is %i"</span>, <span class="org-rainbow-identifiers-identifier-3">value1</span>, <span class="org-rainbow-identifiers-identifier-13">value2</span>, <span class="org-rainbow-identifiers-identifier-12">sum</span><span class="org-rainbow-delimiters-depth-1">)</span>;
 </pre>
 </div>
 </div>
@@ -98,10 +98,10 @@ and once you are done
 <div class="outline-text-3" id="text-4-1">
 <div class="org-src-container">
 
-<pre class="src src-C">[ClassOrInstance method];
+<pre class="src src-C"><span class="org-rainbow-delimiters-depth-1">[</span><span class="org-rainbow-identifiers-identifier-3">ClassOrInstance</span> <span class="org-rainbow-identifiers-identifier-11">method</span><span class="org-rainbow-delimiters-depth-1">]</span>;
 
 <span class="org-comment-delimiter">//</span><span class="org-comment">Another way to look at it</span>
-[receiver message];
+<span class="org-rainbow-delimiters-depth-1">[</span><span class="org-rainbow-identifiers-identifier-11">receiver</span> <span class="org-rainbow-identifiers-identifier-5">message</span><span class="org-rainbow-delimiters-depth-1">]</span>;
 </pre>
 </div>
 </div>
@@ -115,15 +115,15 @@ Describes the class, its data components and methods
 </p>
 <div class="org-src-container">
 
-<pre class="src src-C">@interface NewClassName: ParentClassName
-{
+<pre class="src src-C">@<span class="org-rainbow-identifiers-identifier-12">interface</span> <span class="org-rainbow-identifiers-identifier-6">NewClassName</span>: <span class="org-rainbow-identifiers-identifier-8">ParentClassName</span>
+<span class="org-rainbow-delimiters-depth-1">{</span>
   <span class="org-type">int</span> <span class="org-variable-name">member</span>;
   <span class="org-type">int</span> <span class="org-variable-name">another_member</span>;
-}
+<span class="org-rainbow-delimiters-depth-1">}</span>
 
--(<span class="org-type">void</span>) method1;
-+(<span class="org-type">int</span>) method2;
-@end
+-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-type">void</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-identifiers-identifier-3">method1</span>;
++<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-type">int</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-identifiers-identifier-8">method2</span>;
+@<span class="org-rainbow-identifiers-identifier-8">end</span>
 </pre>
 </div>
 </div>
@@ -161,21 +161,21 @@ implementation.
 
 <div class="org-src-container">
 
-<pre class="src src-C">@interface MyClass : NSObject
-{
+<pre class="src src-C">@<span class="org-rainbow-identifiers-identifier-12">interface</span> <span class="org-rainbow-identifiers-identifier-2">MyClass</span> : <span class="org-rainbow-identifiers-identifier-3">NSObject</span>
+<span class="org-rainbow-delimiters-depth-1">{</span>
   <span class="org-type">int</span> <span class="org-variable-name">member</span>;
   <span class="org-type">int</span> <span class="org-variable-name">another_member</span>;
-}
+<span class="org-rainbow-delimiters-depth-1">}</span>
 
-@property <span class="org-type">int</span> member, another_member;
+@<span class="org-rainbow-identifiers-identifier-2">property</span> <span class="org-type">int</span> <span class="org-rainbow-identifiers-identifier-4">member</span>, <span class="org-rainbow-identifiers-identifier-2">another_member</span>;
 
-@end
+@<span class="org-rainbow-identifiers-identifier-8">end</span>
 
-@implementation
+@<span class="org-rainbow-identifiers-identifier-14">implementation</span>
 
-@synthesize member, another_member;
+@<span class="org-rainbow-identifiers-identifier-9">synthesize</span> <span class="org-rainbow-identifiers-identifier-4">member</span>, <span class="org-rainbow-identifiers-identifier-2">another_member</span>;
 
-@end
+@<span class="org-rainbow-identifiers-identifier-8">end</span>
 </pre>
 </div>
 </div>
@@ -191,8 +191,8 @@ operator.
 
 <div class="org-src-container">
 
-<pre class="src src-C">[myInstance property]
-myInstance.property
+<pre class="src src-C"><span class="org-rainbow-delimiters-depth-1">[</span><span class="org-rainbow-identifiers-identifier-14">myInstance</span> <span class="org-rainbow-identifiers-identifier-2">property</span><span class="org-rainbow-delimiters-depth-1">]</span>
+<span class="org-rainbow-identifiers-identifier-14">myInstance</span>.<span class="org-rainbow-identifiers-identifier-2">property</span>
 </pre>
 </div>
 </div>
@@ -215,9 +215,9 @@ process the entire header file.
 <div class="outline-text-2" id="text-5">
 <div class="org-src-container">
 
-<pre class="src src-C">@interface Child: Parent
+<pre class="src src-C">@<span class="org-rainbow-identifiers-identifier-12">interface</span> <span class="org-rainbow-identifiers-identifier-14">Child</span>: <span class="org-rainbow-identifiers-identifier-9">Parent</span>
 
-@end
+@<span class="org-rainbow-identifiers-identifier-8">end</span>
 </pre>
 </div>
 </div>
@@ -261,7 +261,7 @@ during the compilation time than during execution time.
 <div class="outline-text-2" id="text-8">
 <div class="org-src-container">
 
-<pre class="src src-C">@selector (alloc)
+<pre class="src src-C">@<span class="org-rainbow-identifiers-identifier-7">selector</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-identifiers-identifier-5">alloc</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -276,12 +276,12 @@ Produces a value of type <code>SEL</code> the method named <code>alloc</code>
 <div class="outline-text-2" id="text-9">
 <div class="org-src-container">
 
-<pre class="src src-C">@try {
+<pre class="src src-C">@<span class="org-rainbow-identifiers-identifier-10">try</span> <span class="org-rainbow-delimiters-depth-1">{</span>
 
-}
-@catch (NSException *exception){
+<span class="org-rainbow-delimiters-depth-1">}</span>
+@<span class="org-rainbow-identifiers-identifier-9">catch</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-identifiers-identifier-15">NSException</span> *<span class="org-rainbow-identifiers-identifier-8">exception</span><span class="org-rainbow-delimiters-depth-1">){</span>
 
-}
+<span class="org-rainbow-delimiters-depth-1">}</span>
 </pre>
 </div>
 
@@ -324,7 +324,7 @@ redundant assignments to a variable.
 <div class="org-src-container">
 
 <pre class="src src-C"><span class="org-comment-delimiter">// </span><span class="org-comment">up = 0, down = 1, left = 10, right = left + 1 = 11</span>
-<span class="org-keyword">enum</span> <span class="org-type">direction</span> { <span class="org-variable-name">up</span>, <span class="org-variable-name">down</span>, <span class="org-variable-name">left</span> = 10, <span class="org-variable-name">right</span>};
+<span class="org-keyword">enum</span> <span class="org-type">direction</span> <span class="org-rainbow-delimiters-depth-1">{</span> <span class="org-variable-name">up</span>, <span class="org-variable-name">down</span>, <span class="org-variable-name">left</span> = <span class="org-rainbow-identifiers-identifier-8">10</span>, <span class="org-variable-name">right</span><span class="org-rainbow-delimiters-depth-1">}</span>;
 </pre>
 </div>
 </div>
@@ -340,11 +340,11 @@ or categories.
 
 <div class="org-src-container">
 
-<pre class="src src-C">@interface MyClass (MyCategory)
-@end
+<pre class="src src-C">@<span class="org-rainbow-identifiers-identifier-12">interface</span> <span class="org-rainbow-identifiers-identifier-2">MyClass</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-identifiers-identifier-1">MyCategory</span><span class="org-rainbow-delimiters-depth-1">)</span>
+@<span class="org-rainbow-identifiers-identifier-8">end</span>
 
-@implementation MyClass (MyCategory)
-@end
+@<span class="org-rainbow-identifiers-identifier-14">implementation</span> <span class="org-rainbow-identifiers-identifier-2">MyClass</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-identifiers-identifier-1">MyCategory</span><span class="org-rainbow-delimiters-depth-1">)</span>
+@<span class="org-rainbow-identifiers-identifier-8">end</span>
 </pre>
 </div>
 </div>
@@ -360,7 +360,7 @@ A protocol is a list of methods that is shared among classes.
 
 <div class="org-src-container">
 
-<pre class="src src-C">@interface MyClass: NSObject &lt;NSCopying, NSCoding&gt;
+<pre class="src src-C">@<span class="org-rainbow-identifiers-identifier-12">interface</span> <span class="org-rainbow-identifiers-identifier-2">MyClass</span>: <span class="org-rainbow-identifiers-identifier-3">NSObject</span> &lt;<span class="org-rainbow-identifiers-identifier-13">NSCopying</span>, <span class="org-rainbow-identifiers-identifier-14">NSCoding</span>&gt;
 </pre>
 </div>
 
@@ -375,11 +375,11 @@ classes. <code>outline</code> can be implemented too but it is optional.
 
 <div class="org-src-container">
 
-<pre class="src src-C">@protocol Drawing
--(<span class="org-type">void</span>) paint;
-@optional
--(<span class="org-type">void</span>) outline;
-@end
+<pre class="src src-C">@<span class="org-rainbow-identifiers-identifier-5">protocol</span> <span class="org-rainbow-identifiers-identifier-6">Drawing</span>
+-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-type">void</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-identifiers-identifier-10">paint</span>;
+@<span class="org-rainbow-identifiers-identifier-1">optional</span>
+-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-type">void</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-identifiers-identifier-11">outline</span>;
+@<span class="org-rainbow-identifiers-identifier-8">end</span>
 </pre>
 </div>
 
@@ -391,7 +391,7 @@ protocols.
 
 <div class="org-src-container">
 
-<pre class="src src-C">id &lt;Drawing&gt; currentObject;
+<pre class="src src-C"><span class="org-rainbow-identifiers-identifier-9">id</span> &lt;<span class="org-rainbow-identifiers-identifier-6">Drawing</span>&gt; <span class="org-rainbow-identifiers-identifier-6">currentObject</span>;
 </pre>
 </div>
 
@@ -414,9 +414,9 @@ by an initialization list.
 
 <div class="org-src-container">
 
-<pre class="src src-C">(<span class="org-keyword">struct</span> <span class="org-type">date</span>) { .month = 7, .day =2, .year = 2004 };
+<pre class="src src-C"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">struct</span> <span class="org-type">date</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">{</span> .<span class="org-rainbow-identifiers-identifier-1">month</span> = <span class="org-rainbow-identifiers-identifier-10">7</span>, .<span class="org-rainbow-identifiers-identifier-7">day</span> =<span class="org-rainbow-identifiers-identifier-4">2</span>, .<span class="org-rainbow-identifiers-identifier-10">year</span> = <span class="org-rainbow-identifiers-identifier-15">2004</span> <span class="org-rainbow-delimiters-depth-1">}</span>;
 <span class="org-type">int</span> <span class="org-variable-name">intPtr</span> *;
-intPrt = (<span class="org-type">int</span> [100]) {[0] = 1, [50] = 50, [99] = 99 };
+<span class="org-rainbow-identifiers-identifier-4">intPrt</span> = <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-type">int</span> <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-rainbow-identifiers-identifier-14">100</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">{</span><span class="org-rainbow-delimiters-depth-2">[</span><span class="org-rainbow-identifiers-identifier-12">0</span><span class="org-rainbow-delimiters-depth-2">]</span> = <span class="org-rainbow-identifiers-identifier-1">1</span>, <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-rainbow-identifiers-identifier-10">50</span><span class="org-rainbow-delimiters-depth-2">]</span> = <span class="org-rainbow-identifiers-identifier-10">50</span>, <span class="org-rainbow-delimiters-depth-2">[</span><span class="org-rainbow-identifiers-identifier-5">99</span><span class="org-rainbow-delimiters-depth-2">]</span> = <span class="org-rainbow-identifiers-identifier-5">99</span> <span class="org-rainbow-delimiters-depth-1">}</span>;
 </pre>
 </div>
 </div>

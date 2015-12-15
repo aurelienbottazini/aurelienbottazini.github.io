@@ -1,0 +1,16 @@
+* Resetting a database
+
+  More like resetting the public schema, but this is what I want most
+  of the time.
+
+#+begin_src sql
+  DROP SCHEMA public CASCADE;
+  CREATE SCHEMA public;
+  GRANT ALL ON SCHEMA public TO postgres;
+  GRANT ALL ON SCHEMA public TO public;
+  COMMENT ON SCHEMA public IS 'standard public schema';
+#+end_src
+
+* EngineYard
+
+  Create a backup: ~sudo -i eybackup -e postgresql --new-backup~
