@@ -21,6 +21,10 @@ layout: notes
   ~git push origin --delete <branch_name>~
 * Remove files added to a pending commit with ~git add~
   ~git rm -r --cached <files>~
+* Undo an unpushed commit
+#+begin_src bash
+  git reset HEAD~1
+#+end_src
 * Remove a file from git, history included
   https://help.github.com/articles/remove-sensitive-data/
 

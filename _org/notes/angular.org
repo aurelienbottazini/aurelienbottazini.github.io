@@ -1,10 +1,3 @@
-#+BEGIN_HTML
----
-layout: notes
----
-#+END_HTML
-#+TOC: headlines 4
-
 [[https://docs.angularjs.org/tutorial][Tutorial]]
 [[https://docs.angularjs.org/guide/][Developer Guide]]
 

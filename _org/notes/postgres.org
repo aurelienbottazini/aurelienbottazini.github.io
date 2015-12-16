@@ -1,3 +1,8 @@
+#+BEGIN_HTML
+---
+layout: notes
+---
+#+END_HTML
 * Resetting a database
 
   More like resetting the public schema, but this is what I want most
