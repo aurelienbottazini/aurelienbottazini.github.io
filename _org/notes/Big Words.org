@@ -23,3 +23,13 @@ layout: notes
 
   Defers the determination of the actual method to invoke on an object
   until program execution time.
+* Hoisting
+  Sets up memory space for variables (set to undefined) and functions.
+* Single threaded
+  One command at at time
+* Synchronous
+  One at a time and by order
+* Variable environment
+  Where the variable live and how they relate to each other
+* Scope
+  Where a variable is available in your code

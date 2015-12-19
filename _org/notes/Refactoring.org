@@ -1,0 +1,15 @@
+#+BEGIN_HTML
+---
+layout: notes
+---
+#+END_HTML
+
+The first step in refactoring should be to build a solid set of tests
+for that section of code. They should run quickly.
+
+Good programmers write code that humans can understand
+
+Temp variables lead to long classes
+
+Don't worry about performance when refactoring. This is not your first
+objective. Your first objective is code clarity.

@@ -505,11 +505,3 @@ before angular loads you can use ~ngBind~ and ~ngBindTemplate~
 * Debug
   Access scope in console:
   ~angular.element($0).scope()~
-
-  In Chrome and Webkit $0 is a reference to the selected DOM node in the elements
-  tab, so by doing this you get the selected DOM node scope printed
-  out in the console
-
-  You should learn your console tools. If you are using chrome, Take
-  10 minutes and read:
-  https://developer.chrome.com/devtools/docs/console

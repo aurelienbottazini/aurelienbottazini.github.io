@@ -1,0 +1,64 @@
+ #+BEGIN_HTML
+---
+layout: notes
+---
+#+END_HTML
+#+TOC: headlines 4
+* Execution Context
+
+The execution context is divided in 2 distinct phase.
+1. Creation
+  Sets up memory space for variables (set to undefined) and functions.
+   This is what is the cause of *Hoisting*
+2. Execution
+  This is were variable assignments take place.
+
+#+begin_src javascript
+  b()
+  var a = 'Hello world';
+
+  function(b) {
+      console.log('called b');
+  }
+#+end_src
+
+ Each execution context has a reference to the outer environment
+ defined but the lexical environment.
+
+** Global execution context
+
+   The global execution context creates two things for us. 1. The
+   global object and 2. a special variable this In case of browsers
+   the global object is window. At the global level the global object
+   is ~this~.
+
+   Global just means not inside a function.
+
+* TODO Scope
+  With ES2015  we have ~let~ available for block scoping
+
+  Need an example here to show differences.
+* Undefined
+  ~undefined~ is different from _not defined_. ~undefined~ is a
+  special value meaning the variable has not been set.
+* Debugging
+ In Chrome and Firefox $0 is a reference to the selected DOM node in the elements
+ tab, so by doing this you get the selected DOM node scope printed
+ out in the console
+
+ You should learn your console tools. If you are using chrome, Take
+ 10 minutes and read:
+ https://developer.chrome.com/devtools/docs/console
+
+* Object
+  An object in javascript is a collection of name value pairs and a
+  value can be another object container ohter value pairs.
+
+#+begin_src javascript
+  object = {
+      property: 'my first property',
+      insider_object: {
+          hello: 'world'
+      }
+  }
+#+end_src
