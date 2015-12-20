@@ -5,7 +5,7 @@ layout: notes
 #+END_HTML
 #+TOC: headlines 4
 
-/Scrum: a Breathtakingly Brief and Agile Introduction/
+Notes from /Scrum: a Breathtakingly Brief and Agile Introduction/
 — Chris Sims, Hillary Louise Johnson
 
 One of the mantras of scrum is “inspect and adapt,” and scrum teams
@@ -14,7 +14,7 @@ their process*, but also of the product.
 
 Three roles:
 
-1. *product owner*
+1. product owner
 2. Scrum master
 3. Team member
 

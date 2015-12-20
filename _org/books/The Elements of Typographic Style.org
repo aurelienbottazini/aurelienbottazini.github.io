@@ -5,6 +5,9 @@ layout: notes
 #+END_HTML
 #+TOC: headlines 4
 
+Notes for The /Elements of Typographic Style/
+— Robert Bringhurst
+
 * Introduction
   This is the best book on Typography.
   The book in itself is so carefully written and edited. It is a joy

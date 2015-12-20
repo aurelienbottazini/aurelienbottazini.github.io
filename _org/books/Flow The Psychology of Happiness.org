@@ -5,20 +5,18 @@ layout: notes
 #+END_HTML
 #+TOC: headlines 4
 
-Flow: The Psychology of Happiness
+Notes for /Flow: The Psychology of Happiness/
 — Mihaly Csikszentmihalyi
 
-*Happiness is not something that happens*. Happiness, in
-fact, is a condition that must be prepared for, cultivated, and
-defended privately by each person.
+*Happiness* is not something that happens. Happiness, in
+fact, is a condition that *must be prepared for*, *cultivated*, and
+*defended* privately by each person.
 
-People who learn to control inner experience will be able to
+People who learn to *control inner experience* will be able to
 determine the quality of their lives.
 
-“Don’t aim at success—the more you aim at it and make it a target, the
-more you are going to miss it. For success, like happiness, cannot be
-pursued; it must ensue . . . as the unintended side-effect of one’s
-personal dedication to a course greater than oneself.”
+Success is a *side-effect* of one's personal dedication to a course
+greater than oneself.
 
 When we feel in control of our actions, masters of our own fate we
 feel a sense of exhilaration, a deep sense of enjoyment that is long
@@ -30,7 +28,7 @@ stretched to its limits in a voluntary effort to accomplish something
 difficult and worthwhile.
 
 Only direct control of experience, the ability to derive
-moment-by-moment enjoyment from everything we do, can overcome the
+moment-by-moment *enjoyment from everything we do*, can overcome the
 obstacles to fulfillment.
 
 How we feel about ourselves, the joy we get from living, ultimately
@@ -40,25 +38,19 @@ experiences.
 The problem arises when people are so fixated on what they want to
 achieve that they cease to derive pleasure from the present.
 
-Perhaps their greatest strength is that they are in control of their
-lives.
-
 After each success it becomes clearer that money, power, status, and
 possessions do not, by themselves, necessarily add one iota to the
 quality of life.
 
-A person has to learn to provide rewards to herself. She has to
-develop the ability to find enjoyment and purpose regardless of
-external circumstances.
-
-The most important step in emancipating oneself from social controls
-is the ability to find rewards in the events of each moment.
+*A person has to learn to provide rewards to herself*. She has to
+develop the ability to *find enjoyment and purpose regardless of
+external circumstances*.
 
 “If you are pained by external things, it is not they that disturb
 you, but your own judgment of them. And it is in your power to wipe
 out that judgment now.” — Marcus Aurelius
 
-This ability to persevere despite obstacles and setbacks is the
+*This ability to persevere despite obstacles and setbacks* is the
 quality people most admire in others; it is probably the most
 important trait not only for succeeding in life, but for enjoying it
 as well.
@@ -69,33 +61,27 @@ the quality of life.
 Information enters consciousness either because we intend to focus
 attention on it or as a result of attentional habits.
 
-The mark of a person who is in control of consciousness is the ability
-to focus attention at will, to be oblivious to distractions, to
-concentrate for as long as it takes to achieve a goal, and not longer.
+The mark of a person who is in *control of consciousness is the
+ability to focus attention at will*, to be oblivious to distractions,
+to concentrate for as long as it takes to achieve a goal, and not
+longer.
 
 Pain, fear, rage, anxiety, or jealousy. All these varieties of
 disorder force attention to be diverted to undesirable objects,
 
-Optimal experience: When the information that keeps coming into
+*Optimal experience*: When the information that keeps coming into
 awareness is congruent with goals, psychic energy flows effortlessly.
 
 Flow experience: They are situations in which attention can be freely
 invested to achieve a person’s goals, because there is no disorder to
 straighten out, no threat for the self to defend against.
 
-The “battle” is not really against the self, but against the entropy
-that brings disorder to consciousness. It is really a battle for the
-self; it is a struggle for establishing control over attention.
-
 After each episode of flow a person becomes more of a unique
 individual, less predictable, possessed of rarer skills.
 
-Liberate the psychic energy that otherwise would be wasted in boredom
-or worry.
-
-- The first is to try making external conditions match our goals.
-- The second is to change how we experience external conditions to make them
-  fit our goals better.
+- The first step is to try making external conditions match our goals.
+- The second step is to change how we experience external conditions
+  to make them fit our goals better.
 
 Pleasure is an important component of the quality of life, but by
 itself it does not bring happiness.
@@ -105,7 +91,7 @@ expectation or satisfied a need or a desire but also gone beyond what
 he or she has been programmed to do and achieved something unexpected,
 perhaps something even unimagined before.
 
-Flow:
+*Flow*
 
   - First, the experience usually occurs when we confront tasks we have a
 chance of completing.
@@ -132,12 +118,7 @@ as well as possible, enjoyment tends to disappear.*
 Enjoyment appears at the boundary between boredom and anxiety, when
 the challenges are just balanced with the person’s capacity to act.
 
-The most universal and distinctive features of optimal experience
-takes place: people become so involved in what they are doing that the
-activity becomes spontaneous, almost automatic; they stop being aware
-of themselves as separate from the actions they are performing.
-
-you don’t conquer anything except things in yourself.
+*You don’t conquer anything except things in yourself.*
 
 One of the most frequently mentioned dimensions of the flow experience
 is that, while it lasts, one is able to forget all the unpleasant
@@ -156,8 +137,8 @@ requires a constant perfection of skills.
 Freedom from the tyranny of time does add to the exhilaration we feel
 during a state of complete involvement.
 
-The key element of an optimal experience is that it is an end in
-itself.
+The key element of *an optimal experience is that it is an end in
+itself*.
 
 The task is to learn how to enjoy everyday life without diminishing
 other people’s chances to enjoy theirs.
@@ -171,9 +152,6 @@ disappears, and the sense of time becomes distorted. An activity that
 produces such experiences is so gratifying that people are willing to
 do it for its own sake, with little concern for what they will get out
 of it, even when it is difficult, or dangerous.
-
-At the individual level anomie corresponds to anxiety, while
-alienation corresponds to boredom.
 
 Subjects who reported flow frequently were very surprising: activation
 decreased when they were concentrating. Instead of requiring more
@@ -205,11 +183,6 @@ Every person, no matter how unfit he or she is, can rise a little
 higher, go a little faster, and grow to be a little stronger. The joy
 of surpassing the limits of the body is open to all.
 
-What is important is the general principle: that sexuality, like any
-other aspect of life, can be made enjoyable if we are willing to take
-control of it, and cultivate it in the direction of greater
-complexity.
-
 *The ultimate control: yoga and the martial arts*
 
 Of the great Eastern methods for training the body, one of the oldest
@@ -227,9 +200,6 @@ quality of life. It frees us from the tyranny of the present, and
 makes it possible for consciousness to revisit former times.
 
 *They simply did what they enjoyed doing.*
-
-“Philosophy” used to mean “love of wisdom,” and people devoted their
-lives to it for that reason.
 
 Goals-ends relationship must always be kept clear: specialization is
 for the sake of thinking better, and not an end in itself.
@@ -303,27 +273,12 @@ Bacon repeated, “is either a wild beast or a god.”
 Cicero once wrote that to be completely free one must become a slave
 to a set of laws. In other words, accepting limitations is liberating.
 
-It is much easier for a person to try developing her potential if she
-knows that no matter what happens, she has a safe emotional base in
-the family.
-
 Early emotional security may well be one of the conditions that helps
 develop an autotelic personality in children. Without this, it is
 difficult to let go of the self long enough to experience flow.
 
-Later in life friendships rarely happen by chance: one must
+*Later in life friendships rarely happen by chance*: one must
 cultivate them as assiduously as one must cultivate a job or a family.
-
-Those who try to make life better for everyone without having learned
-to control their own lives first usually end up making things worse
-all around.
-
-Subjective experience is not just one of the dimensions of life, it is
-life itself.
-
-Material conditions are secondary: they only affect us indirectly, by
-way of experience. Flow, and even pleasure, on the other hand, benefit
-the quality of life directly.
 
 The relevant point to be made here is that a person who knows how to
 find flow from life is able to enjoy even situations that seem to
@@ -335,8 +290,8 @@ road is taken, the tragedy is not necessarily a detriment to the
 quality of life.
 
 
-Person’s ability to cope with stress, it is useful to distinguish three different kinds of
-resources:
+Person’s ability to cope with stress, it is useful to distinguish
+three different kinds of resources:
 
   -  The first is the external support available, and especially
   the network of social supports. A major illness, for instance, will be
@@ -375,7 +330,7 @@ to be involved in such transformations:
    thus different solutions possible.
 
 
-It is more satisfying to help another person than to beat him down
+*It is more satisfying to help another person than to beat him down.*
 
 The “autotelic self” is one that easily translates potential threats
 into enjoyable challenges, and therefore maintains its inner harmony.
@@ -455,7 +410,7 @@ flow activity is through the idealistic mode:
   larger than the person—a cause, an idea, a transcendental entity.
 
 
-Inner conflict is the result of competing claims on attention. Too
+*Inner conflict is the result of competing claims on attention*. Too
 many desires, too many incompatible goals struggle to marshal psychic
 energy toward their own ends. It follows that the only way to reduce
 conflict is by sorting out the essential claims from those that are
