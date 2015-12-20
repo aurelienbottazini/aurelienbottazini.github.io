@@ -93,21 +93,24 @@ Software pricing:
 
 * Start ups
 
-  + Of those startups that succeed, two-thirds report having drastically changed their plans along the way.
+  + Of those startups that succeed, two-thirds report having
+    drastically changed their plans along the way.
   + The second realization was that startups can consume years of your life.
 
 * Customers
 
-  + Even though customers hold all the answers, you simply cannot ask
-    them what they want.
-  + We started listening to the most popular (vocal) requests and ended up with a bloated application and lots of one-time-use features.
-  + Maximize learning (about customers) per unit time.
-  + In order to maximize learning, you have to pick bold outcomes
-    instead of chasing incremental improvements.
-    So, rather than changing the color of your call-to-action button,
-    change your entire landing page. Rather than tweaking your unique
-    value proposition (UVP) for a single customer segment, experiment
-    with different UVPs for different customer segments.
+  + Even though customers hold all the answers, *you simply cannot ask
+    them what they want*.
+  + We started listening to the most popular (vocal) requests and
+    ended up with a bloated application and lots of one-time-use
+    features.
+  + Maximize learning (about customers) per unit time. In order to
+    maximize learning, you have to pick bold outcomes instead of
+    chasing incremental improvements. So, rather than changing the
+    color of your call-to-action button, change your entire landing
+    page. Rather than tweaking your unique value proposition (UVP) for
+    a single customer segment, experiment with different UVPs for
+    different customer segments.
   + Distinguish between customers and users.
     If you have multiple user roles in your product, identify your
     customers. A customer is someone who pays for your product. A user
@@ -118,12 +121,35 @@ Software pricing:
   + Prefer face-to-face interviews.
   + Start with people you know.
   + Prepare yourself to interview 30 to 60 people.
-  + With my latest product, USERcycle, I used only customer interviews, HTML, and Illustrator mock-ups to understand the problem, define the solution, and sign up 100 paying customers before I started building the MVP.
-  + Prioritize customer segments that you believe will need your product the most. The goal is to have one or more of your top three problems as must-haves for them. Ease of reach (Channels) Building a path to customers is one of the harder aspects of building a successful product. If you have an easier path to one segment of customers over others, take that into consideration. It doesn’t guarantee you’ll find a problem worth solving or a viable business model, but it will get you out of the building faster and speed up your learning. Price/gross margin (Revenue Streams/Cost Structure) What you can charge for your product is largely driven by the customer segment. Pick a customer segment that allows you to maximize on your margins. The more money you get to keep, the fewer customers you need to reach to break even. Market size (Customer Segments) Pick a customer segment that represents a big enough market given the goals for your business. Technical feasibility (Solution) Visit your Solution box to ensure that your planned solution not only is feasible, but also represents the minimum feature set to put in front of customers.
-  + The fastest way to learn is to talk to customers. Not releasing code, or collecting analytics, but talking to people.
-  + You can’t see the customer during a survey. Body language cues are as much an indicator of Problem/Solution Fit as the answers themselves.
-  + I prefer getting feedback from customers in person or over the phone than through other means like email, forums, or discussion boards.
-  + Get paying customers to talk to you. Get them on the phone, thank them for upgrading, and ask them: How they heard about you (if you don’t know) Why they bought from you What could be improved
+  + Prioritize customer segments that you believe will need your
+    product the most. The goal is to have one or more of your top
+    three problems as must-haves for them. Ease of reach (Channels)
+    Building a path to customers is one of the harder aspects of
+    building a successful product. If you have an easier path to one
+    segment of customers over others, take that into consideration. It
+    doesn’t guarantee you’ll find a problem worth solving or a viable
+    business model, but it will get you out of the building faster and
+    speed up your learning. Price/gross margin (Revenue Streams/Cost
+    Structure) What you can charge for your product is largely driven
+    by the customer segment. Pick a customer segment that allows you
+    to maximize on your margins. The more money you get to keep, the
+    fewer customers you need to reach to break even. Market size
+    (Customer Segments) Pick a customer segment that represents a big
+    enough market given the goals for your business. Technical
+    feasibility (Solution) Visit your Solution box to ensure that your
+    planned solution not only is feasible, but also represents the
+    minimum feature set to put in front of customers.
+  + The fastest way to learn is to talk to customers. Not releasing
+    code, or collecting analytics, but talking to people.
+  + You can’t see the customer during a survey. Body language cues are
+    as much an indicator of Problem/Solution Fit as the answers
+    themselves.
+  + I prefer getting feedback from customers in person or over the
+    phone than through other means like email, forums, or discussion
+    boards.
+  + Get paying customers to talk to you. Get them on the phone, thank
+    them for upgrading, and ask them: How they heard about you (if you
+    don’t know) Why they bought from you What could be improved
 
 * Lean
 
