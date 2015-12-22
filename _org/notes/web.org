@@ -524,3 +524,7 @@ layout: notes
      <image mask="url(#mask)" id="image_masked" width="560" height="1388" xlink:href="image_to_mask.jpg"></image>
      </svg>
    #+END_SRC
+* Will-change
+
+  Combined with /Paint flashing/ from developer tools, it can allow to
+  fix sluggish UI.
