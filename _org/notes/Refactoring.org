@@ -46,6 +46,11 @@ But it makes it the software easier to tune during optimization.
 
 Good programmers know that they rarely write clean code the first time around.
 
+Refatoring needs discipline: Pick a goal, stop when unsure, do it in small steps
+to be able to backtrack
+
+*Duets: Refactor with someone*
+
 * Code smells
 
 + Duplicated code
@@ -86,3 +91,12 @@ results. They decapitate the time it takes to find bugs.
 When you find a bug, write a unit test that exposes the bug.
 
 Concentrate you tests on boundaries.
+
+* Refactoring tool
+
+In your text editor you should be able to search for various program entities.
+
+It means finding all calls to a method, finding all methods that read or write
+an instance variable etc.
+
+Grep is not enough for this
