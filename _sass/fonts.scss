@@ -183,13 +183,9 @@ acronym, abbr {
 p {
     margin: 1em auto;
 }
-p + p {
-    text-indent: 1em;
-    margin-top: -1em;
-}
 @mixin white-space($wrap-space) {
 	@if $wrap-space == 'pre-wrap' {
-		white-space: #{-moz-}$wrap-space; // Firefox 1.0-2.0
+		white-space: "-moz-#{$wrap-space}"; // Firefox 1.0-2.0
 		white-space: $wrap-space;       // current browsers
 	} @else {
 		white-space: $wrap-space;
