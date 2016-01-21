@@ -1,3 +1,6 @@
+---
+tags: Business
+---
 - Trust
 - Passion
 - Honesty

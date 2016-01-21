@@ -1,3 +1,6 @@
+---
+tags: Self-improvement
+---
 It is really easy to get caught up in the _flow_ of endless
 information. Tweets, SMS, emails. It is also really to get so _busy_
 that you forget what’s important.

@@ -1,3 +1,6 @@
+---
+tags: Self-improvement
+---
 I am always surprised by the number of people who refuse to read books. They
 often seem proud of it. It is a big mistake.
 

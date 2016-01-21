@@ -1,3 +1,6 @@
+---
+tags: Self-improvement
+---
 Ranks: Bad, Average, Good, Excellent, Rockstar
 ## Compared to others who do what you do, rank yourself on: reputation, knowledge, expertise, tools, handiness ##
 

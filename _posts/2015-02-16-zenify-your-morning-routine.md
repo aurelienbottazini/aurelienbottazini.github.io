@@ -1,3 +1,6 @@
+---
+tags: Self-improvement
+---
 Recently I have finished reading
 [The Miracle Morning](http://www.amazon.com/The-Miracle-Morning-Not-So-Obvious-Guaranteed/dp/0979019710URL).
 It is all about setting up a _morning routine_ to start you day the

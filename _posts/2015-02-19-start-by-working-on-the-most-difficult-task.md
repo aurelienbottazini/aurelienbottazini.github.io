@@ -1,3 +1,6 @@
+---
+tags: Self-Improvement
+---
 I like to start my day by defining three MIT – *M*ost *I*mportant
 *T*asks.
 
