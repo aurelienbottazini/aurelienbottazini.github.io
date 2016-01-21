@@ -2898,3 +2898,5 @@ Allowing us to do cool things like:
 
   [:foo, :bar].map(&h) #=> [1, 2]
 #+end_src
+* Links
+  http://awesome-ruby.com/

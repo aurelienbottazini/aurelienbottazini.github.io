@@ -14,5 +14,17 @@ layout: default
                 {{ page.date | date_to_string }}
             </time>
         </p>
+        {{ post.tags }}
     </footer>
 </article>
+<div class="post-tags">
+  Tags:
+  {% if post %}
+    {% assign tags = post.tags %}
+  {% else %}
+    {% assign tags = page.tags %}
+  {% endif %}
+  {% for tag in tags %}
+  <a href="/tags/#{{tag|slugize}}">{{tag}}</a>{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+</div>

@@ -34,3 +34,6 @@ layout: notes
 * EngineYard
 
   Create a backup: ~sudo -i eybackup -e postgresql --new-backup~
+
+* Create a new postgres database (after updating postgres)
+  ~initdb -D /usr/local/var/postgres9.5/~
