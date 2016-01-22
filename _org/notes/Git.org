@@ -3,6 +3,9 @@
 layout: notes
 ---
 #+END_HTML
+
+Don't hesitate to create git aliases for complex commands
+
 * Cheatsheet
   https://github.com/tiimgreen/github-cheat-sheet
   https://guides.github.com/
@@ -43,3 +46,104 @@ layout: notes
 #+END_SRC
 
   Another possibility with https://rtyley.github.io/bfg-repo-cleaner/
+* Stash everything with ~git stash -u~
+* Show all git _actions_ (commits, merges) with ~git reflog~
+  git reflog show /branch_name/
+* Create aliases for long commands
+  ~git config --global alias.sla 'log --oneline --decorate --graph --all'~ and
+  ~git sla~ to run it
+* Search for a change in a file
+  ~git log -S my_change~
+* Log for just one file
+ ~git log --oneline -- Gemfile~
+* I want info about my aliases
+  ~git help alias_name~
+* Add something to previous commit
+ ~git commit --amend --no-edit~
+ No edit is to not edit the commit message
+* Choose which change to commit
+  ~git add --patch~
+* See only staged changes
+ ~git diff --cached~
+* Add commits to another branch
+  Here looking at the diff and log (to confirm what i want to do), I decide I
+  want to add all new commits I made on master
+  ~git diff origin/master..master~
+  ~git log origin/master..master~
+
+  ~git checkout branch_where_i_need_those_commits~
+
+  ~git cherry-pick origin/master..master~
+
+  I now erase the commits I cherry picked on master
+
+  ~git checkout master~
+  ~git reset --hard origin/master~
+
+*  Add commits made on master in our branch
+   ~git rebase master~
+* Checkout a particular file in a particular branch
+  ~git checkout branch_name -- file_path/file_name~
+* Rewrite current branch history (squash commits together in particular)
+  Beware the commit list in in the reverse order. Top one is the oldest one.
+
+  ~git rebase -i starting_point~
+
+* How git works
+
+  Inside .git there are some interesting directories.
+  HEAD is a pointer to the currently checked out object
+  objects/ is where git stores all files, directories and commits
+  refs/ is where git stores all branches, tags, remotes etc.
+
+** objects/
+   Git stores objects using Hashing with the SHA-1 function.
+   For example, for a file containing hello world. You can get the same hash
+   git uses with
+
+   ~echo -e 'blob 12\0hello world' | shasum~
+
+   The filename is not stored directly inside this git object. Only the content
+   is. The filename is created in another git object created automaticallly. A
+   tree object. To store objects, git creates a directory named with the the
+   first characters of the hash. The rest of the hash is used for the object
+   filename stored inside this directory.
+
+   Two commands are useful to inspect objects
+   - ~git cat-file~ to inspect objects
+     -t gives you the type of the object (tree, blob, commit)
+     -p pretty print the object content showing the object content what's
+     printed depends on the type of the object
+   - ~git ls-tree~ to navigate git object tree
+      For example ~git ls-tree master~ to start at the object pointed by our
+     current master branch HEAD and then we can navigate all the trees listed by
+     this command.
+
+** refs/
+
+*** heads
+    List local branches HEAD can point to. They are just files and the content is
+    the hash of the current HEAD commit for the branch
+*** tags
+    List of tags. Very similar to heads. Pointer to a commit
+*** remotes
+    Subdirectories for each remote. Each containing remote branches listing commit objects.
+
+** HEAD
+   Just a file containing a pointer to a branch or a pointer to a commit if we
+   are in /detached/ mode.
+
+* Fast forward merge
+  ~git merge --ff-only feature~
+  Only moves a pointer. We update the current branch to reference a different commit.
+
+* Regular merve vs Rebase
+
+  Merge creates a new commit.
+  Rebase replay our work on another branch. It does not add an additional commit.
+
+  That's why rebase seems better because there is no magic creation of commit by
+  git.
+
+  Also fast forward seems better because we are just moving a pointer and not
+  creating an additional commit.
