@@ -158,5 +158,9 @@ layout: notes
   On github ~Y~ gives you the canonical URL, making sure the link will always show the
   same code. You can add line numbers by adding at the end of the url something
   like ~#l2-l3~.
+
+  Git has useful options for good pr requests, especially task lists.
+  https://help.github.com/articles/writing-on-github/
+
 * Where do my branches point to?
   ~git branch -vv~
