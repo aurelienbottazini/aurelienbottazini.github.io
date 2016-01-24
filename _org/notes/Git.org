@@ -4,7 +4,12 @@ layout: notes
 ---
 #+END_HTML
 
-Don't hesitate to create git aliases for complex commands
+* Resources
+
+  + [[https://github.com/pluralsight/git-internals-pdf][Upcase course]]
+  + [[https://progit.org/][Pro Git]]
+  + [[http://gitready.com/][Git Ready]]
+  + [[https://github.com/pluralsight/git-internals-pdf][Git internals]]
 
 * Cheatsheet
   https://github.com/tiimgreen/github-cheat-sheet
@@ -147,3 +152,11 @@ Don't hesitate to create git aliases for complex commands
 
   Also fast forward seems better because we are just moving a pointer and not
   creating an additional commit.
+
+* Github
+  [[https://github.com/github/hub][Hub]] is a nice tool to interact with github.
+  On github ~Y~ gives you the canonical URL, making sure the link will always show the
+  same code. You can add line numbers by adding at the end of the url something
+  like ~#l2-l3~.
+* Where do my branches point to?
+  ~git branch -vv~
