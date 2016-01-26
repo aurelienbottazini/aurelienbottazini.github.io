@@ -1,0 +1,1094 @@
+<p>
+Writing GNU Emacs Extensions: Editor Customizations and Creations with Lisp
+(Nutshell Handbooks) – Bob Glickstein
+</p>
+
+<p>
+Lisp is more concise: (+ a b c d e)
+</p>
+
+<p>
+The single keystroke META-x can always be replaced with the two-key sequence ESC
+x.
+</p>
+
+<p>
+You can use the command eval-last-sexp, which is bound to C-x C-e.
+eval-expression, which is bound to M-:[
+</p>
+
+
+<p>
+C-z has a default binding of iconify-or-deiconify-frame when running under X,
+and suspend-emacs when running in a character terminal. In both cases, the
+function is also bound to C-x C-z, so there’s no need to rebind them.
+</p>
+
+
+<p>
+You can use the <b>scratch</b> buffer. This buffer is automatically created when
+Emacs starts. The buffer is in Lisp Interaction mode. In this mode, pressing C-j
+invokes eval-print-last-sexp, which is like eval-last-sexp except that the
+result of the evaluation is inserted into the buffer at the location of the
+cursor.
+</p>
+
+<p>
+apropos is invoked with a prefix argument, it not only reports Emacs functions
+and variables that match the search pattern, it also reports any existing
+keybindings for each command in the list.
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Nil</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+The symbol nil is special in Lisp for three reasons:
+a value of nil means “false” and any other value means “true.”
+</p>
+
+<p>
+Inside the Lisp interpreter, the symbol nil and the empty list () are the same
+object.
+</p>
+
+<p>
+It is its own value. When you evaluate the symbol nil, the result is nil. For
+this reason, unlike other symbols, nil doesn’t need to be quoted when you want
+its name instead of its value, because its name is the same as its value.
+</p>
+
+<p>
+So you can write (setq x nil)      ;assign nil to variable x instead of writing
+(setq x 'nil)
+</p>
+
+<p>
+“truth” in Lisp can be represented by any expression except nil,
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Interactive</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+The code letter p used in this example means, “if there is a prefix argument,
+interpret it as a number, and if there is no prefix argument, interpret that as
+the number 1.”
+</p>
+
+<p>
+It’s important to understand the difference between the two expressions (- n)
+and -1. The first is a function call. There must be a space between the function
+name and the argument. The second expression is an integer constant. There may
+not be a space between the minus sign and the 1. It is certainly possible to
+write (- 1) (though there’s no reason to incur the cost of a function call when
+you can alternatively write -1). It is not possible to write -n, because n is
+not a constant.
+</p>
+
+<p>
+The capital P means “when called interactively, leave the prefix argument in raw
+form and assign it to n.” The raw form of a prefix argument is a data structure
+used internally by Emacs to record the prefix information the user gave before
+invoking a command.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Parameters</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+The keyword &amp;optional appearing in a parameter list means that all subsequent
+parameters are optional.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Tricks</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+In general, (if test     (a  b)   (a  c)) can be shortened to (a (if test b c)).
+</p>
+
+
+<p>
+An old Lisp programmers’ trick can now be used to make this expression even more
+concise: (if n n 1) ≡ (or n 1)
+</p>
+
+
+<p>
+Lisp’s or has an extra bit of usefulness: it evaluates each of its arguments in
+order until it finds one that’s non-nil, then it returns that value. If it
+doesn’t find one, it returns nil.
+</p>
+
+
+<p>
+generally speaking,
+</p>
+
+
+<p>
+(if a  a  b) can be replaced by (or a  b)
+</p>
+
+
+<p>
+(if a  a                 ;if a is true, return a   (if b  b               ;else
+if b is true, return b     &#x2026;       (if y  y  z)))     ;else if y is true,
+return y, else z (which might look artificial here but is actually a pretty
+common pattern in actual programs) can be changed to the following form. (or a
+ b &#x2026; y  z) subject to the warning about evaluating expressions multiple times.
+Similarly, (if a   (if b     &#x2026;       (if y  z))) (note that none of the ifs in
+this example has an “else” clause) can also be written as (and a  b &#x2026; y  z)
+because and works by evaluating each of its arguments in order until it finds
+one that’s nil. If it finds one, it returns nil, and if it doesn’t find one, it
+returns the value of the last argument.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> defalias</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+We can use defalias to refer to any Lisp function by a different name. (defalias
+'scroll-ahead 'scroll-up) (defalias 'scroll-behind 'scroll-down)
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> functions</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+“Point” refers to the position of the cursor.
+</p>
+
+<p>
+The function file-symlink-p tests whether its argument, which is a string naming
+a file, refers to a symbolic link. It’s a Boolean predicate, meaning it returns
+true or false. In Lisp, predicates traditionally have names ending in p or -p.
+</p>
+
+<p>
+A progn expression evaluates each of its subexpressions in order and returns the
+value of the last one.
+</p>
+
+<p>
+It’s possible to define a function without giving it a name. Such functions are
+appropriately known as anonymous functions. They’re created with the Lisp
+keyword lambda
+</p>
+
+<p>
+An anonymous function definition can be used wherever you might use the name of
+a function:
+</p>
+
+<p>
+There’s one reason not to use anonymous functions in hooks. If you ever wish to
+remove a function from a hook, you need to refer to it by name in a call to
+remove-hook, like so: (remove-hook 'find-file-hooks 'read-only-if-symlink)
+</p>
+
+<p>
+The insert function takes any number of arguments (which must all be strings or
+characters) and inserts them one after another in the current buffer at the
+present location of point, moving point forward.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> Hooks</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+post-command-hook is a list of functions to run after every interactive command.
+</p>
+
+<p>
+Using M-x apropos RET hook RET,
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> Temp variables</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+In Lisp, temporary variables are created with let, whose syntax is (let
+((var1 value1)       (var2 value2)       &#x2026;       (varn valuen))
+  body1 body2 &#x2026; bodyn)
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> advice</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+A piece of advice attached to a Lisp function is code that gets executed before
+or after the function each time the function is invoked. Before advice can
+affect the arguments before they’re passed to the advised function. After advice
+can affect the return value that comes out of the advised function. Advice is a
+little bit like hook variables, but whereas Emacs defines only a few dozen hook
+variables for very particular circumstances, you get to choose which functions
+get “advised.”
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10"><span class="section-number-2">10</span> defvar, setq, global variable</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+We’ll use defvar to declare the variable.
+</p>
+
+<p>
+Setting a variable’s default value with defvar is different from setting a
+variable’s value with setq. Instead of unconditionally assigning the value to
+the variable like setq does, defvar assigns the value only if the variable does
+not yet have any value.
+</p>
+
+<p>
+(*). A leading asterisk has special meaning in defvar docstrings. It means that
+the variable in question is a user option.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11"><span class="section-number-2">11</span> Window</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+Emacs provides several functions describing what’s visible in a window, such as
+window-edges, window-height, and current-window-configuration.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12"><span class="section-number-2">12</span> Command</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+<code>last-command</code>
+</p>
+
+<p>
+this-command the variable that contains the name of the current command invoked
+by the user.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-13" class="outline-2">
+<h2 id="sec-13"><span class="section-number-2">13</span> Properties</h2>
+<div class="outline-text-2" id="text-13">
+<p>
+In addition to having a variable value and/or a function definition, every Emacs
+Lisp symbol may also have associated with it a property list.
+</p>
+
+<p>
+Properties are stored with the put function and retrieved with the get function.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-14" class="outline-2">
+<h2 id="sec-14"><span class="section-number-2">14</span> Markers</h2>
+<div class="outline-text-2" id="text-14">
+<p>
+markers. A marker is a special object that specifies a buffer position just like
+an integer does. But if the buffer position moves because of insertions or
+deletions, the marker “moves” too so that it keeps pointing to the same spot in
+the text.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-15" class="outline-2">
+<h2 id="sec-15"><span class="section-number-2">15</span> Time</h2>
+<div class="outline-text-2" id="text-15">
+<p>
+Emacs includes a few other time-related functions, notably current-time, which
+yields the current time in a raw form, and format-time-string, which can take
+such a time and format it in a wide variety of ways (in the style of C’s
+strftime).
+</p>
+
+<p>
+This syntax is magic. When the docstring is displayed to the user — such as when
+the user uses apropos or describe-variable — \[command] is replaced with a
+representation of a keybinding that invokes command. For example, if C-x t
+invokes insert-time, then the docstring "*Format for \\[insert-time] (c.f.
+'format-time-string')." is displayed as *Format for C-x t (c.f.
+'format-time-string').
+</p>
+
+
+<p>
+there is a special escape sequence: \=.
+</p>
+
+
+
+<p>
+The asterisk, when it is the first character in an interactive argument, means
+“abort this function if the current buffer is read-only.”
+</p>
+
+
+
+
+<p>
+A buffer-local version of write-file-hooks. Recall from the Hooks section of
+Chapter 2 that a buffer-local variable is one that can have different values in
+different buffers.
+</p>
+
+
+<p>
+Thus, if you want to run one function while saving a Lisp file and another one
+when saving a text file, local-write-file-hooks is the one to use.
+</p>
+
+
+<p>
+What save-excursion does is memorize the position of the cursor, execute the
+subexpressions it’s given as arguments, then restore the cursor to its original
+position.
+</p>
+
+
+<p>
+save-restriction. This is like save-excursion in that it memorizes some
+information, then executes its arguments, then restores the information. The
+information in this case is the buffer’s restriction, which is the result of
+narrowing.
+</p>
+
+
+<p>
+save-match-data that, like save-excursion and save-restriction, memorizes some
+information, executes its arguments, then restores the information. This time
+the information in question is the result of the latest search.
+</p>
+
+
+<p>
+(search-forward "WRITESTAMP((" nil t) searches for the first occurrence of the
+given string, starting from the current location of point. The nil means the
+search is not bounded except by the end of the buffer. This is explained in more
+detail later. The t means that if no match is found, search-forward should
+simply return nil. (Without the t, search-forward signals an error, aborting the
+current command, if no match is found.)
+</p>
+
+
+<p>
+for functions in local-write-file-hooks (also in write-file-hooks and
+write-contents-hooks), a non-nil return value means, “This hook function has
+taken over the job of writing the buffer to a file.”
+</p>
+
+
+<p>
+Emacs provides a function for this purpose called regexp-quote, which
+understands regexp syntax and can turn a possibly-magic string into the
+corresponding non-magic one.
+</p>
+
+
+<p>
+The optional second argument to search-forward and re-search-forward, if
+non-nil, is a buffer position beyond which the search may not go.
+</p>
+
+
+<p>
+replace-match, which replaces some or all of the matched text from a previous
+search.
+</p>
+
+
+<p>
+Although ordinary variables are made buffer-local with either
+make-local-variable or make-variable-buffer-local (see below), hook variables
+must be made buffer-local with make-local-hook.
+</p>
+
+
+<p>
+We care only about the last argument, t, which means “change only the
+buffer-local copy of first-change-hook.”
+</p>
+
+
+<p>
+buffer-modified-p returns true, which tells us that the current buffer has been
+modified since it was last saved:
+</p>
+
+
+<p>
+after-change-functions contains functions to call after each buffer change.
+</p>
+
+
+<p>
+The keyword &amp;rest, followed by a parameter name, must appear last in a
+function’s parameter list. It means “collect up any remaining arguments into a
+list and assign it to the last parameter”
+</p>
+
+
+<p>
+This use of let creates a temporary variable, after-change-functions, that
+supersedes the global after-change-functions during the call to
+update-modifystamps in the body of the let. After the let exits, the temporary
+after-change-functions disappears and the global one is again in effect.
+</p>
+
+
+<p>
+Hooking user options into the “customize” system requires using special
+functions called defgroup and defcustom.
+</p>
+
+
+<p>
+To add a directory to the beginning of load-path, use (setq load-path     
+ (cons "/your/directory/here"             load-path)) in your .emacs file. To
+add a directory to the end, use (setq load-path       (append load-path         
+     '("/your/directory/here")))
+</p>
+
+
+<p>
+you ask Emacs to find a Lisp file in the load path and you omit the suffix of
+the file for which you’re looking — e.g., you specify foo instead of foo.el —
+Emacs first looks for foo.elc, the byte-compiled form of foo.el. If that’s not
+found in the load path, then foo.el is tried, followed by plain foo. It’s
+usually best to omit the suffix when specifying a file to load. Not only does it
+get you that useful search behavior, but it helps eval-after-load to work
+properly
+</p>
+
+
+<p>
+require and provide, give a way to make sure it only gets loaded once instead of
+n times.
+</p>
+
+
+<p>
+(provide 'timestamp)
+</p>
+
+
+<p>
+(require 'timestamp "timestamp")
+</p>
+
+
+<p>
+The string equivalent of the feature symbol timestamp is "timestamp", so we can
+write (require 'timestamp) instead of (require 'timestamp "timestamp"). (The
+function symbol-name called on a symbol yields its string equivalent.)
+</p>
+
+
+<p>
+With autoloading, you can arrange to defer loading a file until it’s needed —
+that is, until you call one of its functions. Setting up autoloads is very
+inexpensive, and therefore is usually done in the .emacs file.
+</p>
+
+
+<p>
+The function autoload connects a function name with the file that defines it.
+</p>
+
+
+<p>
+The autoload function has several optional parameters. The first one is a
+docstring for the not-yet-defined function.
+</p>
+
+
+<p>
+The next optional parameter describes whether the function, once loaded, will be
+an interactive command or a mere function.
+</p>
+
+
+<p>
+The last optional parameter is one we won’t cover for now. It specifies the type
+of the autoloadable object, if not a function. As it turns out, keymaps and
+macros (which we’ll cover in coming chapters) may also be autoloaded.
+</p>
+
+
+<p>
+the result of byte-compilation is still portable among different hardware
+platforms and operating systems (but may not be portable to older versions of
+Emacs).
+</p>
+
+
+<p>
+There are several ways to byte-compile files. The most straightforward ways are
+From within Emacs: Execute M-x byte-compile-file RET file.el RET. From the UNIX
+shell: Run emacs -batch -f batch-byte-compile file.el.
+</p>
+
+
+<p>
+You can byte-compile an entire directory full of Lisp files with
+byte-recompile-directory.
+</p>
+
+
+<p>
+If you’d like to defer the execution of some code until a particular file has
+been loaded, eval-after-load is the way to do it.
+</p>
+
+
+<p>
+The load or autoload or require that causes dired to be loaded must refer to it
+by exactly the same name used in eval-after-load.
+</p>
+
+
+<p>
+Another use for eval-after-load is when you need to refer to a variable,
+function, or keymap in a package that’s not loaded yet, and you don’t want to
+force the package to be loaded:
+</p>
+
+
+<p>
+Whenever Emacs visits a new file, it scans near the end<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> for a block of text
+that looks like this: Local variables: var1: value1 var2: value2 &#x2026; End: When
+Emacs finds such a block, it assigns each value to the corresponding var, which
+is automatically made buffer-local.
+</p>
+
+
+<p>
+Emacs can recognize this block even if each line begins with a prefix, as long
+as they all begin with the same prefix. This is necessary in a file of Lisp
+code, for example, to comment out the lines so they’re not interpreted as Lisp:
+</p>
+
+
+<p>
+Any file that needs update-writestamps in its local-write-file-hooks could
+therefore specify: Local variables: local-write-file-hooks: (update-writestamps)
+End: In fact, a file could set up all of the unique values it needs: Local
+variables: local-write-file-hooks: (update-writestamps) writestamp-prefix:
+"Written:" writestamp-suffix: "." writestamp-format: "%D" End:
+</p>
+
+
+<p>
+Emacs recognizes a “pseudovariable” in the local variables list called eval.
+When eval: value
+</p>
+
+
+<p>
+eval: (add-hook 'local-write-file-hooks 'update-writestamps)
+</p>
+
+
+<p>
+The empty list () is synonymous with the symbol nil.
+</p>
+
+
+<p>
+car yields the first element in a list, and cdr yields the remainder of the list
+</p>
+
+
+<p>
+(Recall that quoting an expression — even a complete list — means to use that
+expression literally. So '(a b c) means the list containing a, b, and c, not the
+result of calling function a on arguments b and c.)
+</p>
+
+
+<p>
+This does not mean that () is the same as (nil).
+</p>
+
+
+<p>
+Lists are constructed with the functions list, cons, and append.
+</p>
+
+
+<p>
+The function list makes a list out of any number of arguments:
+</p>
+
+
+<p>
+The function cons takes an arbitrary Lisp expression and an existing list. It
+makes a new list by prepending the arbitrary expression to the old list:
+</p>
+
+
+<p>
+The function append takes any number of lists and makes a new list by
+concatenating the top-level elements of all the lists.
+</p>
+
+
+<p>
+The function reverse takes a list and makes a new list by reversing its
+top-level elements.
+</p>
+
+
+<p>
+Lists are composed of smaller data structures called cons cells. A cons cell is
+a structure that contains two Lisp expressions, referred to, you may not be
+surprised to learn, as the cell’s car and cdr.
+</p>
+
+
+<p>
+There’s a special syntax for cons cells whose cdrs aren’t lists. It’s called
+dotted pair notation, and cons cells themselves are sometimes referred to as
+dotted pairs:
+</p>
+
+
+<p>
+A list where the last cdr is not nil is sometimes called an improper list.
+Frequently, the entries in an association list (see below) are improper lists.
+</p>
+
+
+<p>
+consp tests whether its argument is a cons cell. (consp x) is true when x is any
+list except the empty list, and false for all other objects. atom tests whether
+its argument is atomic. (atom x) is the opposite of (consp x) — everything
+that’s not a cons cell, including nil, numbers, strings, and symbols, is an
+atom. listp tests whether its argument is a list. (listp x) is true for all cons
+cells and for nil, false for everything else.
+</p>
+
+
+<p>
+null tests whether its argument is nil.
+</p>
+
+
+<p>
+Other Useful List Functions Here are some more list-related Lisp functions that
+Emacs defines.
+</p>
+
+
+<p>
+Enter setcar and setcdr. <sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup> Given a cons cell and a new value, these functions
+replace the cell’s car or cdr with the new value.
+</p>
+
+
+<p>
+There is one other important destructive list operation: nreverse,
+</p>
+
+
+<p>
+A list can be made to refer to part of itself! Consider: (setq x '(a b c))
+(nthcdr 2 x) ⇒ (c) (setcdr (nthcdr 2 x) x)      ;don't try this yet!
+</p>
+
+
+<p>
+What does this list look like? Well, it starts out like this: (a b c a b c a b c
+a b c a b c a b c a b c a b c &#x2026; and it never stops.
+</p>
+
+
+<p>
+syntax table is a mode-specific mapping from characters to “syntax classes.”
+</p>
+
+
+<p>
+The syntax table is used by commands like forward-word and backward-word to
+figure out just what a word is. Because different buffers can have different
+syntax tables, the definition of a word can vary from one buffer to another.
+</p>
+
+
+<p>
+The function char-syntax returns a character’s syntax code as another character.
+</p>
+
+
+<p>
+you can try using the profiler (see Appendix C) to see which version of refill
+is faster,
+</p>
+
+
+<p>
+It is possible to write a special kind of function, called a macro function,<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup>
+that behaves as though its arguments are quoted. That is, when a macro function
+is invoked, its arguments are not evaluated before the function gets control.
+</p>
+
+
+<p>
+Macro functions are defined with defmacro (whose syntax resembles defun). The
+way to write incr is: (defmacro incr (var)   "Add one to the named variable."
+  (list 'setq var (list '+ var 1)))
+</p>
+
+
+<p>
+The body of a macro function produces an expansion of its input. The expansion
+then gets evaluated. The expansion of (incr x) is: (setq x (+ x 1)) When that
+expression is evaluated, x is incremented.
+</p>
+
+
+<p>
+You can debug macro functions using the function macroexpand.
+</p>
+
+
+<p>
+Backquote is just like quote, meaning that the result of evaluating a backquoted
+expression is the expression itself: `(a  b  c) ⇒ (a  b  c) There is one
+important difference, however. A backquoted list’s subexpressions may be
+individually unquoted using yet more special syntax. This means that when the
+backquoted expression is evaluated, the unquoted subexpressions actually do get
+evaluated — but the rest of the list remains quoted! `(a ,b  c) ⇒ (a value-of-
+b c)
+</p>
+
+
+<p>
+What we need instead is a way to splice the value of subexprs into the
+surrounding list, removing the outer parentheses. For this purpose, Emacs Lisp
+has one more special bit of syntax (last one, I promise): the splicing unquote
+operator, ,@.
+</p>
+
+
+<p>
+With let*, there is no ambiguity: the order in which the vals are evaluated is
+the same as the order in which they’re written.[
+</p>
+
+
+<p>
+The way to create such a symbol is with the function make-symbol, which takes
+the symbol’s name (as a string) and creates a brand-new, uninterned object
+guaranteed not to be equal, in the sense of eq, to any other Lisp object.
+</p>
+
+
+<p>
+It is possible to write Lisp code that gets executed while the stack is being
+unwound! This is the key to writing code that fails "gracefully,” cleaning up
+after itself if it doesn’t get the chance to finish due to some error (or due to
+the user interrupting the operation with C-g). The function to use is called
+unwind-protect,
+</p>
+
+
+<p>
+means we must change the variable paragraph-separate, whose value is a regexp
+that describes lines that separate paragraphs. We’ll also have to change
+paragraph-start, a regexp that describes lines that serve as either the first
+line of a paragraph or (despite the name) as a line that separates paragraphs.[
+</p>
+
+
+<p>
+(defalias 'backward-quip 'backward-page) (defalias 'forward-quip 'forward-page)
+(defalias 'narrow-to-quip 'narrow-to-page) (defalias 'what-quip 'what-page)
+</p>
+
+
+<p>
+The global keymap, mentioned above, is always active. It can be superseded by
+entries in a buffer’s local keymap, which contains special keybindings for the
+current major mode. That, in turn, can be superseded by the entries in the minor
+mode keymap corresponding to any minor modes that are active.[37
+</p>
+
+
+<p>
+We use make-sparse-keymap because Quip mode has only a few special keybindings
+beyond the ones found in the global keymap. Only when a keymap has more than a
+couple dozen keybindings should a full keymap be created with make-keymap.
+</p>
+
+
+<p>
+If users wish to alter Quip mode’s keybindings, they can do so using a mode hook
+and local-set-key (which, within Quip mode, alters quip-mode-map):
+</p>
+
+
+<p>
+it’s so common to derive new modes by varying existing ones — just as we’ve
+varied Text mode to get Quip mode — that there’s an Emacs Lisp package to
+simplify this task. The package is called derived and the central function it
+provides is called define-derived-mode.
+</p>
+
+
+<p>
+Vectors are self-evaluating; that is, the result of evaluating a vector is the
+vector itself. Its subexpressions are not evaluated. So if you write: [a b c]
+you’ll get a vector containing the three symbols, a, b, and c. If you want a
+vector containing the values of variables a, b, and c, you must construct the
+vector using the vector function: (vector a b c) ⇒ [17 37 42]
+</p>
+
+
+<p>
+When function definitions are very short, like these last four, it’s usually a
+good idea to turn them into inline functions using defsubst instead of defun.
+</p>
+
+
+<p>
+The function crossword&#x2013;set has a double hyphen in its name. This is the
+conventional way to denote a "private” function that isn’t part of a package’s
+advertised programming interface.
+</p>
+
+
+<p>
+The function bobp tests whether the cursor is at the beginning of the buffer.
+</p>
+
+
+<p>
+substitute-key-definition does. (substitute-key-definition 'beginning-of-line   
+                        'crossword-beginning-of-row
+</p>
+
+
+<p>
+We create a list of "equivalence pairs” in equivs.
+</p>
+
+
+<p>
+This situation is partially alleviated with suppress-keymap, which causes all
+self-inserting keys to become undefined. We should call suppress-keymap
+immediately after creating the keymap, before starting to define keys in it. (if
+crossword-mode-map     nil   (setq crossword-mode-map (make-keymap))
+  (suppress-keymap crossword-mode-map)   &#x2026;) This only gets rid of
+self-inserting keys, leaving other dangerous keys like C-w and C-y lurking
+about. A more complete (and more drastic) solution is to place a catch-all
+binding in crossword-mode-map: (define-key crossword-mode-map [t] 'undefined) In
+this call to define-key,
+</p>
+
+
+<p>
+When you press a key, you generate a numeric code that can be used to index the
+vector, or it can be used as the search key in an assoc search. When you press a
+mouse button, you generate a symbol that can only be used in an assoc search.
+The symbol down-mouse-1, for instance, represents a press of mouse button 1
+(usually the left mouse button), while the symbol mouse-1 represents button 1
+being released. (It is customary for a button press to initiate an action by
+noting the position of the mouse pointer, and for a button release to complete
+an action by noting whether the mouse has moved since the corresponding button
+press.) Other mouse-event symbols include C-down-mouse-2 (pressing the middle
+mouse button while holding the control key), S-drag-mouse-3 (shift key plus
+mouse motion with button 3 depressed), and double-mouse-1 (after releasing mouse
+button 1 for the second time in a double-click). Another difference between
+mouse input and keyboard input is that when you press a mouse button, there is
+additional data associated with the button press: for instance, there’s the
+location in the window where you pressed it. Keyboard input always happens at
+“point,” but mouse input happens wherever the mouse is. For this reason, mouse
+input is represented by a data structure called an input event. A command bound
+to a mouse action can access the current event by calling last-input-event, or
+by using the e code letter in its interactive declaration.
+</p>
+
+
+<p>
+The @ in the interactive declaration means, “Before doing anything else, find
+the mouse click (if any)
+</p>
+
+
+<p>
+The code letter e tells interactive to bundle up the mouse event that invoked
+this command as a list and assign it to event.
+</p>
+
+
+<p>
+Menu keymaps must have an "overall prompt string.” That’s the meaning of the
+optional argument "Crossword" in this call to make-sparse-keymap.
+</p>
+
+
+<p>
+(define-key crossword-mode-map [menu-bar crossword]             (cons
+"Crossword" crossword-menu-map))
+</p>
+
+
+<p>
+An asynchronous process object is a Lisp data structure that represents another
+running program on your computer. New processes are created with start-process,
+which resembles call-process (which we saw in the previous section). Unlike
+call-process, however, start-process does not wait for the executed program to
+complete. Instead, it returns a process object.
+</p>
+
+
+<p>
+sentinel is a Lisp function that gets called when the process changes state.
+We’re interested in the state change that happens when the program exits; but
+state changes can also happen when the process receives a signal.
+</p>
+
+
+<p>
+(set-process-sentinel process                         
+ 'crossword&#x2013;egrep-sentinel))))))))
+</p>
+
+
+<p>
+We can define crossword&#x2013;egrep-sentinel as: (defun crossword&#x2013;egrep-sentinel
+(process string)   "When PROCESS exits, display its buffer."   (if (eq
+(process-status process)           'exit)       (display-buffer (process-buffer
+process))))
+</p>
+
+
+<p>
+A filter is a function that gets called whenever output from the process
+arrives.
+</p>
+
+
+<p>
+(set-process-filter process                         'crossword&#x2013;egrep-filter)
+</p>
+
+
+<p>
+(defun crossword&#x2013;egrep-filter (process string)   "Handle output from PROCESS."
+  (let ((buffer (process-buffer process)))     (save-excursion       (set-buffer
+buffer)       (goto-char (point-max))       (insert string))     (display-buffer
+buffer)))
+</p>
+
+
+<p>
+One more thing about start-process. When Emacs creates the process, it maintains
+a connection to it (through which input and output flow) using either UNIX pipes
+or UNIX pseudo-ttys. Pipes are more appropriate for non-interactive processes
+like egrep, while pseudo-ttys, or ptys, are more appropriate for interactive
+programs — e.g., command interpreters like the UNIX shell. The kind of
+connection that is created by start-process is controlled by the variable
+process-connection-type — nil means use pipes, t means use ptys.
+</p>
+
+
+<p>
+Though it’s a little baroque, it’s a good idea always to wrap calls to
+start-process inside a let call where you temporarily set
+process-connection-type to the desired value, as in: &#x2026; (let
+((process-connection-type nil))   (start-process "egrep"                  buffer
+                 crossword-egrep-program                  "-i" regexp
+crossword-words-file)) &#x2026;
+</p>
+
+
+<p>
+Lisp expression in any buffer can be evaluated by placing the cursor at the end
+of the expression and pressing C-x C-e (eval-last-sexp). The keystroke M-:
+(eval-expression) prompts for a Lisp expression to evaluate in the minibuffer.
+You can also use the commands eval-region and eval-current-buffer.
+</p>
+
+
+<p>
+M-x lisp-interaction-mode RET). In that mode, C-j is normally
+eval-print-last-sexp, which is like eval-last-sexp except that it also inserts
+the result of evaluation into the buffer.
+</p>
+
+
+<p>
+Entering the debugger is controlled as follows. debug-on-entry
+</p>
+
+
+<p>
+debug-on-error
+</p>
+
+
+<p>
+debug-on-next-call
+</p>
+
+
+<p>
+debug-on-quit This
+</p>
+
+
+<p>
+Edebug is an elaborate debugging environment that is far more powerful than the
+debugging facilities described in the previous section.
+</p>
+
+
+<p>
+Barry Warsaw has written an ingenious package for profiling Emacs Lisp called
+ELP.
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p>DEFINITION NOT FOUND.</p></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <p>DEFINITION NOT FOUND.</p></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3">3</a></sup> <p>DEFINITION NOT FOUND.</p></div>
+
+
+</div>
+</div>
