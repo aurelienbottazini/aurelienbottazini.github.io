@@ -8,3 +8,4 @@ _vendor
 .bundle
 .env
 notes/*
+./notes/Conversations_For_Action.md
