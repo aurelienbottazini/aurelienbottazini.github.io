@@ -7,14 +7,4 @@ npm-debug.log
 _vendor
 .bundle
 .env
-
-notes/Big Words.html
-notes/Big Words.html
-notes/Git.html
-notes/Haskell.html
-notes/Javascript.html
-notes/Objective C.html
-notes/postgres.html
-notes/Refactoring.html
-notes/Ruby.html
-notes/Web.html
+notes/*
