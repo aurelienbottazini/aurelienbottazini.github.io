@@ -8,4 +8,4 @@ _vendor
 .bundle
 .env
 notes/*
-./books/*
+books/*
