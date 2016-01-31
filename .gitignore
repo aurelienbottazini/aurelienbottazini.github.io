@@ -6,9 +6,5 @@ npm-debug.log
 .DS_Store
 _vendor
 .bundle
-.envnotes/Angular.html
-notes/Angular.html
-notes/Big Words.html
-notes/C.html
-notes/Glossary.html
-notes/Big Words.html
+.env
+
