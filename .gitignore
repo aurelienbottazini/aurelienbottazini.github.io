@@ -8,26 +8,4 @@ _vendor
 .bundle
 .env
 notes/*
-./notes/Conversations_For_Action.md
-./notes/Flow The Psychology of Happiness.html
-./notes/How to Win Friends and Influence people.html
-./notes/Running lean.html
-./notes/Scrum: a Breathtakingly Brief and Agile Introduction.html
-./notes/The Elements of Typographic Style.html
-./notes/The Flinch.html
-./notes/The Miracle Morning.html
-./notes/The Personal MBA.html
-./notes/The Pragmatic Programmer.html
-./notes/Writing GNU Emacs Extensions.html
-./books/Conversations_For_Action.md
-./books/Flow The Psychology of Happiness.html
-./books/How to Win Friends and Influence people.html
-./books/Running lean.html
-./books/Scrum: a Breathtakingly Brief and Agile Introduction.html
-./books/The Elements of Typographic Style.html
-./books/The Flinch.html
-./books/The Miracle Morning.html
-./books/The Personal MBA.html
-./books/The Pragmatic Programmer.html
-./books/Writing GNU Emacs Extensions.html
-./books/Writing GNU Emacs Extensions.html
+./books/*
