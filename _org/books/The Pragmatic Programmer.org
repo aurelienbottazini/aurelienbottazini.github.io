@@ -8,7 +8,8 @@ layout: notes
 Thomas
 
 This book changed the way I work. Really small notes based on my last read.
-There is nice resume of all the important points already available with the book
+There is a nice resume of all the important points already available with the
+book.
 
 A pragmatic programmer is
 

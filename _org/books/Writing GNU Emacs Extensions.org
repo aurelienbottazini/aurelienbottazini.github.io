@@ -1,5 +1,7 @@
 #+BEGIN_HTML
---- layout: notes ---
+---
+layout: notes
+---
 #+END_HTML
 #+TOC: headlines 4
 
@@ -578,6 +580,7 @@ keybindings for each command in the list.
   executed program to complete. Instead, it returns a process object.
 
 * Process
+
   One more thing about start-process. When Emacs creates the process, it
   maintains a connection to it (through which input and output flow) using
   either UNIX pipes or UNIX pseudo-ttys. Pipes are more appropriate for
