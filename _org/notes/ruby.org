@@ -36,24 +36,25 @@ $ irb -simple-prompt -rrbconfig
 
    Notable directories are
 
-  | Term          | Directory contents                                                     |
-  |---------------+------------------------------------------------------------------------|
-  | ~rubylibdir~  | Ruby Standard library                                                  |
-  | ~bindir~      | Ruby command line tools                                                |
-  | ~archdir~     | Architecture-specific extensions and libraries (compiled binary files) |
-  | ~sitedir~     | Your own or third party libraries (in Ruby)                            |
-  | ~vendordir~   | Third-party extensions and libraries (in Ruby)                         |
-  | ~sitelibdir~  | Your own Ruby language extensions  (in Ruby)                           |
-  | ~sitearchdir~ | Your own Ruby language extensions (in C)                               |
+  | Term        | Directory contents                                                     |
+  |-------------+------------------------------------------------------------------------|
+  | rubylibdir  | Ruby Standard library                                                  |
+  | bindir      | Ruby command line tools                                                |
+  | archdir     | Architecture-specific extensions and libraries (compiled binary files) |
+  | sitedir     | Your own or third party libraries (in Ruby)                            |
+  | vendordir   | Third-party extensions and libraries (in Ruby)                         |
+  | sitelibdir  | Your own Ruby language extensions  (in Ruby)                           |
+  | sitearchdir | Your own Ruby language extensions (in C)                               |
 
 * Variables
 
-   | Type     | Ruby Convention | Non-conventional             |
-   |----------+-----------------+-----------------------------|
-   | Local    | ~first_name~    | ~firstName~, ~firstName~    |
-   | Instance | ~@first_name~   | ~@FirstName, @firstname~    |
-   | Class    | ~@@first_name~  | ~@@First_name, @@firstName~ |
-   | Global   | ~$FIRST_NAME~   | ~$first_name, $firstName~   |
+   | Type     | Ruby Convention | Non-conventional          |
+   |----------+-----------------+---------------------------|
+   | Local    | first_name      | firstName, firstName      |
+   | Instance | @first_name     | @FirstName, @firstname    |
+   | Class    | @@first_name    | @@First_name, @@firstName |
+   | Global   | $FIRST_NAME     | $first_name, $firstName   |
+   |          |                 |                           |
 
    Instance variable are initialized to nil.
 #+BEGIN_SRC ruby :exports both
@@ -218,7 +219,7 @@ $ irb -simple-prompt -rrbconfig
    class is considered the ancestor of the singleton class of
    sub-classes.
 
-** ~method_missing~
+** method_missing
 
   Get called as a last resort for unmatched messages. You can
   override ~method_missing~
@@ -305,7 +306,7 @@ $ irb -simple-prompt -rrbconfig
 
     However it is naive and might not work on all Arrays. Use with caution.
 
-** ~BasicObject~, ~Object~ & ~Kernel~
+** BasicObject, Object & Kernel
 
    ~BasicObject~ comes before ~Object~ in the ruby family tree.
    ~BasicObject~ offers a blank state object. an object with
@@ -354,7 +355,7 @@ $ irb -simple-prompt -rrbconfig
 ** initialize
    Arguments used with ~new~ are automatically sent to ~initialize~.
 
-** ~super~
+** super
 
    + Called with no arguments, ~super~ automatically forwards
      arguments passed to the method from which it’s called.
@@ -440,7 +441,7 @@ $ irb -simple-prompt -rrbconfig
      the class Ticket
    + ~Ticket::VENUES~: constant ~VENUES~ in class ~Ticket~
 
-** ~inspect~
+** inspect
    You can override it and have useful info about your custom
    class.
 ** Don’t hard code class names.
@@ -576,7 +577,7 @@ end
   end
   #+END_SRC
 
-** ~prepend~
+** prepend
 
    ~prepend~ appeared with Ruby 2. The difference between
    ~include~ and ~prepend~ is that when you ~prepend a module~,
@@ -830,7 +831,7 @@ def !
 end
 #+END_SRC
 
-** ~dangerous_method!~
+** dangerous_method!
 
    When you have a ! at the end of a method name. It usually means
    this methods permanently modifies its receiver. But It is not
@@ -900,7 +901,7 @@ str.singleton_methods
 #+RESULTS:
 | :shout |
 
-** ~try_convert~
+** try_convert
    ~try_convert~ looks for a conversion method on argument object.
    If it exists, it gets called, if not it returns ~nil~. If the
    object returned class is different that the class to which
@@ -1755,7 +1756,7 @@ output
      end               #wrong
      #+END_SRC
 
-**** with ~enum_for~
+**** with enum_for
      In the following example ~each~ serve as a kind of front end
      to array’s select.
 
@@ -2025,7 +2026,7 @@ output
      flag arguments like ~File::FNM_CASEFOLD~, ~File::FNM_DOTMATCH~
    + ~mkdir~, ~chdir~, ~rmdir~
 
-** ~FileUtils~
+** FileUtils
 
    + ~FileUtils.rm_rf~
    + ~FileUtils.ln_s~
@@ -2041,7 +2042,7 @@ output
    You can use ~FileUtils::NoWrite~ to make sure you don’t
    accidentally delete, overwrite or move files.
 
-** ~Pathname~
+** Pathname
 
    + ~basename~
    + ~dirname~
@@ -2058,17 +2059,17 @@ output
      : /Users
      : /
 
-** ~StringIO~
+** StringIO
    treats string like IO objects. You can see trough them, rewind etc.
 
-** ~Tempfile~
+** Tempfile
    Useful to run tests
 
    #+BEGIN_SRC ruby
    Tempfile.new('tmp')
    #+END_SRC
 
-** ~open-uri~
+** open-uri
    Standard /HTTP/ and /HTTPS/ library.
 
    #+BEGIN_SRC ruby :exports both
@@ -2469,7 +2470,7 @@ output
    #+RESULTS:
    : I am a string
 
-** ~instance_eval~
+** instance_eval
 
     Evaluate string or block of code changing ~self~ to be the
     receiver of ~instance_eval~.
@@ -2511,7 +2512,7 @@ output
     #+RESULTS:
     : #<Person:0x007fb0f48b12d8 @name="David", @age=55>
 
-** ~class_eval~
+** class_eval
 
     It puts you inside a class-definition body
 
@@ -2523,7 +2524,7 @@ output
     end
     #+END_SRC
 
-** ~define_method~
+** define_method
 
     useful to bring an outer scope variable  into an instance
     method
@@ -2659,7 +2660,7 @@ output
    You can also use ~%x{}~. It returns the output and allow string
    interpolation.
 
-** ~open~ and ~open3~
+** open and open3
 
    #+BEGIN_SRC ruby
    d = open('|cat', 'w+')
@@ -2693,7 +2694,7 @@ output
   + A nonexistent module called on an object
 
 
-** ~method_missing~
+** method_missing
 
    #+BEGIN_SRC ruby
    def method_missing(m, *args, &block)
@@ -2787,7 +2788,7 @@ output
    ~inherited~ is a class method so it defines an ~inherited~
    cascade. ~inherited~ does not work on singleton class.
 
-** ~const_missing~
+** const_missing
 
    #+BEGIN_SRC ruby :exports both :results output
      class C
@@ -2802,7 +2803,7 @@ output
    #+RESULTS:
    : 1
 
-** ~method_added~
+** method_added
 
    #+BEGIN_SRC ruby
    class C
@@ -2880,7 +2881,8 @@ There is a dig method for easier access to nested arrays or hash.
     b: { x: 31, z: 37 }
   }
 
-  dict.dig(:a, :x) #=> 23
+  dict.dig(:a, :x) # => 23
+
 #+end_src
 
 On enumerables ~grep_v~ returns the list of items that do not match a condition.

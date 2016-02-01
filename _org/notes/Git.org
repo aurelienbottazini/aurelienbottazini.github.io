@@ -27,7 +27,7 @@ layout: notes
   ~git checkout --orphan gh-pages~
 * delete branch on remote server
   ~git push origin --delete <branch_name>~
-* Remove files added to a pending commit with ~git add~
+* Remove files added to a pending commit with git add
   ~git rm -r --cached <files>~
 * Undo an unpushed commit
 #+begin_src bash
@@ -51,8 +51,8 @@ layout: notes
 #+END_SRC
 
   Another possibility with https://rtyley.github.io/bfg-repo-cleaner/
-* Stash everything with ~git stash -u~
-* Show all git _actions_ (commits, merges) with ~git reflog~
+* Stash everything with git stash -u
+* Show all git _actions_ (commits, merges) with git reflog
   git reflog show /branch_name/
 * Create aliases for long commands
   ~git config --global alias.sla 'log --oneline --decorate --graph --all'~ and

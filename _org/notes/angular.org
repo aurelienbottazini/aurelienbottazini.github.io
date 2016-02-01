@@ -84,7 +84,7 @@ before angular loads you can use ~ngBind~ and ~ngBindTemplate~
 <title ng-bind-template="Google Phone Gallery: {{query}}">Google Phone Gallery</title>
 #+END_SRC
 
-* ~ngSrc~
+* ngSrc
   Prevents browsers to make an http request to an invalid location before
   Angular has the chance to evaluate the expression
 
@@ -160,7 +160,7 @@ before angular loads you can use ~ngBind~ and ~ngBindTemplate~
     });
   #+END_SRC
 
-** ~$http~
+** $http
    Angular provides a mock ~$http~ service for tests: ~$httpBackend~
 
    #+BEGIN_SRC js
@@ -219,7 +219,7 @@ before angular loads you can use ~ngBind~ and ~ngBindTemplate~
      });
    #+END_SRC
 
-** ~ngResource~
+** ngResource
    You need to load angular-resource inside Karma configuration if you
    are using ~ngResource~. You should also use ~toEqualData~ instead of
    ~toEqual~ to compare objects
@@ -250,7 +250,7 @@ before angular loads you can use ~ngBind~ and ~ngBindTemplate~
   applications you'll also want to create your own.
 
 
-** ~$http~
+** $http
   To use a service in angular you declare the dependencies as
   arguments in your controller’s constructor.
 
@@ -272,7 +272,7 @@ before angular loads you can use ~ngBind~ and ~ngBindTemplate~
     function PhoneListCtrl($scope, $http) {...}
     phonecatApp.controller('PhoneListCtrl', ['$scope', '$http', PhoneListCtrl]);
   #+END_SRC
-* ~ngRoute~
+* ngRoute
 
   Distributed separately from the core Angular framework.
 
@@ -320,7 +320,7 @@ before angular loads you can use ~ngBind~ and ~ngBindTemplate~
                                                            $scope.phoneId = $routeParams.phoneId;
                                                        }]);
   #+END_SRC
-* ~ng-view~
+* ng-view
   #+BEGIN_SRC html
     <body>
 
@@ -347,7 +347,7 @@ before angular loads you can use ~ngBind~ and ~ngBindTemplate~
      });
    #+END_SRC
 
-* ~ng-click~
+* ng-click
 
   #+BEGIN_SRC html
     <img ng-src="{{img}}" ng-click="setImage(img)">
@@ -401,7 +401,7 @@ before angular loads you can use ~ngBind~ and ~ngBindTemplate~
     }]);
   #+END_SRC
 
-* ~ngAnimate~
+* ngAnimate
   https://docs.angularjs.org/guide/animations
 
   Distributed separately

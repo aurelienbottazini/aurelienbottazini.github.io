@@ -89,7 +89,7 @@ layout: notes
      sqrt((double) n)
    #+END_SRC
 
-* ~++~ and ~--~
+* ++ and --
     To decrement ~--n~ and increment ~++n~ by 1. More concise and often efficient
     than ~n = n + 1~
 
@@ -106,28 +106,28 @@ layout: notes
     #+RESULTS:
     | 6 | 5 |
 
-* Logical Operators ~||~ and ~&&~
+* Logical Operators || and &&
     Evaluate from left to right and stop as soon as the truth or
     falsehood is known.
 
 * Bitwise Operators
 
-  + ~&~ :: bitwise AND. Often used to mask off some set of bits
+  + & :: bitwise AND. Often used to mask off some set of bits
            #+BEGIN_SRC C
              n = n & 0177; //sets to zero all but the low-order 7 bits of n
            #+END_SRC
-  + ~|~ :: bitwise inclusive OR. Used to turn its on
+  + | :: bitwise inclusive OR. Used to turn its on
            #+BEGIN_SRC C
              x = x | SET_ON; //set to one in x the bits that are set to one in SET_ON
            #+END_SRC
-  + ~^~ :: bitwise exclusive OR. Sets a one in each bit position where
+  + ^ :: bitwise exclusive OR. Sets a one in each bit position where
            its operands have different bits, and zero where they are
            the same
-  + ~<<~ :: left shift. Shift to the left, filling vacated bits with
+  + << :: left shift. Shift to the left, filling vacated bits with
             zero. ~<< 2~ is equivalent to multiplication by 4 (2^2).
-  + ~>>~ :: right shift. ~unsigned~ ensures right-shifted vacated bits
+  + >> :: right shift. ~unsigned~ ensures right-shifted vacated bits
             will be filled with zero.
-  + =~= :: one's complement (unary). Convert's each 1-bit into a 0-bit
+  + ~ :: one's complement (unary). Convert's each 1-bit into a 0-bit
            and vice versa.
 
 * Constants
@@ -156,7 +156,7 @@ layout: notes
    The first name in an ~enum~ has a value of 0, the next a value of 1
    and so on.
 
-** ~const~
+** const
 
    The qualifier ~const~ can be applied to the declaration of any
    variable to specify that its value will not be changed.
@@ -173,7 +173,7 @@ layout: notes
    #+END_SRC
 
 * Character Input and Output
-** ~printf~ & ~scanf~
+** printf & scanf
 
     First argument is a string of characters to be printed. Each ~%~
     indicating where one of the other arguments is to be substituted.
@@ -195,7 +195,7 @@ layout: notes
 
    ~scanf~ is like ~printf~ except that it reads input instead of
    writing output.
-** ~getchar~ and ~putchar~
+** getchar and putchar
     One character at a time
 
     #+BEGIN_SRC C :exports both
@@ -329,7 +329,7 @@ layout: notes
 
 * Control Flow
 
-** ~if~
+** if
    #+BEGIN_SRC C :exports both
      int x = 6;
      if (x > 10)
@@ -343,7 +343,7 @@ layout: notes
    #+RESULTS:
    : small x
 
-** ~switch~
+** switch
    As a matter of good form we put a ~break~ after the last case even
    though it is unnecessary.
 
@@ -767,7 +767,7 @@ layout: notes
     };
   #+END_SRC
 
-* ~typdedef~
+* typdedef
 
   ~typdedef~ is for creating new data type names.
 
@@ -781,7 +781,7 @@ layout: notes
   + Parameterize a program against portability problems.
   + Provide better documentation for a program.
 
-* ~union~
+* union
   A union is a variable that hold objects of different types and
   sizes.
 
@@ -796,7 +796,7 @@ layout: notes
   Unions are accessed just as for structures with ~.~ and ~->~.
   An ~union~ may occur withing structures and arrays.
 
-* ~sizeof~
+* sizeof
 
   Can be used to compute the size of any object.
 
@@ -823,7 +823,7 @@ layout: notes
 
   ~malloc~  and ~calloc~ return ~NULL~ if no space is available.
 
-* ~install~ and ~lookup~
+* install and lookup
 
   #+BEGIN_SRC C
     #define IN 1
@@ -920,7 +920,7 @@ layout: notes
    write(1, buf, BUFSIZ);
    #+END_SRC
 
-*** ~open~, ~creat~, ~close~, ~unlink~
+*** open, creat, close, unlink
 
     ~open~ is like ~fopen~ except it returns a file descriptor instead
     of a file pointer. It returns -1 if an error occurs. It is an
@@ -953,7 +953,7 @@ layout: notes
     ~unlink(char *name)~ removes the file name from the file system.
     Equivalent to standard library ~remove~.
 
-*** ~lseek~ and ~fseek~
+*** lseek and fseek
     Provides a way to move around in a file without reading or writing
     any data
 

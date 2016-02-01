@@ -18,7 +18,7 @@ layout: notes
     gcc -framework Foundation files -o progname
   #+END_SRC
 
-* ~NSLog~
+* NSLog
   First argument is the character string to be displayed.
 
   #+BEGIN_SRC C
@@ -61,7 +61,7 @@ layout: notes
 
    Contain code that implements the class and instance methods.
 
-** ~- (void) methodName: (int)n;~
+** - (void) methodName: (int)n;
 
    ~-~ is the method type. ~-~ is for instance methods, ~+~ indicates
    a class method.
@@ -101,7 +101,7 @@ layout: notes
      myInstance.property
    #+END_SRC
 
-** ~@class~
+** @class
 
    You can either ~#import~ an header file or use ~@class MyClass~.
    ~@class~ is more efficient because the compiler does not need to
@@ -114,7 +114,7 @@ layout: notes
     @end
   #+END_SRC
 
-* ~id~
+* id
 
   ~id~ is a data type used to store an object of any type. In a sense,
   it is a generic object type.
@@ -164,7 +164,7 @@ layout: notes
   variable will change its value. Prevent the compiler from optimizing
   redundant assignments to a variable.
 
-* ~enum~
+* enum
 
   #+BEGIN_SRC C
     // up = 0, down = 1, left = 10, right = left + 1 = 11

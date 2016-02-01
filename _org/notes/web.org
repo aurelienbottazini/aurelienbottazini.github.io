@@ -32,7 +32,7 @@ layout: notes
 * Consistent baseline
   I like [[https://necolas.github.io/normalize.css/][Normalize]] to get consistent CSS styles across all browsers.
 
-* ~<head>~
+* <head>
   #+BEGIN_SRC html
     <!DOCTYPE html>
     <head>
@@ -68,7 +68,7 @@ layout: notes
   ~<b>~, ~<i>~ and other presentational elements. Where HTML provides an
   appropriate element, use it. Where it doesn’t, use classes.
 ** headings
-*** ~<hgroup>~
+*** <hgroup>
     When you want to use a heading element but you don’t want its
     contents to appear in the document outline.
 
@@ -84,7 +84,7 @@ layout: notes
     ~<blockquote>~, ~<fieldset>~, and ~<td>~ elements are all immune to the
     outline algorithm. These elements are called “sectioning roots”.
 
-** ~<section>~
+** <section>
    The section element is used for grouping together
    thematically-related content.
    Thus you can start each section element with an ~<h1>~ (or ~<h2>~,
@@ -93,25 +93,25 @@ layout: notes
    It’s helpful to think of ~<header>~, ~<footer>~, ~<nav>~, ~<aside>~
    and ~<article>~ as being specialized forms of the section element.
 
-*** ~<header>~
+*** <header>
     A document can have multiple header elements.
     A header will usually appear at the top of a document or section.
 
-*** ~<footer>~
+*** <footer>
     Like header we can have several footer elements. Usually at end of
     document or section.
     The specification explicitly mentions authorship information as
     being suitable for footers.
 
-*** ~<aside>~
+*** <aside>
     The aside element should be used for tangentially related content.
 
-*** ~<nav>~
+*** <nav>
     The nav element contains navigation information, usually a list of
     links. However The nav element is intended for major navigation
     information.
 
-*** ~<article>~
+*** <article>
      The article element is specifically designed for syndication.
 
      If you use a time element within an article, you can add an
@@ -132,25 +132,25 @@ layout: notes
        </article>
      #+END_SRC
 
-** ~<i>~ and ~<em>~
+** <i> and <em>
   If the reason for italics is emphasis, why mark up your page with
   the ~<i>~ element? Use the ~<em>~ element.
   ~<i>~ means text is an alternate voice or mood.
 
-** ~<b>~ and ~<strong>~
+** <b> and <strong>
    ~<b>~ for stylistically offset from the normal prose without
    conveying any extra importance. If the text has any extra
    importance, use ~<strong>~.
 
-** ~<small>~
+** <small>
    Represents the small print for legalese, or terms and conditions.
 
-** ~<cite>~
+** <cite>
    Title of a work, not a person. Feels wrong :(
-** ~<mark>~
+** <mark>
    mark denotes “a run of text in one document marked or highlighted
    for reference purposes, due to its relevance in another context”.
-** ~<time>~
+** <time>
    The time element can be used for dates, times, or combinations of
    both
 
@@ -160,7 +160,7 @@ layout: notes
      <time datetime="2010-04-07T17:00">5pm on April 7th</time>
    #+END_SRC
 
-** ~<meter>~
+** <meter>
    The meter element can be used to mark up measurements, provided
    that those measurements are part of a scale with minimum and
    maximum values
@@ -172,7 +172,7 @@ layout: notes
      </meter>
    #+END_SRC
 
-** ~<progress>~
+** <progress>
     Progress element allows you to mark up a value that is in the
     process of changing.
 

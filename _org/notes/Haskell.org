@@ -519,7 +519,7 @@ layout: notes
   ~scans~ are like folds except they report all accumulators in
   the form of a list.
 
-** ~$~ the /function application operator
+** $ the /function application operator
 
    It allows use to use less parenthesis.
    ~$~ is right associative and has the lowest precedence
@@ -542,7 +542,7 @@ layout: notes
 #+RESULTS:
 : 80
 
-** Function composition with ~.~
+** Function composition with .
 
    /(f o g) (x) = f(g(x))/
 
@@ -1148,7 +1148,7 @@ vplus :: (Num a) => Vector a -> Vector a -> Vector a
 
 * IO chapter skipped
 
-** We can use ~do~ to glue several IO actions together
+** We can use do to glue several IO actions together
 
   #+BEGIN_SRC haskell
     main = do
@@ -1237,7 +1237,7 @@ vplus :: (Num a) => Vector a -> Vector a -> Vector a
    They aren't enforced by Haskell automatically so you need to
    test them yourself when you make a functor.
 
-*** ~fmap id = id~
+*** fmap id = id
     id is the identity function which just returns its parameter
     unmodified
 
@@ -1248,7 +1248,7 @@ vplus :: (Num a) => Vector a -> Vector a -> Vector a
     #+RESULTS:
     : Just 3
 
-*** ~fmap (f . g) = fmap f . fmap g~
+*** fmap (f . g) = fmap f . fmap g
 
 ** Applicative type class
 
@@ -1331,7 +1331,7 @@ vplus :: (Num a) => Vector a -> Vector a -> Vector a
      (++) <$> getLine <*> getLine
    #+END_SRC
 
-** Functions as applicative ~-> r~
+** Functions as applicative -> r
 
 
    #+BEGIN_SRC haskell :exports both
