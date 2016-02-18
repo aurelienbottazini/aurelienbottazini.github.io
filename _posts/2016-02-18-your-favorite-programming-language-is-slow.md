@@ -2,10 +2,10 @@
 tags: Programmer
 ---
 
-My favorite scripting language is Ruby. And If we speak of execution speed it is
-not the fastest language around.
+My favourite scripting language is Ruby. And If we speak about execution speed it
+is not the fastest language around.
 
-Reccurently I see people worrying about this. Comparing their favorite language
+Recurrently I see people worrying about this. Comparing their favourite language
 to others, focusing on this _execution speed_.
 
 *It does not matter*.
@@ -23,10 +23,10 @@ Here are some questions I like to ask myself:
 You never know it a business idea is good before actually testing it. If your
 idea is really good, people are going to beg you for using your software.
 
-You can worry about scalability and speed of execution when you are successfull.
-Before that it is just noise.
+You can worry about scalability and speed of execution when you are successful,
+before that it is just noise.
 
 And anyway (from the [Mythical Man Month](https://en.wikipedia.org/wiki/The_Mythical_Man-Month)): _When designing a new kind of system, a team will design a throw-away
-system (whether it intends to or not). This system acts as a "pilot plant" that
+system (whether it intends to or not). This system acts as a “pilot plant” that
 reveals techniques that will subsequently cause a complete redesign of the
 system._
