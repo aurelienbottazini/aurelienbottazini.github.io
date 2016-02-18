@@ -23,7 +23,7 @@ The execution context is divided in 2 distinct phase.
 #+end_src
 
  Each execution context has a reference to the outer environment
- defined but the lexical environment.
+ defined by the lexical environment.
 
 ** Global execution context
 
@@ -62,3 +62,8 @@ The execution context is divided in 2 distinct phase.
       }
   }
 #+end_src
+
+* Operator Associativity
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence
+* Equality operators
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness

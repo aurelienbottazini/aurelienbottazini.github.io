@@ -12,8 +12,10 @@ layout: notes
 
 * Dynamic typing
 
-  Defers the determination of the class that on object belongs to
-  until the program is executing.
+  Defers the determination of the class that on object belongs to or type of
+  data a variable holds until the program is executing.
+
+  Variables can hold different type of values
 
 * Static typing
 
@@ -33,3 +35,12 @@ layout: notes
   Where the variable live and how they relate to each other
 * Scope
   Where a variable is available in your code
+* Asynchronous
+More than one at a time
+* Primitive type
+  Type of data that represents a single value (i.e not an object)
+* Associativity
+  What order operators or functions get called in: left-to-right or
+  right-to-left
+* Coercion
+  Converting a value from one type to another

@@ -38,7 +38,7 @@ relationship I have with my loved ones or my house
 
 ## How much work are you willing to do to get there? ##
 
-Everything
+    Everything
 
 ## Does this project matter enough for the risk and the effort you're putting into it? ##
 
