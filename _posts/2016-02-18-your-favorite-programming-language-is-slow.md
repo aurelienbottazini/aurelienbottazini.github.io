@@ -20,8 +20,8 @@ Here are some questions I like to ask myself:
 - Are you *fast* implementing new features?
 - How much time does it take you to implement a prototype? (Weeks is a wrong answer)
 
-You never know it a business idea is good before actually testing it. If your
-idea is really good, people are going to beg you for using your software.
+You never know if a business idea is good before actually testing it. If your
+idea is really good, people are going to beg for using your software.
 
 You can worry about scalability and speed of execution when you are successful,
 before that it is just noise.
