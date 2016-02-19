@@ -23,7 +23,7 @@
             <h1>{{ page.url | remove: '.html' | remove: '/notes/' | remove: '/courses/' | remove: '/books/' | replace: '%20', ' '}}</h1>
             {% endif %}
             {{ content }}
-            {% include analytics.html %}
         </div>
+        {% include analytics.html %}
     </body>
 </html>
