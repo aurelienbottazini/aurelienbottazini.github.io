@@ -11,6 +11,12 @@ layout: notes
   + [[http://gitready.com/][Git Ready]]
   + [[https://github.com/pluralsight/git-internals-pdf][Git internals]]
 
+* Better Commit Messages
+
+  + https://github.com/thoughtbot/guides/tree/master/code-review
+  + https://robots.thoughtbot.com/5-useful-tips-for-a-better-commit-message
+  + http://rakeroutes.com/blog/deliberate-git/
+
 * Cheatsheet
   https://github.com/tiimgreen/github-cheat-sheet
   https://guides.github.com/

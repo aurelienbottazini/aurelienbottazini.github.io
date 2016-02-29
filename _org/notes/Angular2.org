@@ -1,0 +1,98 @@
+#+BEGIN_HTML
+---
+layout: notes
+---
+#+END_HTML
+#+TOC: headlines 4
+
+Angular apps are made out of modules
+For example a module can exports a ~component class~
+
+Here is a file named app/app.component.ts
+#+begin_src typescript
+  export class AppComponent { … }
+#+end_src
+
+We can import this component from app/main.ts with
+#+begin_src typescript
+  import {AppComponent} from './app/app.component';
+#+end_src
+
+Angular2 of course has librairies. To import a component from the standard
+library:
+#+begin_src typescript
+  import {Component} from 'angular2/core';
+#+end_src
+
+A component controls a /patch/ of the screen, like a view.
+Angular creates, updates, removes component and the developer can take action
+through this lifecycle through Lifecycle hooks.
+
+Templates are available to design component views.
+
+We use metadata to tell angular how to process a class
+for example
+
+#+begin_src typescript
+@Component {
+  selector: 'hero-list', // creates an instance of this component when we find a <hero-list> tag
+  templateUrl: 'app/hero-list.component.html',
+  directives: [HeroDetailComponent], // directives required by this component
+  providers: [HeroService] // services required by this component, provided by dependency injection
+}
+export class HeroesComponent { … }
+#+end_src
+
+Angular attaches the metadata to the class definition. At runtime this metadata
+is used by angular to do the /right/ things.
+
+Angular supports 4 way of data bindings
+
+#+begin_src html
+  <!-- one way -->
+
+  <div>{{hero.name}}</div> <!-- interpolation, from component to dom  -->
+  <hero-detail [hero]="selectedHero"></hero-detail> <!-- property binding, from component to dom  -->
+  <div (click)="selectHero(hero)"></div> <!-- event binding, from dom to component  -->
+
+  <!-- two way -->
+  <input [(ngModel)]="hero.name">
+#+end_src
+
+A directive is a class with directive metadata
+So a component is a /directive-with-a-template/
+Other kind of directives are /structural/ and /attributes/ directives.
+
+Structural directives alter layouts by adding, replacing, removing dom elements.
+
+#+begin_src html
+  <div *ngFor="#hero of heroes"></div>
+  <hero-detail *ngIf="selectedHero"></hero-detail>
+#+end_src
+The (*) prefix to the div indicates that the div element and its children constitute a master template.
+The (#) prefix before hero identifies hero as a local template variable
+
+Attribute directives alter the behaviour of an existing element
+#+begin_src html
+   <input [(ngModel)]="hero.name"]>
+#+end_src
+
+Other examples of attributes directives are ~ngSwitch~, ~ngStyle~, ~ngClass~
+
+There is no service base class. Angular does not enforce good services but
+written small, dedicated services will help you writing good angular
+applications through dependency injection.
+
+We can register providers at any level of the application component tree
+
+#+begin_src typescript
+  bootstrap(AppComponent, [BackendService, HeroService, Logger]); // when we
+  // bootstrap the application
+
+  @Component({
+    providers:   [HeroService]
+  })
+  export class HeroesComponent { ... } // at the component level
+
+  constructor(private _service: HeroService){ } // at the constructor level
+#+end_src

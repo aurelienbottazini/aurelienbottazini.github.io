@@ -26,9 +26,12 @@ Be a catalyst for change: start something and when people marvel about it say
 Participate in local users group
 
 WISDOM:
-*W*hat do you want? What is their *I*nterest in what you've got to say? How
-*S*ophisticated are they? How much *D*etail do they want? Whom do you want to
-*O*wn the information? How can you *M*otivate them to listen to you?
+- *W*hat do you want?
+- What is their *I*nterest in what you've got to say?
+- How *S*ophisticated are they?
+- How much *D*etail do they want?
+- Whom do you want to *O*wn the information?
+- How can you *M*otivate them to listen to you?
 
 Bad code requires comment -> learned this from Refactoring book and DHH
 

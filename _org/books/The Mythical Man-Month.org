@@ -1,0 +1,209 @@
+#+BEGIN_HTML
+---
+layout: notes
+---
+#+END_HTML
+#+TOC: headlines 4
+
+*Joys of the Craft*
+
+- Joy of making things
+- Making things useful to others
+- Fascination of fashioning complex puzzle like objects
+- Joy of always learning
+- The programmer like the poet works only slightly removed from pure
+  though-stuff. He builds his castle in the air, from air, creating by
+  extension of his imagination.
+
+*Woes of the Craft*
+
+- One must perform perfectly
+- One rarely controls the circumstances of his work. Or even its goal.
+- Designing grand concepts is fun; finding nifty littl ebugs is just work.
+- The product over which one has labored so long appears obsolete upon
+  completion.
+
+All programmers are optimists. We expect few difficulties but our ideas
+are faulty and have bugs hence our optimism is unjustified.
+
+Unpartitionable task: the bearing of a child takes 9 month, no matter
+how many woman are assigned. Many software tasks have this
+characteristic because of the sequential nature of debugging. The number
+of months of a project depends upon its sequential constraints
+
+Burden of communication from training and itercommunication. Each worker
+must be trained in the technology, goals, strategy, and the plan of
+work. 3 workers require 3 times as much pairwise intercommunication as
+two. 4 require 6 times as much as two.
+
+Testing is the most mis-scheduled part of programming.
+
+- 1/3 planning
+- 1/6 coding
+- 1/4 compact test and early system test
+- 1/4 system test, all components in hand
+
+Failure to allow enough testing time, especially at the beginning is
+disastrous.
+
+The urgency of the patron may govern the scheduled completion task, but
+it cannot govern the actual completion.
+
+No small slips. Allow enough time to ensure work can be carefully and
+thorougly done so that rescheduling will not have to be done again.
+
+
+There are large individual differences between high and low performers.
+Often by an order of magnitude.
+
+Favor a small sharp team of first class people rather than a project
+with hundreds of programmers. Keep it under 10 people.
+
+Ratios between best and worst performances: 10/1 on productivity. 5/1 on
+programming speed. It means a 200 man project with 25 managers should
+fire the programmers and put the managers back to coding.
+
+- Chief programmer - surgeon: settles differences in judgments. Knows all
+  the design
+- Copilot: less experienced than surgeon. Knows all the design
+- Administrator handles money and people
+- Editor reworks surgeon manuscript
+- Secretaries: correspondance and non-project files
+- Program clerk: maintain technical records
+- Toolsmith: maintain and upgrade tools
+- Tester: both adversary and assistant
+- Language lawyer: language specialist
+
+
+Conceptual integrity, from one or from a very small number of people, is
+the most important consideration in system design.
+
+Architecture tells what happens. Implementation tells how it is made to
+happen.
+
+- Ease of use: architect
+- Performance: Implementer
+
+The creactive effort, architecture, implematation, and realization can
+begin in parallel and proceed simultaneously.
+
+Sympathetic communication between architect and builder. Early and
+continuous communication gives the architect good cost readins and the
+builder confidence.
+
+Estimate too high: cut the design or cheaper implementation.
+
+The architect suggests, not dictates.
+
+Second system is the most dangerous. The general tendency is to over
+design, using all ideas and frills that were cautiously sidetracked on
+the first system.
+
+
+*Weekly conferences*
+
+- Same group
+- Everyone can make commitments
+- Written proposals force attention
+- Chief architect avoid compromise and delay
+
+Every 6 months supreme court sessions for issues and disgrutlements
+
+Telephone log by the architect records every question and answer.
+Distributed each week to users and implementers.
+
+Independent Product testing organization. Pm best friend and daily
+adversary. Needed to keep honesty.
+
+Schedule disaster. Left hand does not know what the right hand is doing.
+
+*Communication*
+
+- Informal
+- Meetings
+- Woorkbook: documentation crafted not haphazard.
+
+Producer must proclaim the director's technical authority.
+
+Ensure training. Share skillfull use with prizes and praises.
+
+Documentation serves as a checklist, a status control, database for reporting.
+Writing down things show inconsistencies and help communicate decisions
+to others.
+
+The task of the manager is to develop a plan and realize it.
+
+Above all try something.
+
+“Plan to throw away, you will anyhow”. Now seen as too simple, prefer
+progressive refinement.
+
+Failing of programming groups? Too little management. Not too much.
+
+Assign jobs that broaden your team. Keep it flexible. Keep technical
+people as interchangeable as possible.
+
+Cost of maintaining: 40% of development. More users = more bugs.
+Fixing a defect has between 20%-50% of introducing another.
+
+Conceptual integrity: easier to build and less bugs.
+
+Test the specification with external groups. Developers won't tell you
+inconsistencies and they will invent their way through.
+
+Top-down approach. Rought sketch and break down solution in smaller
+steps.
+
+Milestones should be concrete and 100% events. Fuzzy milestones are a
+burden and grinds down morale.
+
+Hustle provides the cushion, the reserve that enables team to cope with
+routine mishaps.
+
+Getting a true picture of the status is hard.
+
+- Reduce role conflict and inspire sharing of status
+- yank rhe rug back
+
+If the boss accept status reports without panic or preemption, we can
+give honest appraisals.
+
+Milestone report with scheduled and extended dates.
+
+Every user needs a prose description of the program
+Most documentation give too little overview
+
+- purpose
+- environment
+- Domain and range
+- functions realized and algorithm used
+- input and ouput format
+- operation instructions
+- options
+- running time
+- accuracy and checking
+
+Every program should be shipped with some small test cases.
+
+- Exploit mass market to avoid construction what can be bought.
+- Use rapid prototyping
+- Growth software organically
+
+Add more and more functions as sotware is run, used and tested.
+
+Software is constantly subject to pressures for change.
+All successfull software get changed.
+
+Great designers and managers are rare
+
+- Identify top designers
+- Assign a mentor to be responsible for the development of prospect
+- Devise and maintain a career development plan
+- Provide opportunities for growing.
+
+Chapter 18 is a recap
+
+Manager's function is to make it possible for people to work.
+
+Information hiding in OO is the only way of raising the level of
+software design.

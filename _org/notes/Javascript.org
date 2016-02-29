@@ -34,10 +34,8 @@ The execution context is divided in 2 distinct phase.
 
    Global just means not inside a function.
 
-* TODO Scope
+* Scope
   With ES2015  we have ~let~ available for block scoping
-
-  Need an example here to show differences.
 * Undefined
   ~undefined~ is different from _not defined_. ~undefined~ is a
   special value meaning the variable has not been set.
@@ -63,7 +61,45 @@ The execution context is divided in 2 distinct phase.
   }
 #+end_src
 
-* Operator Associativity
-  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence
+* Operators
+   Operators are infix functions
+
+** Associativity
+   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence
+
+   Coercion and associativity can lead to unexpected “bugs”
+#+begin_src javascript
+  3 < 3 < 1 // true
+#+end_src
+
+   ~===~ and ~==!~ do no try to coerce
+
 * Equality operators
   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness
+* Synchronous
+  JS is synchronous, there is an event queue responding to events, for
+  example a click. JS looks at the event quene when the execution stack
+  is empty.
+
+  The browser is asynchrounously putting things in the event queue. The
+  JS engine is processing things synchronously.
+
+* 6 Primitive types
+
+  - Undefined. Lacks of existence. Don't use this type
+  - null
+  - Boolean
+  - Number - floating point
+  - String
+  - Symbol in es6
+
+* Default values
+  When calling a function without a parameter, Javascript creates a new
+  execution context and set this new / missing parameter variable to undefined.
+
+#+begin_src javascript
+  name = name || 'default value'; // be careful about 0
+#+end_src
+
+  Frameworks use the default value ~||~ trick to see if other librairies
+  are not colliding and to decide to load or not.
