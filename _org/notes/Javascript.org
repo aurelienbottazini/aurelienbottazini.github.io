@@ -1,9 +1,10 @@
- #+BEGIN_HTML
+#+BEGIN_HTML
 ---
 layout: notes
 ---
 #+END_HTML
 #+TOC: headlines 4
+
 * Execution Context
 
 The execution context is divided in 2 distinct phase.
@@ -13,8 +14,8 @@ The execution context is divided in 2 distinct phase.
 2. Execution
   This is were variable assignments take place.
 
-#+begin_src javascript
-  b()
+#+begin_src js
+  b();
   var a = 'Hello world';
 
   function(b) {
@@ -52,7 +53,7 @@ The execution context is divided in 2 distinct phase.
   An object in javascript is a collection of name value pairs and a
   value can be another object container ohter value pairs.
 
-#+begin_src javascript
+#+begin_src js
   object = {
       property: 'my first property',
       insider_object: {
@@ -68,7 +69,8 @@ The execution context is divided in 2 distinct phase.
    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence
 
    Coercion and associativity can lead to unexpected “bugs”
-#+begin_src javascript
+
+#+begin_src js
   3 < 3 < 1 // true
 #+end_src
 
@@ -76,6 +78,7 @@ The execution context is divided in 2 distinct phase.
 
 * Equality operators
   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness
+
 * Synchronous
   JS is synchronous, there is an event queue responding to events, for
   example a click. JS looks at the event quene when the execution stack
@@ -97,7 +100,7 @@ The execution context is divided in 2 distinct phase.
   When calling a function without a parameter, Javascript creates a new
   execution context and set this new / missing parameter variable to undefined.
 
-#+begin_src javascript
+#+begin_src js
   name = name || 'default value'; // be careful about 0
 #+end_src
 
