@@ -1,0 +1,100 @@
+#+BEGIN_HTML
+---
+layout: notes
+---
+#+END_HTML
+
+* Seven principles of visual design
+
+1. Alignement
+   The placement of elements such that edges line up along common rows
+   or columns, or their bodies along a common center
+2. Emphasis
+   Creates interest and pulls the user's attention toward the focal point
+3. Hierarchy
+   The relationship between objects in a composition
+4. Consistency
+   The usability of a system is improved when similar parts are
+   expressed in similar ways.
+5. Whitespace
+   The unmarked space between elements in a composition
+6. Balance
+   A composition is balanced when all elements have optical equilibrium
+7. Unity
+   When all elements are in agreement, and no individual part is viewed
+   as more important than the whole design.
+
+* Grid
+
+  A grid layout is ideal to structure your alignment. From top to bottom.
+  With 12 column grids you can combine 3 and 4 column grids.
+
+  Sketch a lot on paper. Add more detail as you refine your best sketches.
+  Helvetica is a good type to use to start testing your design.
+
+* Typography
+
+  Typeface: Helvetica.
+  Font: Helvetica Bold 12pt
+
+  Baseline: line upon most letters sit.
+  Median: line upon which most lowercase letters terminate.
+  x-height: distance between median and baseline
+  ascender: above the median
+  descender: below the median
+  counter: an area entirely or partially closed by a letter form
+
+  In general in Web design you want a type with a large x-height and counters.
+
+  Line-height: distance between two baselines. This is not the case in
+  web browsers, it is somewhere in between. Making it difficult to
+  create baseline based grids.
+
+  Line length: Print: 50 to 75 characters. On the web between 60 and 85 characters
+
+  Kerning: Spacing between two letters. Not changeable on the web. Check
+  W followed by a lowercase letter.
+  Letter-spacing: Amount of space between two letters. Changeable.
+  Change it in titles and uppercase words.
+
+  Use real quotes. Ellipsis.
+
+  - Hyphen: Prefix, suffix, spelling, compound names
+  – en dash: range of values, relationships, emphasize connection.
+  — em dash: a pause in thought, sentence unfinished
+
+  Balance Message, style and legibility.
+
+  When combining typeface, the most important is contrast.
+  Ex: one serif, one sans serif.
+
+  Web safe typefaces:
+  Helvetica, *Georgia*, Verdana, Times New Roman, *Lucida Grande*
+* Color
+
+  Hue: color or share (red, yellow etc)
+  value, shade: amount of black in a color
+  tint, tone: amount of white in a color
+
+  Primary colors: Red, yellow, blue
+  Secondary colors (mixed from primary): green, orange purple
+
+  Cool colors: made of green, blue and purple. Calm stable, recede on page
+  Warm colors: yellow, orange and red. Energetic, draw attention.
+  Neutral colors: black, white and brown. Supporting colors
+
+  complimentary color: accros from each other on the color wheel.
+  analogous color: next to each other on the color wheel.
+
+  Only use one dominant color.
+  Support dominant color with supporting color (adjusting balue, tone,
+  brightness, saturation) or use neutral color.
+
+   - Blue: confidence, stability, professional, honor, trust.
+   - Green: growth, wealth, optimism, harmony
+   - Red: power, love, violence, evil, danger, emergency, strength, courage
+   - Yellow: Joy, Hope, Excitement, Warning
+   - White: purity, cleanliness, innocence, softness, royalty/deity,
+   - weddings
+   - Black: serious, conventional, mysterious, sexy, sophisticated,
+   - rebellious, death
