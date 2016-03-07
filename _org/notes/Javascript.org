@@ -28,10 +28,11 @@ The execution context is divided in 2 distinct phase.
 
 ** Global execution context
 
-   The global execution context creates two things for us. 1. The
-   global object and 2. a special variable this In case of browsers
-   the global object is window. At the global level the global object
-   is ~this~.
+   The global execution context creates two things for us.
+
+   1. The global object and
+   2. a special variable this In case of browsers the global object is
+      window. At the global level the global object is ~this~.
 
    Global just means not inside a function.
 
@@ -53,6 +54,13 @@ The execution context is divided in 2 distinct phase.
   An object in javascript is a collection of name value pairs and a
   value can be another object container ohter value pairs.
 
+  Objects can have properties and methods.
+  Properties can be primitive properties or methods.
+  An object has references to where his properties and methods are
+  sitting in memory.
+
+  JS Frameworks commonly use Objects to setup namespaces.
+
 #+begin_src js
   object = {
       property: 'my first property',
@@ -60,6 +68,9 @@ The execution context is divided in 2 distinct phase.
           hello: 'world'
       }
   }
+
+  object["property"]
+  object.property
 #+end_src
 
 * Operators
@@ -106,3 +117,235 @@ The execution context is divided in 2 distinct phase.
 
   Frameworks use the default value ~||~ trick to see if other librairies
   are not colliding and to decide to load or not.
+* JSON
+  Stands for Javascript Object Notation.
+  Inspired by javascript object notation but not exactly the same!
+
+#+begin_src js
+  var objectLiteral = {
+    firstname: 'Aurélien',
+    isAProgrammer: true
+  }
+
+  console.log(JSON.stringify(objectLiteral));
+  var jsonValue = JSON.parse('{ "firstName": "Aurélien", "isAProgrammer": true }")
+#+end_src
+* Functions
+  Functions are special type of objects.
+
+  Functions has special properties.
+  1. Name. Optional. A function can be anonymous
+  2. Code. This code being invocable with ~()~
+  3. arguments. You can use ~arguments~
+  4. you can also use ~...other~, the spread operator, to wrap remaining
+     arguments.
+
+
+  You can add properties to functions as you would do with other
+  objects.
+
+#+begin_src js
+  function greet() {
+      console.log('hi');
+  }
+
+  greet.language = 'english';
+  console.log(greet.language);
+#+end_src
+
+  Function statement & expression
+#+begin_src js
+  // statement
+  function greet() {
+    console.log('hi');
+  }
+  greet();
+
+  // expression
+  var anonymousGreet = function() {
+    console.log('hi');
+  }
+  anonymousGreet();
+#+end_src
+
+  You can pass functions has variables: functional programming.
+
+  Thanks to hoisting, even when you don't provide all necessary
+  agruments to a function the arguments have memory space allocated to
+  them and initialized to ~undefined~.
+** Immediatly Invoked Function Expression
+
+   We enclose the function in parenthis to /trick/ the js engine. It
+   makes the function an expression and not a statement. It allows us to
+   call it immediatly.
+
+   With IIFE you create a new execution context and variables do not
+   leak into the global object.
+
+#+begin_src js
+  var greeting = 'bonjour';
+
+  (function(name){
+    var greeting = 'hi ';
+    console.log(greeting + name);
+  }('Aurélien')) // you also do })('Aurélien'). Just a matter of style.
+
+  console.log(greeting); // bonjour
+#+end_src
+
+** Call, apply, and bind
+
+   All functions objects have access to three functions, ~call()~,
+   ~apply()~, and ~bind()~
+
+#+begin_src js
+  var person = {
+      firstname: 'John',
+      lastname: 'Doe',
+      getFullName: function() {
+          var fullname = this.firstname + ' ' + this.lastname;
+          return fullname;
+      }
+  }
+
+  var logName = function(lang1, lang2) {
+      console.log('Logged ' + this.getFullName());
+      console.log('Arguments: ' + lang1 + ' ' + lang2;
+  }
+
+  var logPersonName = logName.bind(person, 'en'); // creates a copy of the
+                                            // function, binding person to
+                                            // ~this~ for the new
+                                            // function, also sets up
+                                            // first parameter to ~en~.
+                                            // This does not call the
+                                            // function
+
+  logName.call(person, 'en', 'fr'); // calls the function, first arguments
+                                    // is what ~this~ should refer to.
+                                    // Rest are parameters for the
+                                    // function
+
+  logName.apply(person, ['en', 'es']); // like call but wants an array of
+                                       // parameters
+#+end_src
+
+* Value vs Reference
+
+  If ~a~ is a primitive type, it is passed by value. If ~a~ is an
+  object, remember functions are also objects, it is passed by
+  reference.
+
+#+begin_src js
+  a = 3;
+  b = a; // b and a point to different spots in memory.
+  a = 4; // a = 4 and b = 3;
+
+  c = { greeting: 'Hi' };
+  d = c; // d and c point to the same spot in memory
+  c.greeting = 'hello'; // d.greeting === 'hello'
+
+  c = { greeting: 'Bonjour' }; // Special case, we are using equal to
+                               // assign a new object literal
+#+end_src
+* This
+
+#+begin_src js
+  console.log(this); // Window object
+
+  function a() {
+    console.log(this)
+    this.newvariable = 'hello';
+  }
+  a(); // Window object
+
+  var b = function() {
+    console.log(this);
+  }
+  b(); // Window object
+
+  console.log(newvariable); // hello
+
+  var c = {
+    name: 'The c object',
+    log: function() {
+      var self = this; // Objects, so by reference, so pointing to same
+                       // object. For clarity, it is better to use self everywhere.
+
+      this.name = 'new C name';
+      console.log(this); // c.name === 'new C name'
+      var setname = function(newname) {
+        this.name = newname; // Points to the global object
+        self.name = newname; // points to c.name. Correctly update the
+                             // name
+      }
+      setname('Updated C object again'); // c.name === new C name
+    }
+  }
+
+  c.log(); // Object C and c.name === new C name
+#+end_src
+* Array
+  They can contain any type
+
+#+begin_src js
+  var arr = [ 1, ,false, function() { console.log('hi') }];
+  arr[2]();
+#+end_src
+
+* Closure
+  Closures are particularly useful with function factories.
+
+#+begin_src js
+  function greet(whattosay) {
+    return function(name) {
+      console.log(whattosay + ' ' + name);
+    }
+  }
+
+  greet('hello')('Aurélien'); // like connect function for redux
+  var sayHi = greet('Hi'); // we create a closure. Execution context of
+                           // greet is gone but sayHi still has access to
+  // the memory space setup for that execution context = closure
+  sayHi('Aurélien');
+#+end_src
+
+#+begin_src js
+  function buildFunctions() {
+    var arr = [];
+    for(var i = 0; i < 3; i++) { // i is not scoped to the block
+      arr.push(function() { // function expression, we are not executing
+          // the function
+        let j = i; // j is scoped to block
+        console.log(i);
+
+        console.log(j);
+      });
+
+    }
+
+    return arr;
+  }
+
+  var fs = buildFunctions(); // at the and of buildFunctions execution
+                             // context i = 3
+
+  fs[0](); // 3, 1
+  fs[1](); // 3, 2
+  fs[2](); // 3, 3
+#+end_src
+
+  A solution in es5 is to use IIFE to our advantage.
+
+#+begin_src js
+  for(var i = 0; i < 3; i++) {
+    arr.push(
+      (function(j) {
+         return function() {
+           console.log(j);
+         }
+      }(i)) // using IIFE and close to keep the value of i in an
+            // execution context.
+    )
+  }
+#+end_src
