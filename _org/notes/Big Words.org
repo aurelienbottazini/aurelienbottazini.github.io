@@ -36,7 +36,7 @@ layout: notes
 * Scope
   Where a variable is available in your code
 * Asynchronous
-More than one at a time
+  More than one at a time
 * Primitive type
   Type of data that represents a single value (i.e not an object)
 * Associativity
@@ -44,3 +44,23 @@ More than one at a time
   right-to-left
 * Coercion
   Converting a value from one type to another
+* Namespace
+  A container for variables and functions. To keep variables and
+  functions with the same name separate.
+* First class functions
+  Everything you can do with other types you can do with functions.
+  For example, assign them to variables, pass them around, create them
+  on the fly.
+* Expression
+  Unit of code that results in a value
+* Mutate
+  To change something
+* Immutable
+  Can't be changed
+* Arguments
+  The parameters you pass to a function
+* Callback function
+  A function you give to another function, to be run when the other
+  function is finished.
+* Function currying
+  Creating a copy of a function but with some preset parameters.
