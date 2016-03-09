@@ -64,3 +64,27 @@ layout: notes
   function is finished.
 * Function currying
   Creating a copy of a function but with some preset parameters.
+* Inheritance
+  One object gets access to the properties and methods of another object
+
+** Classical inheritance (Java, Ruby…)
+  pro: robust, current standard
+  cons: Verbose
+
+** Prototypal inheritance (JavaScript)
+   simpler, flexible, extensible, easy to understand
+
+* Reflection
+  An object can look at itself, listing and changing its properties and
+  methods
+
+  ~your_object.hasOwnProperty('prop')~ check if prop is on your object and not
+  on prototype
+
+  With underscorejs you have the ~extend~ method. It allows you to combine
+  objects. Extending the first object passed as a parameter with the
+  following arguments.
+
+#+begin_src js
+  _.extend(object_to_extend, other_object, another_object);
+#+end_src

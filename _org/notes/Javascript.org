@@ -230,6 +230,22 @@ The execution context is divided in 2 distinct phase.
                                        // parameters
 #+end_src
 
+** Functional Programming
+
+#+begin_src js
+  var checkPastLimit = function(limiter, item) {
+    return item > limiter;
+  }
+  mapForEach(arr1, checkPastLimit.bind(this, 1));
+
+  var checkPastLimitSimplified = function(limiter) {
+    return function(limiter, item) {
+      return item > limiter;
+    }.bind(this, limiter);
+  }
+  mapForEach(arr1, checkPastLimitSimplified(1));
+#+end_src
+
 * Value vs Reference
 
   If ~a~ is a primitive type, it is passed by value. If ~a~ is an
@@ -349,3 +365,32 @@ The execution context is divided in 2 distinct phase.
     )
   }
 #+end_src
+* Prototypal inheritance
+  All objects have a prototype property. This prototype property is used
+  to search for properties not present on our object.
+
+  You can access the prototype property directly with ~__proto__~. But
+  you should never use it in production code as it is slow.
+
+#+begin_src js
+  var person = {
+      firstname: 'Default',
+      lastname: 'Default',
+      getFullName: function() {
+          return this.firstname + ' ' + this.lastname; // ! this points to
+          // what is calling the function
+      }
+  }
+
+  var john = {
+      firstname: 'John',
+      lastname: 'Doe'
+  }
+
+  //slow don't do this
+  john.__proto__ = person;
+  console.log(john.getFullName()); // John Doe
+#+end_src
+
+    Only the base object does not have a prototype. Eventually when you
+    go through the prototype chain you reach the base object.
