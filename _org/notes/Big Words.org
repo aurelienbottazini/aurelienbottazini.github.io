@@ -88,3 +88,13 @@ layout: notes
 #+begin_src js
   _.extend(object_to_extend, other_object, another_object);
 #+end_src
+* Polyfill
+  Code that adds a feature which the engine may lack
+* Syntactic sugar
+  A different way to type something that doesn't change how it works
+  under the hood.
+
+* Method chaining
+  Calling one method after another and each method affets the parent object.
+* Transpile
+  Convert the syntax of one programming language to another

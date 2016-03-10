@@ -139,7 +139,9 @@ The execution context is divided in 2 distinct phase.
   3. arguments. You can use ~arguments~
   4. you can also use ~...other~, the spread operator, to wrap remaining
      arguments.
-
+  5. prototype. Only used when we use ~new~ -> confusing name. This is
+     not the prototype of the function. It is the prototype of any
+     object created if we are using the function as a function constructor.
 
   You can add properties to functions as you would do with other
   objects.
@@ -394,3 +396,124 @@ The execution context is divided in 2 distinct phase.
 
     Only the base object does not have a prototype. Eventually when you
     go through the prototype chain you reach the base object.
+* new
+
+#+begin_src js
+  // as a convention always use a capital letter when you define a function constructor
+  function Person(firstname, lastname) {
+      this.firstname = firstname;
+      this.lastname = lastname;
+// don't return anything if you want to use the function as function constructor
+// As long as it does not return anything it will return the object created by `new`
+  }
+
+  // better than adding inside function Person because this way it will
+  // not take memory space. BUT only used with `new` function constructor
+  Person.prototype.getFullName = function() {
+      return this.firstname + ' ' + this.lastname;
+  }
+
+  // when we use new an empty object is created and THEN it calls the function Person.
+  // The this variable points to the empty object created by new.
+  var john = new Person('John', 'Doe');
+  // if you forget new it will return undefined -> bug hard to track
+  var jane = new Person('Jane', 'Doe');
+
+  // added to all objects created with `new Person`
+  Person.prototype.fetFormalFullName = function() {
+      return this.lastname + ', ' + this.firstname;
+  }
+#+end_src
+
+  There are built in function constructors. ~new Number~, ~new String~.
+  They are creating Objects, not primitives. Don't use them, they can
+  introduce hard to track bugs in your code.
+
+#+begin_src js
+  3 == Number(3) // true
+  3 === Number(3) // false
+
+  String.prototype.isLengthGreaterThan = function(limiter) {
+      return this.length > limit;
+  }
+
+  // works because "John" is converted by JS to an object
+  console.log("John".isLengthGreaterThan(3));
+
+  Number.prototype.isPositive = function() {
+      return this > 0;
+  }
+
+  // exception
+  console.log(3.isPositive());
+
+  // works
+  console.log((new Number(3)).isPositive());
+
+#+end_src
+* for in
+
+  Don't use for in with arrays. Array values are stored as properties.
+  So if you add a new property to the Array prototype it is also going
+  to be listed by for in
+
+#+begin_src js
+  Array.prototype.myCustomFeature = 'cool!';
+
+  // calls new Array
+  var arr = ['John', 'Jane', 'Jim'];
+
+  // shows
+  // 0: John
+  // 1: Jane
+  // 2: Jim
+  // myCustomFeature: 'Cool'
+  for(var prop in arr) {
+      console.log(prop + ': ' + arr[prop]);
+  }
+#+end_src
+
+* Object.create
+
+#+begin_src js
+  var person = {
+      firstname: "Default",
+      lastname: "Default",
+      greet: function() {
+          return 'Hi ' + this.firstname;
+      }
+  }
+
+  // sets __proto__ to person
+  // object is empty
+  // pure prototypal inheritance
+  var john = Object.create(person);
+
+  // we override what we want.
+  john.firstname = 'John';
+  john.lastname = 'Doe';
+  console.log(john);
+#+end_src
+* ES6 classes
+
+  class are also objets. You need to use new.
+  Different from classes in Java.
+
+  You set the prototype with ~extends~.
+  ~super~ call the method from the prototype.
+* What something is
+  ~typeof~
+  ~instanceof~ goes through the prototype chain
+
+#+begin_src js
+  typeof null // returns Object. This is a know bug
+#+end_src
+* Strict mode
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
+* Tricks
+
+#+begin_src js
+  ;(function(…
+#+end_src
+  ~;~ is to ensure, in case we are using other external js code that it
+  properly finishes with a ~;~
