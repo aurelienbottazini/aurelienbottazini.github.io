@@ -18,7 +18,7 @@ The execution context is divided in 2 distinct phase.
   b();
   var a = 'Hello world';
 
-  function(b) {
+  function b() {
       console.log('called b');
   }
 #+end_src
