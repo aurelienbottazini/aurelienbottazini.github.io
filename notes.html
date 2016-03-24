@@ -4,39 +4,10 @@ title: Notes
 ---
 <h1>Notes</h1>
 
-<h2>Programming Notes</h2>
-
-<ul>
-    {% for page in site.pages %}
-      {% if page.url contains '/notes/' %}
-    <li><a href="{{ page.url }}">{{ page.url | remove: '.html' | remove: '/notes/' | replace: '%20', ' ' }}</a></li>
-      {% endif %}
-    {% endfor %}
-</ul>
-
 <h2>Screencasts</h2>
 <ul>
   <li><a href="videos/introduction_to_docker.flv">Introduction to docker</a></li>
 </ul>
-
-<h2>Books</h2>
-<ul>
-    {% for page in site.pages %}
-      {% if page.url contains '/books/' %}
-    <li><a href="{{ page.url }}">{{ page.url | remove: '.html' | remove: '/books/' | replace: '%20', ' ' }}</a></li>
-      {% endif %}
-    {% endfor %}
-</ul>
-
-<h2>Courses</h2>
-<ul>
-    {% for page in site.pages %}
-      {% if page.url contains '/courses/' %}
-    <li><a href="{{ page.url }}">{{ page.url | remove: '.html' | remove: '/courses/' | replace: '%20', ' ' }}</a></li>
-      {% endif %}
-    {% endfor %}
-</ul>
-
 
 <h2>Sketchnotes</h2>
 <ul>
