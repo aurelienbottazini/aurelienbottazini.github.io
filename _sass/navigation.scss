@@ -1,38 +1,40 @@
 #main_navigation {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #000;
-    opacity: 0.8;
-    color: #fff;
-    height: 3em;
-    z-index: 1000;
-    ul {
-        margin-left: 1em;
-        padding-left: 0;
-        list-style-type: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #000;
+  opacity: 0.8;
+  color: #fff;
+  height: 3em;
+  z-index: 1000;
+  ul {
+    margin-left: 1em;
+    padding-left: 0;
+    list-style-type: none;
 
-        @include responsive(landscape-phone) {
-            margin-left: 13em;
-        }
-
-    }
-    li {
-        float: left;
-        margin-right: 1em;
+    @include responsive(landscape-phone) {
+      margin: 0 auto;
+      margin-top: 0.75em;
+      width: 40em;
     }
 
-    a {
-        color: #afc0fd;
-    }
+  }
+  li {
+    float: left;
+    margin-right: 1em;
+  }
 
-    a:hover, a.active {
+  a {
+    color: #afc0fd;
+  }
+
+  a:hover, a.active {
     color: #dc322f;
-    }
+  }
 
-    a.visited {
-        color: #f8cefc;
-    }
+  a.visited {
+    color: #f8cefc;
+  }
 
 }
