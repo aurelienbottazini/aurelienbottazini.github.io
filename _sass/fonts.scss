@@ -24,35 +24,12 @@
     font-weight:400;
     src:local('Alegreya Sans Regular'),url("../fonts/alegreyasans/400.woff") format('woff')}
 @font-face {
-    font-family:'Alegreya Sans';
-    font-style:normal;
-    font-weight:500;
-    src:local('Alegreya Sans Medium'),url("../fonts/alegreyasans/500.woff") format('woff')}
-@font-face {
-    font-family:'Alegreya Sans';
-    font-style:normal;
-    font-weight:700;
-    src:local('Alegreya Sans Bold'),url("../fonts/alegreyasans/700.woff") format('woff')}
-@font-face {
-    font-family:'Alegreya Sans';
-    font-style:normal;
-    font-weight:800;
-    src:local('Alegreya Sans ExtraBold'),url("../fonts/alegreyasans/800.woff") format('woff')}
-@font-face {
-    font-family:'Alegreya Sans';
-    font-style:normal;
-    font-weight:900;
-    src:local('Alegreya Sans Black'),url("../fonts/alegreyasans/900.woff") format('woff')}
-@font-face {
-    font-family:'Alegreya Sans';
-    font-style:italic;
-    font-weight:300;
-    src:local('Alegreya Sans Light Italic'),url("../fonts/alegreyasans/300i.woff") format('woff')}
-@font-face {
-    font-family:'Alegreya Sans';
-    font-style:italic;
-    font-weight:400;
-    src:local('Alegreya Sans Italic'),url("../fonts/alegreyasans/400i.woff") format('woff')}
+    font-family: 'chunkfiveroman';
+    src: url('../fonts/chunkfive/chunkfive-webfont.woff2') format('woff2'),
+         url('../fonts/chunkfive/chunkfive-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 /*
 double stranded finobacci used by le corbusier
 4 - 5 - 6.5 - 8 - 10.5 - 13 - 17 - 21 - 27.5 - 34 - 44.5 - 55 - 72 - 89
@@ -76,12 +53,17 @@ body {
     }
 }
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Alegreya Sans", 'Helvetica Neue', Helvetica, "Trebuchet MS", Arial, sans-serif;
-    font-weight: 700;
+    font-family: 'chunkfiveroman', 'Helvetica Neue', Helvetica, "Trebuchet MS", Arial, sans-serif;
+    font-weight: normal;
+    font-style: normal;
     color: #222;
 }
+nav ul li a {
+    font-family: 'chunkfiveroman', 'Helvetica Neue', Helvetica, "Trebuchet MS", Arial, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+}
 h1 {
-    text-transform: uppercase;
     line-height: 1em;
     text-align: left;
     color: #dc322f;
