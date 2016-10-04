@@ -16,9 +16,8 @@ ul {
     padding-left: 0;
 }
 #frame {
-
     width: 100%;
-    margin: 2em auto;
+    margin: 3em auto;
     padding-top: 2em;
     padding-bottom: 2em;
     @media only screen and (min-width: 55em) {
@@ -83,7 +82,7 @@ ul {
     width: 15em;
 
     @include responsive(ipad-portrait) {
-        width: 40em;
+        width: 30em;
     }
 
     li {
