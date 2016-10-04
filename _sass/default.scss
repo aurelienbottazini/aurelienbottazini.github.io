@@ -7,17 +7,17 @@
 
 #wrapper {
     width: 90%;
-    @media only screen and (min-width: 54em) {
+    @include responsive(ipad-portrait) {
         width: 40em;
     }
     margin: 3em auto;
     margin-top: 6em;
 }
 .post p {
-    width: 95%;
+    width: 100%;
 
     @include responsive(ipad-portrait) {
-        width: 30em;
+        width: 40em;
     }
 }
 .post ul {

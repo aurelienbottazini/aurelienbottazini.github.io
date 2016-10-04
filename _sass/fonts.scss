@@ -1,75 +1,75 @@
 @font-face {
-    font-family:'Alegreya';
-    font-style:normal;
-    font-weight:400;
-    src:local('Alegreya'),url("../fonts/alegreya/400.woff") format('woff')}
+  font-family:'Alegreya';
+  font-style:normal;
+  font-weight:400;
+  src:local('Alegreya'),url("../fonts/alegreya/400.woff") format('woff')}
 @font-face {
-    font-family:'Alegreya';
-    font-style:normal;
-    font-weight:700;
-    src:local('Alegreya Bold'),url("../fonts/alegreya/700.woff") format('woff')}
+  font-family:'Alegreya';
+  font-style:normal;
+  font-weight:700;
+  src:local('Alegreya Bold'),url("../fonts/alegreya/700.woff") format('woff')}
 @font-face {
-    font-family:'Alegreya';
-    font-style:italic;
-    font-weight:400;
-    src:local('Alegreya Italic'),url("../fonts/alegreya/400i.woff") format('woff')}
+  font-family:'Alegreya';
+  font-style:italic;
+  font-weight:400;
+  src:local('Alegreya Italic'),url("../fonts/alegreya/400i.woff") format('woff')}
 @font-face {
-    font-family:'Alegreya';
-    font-style:italic;
-    font-weight:700;
-    src:local('Alegreya Bold Italic'),url("../fonts/alegreya/700i.woff") format('woff')}
+  font-family:'Alegreya';
+  font-style:italic;
+  font-weight:700;
+  src:local('Alegreya Bold Italic'),url("../fonts/alegreya/700i.woff") format('woff')}
 @font-face {
-    font-family:'Alegreya Sans';
-    font-style:normal;
-    font-weight:400;
-    src:local('Alegreya Sans Regular'),url("../fonts/alegreyasans/400.woff") format('woff')}
+  font-family:'Alegreya Sans';
+  font-style:normal;
+  font-weight:400;
+  src:local('Alegreya Sans Regular'),url("../fonts/alegreyasans/400.woff") format('woff')}
 @font-face {
-    font-family: 'chunkfiveroman';
-    src: url('../fonts/chunkfive/chunkfive-webfont.woff2') format('woff2'),
-         url('../fonts/chunkfive/chunkfive-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'chunkfiveroman';
+  src: url('../fonts/chunkfive/chunkfive-webfont.woff2') format('woff2'),
+  url('../fonts/chunkfive/chunkfive-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 /*
 double stranded finobacci used by le corbusier
 4 - 5 - 6.5 - 8 - 10.5 - 13 - 17 - 21 - 27.5 - 34 - 44.5 - 55 - 72 - 89
 */
 body {
-    font-size: 100%;
-    font-family: "Alegreya", "Hoefler Text",
-    Georgia, Times, Tahoma, sans-serif;
-    font-weight: 400;
-    line-height: 1.382;
-    -webkit-hyphens: auto;
-    -moz-hyphens: auto;
-    -ms-hyphens: auto;
-    -o-hyphens: auto;
-    hyphens: auto;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    color: rgba(0,0,0,0.8);
-    @media screen {
-        background-color: rgb(255, 255, 255);
-    }
+  font-size: 100%;
+  font-family: "Alegreya", "Hoefler Text",
+  Georgia, Times, Tahoma, sans-serif;
+  font-weight: 400;
+  line-height: 1.382;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  -o-hyphens: auto;
+  hyphens: auto;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  color: rgba(0,0,0,0.8);
+  @media screen {
+    background-color: rgb(255, 255, 255);
+  }
 }
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'chunkfiveroman', 'Helvetica Neue', Helvetica, "Trebuchet MS", Arial, sans-serif;
-    font-weight: normal;
-    font-style: normal;
-    color: #222;
+  font-family: 'chunkfiveroman', 'Helvetica Neue', Helvetica, "Trebuchet MS", Arial, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  color: #222;
 }
 nav ul li a {
-    font-family: 'chunkfiveroman', 'Helvetica Neue', Helvetica, "Trebuchet MS", Arial, sans-serif;
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'chunkfiveroman', 'Helvetica Neue', Helvetica, "Trebuchet MS", Arial, sans-serif;
+  font-weight: normal;
+  font-style: normal;
 }
 h1 {
-    line-height: 1em;
-    text-align: left;
-    color: #dc322f;
-    font-size: 2.75em;
-    page-break-after: always;
-    margin-bottom: 0.2em
+  line-height: 1em;
+  text-align: left;
+  color: #dc322f;
+  font-size: 2.75em;
+  page-break-after: always;
+  margin-bottom: 0.5em
 }
 h1 + *, h2 + * {
   margin-top: 0;
@@ -77,26 +77,26 @@ h1 + *, h2 + * {
 }
 
 h2 {
-    font-size: 1.7em;
-    margin-bottom: 0.2em;
+  font-size: 1.7em;
+  margin-bottom: 0.2em;
 }
 h3 {
-    font-size: 1.3em;
-    text-indent: 2em;
+  font-size: 1.3em;
+  text-indent: 2em;
 }
 h4 {
-    font-size: 1.05em;
-    text-indent: 4em;
+  font-size: 1.05em;
+  text-indent: 4em;
 }
 .src, code, pre.example {
-    font-family: 'Source Code Pro', 'Menlo Regular', 'Bitstream Vera Sans';
-    font-size: 1em;
-    line-height: 1.3em;
-    page-break-inside: avoid;
-    overflow: auto;
+  font-family: 'Source Code Pro', 'Menlo Regular', 'Bitstream Vera Sans';
+  font-size: 1em;
+  line-height: 1.3em;
+  page-break-inside: avoid;
+  overflow: auto;
 }
 #postamble {
-    font-size: 0.8em;
+  font-size: 0.8em;
 }
 abbr,
 acronym,
@@ -111,87 +111,87 @@ samp,
 tt,
 var,
 xmp {
-    -webkit-hyphens: none;
-    -moz-hyphens: none;
-    -ms-hyphens: none;
-    -o-hyphens: none;
-    hyphens: none;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  -o-hyphens: none;
+  hyphens: none;
 }
 strong, b {
-    font-family: "Alegreya";
-    font-weight: 700;
+  font-family: "Alegreya";
+  font-weight: 700;
 }
 
 em, i {
-    font-family: "Alegreya";
-    font-weight: 400;
-    font-style: italic;
+  font-family: "Alegreya";
+  font-weight: 400;
+  font-style: italic;
 }
 .src {
-    padding: 1em;
-    background-color: #ececec;
+  padding: 1em;
+  background-color: #ececec;
 }
 code {
-    display: inline;
+  display: inline;
 }
 a {
-    color: #263bd2;
-    -webkit-transition: color 0.3s ease;
-    -moz-transition: color 0.3s ease;
-    -o-transition: color 0.3s ease;
-    transition: color 0.3s ease;
+  color: #263bd2;
+  -webkit-transition: color 0.3s ease;
+  -moz-transition: color 0.3s ease;
+  -o-transition: color 0.3s ease;
+  transition: color 0.3s ease;
 }
 a:hover, a.active {
-    color: #dc322f;
+  color: #dc322f;
 }
 a.visited {
-    color: rebeccapurple;
+  color: rebeccapurple;
 }
 $small-caps-color: #484a51 !default;
 $small-caps-weight: 600 !default;
 @mixin smallcaps($color, $font-weight) {
-	// depends on the font family.
-	// some font-families don’t support small caps
-	// or don’t provide them with their web font.
-	font-variant: small-caps;
-	font-weight: $font-weight;
-	text-transform: lowercase;
-	color: $color;
+// depends on the font family.
+// some font-families don’t support small caps
+// or don’t provide them with their web font.
+font-variant: small-caps;
+font-weight: $font-weight;
+text-transform: lowercase;
+color: $color;
 }
 acronym, abbr {
-	@include smallcaps($small-caps-color, $small-caps-weight);
-	&:hover {
-		cursor: help;
-	}
+  @include smallcaps($small-caps-color, $small-caps-weight);
+  &:hover {
+    cursor: help;
+  }
 }
 p {
-    margin: 1em auto;
+  margin: 1em auto;
 }
 @mixin white-space($wrap-space) {
-	@if $wrap-space == 'pre-wrap' {
-		white-space: "-moz-#{$wrap-space}"; // Firefox 1.0-2.0
-		white-space: $wrap-space;       // current browsers
-	} @else {
-		white-space: $wrap-space;
-	}
+  @if $wrap-space == 'pre-wrap' {
+    white-space: "-moz-#{$wrap-space}"; // Firefox 1.0-2.0
+                                        white-space: $wrap-space;       // current browsers
+  } @else {
+    white-space: $wrap-space;
+  }
 }
 
 pre code {
-    word-wrap: normal;
-    @include white-space(pre-wrap);
+  word-wrap: normal;
+  @include white-space(pre-wrap);
 }
 
 pre {
-    @include white-space(pre);
+  @include white-space(pre);
 }
 
 code {
-    @include white-space(pre);
-    font-family: monospace;
+  @include white-space(pre);
+  font-family: monospace;
 }
 .ampersand {
-    font-family: "Alegreya", 'Gabriela', 'Trebuchet MS', serif;
-    font-style: italic;
+  font-family: "Alegreya", 'Gabriela', 'Trebuchet MS', serif;
+  font-style: italic;
 }
 
 ul {
