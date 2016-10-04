@@ -9,13 +9,13 @@
   height: 3em;
   z-index: 1000;
   ul {
-    margin-left: 1em;
+    margin: 0 auto;
     padding-left: 0;
     list-style-type: none;
+    width: 90%;
+    margin-top: 0.75em;
 
-    @include responsive(landscape-phone) {
-      margin: 0 auto;
-      margin-top: 0.75em;
+    @media only screen and (min-width: 54em) {
       width: 40em;
     }
 
