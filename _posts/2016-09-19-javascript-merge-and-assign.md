@@ -111,6 +111,27 @@ testObject;
 Since the copy was recursive, `foo` was not replaced completely but instead
 the `foo` array first element was replaced by the one from Obj2 `foo`.
 
+It can be good or bad. Maybe you wanted to add 4 to the end of the array?
+Of course I could replace it with an Object instead and that will work
+
+<pre>
+<code class="kjs">
+Obj1 = { val: { foo: {'1': 1, '2': 2, '3': 3} }};
+Obj2 = { val: { foo: { '4': 4} }};
+prototype = { val: { hi: 'hello' } };
+Object.setPrototypeOf(Obj1, prototype);
+
+testObject = {};
+_.merge(testObject, Obj1, Obj2);
+testObject;
+</code>
+</pre>
+
+If we forgot the extra typing,that solves our particular problem but maybe that's not
+what you wanted to do.
+Maybe replacing the first element of the array was what you wanted.
+In general you should be careful when you merge deep objects. This is not something trivial to do.
+
 ## ImmutableJS
 
 `Immutable merge` returns a new object but is shallow like Object.Assign!
@@ -133,7 +154,7 @@ iObj1.merge(iObj2);
  iObj1.mergeDeep(iObj2);
  </code>
  </pre>
- 
+
 ## Conclusion
 
 `assign` can catch you off guard as some of its behaviour might seem unexpected.
