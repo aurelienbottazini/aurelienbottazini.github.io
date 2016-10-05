@@ -2,8 +2,8 @@
 tags: javascript lodash immutable
 ---
 
-With the new es2015 Object.assign functionality you can easily _merge_ objects
-together. However there is also a _merge_ function available in different popular
+With the new es2015 Object.assign functionality you can easily `merge` objects
+together. However there is also a `merge` function available in different popular
 libraries.
 
 The difference between merge and assign was source of confusion for me and
