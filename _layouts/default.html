@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="/css/codemirror.css">
+        <link rel="stylesheet" href="/css/default.min.css">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>{{ page.title }}</title>
         <meta name="viewport" content="width=device-width,
                                        initial-scale=1,
                                        shrink-to-fit=no" >
-        <!-- Custom CSS -->
-        <link rel="stylesheet" href="/css/codemirror.css">
-        <link rel="stylesheet" href="/css/default.min.css">
-        <script src="/js/default.min.js"></script>
     </head>
     <body>
         {% include navigation.html %}
@@ -24,6 +22,10 @@
            selector_eval_js: '.kjs'
          };
         </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.3/lodash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.22.1/ramda.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/immutable/3.8.1/immutable.min.js"></script>
+        <script src="/js/default.min.js"></script>
         <script src="/js/klipse_plugin.min.js"></script>
     </body>
 </html>
