@@ -1,13 +1,44 @@
-
 #post-list {
   li {
     margin-bottom: 0.5em;
     line-height: 1em;
 
-    time {
-      font-family: 'chunkfiveroman', 'Helvetica Neue', Helvetica, "Trebuchet MS", Arial, sans-serif;
-      color: rgba(0,0,0,0.2);
-      font-size: 0.8em;
-    }
+
+  }
+}
+.tag {
+  font-family: 'chunkfiveroman', 'Helvetica Neue', Helvetica, "Trebuchet MS", Arial, sans-serif;
+  font-size: 0.8em;
+  display: inline-block;
+  list-style-type: none;
+  background-color: #8790dd;
+  padding: 0.382em;
+  margin-left: 0.382em;
+  color: #22252e;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 4px;
+  margin-bottom: 0.5em;
+  text-decoration: none;
+}
+
+time {
+  font-family: 'chunkfiveroman', 'Helvetica Neue', Helvetica, "Trebuchet MS", Arial, sans-serif;
+  color: rgba(0,0,0,0.2);
+  font-size: 0.8em;
+}
+article {
+  footer {
+    display: flex;
+    align-items: baseline;
+  }
+  ul {
+    justify-content: flex-end;
+  }
+}
+.inline-list {
+  display: flex;
+  flex-direction: row;
+  li {
+    list-style-type: none;
   }
 }
