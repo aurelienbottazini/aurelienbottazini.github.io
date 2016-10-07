@@ -1,9 +1,28 @@
 #post-list {
-  li {
-    margin-bottom: 0.5em;
-    line-height: 1em;
+ li {
+    list-style-type: none;
+    transition: background-color 200ms 50ms,
+    color 200ms 50ms,
+    transform 200ms 50ms;
 
+    &:nth-child(even) {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+    &:hover {
+      background-color: #8790dd;
+      transform: scale(1.1, 1.1);
+      color: white;
+    }
 
+    a {
+      text-decoration: none;
+      padding: 0.5em 0 0.5em 0.5em;
+      line-height: 1em;
+      display: block;
+      width: 100%;
+      color: currentColor;
+      transition: none;
+    }
   }
 }
 .tag {
@@ -19,6 +38,13 @@
   border-radius: 4px;
   margin-bottom: 0.5em;
   text-decoration: none;
+  transition: color 200ms 50ms,
+  transform 200ms 50ms;
+}
+
+.tag:hover {
+  transform: scale(1.1, 1.1);
+  color: white;
 }
 
 time {
@@ -41,4 +67,8 @@ article {
   li {
     list-style-type: none;
   }
+}
+
+.link {
+  text-decoration: underline;
 }

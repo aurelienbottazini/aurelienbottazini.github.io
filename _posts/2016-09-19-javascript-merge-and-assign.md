@@ -7,8 +7,10 @@ together. However there is also a `merge` function available in different popula
 libraries.
 
 The difference between merge and assign was source of confusion for me and
-I suspect It might be for others. Hopefully this article will clarify a few
+I suspect It might be for others. Hopefully this article will clarify
 things.
+
+Note: All the code is editable with live results.
 
 ## Object.Assign
 
@@ -16,7 +18,7 @@ Let's start with what we have available in the language: `Object.assign`.
 It is shallow. It means it won't merge recursively Object properties.
 It only copies from the top level.
 
-So in the following example, the `foo` prop from `Obj1` was replaced by the one from `Obj2`.
+So in the following example, the `foo` prop from `Obj1` replaces by the one from `Obj2`.
 <pre>
 <code class="kjs">
 Obj1 = { val: { foo: [1, 2, 3] }};
@@ -79,6 +81,24 @@ testObject;
 </code>
 </pre>
 
+If your property was a function, `assign` copies the function but be aware it may not be visible in some consoles (not showing on my current version of Google Chrome for example) .
+<pre>
+<code class="kjs">
+testObject = {};
+Obj2.myFunction = function myFunction() {
+  return 42
+}
+Object.assign(testObject, Obj1, Obj2);
+testObject;
+</code>
+</pre>
+
+<pre>
+<code class="kjs">
+testObject.myFunction();
+</code>
+</pre>
+
 ## lodash Assign
 
 `_.assign` is like `Object.assign` but will work in non-es6 environments.
@@ -108,8 +128,8 @@ testObject;
 </code>
 </pre>
 
-Since the copy was recursive, `foo` was not replaced completely but instead
-the `foo` array first element was replaced by the one from Obj2 `foo`.
+Since the copy was recursive, `foo` was not replaced but instead
+the `foo` array first element replaces the one from Obj2 `foo`.
 
 It can be good or bad. Maybe you wanted to add 4 to the end of the array?
 Of course I could replace it with an Object instead and that will work
@@ -155,11 +175,15 @@ iObj1.merge(iObj2);
  </code>
  </pre>
 
-## Conclusion
+## Review
 
 `assign` can catch you off guard as some of its behaviour might seem unexpected.
-I am thinking especially of a non-writable property becoming writable.
+`assign` will copy properties at the top level, won't copy non-enumerable properties,
+won't copy Symbols, won't copy prototype properties and all copied properties become writable.
 
-`merge` and `assign` are quite similar but their different behaviour regarding
- deep properties can lead to bugs—I'm thinking especially of state management—if you
- don't understand what the difference between the two approaches are.
+`merge` and `assign` have different behaviours
+regarding deep properties. `merge` recursively merges `deep` properties. It might
+seem to be what most programmers would expect by default.
+
+However be aware of what you are trying to do,
+especially merging responses from an API. `merge` can be the right tool for the job in some occasions, `assign` in others.
