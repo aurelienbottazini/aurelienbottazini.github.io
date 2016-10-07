@@ -14,7 +14,12 @@ var setUpCaps = function(){
 addListener('load', window, setUpCaps);
 
 $(document).ready(function(){
-  var lis = $("#main_navigation ul li");
+  var links = $("#main_navigation ul li a");
+  var pathname = location.href;
 
-  console.log(lis);
+  for(var i = 0, length = links.length; i < length; i += 1) {
+    if (pathname === links[i].href) {
+      links[i].classList.add('current');
+    }
+  }
 });
