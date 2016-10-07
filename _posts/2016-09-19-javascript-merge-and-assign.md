@@ -11,7 +11,7 @@ I suspect It might be for others. Hopefully this article will clarify
 things.
 
 <strong>
-Note: All the code is editable with live results.
+All code is editable with live results.
 </strong>
 
 ## Object.Assign
