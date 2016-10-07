@@ -6,7 +6,6 @@
   background: #000;
   opacity: 0.8;
   color: #fff;
-  height: 3em;
   z-index: 1000;
   ul {
     margin: 0 auto;
@@ -20,15 +19,45 @@
       margin-top: 0.75em;
       width: 40em;
     }
-
   }
+
   li {
     float: left;
-    margin-right: 1em;
   }
 
   a {
-    color: #afc0fd;
+    position: relative;
+    display: inline-block;
+    padding: .3em 1em .3em 1em;
+    /* color: #afc0fd; */
+    color: black;
+    text-decoration: none;
+    transition: transform 500ms, background-color 500ms;
+  }
+
+  a:hover {
+    transform: scale(1.1, 1.1) ;
+    z-index: 999;
+    transform-origin: bottom left;
+  }
+
+  a:before {
+    content: '';
+    position: absolute;
+    top:0; right: 0; bottom: 0; left: 0;
+    z-index: -1;
+    background: white;
+    transform: scale(1.3) perspective(.5em) rotateX(5deg);
+    transform-origin: bottom left;
+    border-radius: .5em .5em 0 0;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    transition: background-color 500ms;
+  }
+
+  a:before:hover {
+    background-color: red;
+
   }
 
   a:hover, a.active {

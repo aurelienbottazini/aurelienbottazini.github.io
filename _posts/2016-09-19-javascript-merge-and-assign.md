@@ -43,18 +43,25 @@ testObject;
 </code>
 </pre>
 
-It does not copy Symbol properties
+It copies Symbol properties;
 <pre>
 <code class="kjs">
 testObject = {};
 Obj1['not a symbol'] = 'cool';
-Obj1[Symbol('newProp')] = 'cool';
+Obj1[Symbol.for('newProp')] = 'cool';
 Object.assign(testObject, Obj1, Obj2);
+testObject[Symbol.for('newProp')];
+</code>
+</pre>
+
+However you may think those symbol properties are not copied since they are not enumerable
+<pre>
+<code class="kjs">
 testObject;
 </code>
 </pre>
 
-It does not copy non-enumerable properties
+It does not copy non-enumerable properties other than symbols
 <pre>
 <code class="kjs">
 testObject = {};
@@ -181,7 +188,9 @@ iObj1.merge(iObj2);
 
 `assign` can catch you off guard as some of its behaviour might seem unexpected.
 `assign` will copy properties at the top level, won't copy non-enumerable properties,
-won't copy Symbols, won't copy prototype properties and all copied properties become writable.
+won't copy prototype properties, all copied properties become writable.
+
+`assign` copies even thought they are not enumerable with many default js functions.
 
 `merge` and `assign` have different behaviours
 regarding deep properties. `merge` recursively merges `deep` properties. It might

@@ -12,3 +12,9 @@ var setUpCaps = function(){
 };
 
 addListener('load', window, setUpCaps);
+
+$(document).ready(function(){
+  var lis = $("#main_navigation ul li");
+
+  console.log(lis);
+});
