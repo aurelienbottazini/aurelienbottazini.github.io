@@ -30,6 +30,16 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: 'permanent_markerregular';
+  src: url('../fonts/permanentmarker_regular_macroman/PermanentMarker-webfont.eot');
+  src: url('../fonts/permanentmarker_regular_macroman/PermanentMarker-webfont.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/permanentmarker_regular_macroman/PermanentMarker-webfont.woff') format('woff'),
+  url('../fonts/permanentmarker_regular_macroman/PermanentMarker-webfont.ttf') format('truetype'),
+  url('../fonts/permanentmarker_regular_macroman/PermanentMarker-webfont.svg#permanent_markerregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 /*
 double stranded finobacci used by le corbusier
 4 - 5 - 6.5 - 8 - 10.5 - 13 - 17 - 21 - 27.5 - 34 - 44.5 - 55 - 72 - 89
@@ -117,9 +127,16 @@ xmp {
   -o-hyphens: none;
   hyphens: none;
 }
-strong, b {
+b {
   font-family: "Alegreya";
   font-weight: 700;
+}
+
+strong {
+  font-family: 'permanent_markerregular';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1.2em;
 }
 
 em, i {
