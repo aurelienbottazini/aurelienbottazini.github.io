@@ -1,7 +1,6 @@
 ---
 tags: javascript lodash immutable
 ---
-
 With the new es2015 Object.assign functionality you can easily `merge` objects
 together. However there is also a `merge` function available in different popular
 libraries.
@@ -22,7 +21,7 @@ It only copies from the top level.
 
 So in the following example, the `foo` prop from `Obj1` replaces by the one from `Obj2`.
 <pre>
-<code class="kjs">
+<code class="kjs" data-external-libs="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.3/lodash.min.js,https://cdnjs.cloudflare.com/ajax/libs/ramda/0.22.1/ramda.min.js,https://cdnjs.cloudflare.com/ajax/libs/immutable/3.8.1/immutable.min.js">
 Obj1 = { val: { foo: [1, 2, 3] }};
 Obj2 = { val: { foo: [4], }};
 testObject = {};
