@@ -13,8 +13,8 @@ var setUpCaps = function(){
 
 addListener('load', window, setUpCaps);
 
-$(document).ready(function(){
-  var links = $("#main_navigation ul li a");
+document.addEventListener("DOMContentLoaded", function(event) {
+  var links = document.querySelectorAll("#main_navigation ul li a");
   var pathname = location.href;
 
   for(var i = 0, length = links.length; i < length; i += 1) {

@@ -6,15 +6,13 @@ module.exports = function(grunt) {
                 dest: '_js/_bower.js',
                 cssDest: '_css/_bower.css',
                 exclude: [
+                  'velocity',
                 ],
                 dependencies: {
                 },
                 bowerOptions: {
                     relative: false
                 },
-                mainFiles: {
-                    'velocity': ['velocity.js', 'velocity.ui.js']
-                }
             }
         },
         uglify: {
@@ -29,9 +27,6 @@ module.exports = function(grunt) {
                   '_js/_bower.js',
                   '_js/common.js',
                   '_js/home.js'],
-                'js/org-export.min.js':
-                ['_js/bower.js',
-                 '_js/org-export.js'],
                 'js/resume.min.js':
                 ['_js/_bower.js',
                  '_js/common.js'],
@@ -54,7 +49,6 @@ module.exports = function(grunt) {
                     'css/resume.css': '_sass/resume.scss',
                     'easyLearning/css/main.css': '_sass/easylearning.scss',
                     'cubex/css/main.css': '_sass/cubex.scss',
-                    'css/org-export.css': '_sass/org-export.scss',
                     '_css/htmlize.css': '_sass/htmlize.scss'
                 }
             }
@@ -67,7 +61,6 @@ module.exports = function(grunt) {
                     'css/home.min.css': ['_css/_bower.css', '_css/home.css'],
                     'easyLearning/css/main.css': ['_css/_bower.css', 'easyLearning/css/main.css'],
                     'cubex/css/main.css': ['_css/_bower.css', 'cubex/css/main.css'],
-                    'css/org-export.min.css': ['_css/_bower.css', '_css/htmlize.css','css/org-export.css']
                 }
             },
         },

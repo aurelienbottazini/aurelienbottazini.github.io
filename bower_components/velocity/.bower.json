@@ -1,6 +1,5 @@
 {
   "name": "velocity",
-  "version": "1.2.3",
   "homepage": "http://velocityjs.org",
   "authors": [
     {
@@ -31,21 +30,18 @@
     "LICENSE",
     "*.md"
   ],
-  "dependencies": {
-    "jquery": "*"
-  },
   "repository": {
     "type": "git",
     "url": "http://github.com/julianshapiro/velocity.git"
   },
-  "_release": "1.2.3",
+  "version": "1.3.1",
+  "_release": "1.3.1",
   "_resolution": {
     "type": "version",
-    "tag": "1.2.3",
-    "commit": "1ad0a8196fa973f96e347a9b7f5bdaf7498ed1a6"
+    "tag": "v1.3.1",
+    "commit": "9731478e101db5d6ac8b74910b993176dfaff7ce"
   },
-  "_source": "git://github.com/julianshapiro/velocity.git",
+  "_source": "https://github.com/julianshapiro/velocity.git",
   "_target": "^1.2.3",
-  "_originalSource": "velocity",
-  "_direct": true
+  "_originalSource": "velocity"
 }

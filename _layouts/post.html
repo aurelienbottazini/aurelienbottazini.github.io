@@ -1,30 +1,61 @@
----
-layout: default
----
-<article class="post">
-    <header>
-        <h1>{{ page.title }}</h1>
-    </header>
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/codemirror.css">
+        <link rel="stylesheet" href="/css/default.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Alegreya:400,400i|Passion+One|Permanent+Marker" rel="stylesheet">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{{ page.title }}</title>
+        <meta name="viewport" content="width=device-width,
+                                       initial-scale=1,
+                                       shrink-to-fit=no" >
+    </head>
+    <body>
+        {% include navigation.html %}
+        <div id="wrapper">
+          <article class="post">
+            <header>
+              <h1>{{ page.title }}</h1>
+            </header>
 
-    {{ content }}
+            {{ content }}
 
-    <footer>
-        <p>
-            <time datetime="{{ page.date }}" pubdate>
-              Published on {{ page.date | date_to_string }}
-            </time>
-        </p>
-        <ul class="post-tags inline-list">
-          {% if post %}
-          {% assign tags = post.tags %}
-          {% else %}
-          {% assign tags = page.tags %}
-          {% endif %}
-          {% for tag in tags %}
-          <li>
-            <a href="/tags/#{{tag|slugize}}" class="tag">{{tag}}</a>{% unless forloop.last %}{% endunless %}
-          </li>
-          {% endfor %}
-        </ul>
-    </footer>
-</article>
+            <footer>
+              <p>
+                <time datetime="{{ page.date }}" pubdate>
+                  Published on {{ page.date | date_to_string }}
+                </time>
+              </p>
+              <ul class="post-tags inline-list">
+                {% if post %}
+                {% assign tags = post.tags %}
+                {% else %}
+                {% assign tags = page.tags %}
+                {% endif %}
+                {% for tag in tags %}
+                <li>
+                  <a href="/tags/#{{tag|slugize}}" class="tag">{{tag}}</a>{% unless forloop.last %}{% endunless %}
+                </li>
+                {% endfor %}
+              </ul>
+            </footer>
+          </article>
+        </div>
+
+        {% include analytics.html %}
+        <script>
+         window.klipse_settings = {
+           selector_eval_js: '.kjs',
+           codemirror_options_in: {
+             theme: 'zenburnesque'
+           }
+         };
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.3/lodash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.22.1/ramda.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/immutable/3.8.1/immutable.min.js"></script>
+        <script src="/js/default.min.js"></script>
+        <script src="/js/klipse_plugin.min.js"></script>
+    </body>
+</html>
