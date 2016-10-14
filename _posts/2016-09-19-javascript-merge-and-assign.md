@@ -197,3 +197,14 @@ seem to be what most programmers would expect by default.
 
 However be aware of what you are trying to do,
 especially merging responses from an API. `merge` can be the right tool for the job in some occasions, `assign` in others.
+
+<script>
+window.klipse_settings = {
+selector_eval_js: '.kjs',
+selector_eval_rb: '.krb',
+codemirror_options_in: {
+theme: 'zenburnesque'
+}
+};
+</script>
+<script src="/js/klipse_plugin.min.js"></script>
