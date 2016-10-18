@@ -5,6 +5,7 @@ encoding: utf-8
 markdown: kramdown
 sass:
   style: compressed
+  sass_dir: _sass
 kramdown:
   input: GFM
   hard_wrap: false

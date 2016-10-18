@@ -72,3 +72,48 @@ article {
 .link {
   text-decoration: underline;
 }
+
+.transition-loader {
+  position: fixed;
+  height: 2px;
+  width: 90%;
+  background-color: red;
+}
+.transition-loader::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background-color: red;
+}
+.page-is-changing .transition-loader::before {
+  transform: scaleX(1);
+}
+
+body::after, body::before {
+  content: '';
+  display: block;
+  height: 50vh;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  background-color: red;
+  transition: transform 200ms;
+}
+body::before {
+  top: 0;
+  transform: translateY(-100%);
+  background-color: red;
+}
+body::after {
+  bottom: 0;
+  transform: translateY(100%);
+  background-color: red;
+}
+body.page-is-changing::after, body.page-is-changing::before {
+  transform: translateY(0);
+  background-color: red;
+}
