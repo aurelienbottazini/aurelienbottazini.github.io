@@ -38,18 +38,6 @@ module.exports = function(grunt) {
         }
       },
     },
-    cssmin: {
-      combine: {
-        files: {
-          'css/default.min.css': ['_css/_bower.css', '_css/default.css'],
-          'css/resume.css': ['_css/_bower.css', 'css/resume.css'],
-          'css/home.min.css': ['_css/_bower.css', '_css/home.css'],
-          'easyLearning/css/main.css': ['_css/_bower.css', 'easyLearning/css/main.css'],
-          'cubex/css/main.css': ['_css/_bower.css', 'cubex/css/main.css'],
-        }
-      },
-    },
-
     watch: {
       scripts: {
         files: ['_js/*.js'],
@@ -58,14 +46,6 @@ module.exports = function(grunt) {
           spawn: false,
           interrupt: true
         },
-      },
-      css: {
-        files: ['_css/*.css'],
-        tasks: ['cssmin'],
-        options: {
-          spawn: false,
-          interrupt: true
-        }
       },
     },
 
@@ -76,12 +56,10 @@ module.exports = function(grunt) {
     }
   });
   grunt.loadNpmTasks('grunt-bower-concat');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-exec');
 
   grunt.registerTask('default', ['prepare']);
-  grunt.registerTask('prepare', ['bower_concat', 'cssmin', 'uglify', 'exec:create_sketchnotes_yaml']);
+  grunt.registerTask('prepare', ['bower_concat', 'uglify', 'exec:create_sketchnotes_yaml']);
 };

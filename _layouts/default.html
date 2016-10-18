@@ -1,23 +1,7 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="/css/default.css">
-        <link href="https://fonts.googleapis.com/css?family=Alegreya:400,400i|Passion+One|Permanent+Marker" rel="stylesheet">
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>{{ page.title }}</title>
-        <meta name="viewport" content="width=device-width,
-                                       initial-scale=1,
-                                       shrink-to-fit=no" >
-    </head>
-    <body>
-        {% include navigation.html %}
-        <div id="wrapper">
-            {{ content }}
-        </div>
-        <div class="transition-page"></div>
-        <div class="transition-loader"></div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
-        <script src="/js/default.min.js"></script>
-    </body>
-</html>
+{% include header.html %}
+{% include navigation.html %}
+<div id="wrapper" class="default">
+  {{ content }}
+</div>
+{% include footer.html %}

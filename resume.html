@@ -1,200 +1,186 @@
 ---
 layout: null
 ---
-<!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="css/resume.css">
-        <link href="https://fonts.googleapis.com/css?family=Alegreya:400,400i|Passion+One|Permanent+Marker" rel="stylesheet">
-        <meta charset="utf-8" />
-        <title>Aurélien Bottazini • Résumé</title>
-	<meta name="author" content="Aurélien Bottazini" />
-	<meta name="ROBOTS" content="NOINDEX, NOFOLLOW" />
-        <meta name="viewport" content="width=device-width,
-                                       initial-scale=1" >
-    </head>
-    <body>
-        {% include navigation.html %}
-        <div id="wrapper">
-        <div id="frame">
-            <section id="intro" class="clearfix">
-                <h1>Aurélien Bottazini</h1>
-                <p class="email"><a href="contact@aurelienbottazini.com"
-                class="print_no_after_content">contact@aurelienbottazini.com</a></p>
-                <img id="portrait_aurelien" src="./img/portrait-aurelien-1.jpg"
-                        alt="Aurélien wearing a blue vest and
-                             smiling!">
-                <p id="accroche">
-                    I am a programmer and a designer from France. Here is a little more about me.
-                </p>
-            </section>
-            <section id="skills">
-                <h1>Skills</h1>
-                <ul id="skill_list" class="clearfix">
-                    <li>
-                        Ruby
-                    </li>
-                    <li>
-                        <abbr title="Ruby On Rails">RoR</abbr>
-                    </li>
-                    <li>
-                        JS
-                    </li>
-                    <li>
-                        <abbr title="HyperText Markup Language">Html</abbr>
-                    </li>
-                    <li>
-                        CSS
-                    </li>
-                    <li>
-                        iOS
-                    </li>
-                </ul>
-                <p><span class="dropcap">E</span>xpert in Ruby, Ruby on
-                    Rails <span class="ampersand">&</span> iOS. I
-                    am also skilled in different technologies
-                    including
-                    <abbr title="HyperText Markup Language">Html</abbr> 5,
-                    <abbr title="Cascading Style Sheets">CSS3</abbr>, JavaScript,
-                    Haskell. Experienced with MySQL and
-                    PostgreSQL. I have deployed and managed Web
-                    applications on Linux based servers. I keep up to date
-                    to modern coding practices.
-                </p>
-                <p>
-                    I am proficient with graphic design softwares
-                    such as Adobe Photoshop <span class="ampersand">&</span> Illustrator. I love
-                    drawing and typography. In my work I consider
-                    standards, accessibility, usability,
-                    responsiveness.
-                </p>
-                <p>
-                    French is my native language. I learned
-                    English in Florida where I spent 3 years.
-                    Since then I am fluent in English.
-                </p>
-            </section>
-            <section id="education">
-                <h1>Education</h1>
-                <h2><a href="http://www.fit.edu/">Florida Institute of Technology</a></h2>
-                <p>
-                    <em>Bachelor of Science in Computer Science [DEC
-                        2005]</em><br />
-                    <em>Certificate of appreciation — 2006 ACM Southeast Conference.</em>
-                </p>
-                <p>
-                    Coursework includes: Data structures, Algorithms,
-                    Design Patterns, Operating System Concepts, Visual
-                    Graphics, Databases.
-                </p>
-                <h2><a href="https://www.edx.org/">EDX</a></h2>
-                <ul>
-                    <li>
-                        <a href="./files/Certificate%20-%20Certificate%20Tackling%20the%20Challenges%20of%20Big%20Data.pdf">
-                            Tackling the Challenges of Big Data
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./files/Certificate%20-%20Design%20and%20Development%20of%20Educational%20Technology.pdf">
-                            Design and Development of Educational Technology
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./files/Certificate%20-%20Introduction%20to%20Game%20Design.pdf">
-                            Introduction to Game Design
-                        </a>
-                    </li>
-                </ul>
-            </section>
-            <section id="experience">
-                <h1>Experience</h1>
-                <h2><a href="http://www.clevertech.biz/">CleverTech</a></h2>
-                <p>
-                    <em>Senior Developer [ 2014 - Present]</em>
-                </p>
-                <h2>Freelance</h2>
-                <p><em>Senior Software Developer [March 2010 - 2013]</em></p>
-                <p>
-                    Development and Deployment of hundreds of
-                    games on the Apple App Store (~500). Retrieval
-                    and parsing of Big Data through Ruby scripts
-                    and PostgreSQL. My work includes:
-                </p>
-                <ul>
-                    <li>Metaprogramming of thousands of Active
-                        Record classes</li>
-                    <li>PostgreSQL and SQLite3 data insertion,
-                        extraction <span class="ampersand">&</span> optimisation</li>
-                </ul>
-                <h2>Metaboli</h2>
-                <p><em>Senior Software Developer [January 2009 –
-                        February 2010]</em></p>
-                <p>
-                    Metaboli is one of the leader in the digital
-                    distribution of Video Games. I was in charge
-                    of the Ruby Team in Paris. Responsible of the
-                    deployment and management of all the Ruby On
-                    Rails Apps. Refactoring of existing
-                    Code base with the promotion of Test Driven Development.
-                    Coordination with the remote Ruby team based
-                    in Sweden.
-                    <br />
-                    I’ve notably accomplished:
-                </p>
-                <ul>
-                    <li>
-                        Complete automation of the deployment
-                        process. On test servers and on production
-                        servers with Capistrano. About 50
-                        Apps.
-                    </li>
-                    <li>
-                        Introduction and promotion of Unit Tests
-                        in the Ruby Team. Rspec, Cucumber and
-                        automatic supervision through automated
-                        tools and Cron tasks.
-                    </li>
-                    <li>
-                        Migration of our code repositories from
-                        Subversion to Git.
-                    </li>
-                </ul>
+{% include header.html %}
+{% include navigation.html %}
+<div id="wrapper">
+  <div id="frame" class="resume">
+    <section id="intro" class="clearfix">
+      <h1>Aurélien Bottazini</h1>
+      <p class="email"><a href="contact@aurelienbottazini.com"
+                         class="print_no_after_content">contact@aurelienbottazini.com</a></p>
+      <img id="portrait_aurelien" src="./img/portrait-aurelien-1.jpg"
+        alt="Aurélien wearing a blue vest and
+             smiling!">
+      <p id="accroche">
+        I am a programmer and a designer from France. Here is a little more about me.
+      </p>
+    </section>
+    <section id="skills">
+      <h1>Skills</h1>
+      <ul id="skill_list" class="clearfix">
+        <li>
+          Ruby
+        </li>
+        <li>
+          <abbr title="Ruby On Rails">RoR</abbr>
+        </li>
+        <li>
+          JS
+        </li>
+        <li>
+          <abbr title="HyperText Markup Language">Html</abbr>
+        </li>
+        <li>
+          CSS
+        </li>
+        <li>
+          iOS
+        </li>
+      </ul>
+      <p><span class="dropcap">E</span>xpert in Ruby, Ruby on
+        Rails <span class="ampersand">&</span> iOS. I
+        am also skilled in different technologies
+        including
+        <abbr title="HyperText Markup Language">Html</abbr> 5,
+        <abbr title="Cascading Style Sheets">CSS3</abbr>, JavaScript,
+        Haskell. Experienced with MySQL and
+        PostgreSQL. I have deployed and managed Web
+        applications on Linux based servers. I keep up to date
+        to modern coding practices.
+      </p>
+      <p>
+        I am proficient with graphic design softwares
+        such as Adobe Photoshop <span class="ampersand">&</span> Illustrator. I love
+        drawing and typography. In my work I consider
+        standards, accessibility, usability,
+        responsiveness.
+      </p>
+      <p>
+        French is my native language. I learned
+        English in Florida where I spent 3 years.
+        Since then I am fluent in English.
+      </p>
+    </section>
+    <section id="education">
+      <h1>Education</h1>
+      <h2><a href="http://www.fit.edu/">Florida Institute of Technology</a></h2>
+      <p>
+        <em>Bachelor of Science in Computer Science [DEC
+          2005]</em><br />
+        <em>Certificate of appreciation — 2006 ACM Southeast Conference.</em>
+      </p>
+      <p>
+        Coursework includes: Data structures, Algorithms,
+        Design Patterns, Operating System Concepts, Visual
+        Graphics, Databases.
+      </p>
+      <h2><a href="https://www.edx.org/">EDX</a></h2>
+      <ul>
+        <li>
+          <a href="./files/Certificate%20-%20Certificate%20Tackling%20the%20Challenges%20of%20Big%20Data.pdf">
+            Tackling the Challenges of Big Data
+          </a>
+        </li>
+        <li>
+          <a href="./files/Certificate%20-%20Design%20and%20Development%20of%20Educational%20Technology.pdf">
+            Design and Development of Educational Technology
+          </a>
+        </li>
+        <li>
+          <a href="./files/Certificate%20-%20Introduction%20to%20Game%20Design.pdf">
+            Introduction to Game Design
+          </a>
+        </li>
+      </ul>
+    </section>
+    <section id="experience">
+      <h1>Experience</h1>
+      <h2><a href="http://www.clevertech.biz/">CleverTech</a></h2>
+      <p>
+        <em>Senior Developer [ 2014 - Present]</em>
+      </p>
+      <h2>Freelance</h2>
+      <p><em>Senior Software Developer [March 2010 - 2013]</em></p>
+      <p>
+        Development and Deployment of hundreds of
+        games on the Apple App Store (~500). Retrieval
+        and parsing of Big Data through Ruby scripts
+        and PostgreSQL. My work includes:
+      </p>
+      <ul>
+        <li>Metaprogramming of thousands of Active
+          Record classes</li>
+        <li>PostgreSQL and SQLite3 data insertion,
+          extraction <span class="ampersand">&</span> optimisation</li>
+      </ul>
+      <h2>Metaboli</h2>
+      <p><em>Senior Software Developer [January 2009 –
+        February 2010]</em></p>
+      <p>
+        Metaboli is one of the leader in the digital
+        distribution of Video Games. I was in charge
+        of the Ruby Team in Paris. Responsible of the
+        deployment and management of all the Ruby On
+        Rails Apps. Refactoring of existing
+        Code base with the promotion of Test Driven Development.
+        Coordination with the remote Ruby team based
+        in Sweden.
+        <br />
+        I’ve notably accomplished:
+      </p>
+      <ul>
+        <li>
+          Complete automation of the deployment
+          process. On test servers and on production
+          servers with Capistrano. About 50
+          Apps.
+        </li>
+        <li>
+          Introduction and promotion of Unit Tests
+          in the Ruby Team. Rspec, Cucumber and
+          automatic supervision through automated
+          tools and Cron tasks.
+        </li>
+        <li>
+          Migration of our code repositories from
+          Subversion to Git.
+        </li>
+      </ul>
 
-                <h2>Nomads PER</h2>
-                <p>
-                    <em>
-                        Software Developer [August 2007 – December
-                        2008]
-                    </em>
-                <p>
-                    A startup I created with two friends from
-                    College. Design and Development of a Ruby on
-                    Rails app. Interaction with Web services like
-                    Amazon S3 and Paypal. Unit Tests with Rspec.
-                </p>
-                <h2>Lucca</h2>
-                <p><em>Junior Software Developer [March 2006 – March
-                        2007]</em></p>
-                <p>A small but dynamic web Agency based in Paris. For one of our
-                client, I was responsible of the design and
-                development of an excel-like web application for sorting and
-                presenting thousands of students. Technologies
-                    used: <abbr title="Asynchronous Javascript and XML">AJAX</abbr>, MySQL,
-                    <abbr title="Hypertext Preprocessor">PHP</abbr>.</p>
-            </section>
-            <section id="portfolio">
-                <h1>Portfolio</h1>
-                <ul>
-                    <li>Selected works available
-                        <a href="http://aurelienbottazini.com/#selected_works">here</a></li>
-                    <li>Code
-                        on <a href="https://github.com/aurelienbottazini">Github</a></li>
-                    <li><a href="https://careers.stackoverflow.com/abottazini">Stack
-                    Overflow careers</a></li>
-                </ul>
-            </section>
-        </div>
-        <script src="./js/resume.min.js"></script>
-        </div>
-    </body>
-</html>
+      <h2>Nomads PER</h2>
+      <p>
+        <em>
+          Software Developer [August 2007 – December
+          2008]
+        </em>
+        <p>
+          A startup I created with two friends from
+          College. Design and Development of a Ruby on
+          Rails app. Interaction with Web services like
+          Amazon S3 and Paypal. Unit Tests with Rspec.
+        </p>
+        <h2>Lucca</h2>
+        <p><em>Junior Software Developer [March 2006 – March
+          2007]</em></p>
+        <p>A small but dynamic web Agency based in Paris. For one of our
+          client, I was responsible of the design and
+          development of an excel-like web application for sorting and
+          presenting thousands of students. Technologies
+          used: <abbr title="Asynchronous Javascript and XML">AJAX</abbr>, MySQL,
+          <abbr title="Hypertext Preprocessor">PHP</abbr>.</p>
+    </section>
+    <section id="portfolio">
+      <h1>Portfolio</h1>
+      <ul>
+        <li>Selected works available
+          <a href="http://aurelienbottazini.com/#selected_works">here</a></li>
+        <li>Code
+          on <a href="https://github.com/aurelienbottazini">Github</a></li>
+        <li><a href="https://careers.stackoverflow.com/abottazini">Stack
+          Overflow careers</a></li>
+      </ul>
+    </section>
+  </div>
+</div>
+{% include footer.html %}
