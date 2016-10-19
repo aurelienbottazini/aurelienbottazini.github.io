@@ -85,7 +85,6 @@ body {
     text-decoration: underline;
   }
 
-
   .post p {
     width: 100%;
 
@@ -115,8 +114,8 @@ body {
   margin: 0 auto;
   padding-top: 5em;
   padding-bottom: 2em;
-  @media only screen and (min-width: 55em) {
-    width: 50em;
+  @include responsive(ipad-portrait) {
+    width: 40em;
     padding: 0;
     margin-top: 5.5em;
     margin-bottom: 5.5em;
@@ -126,8 +125,8 @@ body {
 
   section {
     width: 90%;
-    @media only screen and (min-width: 55em) {
-      width: 50em;
+    @include responsive(ipad-portrait) {
+      width: 40em;
     }
     margin: 0 auto;
   }
