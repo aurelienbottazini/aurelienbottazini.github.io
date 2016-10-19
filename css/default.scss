@@ -36,15 +36,20 @@ body::after, body::before {
   background-color: #8790dd;
   transition: transform 200ms;
   z-index: 9999;
+  transform-origin: top left;
 }
 body::before {
-  top: 0;
-  transform: translateY(-100%);
+  top: 44px;
+  transform: scale(1, 0);
 }
 body::after {
   bottom: 0;
   transform: translateY(100%);
 }
-body.page-is-changing::after, body.page-is-changing::before {
+body.page-is-changing::before {
+  transform: scale(1, 1);
+}
+
+body.page-is-changing::after {
   transform: translateY(0);
 }
