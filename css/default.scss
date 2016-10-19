@@ -35,6 +35,7 @@ body::after, body::before {
   left: 0;
   background-color: #8790dd;
   transition: transform 200ms;
+  z-index: 9999;
 }
 body::before {
   top: 0;
