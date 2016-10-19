@@ -33,20 +33,17 @@ body::after, body::before {
   width: 100%;
   position: fixed;
   left: 0;
-  background-color: red;
+  background-color: #8790dd;
   transition: transform 200ms;
 }
 body::before {
   top: 0;
   transform: translateY(-100%);
-  background-color: red;
 }
 body::after {
   bottom: 0;
   transform: translateY(100%);
-  background-color: red;
 }
 body.page-is-changing::after, body.page-is-changing::before {
   transform: translateY(0);
-  background-color: red;
 }

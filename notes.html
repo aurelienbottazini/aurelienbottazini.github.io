@@ -2,18 +2,20 @@
 layout: default
 title: Notes
 ---
-<h1>Notes</h1>
+<div id="frame" class="notes">
+  <h1>Notes</h1>
 
-<h2>Screencasts</h2>
-<ul>
-  <li><a href="videos/introduction_to_docker.flv">Introduction to docker</a></li>
-</ul>
+  <h2>Screencasts</h2>
+  <ul>
+    <li><a href="videos/introduction_to_docker.flv">Introduction to docker</a></li>
+  </ul>
 
-<h2>Sketchnotes</h2>
-<ul>
+  <h2>Sketchnotes</h2>
+  <ul>
     {% for sketchnote in site.data.sketchnotes %}
     <li>
-        <a href="/sketchnotes/{{ sketchnote }}">{{ sketchnote }}</a>
+      <a href="/sketchnotes/{{ sketchnote }}">{{ sketchnote }}</a>
     </li>
     {% endfor %}
-</ul>
+  </ul>
+</div>

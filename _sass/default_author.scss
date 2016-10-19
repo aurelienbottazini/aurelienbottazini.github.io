@@ -1,4 +1,7 @@
-#wrapper.default {
+body {
+  margin: 0;
+}
+#frame.index, #frame.notes {
 
   width: 90%;
   @include responsive(ipad-portrait) {
@@ -231,6 +234,7 @@
 }
 
 #frame.about {
+  margin-top: -50px;
 
   p {
     margin: 1em auto;
