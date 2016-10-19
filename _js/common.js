@@ -54,7 +54,7 @@ function loadNewContent(url, bool) {
   var newSectionName = url.replace('.html', ''),
       section = $('<div id="frame" class="'+newSectionName.slice(1)+'"></div>');
 
-  section.load(url + ' #wrapper', function(event){
+  section.load(url + ' #frame', function(event){
     // load new content and replace <main> content with the new one
     setTimeout(function() {
       $('#wrapper').html(section);
