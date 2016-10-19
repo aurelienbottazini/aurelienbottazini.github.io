@@ -19,7 +19,7 @@ Let's start with what we have available in the language: `Object.assign`.
 It is shallow. It means it won't merge recursively Object properties.
 It only copies from the top level.
 
-So in the following example, the `foo` prop from `Obj1` replaces by the one from `Obj2`.
+So in the following example, the `foo` prop from `Obj1` replaces the one from `Obj2`.
 <pre>
 <code class="kjs" data-external-libs="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.3/lodash.min.js,https://cdnjs.cloudflare.com/ajax/libs/ramda/0.22.1/ramda.min.js,https://cdnjs.cloudflare.com/ajax/libs/immutable/3.8.1/immutable.min.js">
 Obj1 = { val: { foo: [1, 2, 3] }};

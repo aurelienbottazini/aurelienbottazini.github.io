@@ -50,6 +50,13 @@ f.fooMethod();
 
 <pre>
 <code class="kjs">
+const f = new Foo();
+f.bar();
+</code>
+</pre>
+
+<pre>
+<code class="kjs">
 
 function Foo() {
   this.fooMethod = function fooMethod() {
