@@ -8,20 +8,6 @@
 @import "default_author";
 @import "bottom-boilerplate";
 
-.transition-loader {
-  position: fixed;
-  height: 2px;
-  width: 90%;
-}
-.transition-loader::before {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  transform: scaleX(0);
-  transform-origin: left center;
-}
 .page-is-changing .transition-loader::before {
   transform: scaleX(1);
 }
@@ -54,16 +40,14 @@ body.page-is-changing::after {
   transform: translateY(0);
 }
 
-
 .transition-loader {
-  /* this is the loading bar - visible while switching from one page to the following one */
   position: fixed;
-  height: 2px;
-  width: 90%;
-  z-index: 99999999;
+  top: 43px;
+  height: 5px;
+  width: 100%;
+  z-index: 9999;
 }
 .transition-loader::before {
-  /* this is the progress bar inside the loading bar */
   content: '';
   position: absolute;
   left: 0;
@@ -72,11 +56,11 @@ body.page-is-changing::after {
   width: 100%;
   transform: scaleX(0);
   transform-origin: left center;
-  z-index: 99999999;
-  background-color: green;
+  z-index: 9999;
+  background-color: hsl(233.6, 56%, 58.8%);
   transition: transform;
   transition-duration: 1s;
-  transition-delay: 300ms;
+  transition-delay: 250ms;
 }
 .page-is-changing .transition-loader:before {
   transform: scaleX(1);
