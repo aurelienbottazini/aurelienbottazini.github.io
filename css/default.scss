@@ -53,3 +53,31 @@ body.page-is-changing::before {
 body.page-is-changing::after {
   transform: translateY(0);
 }
+
+
+.transition-loader {
+  /* this is the loading bar - visible while switching from one page to the following one */
+  position: fixed;
+  height: 2px;
+  width: 90%;
+  z-index: 99999999;
+}
+.transition-loader::before {
+  /* this is the progress bar inside the loading bar */
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  z-index: 99999999;
+  background-color: green;
+  transition: transform;
+  transition-duration: 1s;
+  transition-delay: 300ms;
+}
+.page-is-changing .transition-loader:before {
+  transform: scaleX(1);
+}
