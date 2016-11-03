@@ -2,6 +2,8 @@
 tags: javascript
 ---
 
+**All code is editable with live results.**
+
 One—or maybe the most—exiting feature from es2015 is *tail call optimization* or TCO.
 
 Recursion can be problem in javascript due to limitations on the call-stack size.
@@ -28,7 +30,7 @@ Now let's make a TCO version of it. Our goal here is to give hints to the js eng
 
 <pre>
 <code class="kjs">
-function addMe(n) {
+function addMeTCO(n) {
  "use strict";
  function __add(n, acc) {
    if (n < 2) {
@@ -42,7 +44,7 @@ function addMe(n) {
  return __add(n, 1);
 }
 
-addMe(10000);
+addMeTCO(10000);
 </code>
 </pre>
 
