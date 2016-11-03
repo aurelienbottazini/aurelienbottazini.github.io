@@ -6,10 +6,10 @@ tags: javascript
 
 One—or maybe the most—exiting feature from es2015 is *tail call optimization* or TCO.
 
-Recursion can be problem in javascript due to limitations on the call-stack size.
-Each time you can a function from within another function, the javascript remembers where you did the call. It does that because your function—for example—may require to access external variables from where it was called.
+Recursion can be problem in JavaScript due to limitations on the call-stack size.
+Each time you can a function from within another function, the JavaScript remembers where you did the call. It does that because your function—for example—may require accessing external variables from where it was called.
 
-But since—for performance reasons—there is a limit to the call stack size, your theorycally valid js code can crash because of this limit.
+But since—for performance reasons—there is a limit to the call stack size, your theoretically valid js code can crash because of this limit.
 
 Let's see an example with a function doing a recursive addition:
 <pre>
@@ -26,7 +26,7 @@ addMe(10000);
 </code>
 </pre>
 
-Now let's make a TCO version of it. Our goal here is to give hints to the js engine to detect that it can optimize our function into a TCO one. For the js engine this optimization means: 'oh cool I don't need to remember the previous function call environment, so i will just forget about it since i have everything I know here to do my job.
+Now let's make a TCO version of it. Our goal here is to give hints to the js engine to detect that it can optimize our function into a TCO one. For the js engine this optimization means: 'oh cool I don't need to remember the previous function call environment, so I will just forget about it since i have everything I know here to do my job.
 
 <pre>
 <code class="kjs">
