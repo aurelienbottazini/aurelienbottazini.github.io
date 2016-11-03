@@ -22,11 +22,13 @@ function addMe(n) {
  return n + addMe(n-1);
 }
 
-addMe(10000);
+addMe(1000000);
 </code>
 </pre>
 
 Now let's make a TCO version of it. Our goal here is to give hints to the js engine to detect that it can optimize our function into a TCO one. For the js engine this optimization means: 'oh cool I don't need to remember the previous function call environment, so I will just forget about it since i have everything I know here to do my job.
+
+**You need a recent browser for this to work, at the time I write this [canary](https://www.google.com/chrome/browser/canary.html) supports it**
 
 <pre>
 <code class="kjs">
@@ -44,7 +46,7 @@ function addMeTCO(n) {
  return __add(n, 1);
 }
 
-addMeTCO(10000);
+addMeTCO(1000000);
 </code>
 </pre>
 
