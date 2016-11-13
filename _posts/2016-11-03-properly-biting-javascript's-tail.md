@@ -70,8 +70,8 @@ There are two simple steps:
 1. The first step is to use strict mode. Easy enough.
 2. The second one is to make sure that in our return statements, no
    extra work is happening. We only want to return a function with
-   some parameters. It means we went to something like `n +
-   addMe(n-1)`—note the extra `n +` computation here— to `__add(n, 1)`
+   some parameters. It means we went to something like `n + addMe(n-1)`—note the extra
+   `n +` computation here— to `__add(n, 1)`
    and `__add(n-1, acc + n)`.
 
 I am now using an accumulator that I pass as a parameter to store my
