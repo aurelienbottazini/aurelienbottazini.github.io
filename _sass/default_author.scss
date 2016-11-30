@@ -871,3 +871,11 @@ body {
   }
 
 }
+
+.page-navigation {
+  display: flex;
+  justify-content: space-between;
+  a {
+    color: rgba(0, 0, 0, 0.5);
+  }
+}
