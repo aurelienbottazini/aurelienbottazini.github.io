@@ -34,7 +34,7 @@ If you open you console / devtools you will be able to check what's the behaviou
 <pre>
 <code class="kjs">
 const p = new Promise((resolve, reject) => {
-    return reject('Rejected, running in a node environment');
+    return reject('Rejected, running in a browser environment');
   });
 </code>
 </pre>
