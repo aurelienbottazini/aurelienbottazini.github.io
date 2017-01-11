@@ -9,3 +9,4 @@ _vendor
 .env
 notes/*
 books/*
+node_modules/*

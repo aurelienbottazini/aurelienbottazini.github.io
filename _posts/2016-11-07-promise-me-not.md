@@ -18,15 +18,16 @@ const p = new Promise((resolve, reject) => {
 
 If you run this example, even though the promise is rejected you are not notified of the rejection.
 
-Now let's do it again in a newer—version 6.9.0—node environment.
+Now let's do it again in a newer—version 6.9.2—node environment.
 
 <pre>
-<code id="my-runkit-6-9">
+<code id="my-runkit-6-9-2">
 const p = new Promise((resolve, reject) => {
     return reject('Rejected, running in a node environment');
   });
 </code>
 </pre>
+
 Surprise! This “pit of despair” behaviour is *fixed* in recent versions of node.
 
 Here is the same code but evaluated in your browser.
@@ -41,7 +42,7 @@ const p = new Promise((resolve, reject) => {
 
 
 So promises used to have a **pit of despair** behaviour with error handling and **this is being fixed**.
-Be aware you can see different behaviours with different environments.
+Be aware you can see different behaviours with different environments. The es6 spec still specifies that uncaught errors should be *swallowed*. But NodeJs and browsers environements have implemented changes to address this developer pain point.
 
 <script>
 window.klipse_settings = {
@@ -53,4 +54,4 @@ theme: 'zenburnesque'
 </script>
 <script src="/js/klipse_plugin.min.js"></script>
 <script src="https://embed.runkit.com" data-node-version="5.12.0" data-element-id="my-runkit-5-12"></script>
-<script src="https://embed.runkit.com" data-node-version="6.9.0" data-element-id="my-runkit-6-9"></script>
+<script src="https://embed.runkit.com" data-node-version="6.9.2" data-element-id="my-runkit-6-9-2"></script>
