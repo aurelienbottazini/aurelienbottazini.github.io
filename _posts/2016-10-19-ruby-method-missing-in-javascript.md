@@ -4,10 +4,11 @@ tags: ruby javascript
 
 **All code is editable with live results.**
 
-I love Ruby and I love Ruby metaprogramming capabilities.
-One of the first metaprogramming tricks I discovered was Ruby's
-`method_missing` functionality. To sum it up it allows you to
-intercept calls to any method not implemented by your Ruby class.
+I love Ruby and I love Ruby metaprogramming capabilities. One of the
+first metaprogramming tricks I discovered was Ruby's `method_missing`
+functionality. To sum it up, it allows you to intercept calls to any
+method not implemented—either directly inside your class or indirectly
+in the ancestor chain—by your Ruby class.
 
 **Thanks to es2015 Proxies, it is easy to do in JS.**
 
@@ -77,7 +78,7 @@ Ohoh, this is what's *missing* and what we want to implement to match
 the ruby implementation. Let's do it now. We will define an handler
 for our object returned by the `Foo` constructor. This handler will
 specify how to handle `get`s on our object. We will then attach the
-handler the object using a es2015 `Proxy`.
+handler to the object using a es2015 `Proxy`.
 
 Finally instead of returning the object created by the Foo constructor
 we will return the Proxy.

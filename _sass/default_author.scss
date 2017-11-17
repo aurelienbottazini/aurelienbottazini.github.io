@@ -153,6 +153,11 @@ body {
         margin: 0;
         margin-left: 1em;
       }
+      @media print {
+        float: right;
+        margin: 0;
+        margin-left: 1em;
+      }
     }
   }
   .email {
