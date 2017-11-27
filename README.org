@@ -27,4 +27,11 @@ This project uses grunt to minify and compress all files and update yaml files w
 
 * deploy
 
+  You need a .env file with the following:
+  `
+  AWS_ACCESS_KEY_ID=youraccessid
+  AWS_SECRET_ACCESS_KEY=youraccesskey
+  AWS_BUCKET=www.aurelienbottazini.com
+  `
+
   `./deploy.sh`
