@@ -1,8 +1,20 @@
 body {
   margin: 0;
 }
-#frame.index, #frame.notes {
+#main_navigation {
+  background: url('../img/stars.png') repeat, url('../img/bleu-marine-texture.jpg') repeat;
+  background-size: 588px 594px, 1200px 631px;
+  background-attachment: fixed;
 
+  @media (min--moz-device-pixel-ratio: 1.5),
+  (-o-min-device-pixel-ratio: 3/2),
+  (-webkit-min-device-pixel-ratio: 1.5),
+  (min-resolution: 1.5dppx) {
+    background-size: (588px/2) (594px/2), (1200px/2) (631px/2);
+  }
+}
+
+#frame.index, #frame.notes {
   width: 90%;
   @include responsive(ipad-portrait) {
     width: 40em;
@@ -103,10 +115,6 @@ body {
     width: 100%;
   }
 }
-
-
-
-
 
 #frame.resume {
 
@@ -269,7 +277,7 @@ body {
   @mixin white-space($wrap-space) {
     @if $wrap-space == 'pre-wrap' {
       white-space: unquote("-moz-#{$wrap-space}"); // Firefox 1.0-2.0
-                                                   white-space: $wrap-space;       // current browsers
+      white-space: $wrap-space;       // current browsers
     } @else {
       white-space: $wrap-space;
     }
