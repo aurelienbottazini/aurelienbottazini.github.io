@@ -20,7 +20,8 @@ This project uses grunt to minify and compress all files and update yaml files w
 
 ```bash
   bundle
-  npm install -g grunt
+  rm -rf ./node_modules
+  npm install -g grunt-cli
   yarn
 ```
 
