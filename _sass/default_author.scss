@@ -1,8 +1,8 @@
 body {
   margin: 0;
 }
-#frame.index, #frame.notes {
 
+#frame.index, #frame.notes {
   width: 90%;
   @include responsive(ipad-portrait) {
     width: 40em;
@@ -103,10 +103,6 @@ body {
     width: 100%;
   }
 }
-
-
-
-
 
 #frame.resume {
 
@@ -269,7 +265,7 @@ body {
   @mixin white-space($wrap-space) {
     @if $wrap-space == 'pre-wrap' {
       white-space: unquote("-moz-#{$wrap-space}"); // Firefox 1.0-2.0
-                                                   white-space: $wrap-space;       // current browsers
+      white-space: $wrap-space;       // current browsers
     } @else {
       white-space: $wrap-space;
     }

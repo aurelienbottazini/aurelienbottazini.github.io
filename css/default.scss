@@ -8,9 +8,6 @@
 @import "default_author";
 @import "bottom-boilerplate";
 
-.page-is-changing .transition-loader::before {
-  transform: scaleX(1);
-}
 
 body::after, body::before {
   content: '';
@@ -40,6 +37,19 @@ body.page-is-changing::after {
   transform: translateY(0);
 }
 
+@keyframes loading-bar {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.page-is-changing .transition-loader::before {
+  animation: loading-bar 2s infinite;
+}
+
 .transition-loader {
   position: fixed;
   top: 43px;
@@ -54,14 +64,8 @@ body.page-is-changing::after {
   top: 0;
   height: 100%;
   width: 100%;
-  transform: scaleX(0);
   transform-origin: left center;
   z-index: 9999;
+  transform: scaleX(0);
   background-color: hsl(233.6, 56%, 58.8%);
-  transition: transform;
-  transition-duration: 1s;
-  transition-delay: 250ms;
-}
-.page-is-changing .transition-loader:before {
-  transform: scaleX(1);
 }

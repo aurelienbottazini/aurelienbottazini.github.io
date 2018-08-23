@@ -52,12 +52,12 @@ function changePage(url, bool) {
 
 function loadNewContent(url, bool) {
   var newSectionName = url.replace('.html', ''),
-      section = $('<div id="frame" class="'+newSectionName.slice(1)+'"></div>');
+      section = $('<div id="wrapper"></div>');
 
   section.load(url + ' #frame', function(event){
     // load new content and replace <main> content with the new one
     setTimeout(function() {
-      $('#wrapper').html(section);
+      $('#wrapper').replaceWith(section);
       isAnimating = false;
       $('body').removeClass('page-is-changing');
       if(url != window.location){
