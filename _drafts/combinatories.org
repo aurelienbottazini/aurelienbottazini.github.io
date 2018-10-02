@@ -1,0 +1,13 @@
+* Why Should I learn this?
+  Combinatories are small functions that you can combine to do greater
+  things!
+  They provide
+  Combinatories are a new abstraction. By learning them you will
+  be able to reuse your code.
+
+* My first combinatories
+* Combining them
+* palimpsest
+  Combinatories are an abstraction. At first it feels awkward to use
+  them and you will band your head against the wall to understand some
+  piece of code.
