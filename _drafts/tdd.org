@@ -1,0 +1,3 @@
+Don't impose your views with TDD
+
+We have different styles of tdd
