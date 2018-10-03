@@ -22,11 +22,11 @@ module.exports = function(grunt) {
           compress: false
         },
         files: {
-          'js/home.min.js':
+          'js/about.min.js':
           [
             '_js/_bower.js',
             '_js/common.js',
-            '_js/home.js'],
+            '_js/about.js'],
           'js/resume.min.js':
           ['_js/_bower.js',
            '_js/common.js'],
