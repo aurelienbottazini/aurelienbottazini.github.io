@@ -127,4 +127,4 @@ var setUpHome = function(){
   }
 };
 
-addListener('load', window, setUpHome);
+window.addEventListener('load', setUpHome)
