@@ -6,6 +6,7 @@
   be able to reuse your code.
 
 * My first combinatories
+** tap to log or write to a file
 * Combining them
 * palimpsest
   Combinatories are an abstraction. At first it feels awkward to use
