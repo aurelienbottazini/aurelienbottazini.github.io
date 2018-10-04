@@ -1,5 +1,5 @@
 var setUpHome = function(){
-  var i, src, extension = Modernizr.svg ? '.svg' : '.png';
+  var i, src, extension = '.svg';
   var planete_rouge = $('#planete-rouge');
   var planete_vie = $('#planete-vie');
   var planete_rouge_circles = $('#planete-rouge-circles');

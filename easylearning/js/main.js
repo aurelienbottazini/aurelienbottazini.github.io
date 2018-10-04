@@ -1,4 +1,4 @@
-var i, src, extension = Modernizr.svg ? '.svg' : '.png';
+var i, src, extension = '.svg';
 
 elements = $('img');
 for (i=0;i<elements.length;i++) {
