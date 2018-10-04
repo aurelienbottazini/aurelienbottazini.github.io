@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 var isAnimating = false
 
-
 document.querySelectorAll('#main_navigation [data-type="page-transition"]').forEach(function(e) {
   e.addEventListener('click', function(event){
     event.preventDefault();
@@ -46,21 +45,24 @@ function changePage(url, bool) {
 }
 
 function loadNewContent(url, bool) {
-  var newSectionName = url.replace('.html', ''),
-      section = $('<div id="wrapper"></div>');
+  var xhr = new XMLHttpRequest();
+  xhr.addEventListener("load", function () {
+    var doc = document.createElement('div');
+    doc.innerHTML = this.responseText;
+    var frame = doc.querySelector("#wrapper")
+    document.querySelector('#wrapper').replaceWith(frame);
+  })
 
-  section.load(url + ' #frame', function(event){
-    // load new content and replace <main> content with the new one
-    setTimeout(function() {
-      // document.querySelector('#wrapper').replaceWith(section);
-      $('#wrapper').replaceWith(section);
-      isAnimating = false;
-      document.querySelector('body').classList.remove('page-is-changing');
-      if(url != window.location){
-        window.history.pushState({path: url},'',url);
-      }
-    }, 200);
-  });
+  setTimeout(function() {
+    isAnimating = false;
+    document.querySelector('body').classList.remove('page-is-changing');
+    if(url != window.location){
+      window.history.pushState({path: url},'',url);
+    }
+  }, 200)
+
+  xhr.open('GET', url)
+  xhr.send();
 }
 
 window.addEventListener('popstate', function() {
