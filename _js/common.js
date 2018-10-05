@@ -46,19 +46,25 @@ function changePage(url, bool) {
 
 function loadNewContent(url, bool) {
   var xhr = new XMLHttpRequest();
+  var timer = +(new Date);
+
   xhr.addEventListener("load", function () {
     var doc = document.createElement('div');
     doc.innerHTML = this.responseText;
     var frame = doc.querySelector("#wrapper")
     document.querySelector('#wrapper').replaceWith(frame);
     setUpCaps();
+
+    var timeElapsed = +(new Date) - timer;
+    var timeoutDuration = timeElapsed < 200 ? 200 - timeElapsed : 25;
+
     setTimeout(function() {
       isAnimating = false;
       document.querySelector('body').classList.remove('page-is-changing');
       if(url != window.location){
         window.history.pushState({path: url},'',url);
       }
-    }, 200)
+    }, timeoutDuration);
   })
 
 
