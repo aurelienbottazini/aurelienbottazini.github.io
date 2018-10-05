@@ -118,7 +118,6 @@ function getFontMetrics(document, fontFamily) {
    
     /*
         The injected markup looks like:
-
         <p style="position:fixed; padding:0; opacity:0; line-height:1; font-size: 100px; font-family:...;">
             <span style="font-size:0px">X</span>
             <span>X</span>
@@ -217,7 +216,12 @@ function layoutDropcap(dropcapElement, heightInLines, baselinePos) {
         var dcapFontSizeInPx = (dcapHeightInPx/dcapCapHeightRatio); 
       
         dcap.dcapjs = true;
-        dcap.style.cssFloat = "left";
+        if (dcapCSS.direction=='rtl') {
+          dcap.style.cssFloat = "right";
+        }
+        else {
+          dcap.style.cssFloat = "left";
+        }
         dcap.style.padding = ZEROPX;
         dcap.style.fontSize = toPxLength(dcapFontSizeInPx);  
         dcap.style.lineHeight = ZEROPX;
@@ -287,7 +291,7 @@ function getCSSPropertyName(property) {
     // ...then look for prefixed version...
     var prefix = ['-webkit-', '-moz-', '-ms-', '-o'];
     for (var i=0; i < prefix.length; i++) {
-        var name = prefix[i]+property; 
+        var name = prefix[i]+property;
         if (_supported(name)) {
             return name;
         }
@@ -296,8 +300,16 @@ function getCSSPropertyName(property) {
     return null;
 }
 
-window.Dropcap = {
-   
+var global;
+if (typeof window !== 'undefined') {
+  global = window;
+} else if (typeof exports !== 'undefined') {
+  global = exports;
+} else {
+  global = this;
+}
+global.Dropcap = {
+
     options: {
         runEvenIfInitialLetterExists: true,
     },
@@ -326,4 +338,5 @@ window.Dropcap = {
         }
     }
 };
+
 })();

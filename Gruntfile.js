@@ -1,22 +1,8 @@
 module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    bower_concat: {
-      all: {
-        dest: '_js/_bower.js',
-        cssDest: '_css/_bower.css',
-        exclude: [
-          'velocity',
-        ],
-        dependencies: {
-        },
-        bowerOptions: {
-          relative: false
-        },
-      }
-    },
     uglify: {
-      bower: {
+      blog: {
         options: {
           mangle: false,
           compress: false
@@ -24,15 +10,17 @@ module.exports = function(grunt) {
         files: {
           'js/about.min.js':
           [
-            '_js/_bower.js',
+            '_js/dropcap.js',
             '_js/common.js',
             '_js/about.js'],
           'js/resume.min.js':
-          ['_js/_bower.js',
-           '_js/common.js'],
+          [
+            '_js/dropcap.js',
+            '_js/common.js'
+          ],
           'js/default.min.js':
           [
-            '_js/_bower.js',
+            '_js/dropcap.js',
             '_js/common.js',
           ],
         }
@@ -55,11 +43,10 @@ module.exports = function(grunt) {
       }
     }
   });
-  grunt.loadNpmTasks('grunt-bower-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-exec');
 
   grunt.registerTask('default', ['prepare']);
-  grunt.registerTask('prepare', ['bower_concat', 'uglify', 'exec:create_sketchnotes_yaml']);
+  grunt.registerTask('prepare', ['uglify', 'exec:create_sketchnotes_yaml']);
 };

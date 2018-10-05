@@ -127,4 +127,4 @@ var setUpHome = function(){
   }
 };
 
-window.addEventListener('load', setUpHome)
+document.addEventListener('DOMContentLoaded', setUpHome)
