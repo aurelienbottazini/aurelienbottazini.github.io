@@ -3,7 +3,7 @@ var setUpCaps = function(){
     window.Dropcap.layout(dropcaps, 3);
 };
 
-window.addEventListener('DOMContentLoaded', setUpCaps)
+document.addEventListener('DOMContentLoaded', setUpCaps)
 
 document.addEventListener("DOMContentLoaded", function(event) {
   var links = document.querySelectorAll("#main_navigation ul li a");

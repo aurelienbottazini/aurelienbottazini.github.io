@@ -4,17 +4,6 @@
   left: 0;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.8);
-  background-image: url('../img/stars.png'), url('../img/bleu-marine-texture.jpg');
-  background-repeat: repeat, repeat;
-  background-size: 588px 594px, 1200px 631px;
-  background-attachment: fixed;
-
-  @media (min--moz-device-pixel-ratio: 1.5),
-  (-o-min-device-pixel-ratio: 3/2),
-  (-webkit-min-device-pixel-ratio: 1.5),
-  (min-resolution: 1.5dppx) {
-    background-size: (588px/2) (594px/2), (1200px/2) (631px/2);
-  }
 
   color: #fff;
   z-index: 1000;
