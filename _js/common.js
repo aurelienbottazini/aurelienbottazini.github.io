@@ -51,17 +51,16 @@ function loadNewContent(url, bool) {
     doc.innerHTML = this.responseText;
     var frame = doc.querySelector("#wrapper")
     document.querySelector('#wrapper').replaceWith(frame);
-
     setUpCaps();
+    setTimeout(function() {
+      isAnimating = false;
+      document.querySelector('body').classList.remove('page-is-changing');
+      if(url != window.location){
+        window.history.pushState({path: url},'',url);
+      }
+    }, 200)
   })
 
-  setTimeout(function() {
-    isAnimating = false;
-    document.querySelector('body').classList.remove('page-is-changing');
-    if(url != window.location){
-      window.history.pushState({path: url},'',url);
-    }
-  }, 200)
 
   xhr.open('GET', url)
   xhr.send();
