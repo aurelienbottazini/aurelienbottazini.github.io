@@ -8,19 +8,10 @@ module.exports = function(grunt) {
           compress: false
         },
         files: {
-          'js/about.min.js':
-          [
-            '_js/dropcap.js',
-            '_js/common.js',
-            '_js/about.js'],
-          'js/resume.min.js':
-          [
-            '_js/dropcap.js',
-            '_js/common.js'
-          ],
           'js/default.min.js':
           [
             '_js/dropcap.js',
+            '_js/org-export.js',
             '_js/common.js',
           ],
         }

@@ -51,6 +51,8 @@ function loadNewContent(url, bool) {
     doc.innerHTML = this.responseText;
     var frame = doc.querySelector("#wrapper")
     document.querySelector('#wrapper').replaceWith(frame);
+
+    setUpCaps();
   })
 
   setTimeout(function() {
