@@ -1,0 +1,15 @@
+{
+  "short_name": "abottazini",
+  "name": "Aurélien Bottazini personal website",
+  "icons": [
+    {
+      "src":"/apple-touch-icon-152x152-precomposed.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "https://www.aurelienbottazini.com",
+  "background_color": "#f2f2f3",
+  "theme_color": "#f2f2f3",
+  "display": "standalone"
+}

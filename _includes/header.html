@@ -4,16 +4,32 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
   <head>
+    <link rel="manifest" href="/manifest.json">
     <link rel="stylesheet" href="/css/codemirror.css">
     <link rel="stylesheet" href="/css/default.css">
     <link href="https://fonts.googleapis.com/css?family=Alegreya:400,400i|Passion+One|Permanent+Marker" rel="stylesheet">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#f2f2f3">
     <title>{{ page.title }}</title>
     <meta name="Description" content="This is the personal website of Aurélien Bottazini. Coder & Entrepreneur.">
     <meta name="viewport" content="width=device-width,
                                    initial-scale=1,
                                    shrink-to-fit=no" >
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+            // Registration was successful
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          }, function(err) {
+            // registration failed :(
+            console.log('ServiceWorker registration failed: ', err);
+          });
+        });
+      }
+
+    </script>
   </head>
   <body>
     <!--[if lt IE 7]>
