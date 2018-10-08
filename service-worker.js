@@ -1,6 +1,5 @@
 var CACHE_NAME = 'my-site-cache-v1';
 var urlsToCache = [
-  '/',
   '/offline.html',
 ];
 
@@ -20,13 +19,14 @@ self.addEventListener('fetch', function(event) {
     // Try the cache
     caches.match(event.request).then(function(response) {
       // Fall back to network
-      return response || fetch(event.request);
-      // If both fail, show a generic fallback:
-      console.log('fail');
-      return caches.match('/offline.html');
-      // However, in reality you'd have many different
-      // fallbacks, depending on URL & headers.
-      // Eg, a fallback silhouette image for avatars.
+      return response || fetch(event.request).then(function(response) {
+        caches.open(CACHE_NAME).then((cache) => cache.add(response.url));
+        return response;
+      }).catch((response) => {
+        if(event.request.url.endsWith('\.html')) {
+          return caches.match('/offline.html');
+        }
+      });
     })
   );
 });
