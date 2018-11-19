@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+jekyll build
 grunt
 
 # s3_website is not compatible with java10 so we need to briefly

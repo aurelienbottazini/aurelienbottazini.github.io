@@ -1,4 +1,4 @@
-var CACHE_NAME = "aurelienbottazini.com-v2";
+var CACHE_NAME = "aurelienbottazini.com-v4";
 
 self.addEventListener("install", function(event) {
   function addDefaultUrlsToCache() {
@@ -11,6 +11,24 @@ self.addEventListener("install", function(event) {
   }
 
   event.waitUntil(addDefaultUrlsToCache());
+});
+
+self.addEventListener("activate", function(event) {
+  function deleteOldCaches() {
+    return caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames.map(function(cacheName) {
+          if (
+            CACHE_NAME !== cacheName &&
+            cacheName.startsWith("aurelienbottazini.com-")
+          ) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    });
+  }
+  event.waitUntil(deleteOldCaches());
 });
 
 self.addEventListener("fetch", function(event) {
