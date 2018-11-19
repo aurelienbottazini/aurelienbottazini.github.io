@@ -1,4 +1,4 @@
-var CACHE_NAME = "aurelienbottazini.com-v1";
+var CACHE_NAME = "aurelienbottazini.com-v2";
 
 self.addEventListener("install", function(event) {
   function addDefaultUrlsToCache() {
