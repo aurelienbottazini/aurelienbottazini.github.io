@@ -5,16 +5,13 @@
 
 ## Technology used
 
-- HTML5
-- CSS3 & SASS
-- Javascript
-- Gif, png, jpeg
-- SVG
-- Velocity.js
-- Boilerplate
-- Photoshop & Illustrator
+- Jekyll to build the website.
+- Grunt to minify and js, css, and perform additional preparation
+tasks for jekyll
 
-This project uses grunt to minify and compress all files and update yaml files when needed (for a list of sketchnotes for examples)
+One tricky task that Grunt runs is it creates a _data/sketchnotes.yaml
+file based on the content of the sketchnotes directory.
+This sketchnotes.yaml file is then used in notes.html to list the sketchnotes.
 
 # Installation
 
@@ -34,8 +31,6 @@ This project uses grunt to minify and compress all files and update yaml files w
   Create a file inside `_drafts`. Serve it with the -D option `bundle exec jekyll -D`
 
 # deploy
-
-  !!! If you want to push the last version of the website, be sure to build the website first with `bundle exec jekyll build`
 
   You need a .env file with the following:
 ```bash
