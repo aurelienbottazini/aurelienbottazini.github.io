@@ -1,2 +1,0 @@
-on apprend des frameworks, pas de l'architecture.
-une app doit etre decoupled du framework
