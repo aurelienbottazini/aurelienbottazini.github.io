@@ -1,8 +1,8 @@
-var CACHE_NAME = "aurelienbottazini.com-v5";
+const CACHE_NAME = "aurelienbottazini.com-v5";
 
 self.addEventListener("install", function(event) {
   function addDefaultUrlsToCache() {
-    var urlsToCache = ["/offline.html"];
+    const urlsToCache = ["/offline.html"];
     return caches.open(CACHE_NAME).then(function(cache) {
       console.info("Precaching:");
       console.table(urlsToCache);
