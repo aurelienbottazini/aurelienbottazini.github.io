@@ -1,0 +1,43 @@
+#+BEGIN_EXPORT html
+---
+title: Writing for eternity
+---
+#+END_EXPORT
+Something I would like to do more this year is to share my thoughts
+with a teacher mindset.
+
+I would like to do so for two main reasons:
+
+- Improve my learning. Teaching is one of the best way to learn
+- Happiness. I genuinely enjoy sharing things that I consider useful.
+
+To do this I would like to write with the idea that my website will
+survive me and stay available after my death. This way what I learned
+will be useful for a very long period of time. It could even be useful
+as Archaeological content for future History teachers. I am dreaming a
+lot here but It is useful to start with the end goal in mind.
+
+So *the first step* is to find a permanent home for my website. This
+permanent home should be free so that even after my death, not paying
+hosting bills will not mean the deletion of my website.
+
+My current strategy is to host my website on [[https://pages.github.com/][GitHub pages]]. GitHub is
+one (the?) largest code repository for developers. It was bought by
+Microsoft a few month ago. Those are signs that GitHub should stay up
+for a pretty long time. Also it is currently free to host a website
+using GitHub pages.
+
+*The second step* is to repeat the first step. I am not comfortable
+entrusting the future of my website to one single organization. Thus I
+need mirrors for my websites and I have set up something similar to
+GitHub pages on [[https://pages.bitbucket.io/][Bitbucket]].
+
+My website is now accessible at:
+- https://aurelienbottazini.github.io/
+- https://aurelienbottazini.bitbucket.io/
+
+Both repositories are also public:
+- https://github.com/aurelienbottazini/aurelienbottazini.github.io
+- https://bitbucket.org/aurelienbottazini/aurelienbottazini.bitbucket.io/src/master/
+
+I will try to add more mirrors in the future.
