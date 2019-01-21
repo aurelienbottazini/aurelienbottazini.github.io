@@ -5,5 +5,5 @@ jekyll build
 cd ~/projects/aurelienbottazini.com_public
 git add .
 git commit -m "publish"
-g push
+git push
 cd -
