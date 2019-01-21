@@ -1,4 +1,4 @@
-var CACHE_NAME = "aurelienbottazini.com-v4";
+var CACHE_NAME = "aurelienbottazini.com-v5";
 
 self.addEventListener("install", function(event) {
   function addDefaultUrlsToCache() {
@@ -31,29 +31,29 @@ self.addEventListener("activate", function(event) {
   event.waitUntil(deleteOldCaches());
 });
 
-self.addEventListener("fetch", function(event) {
-  function isHtmlRequest(event) {
-    return event.request.url.endsWith(".html");
-  }
-  function saveInCache(response) {
-    caches.open(CACHE_NAME).then(cache => cache.add(response.url));
-  }
-
-  event.respondWith(
-    caches.match(event.request).then(function(response) {
-      return (
-        response ||
-        fetch(event.request)
-          .then(function(response) {
-            saveInCache(response);
-            return response;
-          })
-          .catch(response => {
-            if (isHtmlRequest(event)) {
-              return caches.match("/offline.html");
-            }
-          })
-      );
-    })
-  );
-});
+// self.addEventListener("fetch", function(event) {
+//   function isHtmlRequest(event) {
+//     return event.request.url.endsWith(".html");
+//   }
+//   function saveInCache(response) {
+//     caches.open(CACHE_NAME).then(cache => cache.add(response.url));
+//   }
+//
+//   event.respondWith(
+//     caches.match(event.request).then(function(response) {
+//       return (
+//         response ||
+//         fetch(event.request)
+//           .then(function(response) {
+//             saveInCache(response);
+//             return response;
+//           })
+//           .catch(response => {
+//             if (isHtmlRequest(event)) {
+//               return caches.match("/offline.html");
+//             }
+//           })
+//       );
+//     })
+//   );
+// });
