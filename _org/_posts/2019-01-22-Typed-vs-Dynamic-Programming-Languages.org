@@ -1,0 +1,109 @@
+#+BEGIN_EXPORT html
+---
+title: Typed vs Dynamic Programming Languages
+tags: programming
+---
+#+END_EXPORT
+#+TOC: headlines 2
+** Pros and Cons
+
+Those days I work a lot in the Javascript world and Typescript—a typed
+version of javascript—is becoming more and more popular. Some of my
+coworkers also promote it strongly and they can not see the point of
+using a dynamic language anymore.
+
+Usually those are the selling points:
+- The extra security provided by types is to be too be important to be passed on.
+- Types help with refactoring.
+- Types make it easier to provide better programming tools.
+
+Pro dynamic languages programmers will usually tell you that with
+dynamic languages:
+- It is easier to get started
+- You have less constraints on dependencies.
+- Deployment is easier
+
+Those are valid points. More importantly, it seems there is always a cycle
+between typed languages and dynamic languages. And this cycle, this
+*repeating history* seems more important as it illustrates the
+real life benefits of both.
+
+** The Cycle
+
+Lets imagine the life of Mr IKnowNothing. Mr IKnowNothing starts his
+career as a novice programmer. As he starts on his first job he uses
+`Haskell`. He starts writing some code and he is very happy as the
+`Haskell` compiler helps correct his program as he writes it.
+He could never consider writing something in a non-typed language as
+the types are helping him so much.
+
+However after some times, Mr IKnowNothing discovers that there are
+still some bugs in his program. For example consider
+
+#+BEGIN_SRC haskell
+addTwo :: Integer -> Integer
+addTwo x = x + 1
+
+addTwo 2
+#+END_SRC
+
+#+RESULTS:
+: 3
+
+This is perfectly valid Haskell, it compiles, however Mr IKnowNothing
+made a typo and it adds 1 instead of 2.
+
+Mr IKnowNothing is pretty disappointed so he decides to start writing
+some tests as he programs to validate even more his work. Eventually
+as he becomes more skilled he writes more and more tests and with less
+and less bugs. All is fine except that he has a breakthrough.
+
+If I need to write tests for all of my code anyway, why should I use
+types? Could I not just use dynamic languages? If I have enough tests
+I don't need all of those type annotations and I can write and deploy
+programs even faster.
+
+So Mr IKnowNothing starts using a dynamic programming language. He
+tests extensively his code. He deploys. Everything works, he has never
+been so productive. Everything is fine, at least for a time…
+
+Here comes a new Hire, Miss IWantToLearn. Miss IWantToLearn is a
+beginner programmer just as was Mr IKnowNothing. And Mr IKnowNothing
+is pretty disappointed with Miss IWantToLearn. She makes so many
+mistakes!
+
+Well let me say this. Mr IKnowNothing is very unfair. Miss
+IWantToLearn did not have time to learn how to program with the
+protection of a typed language. Of course she is going to make a lot
+of mistakes. Mr IKnowNothing still makes a lot of mistakes after all.
+
+As a natural side effect Miss IWantToLearn is very dissapointed with
+this dynamic programming language. Also at this recent meetup she has
+learned about this cool typed language called `Rust` and it seems that
+`Rust` is a very safe language. There is no way she will use anything
+else than a typed language from now on.
+
+** Know what you use and why you use it
+
+My advice is: you now know this evil circle, *break it*. Be aware of
+which kind of programming language you use and why you use it.
+
+For example:
+
+- If I were to go on Mars with my life depending on my
+software I would use typed programming with an extensive suite of
+tests.
+- Most of my coworkers are less experienced than me? Let's use typed
+  programming as it will help them. At the same time let's introduce
+  them to testing.
+- You are an expert team of 3 or 5 programmers? Use a dynamic language
+  and use it to ship something quicky. If your tests are good enough
+  it will work!
+
+Of course there are variations around this theme and there are
+different ways to `test` your program but this is the gist of the
+problem.
+
+Move away from people that don't really understand the two
+alternatives and chose the correct programming language best on your
+team strengths.
