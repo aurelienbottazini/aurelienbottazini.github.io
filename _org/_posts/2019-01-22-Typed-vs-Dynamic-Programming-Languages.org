@@ -23,24 +23,24 @@ dynamic languages:
 - You have less constraints on dependencies.
 - Deployment is easier
 
-Those are valid points. More importantly, it seems there is always a cycle
+Those are all valid points. More importantly, it seems there is always a cycle
 between typed languages and dynamic languages. And this cycle, this
 *repeating history* seems more important as it illustrates the
 real life benefits of both.
 
-** The Cycle
+** The Repeating history
 
 Lets imagine the life of Mr IKnowNothing. Mr IKnowNothing starts his
 career as a novice programmer. As he starts on his first job he uses
-`Haskell`. He starts writing some code and he is very happy as the
-`Haskell` compiler helps correct his program as he writes it.
-He could never consider writing something in a non-typed language as
-the types are helping him so much.
+`Haskell`. `Haskell` is a typed language. He starts writing some code
+and he is very happy as the `Haskell` compiler helps correct his
+program as he writes it. He could never consider writing something in
+a non-typed language as the types are helping him so much.
 
 However after some times, Mr IKnowNothing discovers that there are
 still some bugs in his program. For example consider
 
-#+BEGIN_SRC haskell
+#+BEGIN_SRC haskell :exports both
 addTwo :: Integer -> Integer
 addTwo x = x + 1
 
@@ -51,26 +51,29 @@ addTwo 2
 : 3
 
 This is perfectly valid Haskell, it compiles, however Mr IKnowNothing
-made a typo and it adds 1 instead of 2.
+made a typo and it adds 1 instead of 2. It is not enough that the code
+pass compile. The behaviour of the code is also important.
 
 Mr IKnowNothing is pretty disappointed so he decides to start writing
-some tests as he programs to validate even more his work. Eventually
-as he becomes more skilled he writes more and more tests and with less
-and less bugs. All is fine except that he has a breakthrough.
+some tests. Eventually as he becomes more skilled he writes more and
+more tests and write code with less and less bugs. All is fine except
+that he has a breakthrough.
 
+Here is a thought from Mr IKnowNothing:
+#+BEGIN_QUOTE
 If I need to write tests for all of my code anyway, why should I use
 types? Could I not just use dynamic languages? If I have enough tests
 I don't need all of those type annotations and I can write and deploy
 programs even faster.
+#+END_QUOTE
 
 So Mr IKnowNothing starts using a dynamic programming language. He
 tests extensively his code. He deploys. Everything works, he has never
 been so productive. Everything is fine, at least for a time…
 
-Here comes a new Hire, Miss IWantToLearn. Miss IWantToLearn is a
-beginner programmer just as was Mr IKnowNothing. And Mr IKnowNothing
-is pretty disappointed with Miss IWantToLearn. She makes so many
-mistakes!
+Here comes a new Hire, Miss IWantToLearn. She is a beginner programmer
+just as was Mr IKnowNothing. And Mr IKnowNothing is pretty
+disappointed with Miss IWantToLearn. She makes so many mistakes!
 
 Well let me say this. Mr IKnowNothing is very unfair. Miss
 IWantToLearn did not have time to learn how to program with the
@@ -83,10 +86,14 @@ learned about this cool typed language called `Rust` and it seems that
 `Rust` is a very safe language. There is no way she will use anything
 else than a typed language from now on.
 
+Miss IWantToLearn moves to a typed language until she realizes like Mr
+IKnowNothing that she also needs test.
+And history repeats…
+
 ** Know what you use and why you use it
 
-My advice is: you now know this evil circle, *break it*. Be aware of
-which kind of programming language you use and why you use it.
+If you see this evil circle, *break it*. Be aware of which kind of
+programming language you use and why you use it.
 
 For example:
 
@@ -105,5 +112,5 @@ different ways to `test` your program but this is the gist of the
 problem.
 
 Move away from people that don't really understand the two
-alternatives and chose the correct programming language best on your
-team strengths.
+alternatives and that are two religious about the choice. Pick the
+correct programming language best on your team strengths.
