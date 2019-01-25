@@ -12,7 +12,7 @@ kramdown:
 plugins:
   - jekyll-sitemap
   - jemoji
-destination: "../aurelienbottazini.com_public"
+destination: "../blog-public"
 defaults:
   -
     scope:

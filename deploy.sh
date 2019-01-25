@@ -2,7 +2,7 @@
 grunt
 jekyll build
 
-cd ~/projects/aurelienbottazini.com_public
+cd ~/projects/blog-public
 git add .
 git commit -m "publish"
 git push
