@@ -1,0 +1,132 @@
+#+BEGIN_EXPORT html
+---
+title: Adventures with the iOs Apple Store
+tags: business
+---
+#+END_EXPORT
+This is my experience with publishing apps on the Apple store and trying
+to make a living out of it.
+
+** The beginnings
+
+   Around 2010, I wrote as an independent developer an iOs app to help
+   myself and others learn English.
+
+   I manage to develop this first working app, I shipped it to the
+   Apple Store and was surprised to see that some people where buying
+   it. I realized that since I was making some money out of it, I
+   could theoretically become independent by writing more apps or
+   having my app more successful. I decided to give it a try.
+
+** Strategy
+
+   At the same time I was reading the [[https://personalmba.com/][The Personal MBA]]. It gave me
+   some basis around business strategies and I really liked the idea
+   of multiplication: trying to create different versions of the same
+   business. By Making more learning apps for different languages
+   combination (English French, German French, Spanish English etc.)
+   that was possible.
+
+   I did some basic math and realized that if I were to sold some apps
+   every day­each app giving me back 1€ of royalty­to match my salary
+   of the time I would need to sell `3000/30 = 100` apps per day. I
+   did not think it would be very easy to do that with one app.
+   However If I were to create several apps, I bet someone would buy
+   one of each each day.
+
+   So I needed at least 300 apps. Again doing some math and using
+   combinations `32! / (30! x 2!) = 496`. I found I needed at
+   least 32 different languages.
+
+   It took some research and some data mining but I managed to
+   automate almost all aspects of app creation and publication.
+
+** Success
+
+   It worked pretty well! After publishing around 150 apps I was
+   selling enough to be able to stop my employed job! Even better than
+   I hoped!
+
+   I remember being with my Dad when I got the news and I was so pumped.
+   I felt I was really onto something and It was amazing to actually
+   build something that was providing enough for me to live.
+
+   *It felt like ultimate freedom.*
+
+** Problems
+
+   With success problems started to appear. First of all I had mixed
+   reviews around my apps. Some people absolutely loved them. Others were
+   pretty disappointed. There is a limit to what an automated system can
+   do but I was determined to fix the issues.
+
+   As I was working hard on fixing bugs and brainstorming on new ideas I
+   got contacted as I was shipping a new round of apps. At that time I
+   had around 500 apps online and I was shipping more and would have
+   approached 800 apps.
+
+   This is when Apple accused me of *spamming* the Apple store. In my
+   eyes all I was doing was applying a business strategy to sell my
+   apps and to increase my benefits. I thought it was clever and it
+   was an approach described in the MBA book. This became clear when I
+   realized that Apple was just trying to push in-app purchases and
+   they wanted me to use this method instead.
+
+   I was disappointed but I was forced to do it. So I rewrote my apps,
+   lost a lot of apple store exposure and with it a lot of sales At
+   that time I moved down to one app for each family of language. One
+   for French, one for English, one for German etc. Each of those apps
+   would have in app purchases for other languages.
+
+   So I was down to around 50 apps but It was not enough for Apple and
+   soon they asked me to switch to one single app. I sent some
+   messages and eventually someone from Dev support contacted me. I
+   could tell that the person had trouble understanding my broken
+   French English accent and marketing strategies were very foreign to
+   him. All the requests I made were denied.
+
+** Depression
+
+   This was a pretty hard hit on me. The sentiment of liberty I had
+   completely disappeared with all the things Apple hit me with. I was
+   trapped because I had only one channel of distribution through the
+   Apple Store. This sole distribution channel was a big mistake. This
+   is something mentioned in the MBA book so I knew it was a problem
+   and I was concerned about it even before Apple begin contact me.
+
+   In honesty I had plans to ship my apps to Android but Apple hit me
+   too soon and *I lost motivation*. I was also feeling lonely working
+   on apps alone. So I stopped completely the development of new apps.
+   Stopped fixing bugs and decided to let my apps die. This was in
+   conjunction with Apple releasing new versions of iOs and
+   deprecating old APIs. Sometimes my apps would just break with an
+   iOs update. This was unpredictable and very time consuming.
+
+   There was also a lot of talk about how difficult it was for solo
+   developers to make a living from the iOs Store and having to work
+   with the apple 30% tax on any sell.
+
+** Back to Employee work
+
+   So I went back to employee work. *There were good parts*. I was back
+   in a team, and I could learn a lot from other developers. I have
+   a lot of new friends. *There were bad parts*. While other
+   developers were improving their technical skills I had focused more
+   on Business and Marketing skills. I felt It was an edge but I have
+   never been able to use those skills completely as an employee
+   developer. Sometimes I felt that I was bullied on code reviews by
+   developers who had focused time learning the intricacies of one
+   particular language.
+
+   Overall I don't regret this experience. I learned a lot, I was
+   quite successful for a time and I have now put in place a system
+   around continuous learning that makes me really good technically.
+   This would not have happened if I did not feel a gap in knowledge
+   between me and other developers.
+
+   Actually I feel more knowledgeable technically than most of my
+   coworkers. This is not because I am smarter, it is just because I
+   have better learning techniques in place and I am very proactive in
+   my learning. I think I will go back one day to shipping and selling
+   my own apps. My experience will Apple will help me to not make the
+   same mistakes. Hopefully this story will help you too in some ways.
