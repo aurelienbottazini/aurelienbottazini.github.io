@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 grunt
-jekyll build
+bundle exec jekyll build
 
 cd ~/projects/blog-public
 git add .

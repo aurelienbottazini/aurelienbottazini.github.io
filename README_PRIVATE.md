@@ -6,7 +6,7 @@ It then commits then changes and push. On push the website is automatically upda
 
 A simple now.sh deploy on a free account done by `../aurelienbottazini.com` is done and redirects to my github pages repo.
 
-So to actually have a setup on one of my computers, I need to 
+So to actually have a setup on one of my computers, I need to
 
 ```
 cd ~/projects
@@ -17,6 +17,9 @@ git clone git@github.com:aurelienbottazini/blog.git
 cd blog
 git remote set-url --add --push origin git@github.com:aurelienbottazini/blog.git
 git remote set-url --add --push origin git@bitbucket.org:aurelienbottazini/blog.git
+yarn global add grunt-cli
+yarn
+bundle
 
 cd ../
 git clone git@github.com:aurelienbottazini/aurelienbottazini.github.io.git blog-public
