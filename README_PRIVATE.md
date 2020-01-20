@@ -16,15 +16,14 @@ git clone git@github.com:aurelienbottazini/aurelienbottazini.com.git
 git clone git@github.com:aurelienbottazini/blog.git
 cd blog
 git remote set-url --add --push origin git@github.com:aurelienbottazini/blog.git
-git remote set-url --add --push origin git@bitbucket.org:aurelienbottazini/blog.git
 yarn global add grunt-cli
 yarn
 bundle
 
-cd ../
+cd ..
+  * /
 git clone git@github.com:aurelienbottazini/aurelienbottazini.github.io.git blog-public
 cd blog-public
-git remote set-url --add --push origin git@bitbucket.org:aurelienbottazini/aurelienbottazini.bitbucket.io.git
 git remote set-url --add --push origin git@github.com:aurelienbottazini/aurelienbottazini.github.io.git
 ```
 
