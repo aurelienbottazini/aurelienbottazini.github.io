@@ -1,4 +1,4 @@
-const CACHE_NAME = "aurelienbottazini.com-v5";
+const CACHE_NAME = "aurelienbottazini.com-v6";
 
 self.addEventListener("install", function(event) {
   function addDefaultUrlsToCache() {
@@ -46,20 +46,15 @@ self.addEventListener("fetch", function(event) {
   }
 
   event.respondWith(
-    caches.match(event.request).then(function(response) {
-      return (
-        response ||
-        fetch(event.request)
-          .then(function(response) {
-            saveInCache(response);
-            return response;
-          })
-          .catch(response => {
-            if (isHtmlRequest(event)) {
-              return caches.match("/offline.html");
-            }
-          })
-      );
-    })
+    fetch(event.request)
+      .then(function(response) {
+        saveInCache(response);
+        return response;
+      })
+      .catch(_fetch_error => {
+        return caches.match(event.request).then(function(response) {
+          return response || caches.match("/offline.html");
+        });
+      })
   );
 });
