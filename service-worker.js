@@ -2,7 +2,13 @@ const CACHE_NAME = "aurelienbottazini.com-v5";
 
 self.addEventListener("install", function(event) {
   function addDefaultUrlsToCache() {
-    const urlsToCache = ["/offline.html"];
+    const urlsToCache = [
+      "/offline.html",
+      "/notes.html",
+      "/about.html",
+      "/resume.html",
+      "https://fonts.googleapis.com/css?family=Alegreya:400,400i|Passion+One|Permanent+Marker"
+    ];
     return caches.open(CACHE_NAME).then(function(cache) {
       console.info("Precaching:");
       console.table(urlsToCache);
@@ -31,29 +37,29 @@ self.addEventListener("activate", function(event) {
   event.waitUntil(deleteOldCaches());
 });
 
-// self.addEventListener("fetch", function(event) {
-//   function isHtmlRequest(event) {
-//     return event.request.url.endsWith(".html");
-//   }
-//   function saveInCache(response) {
-//     caches.open(CACHE_NAME).then(cache => cache.add(response.url));
-//   }
-//
-//   event.respondWith(
-//     caches.match(event.request).then(function(response) {
-//       return (
-//         response ||
-//         fetch(event.request)
-//           .then(function(response) {
-//             saveInCache(response);
-//             return response;
-//           })
-//           .catch(response => {
-//             if (isHtmlRequest(event)) {
-//               return caches.match("/offline.html");
-//             }
-//           })
-//       );
-//     })
-//   );
-// });
+self.addEventListener("fetch", function(event) {
+  function isHtmlRequest(event) {
+    return event.request.url.endsWith(".html");
+  }
+  function saveInCache(response) {
+    caches.open(CACHE_NAME).then(cache => cache.add(response.url));
+  }
+
+  event.respondWith(
+    caches.match(event.request).then(function(response) {
+      return (
+        response ||
+        fetch(event.request)
+          .then(function(response) {
+            saveInCache(response);
+            return response;
+          })
+          .catch(response => {
+            if (isHtmlRequest(event)) {
+              return caches.match("/offline.html");
+            }
+          })
+      );
+    })
+  );
+});

@@ -4,7 +4,7 @@ double stranded finobacci used by le corbusier
 */
 body {
   font-size: 100%;
-  font-family: "Alegreya", "Hoefler Text", serif;
+  font-family: "Alegreya", system-ui, "Hoefler Text", serif;
   font-weight: 400;
   line-height: 1.382;
   -webkit-hyphens: auto;
@@ -20,13 +20,13 @@ body {
   }
 }
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Passion One', 'Helvetica Neue', cursive;
+  font-family: 'Passion One', system-ui, 'Helvetica Neue', helvetica;
   font-weight: normal;
   font-style: normal;
   color: #222;
 }
 nav ul li a {
-  font-family: 'Passion One', 'Helvetica Neue', cursive;
+  font-family: 'Passion One', system-ui, 'Helvetica Neue', helvetica;
   font-weight: normal;
   font-style: normal;
 }
