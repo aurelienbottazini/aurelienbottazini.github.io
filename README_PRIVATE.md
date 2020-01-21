@@ -25,6 +25,7 @@ cd ..
 git clone git@github.com:aurelienbottazini/aurelienbottazini.github.io.git blog-public
 cd blog-public
 git remote set-url --add --push origin git@github.com:aurelienbottazini/aurelienbottazini.github.io.git
+git remote set-url --add --push origin git@bitbucket.org:aurelienbottazini/aurelienbottazini.bitbucket.io.git
 ```
 
 I have shortcuts in my emacs config to create new blog posts using org-mode and to publish the html version the this private repo.
