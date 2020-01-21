@@ -1,3 +1,4 @@
+# coding: utf-8
 ---
 tags: ruby javascript
 ---
@@ -135,6 +136,6 @@ theme: 'zenburnesque'
 }
 };
 </script>
-<script src="http://cdn.opalrb.org/opal/0.10.1/opal.min.js"></script>
-<script src="http://cdn.opalrb.org/opal/0.10.1/opal-parser.min.js"></script>
+<script src="https://cdn.opalrb.com/opal/0.10.1/opal.min.js"></script>
+<script src="https://cdn.opalrb.com/opal/0.10.1/opal-parser.min.js"></script>
 <script src="/js/klipse_plugin.min.js"></script>
