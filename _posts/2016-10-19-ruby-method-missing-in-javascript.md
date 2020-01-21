@@ -1,7 +1,6 @@
 ---
 tags: ruby javascript
 ---
-
 **All code is editable with live results.**
 
 I love Ruby and I love Ruby metaprogramming capabilities. One of the
