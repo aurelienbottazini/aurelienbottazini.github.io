@@ -134,6 +134,6 @@ theme: 'zenburnesque'
 }
 };
 </script>
-<script src="https://cdn.opalrb.com/opal/0.10.1/opal.min.js"></script>
-<script src="https://cdn.opalrb.com/opal/0.10.1/opal-parser.min.js"></script>
+<script src="/js/opal.min.js"></script>
+<script src="/js/opal-parser.min.js"></script>
 <script src="/js/klipse_plugin.min.js"></script>
