@@ -323,27 +323,27 @@ body {
     margin-top: 3em;
     @include responsive(portrait-phone) {
       width: $width-portrait-phone;
-      height: $width-portrait-phone * 1.382;
+      height: $width-portrait-phone;
     };
     @include responsive(landscape-phone) {
       width: $width-landscape-phone;
-      height: $width-landscape-phone * 1.382;
+      height: $width-landscape-phone;
     };
     @include responsive(kindle-nook-portrait) {
       width: $width-kindle-nook-portrait;
-      height: $width-kindle-nook-portrait * 1.382 ;
+      height: $width-kindle-nook-portrait;
     };
     @include responsive(ipad-portrait) {
       width: $width-ipad-portrait;
-      height: $width-ipad-portrait * 1.382;
+      height: $width-ipad-portrait;
     };
     @include responsive(ipad-landscape) {
       width: $width-ipad-landscape;
-      height: $width-ipad-landscape * 1.382;
+      height: $width-ipad-landscape;
     };
     @include responsive(widescreen) {
       width: $width-widescreen;
-      height: $width-widescreen * 1.382;
+      height: $width-widescreen;
     };
 
   }
