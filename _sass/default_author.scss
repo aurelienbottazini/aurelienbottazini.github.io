@@ -380,9 +380,9 @@ body {
     @include planete-rouge($width-portrait-phone, 10px);
     @include planete-rouge($width-landscape-phone);
     @include planete-rouge($width-kindle-nook-portrait);
-    @include planete-rouge($width-ipad-portrait);
-    @include planete-rouge($width-ipad-landscape);
-    @include planete-rouge($width-widescreen);
+    @include planete-rouge($width-ipad-portrait, -20px);
+    @include planete-rouge($width-ipad-landscape, -50px);
+    @include planete-rouge($width-widescreen, -80px);
   }
 
   @mixin planete-vie($width, $extra-top: 0) {

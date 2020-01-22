@@ -128,8 +128,6 @@ $small-caps-weight: 600 !default;
 // some font-families don’t support small caps
 // or don’t provide them with their web font.
 font-variant: small-caps;
-font-weight: $font-weight;
-text-transform: lowercase;
 color: $color;
 }
 acronym, abbr {
@@ -137,6 +135,7 @@ acronym, abbr {
   &:hover {
     cursor: help;
   }
+  text-decoration: none;
 }
 p {
   margin: 1em auto;
