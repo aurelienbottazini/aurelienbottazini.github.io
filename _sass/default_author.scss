@@ -707,9 +707,6 @@ body {
     @include contact-title($width-landscape-phone);
     @include contact-title($width-kindle-nook-portrait);
     @include contact-title($width-ipad-portrait);
-    @include contact-title($width-ipad-landscape);
-    @include contact-title($width-widescreen);
-
   }
 
 
@@ -740,9 +737,6 @@ body {
     }
 
     @include contact-info($width-ipad-portrait);
-    @include contact-info($width-ipad-landscape);
-    @include contact-info($width-widescreen);
-
   }
   #stamp {
     //width="159.333px" height="93px"
