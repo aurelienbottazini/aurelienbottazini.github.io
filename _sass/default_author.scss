@@ -323,27 +323,27 @@ body {
     margin-top: 3em;
     @include responsive(portrait-phone) {
       width: $width-portrait-phone;
-      height: $width-portrait-phone * 1.382;
+      height: $width-portrait-phone;
     };
     @include responsive(landscape-phone) {
       width: $width-landscape-phone;
-      height: $width-landscape-phone * 1.382;
+      height: $width-landscape-phone;
     };
     @include responsive(kindle-nook-portrait) {
       width: $width-kindle-nook-portrait;
-      height: $width-kindle-nook-portrait * 1.382 ;
+      height: $width-kindle-nook-portrait;
     };
     @include responsive(ipad-portrait) {
       width: $width-ipad-portrait;
-      height: $width-ipad-portrait * 1.382;
+      height: $width-ipad-portrait;
     };
     @include responsive(ipad-landscape) {
       width: $width-ipad-landscape;
-      height: $width-ipad-landscape * 1.382;
+      height: $width-ipad-landscape;
     };
     @include responsive(widescreen) {
       width: $width-widescreen;
-      height: $width-widescreen * 1.382;
+      height: $width-widescreen;
     };
 
   }
@@ -361,12 +361,12 @@ body {
       margin-bottom: 1em;
     }
   }
-  @mixin planete-rouge($width) {
+  @mixin planete-rouge($width, $extra-top: 0) {
     @media only screen and (min-width: $width) {
       //width="984.099px" height="1088.74px"
       width: ($width*1088/984) * 0.382 * 0.618;
       height: $width * 0.382 * 0.618;
-      top: $width  * 0.382;
+      top: $width  * 0.382 + $extra-top;
       left: $width * 0.618 - ($width * 0.382/2);
     }
   }
@@ -377,20 +377,20 @@ body {
   .landing_menu #planete-rouge {
     position: absolute;
 
-    @include planete-rouge($width-portrait-phone);
+    @include planete-rouge($width-portrait-phone, 10px);
     @include planete-rouge($width-landscape-phone);
     @include planete-rouge($width-kindle-nook-portrait);
-    @include planete-rouge($width-ipad-portrait);
-    @include planete-rouge($width-ipad-landscape);
-    @include planete-rouge($width-widescreen);
+    @include planete-rouge($width-ipad-portrait, -20px);
+    @include planete-rouge($width-ipad-landscape, -50px);
+    @include planete-rouge($width-widescreen, -80px);
   }
 
-  @mixin planete-vie($width) {
+  @mixin planete-vie($width, $extra-top: 0) {
     @media only screen and (min-width: $width) {
       //width="1179.118px" height="1286.758px"
       width: ($width*1286/1179) * 0.382 * 0.618;
       height: $width * 0.382 * 0.618;
-      top: $width * 0.382 * 0.618;
+      top: $width * 0.382 * 0.618 + $extra-top;
       left: $width * 0.618 + ($width * 0.382 / 3);
     }
   }
@@ -400,26 +400,26 @@ body {
   }
   .landing_menu #planete-vie {
     position: absolute;
-    @include planete-vie($width-portrait-phone);
+    @include planete-vie($width-portrait-phone, 10px);
     @include planete-vie($width-landscape-phone);
     @include planete-vie($width-kindle-nook-portrait);
     @include planete-vie($width-ipad-portrait);
     @include planete-vie($width-ipad-landscape);
     @include planete-vie($width-widescreen);
   }
-  @mixin hello($width) {
+  @mixin hello($width, $extra-top: 0) {
     @media only screen and (min-width: $width) {
       width: $width * 0.618;
       height: (1087*($width * 0.618)/2775);
       left: ($width * 0.382 * 0.618);
-      top: ($width * 0.382 * 0.382 * 0.382 * 0.382);
+      top: ($width * 0.382 * 0.382 * 0.382 * 0.382) + $extra-top;
     }
   }
   #hello {
     position: absolute;
     z-index: 1;
 
-    @include hello($width-portrait-phone);
+    @include hello($width-portrait-phone, 10px);
     @include hello($width-landscape-phone);
     @include hello($width-kindle-nook-portrait);
     @include hello($width-ipad-portrait);
@@ -431,17 +431,17 @@ body {
     height: 100%;
   }
 
-  @mixin planete-anneaux($width) {
+  @mixin planete-anneaux($width, $extra-top: 0) {
     @media only screen and (min-width: $width) {
       width: $width * 0.382 * 0.382 * 0.382;
       height: $width * 0.382 * 0.382 * 0.382;
       left: $width * 0.382;
-      top: ($width * 0.382 * 0.382 * 0.382);
+      top: ($width * 0.382 * 0.382 * 0.382) + $extra-top;
     }
   }
   #planete-anneaux {
     position: absolute;
-    @include planete-anneaux($width-portrait-phone);
+    @include planete-anneaux($width-portrait-phone, 30px);
     @include planete-anneaux($width-landscape-phone);
     @include planete-anneaux($width-kindle-nook-portrait);
     @include planete-anneaux($width-ipad-portrait);
@@ -449,7 +449,7 @@ body {
     @include planete-anneaux($width-widescreen);
   }
 
-  @mixin aurelien-animation($width) {
+  @mixin aurelien-animation($width, $extra-top: 0) {
     $aurelien_height: round($width * 0.382);
     $aurelien_width: round($aurelien_height * (360 / 533));
 
@@ -458,7 +458,7 @@ body {
       #aurelien-animation {
         height: $aurelien_height;
         width: $aurelien_width;
-        top: $width * 0.382 * 0.382;
+        top: $width * 0.382 * 0.382 + $extra-top;
         left: ($width * 0.382 / 4);
         background-size: $aurelien_width ($aurelien_height * 12);
         -moz-animation: run-aurelien-animation 1.5s steps(11) infinite;
@@ -481,7 +481,7 @@ body {
     }
   }
 
-  @include aurelien-animation($width-portrait-phone);
+  @include aurelien-animation($width-portrait-phone, 50px);
   @include aurelien-animation($width-landscape-phone);
   @include aurelien-animation($width-kindle-nook-portrait);
   @include aurelien-animation($width-ipad-portrait);
@@ -496,11 +496,11 @@ body {
   }
 
 
-  @mixin planete-lune($width) {
+  @mixin planete-lune($width, $extra-top: 0) {
     @media only screen and (min-width: $width) {
       width: $width *  0.382;
       height: $width * 0.382;
-      top: round($width * 0.382 * 0.618 + ($width *  0.382 / 2));
+      top: round($width * 0.382 * 0.618 + ($width *  0.382 / 2)) + $extra-top;
       left: -($width * 0.382 / 3) + ($width * 0.382 / 4);
 
     }
@@ -508,7 +508,7 @@ body {
   #planete-lune {
     position: absolute;
     overflow: hidden;
-    @include planete-lune($width-portrait-phone);
+    @include planete-lune($width-portrait-phone, 10px);
     @include planete-lune($width-landscape-phone);
     @include planete-lune($width-kindle-nook-portrait);
     @include planete-lune($width-ipad-portrait);
@@ -707,9 +707,6 @@ body {
     @include contact-title($width-landscape-phone);
     @include contact-title($width-kindle-nook-portrait);
     @include contact-title($width-ipad-portrait);
-    @include contact-title($width-ipad-landscape);
-    @include contact-title($width-widescreen);
-
   }
 
 
@@ -740,9 +737,6 @@ body {
     }
 
     @include contact-info($width-ipad-portrait);
-    @include contact-info($width-ipad-landscape);
-    @include contact-info($width-widescreen);
-
   }
   #stamp {
     //width="159.333px" height="93px"

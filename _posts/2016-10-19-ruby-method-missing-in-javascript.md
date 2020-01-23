@@ -1,7 +1,6 @@
 ---
 tags: ruby javascript
 ---
-
 **All code is editable with live results.**
 
 I love Ruby and I love Ruby metaprogramming capabilities. One of the
@@ -135,6 +134,6 @@ theme: 'zenburnesque'
 }
 };
 </script>
-<script src="http://cdn.opalrb.org/opal/0.10.1/opal.min.js"></script>
-<script src="http://cdn.opalrb.org/opal/0.10.1/opal-parser.min.js"></script>
+<script src="/js/opal.min.js"></script>
+<script src="/js/opal-parser.min.js"></script>
 <script src="/js/klipse_plugin.min.js"></script>
