@@ -20,11 +20,44 @@ layout: null
           <a href="#about-me" id="about-link">
             {% include_relative img/planete-rouge.svg %}
           </a>
+          <script>
+            var planete_rouge_core = document.getElementById('planete-rouge-core');
+            var planete_rouge_circles = document.getElementById('planete-rouge-circles');
+            var planete_rouge_about_me_letters = document.getElementById('planete-rouge-about-me-letters');
+            document.getElementById('planete-rouge').addEventListener('mouseover', function() {
+              planete_rouge_core.setAttribute('fill', '#c32428');
+              planete_rouge_circles.setAttribute('fill', '#a40612');
+              planete_rouge_about_me_letters.setAttribute('fill', '#c32428');
+            })
+
+            document.getElementById('planete-rouge').addEventListener('mouseout', function() {
+              planete_rouge_core.setAttribute('fill', '#a40612');
+              planete_rouge_circles.setAttribute('fill', '#c32428');
+              planete_rouge_about_me_letters.setAttribute('fill', '#a40612');
+            })
+          </script>
+
         </li>
         <li>
           <a href="#contact" id="contact-link">
             {% include_relative img/planete-vie.svg %}
           </a>
+          <script>
+            var planete_vie_oceans = document.getElementById('planete-vie-oceans');
+            var planete_vie_continents = document.getElementById('planete-vie-continents');
+            var planete_vie_contact_letters = document.getElementById('planete-vie-contact-letters');
+            document.getElementById('planete-vie').addEventListener('mouseover', function() {
+              planete_vie_oceans.setAttribute('fill', '#1b8e65');
+              planete_vie_continents.setAttribute('fill', '#4242fc');
+              planete_vie_contact_letters.setAttribute('fill', '#4242fc');
+            })
+
+            document.getElementById('planete-vie').addEventListener('mouseout', function() {
+              planete_vie_oceans.setAttribute('fill', '#4242fc');
+              planete_vie_continents.setAttribute('fill', '#1b8e65');
+              planete_vie_contact_letters.setAttribute('fill', '#1b8e65');
+            })
+          </script>
         </li>
       </ul>
     </section>
