@@ -1,13 +1,5 @@
 This is the repo that holds my blog.
 
-This repo is used to generate the public version using the ./deploy.sh scripts.
-It generates the blog public version at `../blog-public`.
-It then commits then changes and push. On push the website is automatically updated by github pages, bitbucket pages and any other _pages_ that is setup in the git remote.
-
-A simple now.sh deploy on a free account done by `../aurelienbottazini.com` is done and redirects to my github pages repo.
-
-So to actually have a setup on one of my computers, I need to
-
 ```
 cd ~/projects
 
