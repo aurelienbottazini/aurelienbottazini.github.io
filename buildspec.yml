@@ -1,0 +1,12 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - bundle
+  build:
+    commands:
+      - bundle exec jekyll build
+  post_build:
+    commands:
+      - aws s3 sync ./_site $S3_BUCKET

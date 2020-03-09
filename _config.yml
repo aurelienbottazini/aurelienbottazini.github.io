@@ -12,7 +12,7 @@ kramdown:
 plugins:
   - jekyll-sitemap
   - jemoji
-destination: "../blog-public"
+destination: "./_site"
 defaults:
   -
     scope:
