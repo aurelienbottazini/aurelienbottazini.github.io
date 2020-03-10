@@ -1,3 +1,7 @@
+html {
+  scroll-snap-type: y proximity;
+  scroll-padding-top: 3rem;
+}
 body {
   margin: 0;
 }
@@ -529,6 +533,7 @@ body {
   }
 
   #about {
+    scroll-snap-align: start;
     margin: 0 auto;
     padding-top: 0em;
     padding-bottom: 1em;
