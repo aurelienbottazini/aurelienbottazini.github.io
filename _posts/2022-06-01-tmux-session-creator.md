@@ -6,10 +6,10 @@ The first step is to get the list of projects. I store them in two different loc
 `~/perso`, `~/work`. The easiest way to create that list is to use `ls`.
 
 First attempt: `ls ~/perso ~/work` gives me extra lines
-![](2022-06-01-tmux-session-creator/ls-extra-lines.jpg)
+![](/img/posts/2022-06-01-tmux-session-creator/ls-extra-lines.jpg)
 
 Second attempt: `ls -d ~/perso/* ~/work/*`. The `-d` argument prevents ls from recursively listing directories. In combination with `*` globbing, this makes my `ls` command more precise and removes the extra lines.
-![](2022-06-01-tmux-session-creator/ls-correct.jpg)
+![](/img/posts/2022-06-01-tmux-session-creator/ls-correct.jpg)
 
 ## Prepare the list and pass it to fzf
 
