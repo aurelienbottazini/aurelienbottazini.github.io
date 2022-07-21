@@ -16,6 +16,10 @@ body {
   margin: 3em auto;
   margin-top: 6em;
 
+  @media print {
+    margin-top: 0;
+  }
+
   #post-list {
     li {
       list-style-type: none;
@@ -879,6 +883,10 @@ body {
   justify-content: space-between;
   a {
     color: rgba(0, 0, 0, 0.5);
+  }
+
+  @media print {
+    display: none;
   }
 }
 
