@@ -1,7 +1,7 @@
 name: Aurélien Bottazini
 highlight: pygments
 exclude: [TAGS, README_PRIVATE.md, deploy.sh, originaux, rsyncexclude, doc, node_modules, bower_components, config, lib, Capfile, docker-compose.yml, Gemfile, Gemfile.lock, s3_website.yml, .env, deploy.sh, yarn.lock, package.json, package-lock.json]
-encoding: utf-8
+encoding: UTF-8
 markdown: kramdown
 sass:
   style: compressed
