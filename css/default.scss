@@ -8,11 +8,10 @@
 @import "default_author";
 @import "bottom-boilerplate";
 
-
-body::after, body::before {
-  content: '';
+body::after,
+body::before {
+  content: "";
   display: block;
-  height: 50vh;
   width: 100%;
   position: fixed;
   left: 0;
@@ -20,6 +19,10 @@ body::after, body::before {
   transition: transform 200ms;
   z-index: 9999;
   transform-origin: top left;
+
+  @media screen {
+    height: 50vh;
+  }
 }
 body::before {
   top: 44px;
@@ -58,7 +61,7 @@ body.page-is-changing::after {
   z-index: 9999;
 }
 .transition-loader::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 0;

@@ -14,19 +14,24 @@ body {
   hyphens: auto;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  color: rgba(0,0,0,0.8);
+  color: rgba(0, 0, 0, 0.8);
   @media screen {
     background-color: rgb(242, 242, 243);
   }
 }
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Passion One', system-ui, 'Helvetica Neue', helvetica;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Passion One", system-ui, "Helvetica Neue", helvetica;
   font-weight: normal;
   font-style: normal;
   color: #222;
 }
 nav ul li a {
-  font-family: 'Passion One', system-ui, 'Helvetica Neue', helvetica;
+  font-family: "Passion One", system-ui, "Helvetica Neue", helvetica;
   font-weight: normal;
   font-style: normal;
 }
@@ -35,12 +40,15 @@ h1 {
   text-align: left;
   color: #dc322f;
   font-size: 2.75em;
-  page-break-after: always;
-  margin-bottom: 0.5em
+  @media screen {
+    page-break-after: always;
+  }
+  margin-bottom: 0.5em;
 }
-h1 + *, h2 + * {
+h1 + *,
+h2 + * {
   margin-top: 0;
-  padding-top:0;
+  padding-top: 0;
 }
 
 h2 {
@@ -55,8 +63,10 @@ h4 {
   font-size: 1.05em;
   text-indent: 4em;
 }
-.src, code, pre.example {
-  font-family: 'Source Code Pro', 'Menlo Regular', 'Bitstream Vera Sans', monaco;
+.src,
+code,
+pre.example {
+  font-family: "Source Code Pro", "Menlo Regular", "Bitstream Vera Sans", monaco;
   font-size: 1em;
   line-height: 1.3em;
   page-break-inside: avoid;
@@ -90,13 +100,14 @@ b {
 }
 
 strong {
-  font-family: 'Permanent Marker', cursive;
+  font-family: "Permanent Marker", cursive;
   font-weight: normal;
   font-style: normal;
   font-size: 1.2em;
 }
 
-em, i {
+em,
+i {
   font-family: "Alegreya", "Hoefler Text", serif;
   font-weight: 400;
   font-style: italic;
@@ -115,7 +126,8 @@ a {
   -o-transition: color 0.3s ease;
   transition: color 0.3s ease;
 }
-a:hover, a.active {
+a:hover,
+a.active {
   color: #dc322f;
 }
 a.visited {
@@ -124,13 +136,14 @@ a.visited {
 $small-caps-color: #484a51 !default;
 $small-caps-weight: 600 !default;
 @mixin smallcaps($color, $font-weight) {
-// depends on the font family.
-// some font-families don’t support small caps
-// or don’t provide them with their web font.
-font-variant: small-caps;
-color: $color;
+  // depends on the font family.
+  // some font-families don’t support small caps
+  // or don’t provide them with their web font.
+  font-variant: small-caps;
+  color: $color;
 }
-acronym, abbr {
+acronym,
+abbr {
   @include smallcaps($small-caps-color, $small-caps-weight);
   &:hover {
     cursor: help;
@@ -141,9 +154,9 @@ p {
   margin: 1em auto;
 }
 @mixin white-space($wrap-space) {
-  @if $wrap-space == 'pre-wrap' {
+  @if $wrap-space == "pre-wrap" {
     white-space: "-moz-#{$wrap-space}"; // Firefox 1.0-2.0
-    white-space: $wrap-space;       // current browsers
+    white-space: $wrap-space; // current browsers
   } @else {
     white-space: $wrap-space;
   }
@@ -163,7 +176,7 @@ code {
   font-family: monospace;
 }
 .ampersand {
-  font-family: "Alegreya", 'Gabriela', 'Trebuchet MS', serif;
+  font-family: "Alegreya", "Gabriela", "Trebuchet MS", serif;
   font-style: italic;
 }
 
