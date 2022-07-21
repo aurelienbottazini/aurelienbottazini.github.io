@@ -12,7 +12,6 @@ kramdown:
 plugins:
   - jekyll-sitemap
   - jemoji
-  - jekyll-feed
 destination: "./_site"
 defaults:
   -
@@ -21,3 +20,6 @@ defaults:
       type: "posts"
     values:
       layout: "post"
+name: aurelienbottazini.com
+description: Aurélien Bottazini website
+url: http://aurelienbottazini.com
