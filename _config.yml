@@ -12,6 +12,7 @@ kramdown:
 plugins:
   - jekyll-sitemap
   - jemoji
+  - jekyll-feed
 destination: "./_site"
 defaults:
   -
