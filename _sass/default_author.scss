@@ -4,9 +4,11 @@ html {
 }
 body {
   margin: 0;
+  overflow-y: scroll;
 }
 
-#frame.index, #frame.notes {
+#frame.index,
+#frame.notes {
   width: 90%;
   @include responsive(ipad-portrait) {
     width: 40em;
@@ -17,9 +19,8 @@ body {
   #post-list {
     li {
       list-style-type: none;
-      transition: background-color 200ms 50ms,
-      color 200ms 50ms,
-      transform 200ms 50ms;
+      transition: background-color 200ms 50ms, color 200ms 50ms,
+        transform 200ms 50ms;
 
       &:nth-child(even) {
         background-color: rgba(0, 0, 0, 0.1);
@@ -42,7 +43,8 @@ body {
     }
   }
   .tag {
-    font-family: 'Passion One', 'Helvetica Neue', Helvetica, "Trebuchet MS", Arial, sans-serif;
+    font-family: "Passion One", "Helvetica Neue", Helvetica, "Trebuchet MS",
+      Arial, sans-serif;
     font-size: 0.8em;
     display: inline-block;
     list-style-type: none;
@@ -50,12 +52,11 @@ body {
     padding: 0.382em;
     margin-left: 0.382em;
     color: #22252e;
-    border: 1px solid rgba(0,0,0,0.15);
+    border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 4px;
     margin-bottom: 0.5em;
     text-decoration: none;
-    transition: color 200ms 50ms,
-    transform 200ms 50ms;
+    transition: color 200ms 50ms, transform 200ms 50ms;
   }
 
   .tag:hover {
@@ -107,7 +108,6 @@ body {
 }
 
 #frame.resume {
-
   width: 100%;
   margin: 0 auto;
   padding-top: 5em;
@@ -164,7 +164,10 @@ body {
     margin-bottom: 3em;
     font-style: italic;
   }
-  #skills, #education, #experience, #portfolio {
+  #skills,
+  #education,
+  #experience,
+  #portfolio {
     h1 {
       text-align: center;
       text-transform: uppercase;
@@ -213,7 +216,7 @@ body {
   @import "bottom-boilerplate";
 
   .only_print {
-    display: none
+    display: none;
   }
 
   @media print {
@@ -227,7 +230,7 @@ body {
       display: block;
       margin-bottom: 3em;
       font-size: 1em;
-      font-style: italic
+      font-style: italic;
     }
     #main_navigation {
       display: none;
@@ -265,9 +268,9 @@ body {
     }
   }
   @mixin white-space($wrap-space) {
-    @if $wrap-space == 'pre-wrap' {
+    @if $wrap-space == "pre-wrap" {
       white-space: unquote("-moz-#{$wrap-space}"); // Firefox 1.0-2.0
-      white-space: $wrap-space;       // current browsers
+      white-space: $wrap-space; // current browsers
     } @else {
       white-space: $wrap-space;
     }
@@ -287,13 +290,16 @@ body {
     font-family: monospace;
   }
   h1 {
-    font-family: 'Passion One', 'Helvetica Neue', cursive;
+    font-family: "Passion One", "Helvetica Neue", cursive;
     font-weight: normal;
     font-style: normal;
   }
 
   .js {
-    #planete-rouge, #planete-vie, #planete-anneaux, #aurelien-sur-la-lune {
+    #planete-rouge,
+    #planete-vie,
+    #planete-anneaux,
+    #aurelien-sur-la-lune {
       opacity: 0;
     }
 
@@ -301,13 +307,13 @@ body {
       fill-opacity: 0;
       stroke-opacity: 0;
     }
-
   }
   .highlight {
     background-color: #f3cb42;
   }
 
-  background: url('../img/stars.png') repeat, url('../img/bleu-marine-texture.jpg') repeat;
+  background: url("../img/stars.png") repeat,
+    url("../img/bleu-marine-texture.jpg") repeat;
   background-size: 588px 594px, 1200px 631px;
   background-attachment: fixed;
   color: #444;
@@ -315,9 +321,9 @@ body {
   /* landing section */
 
   @media (min--moz-device-pixel-ratio: 1.5),
-  (-o-min-device-pixel-ratio: 3/2),
-  (-webkit-min-device-pixel-ratio: 1.5),
-  (min-resolution: 1.5dppx) {
+    (-o-min-device-pixel-ratio: 3/2),
+    (-webkit-min-device-pixel-ratio: 1.5),
+    (min-resolution: 1.5dppx) {
     background-size: (588px/2) (594px/2), (1200px/2) (631px/2);
   }
   #landing {
@@ -328,28 +334,27 @@ body {
     @include responsive(portrait-phone) {
       width: $width-portrait-phone;
       height: $width-portrait-phone;
-    };
+    }
     @include responsive(landscape-phone) {
       width: $width-landscape-phone;
       height: $width-landscape-phone;
-    };
+    }
     @include responsive(kindle-nook-portrait) {
       width: $width-kindle-nook-portrait;
       height: $width-kindle-nook-portrait;
-    };
+    }
     @include responsive(ipad-portrait) {
       width: $width-ipad-portrait;
       height: $width-ipad-portrait;
-    };
+    }
     @include responsive(ipad-landscape) {
       width: $width-ipad-landscape;
       height: $width-ipad-landscape;
-    };
+    }
     @include responsive(widescreen) {
       width: $width-widescreen;
       height: $width-widescreen;
-    };
-
+    }
   }
   #menu {
     list-style-type: none;
@@ -368,15 +373,15 @@ body {
   @mixin planete-rouge($width, $extra-top: 0) {
     @media only screen and (min-width: $width) {
       //width="984.099px" height="1088.74px"
-      width: ($width*1088/984) * 0.382 * 0.618;
+      width: ($width * 1088/984) * 0.382 * 0.618;
       height: $width * 0.382 * 0.618;
-      top: $width  * 0.382 + $extra-top;
+      top: $width * 0.382 + $extra-top;
       left: $width * 0.618 - ($width * 0.382/2);
     }
   }
   .fixed_menu #planete-rouge {
     width: 10vw;
-    height: (10vw*1088/984);
+    height: (10vw * 1088/984);
   }
   .landing_menu #planete-rouge {
     position: absolute;
@@ -392,7 +397,7 @@ body {
   @mixin planete-vie($width, $extra-top: 0) {
     @media only screen and (min-width: $width) {
       //width="1179.118px" height="1286.758px"
-      width: ($width*1286/1179) * 0.382 * 0.618;
+      width: ($width * 1286/1179) * 0.382 * 0.618;
       height: $width * 0.382 * 0.618;
       top: $width * 0.382 * 0.618 + $extra-top;
       left: $width * 0.618 + ($width * 0.382 / 3);
@@ -400,7 +405,7 @@ body {
   }
   .fixed_menu #planete-vie {
     width: 10vw;
-    height: (10vw*1286/1179);
+    height: (10vw * 1286/1179);
   }
   .landing_menu #planete-vie {
     position: absolute;
@@ -414,7 +419,7 @@ body {
   @mixin hello($width, $extra-top: 0) {
     @media only screen and (min-width: $width) {
       width: $width * 0.618;
-      height: (1087*($width * 0.618)/2775);
+      height: (1087 * ($width * 0.618)/2775);
       left: ($width * 0.382 * 0.618);
       top: ($width * 0.382 * 0.382 * 0.382 * 0.382) + $extra-top;
     }
@@ -430,7 +435,7 @@ body {
     @include hello($width-ipad-landscape);
     @include hello($width-widescreen);
   }
-  #hello-i-am-aurelien{
+  #hello-i-am-aurelien {
     width: 100%;
     height: 100%;
   }
@@ -458,7 +463,6 @@ body {
     $aurelien_width: round($aurelien_height * (360 / 533));
 
     @media only screen and (min-width: $width) {
-
       #aurelien-animation {
         height: $aurelien_height;
         width: $aurelien_width;
@@ -474,13 +478,21 @@ body {
 
       $background-maximum-height: $aurelien_height * 11;
       @-webkit-keyframes run-aurelien-animation {
-        from { background-position: 0 0; }
-        to { background-position: 0 (-$background-maximum-height); }
+        from {
+          background-position: 0 0;
+        }
+        to {
+          background-position: 0 (-$background-maximum-height);
+        }
       }
 
       @keyframes run-aurelien-animation {
-        from { background-position: 0 0; }
-        to { background-position: 0 (-$background-maximum-height); }
+        from {
+          background-position: 0 0;
+        }
+        to {
+          background-position: 0 (-$background-maximum-height);
+        }
       }
     }
   }
@@ -494,19 +506,17 @@ body {
 
   #aurelien-animation {
     position: absolute;
-    background-image: url('../img/aurelien-animation-sprite.png');
+    background-image: url("../img/aurelien-animation-sprite.png");
     background-position: 0 0;
     background-repeat: no-repeat;
   }
 
-
   @mixin planete-lune($width, $extra-top: 0) {
     @media only screen and (min-width: $width) {
-      width: $width *  0.382;
+      width: $width * 0.382;
       height: $width * 0.382;
-      top: round($width * 0.382 * 0.618 + ($width *  0.382 / 2)) + $extra-top;
+      top: round($width * 0.382 * 0.618 + ($width * 0.382 / 2)) + $extra-top;
       left: -($width * 0.382 / 3) + ($width * 0.382 / 4);
-
     }
   }
   #planete-lune {
@@ -520,7 +530,8 @@ body {
     @include planete-lune($width-widescreen);
   }
   // about section
-  #about, #contact {
+  #about,
+  #contact {
     p {
       font-size: 1.2em;
       line-height: 1.6;
@@ -545,7 +556,6 @@ body {
       font-size: 3em;
       padding-top: 1em;
       padding-bottom: 0.382em;
-
     }
     h2 {
       text-align: center;
@@ -562,13 +572,13 @@ body {
       font-size: 1.2em;
     }
 
-    h3, p {
+    h3,
+    p {
       width: 80%;
 
       @include responsive(ipad-portrait) {
         width: 40em;
-      };
-
+      }
     }
 
     ul {
@@ -577,13 +587,11 @@ body {
       @include responsive(ipad-portrait) {
         margin: 1em auto;
         width: 32em;
-      };
+      }
     }
-
   }
 
   #skills {
-
     li {
       list-style-type: none;
       float: left;
@@ -592,17 +600,21 @@ body {
     }
   }
   .skill {
-    background-color:#ba2323;
+    background-color: #ba2323;
     display: inline-block;
-    position:relative;
-    text-decoration:none;
-    color:#fff;
+    position: relative;
+    text-decoration: none;
+    color: #fff;
     border: solid 1px #831212;
-    background-image: linear-gradient(bottom, rgb(171,27,27) 0%, rgb(212,51,51) 100%);
+    background-image: linear-gradient(
+      bottom,
+      rgb(171, 27, 27) 0%,
+      rgb(212, 51, 51) 100%
+    );
     border-radius: 5px;
   }
   .skill::before {
-    background-color: #CCD0D5;
+    background-color: #ccd0d5;
     content: "";
     display: block;
     position: absolute;
@@ -613,7 +625,7 @@ body {
     top: -8px;
     z-index: -1;
     border-radius: 5px;
-    box-shadow: 0px 1px 1px #909193 inset, 0px 1px 0px #FFF;
+    box-shadow: 0px 1px 1px #909193 inset, 0px 1px 0px #fff;
   }
 
   #about {
@@ -625,7 +637,7 @@ body {
     @media only screen and (min-width: $width) {
       // width="391.333" height="142"
       width: $width * 0.618;
-      height: (142*($width * 0.618)/391.333);
+      height: (142 * ($width * 0.618)/391.333);
     }
   }
   #about-me {
@@ -637,14 +649,13 @@ body {
     @include about-me($width-ipad-landscape);
   }
 
-
   #selected_works {
     img {
       width: 90%;
 
       @include responsive(ipad-portrait) {
         width: 40em;
-      };
+      }
 
       margin: 0 auto;
       display: block;
@@ -658,7 +669,7 @@ body {
       @include responsive(ipad-portrait) {
         display: block;
         width: 767px;
-        margin:  0 auto;
+        margin: 0 auto;
       }
     }
 
@@ -675,7 +686,7 @@ body {
 
     .skill_list {
       li {
-        font-family: 'Passion One', 'Helvetica Neue', cursive;
+        font-family: "Passion One", "Helvetica Neue", cursive;
         font-size: 0.8em;
         display: inline-block;
         list-style-type: none;
@@ -683,7 +694,7 @@ body {
         padding: 0.382em;
         margin-left: 0.382em;
         color: #22252e;
-        border: 1px solid rgba(0,0,0,0.15);
+        border: 1px solid rgba(0, 0, 0, 0.15);
         border-radius: 4px;
         margin-bottom: 0.5em;
       }
@@ -701,7 +712,7 @@ body {
   @mixin contact-title($width) {
     @media only screen and (min-width: $width) {
       width: $width * 0.618;
-      height: (($width * 0.618)*240/502);
+      height: (($width * 0.618) * 240/502);
     }
   }
   #contact-title {
@@ -714,30 +725,26 @@ body {
     @include contact-title($width-ipad-portrait);
   }
 
-
   @mixin contact-info($width) {
     @media only screen and (min-width: $width) {
       // carte-postale size: width="499.222px" height="363.424px"
-                                   $postcard-width: $width * (.618 + 0.382/3);
+      $postcard-width: $width * (0.618 + 0.382/3);
       $postcard-height: ($postcard-width * 363.424 / 499.222);
       width: $postcard-width;
       height: $postcard-height;
     }
   }
 
-
   #contact-info {
-
     @media only screen and (min-width: $width-portrait-phone) {
-
     }
 
     @media only screen and (min-width: $width-ipad-portrait) {
       position: relative;
-      background-image: url('../img/carte-postale.svg');
+      background-image: url("../img/carte-postale.svg");
       background-repeat: no-repeat;
       background-size: 100% 100%;
-      display:block;
+      display: block;
       margin: 0 auto;
     }
 
@@ -757,21 +764,18 @@ body {
     }
   }
   #contact-me-text {
-
     width: 80%;
     margin: 0 auto;
 
     @media only screen and (min-width: $width-ipad-portrait) {
       position: absolute;
-      top:  10%;
+      top: 10%;
       left: 10%;
       width: 40%;
     }
   }
 
-
   #contact-me-links {
-
     font-size: 1.2em;
     width: 80%;
     margin: 0 auto;
@@ -789,7 +793,8 @@ body {
         background-color: #ffffff;
         border-radius: 0.5em;
         display: inline-block;
-        .tweet-logo, .stack-overflow {
+        .tweet-logo,
+        .stack-overflow {
           height: 2em;
           padding: 0.5em;
         }
@@ -849,12 +854,12 @@ body {
     @include responsive(ipad-portrait) {
       width: 20em;
       margin-top: -4em;
-    };
+    }
     display: block;
   }
 
   .tag {
-    font-family: 'Passion One', 'Helvetica Neue', cursive;
+    font-family: "Passion One", "Helvetica Neue", cursive;
     font-size: 0.8em;
     display: inline-block;
     list-style-type: none;
@@ -862,12 +867,11 @@ body {
     padding: 0.382em;
     margin-left: 0.382em;
     color: #22252e;
-    border: 1px solid rgba(0,0,0,0.15);
+    border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 4px;
     margin-bottom: 0.5em;
     text-decoration: none;
   }
-
 }
 
 .page-navigation {
