@@ -23,3 +23,7 @@ defaults:
 name: aurelienbottazini.com
 description: Aurélien Bottazini website
 url: http://aurelienbottazini.com
+collections:
+  posts:
+    output: true
+    permalink: /p/:title
