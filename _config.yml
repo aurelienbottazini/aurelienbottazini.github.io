@@ -22,8 +22,8 @@ defaults:
       layout: "post"
 name: aurelienbottazini.com
 description: Aurélien Bottazini website
-url: http://aurelienbottazini.com
+url: http://auray.me
 collections:
   posts:
     output: true
-    permalink: /p/:title
+    permalink: /:title
