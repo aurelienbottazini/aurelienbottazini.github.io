@@ -1,5 +1,5 @@
 ---
-tags: journal, habits, learn
+tags: journal habits learn
 ---
 
 Why should you know things like the back of your hand?
