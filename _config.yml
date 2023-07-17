@@ -20,9 +20,9 @@ defaults:
       type: "posts"
     values:
       layout: "post"
-name: auray.me
+name: aurelienbottazini.com
 description: Aurélien Bottazini's blog
-url: http://auray.me
+url: http://www.aurelienbottazini.com
 collections:
   posts:
     output: true
