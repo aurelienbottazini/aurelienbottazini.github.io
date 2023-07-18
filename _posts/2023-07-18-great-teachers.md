@@ -1,10 +1,10 @@
 ---
-tags: learn, principle
+tags: learn principle
 ---
 
 > From my great-grandfather: not to have attended schools for the public; to have had good teachers at home, and to realize that this is the sort of thing on which one should spend lavishly. ­Marcus Aurelius
 
-Don't hesite to pay for great teachers.
+**Don't hesitate to pay for great teachers**.
 While there's a lot of great free courses on the web. But the vast majority of the time, the best learning material is not free.
 
 While it is not free, it is also not very expensive.
@@ -24,4 +24,4 @@ I could go on and on but those are so much better by 99% of the free material I 
 
 We are in an era where you can learn for free. But you can also spend a little bit and learn from the best of the best.
 
-Give yourself a shortcut toward excellence. Support the best teachers. Spend some dollars.
+**Give yourself a shortcut toward excellence. Support the best teachers. Spend some dollars.**
