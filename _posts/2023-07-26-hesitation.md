@@ -22,7 +22,7 @@ The benefit from Ruby and Javascript are
 I have examples of people switching away from clojurescript to remove that layer of indirection:
 
 - [4x smaller, 50x faster · asciinema blog](https://blog.asciinema.org/post/smaller-faster/)
-- [The umbrella project](https://github.com/thi-ng/umbrella) -> reimpleming and extending what has been done with [geom](https://github.com/thi-ng/geom)
+- [The umbrella project](https://github.com/thi-ng/umbrella) -> reimplementing and extending what has been done with [geom](https://github.com/thi-ng/geom)
 
 
 I can find ways to *replicate* the stabilities of Clojure librairies by carefully handpicking JS librairies. I can stay ahead of the curve by applying clojure principles in the JS world. It is also way easier to do it as a solo developer. **BUT** it is impossible to remove that layer of indirection from clojure.
