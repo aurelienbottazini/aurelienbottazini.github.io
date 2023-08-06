@@ -1,11 +1,11 @@
-var setUpCaps = function(){
+function setUpCaps(){
     var dropcaps = document.querySelectorAll(".dropcap");
     window.Dropcap.layout(dropcaps, 3);
 };
 
 document.addEventListener('DOMContentLoaded', setUpCaps)
 
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("DOMContentLoaded", function addCurrentClassToMatchingNavigationItem(_event) {
   var links = document.querySelectorAll("#main_navigation ul li a");
   var pathname = location.href;
 
@@ -18,22 +18,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 var isAnimating = false
 
-document.querySelectorAll('#main_navigation [data-type="page-transition"]').forEach(function(e) {
-  e.addEventListener('click', function(event){
+document.querySelectorAll('#main_navigation [data-type="page-transition"]').forEach(function mainNavigationEventListener(e) {
+  e.addEventListener('click', function clickHandlerMainNavigation(event){
     event.preventDefault();
-    //detect which page has been selected
 
     var newPage = this.getAttribute('href');
 
+    // remove current class from all main navigation links
     var links = document.querySelectorAll("#main_navigation ul li a");
-    var pathname = location.href;
-
     for(var i = 0, length = links.length; i < length; i += 1) {
       links[i].classList.remove('current');
     }
-
+    // add current class to clicked link
     this.classList.add('current');
-    //if the page is not animating - trigger animation
+
     if( !isAnimating ) changePage(newPage, true);
   });
 })
@@ -72,9 +70,10 @@ function loadNewContent(url, bool) {
   xhr.send();
 }
 
-window.addEventListener('popstate', function() {
-  var newPageArray = location.pathname.split('/'),
-      //this is the url of the page to be loaded
-      newPage = newPageArray[newPageArray.length - 1];
-  if( !isAnimating ) changePage(newPage);
+window.addEventListener('popstate', function(_event) {
+  if(!window.location.href.indexOf("#fnref:")) {
+    var newPageArray = location.pathname.split('/'),
+        newPage = newPageArray[newPageArray.length - 1];
+    if( !isAnimating ) changePage(newPage);
+  }
 });
