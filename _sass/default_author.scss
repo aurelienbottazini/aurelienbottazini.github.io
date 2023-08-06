@@ -107,6 +107,9 @@ body {
       width: 32em;
     }
   }
+  .post li > ul {
+    margin-left: 1rem;
+  }
   .post img {
     width: 100%;
   }
