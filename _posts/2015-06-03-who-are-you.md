@@ -1,5 +1,5 @@
 ---
-tags: Self-improvement
+tags: self-improvement
 ---
 This is an exercise from a course I am taking on Udemy: "A course for
 freelancers who want to move up" from the incredible _Seth Godin_.

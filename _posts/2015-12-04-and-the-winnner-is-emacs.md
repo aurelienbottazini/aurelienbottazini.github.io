@@ -1,5 +1,5 @@
 ---
-tags: Emacs
+tags: emacs
 ---
 I am playing a *lot* with text editors, having the best set up is
 an obsession.

@@ -1,5 +1,5 @@
 ---
-tags: Programmer
+tags: programmer
 ---
 
 My favourite scripting language is Ruby. And If we speak about execution speed it

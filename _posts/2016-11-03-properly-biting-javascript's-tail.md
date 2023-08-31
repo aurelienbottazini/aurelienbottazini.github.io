@@ -1,5 +1,5 @@
 ---
-tags: JavaScript
+tags: javaScript
 ---
 
 **All code is editable with live results.**

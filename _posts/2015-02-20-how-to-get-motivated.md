@@ -1,5 +1,5 @@
 ---
-tags: Self-improvement
+tags: self-improvement
 ---
 1. Find your Dreams.
 2. Make a plan to realize them.

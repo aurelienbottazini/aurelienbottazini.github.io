@@ -1,5 +1,5 @@
 ---
-tags: Programmer
+tags: programmer
 ---
 I feel sad when I see job offers looking for a **Senior _your favorite
 language here_ Programmer**.

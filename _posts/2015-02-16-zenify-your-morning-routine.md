@@ -1,5 +1,5 @@
 ---
-tags: Self-improvement
+tags: self-improvement
 ---
 Recently I have finished reading
 [The Miracle Morning](http://www.amazon.com/The-Miracle-Morning-Not-So-Obvious-Guaranteed/dp/0979019710URL).

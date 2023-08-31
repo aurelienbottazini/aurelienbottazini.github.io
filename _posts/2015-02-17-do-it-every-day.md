@@ -1,5 +1,5 @@
 ---
-tags: Self-improvement
+tags: self-improvement
 ---
 _Our time is limited. What we focus on defines us. Getting clear on
 the goal gives us focus we have ourselves defined_

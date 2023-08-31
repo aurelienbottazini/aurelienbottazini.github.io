@@ -1,5 +1,5 @@
 ---
-tags: Business
+tags: business
 ---
 
 ## What do people buy when they buy something from you? ##

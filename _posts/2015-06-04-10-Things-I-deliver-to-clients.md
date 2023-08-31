@@ -1,5 +1,5 @@
 ---
-tags: Business
+tags: business
 ---
 - Trust
 - Passion

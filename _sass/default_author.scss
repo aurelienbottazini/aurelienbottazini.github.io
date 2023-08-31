@@ -8,7 +8,8 @@ body {
 }
 
 #frame.index,
-#frame.notes {
+#frame.notes,
+#frame.tags{
   width: 85%;
 
   @include responsive(ipad-portrait) {
