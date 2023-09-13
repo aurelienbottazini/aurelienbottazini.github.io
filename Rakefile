@@ -1,8 +1,8 @@
 require 'rake'
 require 'date'
 
-desc "Create a file with today's date as a prefix"
-task :create_file do
+desc "Create a post with today's date as a prefix"
+task :create_post do
   file_name = ENV['NAME'] || 'default-name'  # use a default name if no name is provided
   today = Date.today.to_s
   filename = "_posts/#{today}-#{file_name}.md"
