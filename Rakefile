@@ -8,7 +8,7 @@ task :create_post do
   filename = "_posts/#{today}-#{file_name}.md"
 
   File.open(filename, 'w') do |f|
-    f.write("## #{today}\n\nContent goes here...")
+    f.write("---\ntags:  \n---")
   end
 
   puts "Created file: #{filename}"
