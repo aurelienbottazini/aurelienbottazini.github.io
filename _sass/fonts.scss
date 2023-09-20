@@ -169,6 +169,7 @@ pre code {
 
 pre {
   @include white-space(pre);
+  background-color: lightgrey;
 }
 
 code {
