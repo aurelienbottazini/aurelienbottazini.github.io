@@ -1,5 +1,16 @@
 <div class="transition-page"></div>
 <div class="transition-loader"></div>
 <script src="/js/default.min.js"></script>
+<script>
+    window.goatcounter = {no_onload: true}
+
+    window.addEventListener('hashchange', function(e) {
+        window.goatcounter.count({
+            path: location.pathname + location.search + location.hash,
+        })
+    })
+</script>
+<script data-goatcounter="https://fasfewijofa.aurelienbottazini.com/fdw"
+        async src="//fasfewijofa.aurelienbottazini.com/fdw.js"></script>
 </body>
 </html>
