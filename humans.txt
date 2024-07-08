@@ -3,13 +3,11 @@
 
 # TEAM
 
-    <name> -- <role> -- <twitter>
-
-# THANKS
-
-    <name>
+    Aurélien Bottazini
 
 # TECHNOLOGY COLOPHON
 
     HTML5, CSS3
-    Normalize.css
+    JavaScript
+    Jekyll
+    Ruby
