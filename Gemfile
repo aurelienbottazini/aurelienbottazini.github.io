@@ -69,3 +69,5 @@ end
 
 gem "pg"
 gem "thruster"
+gem "haml-rails", "~> 2.0"
+gem "html2haml"
