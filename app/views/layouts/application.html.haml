@@ -7,7 +7,7 @@
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
-    = stylesheet_link_tag "tufte", "data-turbo-track": "reload"
+    %link{:href => "/stylesheets/tufte.css", :rel => "stylesheet"}
     = javascript_importmap_tags
   %body
     = yield
