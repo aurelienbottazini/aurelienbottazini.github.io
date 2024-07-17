@@ -59,6 +59,7 @@ group :development do
 
   gem "rubocop"
   gem "rubocop-rails-omakase", require: false
+  gem "rails_live_reload"
 end
 
 group :test do
