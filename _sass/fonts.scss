@@ -40,10 +40,10 @@ h1 {
   text-align: left;
   color: #dc322f;
   font-size: 2.75em;
+  margin-bottom: 0.5em;
   @media screen {
     page-break-after: always;
   }
-  margin-bottom: 0.5em;
 }
 h1 + *,
 h2 + * {

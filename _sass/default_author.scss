@@ -11,13 +11,13 @@ body {
 #frame.notes,
 #frame.tags{
   width: 85%;
+  margin: 3em auto;
+  margin-top: 6em;
+
 
   @include responsive(ipad-portrait) {
     width: 40em;
   }
-  margin: 3em auto;
-  margin-top: 6em;
-
   @media print {
     margin-top: 0;
   }
@@ -121,6 +121,7 @@ body {
   margin: 0 auto;
   padding-top: 5em;
   padding-bottom: 2em;
+  color: #22252e;
   @include responsive(ipad-portrait) {
     width: 40em;
     padding: 0;
@@ -128,14 +129,13 @@ body {
     margin-bottom: 5.5em;
   }
 
-  color: #22252e;
 
   section {
     width: 90%;
+    margin: 0 auto;
     @include responsive(ipad-portrait) {
       width: 40em;
     }
-    margin: 0 auto;
   }
   ul {
     padding-left: 0;
@@ -666,13 +666,12 @@ body {
   #selected_works {
     img {
       width: 90%;
+      margin: 0 auto;
+      display: block;
 
       @include responsive(ipad-portrait) {
         width: 40em;
       }
-
-      margin: 0 auto;
-      display: block;
     }
 
     .screenshot {
@@ -864,12 +863,12 @@ body {
     width: 61.8%;
     margin: 0 auto;
     margin-top: -1em;
+    display: block;
 
     @include responsive(ipad-portrait) {
       width: 20em;
       margin-top: -4em;
     }
-    display: block;
   }
 
   .tag {
