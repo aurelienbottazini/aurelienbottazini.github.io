@@ -20,6 +20,6 @@ This is a problem for users of the framework.
 Between versions you are in a dependency update / swapping hell.
 Instead of focusing on the business aspect of your app you spend time adapting to the latest trend.
 
-I will spend more time checking how much the framework I use own.,
+I will spend more time checking how much the framework I use own its dependencies.,
 If they don't own most of the librairies they are bundling up together, it is a strong indicator I might just do the same and stay free of the framework.
 This will allow me to upgrade, change dependencies at my own pace.
