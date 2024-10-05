@@ -64,8 +64,8 @@ It does not copy non-enumerable properties other than symbols
 <pre>
 <code class="kjs">
 testObject = {};
-Object.defineProperty(Obj1, 'notEmurable', {
-  value: 'not emurable',
+Object.defineProperty(Obj1, 'notEnumerable', {
+  value: 'not enumemrable',
   enumerable: false
 });
 
