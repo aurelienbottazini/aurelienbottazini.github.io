@@ -1,8 +1,8 @@
 # A sample Gemfile
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-gem 'dotenv'
-gem 'jekyll'
-gem 'jekyll-sitemap'
-gem 'jemoji'
-gem 'webrick'
+gem "dotenv"
+gem "jekyll"
+gem "jekyll-sitemap"
+gem "jemoji"
+gem "webrick"

@@ -15,8 +15,7 @@ started:
 + One new habit at a time
 + At the beginning it will be fun. The real challenge come afterwards.
   Before you can start seeing the results, while this new habit is
-  forming. After 66 days – based on studies — is success.
+  forming. After 66 days – based on studies — you've successfully formed a new habit.
 + Believe in the _growth mindset_. You brain is like a muscle. You can
   accomplish anything if you put enough effort into it.
-+ Growth comes at the expense of previous comfort of safety. This is
-  what you are fighting against.
++ Growth comes as a fight against your current comfort zone.
