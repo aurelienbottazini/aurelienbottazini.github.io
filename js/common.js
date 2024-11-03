@@ -44,9 +44,6 @@ document
 function changePage(url) {
   isAnimating = true;
   document.querySelector("body").classList.add("page-is-changing");
-  window.goatcounter.count({
-    path: url,
-  });
   loadNewContent(url);
 }
 
