@@ -338,7 +338,7 @@ body {
     (-o-min-device-pixel-ratio: 3/2),
     (-webkit-min-device-pixel-ratio: 1.5),
     (min-resolution: 1.5dppx) {
-    background-size: calc(588px/2) calc(594px/2), calc(1200px/2) calc(630px/2);
+    background-size: (588px/2) (594px/2), (1200px/2) (631px/2);
   }
   #landing {
     margin: 0 auto;
@@ -387,15 +387,15 @@ body {
   @mixin planete-rouge($width, $extra-top: 0) {
     @media only screen and (min-width: $width) {
       //width="984.099px" height="1088.74px"
-      width: calc($width * 1088/984) * 0.382 * 0.618;
+      width: ($width * 1088/984) * 0.382 * 0.618;
       height: $width * 0.382 * 0.618;
       top: $width * 0.382 + $extra-top;
-      left: $width * 0.618 - calc($width * 0.382/2);
+      left: $width * 0.618 - ($width * 0.382/2);
     }
   }
   .fixed_menu #planete-rouge {
     width: 10vw;
-    height: calc(10vw * 1088/984);
+    height: (10vw * 1088/984);
   }
   .landing_menu #planete-rouge {
     position: absolute;
@@ -411,15 +411,15 @@ body {
   @mixin planete-vie($width, $extra-top: 0) {
     @media only screen and (min-width: $width) {
       //width="1179.118px" height="1286.758px"
-      width: calc($width * 1286/1179) * 0.382 * 0.618;
+      width: ($width * 1286/1179) * 0.382 * 0.618;
       height: $width * 0.382 * 0.618;
       top: $width * 0.382 * 0.618 + $extra-top;
-      left: $width * 0.618 + calc($width * 0.382 / 3);
+      left: $width * 0.618 + ($width * 0.382 / 3);
     }
   }
   .fixed_menu #planete-vie {
     width: 10vw;
-    height: calc(10vw * 1286/1179);
+    height: (10vw * 1286/1179);
   }
   .landing_menu #planete-vie {
     position: absolute;
@@ -433,9 +433,9 @@ body {
   @mixin hello($width, $extra-top: 0) {
     @media only screen and (min-width: $width) {
       width: $width * 0.618;
-      height: calc(1087 * ($width * 0.618)/2775);
-      left: calc($width * 0.382 * 0.618);
-      top: calc($width * 0.382 * 0.382 * 0.382 * 0.382) + $extra-top;
+      height: (1087 * ($width * 0.618)/2775);
+      left: ($width * 0.382 * 0.618);
+      top: ($width * 0.382 * 0.382 * 0.382 * 0.382) + $extra-top;
     }
   }
   #hello {
@@ -481,7 +481,7 @@ body {
         height: $aurelien_height;
         width: $aurelien_width;
         top: $width * 0.382 * 0.382 + $extra-top;
-        left: calc($width * 0.382 / 4);
+        left: ($width * 0.382 / 4);
         background-size: $aurelien_width ($aurelien_height * 12);
         -moz-animation: run-aurelien-animation 1.5s steps(11) infinite;
         -webkit-animation: run-aurelien-animation 1.5s steps(11) infinite;
@@ -529,8 +529,8 @@ body {
     @media only screen and (min-width: $width) {
       width: $width * 0.382;
       height: $width * 0.382;
-      top: round($width * 0.382 * 0.618 + calc($width * 0.382 / 2)) + $extra-top;
-      left: calc($width * 0.382 / 4) - calc($width * 0.382 / 3);
+      top: round($width * 0.382 * 0.618 + ($width * 0.382 / 2)) + $extra-top;
+      left: -($width * 0.382 / 3) + ($width * 0.382 / 4);
     }
   }
   #planete-lune {
@@ -651,7 +651,7 @@ body {
     @media only screen and (min-width: $width) {
       // width="391.333" height="142"
       width: $width * 0.618;
-      height: calc(142 * ($width * 0.618)/391.333);
+      height: (142 * ($width * 0.618)/391.333);
     }
   }
   #about-me {
@@ -688,7 +688,7 @@ body {
 
     .iphone5 {
       display: block;
-      max-width: calc(644px/2);
+      max-width: (644px/2);
       margin: 1em auto;
 
       @include responsive(ipad-portrait) {
@@ -725,7 +725,7 @@ body {
   @mixin contact-title($width) {
     @media only screen and (min-width: $width) {
       width: $width * 0.618;
-      height: calc($width * 0.618 * calc(240/502));
+      height: (($width * 0.618) * 240/502);
     }
   }
   #contact-title {
@@ -741,8 +741,8 @@ body {
   @mixin contact-info($width) {
     @media only screen and (min-width: $width) {
       // carte-postale size: width="499.222px" height="363.424px"
-      $postcard-width: $width * (0.618 + calc(0.382/3));
-      $postcard-height: calc($postcard-width * 363.424 / 499.222);
+      $postcard-width: $width * (0.618 + 0.382/3);
+      $postcard-height: ($postcard-width * 363.424 / 499.222);
       width: $postcard-width;
       height: $postcard-height;
     }
