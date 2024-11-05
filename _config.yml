@@ -4,7 +4,7 @@ exclude: [TAGS, README_PRIVATE.md, deploy.sh, originaux, rsyncexclude, doc, node
 encoding: UTF-8
 markdown: kramdown
 sass:
-  style: compressed
+  style: expanded
   sass_dir: _sass
 kramdown:
   input: GFM
