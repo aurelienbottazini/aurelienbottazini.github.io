@@ -3,9 +3,6 @@ highlight: pygments
 exclude: [TAGS, README_PRIVATE.md, deploy.sh, originaux, rsyncexclude, doc, node_modules, bower_components, config, lib, Capfile, docker-compose.yml, Gemfile, Gemfile.lock, s3_website.yml, .env, deploy.sh, yarn.lock, package.json, package-lock.json]
 encoding: UTF-8
 markdown: kramdown
-sass:
-  style: expanded
-  sass_dir: _sass
 kramdown:
   input: GFM
   hard_wrap: false
