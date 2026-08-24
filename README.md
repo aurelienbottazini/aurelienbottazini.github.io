@@ -10,8 +10,8 @@
 # dev
 
 ```
-make build
-make dev
+rake build
+rake dev
 ```
 
 :)
